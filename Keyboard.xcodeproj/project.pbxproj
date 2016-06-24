@@ -17,6 +17,7 @@
 		964AB9581D1B6490004C827C /* iOSKeyboardApplicationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964AB9571D1B6490004C827C /* iOSKeyboardApplicationUITests.swift */; };
 		964AB96A1D1B6535004C827C /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964AB9691D1B6535004C827C /* KeyboardViewController.swift */; };
 		964AB96E1D1B6535004C827C /* iOSKeyboardExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 964AB9671D1B6535004C827C /* iOSKeyboardExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		964FE8231D1CA9D400D41EA7 /* Keyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 964FE8221D1CA9D400D41EA7 /* Keyboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		964AB9671D1B6535004C827C /* iOSKeyboardExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iOSKeyboardExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		964AB9691D1B6535004C827C /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		964AB96B1D1B6535004C827C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		964FE8221D1CA9D400D41EA7 /* Keyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Keyboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				964AB9691D1B6535004C827C /* KeyboardViewController.swift */,
+				964FE8221D1CA9D400D41EA7 /* Keyboard.storyboard */,
 				964AB96B1D1B6535004C827C /* Info.plist */,
 			);
 			path = iOSKeyboardExtension;
@@ -334,6 +337,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				964FE8231D1CA9D400D41EA7 /* Keyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -847,6 +851,7 @@
 				964AB95C1D1B6490004C827C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		964AB95D1D1B6490004C827C /* Build configuration list for PBXNativeTarget "iOSKeyboardApplicationTests" */ = {
 			isa = XCConfigurationList;
@@ -855,6 +860,7 @@
 				964AB95F1D1B6490004C827C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		964AB9601D1B6490004C827C /* Build configuration list for PBXNativeTarget "iOSKeyboardApplicationUITests" */ = {
 			isa = XCConfigurationList;
@@ -863,6 +869,7 @@
 				964AB9621D1B6490004C827C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		964AB96F1D1B6535004C827C /* Build configuration list for PBXNativeTarget "iOSKeyboardExtension" */ = {
 			isa = XCConfigurationList;
@@ -871,6 +878,7 @@
 				964AB9711D1B6535004C827C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

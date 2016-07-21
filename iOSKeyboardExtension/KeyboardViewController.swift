@@ -36,6 +36,34 @@ class KeyboardViewController: UIInputViewController {
         self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        (view as! KeyboardView).configure()
+    }
+    
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
+        (view as! KeyboardView).configure()
+    }
+    
+    override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
+        
+    }
+    
+//    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+////        (view as! KeyboardView).configure(screenWidth: size.width)
+//    }
+    
+//    override func viewDidAppear(_ animated: Bool) {
+//        NotificationCenter.default.addObserver(self, selector: #selector(orientationDidChange), name: .UIDeviceOrientationDidChange, object: nil)
+//    }
+//    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        NotificationCenter.default.removeObserver(self, name: .UIDeviceOrientationDidChange, object: nil)
+//    }
+//    
+//    func orientationDidChange() {
+//        (view as! KeyboardView).configure()
+//    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated

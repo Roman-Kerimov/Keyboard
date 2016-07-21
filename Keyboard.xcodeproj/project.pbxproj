@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		961412201D3E01D900EF6001 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9614121F1D3E01D900EF6001 /* Constants.swift */; };
 		964AB9351D1B6490004C827C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964AB9341D1B6490004C827C /* AppDelegate.swift */; };
 		964AB9371D1B6490004C827C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964AB9361D1B6490004C827C /* ViewController.swift */; };
 		964AB93A1D1B6490004C827C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 964AB9381D1B6490004C827C /* Main.storyboard */; };
@@ -18,6 +19,10 @@
 		964AB96A1D1B6535004C827C /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964AB9691D1B6535004C827C /* KeyboardViewController.swift */; };
 		964AB96E1D1B6535004C827C /* iOSKeyboardExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 964AB9671D1B6535004C827C /* iOSKeyboardExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		964FE8231D1CA9D400D41EA7 /* Keyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 964FE8221D1CA9D400D41EA7 /* Keyboard.storyboard */; };
+		965D15C11D3146BB0098FA57 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965D15C01D3146BB0098FA57 /* KeyboardView.swift */; };
+		965D15C71D325E750098FA57 /* KeyRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965D15C61D325E750098FA57 /* KeyRowView.swift */; };
+		965D15C91D32AE3B0098FA57 /* KeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965D15C81D32AE3B0098FA57 /* KeyView.swift */; };
+		965D15CB1D32F7C90098FA57 /* HalfKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965D15CA1D32F7C90098FA57 /* HalfKeyboardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +64,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9614121F1D3E01D900EF6001 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		964AB9311D1B6490004C827C /* iOSKeyboardApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSKeyboardApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		964AB9341D1B6490004C827C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		964AB9361D1B6490004C827C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +83,10 @@
 		964AB9691D1B6535004C827C /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		964AB96B1D1B6535004C827C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		964FE8221D1CA9D400D41EA7 /* Keyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Keyboard.storyboard; sourceTree = "<group>"; };
+		965D15C01D3146BB0098FA57 /* KeyboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
+		965D15C61D325E750098FA57 /* KeyRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyRowView.swift; sourceTree = "<group>"; };
+		965D15C81D32AE3B0098FA57 /* KeyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyView.swift; sourceTree = "<group>"; };
+		965D15CA1D32F7C90098FA57 /* HalfKeyboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfKeyboardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,8 +179,13 @@
 			isa = PBXGroup;
 			children = (
 				964AB9691D1B6535004C827C /* KeyboardViewController.swift */,
+				965D15C01D3146BB0098FA57 /* KeyboardView.swift */,
+				965D15CA1D32F7C90098FA57 /* HalfKeyboardView.swift */,
+				965D15C61D325E750098FA57 /* KeyRowView.swift */,
+				965D15C81D32AE3B0098FA57 /* KeyView.swift */,
 				964FE8221D1CA9D400D41EA7 /* Keyboard.storyboard */,
 				964AB96B1D1B6535004C827C /* Info.plist */,
+				9614121F1D3E01D900EF6001 /* Constants.swift */,
 			);
 			path = iOSKeyboardExtension;
 			sourceTree = "<group>";
@@ -374,7 +389,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				965D15CB1D32F7C90098FA57 /* HalfKeyboardView.swift in Sources */,
 				964AB96A1D1B6535004C827C /* KeyboardViewController.swift in Sources */,
+				965D15C91D32AE3B0098FA57 /* KeyView.swift in Sources */,
+				965D15C11D3146BB0098FA57 /* KeyboardView.swift in Sources */,
+				961412201D3E01D900EF6001 /* Constants.swift in Sources */,
+				965D15C71D325E750098FA57 /* KeyRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

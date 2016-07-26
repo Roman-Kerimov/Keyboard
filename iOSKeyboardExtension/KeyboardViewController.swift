@@ -34,6 +34,10 @@ class KeyboardViewController: UIInputViewController {
         
         self.nextKeyboardButton.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        
+        for key in KeyView.allKeys {
+            key.action = keyAction(key:)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,26 +47,6 @@ class KeyboardViewController: UIInputViewController {
     override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
         (view as! KeyboardView).configure()
     }
-    
-    override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
-        
-    }
-    
-//    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-////        (view as! KeyboardView).configure(screenWidth: size.width)
-//    }
-    
-//    override func viewDidAppear(_ animated: Bool) {
-//        NotificationCenter.default.addObserver(self, selector: #selector(orientationDidChange), name: .UIDeviceOrientationDidChange, object: nil)
-//    }
-//    
-//    override func viewWillDisappear(_ animated: Bool) {
-//        NotificationCenter.default.removeObserver(self, name: .UIDeviceOrientationDidChange, object: nil)
-//    }
-//    
-//    func orientationDidChange() {
-//        (view as! KeyboardView).configure()
-//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -78,12 +62,39 @@ class KeyboardViewController: UIInputViewController {
         
         var textColor: UIColor
         let proxy = self.textDocumentProxy
+        var isDarkColorScheme: Bool
+        
         if proxy.keyboardAppearance == UIKeyboardAppearance.dark {
             textColor = UIColor.white()
+            isDarkColorScheme = true
         } else {
             textColor = UIColor.black()
+            isDarkColorScheme = false
         }
+        
         self.nextKeyboardButton.setTitleColor(textColor, for: [])
+        
+        for key in KeyView.allKeys {
+            key.isDarkColorScheme = isDarkColorScheme
+        }
+    }
+    
+    func keyAction(key: KeyView) {
+        
+        switch key.state {
+        case .lowerCase:
+            textDocumentProxy.insertText(key.label.text!)
+            
+        case .upperCase:
+            textDocumentProxy.deleteBackward()
+            textDocumentProxy.insertText(key.label.text!.uppercased())
+            
+        case .deleteBackward:
+            textDocumentProxy.deleteBackward()
+            
+        default:
+            break
+        }
     }
 
 }

@@ -18,6 +18,38 @@ class KeyView: UIView {
     }
     */
     
+    private var keyColor: UIColor! {
+        didSet {
+            backgroundView.backgroundColor = keyColor
+        }
+    }
+    private var labelColor: UIColor! {
+        didSet {
+            label.textColor = labelColor
+        }
+    }
+    private var borderColor: UIColor! {
+        didSet {
+            backgroundView.layer.borderColor = borderColor.cgColor
+        }
+    }
+    
+    var isDarkColorScheme: Bool! {
+        didSet {
+            
+            if self.isDarkColorScheme! {
+                keyColor = UIColor.black()
+                labelColor = UIColor.white()
+                borderColor = UIColor.white()
+            }
+            else {
+                keyColor = UIColor.white()
+                labelColor = UIColor.black()
+                borderColor = UIColor.black()
+            }
+        }
+    }
+    
     static var allKeys: [KeyView] = []
     
     static var keySize: CGSize = CGSize(width: 0, height: 0) {
@@ -40,8 +72,12 @@ class KeyView: UIView {
     
     var label: UILabel!
     
+    var backgroundView: UIView!
+    
     init(labelString: String) {
         super.init(frame: CGRect())
+        
+        isDarkColorScheme = false
         
         KeyView.allKeys.append(self)
         
@@ -51,15 +87,12 @@ class KeyView: UIView {
         heightConstraint = heightAnchor.constraint(equalToConstant: 0)
         heightConstraint.isActive = true
         
-        let backgroundView = UIView()
+        backgroundView = UIView()
         addSubview(backgroundView)
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
-        backgroundView.backgroundColor = UIColor.white()
-        
         
         let backgroundIndent = -keySpace/2
         backgroundView.layer.cornerRadius = -backgroundIndent
-        backgroundView.layer.borderColor = UIColor.black().cgColor
         backgroundView.layer.borderWidth = 1/2
         
         
@@ -78,11 +111,79 @@ class KeyView: UIView {
         label.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
         centerYLabelConstraint = label.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 0)
         centerYLabelConstraint.isActive = true
+        
+        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressGestureAction(gesture:)))
+        addGestureRecognizer(longPressGestureRecognizer)
+        
+        longPressGestureRecognizer.minimumPressDuration = 0
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
         //fatalError("init(coder:) has not been implemented")
         super.init(coder: aDecoder)
     }
+    
+    var action: ((KeyView) -> Void)?
+    
+    var state = KeyState.none {
+        didSet {
+            if let keyAction = action {
+                keyAction(self)
+            }
+        }
+    }
 
+    var gestureStartPoint: CGPoint!
+    
+    func longPressGestureAction(gesture: UIGestureRecognizer) {
+        
+        switch gesture.state {
+            
+        case .began:
+            
+            backgroundView.backgroundColor = tintColor
+            label.textColor = UIColor.white()
+            
+            state = .lowerCase
+            
+            gestureStartPoint = gesture.location(in: self)
+            
+            
+        case .ended:
+            
+            backgroundView.backgroundColor = keyColor
+            label.textColor = labelColor
+            state = .ended
+            
+        default:
+            
+            var newState = KeyState.none
+            
+            let deltaY = gestureStartPoint.y - gesture.location(in: self).y
+            
+            if deltaY > bounds.size.height/2 {
+                newState = .upperCase
+            }
+            else if deltaY < -bounds.size.height/2 {
+                newState = .deleteBackward
+            }
+            else {
+                newState = .lowerCase
+            }
+            
+            if state != newState {
+                state = newState
+            }
+            
+        }
+    }
+    
+}
+
+enum KeyState {
+    case lowerCase, upperCase
+    case space, newLine, tab
+    case deleteBackward, deleteForward
+    case ended, none
 }

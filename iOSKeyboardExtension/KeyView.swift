@@ -38,14 +38,14 @@ class KeyView: UIView {
         didSet {
             
             if self.isDarkColorScheme! {
-                keyColor = UIColor.black()
-                labelColor = UIColor.white()
-                borderColor = UIColor.white()
+                keyColor = UIColor.black
+                labelColor = UIColor.white
+                borderColor = UIColor.white
             }
             else {
-                keyColor = UIColor.white()
-                labelColor = UIColor.black()
-                borderColor = UIColor.black()
+                keyColor = UIColor.white
+                labelColor = UIColor.black
+                borderColor = UIColor.black
             }
         }
     }
@@ -60,7 +60,7 @@ class KeyView: UIView {
                 
                 key.label.font = UIFont.systemFont(ofSize: keySize.height * 3/5)
                 
-                key.centerYLabelConstraint.constant = -key.label.font.pointSize / 20
+                //key.centerYLabelConstraint.constant = -key.label.font.pointSize / 20
             }
         }
     }
@@ -74,22 +74,27 @@ class KeyView: UIView {
     
     var backgroundView: UIView!
     
-    init(labelString: String) {
+    init(labelString: String, type: KeyType = .letter) {
         super.init(frame: CGRect())
         
         isDarkColorScheme = false
         
+        self.type = type
+        
         KeyView.allKeys.append(self)
         
         widthConstraint = widthAnchor.constraint(equalToConstant: 0)
+        widthConstraint.priority -= 1
         widthConstraint.isActive = true
         
         heightConstraint = heightAnchor.constraint(equalToConstant: 0)
+        heightConstraint.priority -= 1
         heightConstraint.isActive = true
         
         backgroundView = UIView()
         addSubview(backgroundView)
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        backgroundView.backgroundColor = UIColor.white
         
         let backgroundIndent = -keySpace/2
         backgroundView.layer.cornerRadius = -backgroundIndent
@@ -107,6 +112,11 @@ class KeyView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = labelString
         label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        
+        label.baselineAdjustment = .alignCenters
+        
+        label.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8).isActive = true
         
         label.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
         centerYLabelConstraint = label.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 0)
@@ -128,13 +138,19 @@ class KeyView: UIView {
     
     var state = KeyState.none {
         didSet {
+            previousState = oldValue
+            
             if let keyAction = action {
                 keyAction(self)
             }
         }
     }
+    
+    var previousState = KeyState.none
 
     var gestureStartPoint: CGPoint!
+    
+    var type = KeyType.letter
     
     func longPressGestureAction(gesture: UIGestureRecognizer) {
         
@@ -143,9 +159,19 @@ class KeyView: UIView {
         case .began:
             
             backgroundView.backgroundColor = tintColor
-            label.textColor = UIColor.white()
+            label.textColor = UIColor.white
             
-            state = .lowerCase
+            if type == .letter {
+                state = .lowerCase
+            }
+            
+            if type == .space {
+                state = .space
+            }
+            
+            if type == .delete {
+                state = .delete
+            }
             
             gestureStartPoint = gesture.location(in: self)
             
@@ -163,13 +189,40 @@ class KeyView: UIView {
             let deltaY = gestureStartPoint.y - gesture.location(in: self).y
             
             if deltaY > bounds.size.height/2 {
-                newState = .upperCase
+                if type == .letter {
+                	newState = .upperCase
+                }
             }
             else if deltaY < -bounds.size.height/2 {
-                newState = .deleteBackward
+                
+                if type == .letter {
+                    for _ in label.text!.characters {
+                        newState = .delete
+                    }
+                }
+                
+                if type == .space {
+                    newState = .delete
+                }
+                
+                if type == .delete {
+                    newState = .undelete
+                }
             }
             else {
-                newState = .lowerCase
+            
+                if type == .letter {
+                    newState = .lowerCase
+                }
+                
+                if type == .space {
+                    
+                    newState = .space
+                }
+                
+                if type == .delete {
+                    newState = .delete
+                }
             }
             
             if state != newState {
@@ -178,12 +231,15 @@ class KeyView: UIView {
             
         }
     }
-    
+}
+
+enum KeyType {
+    case letter, space, delete
 }
 
 enum KeyState {
     case lowerCase, upperCase
     case space, newLine, tab
-    case deleteBackward, deleteForward
+    case delete, undelete
     case ended, none
 }

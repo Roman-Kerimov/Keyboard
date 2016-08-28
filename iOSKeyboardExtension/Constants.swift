@@ -12,7 +12,7 @@ let keySpace: CGFloat = 8
 let maxKeySide: CGFloat = 94
 
 var keySize: CGSize {
-    let screenRect = UIScreen.main().bounds
+    let screenRect = UIScreen.main.bounds
     
     let shortScreenSide = min(screenRect.width, screenRect.height)
     let longScreenSide = max(screenRect.width, screenRect.height)

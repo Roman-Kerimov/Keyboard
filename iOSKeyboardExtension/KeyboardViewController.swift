@@ -33,7 +33,7 @@ class KeyboardViewController: UIInputViewController {
         self.view.addSubview(self.nextKeyboardButton)
         
         self.nextKeyboardButton.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-        self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        self.nextKeyboardButton.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         
         for key in KeyView.allKeys {
             key.action = keyAction(key:)
@@ -65,10 +65,10 @@ class KeyboardViewController: UIInputViewController {
         var isDarkColorScheme: Bool
         
         if proxy.keyboardAppearance == UIKeyboardAppearance.dark {
-            textColor = UIColor.white()
+            textColor = UIColor.white
             isDarkColorScheme = true
         } else {
-            textColor = UIColor.black()
+            textColor = UIColor.black
             isDarkColorScheme = false
         }
         
@@ -79,18 +79,65 @@ class KeyboardViewController: UIInputViewController {
         }
     }
     
+    var undeleteBuffer: [Character] = []
+    
     func keyAction(key: KeyView) {
         
         switch key.state {
         case .lowerCase:
+            if key.previousState == .upperCase {
+                textDocumentProxy.deleteBackward()
+            }
+            
             textDocumentProxy.insertText(key.label.text!)
+            
+            if key.type == .delete {
+                undeleteBuffer = []
+            }
             
         case .upperCase:
             textDocumentProxy.deleteBackward()
             textDocumentProxy.insertText(key.label.text!.uppercased())
             
-        case .deleteBackward:
-            textDocumentProxy.deleteBackward()
+        case .space:
+            
+            var isLastWhitespace = true
+            
+            if let lastCharacter = textDocumentProxy.documentContextBeforeInput?.characters.last {
+                isLastWhitespace = String(lastCharacter).rangeOfCharacter(from: CharacterSet.whitespaces) != nil
+            }
+            
+            if !isLastWhitespace {
+                textDocumentProxy.insertText(" ")
+                
+                if key.type == .delete {
+                    undeleteBuffer = []
+                }
+            }
+            
+        case .delete:
+            if key.type == .delete {
+                if let lastCharacter = textDocumentProxy.documentContextBeforeInput?.characters.last {
+                    textDocumentProxy.deleteBackward()
+                    undeleteBuffer.append(lastCharacter)
+                }
+
+            }
+            else {
+                textDocumentProxy.deleteBackward()
+            }
+
+        case .undelete:
+            
+            if key.type == .delete {
+                if let lastCharacter = undeleteBuffer.last {
+                    undeleteBuffer.removeLast()
+                    textDocumentProxy.insertText(String(lastCharacter))
+                }
+            }
+            
+        case .ended:
+            break
             
         default:
             break

@@ -56,14 +56,14 @@ class KeyboardView: UIView {
         initialize()
         configure(forIB: true)
         
-        backgroundKeyboardView.backgroundColor = UIColor.lightGray()
+        backgroundKeyboardView.backgroundColor = UIColor.lightGray
     }
     
     override func awakeFromNib() {
         initialize()
     }
     
-    func configure(screenWidth: CGFloat = UIScreen.main().bounds.width, forIB: Bool = false) {
+    func configure(screenWidth: CGFloat = UIScreen.main.bounds.width, forIB: Bool = false) {
         if heightConstraint != nil {
             removeConstraint(heightConstraint!)
         }
@@ -74,7 +74,7 @@ class KeyboardView: UIView {
             screenSize = bounds.size
         }
         else {
-            let previousScreenSize = UIScreen.main().bounds.size
+            let previousScreenSize = UIScreen.main.bounds.size
             
             if  previousScreenSize.width == screenWidth {
                 screenSize = previousScreenSize
@@ -89,6 +89,8 @@ class KeyboardView: UIView {
         let keyWidth = min(max(screenSize.width, screenSize.height)/CGFloat(horizontalKeyCount), maxKeySide)
         KeyView.keySize = CGSize(width: keyWidth, height: keyWidth * 3/4)
         
+        let spaceRowHeight = spaceRowView.heightConstraint.constant
+        
         if bounds.width < 480 {
             
             leftIndentConstraint.constant = screenSize.width - keyWidth * CGFloat(leftKeyboardLayout.first!.characters.count)
@@ -101,7 +103,7 @@ class KeyboardView: UIView {
                 toItem: nil,
                 attribute: .notAnAttribute,
                 multiplier: 0,
-                constant: KeyView.keySize.height * 7
+                constant: KeyView.keySize.height * CGFloat(leftKeyboardLayout.count * 2) + spaceRowHeight
             )
             
             addConstraint(heightConstraint!)
@@ -116,7 +118,7 @@ class KeyboardView: UIView {
                 toItem: nil,
                 attribute: .notAnAttribute,
                 multiplier: 0,
-                constant: KeyView.keySize.height * 4
+                constant: KeyView.keySize.height * CGFloat(leftKeyboardLayout.count) + spaceRowHeight
             )
             
             addConstraint(heightConstraint!)
@@ -131,6 +133,8 @@ class KeyboardView: UIView {
         }
 
     }
+    
+    var spaceRowView: SpaceRowView!
     
     func initialize() {
         addSubview(backgroundKeyboardView)
@@ -149,9 +153,9 @@ class KeyboardView: UIView {
         backgroundKeyboardView.addSubview(rightKeyboardView)
         rightKeyboardView.translatesAutoresizingMaskIntoConstraints = false
         
-        let spaceKeyboardView = UIView()
-        backgroundKeyboardView.addSubview(spaceKeyboardView)
-        spaceKeyboardView.translatesAutoresizingMaskIntoConstraints = false
+        spaceRowView = SpaceRowView()
+        backgroundKeyboardView.addSubview(spaceRowView)
+        spaceRowView.translatesAutoresizingMaskIntoConstraints = false
         
         leftIndentConstraint = leftKeyboardView.leftAnchor.constraint(equalTo: backgroundKeyboardView.leftAnchor)
         leftIndentConstraint.isActive = true
@@ -161,12 +165,10 @@ class KeyboardView: UIView {
         rightIndentConstraint = rightKeyboardView.rightAnchor.constraint(equalTo: backgroundKeyboardView.rightAnchor)
         rightIndentConstraint.isActive = true
         
-        spaceKeyboardView.leftAnchor.constraint(equalTo: backgroundKeyboardView.leftAnchor).isActive = true
-        spaceKeyboardView.topAnchor.constraint(equalTo: rightKeyboardView.bottomAnchor).isActive = true
-        spaceKeyboardView.rightAnchor.constraint(equalTo: backgroundKeyboardView.rightAnchor).isActive = true
-        spaceKeyboardView.bottomAnchor.constraint(equalTo: backgroundKeyboardView.bottomAnchor).isActive = true
-        
-        spaceKeyboardView.heightAnchor.constraint(equalTo: rightKeyboardView.heightAnchor, multiplier: 1/3).isActive = true
+        spaceRowView.leftAnchor.constraint(equalTo: backgroundKeyboardView.leftAnchor).isActive = true
+        spaceRowView.topAnchor.constraint(equalTo: rightKeyboardView.bottomAnchor).isActive = true
+        spaceRowView.rightAnchor.constraint(equalTo: backgroundKeyboardView.rightAnchor).isActive = true
+        spaceRowView.bottomAnchor.constraint(equalTo: backgroundKeyboardView.bottomAnchor).isActive = true
     }
 
 }

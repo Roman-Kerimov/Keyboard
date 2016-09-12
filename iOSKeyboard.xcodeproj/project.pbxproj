@@ -305,7 +305,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 964AB92A1D1B63C0004C827C /* Build configuration list for PBXProject "Keyboard" */;
+			buildConfigurationList = 964AB92A1D1B63C0004C827C /* Build configuration list for PBXProject "iOSKeyboard" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -607,7 +607,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOSKeyboardApplication.app/iOSKeyboardApplication";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOSiOSKeyboardApplication.app/iOSiOSKeyboardApplication";
 			};
 			name = Debug;
 		};
@@ -653,7 +653,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOSKeyboardApplication.app/iOSKeyboardApplication";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOSiOSKeyboardApplication.app/iOSiOSKeyboardApplication";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -859,7 +859,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		964AB92A1D1B63C0004C827C /* Build configuration list for PBXProject "Keyboard" */ = {
+		964AB92A1D1B63C0004C827C /* Build configuration list for PBXProject "iOSKeyboard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				964AB92B1D1B63C0004C827C /* Debug */,

@@ -180,6 +180,7 @@ class KeyView: UIView {
             
             backgroundView.backgroundColor = keyColor
             label.textColor = labelColor
+            label.text = label.text?.lowercased()
             state = .ended
             
         default:
@@ -191,6 +192,7 @@ class KeyView: UIView {
             if deltaY > bounds.size.height/2 {
                 if type == .letter {
                 	newState = .upperCase
+                    label.text = label.text?.uppercased()
                 }
             }
             else if deltaY < -bounds.size.height/2 {
@@ -198,6 +200,7 @@ class KeyView: UIView {
                 if type == .letter {
                     for _ in label.text!.characters {
                         newState = .delete
+                        backgroundView.backgroundColor = tintColor.withAlphaComponent(0.2)
                     }
                 }
                 
@@ -213,6 +216,8 @@ class KeyView: UIView {
             
                 if type == .letter {
                     newState = .lowerCase
+                    label.text = label.text?.lowercased()
+                    backgroundView.backgroundColor = tintColor
                 }
                 
                 if type == .space {

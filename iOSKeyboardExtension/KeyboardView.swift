@@ -44,13 +44,21 @@ class KeyboardView: UIView {
     var topIndentConstraint: NSLayoutConstraint!
     let backgroundKeyboardView = UIView()
     
-    let leftKeyboardLayout = ["',.py",
-                              "aoeui",
-                              ";qjkx"]
+//    let leftKeyboardLayout = ["',.py",
+//                              "aoeui",
+//                              ";qjkx"]
+//    
+//    let rightKeyboardLayout = ["fgcrl",
+//                               "dhtns",
+//                               "bmwvz"]
     
-    let rightKeyboardLayout = ["fgcrl",
-                               "dhtns",
-                               "bmwvz"]
+    let leftKeyboardLayout = ["qwert",
+                              "asdfg",
+                              "zxcvb"]
+    
+    let rightKeyboardLayout = ["yuiop",
+                               "hjkl;",
+                               "nm,./"]
     
     override func prepareForInterfaceBuilder() {
         initialize()

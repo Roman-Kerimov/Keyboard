@@ -36,7 +36,7 @@ class KeyboardViewController: UIInputViewController {
         self.nextKeyboardButton.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         
         for key in KeyView.allKeys {
-            key.action = keyAction(key:)
+            key.action = keyAction(label:)
         }
     }
     
@@ -79,28 +79,15 @@ class KeyboardViewController: UIInputViewController {
         }
     }
     
-    var undeleteBuffer: [Character] = []
-    
-    func keyAction(key: KeyView) {
+    func keyAction(label: String) {
         
-        switch key.state {
-        case .lowerCase:
-            if key.previousState == .upperCase {
+        if label == deleteLabel {
+            
+            if textDocumentProxy.documentContextBeforeInput?.characters.last != nil {
                 textDocumentProxy.deleteBackward()
             }
-            
-            textDocumentProxy.insertText(key.label.text!)
-            
-            if key.type == .delete {
-                undeleteBuffer = []
-            }
-            
-        case .upperCase:
-            textDocumentProxy.deleteBackward()
-            textDocumentProxy.insertText(key.label.text!.uppercased())
-            
-        case .space:
-            
+        }
+        else if label == spaceLabel {
             var isLastWhitespace = true
             
             if let lastCharacter = textDocumentProxy.documentContextBeforeInput?.characters.last {
@@ -109,38 +96,10 @@ class KeyboardViewController: UIInputViewController {
             
             if !isLastWhitespace {
                 textDocumentProxy.insertText(" ")
-                
-                if key.type == .delete {
-                    undeleteBuffer = []
-                }
             }
-            
-        case .delete:
-            if key.type == .delete {
-                if let lastCharacter = textDocumentProxy.documentContextBeforeInput?.characters.last {
-                    textDocumentProxy.deleteBackward()
-                    undeleteBuffer.append(lastCharacter)
-                }
-
-            }
-            else {
-                textDocumentProxy.deleteBackward()
-            }
-
-        case .undelete:
-            
-            if key.type == .delete {
-                if let lastCharacter = undeleteBuffer.last {
-                    undeleteBuffer.removeLast()
-                    textDocumentProxy.insertText(String(lastCharacter))
-                }
-            }
-            
-        case .ended:
-            break
-            
-        default:
-            break
+        }
+        else {
+            textDocumentProxy.insertText(label)
         }
     }
 

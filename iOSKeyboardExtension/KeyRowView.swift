@@ -27,7 +27,7 @@ class KeyRowView: UIStackView {
         var previousKey: KeyView!
         
         for character in labelsRow.characters {
-            key = KeyView(labelString: String(character))
+            key = KeyView(label: String(character))
             
             addArrangedSubview(key)
             

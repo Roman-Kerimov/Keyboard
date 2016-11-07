@@ -74,12 +74,10 @@ class KeyView: UIView {
     
     var backgroundView: UIView!
     
-    init(labelString: String, type: KeyType = .letter) {
+    init(label labelString: String) {
         super.init(frame: CGRect())
         
         isDarkColorScheme = false
-        
-        self.type = type
         
         KeyView.allKeys.append(self)
         
@@ -134,23 +132,11 @@ class KeyView: UIView {
         super.init(coder: aDecoder)
     }
     
-    var action: ((KeyView) -> Void)?
-    
-    var state = KeyState.none {
-        didSet {
-            previousState = oldValue
-            
-            if let keyAction = action {
-                keyAction(self)
-            }
-        }
-    }
-    
-    var previousState = KeyState.none
+    var action: ((String) -> Void)?
 
     var gestureStartPoint: CGPoint!
     
-    var type = KeyType.letter
+    var isCanceled = false
     
     func longPressGestureAction(gesture: UIGestureRecognizer) {
         
@@ -161,90 +147,53 @@ class KeyView: UIView {
             backgroundView.backgroundColor = tintColor
             label.textColor = UIColor.white
             
-            if type == .letter {
-                state = .lowerCase
-            }
-            
-            if type == .space {
-                state = .space
-            }
-            
-            if type == .delete {
-                state = .delete
-            }
-            
             gestureStartPoint = gesture.location(in: self)
             
+            isCanceled = false
             
         case .ended:
+            
+            if !isCanceled {
+                action?(label.text!)
+            }
             
             backgroundView.backgroundColor = keyColor
             label.textColor = labelColor
             label.text = label.text?.lowercased()
-            state = .ended
             
         default:
-            
-            var newState = KeyState.none
             
             let deltaY = gestureStartPoint.y - gesture.location(in: self).y
             
             if deltaY > bounds.size.height/2 {
-                if type == .letter {
-                	newState = .upperCase
-                    label.text = label.text?.uppercased()
+                if isCharacterLabel  {
+                    label.text = label.text!.uppercased()
                 }
             }
             else if deltaY < -bounds.size.height/2 {
+                backgroundView.backgroundColor = tintColor.withAlphaComponent(0.2)
                 
-                if type == .letter {
-                    for _ in label.text!.characters {
-                        newState = .delete
-                        backgroundView.backgroundColor = tintColor.withAlphaComponent(0.2)
-                    }
-                }
-                
-                if type == .space {
-                    newState = .delete
-                }
-                
-                if type == .delete {
-                    newState = .undelete
-                }
+                isCanceled = true
             }
             else {
-            
-                if type == .letter {
-                    newState = .lowerCase
-                    label.text = label.text?.lowercased()
-                    backgroundView.backgroundColor = tintColor
-                }
-                
-                if type == .space {
+                label.text = label.text?.lowercased()
+                backgroundView.backgroundColor = tintColor
                     
-                    newState = .space
-                }
-                
-                if type == .delete {
-                    newState = .delete
-                }
+                isCanceled = false
             }
-            
-            if state != newState {
-                state = newState
-            }
-            
         }
+    }
+    
+    var isCharacterLabel: Bool {
+        let label = self.label.text!
+        return label != deleteLabel
+            && label != spaceLabel
+        	&& label != returnLabel
+        	&& label != tabLabel
     }
 }
 
-enum KeyType {
-    case letter, space, delete
-}
-
-enum KeyState {
-    case lowerCase, upperCase
-    case space, newLine, tab
-    case delete, undelete
-    case ended, none
-}
+let deleteLabel = "delete"
+let spaceLabel = " "
+let returnLabel = "return"
+let tabLabel = "tab"

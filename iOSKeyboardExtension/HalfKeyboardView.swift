@@ -18,7 +18,7 @@ class HalfKeyboardView: UIStackView {
      }
      */
     
-    init(labelsLayout: [String]) {
+    init(labelsLayout: [[String]]) {
         super.init(frame: CGRect())
         
         axis = .vertical

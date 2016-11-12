@@ -44,21 +44,7 @@ class KeyboardView: UIView {
     var topIndentConstraint: NSLayoutConstraint!
     let backgroundKeyboardView = UIView()
     
-//    let leftKeyboardLayout = ["',.py",
-//                              "aoeui",
-//                              ";qjkx"]
-//    
-//    let rightKeyboardLayout = ["fgcrl",
-//                               "dhtns",
-//                               "bmwvz"]
-    
-    let leftKeyboardLayout = ["qwert",
-                              "asdfg",
-                              "zxcvb"]
-    
-    let rightKeyboardLayout = ["yuiop",
-                               "hjkl;",
-                               "nm,./"]
+    let keyboardLayout = KeyboardLayout.qwerty
     
     override func prepareForInterfaceBuilder() {
         initialize()
@@ -93,15 +79,14 @@ class KeyboardView: UIView {
             
         }
         
-        let horizontalKeyCount = leftKeyboardLayout.first!.characters.count + rightKeyboardLayout.first!.characters.count
-        let keyWidth = min(max(screenSize.width, screenSize.height)/CGFloat(horizontalKeyCount), maxKeySide)
+        let keyWidth = min(max(screenSize.width, screenSize.height)/CGFloat(keyboardLayout.horizontalKeyCount), maxKeySide)
         KeyView.keySize = CGSize(width: keyWidth, height: keyWidth * 3/4)
         
         let spaceRowHeight = spaceRowView.heightConstraint.constant
         
         if bounds.width < 480 {
             
-            leftIndentConstraint.constant = screenSize.width - keyWidth * CGFloat(leftKeyboardLayout.first!.characters.count)
+            leftIndentConstraint.constant = screenSize.width - keyWidth * CGFloat(keyboardLayout.leftHorizontalKeyCount)
             rightIndentConstraint.constant = -keyWidth/2
             
             heightConstraint = NSLayoutConstraint(
@@ -111,7 +96,7 @@ class KeyboardView: UIView {
                 toItem: nil,
                 attribute: .notAnAttribute,
                 multiplier: 0,
-                constant: KeyView.keySize.height * CGFloat(leftKeyboardLayout.count * 2) + spaceRowHeight
+                constant: KeyView.keySize.height * CGFloat(keyboardLayout.left.count * 2) + spaceRowHeight
             )
             
             addConstraint(heightConstraint!)
@@ -126,7 +111,7 @@ class KeyboardView: UIView {
                 toItem: nil,
                 attribute: .notAnAttribute,
                 multiplier: 0,
-                constant: KeyView.keySize.height * CGFloat(leftKeyboardLayout.count) + spaceRowHeight
+                constant: KeyView.keySize.height * CGFloat(keyboardLayout.left.count) + spaceRowHeight
             )
             
             addConstraint(heightConstraint!)
@@ -153,11 +138,11 @@ class KeyboardView: UIView {
         backgroundKeyboardView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         backgroundKeyboardView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
-        let leftKeyboardView = HalfKeyboardView(labelsLayout: leftKeyboardLayout)
+        let leftKeyboardView = HalfKeyboardView(labelsLayout: keyboardLayout.left)
         backgroundKeyboardView.addSubview(leftKeyboardView)
         leftKeyboardView.translatesAutoresizingMaskIntoConstraints = false
         
-        let rightKeyboardView = HalfKeyboardView(labelsLayout: rightKeyboardLayout)
+        let rightKeyboardView = HalfKeyboardView(labelsLayout: keyboardLayout.right)
         backgroundKeyboardView.addSubview(rightKeyboardView)
         rightKeyboardView.translatesAutoresizingMaskIntoConstraints = false
         

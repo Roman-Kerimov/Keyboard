@@ -18,7 +18,7 @@ class KeyRowView: UIStackView {
     }
     */
     
-    init(labelsRow: String) {
+    init(labelsRow: [String]) {
         super.init(frame: CGRect())
         
         axis = .horizontal
@@ -26,8 +26,8 @@ class KeyRowView: UIStackView {
         var key: KeyView!
         var previousKey: KeyView!
         
-        for character in labelsRow.characters {
-            key = KeyView(label: String(character))
+        for label in labelsRow {
+            key = KeyView(label: label)
             
             addArrangedSubview(key)
             

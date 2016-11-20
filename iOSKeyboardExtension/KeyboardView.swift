@@ -84,41 +84,35 @@ class KeyboardView: UIView {
         
         let spaceRowHeight = spaceRowView.heightConstraint.constant
         
+        let keyboardHeight: CGFloat
+        
         if bounds.width < 480 {
             
             leftIndentConstraint.constant = screenSize.width - keyWidth * CGFloat(keyboardLayout.leftHorizontalKeyCount)
             rightIndentConstraint.constant = -keyWidth/2
             
-            heightConstraint = NSLayoutConstraint(
-                item: self,
-                attribute: .height,
-                relatedBy: .equal,
-                toItem: nil,
-                attribute: .notAnAttribute,
-                multiplier: 0,
-                constant: KeyView.keySize.height * CGFloat(keyboardLayout.left.count * 2) + spaceRowHeight
-            )
-            
-            addConstraint(heightConstraint!)
+            keyboardHeight = KeyView.keySize.height * CGFloat(keyboardLayout.left.count * 2) + spaceRowHeight
             
         }
         else {
             
-            heightConstraint = NSLayoutConstraint(
-                item: self,
-                attribute: .height,
-                relatedBy: .equal,
-                toItem: nil,
-                attribute: .notAnAttribute,
-                multiplier: 0,
-                constant: KeyView.keySize.height * CGFloat(keyboardLayout.left.count) + spaceRowHeight
-            )
-            
-            addConstraint(heightConstraint!)
+            keyboardHeight = KeyView.keySize.height * CGFloat(keyboardLayout.left.count) + spaceRowHeight
             
             leftIndentConstraint.constant = 0
             rightIndentConstraint.constant = 0
         }
+        
+        heightConstraint = NSLayoutConstraint(
+            item: self,
+            attribute: .height,
+            relatedBy: .equal,
+            toItem: nil,
+            attribute: .notAnAttribute,
+            multiplier: 0,
+            constant: keyboardHeight
+        )
+        
+        addConstraint(heightConstraint!)
         
         if forIB {
             let topIndentForIB = screenSize.height - heightConstraint!.constant

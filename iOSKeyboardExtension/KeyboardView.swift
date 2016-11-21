@@ -11,6 +11,7 @@ import UIKit
 @IBDesignable
 class KeyboardView: UIView {
     let maxKeySide: CGFloat = 94
+    let segmentSpace: CGFloat = 4
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -21,12 +22,11 @@ class KeyboardView: UIView {
     */
     
     var verticalConstraints: [NSLayoutConstraint] = []
-    
+
     func verticalConstrains(isActive: Bool) {
         for constraint in verticalConstraints {
             constraint.isActive = isActive
         }
-
     }
     
     var horizontalConstraints: [NSLayoutConstraint] = []
@@ -35,9 +35,7 @@ class KeyboardView: UIView {
         for constraint in horizontalConstraints {
             constraint.isActive = isActive
         }
-
     }
-    
     
     var heightConstraint: NSLayoutConstraint?
     let keyboardView = UIView()
@@ -91,13 +89,13 @@ class KeyboardView: UIView {
             
             mainRowsView.axis = .vertical
             
-            keyboardHeight = KeyView.keySize.height * CGFloat(keyboardLayout.left.count * 2) + spaceRowHeight
+            keyboardHeight = KeyView.keySize.height * CGFloat(keyboardLayout.left.count * 2) + spaceRowHeight + segmentSpace * CGFloat(keyboardStackView.arrangedSubviews.count)
         }
         else {
             
             mainRowsView.axis = .horizontal
             
-            keyboardHeight = KeyView.keySize.height * CGFloat(keyboardLayout.left.count) + spaceRowHeight
+            keyboardHeight = KeyView.keySize.height * CGFloat(keyboardLayout.left.count) + spaceRowHeight + segmentSpace * CGFloat(keyboardStackView.arrangedSubviews.count - 1)
         }
         
         heightConstraint = NSLayoutConstraint(
@@ -129,6 +127,7 @@ class KeyboardView: UIView {
         
         keyboardView.addSubview(keyboardStackView)
         keyboardStackView.axis = .vertical
+        keyboardStackView.spacing = segmentSpace
         keyboardStackView.translatesAutoresizingMaskIntoConstraints = false
         
         keyboardStackView.topAnchor.constraint(equalTo: keyboardView.topAnchor).isActive = true
@@ -140,6 +139,7 @@ class KeyboardView: UIView {
         keyboardViewHeightConstraint.isActive = true
         
         mainRowsView = MainRowsView(layout: keyboardLayout)
+        mainRowsView.spacing = segmentSpace
         keyboardStackView.addArrangedSubview(mainRowsView)
         mainRowsView.translatesAutoresizingMaskIntoConstraints = false
         

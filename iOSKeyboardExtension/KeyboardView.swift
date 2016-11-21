@@ -40,7 +40,8 @@ class KeyboardView: UIView {
     
     
     var heightConstraint: NSLayoutConstraint?
-    let keyboardView = UIStackView()
+    let keyboardView = UIView()
+    let keyboardStackView = UIStackView()
     var keyboardViewHeightConstraint: NSLayoutConstraint!
     
     let keyboardLayout = KeyboardLayout.qwerty
@@ -118,21 +119,31 @@ class KeyboardView: UIView {
     let spaceRowView = SpaceRowView()
     
     func initialize() {
+        
         addSubview(keyboardView)
-        keyboardView.axis = .vertical
         keyboardView.translatesAutoresizingMaskIntoConstraints = false
+        
         keyboardView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         keyboardView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         keyboardView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        
+        keyboardView.addSubview(keyboardStackView)
+        keyboardStackView.axis = .vertical
+        keyboardStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        keyboardStackView.topAnchor.constraint(equalTo: keyboardView.topAnchor).isActive = true
+        keyboardStackView.leftAnchor.constraint(equalTo: keyboardView.leftAnchor).isActive = true
+        keyboardStackView.rightAnchor.constraint(equalTo: keyboardView.rightAnchor).isActive = true
+        keyboardStackView.bottomAnchor.constraint(equalTo: keyboardView.bottomAnchor).isActive = true
         
         keyboardViewHeightConstraint = keyboardView.heightAnchor.constraint(equalToConstant: 0)
         keyboardViewHeightConstraint.isActive = true
         
         mainRowsView = MainRowsView(layout: keyboardLayout)
-        keyboardView.addArrangedSubview(mainRowsView)
+        keyboardStackView.addArrangedSubview(mainRowsView)
         mainRowsView.translatesAutoresizingMaskIntoConstraints = false
         
-        keyboardView.addArrangedSubview(spaceRowView)
+        keyboardStackView.addArrangedSubview(spaceRowView)
         spaceRowView.translatesAutoresizingMaskIntoConstraints = false
     }
 }

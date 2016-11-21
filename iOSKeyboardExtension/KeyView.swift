@@ -137,8 +137,6 @@ class KeyView: UIView {
 
     var gestureStartPoint: CGPoint!
     
-    var isCanceled = false
-    
     func longPressGestureAction(gesture: UIGestureRecognizer) {
         
         switch gesture.state {
@@ -150,13 +148,9 @@ class KeyView: UIView {
             
             gestureStartPoint = gesture.location(in: self)
             
-            isCanceled = false
-            
         case .ended:
             
-            if !isCanceled {
-                action?(label.text!)
-            }
+            action?(label.text!)
             
             backgroundView.backgroundColor = keyColor
             label.textColor = labelColor
@@ -171,16 +165,8 @@ class KeyView: UIView {
                     label.text = label.text!.uppercased()
                 }
             }
-            else if deltaY < -bounds.size.height/2 {
-                backgroundView.backgroundColor = tintColor.withAlphaComponent(0.2)
-                
-                isCanceled = true
-            }
             else {
                 label.text = label.text?.lowercased()
-                backgroundView.backgroundColor = tintColor
-                    
-                isCanceled = false
             }
         }
     }

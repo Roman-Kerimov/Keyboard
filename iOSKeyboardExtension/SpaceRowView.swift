@@ -37,7 +37,7 @@ class SpaceRowView: UIStackView {
         
         spaceKey.heightAnchor.constraint(equalTo: heightAnchor).isActive = true
         
-        heightConstraint = heightAnchor.constraint(equalToConstant: keySize.height * 1.5)
+        heightConstraint = heightAnchor.constraint(equalToConstant: 0)
         heightConstraint.isActive = true
     }
     

@@ -9,6 +9,7 @@
 import UIKit
 
 class KeyView: UIView {
+    let keySpace: CGFloat = 8
 
     /*
     // Only override draw() if you perform custom drawing.

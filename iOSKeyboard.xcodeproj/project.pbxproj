@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		961412201D3E01D900EF6001 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9614121F1D3E01D900EF6001 /* Constants.swift */; };
 		964AB9351D1B6490004C827C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964AB9341D1B6490004C827C /* AppDelegate.swift */; };
 		964AB9371D1B6490004C827C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964AB9361D1B6490004C827C /* ViewController.swift */; };
 		964AB93A1D1B6490004C827C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 964AB9381D1B6490004C827C /* Main.storyboard */; };
@@ -66,7 +65,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		9614121F1D3E01D900EF6001 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		964AB9311D1B6490004C827C /* iOSKeyboardApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSKeyboardApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		964AB9341D1B6490004C827C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		964AB9361D1B6490004C827C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -191,7 +189,6 @@
 				965D15C81D32AE3B0098FA57 /* KeyView.swift */,
 				964FE8221D1CA9D400D41EA7 /* Keyboard.storyboard */,
 				964AB96B1D1B6535004C827C /* Info.plist */,
-				9614121F1D3E01D900EF6001 /* Constants.swift */,
 			);
 			path = iOSKeyboardExtension;
 			sourceTree = "<group>";
@@ -400,7 +397,6 @@
 				965D15C91D32AE3B0098FA57 /* KeyView.swift in Sources */,
 				965D15C11D3146BB0098FA57 /* KeyboardView.swift in Sources */,
 				9654DF7A1D4E1D0900DDB0EF /* SpaceRowView.swift in Sources */,
-				961412201D3E01D900EF6001 /* Constants.swift in Sources */,
 				96530D671DD1C9A9004E8BAA /* KeyboardLayout.swift in Sources */,
 				965D15C71D325E750098FA57 /* KeyRowView.swift in Sources */,
 			);

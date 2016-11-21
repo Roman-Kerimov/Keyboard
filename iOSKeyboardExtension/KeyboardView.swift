@@ -10,6 +10,7 @@ import UIKit
 
 @IBDesignable
 class KeyboardView: UIView {
+    let maxKeySide: CGFloat = 94
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -81,6 +82,7 @@ class KeyboardView: UIView {
         
         let keyWidth = min(max(screenSize.width, screenSize.height)/CGFloat(keyboardLayout.horizontalKeyCount), maxKeySide)
         KeyView.keySize = CGSize(width: keyWidth, height: keyWidth * 3/4)
+        spaceRowView.heightConstraint.constant = KeyView.keySize.height * 1.5
         
         let spaceRowHeight = spaceRowView.heightConstraint.constant
         

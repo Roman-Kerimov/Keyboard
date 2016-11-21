@@ -18,7 +18,7 @@ class HalfKeyboardView: UIStackView {
      }
      */
     
-    init(labelsLayout: [[String]]) {
+    init(layout: [[String]]) {
         super.init(frame: CGRect())
         
         axis = .vertical
@@ -26,7 +26,7 @@ class HalfKeyboardView: UIStackView {
         var keyRow: KeyRowView!
         var previousKeyRow: KeyRowView!
         
-        for labelsRow in labelsLayout {
+        for labelsRow in layout {
             keyRow = KeyRowView(labelsRow: labelsRow)
             
             addArrangedSubview(keyRow)

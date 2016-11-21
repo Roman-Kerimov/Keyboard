@@ -24,6 +24,7 @@
 		965D15C71D325E750098FA57 /* KeyRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965D15C61D325E750098FA57 /* KeyRowView.swift */; };
 		965D15C91D32AE3B0098FA57 /* KeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965D15C81D32AE3B0098FA57 /* KeyView.swift */; };
 		965D15CB1D32F7C90098FA57 /* HalfKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965D15CA1D32F7C90098FA57 /* HalfKeyboardView.swift */; };
+		966194D31DE2FCEF007FCF02 /* MainRowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966194D21DE2FCEF007FCF02 /* MainRowsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		965D15C61D325E750098FA57 /* KeyRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyRowView.swift; sourceTree = "<group>"; };
 		965D15C81D32AE3B0098FA57 /* KeyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyView.swift; sourceTree = "<group>"; };
 		965D15CA1D32F7C90098FA57 /* HalfKeyboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfKeyboardView.swift; sourceTree = "<group>"; };
+		966194D21DE2FCEF007FCF02 /* MainRowsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainRowsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,11 +182,12 @@
 		964AB9681D1B6535004C827C /* iOSKeyboardExtension */ = {
 			isa = PBXGroup;
 			children = (
+				96530D661DD1C9A9004E8BAA /* KeyboardLayout.swift */,
 				964AB9691D1B6535004C827C /* KeyboardViewController.swift */,
 				965D15C01D3146BB0098FA57 /* KeyboardView.swift */,
-				96530D661DD1C9A9004E8BAA /* KeyboardLayout.swift */,
 				965D15CA1D32F7C90098FA57 /* HalfKeyboardView.swift */,
 				965D15C61D325E750098FA57 /* KeyRowView.swift */,
+				966194D21DE2FCEF007FCF02 /* MainRowsView.swift */,
 				9654DF791D4E1D0900DDB0EF /* SpaceRowView.swift */,
 				965D15C81D32AE3B0098FA57 /* KeyView.swift */,
 				964FE8221D1CA9D400D41EA7 /* Keyboard.storyboard */,
@@ -392,6 +395,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				966194D31DE2FCEF007FCF02 /* MainRowsView.swift in Sources */,
 				965D15CB1D32F7C90098FA57 /* HalfKeyboardView.swift in Sources */,
 				964AB96A1D1B6535004C827C /* KeyboardViewController.swift in Sources */,
 				965D15C91D32AE3B0098FA57 /* KeyView.swift in Sources */,

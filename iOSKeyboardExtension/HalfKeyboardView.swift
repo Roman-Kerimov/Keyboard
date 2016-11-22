@@ -18,26 +18,19 @@ class HalfKeyboardView: UIStackView {
      }
      */
     
-    init(layout: [[String]]) {
+    var rows: [UIStackView] = []
+    
+    init(rowCount: Int) {
         super.init(frame: CGRect())
         
         axis = .vertical
+        translatesAutoresizingMaskIntoConstraints = false
         
-        var keyRow: KeyRowView!
-        var previousKeyRow: KeyRowView!
-        
-        for labelsRow in layout {
-            keyRow = KeyRowView(labelsRow: labelsRow)
-            
-            addArrangedSubview(keyRow)
-            
-            keyRow.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
-            
-            if previousKeyRow != nil {
-                keyRow.heightAnchor.constraint(equalTo: previousKeyRow.heightAnchor).isActive = true
-            }
-            
-            previousKeyRow = keyRow
+        for _ in 0..<rowCount {
+            let row = UIStackView()
+            row.axis = .horizontal
+            rows.append(row)
+            addArrangedSubview(row)
         }
     }
     

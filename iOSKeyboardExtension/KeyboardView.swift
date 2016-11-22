@@ -77,7 +77,7 @@ class KeyboardView: UIView {
             
         }
         
-        let keyWidth = min(max(screenSize.width, screenSize.height)/CGFloat(keyboardLayout.horizontalKeyCount), maxKeySide)
+        let keyWidth = min(max(screenSize.width, screenSize.height)/CGFloat(keyboardLayout.columnCount), maxKeySide)
         KeyView.keySize = CGSize(width: keyWidth, height: keyWidth * 3/4)
         spaceRowView.heightConstraint.constant = KeyView.keySize.height * 1.5
         
@@ -89,13 +89,13 @@ class KeyboardView: UIView {
             
             mainRowsView.axis = .vertical
             
-            keyboardHeight = KeyView.keySize.height * CGFloat(keyboardLayout.left.count * 2) + spaceRowHeight + segmentSpace * CGFloat(keyboardStackView.arrangedSubviews.count)
+            keyboardHeight = KeyView.keySize.height * CGFloat(keyboardLayout.rowCount * 2) + spaceRowHeight + segmentSpace * CGFloat(keyboardStackView.arrangedSubviews.count)
         }
         else {
             
             mainRowsView.axis = .horizontal
             
-            keyboardHeight = KeyView.keySize.height * CGFloat(keyboardLayout.left.count) + spaceRowHeight + segmentSpace * CGFloat(keyboardStackView.arrangedSubviews.count - 1)
+            keyboardHeight = KeyView.keySize.height * CGFloat(keyboardLayout.rowCount) + spaceRowHeight + segmentSpace * CGFloat(keyboardStackView.arrangedSubviews.count - 1)
         }
         
         heightConstraint = NSLayoutConstraint(

@@ -10,31 +10,18 @@ import UIKit
 
 class KeyboardLayout {
     
-    private let layout: [[String]]
-    
-    var left: [[String]] {
-        return layout.map { Array($0.dropLast($0.count - leftHorizontalKeyCount)) }
-    }
-    
-    var right: [[String]] {
-        return layout.map { Array($0.dropFirst(leftHorizontalKeyCount)) }
-    }
+    let labels: [[String]]
     
     init(_ labels: [[String]]) {
-        layout = labels
-        
+        self.labels = labels
     }
     
-    var horizontalKeyCount: Int {
-        return layout.map { $0.count }.max()!
+    var rowCount: Int {
+        return labels.count
     }
     
-    var leftHorizontalKeyCount: Int {
-        return horizontalKeyCount / 2
-    }
-    
-    var rightHorizontalKeyCount: Int {
-        return horizontalKeyCount - leftHorizontalKeyCount
+    var columnCount: Int {
+        return labels.map { $0.count }.max()!
     }
 
     static let qwerty = KeyboardLayout(

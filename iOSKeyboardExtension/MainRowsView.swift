@@ -18,18 +18,45 @@ class MainRowsView: UIStackView {
     }
     */
     
+    var halfKeyboards: [HalfKeyboardView] = []
+    
     init(layout: KeyboardLayout) {
         super.init(frame: CGRect())
         
         axis = .horizontal
         
-        let leftKeyboardView = HalfKeyboardView(layout: layout.left)
-        addArrangedSubview(leftKeyboardView)
-        leftKeyboardView.translatesAutoresizingMaskIntoConstraints = false
+        for _ in 0...1 {
+            let halfKeyboard = HalfKeyboardView(rowCount: layout.rowCount)
+            halfKeyboards.append(halfKeyboard)
+            addArrangedSubview(halfKeyboard)
+        }
         
-        let rightKeyboardView = HalfKeyboardView(layout: layout.right)
-        addArrangedSubview(rightKeyboardView)
-        rightKeyboardView.translatesAutoresizingMaskIntoConstraints = false
+        var key00: KeyView!
+        
+        for (rowIndex, labelsRow) in layout.labels.enumerated() {
+            for (columnIndex, label) in labelsRow.enumerated() {
+                
+                let halfKeyboardIndex: Int
+                
+                if columnIndex < layout.columnCount/2 {
+                    halfKeyboardIndex = 0
+                }
+                else {
+                    halfKeyboardIndex = 1
+                }
+                
+                let key = KeyView(label: label)
+                
+                halfKeyboards[halfKeyboardIndex].rows[rowIndex].addArrangedSubview(key)
+                
+                if rowIndex == 0 && columnIndex == 0 {
+                    key00 = key
+                }
+                else {
+                    key.widthAnchor.constraint(equalTo: key00.widthAnchor).isActive = true
+                }
+            }
+        }
     }
     
     required init(coder: NSCoder) {

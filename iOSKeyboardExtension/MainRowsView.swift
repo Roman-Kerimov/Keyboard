@@ -23,6 +23,8 @@ class MainRowsView: UIStackView {
     init(layout: KeyboardLayout) {
         super.init(frame: CGRect())
         
+        translatesAutoresizingMaskIntoConstraints = false
+        
         axis = .horizontal
         
         for _ in 0...1 {

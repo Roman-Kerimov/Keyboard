@@ -79,24 +79,26 @@ class KeyboardView: UIView {
         
         let keyWidth = min(max(screenSize.width, screenSize.height)/CGFloat(keyboardLayout.columnCount), maxKeySide)
         KeyView.keySize = CGSize(width: keyWidth, height: keyWidth * 3/4)
+        
+        numericRowView.heightConstraint.constant = KeyView.keySize.height
         spaceRowView.heightConstraint.constant = KeyView.keySize.height * 1.5
         
-        let spaceRowHeight = spaceRowView.heightConstraint.constant
-        
-        let keyboardHeight: CGFloat
+        var keyboardHeight: CGFloat = 0
         
         if bounds.width < 480 {
             
             mainRowsView.axis = .vertical
             
-            keyboardHeight = KeyView.keySize.height * CGFloat(keyboardLayout.rowCount * 2) + spaceRowHeight + segmentSpace * CGFloat(keyboardStackView.arrangedSubviews.count)
+            keyboardHeight = KeyView.keySize.height * CGFloat(keyboardLayout.rowCount * 2) + segmentSpace * CGFloat(keyboardStackView.arrangedSubviews.count)
         }
         else {
             
             mainRowsView.axis = .horizontal
             
-            keyboardHeight = KeyView.keySize.height * CGFloat(keyboardLayout.rowCount) + spaceRowHeight + segmentSpace * CGFloat(keyboardStackView.arrangedSubviews.count - 1)
+            keyboardHeight = KeyView.keySize.height * CGFloat(keyboardLayout.rowCount) + segmentSpace * CGFloat(keyboardStackView.arrangedSubviews.count - 1)
         }
+        
+        keyboardHeight += numericRowView.heightConstraint.constant + spaceRowView.heightConstraint.constant
         
         heightConstraint = NSLayoutConstraint(
             item: self,
@@ -112,7 +114,8 @@ class KeyboardView: UIView {
         
         keyboardViewHeightConstraint.constant = keyboardHeight
     }
-        
+    
+    let numericRowView = NumericRowView()
     var mainRowsView: MainRowsView!
     let spaceRowView = SpaceRowView()
     
@@ -138,12 +141,13 @@ class KeyboardView: UIView {
         keyboardViewHeightConstraint = keyboardView.heightAnchor.constraint(equalToConstant: 0)
         keyboardViewHeightConstraint.isActive = true
         
+        
+        keyboardStackView.addArrangedSubview(numericRowView)
+        
         mainRowsView = MainRowsView(layout: keyboardLayout)
         mainRowsView.spacing = segmentSpace
         keyboardStackView.addArrangedSubview(mainRowsView)
-        mainRowsView.translatesAutoresizingMaskIntoConstraints = false
         
         keyboardStackView.addArrangedSubview(spaceRowView)
-        spaceRowView.translatesAutoresizingMaskIntoConstraints = false
     }
 }

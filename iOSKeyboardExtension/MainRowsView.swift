@@ -47,7 +47,7 @@ class MainRowsView: UIStackView {
                     halfKeyboardIndex = 1
                 }
                 
-                let key = KeyView(label: label)
+                let key = KeyView(label: label, shiftDownLabel: KeyboardLayout.shiftDown.labels[rowIndex][columnIndex])
                 
                 halfKeyboards[halfKeyboardIndex].rows[rowIndex].addArrangedSubview(key)
                 

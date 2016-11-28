@@ -81,7 +81,7 @@ class KeyboardView: UIView {
         KeyView.keySize = CGSize(width: keyWidth, height: keyWidth * 3/4)
         
         numericRowView.heightConstraint.constant = KeyView.keySize.height
-        spaceRowView.heightConstraint.constant = KeyView.keySize.height * 1.5
+        spaceRowView.heightConstraint.constant = KeyView.keySize.height
         
         var keyboardHeight: CGFloat = 0
         
@@ -98,7 +98,7 @@ class KeyboardView: UIView {
             keyboardHeight = KeyView.keySize.height * CGFloat(keyboardLayout.rowCount) + segmentSpace * CGFloat(keyboardStackView.arrangedSubviews.count - 1)
         }
         
-        keyboardHeight += numericRowView.heightConstraint.constant + spaceRowView.heightConstraint.constant
+        keyboardHeight += spaceRowView.heightConstraint.constant
         
         heightConstraint = NSLayoutConstraint(
             item: self,
@@ -141,13 +141,10 @@ class KeyboardView: UIView {
         keyboardViewHeightConstraint = keyboardView.heightAnchor.constraint(equalToConstant: 0)
         keyboardViewHeightConstraint.isActive = true
         
-        
-        keyboardStackView.addArrangedSubview(numericRowView)
-        
         mainRowsView = MainRowsView(layout: keyboardLayout)
         mainRowsView.spacing = segmentSpace
-        keyboardStackView.addArrangedSubview(mainRowsView)
         
+        keyboardStackView.addArrangedSubview(mainRowsView)
         keyboardStackView.addArrangedSubview(spaceRowView)
     }
 }

@@ -24,6 +24,7 @@
 		965D15C91D32AE3B0098FA57 /* KeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965D15C81D32AE3B0098FA57 /* KeyView.swift */; };
 		965D15CB1D32F7C90098FA57 /* HalfKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965D15CA1D32F7C90098FA57 /* HalfKeyboardView.swift */; };
 		966194D31DE2FCEF007FCF02 /* MainRowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966194D21DE2FCEF007FCF02 /* MainRowsView.swift */; };
+		96BC5F561DEB961F002E0752 /* ShiftLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BC5F551DEB961F002E0752 /* ShiftLabel.swift */; };
 		96D792CD1DE4E54700BC41BC /* NumericRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D792CC1DE4E54700BC41BC /* NumericRowView.swift */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +91,7 @@
 		965D15C81D32AE3B0098FA57 /* KeyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyView.swift; sourceTree = "<group>"; };
 		965D15CA1D32F7C90098FA57 /* HalfKeyboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfKeyboardView.swift; sourceTree = "<group>"; };
 		966194D21DE2FCEF007FCF02 /* MainRowsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainRowsView.swift; sourceTree = "<group>"; };
+		96BC5F551DEB961F002E0752 /* ShiftLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftLabel.swift; sourceTree = "<group>"; };
 		96D792CC1DE4E54700BC41BC /* NumericRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumericRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -190,6 +192,7 @@
 				965D15CA1D32F7C90098FA57 /* HalfKeyboardView.swift */,
 				9654DF791D4E1D0900DDB0EF /* SpaceRowView.swift */,
 				965D15C81D32AE3B0098FA57 /* KeyView.swift */,
+				96BC5F551DEB961F002E0752 /* ShiftLabel.swift */,
 				964FE8221D1CA9D400D41EA7 /* Keyboard.storyboard */,
 				964AB96B1D1B6535004C827C /* Info.plist */,
 			);
@@ -399,6 +402,7 @@
 				965D15CB1D32F7C90098FA57 /* HalfKeyboardView.swift in Sources */,
 				96D792CD1DE4E54700BC41BC /* NumericRowView.swift in Sources */,
 				964AB96A1D1B6535004C827C /* KeyboardViewController.swift in Sources */,
+				96BC5F561DEB961F002E0752 /* ShiftLabel.swift in Sources */,
 				965D15C91D32AE3B0098FA57 /* KeyView.swift in Sources */,
 				965D15C11D3146BB0098FA57 /* KeyboardView.swift in Sources */,
 				9654DF7A1D4E1D0900DDB0EF /* SpaceRowView.swift in Sources */,

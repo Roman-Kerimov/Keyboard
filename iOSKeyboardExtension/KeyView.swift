@@ -8,8 +8,13 @@
 
 import UIKit
 
+private let keySpace: CGFloat = 8
+private let topShiftLabelIndent: CGFloat = 3
+private let leftShiftLabelIndent: CGFloat = 5
+private let rightShiftLabelIndent = -leftShiftLabelIndent
+private let bottomShiftLabelIndent = -topShiftLabelIndent
+
 class KeyView: UIView {
-    let keySpace: CGFloat = 8
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -59,9 +64,19 @@ class KeyView: UIView {
                 key.widthConstraint.constant = keySize.width
                 key.heightConstraint.constant = keySize.height
                 
-                key.label.font = UIFont.systemFont(ofSize: keySize.height * 3/5)
+                let labelFontSize = keySize.height * 3/5
+                key.label.font = UIFont.systemFont(ofSize: labelFontSize)
                 
-                //key.centerYLabelConstraint.constant = -key.label.font.pointSize / 20
+                let shiftLabelFont = UIFont.systemFont(ofSize: labelFontSize/1.8)
+                key.shiftUpLabel.font = shiftLabelFont
+                key.shiftDownLabel.font = shiftLabelFont
+                key.shiftLeftLabel.font = shiftLabelFont
+                key.shiftRightLabel.font = shiftLabelFont
+                
+                if key.mainLabel == deleteLabel {
+                    key.label.font = shiftLabelFont
+                }
+
             }
         }
     }
@@ -71,11 +86,19 @@ class KeyView: UIView {
     var widthConstraint: NSLayoutConstraint!
     var heightConstraint: NSLayoutConstraint!
     
-    var label: UILabel!
+    let mainLabel: String
+    
+    let label = UILabel()
+    let shiftUpLabel = ShiftLabel()
+    let shiftDownLabel = ShiftLabel()
+    
+    let shiftLeftLabel = ShiftLabel()
+    let shiftRightLabel = ShiftLabel()
     
     var backgroundView: UIView!
     
-    init(label labelString: String) {
+    init(label: String, shiftDownLabel: String = "") {
+        mainLabel = label
         super.init(frame: CGRect())
         
         isDarkColorScheme = false
@@ -106,20 +129,51 @@ class KeyView: UIView {
         backgroundView.widthAnchor.constraint(equalTo: widthAnchor, constant: backgroundIndent).isActive = true
         backgroundView.heightAnchor.constraint(equalTo: heightAnchor, constant: backgroundIndent).isActive = true
         
-        label = UILabel()
-        addSubview(label)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = labelString
-        label.textAlignment = .center
-        label.adjustsFontSizeToFitWidth = true
         
-        label.baselineAdjustment = .alignCenters
         
-        label.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8).isActive = true
+        addSubview(self.label)
+        self.label.translatesAutoresizingMaskIntoConstraints = false
+        self.label.text = mainLabel
+        self.label.textAlignment = .center
+        self.label.adjustsFontSizeToFitWidth = true
         
-        label.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
-        centerYLabelConstraint = label.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 0)
+        self.label.baselineAdjustment = .alignCenters
+        
+        self.label.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8).isActive = true
+        
+        self.label.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
+        centerYLabelConstraint = self.label.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 0)
         centerYLabelConstraint.isActive = true
+        
+        addSubview(self.shiftUpLabel)
+        addSubview(self.shiftDownLabel)
+        
+        self.shiftDownLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: bottomShiftLabelIndent).isActive = true
+        self.shiftUpLabel.text = KeyboardLayout.shiftUpDictionary[label]
+        
+        if mainLabel == spaceLabel {
+            self.shiftUpLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
+            self.shiftUpLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+            
+            self.shiftDownLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+            self.shiftDownLabel.text = returnLabel
+            
+            addSubview(shiftLeftLabel)
+            shiftLeftLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: leftShiftLabelIndent * 2).isActive = true
+            shiftLeftLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+            
+            addSubview(shiftRightLabel)
+            shiftRightLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: rightShiftLabelIndent * 2).isActive = true
+            shiftRightLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+            shiftRightLabel.text = tabLabel
+        }
+        else {
+            self.shiftUpLabel.topAnchor.constraint(equalTo: topAnchor, constant: topShiftLabelIndent).isActive = true
+            self.shiftUpLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: leftShiftLabelIndent).isActive = true
+            
+            self.shiftDownLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: rightShiftLabelIndent).isActive = true
+            self.shiftDownLabel.text = shiftDownLabel
+        }
         
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressGestureAction(gesture:)))
         addGestureRecognizer(longPressGestureRecognizer)
@@ -130,6 +184,7 @@ class KeyView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         //fatalError("init(coder:) has not been implemented")
+        mainLabel = ""
         super.init(coder: aDecoder)
     }
     
@@ -145,6 +200,8 @@ class KeyView: UIView {
             
             backgroundView.backgroundColor = tintColor
             label.textColor = UIColor.white
+            shiftUpLabel.isHidden = true
+            shiftDownLabel.isHidden = true
             
             gestureStartPoint = gesture.location(in: self)
             
@@ -154,7 +211,10 @@ class KeyView: UIView {
             
             backgroundView.backgroundColor = keyColor
             label.textColor = labelColor
-            label.text = label.text?.lowercased()
+            shiftUpLabel.isHidden = false
+            shiftDownLabel.isHidden = false
+            
+            label.text = mainLabel
             
         default:
             
@@ -162,21 +222,28 @@ class KeyView: UIView {
             
             if deltaY > bounds.size.height/2 {
                 if isCharacterLabel  {
-                    label.text = label.text!.uppercased()
+                    if shiftUpLabel.text == nil {
+                        label.text = mainLabel.uppercased()
+                    }
+                    else {
+                        label.text = shiftUpLabel.text
+                    }
                 }
             }
+            else if deltaY < -bounds.size.height/2 {
+                label.text = shiftDownLabel.text?.components(separatedBy: " ").first
+            }
             else {
-                label.text = label.text?.lowercased()
+                label.text = mainLabel
             }
         }
     }
     
     var isCharacterLabel: Bool {
-        let label = self.label.text!
-        return label != deleteLabel
-            && label != spaceLabel
-        	&& label != returnLabel
-        	&& label != tabLabel
+        return mainLabel != deleteLabel
+            && mainLabel != spaceLabel
+        	&& mainLabel != returnLabel
+        	&& mainLabel != tabLabel
     }
 }
 

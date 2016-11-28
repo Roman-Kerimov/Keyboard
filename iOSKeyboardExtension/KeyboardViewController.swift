@@ -81,13 +81,14 @@ class KeyboardViewController: UIInputViewController {
     
     func keyAction(label: String) {
         
-        if label == deleteLabel {
+        switch label {
             
+        case deleteLabel:
             if textDocumentProxy.documentContextBeforeInput?.characters.last != nil {
                 textDocumentProxy.deleteBackward()
             }
-        }
-        else if label == spaceLabel {
+            
+        case spaceLabel:
             var isLastWhitespace = true
             
             if let lastCharacter = textDocumentProxy.documentContextBeforeInput?.characters.last {
@@ -97,8 +98,14 @@ class KeyboardViewController: UIInputViewController {
             if !isLastWhitespace {
                 textDocumentProxy.insertText(" ")
             }
-        }
-        else {
+            
+        case returnLabel:
+            textDocumentProxy.insertText("\n")
+            
+        case tabLabel:
+            textDocumentProxy.insertText("\t")
+        
+        default:
             textDocumentProxy.insertText(label)
         }
     }

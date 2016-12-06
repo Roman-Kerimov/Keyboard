@@ -26,6 +26,10 @@ class KeyboardView: UIView {
             for key in KeyView.allKeys {
                 key.colorScheme = colorScheme
             }
+            
+            if isInterfaceBuilder {
+                keyboardView.backgroundColor = colorScheme.fakeBackroundColorForInterfaceBuilder
+            }
         }
     }
     
@@ -52,25 +56,29 @@ class KeyboardView: UIView {
     
     let keyboardLayout = KeyboardLayout.qwerty
     
+    var isInterfaceBuilder: Bool = false
+    
     override func prepareForInterfaceBuilder() {
-        initialize()
-        configure(forIB: true)
+        isInterfaceBuilder = true
         
-        keyboardView.backgroundColor = UIColor.lightGray
+        initialize()
+        configure()
+        
+        colorScheme = .default
     }
     
     override func awakeFromNib() {
         initialize()
     }
     
-    func configure(screenWidth: CGFloat = UIScreen.main.bounds.width, forIB: Bool = false) {
+    func configure(screenWidth: CGFloat = UIScreen.main.bounds.width) {
         if heightConstraint != nil {
             removeConstraint(heightConstraint!)
         }
         
         let screenSize: CGSize!
         
-        if forIB {
+        if isInterfaceBuilder {
             screenSize = bounds.size
         }
         else {
@@ -121,10 +129,6 @@ class KeyboardView: UIView {
         addConstraint(heightConstraint!)
         
         keyboardViewHeightConstraint.constant = keyboardHeight
-        
-        if forIB {
-            colorScheme = KeyboardColorScheme.default
-        }
     }
     
     let numericRowView = NumericRowView()

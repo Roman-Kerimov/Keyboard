@@ -12,6 +12,8 @@ class KeyboardViewController: UIInputViewController {
 
     @IBOutlet var nextKeyboardButton: UIButton!
     
+    var keyboardView: KeyboardView!
+    
     override func updateViewConstraints() {
         super.updateViewConstraints()
         
@@ -38,6 +40,8 @@ class KeyboardViewController: UIInputViewController {
         for key in KeyView.allKeys {
             key.action = keyAction(label:)
         }
+        
+        keyboardView = view as! KeyboardView
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,23 +64,17 @@ class KeyboardViewController: UIInputViewController {
     override func textDidChange(_ textInput: UITextInput?) {
         // The app has just changed the document's contents, the document context has been updated.
         
-        var textColor: UIColor
         let proxy = self.textDocumentProxy
-        var isDarkColorScheme: Bool
         
-        if proxy.keyboardAppearance == UIKeyboardAppearance.dark {
-            textColor = UIColor.white
-            isDarkColorScheme = true
+        if proxy.keyboardAppearance == .dark {
+            keyboardView.colorScheme = .dark
         } else {
-            textColor = UIColor.black
-            isDarkColorScheme = false
+            keyboardView.colorScheme = .default
         }
         
-        self.nextKeyboardButton.setTitleColor(textColor, for: [])
+        self.nextKeyboardButton.setTitleColor(keyboardView.colorScheme.labelColor, for: [])
         
-        for key in KeyView.allKeys {
-            key.isDarkColorScheme = isDarkColorScheme
-        }
+        
     }
     
     func keyAction(label: String) {

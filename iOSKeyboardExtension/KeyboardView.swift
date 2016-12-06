@@ -21,6 +21,14 @@ class KeyboardView: UIView {
     }
     */
     
+    var colorScheme: KeyboardColorScheme = .default {
+        didSet {
+            for key in KeyView.allKeys {
+                key.colorScheme = colorScheme
+            }
+        }
+    }
+    
     var verticalConstraints: [NSLayoutConstraint] = []
 
     func verticalConstrains(isActive: Bool) {
@@ -113,6 +121,10 @@ class KeyboardView: UIView {
         addConstraint(heightConstraint!)
         
         keyboardViewHeightConstraint.constant = keyboardHeight
+        
+        if forIB {
+            colorScheme = KeyboardColorScheme.default
+        }
     }
     
     let numericRowView = NumericRowView()

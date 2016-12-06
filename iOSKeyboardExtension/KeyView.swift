@@ -24,35 +24,15 @@ class KeyView: UIView {
     }
     */
     
-    private var keyColor: UIColor! {
+    var colorScheme: KeyboardColorScheme = .default {
         didSet {
-            backgroundView.backgroundColor = keyColor
-        }
-    }
-    private var labelColor: UIColor! {
-        didSet {
-            label.textColor = labelColor
-        }
-    }
-    private var borderColor: UIColor! {
-        didSet {
-            backgroundView.layer.borderColor = borderColor.cgColor
-        }
-    }
-    
-    var isDarkColorScheme: Bool! {
-        didSet {
+            backgroundView.backgroundColor = colorScheme.keyColor
             
-            if self.isDarkColorScheme! {
-                keyColor = UIColor.black
-                labelColor = UIColor.white
-                borderColor = UIColor.white
-            }
-            else {
-                keyColor = UIColor.white
-                labelColor = UIColor.black
-                borderColor = UIColor.black
-            }
+            label.textColor = colorScheme.labelColor
+            shiftUpLabel.textColor = colorScheme.shiftLabelColor
+            shiftDownLabel.textColor = colorScheme.shiftLabelColor
+            
+            backgroundView.layer.borderColor = colorScheme.borderColor.cgColor
         }
     }
     
@@ -76,7 +56,6 @@ class KeyView: UIView {
                 if key.mainLabel == deleteLabel {
                     key.label.font = shiftLabelFont
                 }
-
             }
         }
     }
@@ -100,8 +79,6 @@ class KeyView: UIView {
     init(label: String, shiftDownLabel: String = "") {
         mainLabel = label
         super.init(frame: CGRect())
-        
-        isDarkColorScheme = false
         
         KeyView.allKeys.append(self)
         
@@ -209,8 +186,8 @@ class KeyView: UIView {
             
             action?(label.text!)
             
-            backgroundView.backgroundColor = keyColor
-            label.textColor = labelColor
+            backgroundView.backgroundColor = colorScheme.keyColor
+            label.textColor = colorScheme.labelColor
             shiftUpLabel.isHidden = false
             shiftDownLabel.isHidden = false
             

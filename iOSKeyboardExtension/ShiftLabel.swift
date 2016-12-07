@@ -22,7 +22,6 @@ class ShiftLabel: UILabel {
         super.init(frame: CGRect())
         
         translatesAutoresizingMaskIntoConstraints = false
-        textColor = UIColor.lightGray
         adjustsFontSizeToFitWidth = true
         baselineAdjustment = .alignCenters
     }

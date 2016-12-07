@@ -31,6 +31,8 @@ class KeyView: UIView {
             label.textColor = colorScheme.labelColor
             shiftUpLabel.textColor = colorScheme.shiftLabelColor
             shiftDownLabel.textColor = colorScheme.shiftLabelColor
+            shiftLeftLabel.textColor = colorScheme.shiftLabelColor
+            shiftRightLabel.textColor = colorScheme.shiftLabelColor
             
             backgroundView.layer.borderColor = colorScheme.borderColor.cgColor
         }
@@ -93,7 +95,6 @@ class KeyView: UIView {
         backgroundView = UIView()
         addSubview(backgroundView)
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
-        backgroundView.backgroundColor = UIColor.white
         
         let backgroundIndent = -keySpace/2
         backgroundView.layer.cornerRadius = -backgroundIndent
@@ -176,9 +177,11 @@ class KeyView: UIView {
         case .began:
             
             backgroundView.backgroundColor = tintColor
-            label.textColor = UIColor.white
+            label.textColor = colorScheme.activeLabelColor
             shiftUpLabel.isHidden = true
             shiftDownLabel.isHidden = true
+            shiftLeftLabel.isHidden = true
+            shiftRightLabel.isHidden = true
             
             gestureStartPoint = gesture.location(in: self)
             
@@ -190,6 +193,8 @@ class KeyView: UIView {
             label.textColor = colorScheme.labelColor
             shiftUpLabel.isHidden = false
             shiftDownLabel.isHidden = false
+            shiftLeftLabel.isHidden = false
+            shiftRightLabel.isHidden = false
             
             label.text = mainLabel
             

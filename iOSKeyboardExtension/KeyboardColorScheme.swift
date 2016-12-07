@@ -16,23 +16,23 @@ struct KeyboardColorScheme {
     let fakeBackroundColorForInterfaceBuilder: UIColor
     
     var borderColor: UIColor {
-        return labelColor
+        return .clear
     }
     
-    let activeLabelColor = UIColor.white
+    let activeLabelColor: UIColor = .white
 
     static let light = KeyboardColorScheme(
-        keyColor: UIColor.white,
-        labelColor: UIColor.black,
-        shiftLabelColor: UIColor.lightGray,
-        fakeBackroundColorForInterfaceBuilder: UIColor.lightGray
+        keyColor: .white,
+        labelColor: .black,
+        shiftLabelColor: UIColor.black.withAlphaComponent(0.1),
+        fakeBackroundColorForInterfaceBuilder: UIColor.black.withAlphaComponent(0.1)
     )
     
     static let dark = KeyboardColorScheme(
-        keyColor: UIColor.black,
-        labelColor: UIColor.white,
-        shiftLabelColor: UIColor.lightGray,
-        fakeBackroundColorForInterfaceBuilder: UIColor.darkGray
+        keyColor: UIColor.white.withAlphaComponent(0.3),
+        labelColor: .white,
+        shiftLabelColor: UIColor.white.withAlphaComponent(0.1),
+        fakeBackroundColorForInterfaceBuilder: .darkGray
     )
     
     static let `default` = KeyboardColorScheme.light

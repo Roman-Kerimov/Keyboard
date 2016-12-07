@@ -24,11 +24,16 @@ class HalfKeyboardView: UIStackView {
         super.init(frame: CGRect())
         
         axis = .vertical
+        distribution = .fillEqually
+        
         translatesAutoresizingMaskIntoConstraints = false
         
         for _ in 0..<rowCount {
             let row = UIStackView()
+            
             row.axis = .horizontal
+            row.distribution = .fillEqually
+            
             rows.append(row)
             addArrangedSubview(row)
         }

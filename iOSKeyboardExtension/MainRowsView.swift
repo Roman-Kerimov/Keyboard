@@ -26,14 +26,13 @@ class MainRowsView: UIStackView {
         translatesAutoresizingMaskIntoConstraints = false
         
         axis = .horizontal
+        distribution = .fillEqually
         
         for _ in 0...1 {
             let halfKeyboard = HalfKeyboardView(rowCount: layout.rowCount)
             halfKeyboards.append(halfKeyboard)
             addArrangedSubview(halfKeyboard)
         }
-        
-        var key00: KeyView!
         
         for (rowIndex, labelsRow) in layout.labels.enumerated() {
             for (columnIndex, label) in labelsRow.enumerated() {
@@ -50,13 +49,6 @@ class MainRowsView: UIStackView {
                 let key = KeyView(label: label, shiftDownLabel: KeyboardLayout.shiftDown.labels[rowIndex][columnIndex])
                 
                 halfKeyboards[halfKeyboardIndex].rows[rowIndex].addArrangedSubview(key)
-                
-                if rowIndex == 0 && columnIndex == 0 {
-                    key00 = key
-                }
-                else {
-                    key.widthAnchor.constraint(equalTo: key00.widthAnchor).isActive = true
-                }
             }
         }
     }

@@ -43,8 +43,6 @@ class KeyView: UIView {
     static var keySize: CGSize = CGSize(width: 0, height: 0) {
         didSet {
             for key in allKeys {
-                key.widthConstraint.constant = keySize.width
-                key.heightConstraint.constant = keySize.height
                 
                 let labelFontSize = keySize.height * 3/5
                 key.label.font = UIFont.systemFont(ofSize: labelFontSize)
@@ -64,9 +62,6 @@ class KeyView: UIView {
     
     var centerYLabelConstraint: NSLayoutConstraint!
     
-    var widthConstraint: NSLayoutConstraint!
-    var heightConstraint: NSLayoutConstraint!
-    
     let mainLabel: String
     
     let label = UILabel()
@@ -83,14 +78,6 @@ class KeyView: UIView {
         super.init(frame: CGRect())
         
         KeyView.allKeys.append(self)
-        
-        widthConstraint = widthAnchor.constraint(equalToConstant: 0)
-        widthConstraint.priority -= 1
-        widthConstraint.isActive = true
-        
-        heightConstraint = heightAnchor.constraint(equalToConstant: 0)
-        heightConstraint.priority -= 1
-        heightConstraint.isActive = true
         
         backgroundView = UIView()
         addSubview(backgroundView)

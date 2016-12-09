@@ -49,6 +49,8 @@ class KeyboardView: UIView {
         }
     }
     
+    var heightConstraint: NSLayoutConstraint?
+    
     let keyboardView = UIView()
     let keyboardStackView = UIStackView()
     
@@ -112,13 +114,17 @@ class KeyboardView: UIView {
         
         keyboardHeight += spaceRowHeight
         
-        let heightConstraint = heightAnchor.constraint(equalToConstant: keyboardHeight)
-        heightConstraint.priority = 999
-        heightConstraint.isActive = true
+        if heightConstraint != nil {
+            removeConstraint(heightConstraint!)
+        }
         
-        let keyboardViewHeightConstraint = keyboardView.heightAnchor.constraint(equalToConstant: keyboardHeight)
-        keyboardViewHeightConstraint.priority = 999
-        keyboardViewHeightConstraint.isActive = true
+        heightConstraint = heightAnchor.constraint(equalToConstant: keyboardHeight)
+        heightConstraint?.priority = 999
+        heightConstraint?.isActive = true
+        
+        if isInterfaceBuilder {
+            keyboardView.heightAnchor.constraint(equalToConstant: keyboardHeight).isActive = true
+        }
     }
     
     let numericRowView = NumericRowView()
@@ -130,6 +136,9 @@ class KeyboardView: UIView {
         addSubview(keyboardView)
         keyboardView.translatesAutoresizingMaskIntoConstraints = false
         
+        if !isInterfaceBuilder {
+            keyboardView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        }
         keyboardView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         keyboardView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         keyboardView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true

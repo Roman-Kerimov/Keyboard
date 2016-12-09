@@ -45,11 +45,11 @@ class KeyboardViewController: UIInputViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        (view as! KeyboardView).configure()
+        keyboardView.configure()
     }
     
     override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
-        (view as! KeyboardView).configure()
+        keyboardView.configure()
     }
     
     override func didReceiveMemoryWarning() {

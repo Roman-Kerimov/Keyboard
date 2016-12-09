@@ -18,13 +18,8 @@ class SpaceRowView: UIStackView {
     }
     */
     
-    var heightConstraint: NSLayoutConstraint!
-    
     init() {
         super.init(frame: CGRect())
-        
-        heightConstraint = heightAnchor.constraint(equalToConstant: 0)
-        heightConstraint.isActive = true
         
         translatesAutoresizingMaskIntoConstraints = false
         
@@ -39,8 +34,6 @@ class SpaceRowView: UIStackView {
         let spaceKey = KeyView(label: spaceLabel)
         
         addArrangedSubview(spaceKey)
-        
-        spaceKey.heightAnchor.constraint(equalTo: heightAnchor).isActive = true
     }
     
     required init(coder: NSCoder) {

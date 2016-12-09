@@ -17,31 +17,18 @@ class NumericRowView: UIStackView {
         // Drawing code
     }
     */
-
-    var heightConstraint: NSLayoutConstraint!
     
     init() {
         super.init(frame: CGRect())
         
-        heightConstraint = heightAnchor.constraint(equalToConstant: 0)
-        heightConstraint.isActive = true
-        
         translatesAutoresizingMaskIntoConstraints = false
         
         axis = .horizontal
+        distribution = .fillEqually
         
-        var baseKeyForConstraint: KeyView!
-        
-        for (index, label) in ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"].enumerated() {
+        for label in ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"] {
             let key = KeyView(label: label)
             addArrangedSubview(key)
-            
-            if index == 0 {
-                baseKeyForConstraint = key
-            }
-            else {
-                key.widthAnchor.constraint(equalTo: baseKeyForConstraint.widthAnchor).isActive = true
-            }
         }
     }
     

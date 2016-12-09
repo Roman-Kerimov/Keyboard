@@ -49,10 +49,8 @@ class KeyboardView: UIView {
         }
     }
     
-    var heightConstraint: NSLayoutConstraint?
     let keyboardView = UIView()
     let keyboardStackView = UIStackView()
-    var keyboardViewHeightConstraint: NSLayoutConstraint!
     
     let keyboardLayout = KeyboardLayout.qwerty
     
@@ -72,9 +70,6 @@ class KeyboardView: UIView {
     }
     
     func configure(screenWidth: CGFloat = UIScreen.main.bounds.width) {
-        if heightConstraint != nil {
-            removeConstraint(heightConstraint!)
-        }
         
         let screenSize: CGSize!
         
@@ -96,9 +91,6 @@ class KeyboardView: UIView {
         let keyWidth = min(max(screenSize.width, screenSize.height)/CGFloat(keyboardLayout.columnCount), maxKeySide)
         KeyView.keySize = CGSize(width: keyWidth, height: keyWidth * 3/4)
         
-        numericRowView.heightConstraint.constant = KeyView.keySize.height
-        spaceRowView.heightConstraint.constant = KeyView.keySize.height
-        
         var keyboardHeight: CGFloat = 0
         
         if bounds.width < 480 {
@@ -114,21 +106,19 @@ class KeyboardView: UIView {
             keyboardHeight = KeyView.keySize.height * CGFloat(keyboardLayout.rowCount) + segmentSpace * CGFloat(keyboardStackView.arrangedSubviews.count - 1)
         }
         
-        keyboardHeight += spaceRowView.heightConstraint.constant
+        let spaceRowHeight = KeyView.keySize.height
         
-        heightConstraint = NSLayoutConstraint(
-            item: self,
-            attribute: .height,
-            relatedBy: .equal,
-            toItem: nil,
-            attribute: .notAnAttribute,
-            multiplier: 0,
-            constant: keyboardHeight
-        )
+        spaceRowView.heightAnchor.constraint(equalToConstant: spaceRowHeight).isActive = true
         
-        addConstraint(heightConstraint!)
+        keyboardHeight += spaceRowHeight
         
-        keyboardViewHeightConstraint.constant = keyboardHeight
+        let heightConstraint = heightAnchor.constraint(equalToConstant: keyboardHeight)
+        heightConstraint.priority = 999
+        heightConstraint.isActive = true
+        
+        let keyboardViewHeightConstraint = keyboardView.heightAnchor.constraint(equalToConstant: keyboardHeight)
+        keyboardViewHeightConstraint.priority = 999
+        keyboardViewHeightConstraint.isActive = true
     }
     
     let numericRowView = NumericRowView()
@@ -153,9 +143,6 @@ class KeyboardView: UIView {
         keyboardStackView.leftAnchor.constraint(equalTo: keyboardView.leftAnchor).isActive = true
         keyboardStackView.rightAnchor.constraint(equalTo: keyboardView.rightAnchor).isActive = true
         keyboardStackView.bottomAnchor.constraint(equalTo: keyboardView.bottomAnchor).isActive = true
-        
-        keyboardViewHeightConstraint = keyboardView.heightAnchor.constraint(equalToConstant: 0)
-        keyboardViewHeightConstraint.isActive = true
         
         mainRowsView = MainRowsView(layout: keyboardLayout)
         mainRowsView.spacing = segmentSpace

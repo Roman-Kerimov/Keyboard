@@ -33,22 +33,6 @@ class KeyboardView: UIView {
         }
     }
     
-    var verticalConstraints: [NSLayoutConstraint] = []
-
-    func verticalConstrains(isActive: Bool) {
-        for constraint in verticalConstraints {
-            constraint.isActive = isActive
-        }
-    }
-    
-    var horizontalConstraints: [NSLayoutConstraint] = []
-    
-    func horizontalConstraints(isActive: Bool) {
-        for constraint in horizontalConstraints {
-            constraint.isActive = isActive
-        }
-    }
-    
     var heightConstraint: NSLayoutConstraint?
     
     let keyboardView = UIView()
@@ -127,7 +111,6 @@ class KeyboardView: UIView {
         }
     }
     
-    let numericRowView = NumericRowView()
     var mainRowsView: MainRowsView!
     let spaceRowView = SpaceRowView()
     

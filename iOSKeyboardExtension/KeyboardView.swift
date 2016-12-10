@@ -90,17 +90,19 @@ class KeyboardView: UIView {
         let heightInKeys: CGFloat
         
         if bounds.width < 480 {
-            mainRowsView.axis = .vertical
+            // vertical
+            updatableConstraints.append(keyboardStackView.rightAnchor.constraint(equalTo: keyboardView.rightAnchor))
             
-            widthInKeys = CGFloat(keyboardLayout.columnCount / 2)
+            widthInKeys = CGFloat(keyboardLayout.columnCount / 2) + 0.5
             heightInKeys = CGFloat(keyboardLayout.rowCount * 2 + 1)
             
             keyWidth = min(maxKeyWidth, 320 / widthInKeys)
             keyHeight = min(maxKeyHeight(fromWidth: keyWidth), min(568, screenSize.height) / 2 / heightInKeys)
         }
         else {
-            mainRowsView.axis = .horizontal
-            
+            // horizontal
+            updatableConstraints.append(keyboardStackView.centerXAnchor.constraint(equalTo: keyboardView.centerXAnchor))
+
             widthInKeys = CGFloat(keyboardLayout.columnCount)
             heightInKeys = CGFloat(keyboardLayout.rowCount + 1)
             
@@ -109,6 +111,9 @@ class KeyboardView: UIView {
         }
         
         KeyView.configureFor(width: keyWidth, height: keyHeight)
+        
+        updatableConstraints.append(mainRowsView.halfKeyboards.first!.widthAnchor.constraint(equalToConstant: keyWidth * CGFloat(keyboardLayout.columnCount / 2)))
+        updatableConstraints.append(mainRowsView.halfKeyboards.first!.heightAnchor.constraint(equalToConstant: keyHeight * CGFloat(keyboardLayout.rowCount)))
         
         let keyboardWidth = keyWidth * widthInKeys
         let keyboardHeight = keyHeight * heightInKeys
@@ -148,7 +153,6 @@ class KeyboardView: UIView {
         keyboardStackView.translatesAutoresizingMaskIntoConstraints = false
         
         keyboardStackView.topAnchor.constraint(equalTo: keyboardView.topAnchor).isActive = true
-        keyboardStackView.centerXAnchor.constraint(equalTo: keyboardView.centerXAnchor).isActive = true
         keyboardStackView.bottomAnchor.constraint(equalTo: keyboardView.bottomAnchor).isActive = true
         
         mainRowsView = MainRowsView(layout: keyboardLayout)

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainRowsView: UIStackView {
+class MainRowsView: UIView {
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -25,14 +25,19 @@ class MainRowsView: UIStackView {
         
         translatesAutoresizingMaskIntoConstraints = false
         
-        axis = .horizontal
-        distribution = .fillEqually
-        
         for _ in 0...1 {
             let halfKeyboard = HalfKeyboardView(rowCount: layout.rowCount)
             halfKeyboards.append(halfKeyboard)
-            addArrangedSubview(halfKeyboard)
+            addSubview(halfKeyboard)
         }
+        
+        halfKeyboards.first!.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        halfKeyboards.first!.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        halfKeyboards.last!.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
+        halfKeyboards.last!.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        
+        halfKeyboards.first!.widthAnchor.constraint(equalTo: halfKeyboards.last!.widthAnchor).isActive = true
+        halfKeyboards.first!.heightAnchor.constraint(equalTo: halfKeyboards.last!.heightAnchor).isActive = true
         
         for (rowIndex, labelsRow) in layout.labels.enumerated() {
             for (columnIndex, label) in labelsRow.enumerated() {

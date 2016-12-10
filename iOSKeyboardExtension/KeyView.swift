@@ -40,22 +40,20 @@ class KeyView: UIView {
     
     static var allKeys: [KeyView] = []
     
-    static var keySize: CGSize = CGSize(width: 0, height: 0) {
-        didSet {
-            for key in allKeys {
-                
-                let labelFontSize = keySize.height * 3/5
-                key.label.font = UIFont.systemFont(ofSize: labelFontSize)
-                
-                let shiftLabelFont = UIFont.systemFont(ofSize: labelFontSize/1.8)
-                key.shiftUpLabel.font = shiftLabelFont
-                key.shiftDownLabel.font = shiftLabelFont
-                key.shiftLeftLabel.font = shiftLabelFont
-                key.shiftRightLabel.font = shiftLabelFont
-                
-                if key.mainLabel == deleteLabel {
-                    key.label.font = shiftLabelFont
-                }
+    class func configureFor(width: CGFloat, height: CGFloat) {
+        for key in allKeys {
+            
+            let labelFontSize = height * 3/5
+            key.label.font = UIFont.systemFont(ofSize: labelFontSize)
+            
+            let shiftLabelFont = UIFont.systemFont(ofSize: labelFontSize/1.8)
+            key.shiftUpLabel.font = shiftLabelFont
+            key.shiftDownLabel.font = shiftLabelFont
+            key.shiftLeftLabel.font = shiftLabelFont
+            key.shiftRightLabel.font = shiftLabelFont
+            
+            if key.mainLabel == deleteLabel {
+                key.label.font = shiftLabelFont
             }
         }
     }

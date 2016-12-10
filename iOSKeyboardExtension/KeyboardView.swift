@@ -10,8 +10,11 @@ import UIKit
 
 @IBDesignable
 class KeyboardView: UIView {
-    let maxKeySide: CGFloat = 94
-    let segmentSpace: CGFloat = 4
+    
+    private let maxKeyWidth: CGFloat = 102.4
+    private func maxKeyHeight(fromWidth width: CGFloat) -> CGFloat {
+        return width * 0.94
+    }
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -33,7 +36,7 @@ class KeyboardView: UIView {
         }
     }
     
-    var heightConstraint: NSLayoutConstraint?
+    var updatableConstraints: [NSLayoutConstraint] = []
     
     let keyboardView = UIView()
     let keyboardStackView = UIStackView()
@@ -57,6 +60,12 @@ class KeyboardView: UIView {
     
     func configure(screenWidth: CGFloat = UIScreen.main.bounds.width) {
         
+        for constraint in updatableConstraints {
+            constraint.isActive = false
+            removeConstraint(constraint)
+        }
+        updatableConstraints = []
+        
         let screenSize: CGSize!
         
         if isInterfaceBuilder {
@@ -74,37 +83,45 @@ class KeyboardView: UIView {
             
         }
         
-        let keyWidth = min(max(screenSize.width, screenSize.height)/CGFloat(keyboardLayout.columnCount), maxKeySide)
-        KeyView.keySize = CGSize(width: keyWidth, height: keyWidth * 3/4)
+        let keyWidth: CGFloat
+        let keyHeight: CGFloat
         
-        var keyboardHeight: CGFloat = 0
+        let widthInKeys: CGFloat
+        let heightInKeys: CGFloat
         
         if bounds.width < 480 {
-            
             mainRowsView.axis = .vertical
             
-            keyboardHeight = KeyView.keySize.height * CGFloat(keyboardLayout.rowCount * 2) + segmentSpace * CGFloat(keyboardStackView.arrangedSubviews.count)
+            widthInKeys = CGFloat(keyboardLayout.columnCount / 2)
+            heightInKeys = CGFloat(keyboardLayout.rowCount * 2 + 1)
+            
+            keyWidth = min(maxKeyWidth, 320 / widthInKeys)
+            keyHeight = min(maxKeyHeight(fromWidth: keyWidth), min(568, screenSize.height) / 2 / heightInKeys)
         }
         else {
-            
             mainRowsView.axis = .horizontal
             
-            keyboardHeight = KeyView.keySize.height * CGFloat(keyboardLayout.rowCount) + segmentSpace * CGFloat(keyboardStackView.arrangedSubviews.count - 1)
+            widthInKeys = CGFloat(keyboardLayout.columnCount)
+            heightInKeys = CGFloat(keyboardLayout.rowCount + 1)
+            
+            keyWidth = min(maxKeyWidth, screenSize.width / widthInKeys)
+            keyHeight = min(maxKeyHeight(fromWidth: keyWidth), screenSize.height / 2 / heightInKeys)
         }
         
-        let spaceRowHeight = KeyView.keySize.height
+        KeyView.configureFor(width: keyWidth, height: keyHeight)
         
-        spaceRowView.heightAnchor.constraint(equalToConstant: spaceRowHeight).isActive = true
+        let keyboardWidth = keyWidth * widthInKeys
+        let keyboardHeight = keyHeight * heightInKeys
         
-        keyboardHeight += spaceRowHeight
         
-        if heightConstraint != nil {
-            removeConstraint(heightConstraint!)
+        updatableConstraints.append(spaceRowView.heightAnchor.constraint(equalToConstant: keyHeight))
+        updatableConstraints.append(keyboardStackView.widthAnchor.constraint(equalToConstant: keyboardWidth))
+        updatableConstraints.append(heightAnchor.constraint(equalToConstant: keyboardHeight))
+        updatableConstraints.last!.priority = 999
+        
+        for constraint in updatableConstraints {
+            constraint.isActive = true
         }
-        
-        heightConstraint = heightAnchor.constraint(equalToConstant: keyboardHeight)
-        heightConstraint?.priority = 999
-        heightConstraint?.isActive = true
         
         if isInterfaceBuilder {
             keyboardView.heightAnchor.constraint(equalToConstant: keyboardHeight).isActive = true
@@ -128,16 +145,13 @@ class KeyboardView: UIView {
         
         keyboardView.addSubview(keyboardStackView)
         keyboardStackView.axis = .vertical
-        keyboardStackView.spacing = segmentSpace
         keyboardStackView.translatesAutoresizingMaskIntoConstraints = false
         
         keyboardStackView.topAnchor.constraint(equalTo: keyboardView.topAnchor).isActive = true
-        keyboardStackView.leftAnchor.constraint(equalTo: keyboardView.leftAnchor).isActive = true
-        keyboardStackView.rightAnchor.constraint(equalTo: keyboardView.rightAnchor).isActive = true
+        keyboardStackView.centerXAnchor.constraint(equalTo: keyboardView.centerXAnchor).isActive = true
         keyboardStackView.bottomAnchor.constraint(equalTo: keyboardView.bottomAnchor).isActive = true
         
         mainRowsView = MainRowsView(layout: keyboardLayout)
-        mainRowsView.spacing = segmentSpace
         
         keyboardStackView.addArrangedSubview(mainRowsView)
         keyboardStackView.addArrangedSubview(spaceRowView)

@@ -8,12 +8,6 @@
 
 import UIKit
 
-private let keySpace: CGFloat = 8
-private let topShiftLabelIndent: CGFloat = 3
-private let leftShiftLabelIndent: CGFloat = 5
-private let rightShiftLabelIndent = -leftShiftLabelIndent
-private let bottomShiftLabelIndent = -topShiftLabelIndent
-
 class KeyView: UIView {
 
     /*
@@ -43,7 +37,20 @@ class KeyView: UIView {
     class func configureFor(width: CGFloat, height: CGFloat) {
         for key in allKeys {
             
-            let labelFontSize = height * 3/5
+            let keySpace = width * 0.1
+            
+        	key.backgroundView.layer.cornerRadius = keySpace
+            
+            let keyEdgeInset = keySpace / 2
+            
+            key.layoutMargins = UIEdgeInsets(top: keyEdgeInset, left: keyEdgeInset, bottom: keyEdgeInset, right: keyEdgeInset)
+            
+            let verticalShiftLabelIndent = keySpace * 1/4
+            let horizontalShiftLabelIndent = keySpace * 1/2
+
+            key.backgroundView.layoutMargins = UIEdgeInsets(top: verticalShiftLabelIndent, left: horizontalShiftLabelIndent, bottom: verticalShiftLabelIndent, right: horizontalShiftLabelIndent)
+            
+            let labelFontSize = width * 6/15
             key.label.font = UIFont.systemFont(ofSize: labelFontSize)
             
             let shiftLabelFont = UIFont.systemFont(ofSize: labelFontSize/1.8)
@@ -81,18 +88,11 @@ class KeyView: UIView {
         addSubview(backgroundView)
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         
-        let backgroundIndent = -keySpace/2
-        backgroundView.layer.cornerRadius = -backgroundIndent
-        backgroundView.layer.borderWidth = 1/2
-        
-        
         backgroundView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         backgroundView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         
-        backgroundView.widthAnchor.constraint(equalTo: widthAnchor, constant: backgroundIndent).isActive = true
-        backgroundView.heightAnchor.constraint(equalTo: heightAnchor, constant: backgroundIndent).isActive = true
-        
-        
+        backgroundView.widthAnchor.constraint(equalTo: layoutMarginsGuide.widthAnchor).isActive = true
+        backgroundView.heightAnchor.constraint(equalTo: layoutMarginsGuide.heightAnchor).isActive = true
         
         addSubview(self.label)
         self.label.translatesAutoresizingMaskIntoConstraints = false
@@ -111,30 +111,30 @@ class KeyView: UIView {
         addSubview(self.shiftUpLabel)
         addSubview(self.shiftDownLabel)
         
-        self.shiftDownLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: bottomShiftLabelIndent).isActive = true
+        self.shiftDownLabel.bottomAnchor.constraint(equalTo: backgroundView.layoutMarginsGuide.bottomAnchor).isActive = true
         self.shiftUpLabel.text = KeyboardLayout.shiftUpDictionary[label]
         
         if mainLabel == spaceLabel {
-            self.shiftUpLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
+            self.shiftUpLabel.topAnchor.constraint(equalTo: backgroundView.layoutMarginsGuide.topAnchor).isActive = true
             self.shiftUpLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
             
             self.shiftDownLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
             self.shiftDownLabel.text = returnLabel
             
             addSubview(shiftLeftLabel)
-            shiftLeftLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: leftShiftLabelIndent * 2).isActive = true
+            shiftLeftLabel.leftAnchor.constraint(equalTo: backgroundView.layoutMarginsGuide.leftAnchor).isActive = true
             shiftLeftLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
             
             addSubview(shiftRightLabel)
-            shiftRightLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: rightShiftLabelIndent * 2).isActive = true
+            shiftRightLabel.rightAnchor.constraint(equalTo: backgroundView.layoutMarginsGuide.rightAnchor).isActive = true
             shiftRightLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
             shiftRightLabel.text = tabLabel
         }
         else {
-            self.shiftUpLabel.topAnchor.constraint(equalTo: topAnchor, constant: topShiftLabelIndent).isActive = true
-            self.shiftUpLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: leftShiftLabelIndent).isActive = true
+            self.shiftUpLabel.topAnchor.constraint(equalTo: backgroundView.layoutMarginsGuide.topAnchor).isActive = true
+            self.shiftUpLabel.leftAnchor.constraint(equalTo: backgroundView.layoutMarginsGuide.leftAnchor).isActive = true
             
-            self.shiftDownLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: rightShiftLabelIndent).isActive = true
+            self.shiftDownLabel.rightAnchor.constraint(equalTo: backgroundView.layoutMarginsGuide.rightAnchor).isActive = true
             self.shiftDownLabel.text = shiftDownLabel
         }
         

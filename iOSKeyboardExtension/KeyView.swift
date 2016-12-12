@@ -187,7 +187,7 @@ class KeyView: UIView {
             
             let deltaY = gestureStartPoint.y - gesture.location(in: self).y
             
-            if deltaY > bounds.size.height/2 {
+            if deltaY > bounds.size.height/4 {
                 if shiftUpLabel.text != nil {
                     label.text = shiftUpLabel.text
                 }

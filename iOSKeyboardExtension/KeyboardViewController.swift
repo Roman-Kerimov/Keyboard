@@ -9,8 +9,6 @@
 import UIKit
 
 class KeyboardViewController: UIInputViewController {
-
-    @IBOutlet var nextKeyboardButton: UIButton!
     
     var keyboardView: KeyboardView!
     
@@ -24,24 +22,13 @@ class KeyboardViewController: UIInputViewController {
         super.viewDidLoad()
         
         // Perform custom UI setup here
-        self.nextKeyboardButton = UIButton(type: .system)
+        keyboardView = view as! KeyboardView
         
-        self.nextKeyboardButton.setTitle(NSLocalizedString("Next Keyboard", comment: "Title for 'Next Keyboard' button"), for: [])
-        self.nextKeyboardButton.sizeToFit()
-        self.nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
-        
-        self.view.addSubview(self.nextKeyboardButton)
-        
-        self.nextKeyboardButton.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-        self.nextKeyboardButton.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        keyboardView.settingsRowView.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
         
         for key in KeyView.allKeys {
             key.action = keyAction(label:)
         }
-        
-        keyboardView = view as! KeyboardView
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,10 +58,6 @@ class KeyboardViewController: UIInputViewController {
         } else {
             keyboardView.colorScheme = .default
         }
-        
-        self.nextKeyboardButton.setTitleColor(keyboardView.colorScheme.labelColor, for: [])
-        
-        
     }
     
     func keyAction(label: String) {

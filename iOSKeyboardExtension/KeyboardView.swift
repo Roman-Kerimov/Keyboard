@@ -60,7 +60,7 @@ class KeyboardView: UIView {
         initialize()
     }
     
-    func configure(screenWidth: CGFloat = UIScreen.main.bounds.width) {
+    func configure() {
         
         for constraint in updatableConstraints {
             constraint.isActive = false
@@ -74,15 +74,7 @@ class KeyboardView: UIView {
             screenSize = bounds.size
         }
         else {
-            let previousScreenSize = UIScreen.main.bounds.size
-            
-            if  previousScreenSize.width == screenWidth {
-                screenSize = previousScreenSize
-            }
-            else {
-                screenSize = CGSize(width: previousScreenSize.height, height: previousScreenSize.width)
-            }
-            
+            screenSize = UIScreen.main.bounds.size
         }
         
         let keyWidth: CGFloat

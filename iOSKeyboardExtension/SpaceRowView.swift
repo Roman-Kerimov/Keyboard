@@ -18,6 +18,20 @@ class SpaceRowView: UIStackView {
     }
     */
     
+    var height: CGFloat = 0 {
+        didSet {
+            if heightConstraint != nil {
+                heightConstraint!.constant = height
+            }
+            else {
+                heightConstraint = heightAnchor.constraint(equalToConstant: height)
+                heightConstraint!.isActive = true
+            }
+        }
+    }
+    
+    private var heightConstraint: NSLayoutConstraint?
+    
     init() {
         super.init(frame: CGRect())
         

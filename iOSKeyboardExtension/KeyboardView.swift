@@ -38,10 +38,13 @@ class KeyboardView: UIView {
         }
     }
     
-    var updatableConstraints: [NSLayoutConstraint] = []
+    var heightConstraint: NSLayoutConstraint?
     
     let keyboardView = UIView()
     let keyboardStackView = UIStackView()
+    var keyboardStackViewWidthConstraint: NSLayoutConstraint?
+    var keyboardStackViewCenterXConstraint: NSLayoutConstraint?
+    var keyboardStackViewRightConstraint: NSLayoutConstraint?
     
     let keyboardLayout = KeyboardLayout.qwerty
     
@@ -61,12 +64,6 @@ class KeyboardView: UIView {
     }
     
     func configure() {
-        
-        for constraint in updatableConstraints {
-            constraint.isActive = false
-            removeConstraint(constraint)
-        }
-        updatableConstraints = []
         
         let screenSize: CGSize!
         
@@ -90,17 +87,19 @@ class KeyboardView: UIView {
         
         if bounds.width < 480 {
             // vertical
-            updatableConstraints.append(keyboardStackView.rightAnchor.constraint(equalTo: keyboardView.rightAnchor))
+            keyboardStackViewCenterXConstraint?.isActive = false
+            keyboardStackViewRightConstraint?.isActive = true
             
             widthInKeys = CGFloat(keyboardLayout.columnCount / 2) + 0.5
             heightInKeys = CGFloat(keyboardLayout.rowCount * 2) + otherRowsHeightInKeys
             
             keyWidth = min(maxKeyWidth, 320 / widthInKeys)
-            keyHeight = min(maxKeyHeight(fromWidth: keyWidth), min(568, screenSize.height) / 2 / heightInKeys)
+            keyHeight = min(maxKeyHeight(fromWidth: keyWidth), min(568, screenSize.height) * 0.6 / heightInKeys)
         }
         else {
             // horizontal
-            updatableConstraints.append(keyboardStackView.centerXAnchor.constraint(equalTo: keyboardView.centerXAnchor))
+            keyboardStackViewRightConstraint?.isActive = false
+            keyboardStackViewCenterXConstraint?.isActive = true
 
             widthInKeys = CGFloat(keyboardLayout.columnCount)
             heightInKeys = CGFloat(keyboardLayout.rowCount) + otherRowsHeightInKeys
@@ -109,33 +108,39 @@ class KeyboardView: UIView {
             keyHeight = min(maxKeyHeight(fromWidth: keyWidth), screenSize.height / 2 / heightInKeys)
         }
         
-        KeyView.configureFor(width: keyWidth, height: keyHeight)
+        mainRowsView.halfKeyboardSize = CGSize(
+            width: keyWidth * CGFloat(keyboardLayout.columnCount / 2),
+            height: keyHeight * CGFloat(keyboardLayout.rowCount)
+        )
         
-        updatableConstraints.append(mainRowsView.halfKeyboards.first!.widthAnchor.constraint(equalToConstant: keyWidth * CGFloat(keyboardLayout.columnCount / 2)))
-        updatableConstraints.append(mainRowsView.halfKeyboards.first!.heightAnchor.constraint(equalToConstant: keyHeight * CGFloat(keyboardLayout.rowCount)))
+        spaceRowView.height = spaceRowHeightInKeys * keyHeight
+        settingsRowView.height = settingsRowHeightInKeys * keyHeight
         
         let keyboardWidth = keyWidth * widthInKeys
         let keyboardHeight = keyHeight * heightInKeys
         
+        if keyboardStackViewWidthConstraint != nil {
+            keyboardStackViewWidthConstraint?.constant = keyboardWidth
+        }
+        else {
+            keyboardStackViewWidthConstraint = keyboardStackView.widthAnchor.constraint(equalToConstant: keyboardWidth)
+            keyboardStackViewWidthConstraint?.isActive = true
+        }
         
-        updatableConstraints.append(spaceRowView.heightAnchor.constraint(equalToConstant: spaceRowHeightInKeys * keyHeight))
-        
-        let settingsRowHeight = settingsRowHeightInKeys * keyHeight
-        settingsRowView.configureFor(height: settingsRowHeight)
-        updatableConstraints.append(settingsRowView.heightAnchor.constraint(equalToConstant: settingsRowHeight))
-        
-        updatableConstraints.append(keyboardStackView.widthAnchor.constraint(equalToConstant: keyboardWidth))
-        
-        updatableConstraints.append(heightAnchor.constraint(equalToConstant: keyboardHeight))
-        updatableConstraints.last!.priority = 999
-        
-        for constraint in updatableConstraints {
-            constraint.isActive = true
+        if heightConstraint != nil {
+            heightConstraint?.constant = keyboardHeight
+        }
+        else {
+            heightConstraint = heightAnchor.constraint(equalToConstant: keyboardHeight)
+            heightConstraint!.priority = 999
+            heightConstraint!.isActive = true
         }
         
         if isInterfaceBuilder {
             keyboardView.heightAnchor.constraint(equalToConstant: keyboardHeight).isActive = true
         }
+        
+        KeyView.configureFor(width: keyWidth, height: keyHeight)
     }
     
     var mainRowsView: MainRowsView!
@@ -160,6 +165,9 @@ class KeyboardView: UIView {
         
         keyboardStackView.topAnchor.constraint(equalTo: keyboardView.topAnchor).isActive = true
         keyboardStackView.bottomAnchor.constraint(equalTo: keyboardView.bottomAnchor).isActive = true
+        
+        keyboardStackViewRightConstraint = keyboardStackView.rightAnchor.constraint(equalTo: keyboardView.rightAnchor)
+        keyboardStackViewCenterXConstraint = keyboardStackView.centerXAnchor.constraint(equalTo: keyboardView.centerXAnchor)
         
         mainRowsView = MainRowsView(layout: keyboardLayout)
         

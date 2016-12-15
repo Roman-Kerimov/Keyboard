@@ -20,6 +20,25 @@ class MainRowsView: UIView {
     
     var halfKeyboards: [HalfKeyboardView] = []
     
+    var halfKeyboardSize = CGSize() {
+        didSet {
+            if halfKeyboardWidthConstraint != nil && halfKeyboardHeightConstraint != nil  {
+            	halfKeyboardWidthConstraint!.constant = halfKeyboardSize.width
+                halfKeyboardHeightConstraint!.constant = halfKeyboardSize.height
+            }
+            else {
+                halfKeyboardWidthConstraint = halfKeyboards.first!.widthAnchor.constraint(equalToConstant: halfKeyboardSize.width)
+                halfKeyboardWidthConstraint!.isActive = true
+                
+                halfKeyboardHeightConstraint = halfKeyboards.first!.heightAnchor.constraint(equalToConstant: halfKeyboardSize.height)
+                halfKeyboardHeightConstraint!.isActive = true
+            }
+        }
+    }
+    
+    private var halfKeyboardHeightConstraint: NSLayoutConstraint?
+    private var halfKeyboardWidthConstraint: NSLayoutConstraint?
+    
     init(layout: KeyboardLayout) {
         super.init(frame: CGRect())
         

@@ -26,13 +26,17 @@ class SettingsRowView: UIStackView {
         }
     }
     
-    func configureFor(height: CGFloat) {
-        for button in buttons {
-            button.titleLabel?.font = UIFont.systemFont(ofSize: height * 5/8)
+    var height: CGFloat = 0 {
+        didSet {
+            heightConstraint.constant = height
             
-            let horizontalInset = height / 2
-            layoutMargins = UIEdgeInsets(top: 0, left: horizontalInset, bottom: 0, right: horizontalInset)
-        	isLayoutMarginsRelativeArrangement = true
+            for button in buttons {
+                button.titleLabel?.font = UIFont.systemFont(ofSize: height * 5/8)
+                
+                let horizontalInset = height / 2
+                layoutMargins = UIEdgeInsets(top: 0, left: horizontalInset, bottom: 0, right: horizontalInset)
+                isLayoutMarginsRelativeArrangement = true
+            }
         }
     }
     
@@ -41,8 +45,13 @@ class SettingsRowView: UIStackView {
     
     var buttons: [UIButton]!
 
+    private var heightConstraint: NSLayoutConstraint!
+
     init() {
         super.init(frame: CGRect())
+        
+        heightConstraint = heightAnchor.constraint(equalToConstant: 0)
+        heightConstraint.isActive = true
         
         translatesAutoresizingMaskIntoConstraints = false
         

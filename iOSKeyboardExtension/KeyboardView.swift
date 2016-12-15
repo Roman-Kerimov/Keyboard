@@ -94,7 +94,7 @@ class KeyboardView: UIView {
             heightInKeys = CGFloat(keyboardLayout.rowCount * 2) + otherRowsHeightInKeys
             
             keyWidth = min(maxKeyWidth, 320 / widthInKeys)
-            keyHeight = min(maxKeyHeight(fromWidth: keyWidth), min(568, screenSize.height) * 0.6 / heightInKeys)
+            keyHeight = min(maxKeyHeight(fromWidth: keyWidth), min(568, screenSize.height) * 0.56 / heightInKeys)
         }
         else {
             // horizontal
@@ -105,7 +105,7 @@ class KeyboardView: UIView {
             heightInKeys = CGFloat(keyboardLayout.rowCount) + otherRowsHeightInKeys
             
             keyWidth = min(maxKeyWidth, screenSize.width / widthInKeys)
-            keyHeight = min(maxKeyHeight(fromWidth: keyWidth), screenSize.height / 2 / heightInKeys)
+            keyHeight = min(maxKeyHeight(fromWidth: keyWidth), screenSize.height * 0.6 / heightInKeys)
         }
         
         mainRowsView.halfKeyboardSize = CGSize(

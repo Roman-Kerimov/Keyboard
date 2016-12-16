@@ -41,6 +41,7 @@ class SettingsRowView: UIStackView {
     }
     
     let nextKeyboardButton = UIButton(type: .system)
+    let hideButton = UIButton(type: .system)
     let settingsButton = UIButton(type: .system)
     
     var buttons: [UIButton]!
@@ -59,9 +60,10 @@ class SettingsRowView: UIStackView {
         distribution = .equalSpacing
         
         nextKeyboardButton.setTitle(NSLocalizedString("next keyboard", comment: "Title for 'Next Keyboard' button"), for: [])
+        hideButton.setTitle("hide", for: [])
         settingsButton.setTitle("settings", for: [])
         
-        buttons = [nextKeyboardButton, settingsButton]
+        buttons = [nextKeyboardButton, hideButton, settingsButton]
         
         for button in buttons {
             

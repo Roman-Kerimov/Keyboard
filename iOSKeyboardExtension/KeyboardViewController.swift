@@ -26,6 +26,8 @@ class KeyboardViewController: UIInputViewController {
         
         keyboardView.settingsRowView.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
         
+        keyboardView.settingsRowView.hideButton.addTarget(self, action: #selector(dismissKeyboard), for: .allTouchEvents)
+        
         for key in KeyView.allKeys {
             key.action = keyAction(label:)
         }

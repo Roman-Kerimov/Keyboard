@@ -8,6 +8,10 @@
 
 import UIKit
 
+let horizontalModeLabel = "▄▄"
+let verticalModeLabel = "▝█▖"
+let modeSegmentLabels = [horizontalModeLabel, verticalModeLabel]
+
 class SettingsRowView: UIStackView {
 
     /*
@@ -20,8 +24,13 @@ class SettingsRowView: UIStackView {
     
     var colorScheme: KeyboardColorScheme = .default {
         didSet {
-            for button in buttons {
-                button.setTitleColor(colorScheme.settingsLabelColor, for: [])
+            for control in controls {
+                if let button = control as? UIButton {
+                    button.setTitleColor(colorScheme.settingsLabelColor, for: [])
+                }
+                if let segmentedControl = control as? UISegmentedControl {
+                    segmentedControl.tintColor = colorScheme.settingsLabelColor
+                }
             }
         }
     }
@@ -30,13 +39,23 @@ class SettingsRowView: UIStackView {
         didSet {
             heightConstraint.constant = height
             
-            for button in buttons {
-                button.titleLabel?.font = UIFont.systemFont(ofSize: height * 5/8)
+            let font = UIFont.systemFont(ofSize: height * 5/8)
+            
+            for control in controls {
+                if let button = control as? UIButton {
+                    button.titleLabel?.font = font
+                }
                 
-                let horizontalInset = height / 2
-                layoutMargins = UIEdgeInsets(top: 0, left: horizontalInset, bottom: 0, right: horizontalInset)
-                isLayoutMarginsRelativeArrangement = true
+                if let segmentedControl = control as? UISegmentedControl {
+                    
+                    segmentedControl.setTitleTextAttributes([NSFontAttributeName: font], for: .normal)
+                }
             }
+            
+            let horizontalInset = height / 2
+            let verticalInset = height / 20
+            layoutMargins = UIEdgeInsets(top: verticalInset, left: horizontalInset, bottom: verticalInset, right: horizontalInset)
+            isLayoutMarginsRelativeArrangement = true
         }
     }
     
@@ -44,7 +63,9 @@ class SettingsRowView: UIStackView {
     let hideButton = UIButton(type: .system)
     let settingsButton = UIButton(type: .system)
     
-    var buttons: [UIButton]!
+    let modeSegmentedControl = UISegmentedControl(items: modeSegmentLabels)
+    
+    var controls: [UIControl]!
 
     private var heightConstraint: NSLayoutConstraint!
 
@@ -63,14 +84,14 @@ class SettingsRowView: UIStackView {
         hideButton.setTitle("hide", for: [])
         settingsButton.setTitle("settings", for: [])
         
-        buttons = [nextKeyboardButton, hideButton, settingsButton]
+        controls = [nextKeyboardButton, modeSegmentedControl, hideButton, settingsButton]
         
-        for button in buttons {
+        for control in controls {
             
-            button.sizeToFit()
-            button.translatesAutoresizingMaskIntoConstraints = false
+            control.sizeToFit()
+            control.translatesAutoresizingMaskIntoConstraints = false
             
-            addArrangedSubview(button)
+            addArrangedSubview(control)
         }
     }
     

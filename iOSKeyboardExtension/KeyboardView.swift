@@ -24,6 +24,8 @@ class KeyboardView: UIView {
     }
     */
     
+    let settings = KeyboardSettings()
+    
     var colorScheme: KeyboardColorScheme = .default {
         didSet {
             for key in KeyView.allKeys {
@@ -45,8 +47,6 @@ class KeyboardView: UIView {
     var keyboardStackViewWidthConstraint: NSLayoutConstraint?
     var keyboardStackViewCenterXConstraint: NSLayoutConstraint?
     var keyboardStackViewRightConstraint: NSLayoutConstraint?
-    
-    let keyboardLayout = KeyboardLayout.qwerty
     
     var isInterfaceBuilder: Bool = false
     
@@ -90,16 +90,25 @@ class KeyboardView: UIView {
         let verticalModeIndex = modeSegmentLabels.index(of: verticalModeLabel)!
         let horizontalModeIndex = modeSegmentLabels.index(of: horizontalModeLabel)!
         
-        if settingsRowView.modeSegmentedControl.isSelected == false {
+        if settings.getLayoutMode(forScreenSize: screenSize) == .default {
             if bounds.width < 480 {
-                settingsRowView.modeSegmentedControl.selectedSegmentIndex = verticalModeIndex
+                settings.set(layoutMode: .vertical, forScreenSize: screenSize)
             }
             else {
-                settingsRowView.modeSegmentedControl.selectedSegmentIndex = horizontalModeIndex
+                settings.set(layoutMode: .horizontal, forScreenSize: screenSize)
             }
-            
-            settingsRowView.modeSegmentedControl.isSelected = true
         }
+        
+        switch settings.getLayoutMode(forScreenSize: screenSize) {
+        case .horizontal:
+            settingsRowView.modeSegmentedControl.selectedSegmentIndex = horizontalModeIndex
+        case .vertical:
+            settingsRowView.modeSegmentedControl.selectedSegmentIndex = verticalModeIndex
+        default:
+            abort()
+        }
+        
+        settingsRowView.modeSegmentedControl.isSelected = true
         
         switch settingsRowView.modeSegmentedControl.selectedSegmentIndex {
         case verticalModeIndex:
@@ -107,8 +116,8 @@ class KeyboardView: UIView {
             keyboardStackViewCenterXConstraint?.isActive = false
             keyboardStackViewRightConstraint?.isActive = true
             
-            widthInKeys = CGFloat(keyboardLayout.columnCount / 2) + 0.5
-            heightInKeys = CGFloat(keyboardLayout.rowCount * 2) + otherRowsHeightInKeys
+            widthInKeys = CGFloat(settings.layout.columnCount / 2) + 0.5
+            heightInKeys = CGFloat(settings.layout.rowCount * 2) + otherRowsHeightInKeys
             
             keyWidth = min(maxKeyWidth, 320 / widthInKeys)
             keyHeight = min(
@@ -121,8 +130,8 @@ class KeyboardView: UIView {
             keyboardStackViewRightConstraint?.isActive = false
             keyboardStackViewCenterXConstraint?.isActive = true
             
-            widthInKeys = CGFloat(keyboardLayout.columnCount)
-            heightInKeys = CGFloat(keyboardLayout.rowCount) + otherRowsHeightInKeys
+            widthInKeys = CGFloat(settings.layout.columnCount)
+            heightInKeys = CGFloat(settings.layout.rowCount) + otherRowsHeightInKeys
             
             keyWidth = min(maxKeyWidth, screenSize.width / widthInKeys)
             keyHeight = min(
@@ -135,8 +144,8 @@ class KeyboardView: UIView {
         }
         
         mainRowsView.halfKeyboardSize = CGSize(
-            width: keyWidth * CGFloat(keyboardLayout.columnCount / 2),
-            height: keyHeight * CGFloat(keyboardLayout.rowCount)
+            width: keyWidth * CGFloat(settings.layout.columnCount / 2),
+            height: keyHeight * CGFloat(settings.layout.rowCount)
         )
         
         spaceRowView.height = spaceRowHeightInKeys * keyHeight
@@ -195,17 +204,31 @@ class KeyboardView: UIView {
         keyboardStackViewRightConstraint = keyboardStackView.rightAnchor.constraint(equalTo: keyboardView.rightAnchor)
         keyboardStackViewCenterXConstraint = keyboardStackView.centerXAnchor.constraint(equalTo: keyboardView.centerXAnchor)
         
-        mainRowsView = MainRowsView(layout: keyboardLayout)
+        mainRowsView = MainRowsView(layout: settings.layout)
         
         keyboardStackView.addArrangedSubview(mainRowsView)
         keyboardStackView.addArrangedSubview(spaceRowView)
         keyboardStackView.addArrangedSubview(settingsRowView)
         
-        settingsRowView.modeSegmentedControl
-            .addTarget(self, action: #selector(keyboardModeDidChange), for: .allEvents)
+        settingsRowView.modeSegmentedControl.addTarget(self, action: #selector(keyboardModeDidChange), for: .allEvents)
     }
     
-    func keyboardModeDidChange() {
+    func keyboardModeDidChange(segmentedControl: UISegmentedControl) {
+        
+        let screenSize = UIScreen.main.bounds.size
+        
+        switch segmentedControl.selectedSegmentIndex {
+            
+        case modeSegmentLabels.index(of: verticalModeLabel)!:
+            settings.set(layoutMode: .vertical, forScreenSize: screenSize)
+            
+        case modeSegmentLabels.index(of: horizontalModeLabel)!:
+            settings.set(layoutMode: .horizontal, forScreenSize: screenSize)
+            
+        default:
+            abort()
+        }
+        
         configure()
     }
 }

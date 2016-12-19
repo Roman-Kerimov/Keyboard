@@ -11,6 +11,7 @@ import UIKit
 @IBDesignable
 class KeyboardView: UIView {
     
+    @IBInspectable var darkColorScheme: Bool = false
     @IBInspectable var alternateLayoutMode: Bool = false
     
     private let maxKeyWidth: CGFloat = 102.4
@@ -59,6 +60,10 @@ class KeyboardView: UIView {
         configure()
         
         colorScheme = .default
+        
+        if darkColorScheme {
+            colorScheme = .dark
+        }
     }
     
     override func awakeFromNib() {

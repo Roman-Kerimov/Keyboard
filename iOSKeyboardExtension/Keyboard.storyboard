@@ -27,6 +27,27 @@
             <point key="canvasLocation" x="-2.3999999999999999" y="56.221889055472268"/>
         </scene>
         <!--View Controller-->
+        <scene sceneID="57d-qI-8ES">
+            <objects>
+                <viewController id="7H2-I5-WHd" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="085-ef-uIk"/>
+                        <viewControllerLayoutGuide type="bottom" id="bzN-IU-IpS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gUH-IG-wlv" customClass="KeyboardView" customModule="iOSKeyboardExtension" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="alternateLayoutMode" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M4m-9G-nt1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="771" y="56"/>
+        </scene>
+        <!--View Controller-->
         <scene sceneID="GeJ-Kx-6fg">
             <objects>
                 <viewController storyboardIdentifier="DarkPreviewForKeyboardView" id="05e-C9-ntO" sceneMemberID="viewController">
@@ -42,7 +63,28 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jfp-Hh-2jG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="773" y="56"/>
+            <point key="canvasLocation" x="-4" y="789"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="PAV-Gi-J8L">
+            <objects>
+                <viewController id="mex-WL-eDw" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xKj-op-max"/>
+                        <viewControllerLayoutGuide type="bottom" id="zqd-xT-211"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mit-Dn-gwH" customClass="DarkPreviewForKeyboardView" customModule="iOSKeyboardExtension" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="alternateLayoutMode" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rZq-i1-21t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="773" y="788"/>
         </scene>
     </scenes>
 </document>

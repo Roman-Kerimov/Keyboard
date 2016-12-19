@@ -11,6 +11,8 @@ import UIKit
 @IBDesignable
 class KeyboardView: UIView {
     
+    @IBInspectable var alternateLayoutMode: Bool = false
+    
     private let maxKeyWidth: CGFloat = 102.4
     private func maxKeyHeight(fromWidth width: CGFloat) -> CGFloat {
         return width * 0.94
@@ -96,6 +98,15 @@ class KeyboardView: UIView {
             }
             else {
                 settings.set(layoutMode: .horizontal, forScreenSize: screenSize)
+            }
+        }
+        
+        if alternateLayoutMode {
+            if settings.getLayoutMode(forScreenSize: screenSize) == .vertical {
+                settings.set(layoutMode: .horizontal, forScreenSize: screenSize)
+            }
+            else {
+                settings.set(layoutMode: .vertical, forScreenSize: screenSize)
             }
         }
         

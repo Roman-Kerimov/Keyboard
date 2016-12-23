@@ -171,6 +171,7 @@ class KeyboardView: UIView {
         }
         else {
             widthConstraint = mainRowsView.widthAnchor.constraint(equalToConstant: keyboardWidth)
+            widthConstraint?.priority = 999
             widthConstraint?.isActive = true
         }
         

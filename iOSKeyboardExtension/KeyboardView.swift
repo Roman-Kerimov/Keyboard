@@ -43,13 +43,11 @@ class KeyboardView: UIView {
         }
     }
     
+    var widthConstraint: NSLayoutConstraint?
     var heightConstraint: NSLayoutConstraint?
     
     let keyboardView = UIView()
     let keyboardStackView = UIStackView()
-    var keyboardStackViewWidthConstraint: NSLayoutConstraint?
-    var keyboardStackViewCenterXConstraint: NSLayoutConstraint?
-    var keyboardStackViewRightConstraint: NSLayoutConstraint?
     
     var isInterfaceBuilder: Bool = false
     
@@ -129,22 +127,20 @@ class KeyboardView: UIView {
         switch settingsRowView.modeSegmentedControl.selectedSegmentIndex {
         case verticalModeIndex:
             
-            keyboardStackViewCenterXConstraint?.isActive = false
-            keyboardStackViewRightConstraint?.isActive = true
+            keyboardStackView.alignment = .trailing
             
             widthInKeys = CGFloat(settings.layout.columnCount / 2) + 0.5
             heightInKeys = CGFloat(settings.layout.rowCount * 2) + otherRowsHeightInKeys
             
-            keyWidth = min(maxKeyWidth, 320 / widthInKeys)
+            keyWidth = min(maxKeyWidth, screenSize.width / widthInKeys)
             keyHeight = min(
                 maxKeyHeight(fromWidth: keyWidth),
-                min(568, screenSize.height) * maxKeyboardHeightRatio / heightInKeys
+                screenSize.height * maxKeyboardHeightRatio / heightInKeys
             )
             
         case horizontalModeIndex:
             
-            keyboardStackViewRightConstraint?.isActive = false
-            keyboardStackViewCenterXConstraint?.isActive = true
+            keyboardStackView.alignment = .center
             
             widthInKeys = CGFloat(settings.layout.columnCount)
             heightInKeys = CGFloat(settings.layout.rowCount) + otherRowsHeightInKeys
@@ -170,12 +166,12 @@ class KeyboardView: UIView {
         let keyboardWidth = keyWidth * widthInKeys
         let keyboardHeight = keyHeight * heightInKeys
         
-        if keyboardStackViewWidthConstraint != nil {
-            keyboardStackViewWidthConstraint?.constant = keyboardWidth
+        if widthConstraint != nil {
+            widthConstraint?.constant = keyboardWidth
         }
         else {
-            keyboardStackViewWidthConstraint = keyboardStackView.widthAnchor.constraint(equalToConstant: keyboardWidth)
-            keyboardStackViewWidthConstraint?.isActive = true
+            widthConstraint = mainRowsView.widthAnchor.constraint(equalToConstant: keyboardWidth)
+            widthConstraint?.isActive = true
         }
         
         if heightConstraint != nil {
@@ -215,16 +211,19 @@ class KeyboardView: UIView {
         keyboardStackView.translatesAutoresizingMaskIntoConstraints = false
         
         keyboardStackView.topAnchor.constraint(equalTo: keyboardView.topAnchor).isActive = true
+        keyboardStackView.leftAnchor.constraint(equalTo: keyboardView.leftAnchor).isActive = true
+        keyboardStackView.rightAnchor.constraint(equalTo: keyboardView.rightAnchor).isActive = true
         keyboardStackView.bottomAnchor.constraint(equalTo: keyboardView.bottomAnchor).isActive = true
-        
-        keyboardStackViewRightConstraint = keyboardStackView.rightAnchor.constraint(equalTo: keyboardView.rightAnchor)
-        keyboardStackViewCenterXConstraint = keyboardStackView.centerXAnchor.constraint(equalTo: keyboardView.centerXAnchor)
         
         mainRowsView = MainRowsView(layout: settings.layout)
         
         keyboardStackView.addArrangedSubview(mainRowsView)
         keyboardStackView.addArrangedSubview(spaceRowView)
         keyboardStackView.addArrangedSubview(settingsRowView)
+        
+        mainRowsView.widthAnchor.constraint(equalTo: spaceRowView.widthAnchor).isActive = true
+        
+        settingsRowView.widthAnchor.constraint(equalTo: keyboardStackView.widthAnchor).isActive = true
         
         settingsRowView.modeSegmentedControl.addTarget(self, action: #selector(keyboardModeDidChange), for: .allEvents)
     }

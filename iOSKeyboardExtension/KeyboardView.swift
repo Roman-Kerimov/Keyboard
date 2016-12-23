@@ -86,14 +86,15 @@ class KeyboardView: UIView {
         let heightInKeys: CGFloat
         
         let spaceRowHeightInKeys: CGFloat = 1
-        let settingsRowHeightInKeys: CGFloat = 0.5
         
-        let otherRowsHeightInKeys: CGFloat = spaceRowHeightInKeys + settingsRowHeightInKeys
+        let otherRowsHeightInKeys: CGFloat = spaceRowHeightInKeys
         
         let maxKeyboardHeightRatio: CGFloat = 0.56
         
         let verticalModeIndex = modeSegmentLabels.index(of: verticalModeLabel)!
         let horizontalModeIndex = modeSegmentLabels.index(of: horizontalModeLabel)!
+        
+        settingsRowView.height = max(screenSize.width, screenSize.height) * 0.04
         
         if settings.getLayoutMode(forScreenSize: screenSize) == .default {
             if bounds.width < 480 {
@@ -132,12 +133,6 @@ class KeyboardView: UIView {
             widthInKeys = CGFloat(settings.layout.columnCount / 2) + 0.5
             heightInKeys = CGFloat(settings.layout.rowCount * 2) + otherRowsHeightInKeys
             
-            keyWidth = min(maxKeyWidth, screenSize.width / widthInKeys)
-            keyHeight = min(
-                maxKeyHeight(fromWidth: keyWidth),
-                screenSize.height * maxKeyboardHeightRatio / heightInKeys
-            )
-            
         case horizontalModeIndex:
             
             keyboardStackView.alignment = .center
@@ -145,15 +140,15 @@ class KeyboardView: UIView {
             widthInKeys = CGFloat(settings.layout.columnCount)
             heightInKeys = CGFloat(settings.layout.rowCount) + otherRowsHeightInKeys
             
-            keyWidth = min(maxKeyWidth, screenSize.width / widthInKeys)
-            keyHeight = min(
-                maxKeyHeight(fromWidth: keyWidth),
-                screenSize.height * maxKeyboardHeightRatio / heightInKeys
-            )
-            
         default:
             abort()
         }
+        
+        keyWidth = min(maxKeyWidth, screenSize.width / widthInKeys)
+        keyHeight = min(
+            maxKeyHeight(fromWidth: keyWidth),
+            (screenSize.height * maxKeyboardHeightRatio - settingsRowView.height) / heightInKeys
+        )
         
         mainRowsView.halfKeyboardSize = CGSize(
             width: keyWidth * CGFloat(settings.layout.columnCount / 2),
@@ -161,10 +156,9 @@ class KeyboardView: UIView {
         )
         
         spaceRowView.height = spaceRowHeightInKeys * keyHeight
-        settingsRowView.height = settingsRowHeightInKeys * keyHeight
         
         let keyboardWidth = keyWidth * widthInKeys
-        let keyboardHeight = keyHeight * heightInKeys
+        let keyboardHeight = keyHeight * heightInKeys + settingsRowView.height
         
         if widthConstraint != nil {
             widthConstraint?.constant = keyboardWidth

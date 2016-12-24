@@ -34,8 +34,9 @@ class KeyView: UIView {
     
     static var allKeys: [KeyView] = []
     
-    class func configureFor(width: CGFloat, height: CGFloat) {
+    class func configure(for keyboardView: KeyboardView) {
         for key in allKeys {
+            let width = keyboardView.keySize.width
             
             let keySpace = width * 0.1
             

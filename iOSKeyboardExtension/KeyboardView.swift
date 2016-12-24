@@ -8,16 +8,14 @@
 
 import UIKit
 
+let minShortDeviceSide: CGFloat = 320
+let minLongDeviceSide: CGFloat = 480
+
 @IBDesignable
 class KeyboardView: UIView {
     
     @IBInspectable var darkColorScheme: Bool = false
     @IBInspectable var alternateLayoutMode: Bool = false
-    
-    private let maxKeyWidth: CGFloat = 102.4
-    private func maxKeyHeight(fromWidth width: CGFloat) -> CGFloat {
-        return width * 0.94
-    }
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -42,6 +40,75 @@ class KeyboardView: UIView {
             }
         }
     }
+    
+    var  screenSize: CGSize {
+        if isInterfaceBuilder {
+            return bounds.size
+        }
+        else {
+            return UIScreen.main.bounds.size
+        }
+    }
+    
+    let spaceRowHeightInKeys: CGFloat = 1
+    
+    let maxKeyboardHeightRatio: CGFloat = 0.56
+    
+    private let maxKeyWidth: CGFloat = 102.4
+    private func maxKeyHeight(fromWidth width: CGFloat) -> CGFloat {
+        return width * 0.94
+    }
+    
+    var sizeInKeys = CGSize()
+    
+    var sizeInKeysForVerticalMode: CGSize {
+        return CGSize(
+            width: CGFloat(settings.layout.columnCount / 2) + 0.5,
+            height: CGFloat(settings.layout.rowCount * 2) + spaceRowHeightInKeys
+        )
+    }
+    
+    var sizeInKeysForHorizontalMode: CGSize {
+        return CGSize(
+            width: CGFloat(settings.layout.columnCount),
+            height: CGFloat(settings.layout.rowCount) + spaceRowHeightInKeys
+        )
+    }
+    
+    var settingsRowHeight: CGFloat {
+        return max(screenSize.width, screenSize.height) * 0.04
+    }
+    
+    var keySize: CGSize {
+        let keyWidth = min(maxKeyWidth, screenSize.width / sizeInKeys.width)
+        
+        return CGSize(
+            width: keyWidth,
+            height: min(
+                maxKeyHeight(fromWidth: keyWidth),
+                (screenSize.height * maxKeyboardHeightRatio - settingsRowHeight) / sizeInKeys.height
+            )
+        )
+    }
+    
+    var mainRowsSize: CGSize {
+        return CGSize(
+            width: keySize.width * CGFloat(settings.layout.columnCount / 2),
+            height: keySize.height * CGFloat(settings.layout.rowCount)
+        )
+    }
+    
+    var spaceRowHeight: CGFloat {
+        return spaceRowHeightInKeys * keySize.height
+    }
+
+    var size: CGSize {
+        return CGSize(
+            width: keySize.width * sizeInKeys.width,
+            height: keySize.height * sizeInKeys.height + settingsRowHeight
+        )
+    }
+    
     
     var widthConstraint: NSLayoutConstraint?
     var heightConstraint: NSLayoutConstraint?
@@ -69,35 +136,11 @@ class KeyboardView: UIView {
     }
     
     func configure() {
-        
-        let screenSize: CGSize!
-        
-        if isInterfaceBuilder {
-            screenSize = bounds.size
-        }
-        else {
-            screenSize = UIScreen.main.bounds.size
-        }
-        
-        let keyWidth: CGFloat
-        let keyHeight: CGFloat
-        
-        let widthInKeys: CGFloat
-        let heightInKeys: CGFloat
-        
-        let spaceRowHeightInKeys: CGFloat = 1
-        
-        let otherRowsHeightInKeys: CGFloat = spaceRowHeightInKeys
-        
-        let maxKeyboardHeightRatio: CGFloat = 0.56
-        
         let verticalModeIndex = modeSegmentLabels.index(of: verticalModeLabel)!
         let horizontalModeIndex = modeSegmentLabels.index(of: horizontalModeLabel)!
         
-        settingsRowView.height = max(screenSize.width, screenSize.height) * 0.04
-        
         if settings.getLayoutMode(forScreenSize: screenSize) == .default {
-            if bounds.width < 480 {
+            if bounds.width < minLongDeviceSide {
                 settings.set(layoutMode: .vertical, forScreenSize: screenSize)
             }
             else {
@@ -115,10 +158,13 @@ class KeyboardView: UIView {
         }
         
         switch settings.getLayoutMode(forScreenSize: screenSize) {
+            
         case .horizontal:
             settingsRowView.modeSegmentedControl.selectedSegmentIndex = horizontalModeIndex
+            
         case .vertical:
             settingsRowView.modeSegmentedControl.selectedSegmentIndex = verticalModeIndex
+            
         default:
             abort()
         }
@@ -126,63 +172,45 @@ class KeyboardView: UIView {
         settingsRowView.modeSegmentedControl.isSelected = true
         
         switch settingsRowView.modeSegmentedControl.selectedSegmentIndex {
+            
         case verticalModeIndex:
-            
             keyboardStackView.alignment = .trailing
-            
-            widthInKeys = CGFloat(settings.layout.columnCount / 2) + 0.5
-            heightInKeys = CGFloat(settings.layout.rowCount * 2) + otherRowsHeightInKeys
+            sizeInKeys = sizeInKeysForVerticalMode
             
         case horizontalModeIndex:
-            
             keyboardStackView.alignment = .center
-            
-            widthInKeys = CGFloat(settings.layout.columnCount)
-            heightInKeys = CGFloat(settings.layout.rowCount) + otherRowsHeightInKeys
+            sizeInKeys = sizeInKeysForHorizontalMode
             
         default:
             abort()
         }
         
-        keyWidth = min(maxKeyWidth, screenSize.width / widthInKeys)
-        keyHeight = min(
-            maxKeyHeight(fromWidth: keyWidth),
-            (screenSize.height * maxKeyboardHeightRatio - settingsRowView.height) / heightInKeys
-        )
-        
-        mainRowsView.halfKeyboardSize = CGSize(
-            width: keyWidth * CGFloat(settings.layout.columnCount / 2),
-            height: keyHeight * CGFloat(settings.layout.rowCount)
-        )
-        
-        spaceRowView.height = spaceRowHeightInKeys * keyHeight
-        
-        let keyboardWidth = keyWidth * widthInKeys
-        let keyboardHeight = keyHeight * heightInKeys + settingsRowView.height
-        
         if widthConstraint != nil {
-            widthConstraint?.constant = keyboardWidth
+            widthConstraint?.constant = size.width
         }
         else {
-            widthConstraint = mainRowsView.widthAnchor.constraint(equalToConstant: keyboardWidth)
+            widthConstraint = mainRowsView.widthAnchor.constraint(equalToConstant: size.width)
             widthConstraint?.priority = 999
             widthConstraint?.isActive = true
         }
         
         if heightConstraint != nil {
-            heightConstraint?.constant = keyboardHeight
+            heightConstraint?.constant = size.height
         }
         else {
-            heightConstraint = heightAnchor.constraint(equalToConstant: keyboardHeight)
+            heightConstraint = heightAnchor.constraint(equalToConstant: size.height)
             heightConstraint!.priority = 999
             heightConstraint!.isActive = true
         }
         
         if isInterfaceBuilder {
-            keyboardView.heightAnchor.constraint(equalToConstant: keyboardHeight).isActive = true
+            keyboardView.heightAnchor.constraint(equalToConstant: size.height).isActive = true
         }
         
-        KeyView.configureFor(width: keyWidth, height: keyHeight)
+        mainRowsView.halfKeyboardSize = mainRowsSize
+        spaceRowView.height = spaceRowHeight
+        settingsRowView.height = settingsRowHeight
+        KeyView.configure(for: self)
     }
     
     var mainRowsView: MainRowsView!

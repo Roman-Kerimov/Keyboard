@@ -82,11 +82,17 @@ class KeyboardView: UIView {
     var keySize: CGSize {
         let keyWidth = min(maxKeyWidth, screenSize.width / sizeInKeys.width)
         
+        let maxKeyboardHeight = (screenSize.height * maxKeyboardHeightRatio - settingsRowHeight)
+        
         return CGSize(
             width: keyWidth,
             height: min(
-                maxKeyHeight(fromWidth: keyWidth),
-                (screenSize.height * maxKeyboardHeightRatio - settingsRowHeight) / sizeInKeys.height
+                max(
+                    maxKeyboardHeight / sizeInKeysForVerticalMode.height,
+                    maxKeyHeight(fromWidth: keyWidth)
+                ),
+                
+                maxKeyboardHeight / sizeInKeys.height
             )
         )
     }

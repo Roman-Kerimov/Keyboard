@@ -88,7 +88,7 @@ class SettingsRowView: UIStackView {
         hideButton.setTitle("⌨↓", for: [])
         hideButton.titleLabel?.font = iconFont
         
-        settingsButton.setTitle("settings", for: [])
+        settingsButton.setTitle("⚬⚬⚬", for: [])
         
         controls = [nextKeyboardButton, hideButton, modeSegmentedControl, settingsButton]
         

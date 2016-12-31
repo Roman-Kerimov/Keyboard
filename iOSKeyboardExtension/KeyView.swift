@@ -51,7 +51,12 @@ class KeyView: UIView {
 
             key.backgroundView.layoutMargins = UIEdgeInsets(top: verticalShiftLabelIndent, left: horizontalShiftLabelIndent, bottom: verticalShiftLabelIndent, right: horizontalShiftLabelIndent)
             
-            let labelFontSize = width * 6/15
+            let keyWidthForCalculateFontSize = max(
+                keyboardView.keySize.width,
+                minShortDeviceSide / keyboardView.sizeInKeysForVerticalMode.width
+            )
+            
+            let labelFontSize = keyWidthForCalculateFontSize * 6/15
             key.label.font = UIFont.systemFont(ofSize: labelFontSize)
             
             let shiftLabelFont = UIFont.systemFont(ofSize: labelFontSize/1.8)

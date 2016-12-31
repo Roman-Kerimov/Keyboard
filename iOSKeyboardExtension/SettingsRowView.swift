@@ -85,11 +85,12 @@ class SettingsRowView: UIStackView {
         nextKeyboardButton.setTitle(NSLocalizedString("🌐", comment: "Title for 'Next Keyboard' button"), for: [])
         nextKeyboardButton.titleLabel?.font = iconFont
         
-        hideButton.setTitle("hide", for: [])
+        hideButton.setTitle("⌨↓", for: [])
+        hideButton.titleLabel?.font = iconFont
         
         settingsButton.setTitle("settings", for: [])
         
-        controls = [nextKeyboardButton, modeSegmentedControl, hideButton, settingsButton]
+        controls = [nextKeyboardButton, hideButton, modeSegmentedControl, settingsButton]
         
         for control in controls {
             

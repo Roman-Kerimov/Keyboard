@@ -25,6 +25,7 @@
 		965D15C91D32AE3B0098FA57 /* KeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965D15C81D32AE3B0098FA57 /* KeyView.swift */; };
 		965D15CB1D32F7C90098FA57 /* HalfKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965D15CA1D32F7C90098FA57 /* HalfKeyboardView.swift */; };
 		966194D31DE2FCEF007FCF02 /* MainRowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966194D21DE2FCEF007FCF02 /* MainRowsView.swift */; };
+		9676A6AC1E17C7400091B155 /* FiraSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9676A6AB1E17C4830091B155 /* FiraSans-Regular.ttf */; };
 		9685BCFF1E06815700702C84 /* KeyboardSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9685BCFE1E06815700702C84 /* KeyboardSettings.swift */; };
 		96A710491DFEC405004669C1 /* SettingsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A710481DFEC405004669C1 /* SettingsRowView.swift */; };
 		96BC5F561DEB961F002E0752 /* ShiftLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BC5F551DEB961F002E0752 /* ShiftLabel.swift */; };
@@ -94,6 +95,7 @@
 		965D15C81D32AE3B0098FA57 /* KeyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyView.swift; sourceTree = "<group>"; };
 		965D15CA1D32F7C90098FA57 /* HalfKeyboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfKeyboardView.swift; sourceTree = "<group>"; };
 		966194D21DE2FCEF007FCF02 /* MainRowsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainRowsView.swift; sourceTree = "<group>"; };
+		9676A6AB1E17C4830091B155 /* FiraSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FiraSans-Regular.ttf"; sourceTree = "<group>"; };
 		9685BCFE1E06815700702C84 /* KeyboardSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardSettings.swift; sourceTree = "<group>"; };
 		96A710481DFEC405004669C1 /* SettingsRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsRowView.swift; sourceTree = "<group>"; };
 		96BC5F551DEB961F002E0752 /* ShiftLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftLabel.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				964FE8221D1CA9D400D41EA7 /* Keyboard.storyboard */,
 				9685BCFE1E06815700702C84 /* KeyboardSettings.swift */,
 				964AB96B1D1B6535004C827C /* Info.plist */,
+				9676A6AB1E17C4830091B155 /* FiraSans-Regular.ttf */,
 			);
 			path = iOSKeyboardExtension;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9676A6AC1E17C7400091B155 /* FiraSans-Regular.ttf in Resources */,
 				964FE8231D1CA9D400D41EA7 /* Keyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -39,16 +39,16 @@ class SettingsRowView: UIStackView {
         didSet {
             heightConstraint.constant = height
             
-            let font = UIFont.systemFont(ofSize: height * 5/8)
+            let fontSize = height * 5/8
             
             for control in controls {
                 if let button = control as? UIButton {
-                    button.titleLabel?.font = font
+                    button.titleLabel?.font = button.titleLabel?.font.withSize(fontSize)
                 }
                 
                 if let segmentedControl = control as? UISegmentedControl {
                     
-                    segmentedControl.setTitleTextAttributes([NSFontAttributeName: font], for: .normal)
+                    segmentedControl.setTitleTextAttributes([NSFontAttributeName: UIFont.systemFont(ofSize: fontSize)], for: .normal)
                 }
             }
             
@@ -80,8 +80,13 @@ class SettingsRowView: UIStackView {
         axis = .horizontal
         distribution = .equalSpacing
         
-        nextKeyboardButton.setTitle(NSLocalizedString("next keyboard", comment: "Title for 'Next Keyboard' button"), for: [])
+        let iconFont = UIFont(name: "FiraSans", size: 1)
+        
+        nextKeyboardButton.setTitle(NSLocalizedString("🌐", comment: "Title for 'Next Keyboard' button"), for: [])
+        nextKeyboardButton.titleLabel?.font = iconFont
+        
         hideButton.setTitle("hide", for: [])
+        
         settingsButton.setTitle("settings", for: [])
         
         controls = [nextKeyboardButton, modeSegmentedControl, hideButton, settingsButton]

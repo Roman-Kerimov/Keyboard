@@ -43,6 +43,13 @@ class KeyboardSettings: NSObject {
         return portraitLayoutMode
     }
     
+    #if TARGET_INTERFACE_BUILDER
+    
+    private var portraitLayoutMode: KeyboardLayoutMode = .default
+    private var landscapeLayoutMode: KeyboardLayoutMode = .default
+    
+    #else
+    
     private let portraitLayoutModeKey = "portraitLayoutMode"
     private var portraitLayoutMode: KeyboardLayoutMode {
         get {
@@ -67,4 +74,6 @@ class KeyboardSettings: NSObject {
             UserDefaults.standard.synchronize()
         }
     }
+    
+    #endif
 }

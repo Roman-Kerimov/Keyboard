@@ -202,17 +202,16 @@ class KeyView: UIView {
             
             let isUpShift = offset.y < -threshold.y
             let isDownShift = offset.y > threshold.y
-            //let isLeftShift = offset.x < -threshold.x
+            let isLeftShift = offset.x < -threshold.x
             let isRightShift = offset.x > threshold.x
             
-            if isUpShift {
-                
-                //  * | * | *
-                // ---|---|---
-                //    |   |
-                // ---|---|---
-                //    |   |
-                
+            if isLeftShift && shiftLeftLabel.text != nil {
+                label.text = shiftLeftLabel.text
+            }
+            else if isRightShift && shiftRightLabel.text != nil {
+                label.text = shiftRightLabel.text
+            }
+            else if isUpShift {
                 if shiftUpLabel.text != nil {
                     label.text = shiftUpLabel.text
                 }
@@ -221,32 +220,12 @@ class KeyView: UIView {
                 }
             }
             else if isDownShift && isRightShift {
-                //    |   |
-                // ---|---|---
-                //    |   |
-                // ---|---|---
-                //    |   | *
-                
                 label.text = shiftDownLabel.text?.components(separatedBy: " ").last
             }
             else if isDownShift {
-                
-                //    |   |
-                // ---|---|---
-                //    |   |
-                // ---|---|---
-                //  * | * |
-                
                 label.text = shiftDownLabel.text?.components(separatedBy: " ").first
             }
             else {
-                
-                //    |   |
-                // ---|---|---
-                //  * | * | *
-                // ---|---|---
-                //    |   |
-                
                 label.text = mainLabel
             }
         }

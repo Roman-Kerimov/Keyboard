@@ -82,7 +82,7 @@ class SettingsRowView: UIStackView {
         
         let iconFont = UIFont(name: "FiraSans", size: 1)
         
-        nextKeyboardButton.setTitle(NSLocalizedString("🌐", comment: "Title for 'Next Keyboard' button"), for: [])
+        nextKeyboardButton.setTitle("🌐", for: [])
         nextKeyboardButton.titleLabel?.font = iconFont
         
         hideButton.setTitle("⌨↓", for: [])

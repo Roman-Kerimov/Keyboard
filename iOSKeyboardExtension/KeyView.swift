@@ -198,9 +198,21 @@ class KeyView: UIView {
                 y: gestureCurrentPoint.y - gestureStartPoint.y
             )
             
-            let threshold = bounds.size.height/4
+            let threshold = CGPoint(x: bounds.size.width / 4, y: bounds.size.height / 4)
             
-            if offset.y < -threshold {
+            let isUpShift = offset.y < -threshold.y
+            let isDownShift = offset.y > threshold.y
+            //let isLeftShift = offset.x < -threshold.x
+            let isRightShift = offset.x > threshold.x
+            
+            if isUpShift {
+                
+                //  * | * | *
+                // ---|---|---
+                //    |   |
+                // ---|---|---
+                //    |   |
+                
                 if shiftUpLabel.text != nil {
                     label.text = shiftUpLabel.text
                 }
@@ -208,10 +220,33 @@ class KeyView: UIView {
                     label.text = mainLabel.uppercased()
                 }
             }
-            else if offset.y > threshold {
+            else if isDownShift && isRightShift {
+                //    |   |
+                // ---|---|---
+                //    |   |
+                // ---|---|---
+                //    |   | *
+                
+                label.text = shiftDownLabel.text?.components(separatedBy: " ").last
+            }
+            else if isDownShift {
+                
+                //    |   |
+                // ---|---|---
+                //    |   |
+                // ---|---|---
+                //  * | * |
+                
                 label.text = shiftDownLabel.text?.components(separatedBy: " ").first
             }
             else {
+                
+                //    |   |
+                // ---|---|---
+                //  * | * | *
+                // ---|---|---
+                //    |   |
+                
                 label.text = mainLabel
             }
         }

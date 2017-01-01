@@ -191,9 +191,16 @@ class KeyView: UIView {
             
         default:
             
-            let deltaY = gestureStartPoint.y - gesture.location(in: self).y
+            let gestureCurrentPoint = gesture.location(in: self)
             
-            if deltaY > bounds.size.height/4 {
+            let offset = CGPoint(
+                x: gestureCurrentPoint.x - gestureStartPoint.x,
+                y: gestureCurrentPoint.y - gestureStartPoint.y
+            )
+            
+            let threshold = bounds.size.height/4
+            
+            if offset.y < -threshold {
                 if shiftUpLabel.text != nil {
                     label.text = shiftUpLabel.text
                 }
@@ -201,7 +208,7 @@ class KeyView: UIView {
                     label.text = mainLabel.uppercased()
                 }
             }
-            else if deltaY < -bounds.size.height/2 {
+            else if offset.y > threshold {
                 label.text = shiftDownLabel.text?.components(separatedBy: " ").first
             }
             else {

@@ -10,9 +10,11 @@ import UIKit
 
 class KeyboardSettings: NSObject {
 
-    enum KeyboardLayoutMode {
-        case horizontal, vertical
-        case `default`
+    enum KeyboardLayoutMode: String {
+        case horizontal = "horizontal"
+        case vertical = "vertical"
+        
+        case `default` = "default"
     }
     
     var layout: KeyboardLayout = .qwerty
@@ -41,6 +43,28 @@ class KeyboardSettings: NSObject {
         return portraitLayoutMode
     }
     
-    private var portraitLayoutMode: KeyboardLayoutMode = .default
-    private var landscapeLayoutMode: KeyboardLayoutMode = .default
+    private let portraitLayoutModeKey = "portraitLayoutMode"
+    private var portraitLayoutMode: KeyboardLayoutMode {
+        get {
+            return KeyboardLayoutMode(rawValue: UserDefaults.standard.string(forKey: portraitLayoutModeKey) ?? "") ?? .default
+        }
+        
+        set {
+            UserDefaults.standard.set(newValue.rawValue, forKey: portraitLayoutModeKey)
+            UserDefaults.standard.synchronize()
+            
+        }
+    }
+    
+    private let landscapeLayoutModeKey = "landscapeLayoutMode"
+    private var landscapeLayoutMode: KeyboardLayoutMode {
+        get {
+            return KeyboardLayoutMode(rawValue: UserDefaults.standard.string(forKey: landscapeLayoutModeKey) ?? "") ?? .default
+        }
+        
+        set {
+            UserDefaults.standard.set(newValue.rawValue, forKey: landscapeLayoutModeKey)
+            UserDefaults.standard.synchronize()
+        }
+    }
 }

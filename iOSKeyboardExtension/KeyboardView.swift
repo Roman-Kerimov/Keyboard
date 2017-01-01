@@ -166,18 +166,18 @@ class KeyboardView: UIView {
         switch settings.getLayoutMode(forScreenSize: screenSize) {
             
         case .horizontal:
-            settingsRowView.modeSegmentedControl.selectedSegmentIndex = horizontalModeIndex
+            settingsRowView.layoutModeSegmentedControl.selectedSegmentIndex = horizontalModeIndex
             
         case .vertical:
-            settingsRowView.modeSegmentedControl.selectedSegmentIndex = verticalModeIndex
+            settingsRowView.layoutModeSegmentedControl.selectedSegmentIndex = verticalModeIndex
             
         default:
             abort()
         }
         
-        settingsRowView.modeSegmentedControl.isSelected = true
+        settingsRowView.layoutModeSegmentedControl.isSelected = true
         
-        switch settingsRowView.modeSegmentedControl.selectedSegmentIndex {
+        switch settingsRowView.layoutModeSegmentedControl.selectedSegmentIndex {
             
         case verticalModeIndex:
             keyboardStackView.alignment = .trailing
@@ -254,7 +254,7 @@ class KeyboardView: UIView {
         
         settingsRowView.widthAnchor.constraint(equalTo: keyboardStackView.widthAnchor).isActive = true
         
-        settingsRowView.modeSegmentedControl.addTarget(self, action: #selector(keyboardModeDidChange), for: .allEvents)
+        settingsRowView.layoutModeSegmentedControl.addTarget(self, action: #selector(keyboardModeDidChange), for: .allEvents)
     }
     
     func keyboardModeDidChange(segmentedControl: UISegmentedControl) {

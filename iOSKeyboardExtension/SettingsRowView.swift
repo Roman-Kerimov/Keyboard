@@ -63,7 +63,8 @@ class SettingsRowView: UIStackView {
     let hideButton = UIButton(type: .system)
     let settingsButton = UIButton(type: .system)
     
-    let modeSegmentedControl = UISegmentedControl(items: modeSegmentLabels)
+    let layoutModeSegmentedControl = UISegmentedControl(items: modeSegmentLabels)
+    let conversionModeSegmentedControl  = UISegmentedControl(items: ["ya", "я"])
     
     var controls: [UIControl]!
 
@@ -90,7 +91,7 @@ class SettingsRowView: UIStackView {
         
         settingsButton.setTitle("⚬⚬⚬", for: [])
         
-        controls = [nextKeyboardButton, hideButton, modeSegmentedControl, settingsButton]
+        controls = [nextKeyboardButton, hideButton, layoutModeSegmentedControl, conversionModeSegmentedControl, settingsButton]
         
         for control in controls {
             
@@ -99,6 +100,8 @@ class SettingsRowView: UIStackView {
             
             addArrangedSubview(control)
         }
+        
+        conversionModeSegmentedControl.selectedSegmentIndex = 0
     }
     
     required init(coder: NSCoder) {

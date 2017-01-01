@@ -142,6 +142,10 @@ class KeyboardView: UIView {
     }
     
     func configure() {
+        if settingsRowView.layoutModeSegmentedControl.numberOfSegments < 2 {
+            settingsRowView.layoutModeSegmentedControl.insertSegment(withTitle: verticalModeLabel, at: 1, animated: false)
+        }
+        
         let verticalModeIndex = modeSegmentLabels.index(of: verticalModeLabel)!
         let horizontalModeIndex = modeSegmentLabels.index(of: horizontalModeLabel)!
         
@@ -175,7 +179,10 @@ class KeyboardView: UIView {
             abort()
         }
         
-        settingsRowView.layoutModeSegmentedControl.isSelected = true
+        if screenSize.height < minLongDeviceSide {
+            settingsRowView.layoutModeSegmentedControl.selectedSegmentIndex = horizontalModeIndex
+            settingsRowView.layoutModeSegmentedControl.removeSegment(at: verticalModeIndex, animated: false)
+        }
         
         switch settingsRowView.layoutModeSegmentedControl.selectedSegmentIndex {
             

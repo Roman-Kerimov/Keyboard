@@ -94,6 +94,8 @@ class KeyboardLayout {
         "R$": "₽",
         "La$": "₾",
         "B$": "₿",
+        
+        "N#": "№",
     ]
     
     static let dvorak = KeyboardLayout(

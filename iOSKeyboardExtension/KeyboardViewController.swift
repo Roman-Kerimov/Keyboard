@@ -87,6 +87,26 @@ class KeyboardViewController: UIInputViewController {
             
         case tabLabel:
             textDocumentProxy.insertText("\t")
+            
+        case unionLabel:
+            var maxSuffixLength = KeyboardLayout.unionDictionary.keys.map { $0.characters.count }.max()!
+            
+            Suffix: while maxSuffixLength > 0 {
+                let combination = String(textDocumentProxy.documentContextBeforeInput!.characters.suffix(maxSuffixLength))
+                
+                if let union = KeyboardLayout.unionDictionary[combination] {
+                    
+                    for _ in 1...combination.characters.count {
+                        textDocumentProxy.deleteBackward()
+                    }
+                    
+                    textDocumentProxy.insertText(union)
+                    
+                    break Suffix
+                }
+                
+                maxSuffixLength -= 1
+            }
         
         default:
             textDocumentProxy.insertText(label)

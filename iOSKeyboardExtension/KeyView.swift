@@ -130,6 +130,7 @@ class KeyView: UIView {
             addSubview(shiftLeftLabel)
             shiftLeftLabel.leftAnchor.constraint(equalTo: backgroundView.layoutMarginsGuide.leftAnchor).isActive = true
             shiftLeftLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+            shiftLeftLabel.text = unionLabel
             
             addSubview(shiftRightLabel)
             shiftRightLabel.rightAnchor.constraint(equalTo: backgroundView.layoutMarginsGuide.rightAnchor).isActive = true
@@ -236,6 +237,7 @@ class KeyView: UIView {
             && mainLabel != spaceLabel
         	&& mainLabel != returnLabel
         	&& mainLabel != tabLabel
+        	&& mainLabel != unionLabel
     }
 }
 
@@ -243,3 +245,4 @@ let deleteLabel = "delete"
 let spaceLabel = " "
 let returnLabel = "return"
 let tabLabel = "tab"
+let unionLabel = "union"

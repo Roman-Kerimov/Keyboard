@@ -46,7 +46,55 @@ class KeyboardLayout {
             [	"@",	"#",	"$",	"%",	"( )",	"*",	"4",	"5",	"6",	"+",	],
             [	"`",	"~",	"^",	"\\",	"[ ]",	"0",	"1",	"2",	"3",	"=",	]
         ]	
-    )	
+    )
+    
+    static let unionDictionary: [String: String] = [
+        "`": String(Character(UnicodeScalar(0x300)!)),
+        "'": String(Character(UnicodeScalar(0x301)!)),
+        "^": String(Character(UnicodeScalar(0x302)!)),
+        "~": String(Character(UnicodeScalar(0x303)!)),
+        "-": String(Character(UnicodeScalar(0x304)!)),
+        "--": String(Character(UnicodeScalar(0x305)!)),
+        "u": String(Character(UnicodeScalar(0x306)!)),
+        ".": String(Character(UnicodeScalar(0x307)!)),
+        "..": String(Character(UnicodeScalar(0x308)!)),
+        "\"": String(Character(UnicodeScalar(0x30B)!)),
+        "\'\'": String(Character(UnicodeScalar(0x30B)!)),
+        "v": String(Character(UnicodeScalar(0x30C)!)),
+        "``": String(Character(UnicodeScalar(0x30F)!)),
+        
+        "c$": "¢",
+        "L$": "£",
+        "Y$": "¥",
+        "C$": "₡",
+        "Cr$": "₢",
+        "F$": "₣",
+        "m$": "₥",
+        "N$": "₦",
+        "Pts$": "₧",
+        "Rs$": "₨",
+        "W$": "₩",
+        "sh$": "₪",
+        "d$": "₫",
+        "E$": "€",
+        "K$": "₭",
+        "Tu$": "₮",
+        "Dr$": "₯",
+        "Pf$": "₰",
+        "P$": "₱",
+        "G$": "₲",
+        "A$": "₳",
+        "H$": "₴",
+        "Ce$": "₵",
+        "lt$": "₶",
+        "Te$": "₸",
+        "Rup$": "₹",
+        "TL$": "₺",
+        "man$": "₼",
+        "R$": "₽",
+        "La$": "₾",
+        "B$": "₿",
+    ]
     
     static let dvorak = KeyboardLayout(
         [

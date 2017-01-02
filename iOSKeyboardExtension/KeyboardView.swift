@@ -88,7 +88,10 @@ class KeyboardView: UIView {
             width: keyWidth,
             height: min(
                 max(
-                    maxKeyboardHeight / sizeInKeysForVerticalMode.height,
+                    min(
+                        maxKeyboardHeight / sizeInKeysForVerticalMode.height,
+                        maxKeyHeight(fromWidth: maxKeyWidth)
+                    ),
                     maxKeyHeight(fromWidth: keyWidth)
                 ),
                 

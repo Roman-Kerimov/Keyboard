@@ -149,25 +149,25 @@ class KeyboardView: UIView {
         let verticalModeIndex = modeSegmentLabels.index(of: verticalModeLabel)!
         let horizontalModeIndex = modeSegmentLabels.index(of: horizontalModeLabel)!
         
-        if settings.getLayoutMode(forScreenSize: screenSize) == .default {
+        if settings.layoutMode == .default {
             if bounds.width < minLongDeviceSide {
-                settings.set(layoutMode: .vertical, forScreenSize: screenSize)
+                settings.layoutMode = .vertical
             }
             else {
-                settings.set(layoutMode: .horizontal, forScreenSize: screenSize)
+                settings.layoutMode = .horizontal
             }
         }
         
         if alternateLayoutMode {
-            if settings.getLayoutMode(forScreenSize: screenSize) == .vertical {
-                settings.set(layoutMode: .horizontal, forScreenSize: screenSize)
+            if settings.layoutMode == .vertical {
+                settings.layoutMode = .horizontal
             }
             else {
-                settings.set(layoutMode: .vertical, forScreenSize: screenSize)
+                settings.layoutMode = .vertical
             }
         }
         
-        switch settings.getLayoutMode(forScreenSize: screenSize) {
+        switch settings.layoutMode {
             
         case .horizontal:
             settingsRowView.layoutModeSegmentedControl.selectedSegmentIndex = horizontalModeIndex
@@ -266,15 +266,13 @@ class KeyboardView: UIView {
     
     func keyboardModeDidChange(segmentedControl: UISegmentedControl) {
         
-        let screenSize = UIScreen.main.bounds.size
-        
         switch segmentedControl.selectedSegmentIndex {
             
         case modeSegmentLabels.index(of: verticalModeLabel)!:
-            settings.set(layoutMode: .vertical, forScreenSize: screenSize)
+            settings.layoutMode = .vertical
             
         case modeSegmentLabels.index(of: horizontalModeLabel)!:
-            settings.set(layoutMode: .horizontal, forScreenSize: screenSize)
+            settings.layoutMode = .horizontal
             
         default:
             abort()

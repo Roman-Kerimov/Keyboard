@@ -19,58 +19,20 @@ class KeyboardSettings: NSObject {
     
     var layout: KeyboardLayout = .qwerty
     
-    func set(layoutMode: KeyboardLayoutMode, forScreenSize screenSize: CGSize) {
-        
-        if screenSize.width < screenSize.height {
-            portraitLayoutMode = layoutMode
-        }
-        else {
-            landscapeLayoutMode = layoutMode
-        }
-    }
-    
-    func getLayoutMode(forScreenSize screenSize: CGSize) -> KeyboardLayoutMode {
-        
-        if screenSize.width < screenSize.height {
-           	return portraitLayoutMode
-        }
-        else {
-           	return landscapeLayoutMode
-        }
-    }
-    
-    func layoutMode(orientation: UIDeviceOrientation) -> KeyboardLayoutMode {
-        return portraitLayoutMode
-    }
-    
     #if TARGET_INTERFACE_BUILDER
     
-    private var portraitLayoutMode: KeyboardLayoutMode = .default
-    private var landscapeLayoutMode: KeyboardLayoutMode = .default
+    var layoutMode: KeyboardLayoutMode = .default
     
     #else
     
-    private let portraitLayoutModeKey = "portraitLayoutMode"
-    private var portraitLayoutMode: KeyboardLayoutMode {
+    private let layoutModeKey = "layoutMode"
+    var layoutMode: KeyboardLayoutMode {
         get {
-            return KeyboardLayoutMode(rawValue: UserDefaults.standard.string(forKey: portraitLayoutModeKey) ?? "") ?? .default
+            return KeyboardLayoutMode(rawValue: UserDefaults.standard.string(forKey: layoutModeKey) ?? "") ?? .default
         }
         
         set {
-            UserDefaults.standard.set(newValue.rawValue, forKey: portraitLayoutModeKey)
-            UserDefaults.standard.synchronize()
-            
-        }
-    }
-    
-    private let landscapeLayoutModeKey = "landscapeLayoutMode"
-    private var landscapeLayoutMode: KeyboardLayoutMode {
-        get {
-            return KeyboardLayoutMode(rawValue: UserDefaults.standard.string(forKey: landscapeLayoutModeKey) ?? "") ?? .default
-        }
-        
-        set {
-            UserDefaults.standard.set(newValue.rawValue, forKey: landscapeLayoutModeKey)
+            UserDefaults.standard.set(newValue.rawValue, forKey: layoutModeKey)
             UserDefaults.standard.synchronize()
         }
     }

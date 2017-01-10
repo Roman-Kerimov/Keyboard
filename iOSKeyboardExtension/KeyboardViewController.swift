@@ -38,7 +38,9 @@ class KeyboardViewController: UIInputViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        keyboardView.configure()
+        if view.bounds.width < UIScreen.main.bounds.width {
+            keyboardView.configure()
+        }
     }
     
     override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {

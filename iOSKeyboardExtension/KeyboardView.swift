@@ -8,9 +8,6 @@
 
 import UIKit
 
-let minShortDeviceSide: CGFloat = 320
-let minLongDeviceSide: CGFloat = 480
-
 @IBDesignable
 class KeyboardView: UIView {
     
@@ -41,12 +38,26 @@ class KeyboardView: UIView {
         }
     }
     
+    var scaleFactor: CGFloat {
+        if isInterfaceBuilder {
+            return 1
+        }
+        else {
+            return bounds.width / UIScreen.main.bounds.width
+        }
+    }
+    
+    var minimalScreenSize: CGSize {
+        return CGSize(width: 320 * scaleFactor, height: 480 * scaleFactor)
+    }
+    
     var  screenSize: CGSize {
         if isInterfaceBuilder {
             return bounds.size
         }
         else {
-            return UIScreen.main.bounds.size
+        	let nativeSize = UIScreen.main.bounds.size
+            return CGSize(width: nativeSize.width * scaleFactor, height: nativeSize.height * scaleFactor)
         }
     }
     
@@ -54,7 +65,9 @@ class KeyboardView: UIView {
     
     let maxKeyboardHeightRatio: CGFloat = 0.56
     
-    private let maxKeyWidth: CGFloat = 102.4
+    private var maxKeyWidth: CGFloat {
+        return 102.4 * scaleFactor
+    }
     private func maxKeyHeight(fromWidth width: CGFloat) -> CGFloat {
         return width * 0.94
     }
@@ -153,7 +166,7 @@ class KeyboardView: UIView {
         let horizontalModeIndex = modeSegmentLabels.index(of: horizontalModeLabel)!
         
         if settings.layoutMode == .default {
-            if bounds.width < minLongDeviceSide {
+            if bounds.width < minimalScreenSize.height {
                 settings.layoutMode = .vertical
             }
             else {
@@ -182,7 +195,7 @@ class KeyboardView: UIView {
             abort()
         }
         
-        if screenSize.height < minLongDeviceSide {
+        if screenSize.height < minimalScreenSize.height {
             settingsRowView.layoutModeSegmentedControl.selectedSegmentIndex = horizontalModeIndex
             settingsRowView.layoutModeSegmentedControl.removeSegment(at: verticalModeIndex, animated: false)
         }

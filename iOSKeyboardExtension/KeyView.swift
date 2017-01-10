@@ -53,7 +53,7 @@ class KeyView: UIView {
             
             let keyWidthForCalculateFontSize = max(
                 keyboardView.keySize.width,
-                minShortDeviceSide / keyboardView.sizeInKeysForVerticalMode.width
+                keyboardView.minimalScreenSize.width / keyboardView.sizeInKeysForVerticalMode.width
             )
             
             let labelFontSize = keyWidthForCalculateFontSize * 6/15

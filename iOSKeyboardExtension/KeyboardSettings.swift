@@ -17,7 +17,17 @@ class KeyboardSettings: NSObject {
         case `default` = "default"
     }
     
-    var layout: KeyboardLayout = .qwerty
+    private let layoutKey = "layout"
+    var layout: KeyboardLayout {
+        get {
+            return KeyboardLayout.list.filter { $0.name == (UserDefaults.standard.string(forKey: layoutKey) ?? "")}.first ?? .qwerty
+        }
+        
+        set {
+            UserDefaults.standard.set(newValue.name, forKey: layoutKey)
+            UserDefaults.standard.synchronize()
+        }
+    }
     
     #if TARGET_INTERFACE_BUILDER
     

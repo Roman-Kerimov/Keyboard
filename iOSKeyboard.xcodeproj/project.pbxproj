@@ -29,6 +29,7 @@
 		9685BCFF1E06815700702C84 /* KeyboardSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9685BCFE1E06815700702C84 /* KeyboardSettings.swift */; };
 		96A710491DFEC405004669C1 /* SettingsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A710481DFEC405004669C1 /* SettingsRowView.swift */; };
 		96BC5F561DEB961F002E0752 /* ShiftLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BC5F551DEB961F002E0752 /* ShiftLabel.swift */; };
+		96F8D1D11E26FAE0000D1DFC /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8D1D01E26FAE0000D1DFC /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		9685BCFE1E06815700702C84 /* KeyboardSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardSettings.swift; sourceTree = "<group>"; };
 		96A710481DFEC405004669C1 /* SettingsRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsRowView.swift; sourceTree = "<group>"; };
 		96BC5F551DEB961F002E0752 /* ShiftLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftLabel.swift; sourceTree = "<group>"; };
+		96F8D1D01E26FAE0000D1DFC /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +195,7 @@
 				96530D661DD1C9A9004E8BAA /* KeyboardLayout.swift */,
 				964ED5471DF5765E006AD952 /* KeyboardColorScheme.swift */,
 				964AB9691D1B6535004C827C /* KeyboardViewController.swift */,
+				96F8D1D01E26FAE0000D1DFC /* SettingsViewController.swift */,
 				965D15C01D3146BB0098FA57 /* KeyboardView.swift */,
 				966194D21DE2FCEF007FCF02 /* MainRowsView.swift */,
 				965D15CA1D32F7C90098FA57 /* HalfKeyboardView.swift */,
@@ -417,6 +420,7 @@
 				96A710491DFEC405004669C1 /* SettingsRowView.swift in Sources */,
 				964ED5481DF5765E006AD952 /* KeyboardColorScheme.swift in Sources */,
 				9654DF7A1D4E1D0900DDB0EF /* SpaceRowView.swift in Sources */,
+				96F8D1D11E26FAE0000D1DFC /* SettingsViewController.swift in Sources */,
 				96530D671DD1C9A9004E8BAA /* KeyboardLayout.swift in Sources */,
 				9685BCFF1E06815700702C84 /* KeyboardSettings.swift in Sources */,
 			);

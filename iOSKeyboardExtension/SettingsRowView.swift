@@ -103,7 +103,6 @@ class SettingsRowView: UIStackView {
         
         conversionModeSegmentedControl.selectedSegmentIndex = 0
         conversionModeSegmentedControl.isEnabled = false
-        settingsButton.isEnabled = false
     }
     
     required init(coder: NSCoder) {

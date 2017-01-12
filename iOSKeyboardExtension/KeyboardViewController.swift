@@ -10,7 +10,11 @@ import UIKit
 
 class KeyboardViewController: UIInputViewController {
     
-    var keyboardView: KeyboardView!
+    var keyboardView: KeyboardView {
+        return view as! KeyboardView
+    }
+    
+    let settingsViewController = SettingsViewController()
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
@@ -22,11 +26,14 @@ class KeyboardViewController: UIInputViewController {
         super.viewDidLoad()
         
         // Perform custom UI setup here
-        keyboardView = view as! KeyboardView
         
         keyboardView.settingsRowView.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
         
-        keyboardView.settingsRowView.hideButton.addTarget(self, action: #selector(dismissKeyboard), for: .allTouchEvents)
+        keyboardView.settingsRowView.hideButton.addTarget(self, action: #selector(dismissKeyboard), for: .touchUpInside)
+        
+        keyboardView.settingsRowView.settingsButton.addTarget(self, action: #selector(showSettings), for: .touchUpInside)
+        
+        settingsViewController.backButton.addTarget(self, action: #selector(hideSettings), for: .allTouchEvents)
         
         for key in KeyView.allKeys {
             key.action = keyAction(label:)
@@ -116,6 +123,49 @@ class KeyboardViewController: UIInputViewController {
         
         default:
             textDocumentProxy.insertText(label)
+        }
+    }
+    
+    var settingsRightConstraint: NSLayoutConstraint!
+    
+    let settingsAnimateDuration = 0.3
+    
+    func showSettings() {
+        addChildViewController(settingsViewController)
+        view.addSubview(settingsViewController.view)
+        
+        settingsRightConstraint = settingsViewController.view.rightAnchor.constraint(equalTo: view.rightAnchor, constant: settingsViewController.widthConstraint.constant)
+        
+        NSLayoutConstraint.activate([
+            settingsViewController.view.topAnchor.constraint(equalTo: view.topAnchor),
+            settingsViewController.view.leftAnchor.constraint(equalTo: view.leftAnchor),
+            settingsRightConstraint,
+            settingsViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        
+        view.layoutIfNeeded()
+        
+        settingsRightConstraint.constant = 0
+        
+        UIView.animate(withDuration: settingsAnimateDuration) {
+            self.settingsViewController.backButton.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func hideSettings() {
+        
+        view.layoutIfNeeded()
+        
+        settingsRightConstraint.constant = self.settingsViewController.widthConstraint.constant
+        
+        UIView.animate(withDuration: settingsAnimateDuration) {
+            self.settingsViewController.backButton.backgroundColor = .clear
+            self.view.layoutIfNeeded()
+        }
+        
+        Timer.scheduledTimer(withTimeInterval: settingsAnimateDuration, repeats: false) { (timer) in
+            self.settingsViewController.view.removeFromSuperview()
         }
     }
 

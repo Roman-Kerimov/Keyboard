@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainRowsView: UIView {
+class KeyboardLayoutView: UIView {
 
     /*
     // Only override draw() if you perform custom drawing.

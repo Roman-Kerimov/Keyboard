@@ -70,7 +70,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         
         settings.layout = KeyboardLayout.list[indexPath.row]
         
-        (parent as! KeyboardViewController).keyboardView.configure()
+        (parent as! KeyboardViewController).updateKeyboardLayout()
     }
 
     // MARK: - Table view data source

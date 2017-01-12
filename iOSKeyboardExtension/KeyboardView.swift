@@ -113,7 +113,7 @@ class KeyboardView: UIView {
         )
     }
     
-    var mainRowsSize: CGSize {
+    var halfKeyboardSize: CGSize {
         return CGSize(
             width: keySize.width * CGFloat(settings.layout.columnCount / 2),
             height: keySize.height * CGFloat(settings.layout.rowCount)
@@ -218,7 +218,7 @@ class KeyboardView: UIView {
             widthConstraint?.constant = size.width
         }
         else {
-            widthConstraint = mainRowsView.widthAnchor.constraint(equalToConstant: size.width)
+            widthConstraint = layoutContainerViev.widthAnchor.constraint(equalToConstant: size.width)
             widthConstraint?.priority = 999
             widthConstraint?.isActive = true
         }
@@ -236,13 +236,17 @@ class KeyboardView: UIView {
             keyboardView.heightAnchor.constraint(equalToConstant: size.height).isActive = true
         }
         
-        mainRowsView.halfKeyboardSize = mainRowsSize
+        layoutView?.halfKeyboardSize = halfKeyboardSize
         spaceRowView.height = spaceRowHeight
         settingsRowView.height = settingsRowHeight
         KeyView.configure(for: self)
     }
     
-    var mainRowsView: MainRowsView!
+    var layoutView: KeyboardLayoutView? {
+        return layoutContainerViev.subviews.filter { $0 is KeyboardLayoutView }.first as? KeyboardLayoutView
+    }
+    
+    var layoutContainerViev = UIView()
     let spaceRowView = SpaceRowView()
     let settingsRowView = SettingsRowView()
     
@@ -259,21 +263,15 @@ class KeyboardView: UIView {
         keyboardView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
         keyboardView.addSubview(keyboardStackView)
+        keyboardStackView.alignBounds()
         keyboardStackView.axis = .vertical
         keyboardStackView.translatesAutoresizingMaskIntoConstraints = false
         
-        keyboardStackView.topAnchor.constraint(equalTo: keyboardView.topAnchor).isActive = true
-        keyboardStackView.leftAnchor.constraint(equalTo: keyboardView.leftAnchor).isActive = true
-        keyboardStackView.rightAnchor.constraint(equalTo: keyboardView.rightAnchor).isActive = true
-        keyboardStackView.bottomAnchor.constraint(equalTo: keyboardView.bottomAnchor).isActive = true
-        
-        mainRowsView = MainRowsView(layout: settings.layout)
-        
-        keyboardStackView.addArrangedSubview(mainRowsView)
+        keyboardStackView.addArrangedSubview(layoutContainerViev)
         keyboardStackView.addArrangedSubview(spaceRowView)
         keyboardStackView.addArrangedSubview(settingsRowView)
         
-        mainRowsView.widthAnchor.constraint(equalTo: spaceRowView.widthAnchor).isActive = true
+        layoutContainerViev.widthAnchor.constraint(equalTo: spaceRowView.widthAnchor).isActive = true
         
         settingsRowView.widthAnchor.constraint(equalTo: keyboardStackView.widthAnchor).isActive = true
         

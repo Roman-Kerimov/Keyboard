@@ -24,7 +24,8 @@
 		965D15C11D3146BB0098FA57 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965D15C01D3146BB0098FA57 /* KeyboardView.swift */; };
 		965D15C91D32AE3B0098FA57 /* KeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965D15C81D32AE3B0098FA57 /* KeyView.swift */; };
 		965D15CB1D32F7C90098FA57 /* HalfKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965D15CA1D32F7C90098FA57 /* HalfKeyboardView.swift */; };
-		966194D31DE2FCEF007FCF02 /* MainRowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966194D21DE2FCEF007FCF02 /* MainRowsView.swift */; };
+		966194D31DE2FCEF007FCF02 /* KeyboardLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966194D21DE2FCEF007FCF02 /* KeyboardLayoutView.swift */; };
+		96703DE01E27E3BD0048BF0D /* KeyboardLayoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96703DDF1E27E3BC0048BF0D /* KeyboardLayoutViewController.swift */; };
 		9676A6AC1E17C7400091B155 /* FiraSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9676A6AB1E17C4830091B155 /* FiraSans-Regular.ttf */; };
 		9685BCFF1E06815700702C84 /* KeyboardSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9685BCFE1E06815700702C84 /* KeyboardSettings.swift */; };
 		96A710491DFEC405004669C1 /* SettingsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A710481DFEC405004669C1 /* SettingsRowView.swift */; };
@@ -95,7 +96,8 @@
 		965D15C01D3146BB0098FA57 /* KeyboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		965D15C81D32AE3B0098FA57 /* KeyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyView.swift; sourceTree = "<group>"; };
 		965D15CA1D32F7C90098FA57 /* HalfKeyboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfKeyboardView.swift; sourceTree = "<group>"; };
-		966194D21DE2FCEF007FCF02 /* MainRowsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainRowsView.swift; sourceTree = "<group>"; };
+		966194D21DE2FCEF007FCF02 /* KeyboardLayoutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutView.swift; sourceTree = "<group>"; };
+		96703DDF1E27E3BC0048BF0D /* KeyboardLayoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutViewController.swift; sourceTree = "<group>"; };
 		9676A6AB1E17C4830091B155 /* FiraSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FiraSans-Regular.ttf"; sourceTree = "<group>"; };
 		9685BCFE1E06815700702C84 /* KeyboardSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardSettings.swift; sourceTree = "<group>"; };
 		96A710481DFEC405004669C1 /* SettingsRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsRowView.swift; sourceTree = "<group>"; };
@@ -197,7 +199,8 @@
 				964AB9691D1B6535004C827C /* KeyboardViewController.swift */,
 				96F8D1D01E26FAE0000D1DFC /* SettingsViewController.swift */,
 				965D15C01D3146BB0098FA57 /* KeyboardView.swift */,
-				966194D21DE2FCEF007FCF02 /* MainRowsView.swift */,
+				96703DDF1E27E3BC0048BF0D /* KeyboardLayoutViewController.swift */,
+				966194D21DE2FCEF007FCF02 /* KeyboardLayoutView.swift */,
 				965D15CA1D32F7C90098FA57 /* HalfKeyboardView.swift */,
 				9654DF791D4E1D0900DDB0EF /* SpaceRowView.swift */,
 				965D15C81D32AE3B0098FA57 /* KeyView.swift */,
@@ -411,13 +414,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				966194D31DE2FCEF007FCF02 /* MainRowsView.swift in Sources */,
+				966194D31DE2FCEF007FCF02 /* KeyboardLayoutView.swift in Sources */,
 				965D15CB1D32F7C90098FA57 /* HalfKeyboardView.swift in Sources */,
 				964AB96A1D1B6535004C827C /* KeyboardViewController.swift in Sources */,
 				96BC5F561DEB961F002E0752 /* ShiftLabel.swift in Sources */,
 				965D15C91D32AE3B0098FA57 /* KeyView.swift in Sources */,
 				965D15C11D3146BB0098FA57 /* KeyboardView.swift in Sources */,
 				96A710491DFEC405004669C1 /* SettingsRowView.swift in Sources */,
+				96703DE01E27E3BD0048BF0D /* KeyboardLayoutViewController.swift in Sources */,
 				964ED5481DF5765E006AD952 /* KeyboardColorScheme.swift in Sources */,
 				9654DF7A1D4E1D0900DDB0EF /* SpaceRowView.swift in Sources */,
 				96F8D1D11E26FAE0000D1DFC /* SettingsViewController.swift in Sources */,

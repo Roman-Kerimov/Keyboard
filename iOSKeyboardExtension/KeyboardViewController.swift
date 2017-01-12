@@ -14,6 +14,7 @@ class KeyboardViewController: UIInputViewController {
         return view as! KeyboardView
     }
     
+    var layoutViewController: KeyboardLayoutViewController?
     let settingsViewController = SettingsViewController()
     
     override func updateViewConstraints() {
@@ -26,6 +27,7 @@ class KeyboardViewController: UIInputViewController {
         super.viewDidLoad()
         
         // Perform custom UI setup here
+        updateKeyboardLayout()
         
         keyboardView.settingsRowView.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
         
@@ -169,4 +171,27 @@ class KeyboardViewController: UIInputViewController {
         }
     }
 
+    func updateKeyboardLayout() {
+        layoutViewController?.view.removeFromSuperview()
+        layoutViewController?.removeFromParentViewController()
+        
+        layoutViewController = KeyboardLayoutViewController()
+        addChildViewController(layoutViewController!)
+        keyboardView.layoutContainerViev.addSubview(layoutViewController!.view)
+        layoutViewController!.view.alignBounds()
+        
+        keyboardView.configure()
+        keyboardView.colorScheme = keyboardView.colorScheme
+    }
+}
+
+extension UIView {
+    func alignBounds() {
+        NSLayoutConstraint.activate([
+            topAnchor.constraint(equalTo: superview!.topAnchor),
+            leftAnchor.constraint(equalTo: superview!.leftAnchor),
+            rightAnchor.constraint(equalTo: superview!.rightAnchor),
+            bottomAnchor.constraint(equalTo: superview!.bottomAnchor),
+        ])
+    }
 }

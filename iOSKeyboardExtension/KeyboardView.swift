@@ -268,6 +268,12 @@ class KeyboardView: UIView {
         keyboardStackView.translatesAutoresizingMaskIntoConstraints = false
         
         keyboardStackView.addArrangedSubview(layoutContainerView)
+        #if TARGET_INTERFACE_BUILDER
+            let layoutView = KeyboardLayoutView(layout: .qwerty)
+            layoutContainerView.addSubview(layoutView)
+            layoutView.alignBounds()
+        #endif
+        
         keyboardStackView.addArrangedSubview(spaceRowView)
         keyboardStackView.addArrangedSubview(settingsRowView)
         

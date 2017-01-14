@@ -15,3 +15,8 @@ struct ConversionModeTitle: InternationalizedString {
     static var en: String {return "æ"}
     static var ru: String {return "я"}
 }
+
+struct KeyboardLayoutSectionTitle: InternationalizedString {
+    static var en: String {return "Keyboard Layout"}
+    static var ru: String {return "Раскладка клавиатуры"}
+}

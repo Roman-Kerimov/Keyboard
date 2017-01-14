@@ -51,6 +51,10 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         
         widthConstraint = tableView.widthAnchor.constraint(equalToConstant: 280)
         widthConstraint.isActive = true
+        
+        Internationalize.setString {
+            self.tableView.reloadData()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -83,6 +87,15 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return KeyboardLayout.list.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return KeyboardLayoutSectionTitle.string
+        default:
+            return nil
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

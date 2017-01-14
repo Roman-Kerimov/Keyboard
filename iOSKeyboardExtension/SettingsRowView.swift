@@ -64,7 +64,7 @@ class SettingsRowView: UIStackView {
     let settingsButton = UIButton(type: .system)
     
     let layoutModeSegmentedControl = UISegmentedControl(items: modeSegmentLabels)
-    let conversionModeSegmentedControl  = UISegmentedControl(items: ["ya", "я"])
+    let conversionModeSegmentedControl  = UISegmentedControl(items: ["", ""])
     
     var controls: [UIControl]!
 
@@ -90,6 +90,11 @@ class SettingsRowView: UIStackView {
         hideButton.titleLabel?.font = iconFont
         
         settingsButton.setTitle("⚬⚬⚬", for: [])
+        
+        Internationalize.setString {
+            self.conversionModeSegmentedControl.setTitle(NonConversionModeTitle.string, forSegmentAt: 0)
+            self.conversionModeSegmentedControl.setTitle(ConversionModeTitle.string, forSegmentAt: 1)
+        }
         
         controls = [nextKeyboardButton, hideButton, layoutModeSegmentedControl, conversionModeSegmentedControl, settingsButton]
         

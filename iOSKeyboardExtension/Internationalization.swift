@@ -9,22 +9,55 @@
 import Foundation
 
 protocol InternationalizedString {
+    static var de: String {get}
     static var en: String {get}
+    static var es: String {get}
+    static var fr: String {get}
+    static var it: String {get}
+    static var pt: String {get}
     static var ru: String {get}
+    static var sv: String {get}
 }
 
 enum Language: String {
+    case de = "de"
     case en = "en"
+    case es = "es"
+    case fr = "fr"
+    case it = "it"
+    case pt = "pt"
     case ru = "ru"
+    case sv = "sv"
 }
 
 extension InternationalizedString {
     static var string: String {
         switch Internationalize.language {
+            
+        case .de:
+            return de
+            
         case .en:
             return en
+            
+        case .es:
+            return es
+            
+        case .fr:
+            return fr
+            
+        case .it:
+            return it
+            
+        case .pt:
+            return pt
+            
         case .ru:
             return ru
+            
+        case .sv:
+            return sv
+            
         }
     }
 }

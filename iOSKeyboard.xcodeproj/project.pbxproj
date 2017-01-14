@@ -679,7 +679,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOSiOSKeyboard.app/iOSiOSKeyboard";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOSKeyboard.app/iOSKeyboard";
 			};
 			name = Debug;
 		};
@@ -725,7 +725,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOSiOSKeyboard.app/iOSiOSKeyboard";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOSKeyboard.app/iOSKeyboard";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

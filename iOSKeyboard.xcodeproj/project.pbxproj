@@ -10,11 +10,11 @@
 		964AB9351D1B6490004C827C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964AB9341D1B6490004C827C /* AppDelegate.swift */; };
 		964AB9371D1B6490004C827C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964AB9361D1B6490004C827C /* ViewController.swift */; };
 		964AB93A1D1B6490004C827C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 964AB9381D1B6490004C827C /* Main.storyboard */; };
-		964AB93D1D1B6490004C827C /* iOSKeyboardApplication.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 964AB93B1D1B6490004C827C /* iOSKeyboardApplication.xcdatamodeld */; };
+		964AB93D1D1B6490004C827C /* iOSKeyboard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 964AB93B1D1B6490004C827C /* iOSKeyboard.xcdatamodeld */; };
 		964AB93F1D1B6490004C827C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 964AB93E1D1B6490004C827C /* Assets.xcassets */; };
 		964AB9421D1B6490004C827C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 964AB9401D1B6490004C827C /* LaunchScreen.storyboard */; };
-		964AB94D1D1B6490004C827C /* iOSKeyboardApplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964AB94C1D1B6490004C827C /* iOSKeyboardApplicationTests.swift */; };
-		964AB9581D1B6490004C827C /* iOSKeyboardApplicationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964AB9571D1B6490004C827C /* iOSKeyboardApplicationUITests.swift */; };
+		964AB94D1D1B6490004C827C /* iOSKeyboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964AB94C1D1B6490004C827C /* iOSKeyboardTests.swift */; };
+		964AB9581D1B6490004C827C /* iOSKeyboardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964AB9571D1B6490004C827C /* iOSKeyboardUITests.swift */; };
 		964AB96A1D1B6535004C827C /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964AB9691D1B6535004C827C /* KeyboardViewController.swift */; };
 		964AB96E1D1B6535004C827C /* iOSKeyboardExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 964AB9671D1B6535004C827C /* iOSKeyboardExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		964ED5481DF5765E006AD952 /* KeyboardColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964ED5471DF5765E006AD952 /* KeyboardColorScheme.swift */; };
@@ -41,14 +41,14 @@
 			containerPortal = 964AB9271D1B63C0004C827C /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 964AB9301D1B6490004C827C;
-			remoteInfo = iOSKeyboardApplication;
+			remoteInfo = iOSKeyboard;
 		};
 		964AB9541D1B6490004C827C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 964AB9271D1B63C0004C827C /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 964AB9301D1B6490004C827C;
-			remoteInfo = iOSKeyboardApplication;
+			remoteInfo = iOSKeyboard;
 		};
 		964AB96C1D1B6535004C827C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -74,19 +74,19 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		964AB9311D1B6490004C827C /* iOSKeyboardApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSKeyboardApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		964AB9311D1B6490004C827C /* iOSKeyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSKeyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		964AB9341D1B6490004C827C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		964AB9361D1B6490004C827C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		964AB9391D1B6490004C827C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		964AB93C1D1B6490004C827C /* iOSKeyboardApplication.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iOSKeyboardApplication.xcdatamodel; sourceTree = "<group>"; };
+		964AB93C1D1B6490004C827C /* iOSKeyboard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iOSKeyboard.xcdatamodel; sourceTree = "<group>"; };
 		964AB93E1D1B6490004C827C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		964AB9411D1B6490004C827C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		964AB9431D1B6490004C827C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		964AB9481D1B6490004C827C /* iOSKeyboardApplicationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSKeyboardApplicationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		964AB94C1D1B6490004C827C /* iOSKeyboardApplicationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSKeyboardApplicationTests.swift; sourceTree = "<group>"; };
+		964AB9481D1B6490004C827C /* iOSKeyboardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSKeyboardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		964AB94C1D1B6490004C827C /* iOSKeyboardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSKeyboardTests.swift; sourceTree = "<group>"; };
 		964AB94E1D1B6490004C827C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		964AB9531D1B6490004C827C /* iOSKeyboardApplicationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSKeyboardApplicationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		964AB9571D1B6490004C827C /* iOSKeyboardApplicationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSKeyboardApplicationUITests.swift; sourceTree = "<group>"; };
+		964AB9531D1B6490004C827C /* iOSKeyboardUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSKeyboardUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		964AB9571D1B6490004C827C /* iOSKeyboardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSKeyboardUITests.swift; sourceTree = "<group>"; };
 		964AB9591D1B6490004C827C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		964AB9671D1B6535004C827C /* iOSKeyboardExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iOSKeyboardExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		964AB9691D1B6535004C827C /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
@@ -144,9 +144,9 @@
 		964AB9261D1B63C0004C827C = {
 			isa = PBXGroup;
 			children = (
-				964AB9331D1B6490004C827C /* iOSKeyboardApplication */,
-				964AB94B1D1B6490004C827C /* iOSKeyboardApplicationTests */,
-				964AB9561D1B6490004C827C /* iOSKeyboardApplicationUITests */,
+				964AB9331D1B6490004C827C /* iOSKeyboard */,
+				964AB94B1D1B6490004C827C /* iOSKeyboardTests */,
+				964AB9561D1B6490004C827C /* iOSKeyboardUITests */,
 				964AB9681D1B6535004C827C /* iOSKeyboardExtension */,
 				964AB9321D1B6490004C827C /* Products */,
 			);
@@ -155,15 +155,15 @@
 		964AB9321D1B6490004C827C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				964AB9311D1B6490004C827C /* iOSKeyboardApplication.app */,
-				964AB9481D1B6490004C827C /* iOSKeyboardApplicationTests.xctest */,
-				964AB9531D1B6490004C827C /* iOSKeyboardApplicationUITests.xctest */,
+				964AB9311D1B6490004C827C /* iOSKeyboard.app */,
+				964AB9481D1B6490004C827C /* iOSKeyboardTests.xctest */,
+				964AB9531D1B6490004C827C /* iOSKeyboardUITests.xctest */,
 				964AB9671D1B6535004C827C /* iOSKeyboardExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		964AB9331D1B6490004C827C /* iOSKeyboardApplication */ = {
+		964AB9331D1B6490004C827C /* iOSKeyboard */ = {
 			isa = PBXGroup;
 			children = (
 				964AB9341D1B6490004C827C /* AppDelegate.swift */,
@@ -172,27 +172,27 @@
 				964AB93E1D1B6490004C827C /* Assets.xcassets */,
 				964AB9401D1B6490004C827C /* LaunchScreen.storyboard */,
 				964AB9431D1B6490004C827C /* Info.plist */,
-				964AB93B1D1B6490004C827C /* iOSKeyboardApplication.xcdatamodeld */,
+				964AB93B1D1B6490004C827C /* iOSKeyboard.xcdatamodeld */,
 			);
-			path = iOSKeyboardApplication;
+			path = iOSKeyboard;
 			sourceTree = "<group>";
 		};
-		964AB94B1D1B6490004C827C /* iOSKeyboardApplicationTests */ = {
+		964AB94B1D1B6490004C827C /* iOSKeyboardTests */ = {
 			isa = PBXGroup;
 			children = (
-				964AB94C1D1B6490004C827C /* iOSKeyboardApplicationTests.swift */,
+				964AB94C1D1B6490004C827C /* iOSKeyboardTests.swift */,
 				964AB94E1D1B6490004C827C /* Info.plist */,
 			);
-			path = iOSKeyboardApplicationTests;
+			path = iOSKeyboardTests;
 			sourceTree = "<group>";
 		};
-		964AB9561D1B6490004C827C /* iOSKeyboardApplicationUITests */ = {
+		964AB9561D1B6490004C827C /* iOSKeyboardUITests */ = {
 			isa = PBXGroup;
 			children = (
-				964AB9571D1B6490004C827C /* iOSKeyboardApplicationUITests.swift */,
+				964AB9571D1B6490004C827C /* iOSKeyboardUITests.swift */,
 				964AB9591D1B6490004C827C /* Info.plist */,
 			);
-			path = iOSKeyboardApplicationUITests;
+			path = iOSKeyboardUITests;
 			sourceTree = "<group>";
 		};
 		964AB9681D1B6535004C827C /* iOSKeyboardExtension */ = {
@@ -223,9 +223,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		964AB9301D1B6490004C827C /* iOSKeyboardApplication */ = {
+		964AB9301D1B6490004C827C /* iOSKeyboard */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 964AB95A1D1B6490004C827C /* Build configuration list for PBXNativeTarget "iOSKeyboardApplication" */;
+			buildConfigurationList = 964AB95A1D1B6490004C827C /* Build configuration list for PBXNativeTarget "iOSKeyboard" */;
 			buildPhases = (
 				964AB92D1D1B6490004C827C /* Sources */,
 				964AB92E1D1B6490004C827C /* Frameworks */,
@@ -237,14 +237,14 @@
 			dependencies = (
 				964AB96D1D1B6535004C827C /* PBXTargetDependency */,
 			);
-			name = iOSKeyboardApplication;
-			productName = iOSKeyboardApplication;
-			productReference = 964AB9311D1B6490004C827C /* iOSKeyboardApplication.app */;
+			name = iOSKeyboard;
+			productName = iOSKeyboard;
+			productReference = 964AB9311D1B6490004C827C /* iOSKeyboard.app */;
 			productType = "com.apple.product-type.application";
 		};
-		964AB9471D1B6490004C827C /* iOSKeyboardApplicationTests */ = {
+		964AB9471D1B6490004C827C /* iOSKeyboardTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 964AB95D1D1B6490004C827C /* Build configuration list for PBXNativeTarget "iOSKeyboardApplicationTests" */;
+			buildConfigurationList = 964AB95D1D1B6490004C827C /* Build configuration list for PBXNativeTarget "iOSKeyboardTests" */;
 			buildPhases = (
 				964AB9441D1B6490004C827C /* Sources */,
 				964AB9451D1B6490004C827C /* Frameworks */,
@@ -255,14 +255,14 @@
 			dependencies = (
 				964AB94A1D1B6490004C827C /* PBXTargetDependency */,
 			);
-			name = iOSKeyboardApplicationTests;
-			productName = iOSKeyboardApplicationTests;
-			productReference = 964AB9481D1B6490004C827C /* iOSKeyboardApplicationTests.xctest */;
+			name = iOSKeyboardTests;
+			productName = iOSKeyboardTests;
+			productReference = 964AB9481D1B6490004C827C /* iOSKeyboardTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		964AB9521D1B6490004C827C /* iOSKeyboardApplicationUITests */ = {
+		964AB9521D1B6490004C827C /* iOSKeyboardUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 964AB9601D1B6490004C827C /* Build configuration list for PBXNativeTarget "iOSKeyboardApplicationUITests" */;
+			buildConfigurationList = 964AB9601D1B6490004C827C /* Build configuration list for PBXNativeTarget "iOSKeyboardUITests" */;
 			buildPhases = (
 				964AB94F1D1B6490004C827C /* Sources */,
 				964AB9501D1B6490004C827C /* Frameworks */,
@@ -273,9 +273,9 @@
 			dependencies = (
 				964AB9551D1B6490004C827C /* PBXTargetDependency */,
 			);
-			name = iOSKeyboardApplicationUITests;
-			productName = iOSKeyboardApplicationUITests;
-			productReference = 964AB9531D1B6490004C827C /* iOSKeyboardApplicationUITests.xctest */;
+			name = iOSKeyboardUITests;
+			productName = iOSKeyboardUITests;
+			productReference = 964AB9531D1B6490004C827C /* iOSKeyboardUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 		964AB9661D1B6535004C827C /* iOSKeyboardExtension */ = {
@@ -345,9 +345,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				964AB9301D1B6490004C827C /* iOSKeyboardApplication */,
-				964AB9471D1B6490004C827C /* iOSKeyboardApplicationTests */,
-				964AB9521D1B6490004C827C /* iOSKeyboardApplicationUITests */,
+				964AB9301D1B6490004C827C /* iOSKeyboard */,
+				964AB9471D1B6490004C827C /* iOSKeyboardTests */,
+				964AB9521D1B6490004C827C /* iOSKeyboardUITests */,
 				964AB9661D1B6535004C827C /* iOSKeyboardExtension */,
 			);
 		};
@@ -396,7 +396,7 @@
 			files = (
 				964AB9371D1B6490004C827C /* ViewController.swift in Sources */,
 				964AB9351D1B6490004C827C /* AppDelegate.swift in Sources */,
-				964AB93D1D1B6490004C827C /* iOSKeyboardApplication.xcdatamodeld in Sources */,
+				964AB93D1D1B6490004C827C /* iOSKeyboard.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,7 +404,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				964AB94D1D1B6490004C827C /* iOSKeyboardApplicationTests.swift in Sources */,
+				964AB94D1D1B6490004C827C /* iOSKeyboardTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,7 +412,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				964AB9581D1B6490004C827C /* iOSKeyboardApplicationUITests.swift in Sources */,
+				964AB9581D1B6490004C827C /* iOSKeyboardUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,12 +443,12 @@
 /* Begin PBXTargetDependency section */
 		964AB94A1D1B6490004C827C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 964AB9301D1B6490004C827C /* iOSKeyboardApplication */;
+			target = 964AB9301D1B6490004C827C /* iOSKeyboard */;
 			targetProxy = 964AB9491D1B6490004C827C /* PBXContainerItemProxy */;
 		};
 		964AB9551D1B6490004C827C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 964AB9301D1B6490004C827C /* iOSKeyboardApplication */;
+			target = 964AB9301D1B6490004C827C /* iOSKeyboard */;
 			targetProxy = 964AB9541D1B6490004C827C /* PBXContainerItemProxy */;
 		};
 		964AB96D1D1B6535004C827C /* PBXTargetDependency */ = {
@@ -566,12 +566,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = iOSKeyboardApplication/Info.plist;
+				INFOPLIST_FILE = iOSKeyboard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = RomanKerimov.iOSKeyboardApplication;
+				PRODUCT_BUNDLE_IDENTIFIER = RomanKerimov.iOSKeyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -615,11 +615,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = iOSKeyboardApplication/Info.plist;
+				INFOPLIST_FILE = iOSKeyboard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = RomanKerimov.iOSKeyboardApplication;
+				PRODUCT_BUNDLE_IDENTIFIER = RomanKerimov.iOSKeyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -668,18 +668,18 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = iOSKeyboardApplicationTests/Info.plist;
+				INFOPLIST_FILE = iOSKeyboardTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = RomanKerimov.iOSKeyboardApplicationTests;
+				PRODUCT_BUNDLE_IDENTIFIER = RomanKerimov.iOSKeyboardTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOSiOSKeyboardApplication.app/iOSiOSKeyboardApplication";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOSiOSKeyboard.app/iOSiOSKeyboard";
 			};
 			name = Debug;
 		};
@@ -716,16 +716,16 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = iOSKeyboardApplicationTests/Info.plist;
+				INFOPLIST_FILE = iOSKeyboardTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = RomanKerimov.iOSKeyboardApplicationTests;
+				PRODUCT_BUNDLE_IDENTIFIER = RomanKerimov.iOSKeyboardTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOSiOSKeyboardApplication.app/iOSiOSKeyboardApplication";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOSiOSKeyboard.app/iOSiOSKeyboard";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -768,18 +768,18 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = iOSKeyboardApplicationUITests/Info.plist;
+				INFOPLIST_FILE = iOSKeyboardUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = RomanKerimov.iOSKeyboardApplicationUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = RomanKerimov.iOSKeyboardUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = iOSKeyboardApplication;
+				TEST_TARGET_NAME = iOSKeyboard;
 			};
 			name = Debug;
 		};
@@ -815,16 +815,16 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = iOSKeyboardApplicationUITests/Info.plist;
+				INFOPLIST_FILE = iOSKeyboardUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = RomanKerimov.iOSKeyboardApplicationUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = RomanKerimov.iOSKeyboardUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = iOSKeyboardApplication;
+				TEST_TARGET_NAME = iOSKeyboard;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -872,7 +872,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = RomanKerimov.iOSKeyboardApplication.iOSKeyboardExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = RomanKerimov.iOSKeyboard.iOSKeyboardExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -918,7 +918,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = RomanKerimov.iOSKeyboardApplication.iOSKeyboardExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = RomanKerimov.iOSKeyboard.iOSKeyboardExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -940,7 +940,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		964AB95A1D1B6490004C827C /* Build configuration list for PBXNativeTarget "iOSKeyboardApplication" */ = {
+		964AB95A1D1B6490004C827C /* Build configuration list for PBXNativeTarget "iOSKeyboard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				964AB95B1D1B6490004C827C /* Debug */,
@@ -949,7 +949,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		964AB95D1D1B6490004C827C /* Build configuration list for PBXNativeTarget "iOSKeyboardApplicationTests" */ = {
+		964AB95D1D1B6490004C827C /* Build configuration list for PBXNativeTarget "iOSKeyboardTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				964AB95E1D1B6490004C827C /* Debug */,
@@ -958,7 +958,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		964AB9601D1B6490004C827C /* Build configuration list for PBXNativeTarget "iOSKeyboardApplicationUITests" */ = {
+		964AB9601D1B6490004C827C /* Build configuration list for PBXNativeTarget "iOSKeyboardUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				964AB9611D1B6490004C827C /* Debug */,
@@ -979,13 +979,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		964AB93B1D1B6490004C827C /* iOSKeyboardApplication.xcdatamodeld */ = {
+		964AB93B1D1B6490004C827C /* iOSKeyboard.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				964AB93C1D1B6490004C827C /* iOSKeyboardApplication.xcdatamodel */,
+				964AB93C1D1B6490004C827C /* iOSKeyboard.xcdatamodel */,
 			);
-			currentVersion = 964AB93C1D1B6490004C827C /* iOSKeyboardApplication.xcdatamodel */;
-			path = iOSKeyboardApplication.xcdatamodeld;
+			currentVersion = 964AB93C1D1B6490004C827C /* iOSKeyboard.xcdatamodel */;
+			path = iOSKeyboard.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

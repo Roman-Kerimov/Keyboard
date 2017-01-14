@@ -30,8 +30,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "964AB9301D1B6490004C827C"
-               BuildableName = "iOSKeyboardApplication.app"
-               BlueprintName = "iOSKeyboardApplication"
+               BuildableName = "iOSKeyboard.app"
+               BlueprintName = "iOSKeyboard"
                ReferencedContainer = "container:iOSKeyboard.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -72,8 +72,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "964AB9301D1B6490004C827C"
-            BuildableName = "iOSKeyboardApplication.app"
-            BlueprintName = "iOSKeyboardApplication"
+            BuildableName = "iOSKeyboard.app"
+            BlueprintName = "iOSKeyboard"
             ReferencedContainer = "container:iOSKeyboard.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -92,8 +92,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "964AB9301D1B6490004C827C"
-            BuildableName = "iOSKeyboardApplication.app"
-            BlueprintName = "iOSKeyboardApplication"
+            BuildableName = "iOSKeyboard.app"
+            BlueprintName = "iOSKeyboard"
             ReferencedContainer = "container:iOSKeyboard.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

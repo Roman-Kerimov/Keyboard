@@ -8,7 +8,7 @@
 
 import XCTest
 
-class iOSKeyboardApplicationUITests: XCTestCase {
+class iOSKeyboardUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()

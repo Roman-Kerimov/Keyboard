@@ -186,7 +186,7 @@ class KeyboardViewController: UIInputViewController {
     
     func addKeyboardLayout() {
         addChildViewController(layoutViewController)
-        keyboardView.layoutContainerViev.addSubview(layoutViewController.view)
+        keyboardView.layoutContainerView.addSubview(layoutViewController.view)
         layoutViewController.view.alignBounds()
     }
 }

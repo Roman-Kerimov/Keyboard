@@ -218,7 +218,7 @@ class KeyboardView: UIView {
             widthConstraint?.constant = size.width
         }
         else {
-            widthConstraint = layoutContainerViev.widthAnchor.constraint(equalToConstant: size.width)
+            widthConstraint = layoutContainerView.widthAnchor.constraint(equalToConstant: size.width)
             widthConstraint?.priority = 999
             widthConstraint?.isActive = true
         }
@@ -243,10 +243,10 @@ class KeyboardView: UIView {
     }
     
     var layoutView: KeyboardLayoutView? {
-        return layoutContainerViev.subviews.filter { $0 is KeyboardLayoutView }.first as? KeyboardLayoutView
+        return layoutContainerView.subviews.filter { $0 is KeyboardLayoutView }.first as? KeyboardLayoutView
     }
     
-    var layoutContainerViev = UIView()
+    var layoutContainerView = UIView()
     let spaceRowView = SpaceRowView()
     let settingsRowView = SettingsRowView()
     
@@ -267,11 +267,11 @@ class KeyboardView: UIView {
         keyboardStackView.axis = .vertical
         keyboardStackView.translatesAutoresizingMaskIntoConstraints = false
         
-        keyboardStackView.addArrangedSubview(layoutContainerViev)
+        keyboardStackView.addArrangedSubview(layoutContainerView)
         keyboardStackView.addArrangedSubview(spaceRowView)
         keyboardStackView.addArrangedSubview(settingsRowView)
         
-        layoutContainerViev.widthAnchor.constraint(equalTo: spaceRowView.widthAnchor).isActive = true
+        layoutContainerView.widthAnchor.constraint(equalTo: spaceRowView.widthAnchor).isActive = true
         
         settingsRowView.widthAnchor.constraint(equalTo: keyboardStackView.widthAnchor).isActive = true
         

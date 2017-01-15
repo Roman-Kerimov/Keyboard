@@ -149,7 +149,6 @@ class KeyView: UIView {
         addGestureRecognizer(longPressGestureRecognizer)
         
         longPressGestureRecognizer.minimumPressDuration = 0
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -161,6 +160,8 @@ class KeyView: UIView {
     var action: ((String) -> Void)?
 
     var gestureStartPoint: CGPoint!
+    
+    var autorepeatThread: Thread?
     
     func longPressGestureAction(gesture: UIGestureRecognizer) {
         
@@ -177,9 +178,32 @@ class KeyView: UIView {
             
             gestureStartPoint = gesture.location(in: self)
             
+            if label.text == deleteLabel {
+                self.action?(self.label.text!)
+                
+                autorepeatThread = Thread(block: {
+                    let thread = self.autorepeatThread!
+                    
+                    Thread.sleep(forTimeInterval: 0.5)
+                    
+                    while thread.isCancelled == false {
+                        self.action?(self.label.text!)
+                        Thread.sleep(forTimeInterval: 0.1)
+                    }
+                    
+                    Thread.exit()
+                })
+                
+            	autorepeatThread?.start()
+            }
+            
         case .ended:
             
-            action?(label.text!)
+            autorepeatThread?.cancel()
+            
+            if label.text != deleteLabel {
+                action?(label.text!)
+            }
             
             backgroundView.backgroundColor = colorScheme.keyColor
             label.textColor = colorScheme.labelColor

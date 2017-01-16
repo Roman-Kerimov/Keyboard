@@ -39,9 +39,7 @@ class KeyboardViewController: UIInputViewController {
         
         settingsViewController.backButton.addTarget(self, action: #selector(hideSettings), for: .allTouchEvents)
         
-        for key in keyboardView.keys {
-            key.action = keyAction(label:)
-        }
+        keyboardView.add(action: keyAction(label:))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -182,6 +180,8 @@ class KeyboardViewController: UIInputViewController {
         
         keyboardView.configure()
         keyboardView.colorScheme = keyboardView.colorScheme
+        
+        keyboardView.add(action: keyAction(label:))
     }
     
     func addKeyboardLayout() {

@@ -39,7 +39,7 @@ class KeyboardViewController: UIInputViewController {
         
         settingsViewController.backButton.addTarget(self, action: #selector(hideSettings), for: .allTouchEvents)
         
-        for key in KeyView.allKeys {
+        for key in keyboardView.keys {
             key.action = keyAction(label:)
         }
     }

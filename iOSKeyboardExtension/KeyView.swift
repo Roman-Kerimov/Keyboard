@@ -32,42 +32,38 @@ class KeyView: UIView {
         }
     }
     
-    static var allKeys: [KeyView] = []
-    
-    class func configure(for keyboardView: KeyboardView) {
-        for key in allKeys {
-            let width = keyboardView.keySize.width
-            
-            let keySpace = width * 0.1
-            
-        	key.backgroundView.layer.cornerRadius = keySpace
-            
-            let keyEdgeInset = keySpace / 2
-            
-            key.layoutMargins = UIEdgeInsets(top: keyEdgeInset, left: keyEdgeInset, bottom: keyEdgeInset, right: keyEdgeInset)
-            
-            let verticalShiftLabelIndent = keySpace * 1/4
-            let horizontalShiftLabelIndent = keySpace * 1/2
+    func configure(for keyboardView: KeyboardView) {
+        let width = keyboardView.keySize.width
+        
+        let keySpace = width * 0.1
+        
+        backgroundView.layer.cornerRadius = keySpace
+        
+        let keyEdgeInset = keySpace / 2
+        
+        layoutMargins = UIEdgeInsets(top: keyEdgeInset, left: keyEdgeInset, bottom: keyEdgeInset, right: keyEdgeInset)
+        
+        let verticalShiftLabelIndent = keySpace * 1/4
+        let horizontalShiftLabelIndent = keySpace * 1/2
 
-            key.backgroundView.layoutMargins = UIEdgeInsets(top: verticalShiftLabelIndent, left: horizontalShiftLabelIndent, bottom: verticalShiftLabelIndent, right: horizontalShiftLabelIndent)
-            
-            let keyWidthForCalculateFontSize = max(
-                keyboardView.keySize.width,
-                keyboardView.minimalScreenSize.width / keyboardView.sizeInKeysForVerticalMode.width
-            )
-            
-            let labelFontSize = keyWidthForCalculateFontSize * 6/15
-            key.label.font = UIFont.systemFont(ofSize: labelFontSize)
-            
-            let shiftLabelFont = UIFont.systemFont(ofSize: labelFontSize/1.8)
-            key.shiftUpLabel.font = shiftLabelFont
-            key.shiftDownLabel.font = shiftLabelFont
-            key.shiftLeftLabel.font = shiftLabelFont
-            key.shiftRightLabel.font = shiftLabelFont
-            
-            if key.mainLabel == deleteLabel {
-                key.label.font = shiftLabelFont
-            }
+        backgroundView.layoutMargins = UIEdgeInsets(top: verticalShiftLabelIndent, left: horizontalShiftLabelIndent, bottom: verticalShiftLabelIndent, right: horizontalShiftLabelIndent)
+        
+        let keyWidthForCalculateFontSize = max(
+            keyboardView.keySize.width,
+            keyboardView.minimalScreenSize.width / keyboardView.sizeInKeysForVerticalMode.width
+        )
+        
+        let labelFontSize = keyWidthForCalculateFontSize * 6/15
+        label.font = UIFont.systemFont(ofSize: labelFontSize)
+        
+        let shiftLabelFont = UIFont.systemFont(ofSize: labelFontSize/1.8)
+        shiftUpLabel.font = shiftLabelFont
+        shiftDownLabel.font = shiftLabelFont
+        shiftLeftLabel.font = shiftLabelFont
+        shiftRightLabel.font = shiftLabelFont
+        
+        if mainLabel == deleteLabel {
+            label.font = shiftLabelFont
         }
     }
     
@@ -87,8 +83,6 @@ class KeyView: UIView {
     init(label: String, shiftDownLabel: String = "") {
         mainLabel = label
         super.init(frame: CGRect())
-        
-        KeyView.allKeys.append(self)
         
         backgroundView = UIView()
         addSubview(backgroundView)

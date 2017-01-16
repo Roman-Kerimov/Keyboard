@@ -26,7 +26,7 @@ class KeyboardView: UIView {
     
     var colorScheme: KeyboardColorScheme = .default {
         didSet {
-            for key in KeyView.allKeys {
+            for key in keys {
                 key.colorScheme = colorScheme
             }
             
@@ -36,6 +36,20 @@ class KeyboardView: UIView {
                 keyboardView.backgroundColor = colorScheme.fakeBackroundColorForInterfaceBuilder
             }
         }
+    }
+    
+    var keys: [KeyView] {
+        var keyViews: [KeyView] = []
+        
+        for halfKeyboard in layoutView!.halfKeyboards {
+            for row in halfKeyboard.rows {
+                keyViews += row.arrangedSubviews as! [KeyView]
+            }
+        }
+        
+        keyViews += spaceRowView.arrangedSubviews as! [KeyView]
+        
+        return keyViews
     }
     
     var scaleFactor: CGFloat {
@@ -239,7 +253,10 @@ class KeyboardView: UIView {
         layoutView?.halfKeyboardSize = halfKeyboardSize
         spaceRowView.height = spaceRowHeight
         settingsRowView.height = settingsRowHeight
-        KeyView.configure(for: self)
+        
+        for key in keys {
+            key.configure(for: self)
+        }
     }
     
     var layoutView: KeyboardLayoutView? {

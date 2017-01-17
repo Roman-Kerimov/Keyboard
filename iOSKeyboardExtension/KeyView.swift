@@ -238,10 +238,10 @@ class KeyView: UIView {
                     label.text = mainLabel.uppercased()
                 }
             }
-            else if isDownShift && isRightShift {
+            else if isDownShift && isRightShift && shiftDownLabel.text != "" {
                 label.text = shiftDownLabel.text?.components(separatedBy: " ").last
             }
-            else if isDownShift {
+            else if isDownShift && shiftDownLabel.text != "" {
                 label.text = shiftDownLabel.text?.components(separatedBy: " ").first
             }
             else {

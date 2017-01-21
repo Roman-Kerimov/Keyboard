@@ -173,10 +173,6 @@ class KeyboardView: UIView {
         }
     }
     
-    override func awakeFromNib() {
-        initialize()
-    }
-    
     func configure() {
         if settingsRowView.layoutModeSegmentedControl.numberOfSegments < 2 {
             settingsRowView.layoutModeSegmentedControl.insertSegment(withTitle: verticalModeLabel, at: 1, animated: false)

@@ -10,12 +10,14 @@ import UIKit
 
 class KeyboardViewController: UIInputViewController {
     
-    var keyboardView: KeyboardView {
-        return view as! KeyboardView
-    }
+    let keyboardView = KeyboardView()
     
     var layoutViewController = KeyboardLayoutViewController()
     let settingsViewController = SettingsViewController()
+    
+    override func loadView() {
+        view = keyboardView
+    }
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
@@ -28,6 +30,8 @@ class KeyboardViewController: UIInputViewController {
         
         // Perform custom UI setup here
         Internationalize.setPrefferedLanguage()
+        
+        keyboardView.initialize()
         
         addKeyboardLayout()
         

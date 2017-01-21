@@ -18,7 +18,6 @@
 		964AB96A1D1B6535004C827C /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964AB9691D1B6535004C827C /* KeyboardViewController.swift */; };
 		964AB96E1D1B6535004C827C /* iOSKeyboardExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 964AB9671D1B6535004C827C /* iOSKeyboardExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		964ED5481DF5765E006AD952 /* KeyboardColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964ED5471DF5765E006AD952 /* KeyboardColorScheme.swift */; };
-		964FE8231D1CA9D400D41EA7 /* Keyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 964FE8221D1CA9D400D41EA7 /* Keyboard.storyboard */; };
 		96530D671DD1C9A9004E8BAA /* KeyboardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96530D661DD1C9A9004E8BAA /* KeyboardLayout.swift */; };
 		9654DF7A1D4E1D0900DDB0EF /* SpaceRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9654DF791D4E1D0900DDB0EF /* SpaceRowView.swift */; };
 		965D15C11D3146BB0098FA57 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965D15C01D3146BB0098FA57 /* KeyboardView.swift */; };
@@ -210,12 +209,12 @@
 				965D15C81D32AE3B0098FA57 /* KeyView.swift */,
 				96A710481DFEC405004669C1 /* SettingsRowView.swift */,
 				96BC5F551DEB961F002E0752 /* ShiftLabel.swift */,
-				964FE8221D1CA9D400D41EA7 /* Keyboard.storyboard */,
 				9685BCFE1E06815700702C84 /* KeyboardSettings.swift */,
 				9694E23C1E29D72800ED3A85 /* Internationalization.swift */,
 				9694E23A1E29D1BC00ED3A85 /* InternationalizedStrings.swift */,
-				964AB96B1D1B6535004C827C /* Info.plist */,
 				9676A6AB1E17C4830091B155 /* FiraSans-Regular.ttf */,
+				964AB96B1D1B6535004C827C /* Info.plist */,
+				964FE8221D1CA9D400D41EA7 /* Keyboard.storyboard */,
 			);
 			path = iOSKeyboardExtension;
 			sourceTree = "<group>";
@@ -383,7 +382,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9676A6AC1E17C7400091B155 /* FiraSans-Regular.ttf in Resources */,
-				964FE8231D1CA9D400D41EA7 /* Keyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

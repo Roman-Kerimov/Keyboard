@@ -11,7 +11,7 @@ import UIKit
 @IBDesignable
 class SettingsView: UIStackView, UITableViewDelegate, UITableViewDataSource {
     
-    @IBInspectable var language: String?
+    @IBInspectable var language: String = Language.en.rawValue
     
     let shadeColor = UIColor.black.withAlphaComponent(0.3)
     
@@ -29,7 +29,7 @@ class SettingsView: UIStackView, UITableViewDelegate, UITableViewDataSource {
         initialize()
         
         backButton.backgroundColor = shadeColor
-        Internationalize.language = Language(rawValue: language ?? Language.en.rawValue)!
+        Internationalize.language = Language(rawValue: language) ?? .en
     }
 
     func initialize() {

@@ -1,12 +1,12 @@
 //
-//  InternationalizedStrings.swift
+//  LocalizableStrings.swift
 //  iOSKeyboard
 //
 //  Created by Roman Kerimov on 14.01.17.
 //
 //
 
-struct NonConversionModeTitle: InternationalizedString {
+struct NonConversionModeTitle: LocalizableString {
     static var cs: String {return ""}
     static var de: String {return "ss"}
     static var en: String {return "ae"}
@@ -20,7 +20,7 @@ struct NonConversionModeTitle: InternationalizedString {
     static var sv: String {return ""}
 }
 
-struct ConversionModeTitle: InternationalizedString {
+struct ConversionModeTitle: LocalizableString {
     static var cs: String {return ""} // Ů ů
     static var de: String {return "ß"}
     static var en: String {return "æ"}
@@ -34,7 +34,7 @@ struct ConversionModeTitle: InternationalizedString {
     static var sv: String {return ""} // Å å
 }
 
-struct KeyboardLayoutSectionTitle: InternationalizedString {
+struct KeyboardLayoutSectionTitle: LocalizableString {
     static var cs: String {return "Rozložení kláves"}
     static var de: String {return "Tastaturbelegung"}
     static var en: String {return "Keyboard Layout"}
@@ -48,7 +48,7 @@ struct KeyboardLayoutSectionTitle: InternationalizedString {
     static var sv: String {return "Tangentbordslayout"}
 }
 
-struct AllowMultipleSpacesTitle: InternationalizedString {
+struct AllowMultipleSpacesTitle: LocalizableString {
     static var cs: String {return ""}
     static var de: String {return ""}
     static var en: String {return "Allow Multiple Spaces"}
@@ -63,7 +63,7 @@ struct AllowMultipleSpacesTitle: InternationalizedString {
 }
 
 /*
-struct StringName: InternationalizedString {
+struct StringName: LocalizableString {
     static var cs: String {return ""}
     static var de: String {return ""}
     static var en: String {return ""}

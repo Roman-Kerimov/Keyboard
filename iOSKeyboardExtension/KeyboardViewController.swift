@@ -42,7 +42,7 @@ class KeyboardViewController: UIInputViewController {
         
         keyboardView.settingsRowView.settingsButton.addTarget(self, action: #selector(showSettings), for: .touchUpInside)
         
-        settingsViewController.backButton.addTarget(self, action: #selector(hideSettings), for: .allTouchEvents)
+        settingsViewController.settingsView.backButton.addTarget(self, action: #selector(hideSettings), for: .allTouchEvents)
         
         keyboardView.add(action: keyAction(label:))
     }
@@ -165,7 +165,7 @@ class KeyboardViewController: UIInputViewController {
         addChildViewController(settingsViewController)
         view.addSubview(settingsViewController.view)
         
-        settingsRightConstraint = settingsViewController.view.rightAnchor.constraint(equalTo: view.rightAnchor, constant: settingsViewController.widthConstraint.constant)
+        settingsRightConstraint = settingsViewController.view.rightAnchor.constraint(equalTo: view.rightAnchor, constant: settingsViewController.settingsView.widthConstraint.constant)
         
         NSLayoutConstraint.activate([
             settingsViewController.view.topAnchor.constraint(equalTo: view.topAnchor),
@@ -179,7 +179,7 @@ class KeyboardViewController: UIInputViewController {
         settingsRightConstraint.constant = 0
         
         UIView.animate(withDuration: settingsAnimateDuration) {
-            self.settingsViewController.backButton.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+            self.settingsViewController.settingsView.backButton.backgroundColor = self.settingsViewController.settingsView.shadeColor
             self.view.layoutIfNeeded()
         }
     }
@@ -188,10 +188,10 @@ class KeyboardViewController: UIInputViewController {
         
         view.layoutIfNeeded()
         
-        settingsRightConstraint.constant = self.settingsViewController.widthConstraint.constant
+        settingsRightConstraint.constant = self.settingsViewController.settingsView.widthConstraint.constant
         
         UIView.animate(withDuration: settingsAnimateDuration) {
-            self.settingsViewController.backButton.backgroundColor = .clear
+            self.settingsViewController.settingsView.backButton.backgroundColor = .clear
             self.view.layoutIfNeeded()
         }
         

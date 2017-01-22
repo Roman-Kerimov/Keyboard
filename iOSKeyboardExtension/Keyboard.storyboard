@@ -4,11 +4,28 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--View Controller-->
+        <scene sceneID="xrn-lH-IEa">
+            <objects>
+                <viewController storyboardIdentifier="SettingsView" id="6o1-hM-Hff" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gel-YS-cqR"/>
+                        <viewControllerLayoutGuide type="bottom" id="JDr-fY-eZk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Tlj-yJ-DDS" customClass="SettingsView" customModule="iOSKeyboardExtension">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="seB-M8-P8f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1710" y="56"/>
+        </scene>
         <!--Keyboard View Controller-->
         <scene sceneID="8D7-HL-cUB">
             <objects>

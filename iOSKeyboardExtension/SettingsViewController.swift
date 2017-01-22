@@ -62,38 +62,71 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         // Dispose of any resources that can be recreated.
     }
     
+    private enum Section {
+        case keyboardLayouts, boolSection
+    }
+    
+    private let sections: [Section] = [.keyboardLayouts, .boolSection]
+    
+    private enum BoolCell {
+        case allowMultipleSpaces
+    }
+    private let boolCells: [BoolCell] = [.allowMultipleSpaces]
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        for cell in tableView.visibleCells {
-            cell.accessoryType = .none
-        }
-        
         let cell = tableView.cellForRow(at: indexPath)!
         
-        cell.accessoryType = .checkmark
+        switch sections[indexPath.section] {
+        case .keyboardLayouts:
+            for cell in tableView.visibleCells {
+                cell.accessoryType = .none
+            }
+            
+            cell.accessoryType = .checkmark
+            
+            settings.layout = KeyboardLayout.list[indexPath.row]
+            
+            (parent as! KeyboardViewController).updateKeyboardLayout()
+            
+        case .boolSection:
+            break
+        }
+        
         cell.isSelected = false
-        
-        settings.layout = KeyboardLayout.list[indexPath.row]
-        
-        (parent as! KeyboardViewController).updateKeyboardLayout()
     }
 
     // MARK: - Table view data source
 
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return sections.count
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return KeyboardLayout.list.count
+        
+        switch sections[section] {
+        case .keyboardLayouts:
+            return KeyboardLayout.list.count
+        case .boolSection:
+            return boolCells.count
+        }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0:
+        switch sections[section] {
+        case .keyboardLayouts:
             return KeyboardLayoutSectionTitle.string
-        default:
+        case .boolSection:
+            return nil
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        switch sections[section] {
+        case .keyboardLayouts:
+            return nil
+        case .boolSection:
             return nil
         }
     }
@@ -101,18 +134,41 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
 
-        let layout = KeyboardLayout.list[indexPath.row]
-        
-        cell.textLabel?.text = layout.name
-        
-        if layout.name == settings.layout.name {
-            cell.accessoryType = .checkmark
+        switch sections[indexPath.section] {
+        case .keyboardLayouts:
+            let layout = KeyboardLayout.list[indexPath.row]
+            
+            cell.textLabel?.text = layout.name
+            
+            if layout.name == settings.layout.name {
+                cell.accessoryType = .checkmark
+            }
+            else {
+                cell.accessoryType = .none
+            }
+	
+        case .boolSection:
+            let cellSwitch = UISwitch()
+            
+            cell.accessoryView = cellSwitch
+            
+            cellSwitch.addTarget(self, action: #selector(switchDidChange(sender:)), for: .allEvents)
+            
+            switch boolCells[indexPath.row] {
+            case .allowMultipleSpaces:
+                cell.textLabel?.text = AllowMultipleSpacesTitle.string
+                cellSwitch.isOn = settings.allowMultipleSpaces
+            }
         }
-        else {
-            cell.accessoryType = .none
-        }
-
+        
         return cell
+    }
+    
+    func switchDidChange(sender: UISwitch) {
+        switch boolCells[tableView.indexPath(for: sender.superview as! UITableViewCell)!.row] {
+        case .allowMultipleSpaces:
+            settings.allowMultipleSpaces = sender.isOn
+        }
     }
 
     /*

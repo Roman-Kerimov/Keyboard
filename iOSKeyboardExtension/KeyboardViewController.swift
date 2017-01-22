@@ -11,6 +11,7 @@ import UIKit
 class KeyboardViewController: UIInputViewController {
     
     let keyboardView = KeyboardView()
+    let settings = KeyboardSettings()
     
     var layoutViewController = KeyboardLayoutViewController()
     let settingsViewController = SettingsViewController()
@@ -81,6 +82,28 @@ class KeyboardViewController: UIInputViewController {
         }
     }
     
+    var isLastWhitespace: Bool {
+        if let character = textDocumentProxy.documentContextBeforeInput?.characters.last {
+            return String(character).rangeOfCharacter(from: .whitespacesAndNewlines) != nil
+        }
+        else {
+            return false
+        }
+    }
+    
+    var isNextWhitespace: Bool {
+        if let character = textDocumentProxy.documentContextAfterInput?.characters.first {
+            if String(character) == "\t" {
+                return false
+            }
+            
+            return String(character).rangeOfCharacter(from: .whitespaces) != nil
+        }
+        else {
+            return false
+        }
+    }
+    
     func keyAction(label: String) {
         
         switch label {
@@ -91,13 +114,15 @@ class KeyboardViewController: UIInputViewController {
             }
             
         case spaceLabel:
-            var isLastWhitespace = true
-            
-            if let lastCharacter = textDocumentProxy.documentContextBeforeInput?.characters.last {
-                isLastWhitespace = String(lastCharacter).rangeOfCharacter(from: CharacterSet.whitespaces) != nil
+            if settings.allowMultipleSpaces {
+                textDocumentProxy.insertText(" ")
             }
-            
-            if !isLastWhitespace {
+            else if isNextWhitespace {
+                textDocumentProxy.adjustTextPosition(byCharacterOffset: 1)
+            }
+            else if textDocumentProxy.documentContextBeforeInput != nil &&
+                textDocumentProxy.documentContextBeforeInput != "" &&
+                !isLastWhitespace {
                 textDocumentProxy.insertText(" ")
             }
             

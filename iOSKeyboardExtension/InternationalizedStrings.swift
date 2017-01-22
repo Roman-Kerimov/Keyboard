@@ -47,3 +47,33 @@ struct KeyboardLayoutSectionTitle: InternationalizedString {
     static var ru: String {return "Раскладка клавиатуры"}
     static var sv: String {return "Tangentbordslayout"}
 }
+
+struct AllowMultipleSpacesTitle: InternationalizedString {
+    static var cs: String {return ""}
+    static var de: String {return ""}
+    static var en: String {return "Allow Multiple Spaces"}
+    static var es: String {return ""}
+    static var fr: String {return ""}
+    static var it: String {return ""}
+    static var nl: String {return ""}
+    static var pl: String {return ""}
+    static var pt: String {return ""}
+    static var ru: String {return "Несколько пробелов"}
+    static var sv: String {return ""}
+}
+
+/*
+struct StringName: InternationalizedString {
+    static var cs: String {return ""}
+    static var de: String {return ""}
+    static var en: String {return ""}
+    static var es: String {return ""}
+    static var fr: String {return ""}
+    static var it: String {return ""}
+    static var nl: String {return ""}
+    static var pl: String {return ""}
+    static var pt: String {return ""}
+    static var ru: String {return ""}
+    static var sv: String {return ""}
+}
+*/

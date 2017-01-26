@@ -32,7 +32,11 @@ class KeyView: UIView {
         }
     }
     
+    var maxKeyWidth: CGFloat!
+    
     func configure(for keyboardView: KeyboardView) {
+        maxKeyWidth = keyboardView.maxKeyWidth
+        
         let width = keyboardView.keySize.width
         
         let keySpace = width * 0.1
@@ -217,7 +221,7 @@ class KeyView: UIView {
                 y: gestureCurrentPoint.y - gestureStartPoint.y
             )
             
-            let threshold = CGPoint(x: bounds.size.width / 4, y: bounds.size.height / 4)
+            let threshold = CGPoint(x: maxKeyWidth / 2, y: bounds.size.height / 4)
             
             let isUpShift = offset.y < -threshold.y
             let isDownShift = offset.y > threshold.y

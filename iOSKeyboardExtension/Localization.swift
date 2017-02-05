@@ -36,7 +36,7 @@ protocol LocalizableString {
 
 extension LocalizableString {
     static var string: String {
-        switch Internationalize.language {
+        switch Language.current {
             case .cs: return cs
             case .de: return de
             case .en: return en

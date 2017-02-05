@@ -25,11 +25,17 @@ class SettingsView: UIStackView, UITableViewDelegate, UITableViewDataSource {
     
     weak var settingsViewController: SettingsViewController?
     
+    override func updateLocalizedStrings() {
+        super.updateLocalizedStrings()
+        
+        tableView.reloadData()
+    }
+    
     override func prepareForInterfaceBuilder() {
         initialize()
         
         backButton.backgroundColor = shadeColor
-        Internationalize.language = Language(rawValue: language) ?? .en
+        Language.current = Language(rawValue: language) ?? .en
     }
 
     func initialize() {
@@ -50,10 +56,6 @@ class SettingsView: UIStackView, UITableViewDelegate, UITableViewDataSource {
         
         widthConstraint = tableView.widthAnchor.constraint(equalToConstant: 280)
         widthConstraint.isActive = true
-        
-        Internationalize.setString {
-            self.tableView.reloadData()
-        }
     }
     
     private enum Section {

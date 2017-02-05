@@ -6,36 +6,73 @@
 //
 //
 
-import Foundation
+import UIKit
 
-struct Internationalize {
-    internal static var updates: [() -> Void] = []
-    
-    static func setString(_ update: @escaping () -> Void ) {
-        updates.append(update)
-        update()
-    }
-    
-    static var language: Language = .en {
-        didSet {
-            for update in Internationalize.updates {
-                update()
-            }
+extension Language {
+    private static let currentKey = "rrvfFT9eUMTqwVCEW4cbDo3c4TJsa1O"
+    static var current: Language {
+        get {
+            return Language(rawValue: UserDefaults.standard.string(forKey: currentKey) ?? "") ?? preffered
+        }
+        
+        set {
+            UserDefaults.standard.set(newValue.rawValue, forKey: currentKey)
         }
     }
     
-    static func setPrefferedLanguage() {
+    private static var preffered: Language {
         let languages = UserDefaults.standard.array(forKey: "AppleLanguages") as! [String]
         
-        Language: for languageCode in languages {
+        for languageCode in languages {
             if let language = Language(rawValue: languageCode) {
-                Internationalize.language = language
-                break Language
+                return language
             }
             else if let language = Language(rawValue: languageCode.components(separatedBy: "-").first ?? "") {
-                Internationalize.language = language
-                break Language
+                return language
             }
         }
+        
+        return .en
+    }
+}
+
+extension UIViewController {
+    open override class func initialize() {
+        guard self == UIViewController.self else {
+            return
+        }
+        
+        swapMethods(self, #selector(viewWillAppear(_:)), #selector(newViewWillAppear(_:)))
+    }
+    
+    func newViewWillAppear(_ animated: Bool) {
+        updateLocalizedStrings()
+    }
+    
+    func updateLocalizedStrings() {
+        view.updateLocalizedStrings()
+    }
+}
+
+extension UIView {
+    func updateLocalizedStrings() {
+        for view in subviews {
+            view.updateLocalizedStrings()
+        }
+    }
+}
+
+internal func swapMethods(_ self: AnyClass, _ originalSelector: Selector, _ newSelector: Selector) {
+    
+    let originalMethod = class_getInstanceMethod(self, originalSelector)
+    let newMethod = class_getInstanceMethod(self, newSelector)
+    
+    let didAddMethod = class_addMethod(self, originalSelector, method_getImplementation(newMethod), method_getTypeEncoding(newMethod))
+    
+    if didAddMethod {
+        class_replaceMethod(self, newSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod))
+    }
+    else {
+        method_exchangeImplementations(originalMethod, newMethod)
     }
 }

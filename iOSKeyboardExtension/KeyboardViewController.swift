@@ -30,8 +30,6 @@ class KeyboardViewController: UIInputViewController {
         super.viewDidLoad()
         
         // Perform custom UI setup here
-        Internationalize.setPrefferedLanguage()
-        
         keyboardView.initialize()
         
         addKeyboardLayout()
@@ -48,10 +46,14 @@ class KeyboardViewController: UIInputViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         keyboardView.configure()
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         if view.bounds.width < UIScreen.main.bounds.width {
             keyboardView.configure()
         }

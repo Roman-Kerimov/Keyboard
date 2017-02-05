@@ -111,9 +111,7 @@ class KeyboardViewController: UIInputViewController {
         switch label {
             
         case deleteLabel:
-            if textDocumentProxy.documentContextBeforeInput?.characters.last != nil {
-                textDocumentProxy.deleteBackward()
-            }
+            textDocumentProxy.deleteBackward()
             
         case spaceLabel:
             if settings.allowMultipleSpaces {

@@ -35,23 +35,23 @@ struct ConversionModeTitle: LocalizableString {
 }
 
 struct KeyboardLayoutSectionTitle: LocalizableString {
-    static var cs: String {return "Rozložení kláves"}
-    static var de: String {return "Tastaturbelegung"}
-    static var en: String {return "Keyboard Layout"}
-    static var es: String {return "Distribución del teclado"}
-    static var fr: String {return "Disposition du clavier"} //| Clavier | Disposition des touches d'un clavier de saisie
-    static var it: String {return "Layout della tastiera"}
-    static var nl: String {return "Toetsenbordindeling"}
-    static var pl: String {return "Układ klawiatury"}
-    static var pt: String {return "Layout de teclado"}
-    static var ru: String {return "Раскладка клавиатуры"}
-    static var sv: String {return "Tangentbordslayout"}
+    static var cs: String {return "Klávesnice"}
+    static var de: String {return "Tastatur"}
+    static var en: String {return "Keyboard "}
+    static var es: String {return "Teclado"}
+    static var fr: String {return "Clavier"}
+    static var it: String {return "Tastiera"}
+    static var nl: String {return "Toetsenbord"}
+    static var pl: String {return "Klawiatura"}
+    static var pt: String {return "Teclado"}
+    static var ru: String {return "Клавиатура"}
+    static var sv: String {return "Tangentbord"}
 }
 
 struct AllowMultipleSpacesTitle: LocalizableString {
     static var cs: String {return ""}
     static var de: String {return ""}
-    static var en: String {return "Allow Multiple Spaces"}
+    static var en: String {return "Multiple Spaces"}
     static var es: String {return ""}
     static var fr: String {return ""}
     static var it: String {return ""}

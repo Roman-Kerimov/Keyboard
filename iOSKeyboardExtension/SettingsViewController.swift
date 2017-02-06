@@ -23,7 +23,6 @@ class SettingsViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        settingsView.initialize()
         settingsView.settingsViewController = self
     }
 

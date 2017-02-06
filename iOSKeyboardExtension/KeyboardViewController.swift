@@ -30,7 +30,6 @@ class KeyboardViewController: UIInputViewController {
         super.viewDidLoad()
         
         // Perform custom UI setup here
-        keyboardView.initialize()
         
         addKeyboardLayout()
         

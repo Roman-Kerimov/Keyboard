@@ -32,13 +32,12 @@ class SettingsView: UIStackView, UITableViewDelegate, UITableViewDataSource {
     }
     
     override func prepareForInterfaceBuilder() {
-        initialize()
-        
         backButton.backgroundColor = shadeColor
         Language.current = Language(rawValue: language) ?? .en
     }
 
-    func initialize() {
+    override init(frame: CGRect = .zero) {
+        super.init(frame: frame)
         
         backButton.backgroundColor = UIColor.black.withAlphaComponent(0.01)
         
@@ -56,6 +55,10 @@ class SettingsView: UIStackView, UITableViewDelegate, UITableViewDataSource {
         
         widthConstraint = tableView.widthAnchor.constraint(equalToConstant: 280)
         widthConstraint.isActive = true
+    }
+    
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     private enum Section {

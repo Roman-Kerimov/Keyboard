@@ -163,7 +163,6 @@ class KeyboardView: UIView {
     override func prepareForInterfaceBuilder() {
         isInterfaceBuilder = true
         
-        initialize()
         configure()
         
         colorScheme = .default
@@ -269,7 +268,8 @@ class KeyboardView: UIView {
     let spaceRowView = SpaceRowView()
     let settingsRowView = SettingsRowView()
     
-    func initialize() {
+    override init(frame: CGRect = .zero) {
+        super.init(frame: frame)
         
         addSubview(keyboardView)
         keyboardView.translatesAutoresizingMaskIntoConstraints = false
@@ -301,6 +301,10 @@ class KeyboardView: UIView {
         settingsRowView.widthAnchor.constraint(equalTo: keyboardStackView.widthAnchor).isActive = true
         
         settingsRowView.layoutModeSegmentedControl.addTarget(self, action: #selector(keyboardModeDidChange), for: .allEvents)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func keyboardModeDidChange(segmentedControl: UISegmentedControl) {

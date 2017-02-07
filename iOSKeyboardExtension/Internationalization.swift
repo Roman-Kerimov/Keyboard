@@ -9,6 +9,10 @@
 import UIKit
 
 extension Language {
+    #if TARGET_INTERFACE_BUILDER
+    static var current: Language = .en
+    
+    #else
     private static let currentKey = "rrvfFT9eUMTqwVCEW4cbDo3c4TJsa1O"
     static var current: Language {
         get {
@@ -19,6 +23,7 @@ extension Language {
             UserDefaults.standard.set(newValue.rawValue, forKey: currentKey)
         }
     }
+    #endif
     
     private static var preffered: Language {
         let languages = UserDefaults.standard.array(forKey: "AppleLanguages") as! [String]

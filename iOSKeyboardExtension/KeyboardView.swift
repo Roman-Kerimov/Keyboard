@@ -157,6 +157,7 @@ class KeyboardView: UIView {
     let keyboardStackView = UIStackView()
     
     override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
         
         configure()
         

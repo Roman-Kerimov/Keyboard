@@ -60,6 +60,12 @@ extension UIView {
             view.updateLocalizedStrings()
         }
     }
+    
+    open override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        
+        updateLocalizedStrings()
+    }
 }
 
 internal func swapMethods(_ self: AnyClass, _ originalSelector: Selector, _ newSelector: Selector) {

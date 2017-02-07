@@ -32,6 +32,8 @@ class SettingsView: UIStackView, UITableViewDelegate, UITableViewDataSource {
     }
     
     override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        
         backButton.backgroundColor = shadeColor
         Language.current = Language(rawValue: language) ?? .en
     }

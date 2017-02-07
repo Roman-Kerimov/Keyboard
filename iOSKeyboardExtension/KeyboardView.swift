@@ -32,9 +32,9 @@ class KeyboardView: UIView {
             
             settingsRowView.colorScheme = colorScheme
             
-            if isInterfaceBuilder {
+            #if TARGET_INTERFACE_BUILDER
                 keyboardView.backgroundColor = colorScheme.fakeBackroundColorForInterfaceBuilder
-            }
+            #endif
         }
     }
     
@@ -59,12 +59,11 @@ class KeyboardView: UIView {
     }
     
     var scaleFactor: CGFloat {
-        if isInterfaceBuilder {
+        #if TARGET_INTERFACE_BUILDER
             return 1
-        }
-        else {
+        #else
             return bounds.width / UIScreen.main.bounds.width
-        }
+        #endif
     }
     
     var minimalScreenSize: CGSize {
@@ -72,13 +71,12 @@ class KeyboardView: UIView {
     }
     
     var  screenSize: CGSize {
-        if isInterfaceBuilder {
+        #if TARGET_INTERFACE_BUILDER
             return bounds.size
-        }
-        else {
+        #else
         	let nativeSize = UIScreen.main.bounds.size
             return CGSize(width: nativeSize.width * scaleFactor, height: nativeSize.height * scaleFactor)
-        }
+        #endif
     }
     
     let spaceRowHeightInKeys: CGFloat = 1
@@ -158,10 +156,7 @@ class KeyboardView: UIView {
     let keyboardView = UIView()
     let keyboardStackView = UIStackView()
     
-    var isInterfaceBuilder: Bool = false
-    
     override func prepareForInterfaceBuilder() {
-        isInterfaceBuilder = true
         
         configure()
         
@@ -247,9 +242,9 @@ class KeyboardView: UIView {
             heightConstraint!.isActive = true
         }
         
-        if isInterfaceBuilder {
+        #if TARGET_INTERFACE_BUILDER
             keyboardView.heightAnchor.constraint(equalToConstant: size.height).isActive = true
-        }
+        #endif
         
         layoutView?.halfKeyboardSize = halfKeyboardSize
         spaceRowView.height = spaceRowHeight
@@ -274,9 +269,10 @@ class KeyboardView: UIView {
         addSubview(keyboardView)
         keyboardView.translatesAutoresizingMaskIntoConstraints = false
         
-        if !isInterfaceBuilder {
+        #if !TARGET_INTERFACE_BUILDER
             keyboardView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        }
+        #endif
+        
         keyboardView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         keyboardView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         keyboardView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true

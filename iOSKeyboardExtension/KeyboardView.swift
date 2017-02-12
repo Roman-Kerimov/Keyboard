@@ -38,12 +38,6 @@ class KeyboardView: UIView {
         }
     }
     
-    func add(action: @escaping (String) -> Void) {
-        for key in keys {
-            key.action = action
-        }
-    }
-    
     private var keys: [KeyView] {
         var keyViews: [KeyView] = []
         

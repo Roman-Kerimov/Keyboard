@@ -23,8 +23,6 @@ class SettingsView: UIStackView, UITableViewDelegate, UITableViewDataSource {
     
     var widthConstraint: NSLayoutConstraint!
     
-    weak var settingsViewController: SettingsViewController?
-    
     override func updateLocalizedStrings() {
         super.updateLocalizedStrings()
         
@@ -87,7 +85,7 @@ class SettingsView: UIStackView, UITableViewDelegate, UITableViewDataSource {
             
             settings.layout = KeyboardLayout.list[indexPath.row]
             
-            (settingsViewController?.parent as! KeyboardViewController).updateKeyboardLayout()
+            KeyboardViewController.shared.updateKeyboardLayout()
             
         case .boolSection:
             break

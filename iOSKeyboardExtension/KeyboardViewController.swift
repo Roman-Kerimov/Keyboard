@@ -9,6 +9,7 @@
 import UIKit
 
 class KeyboardViewController: UIInputViewController {
+    static var shared: KeyboardViewController!
     
     let keyboardView = KeyboardView()
     let settings = KeyboardSettings()
@@ -31,6 +32,8 @@ class KeyboardViewController: UIInputViewController {
         
         // Perform custom UI setup here
         
+        KeyboardViewController.shared = self
+        
         addKeyboardLayout()
         
         keyboardView.settingsRowView.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
@@ -40,8 +43,6 @@ class KeyboardViewController: UIInputViewController {
         keyboardView.settingsRowView.settingsButton.addTarget(self, action: #selector(showSettings), for: .touchUpInside)
         
         settingsViewController.settingsView.backButton.addTarget(self, action: #selector(hideSettings), for: .allTouchEvents)
-        
-        keyboardView.add(action: keyAction(label:))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -212,8 +213,6 @@ class KeyboardViewController: UIInputViewController {
         
         keyboardView.configure()
         keyboardView.colorScheme = keyboardView.colorScheme
-        
-        keyboardView.add(action: keyAction(label:))
     }
     
     func addKeyboardLayout() {

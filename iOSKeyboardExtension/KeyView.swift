@@ -154,8 +154,6 @@ class KeyView: UIView {
         mainLabel = ""
         super.init(coder: aDecoder)
     }
-    
-    var action: ((String) -> Void)?
 
     var gestureStartPoint: CGPoint!
     
@@ -177,7 +175,7 @@ class KeyView: UIView {
             gestureStartPoint = gesture.location(in: self)
             
             if label.text == deleteLabel {
-                self.action?(self.label.text!)
+                KeyboardViewController.shared.keyAction(label: self.label.text!)
                 
                 autorepeatThread = Thread(block: {
                     let thread = self.autorepeatThread!
@@ -185,7 +183,7 @@ class KeyView: UIView {
                     Thread.sleep(forTimeInterval: 0.5)
                     
                     while thread.isCancelled == false {
-                        self.action?(self.label.text!)
+                        KeyboardViewController.shared.keyAction(label: self.label.text!)
                         Thread.sleep(forTimeInterval: 0.1)
                     }
                     
@@ -200,7 +198,7 @@ class KeyView: UIView {
             autorepeatThread?.cancel()
             
             if label.text != deleteLabel {
-                action?(label.text!)
+                KeyboardViewController.shared.keyAction(label: self.label.text!)
             }
             
             backgroundView.backgroundColor = colorScheme.keyColor

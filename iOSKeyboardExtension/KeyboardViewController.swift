@@ -32,9 +32,9 @@ class KeyboardViewController: UIInputViewController {
         KeyboardViewController.shared = self
         keyboardView.colorScheme = .default
         
-        keyboardView.settingsRowView.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
+        keyboardView.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
         
-        keyboardView.settingsRowView.hideButton.addTarget(self, action: #selector(dismissKeyboard), for: .touchUpInside)
+        keyboardView.hideButton.addTarget(self, action: #selector(dismissKeyboard), for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {

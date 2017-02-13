@@ -9,10 +9,18 @@
 import UIKit
 
 @IBDesignable
-class KeyboardView: UIView {
+internal class KeyboardView: UIView {
     
-    @IBInspectable var darkColorScheme: Bool = false
-    @IBInspectable var alternateLayoutMode: Bool = false
+    @IBInspectable internal var darkColorScheme: Bool = false
+    @IBInspectable internal var alternateLayoutMode: Bool = false
+    
+    internal var nextKeyboardButton: UIButton {
+        return settingsRowView.nextKeyboardButton
+    }
+    
+    internal var hideButton: UIButton {
+        return settingsRowView.hideButton
+    }
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -22,9 +30,9 @@ class KeyboardView: UIView {
     }
     */
     
-    let settings = KeyboardSettings()
+    private let settings = KeyboardSettings()
     
-    var colorScheme: KeyboardColorScheme = .default {
+    internal var colorScheme: KeyboardColorScheme = .default {
         didSet {
             set(colorScheme: colorScheme)
         }
@@ -56,7 +64,7 @@ class KeyboardView: UIView {
         return keyViews
     }
     
-    var scaleFactor: CGFloat {
+    private var scaleFactor: CGFloat {
         #if TARGET_INTERFACE_BUILDER
             return 1
         #else
@@ -64,11 +72,11 @@ class KeyboardView: UIView {
         #endif
     }
     
-    var minimalScreenSize: CGSize {
+    private var minimalScreenSize: CGSize {
         return CGSize(width: 320 * scaleFactor, height: 480 * scaleFactor)
     }
     
-    var  screenSize: CGSize {
+    private var  screenSize: CGSize {
         #if TARGET_INTERFACE_BUILDER
             return bounds.size
         #else
@@ -77,38 +85,38 @@ class KeyboardView: UIView {
         #endif
     }
     
-    let spaceRowHeightInKeys: CGFloat = 1
+    private let spaceRowHeightInKeys: CGFloat = 1
     
-    let maxKeyboardHeightRatio: CGFloat = 0.56
+    private let maxKeyboardHeightRatio: CGFloat = 0.56
     
-    var maxKeyWidth: CGFloat {
+    private var maxKeyWidth: CGFloat {
         return 102.4 * scaleFactor
     }
     private func maxKeyHeight(fromWidth width: CGFloat) -> CGFloat {
         return width * 0.94
     }
     
-    var sizeInKeys = CGSize()
+    private var sizeInKeys = CGSize()
     
-    var sizeInKeysForVerticalMode: CGSize {
+    private var sizeInKeysForVerticalMode: CGSize {
         return CGSize(
             width: CGFloat(settings.layout.columnCount / 2) + 0.5,
             height: CGFloat(settings.layout.rowCount * 2) + spaceRowHeightInKeys
         )
     }
     
-    var sizeInKeysForHorizontalMode: CGSize {
+    private var sizeInKeysForHorizontalMode: CGSize {
         return CGSize(
             width: CGFloat(settings.layout.columnCount),
             height: CGFloat(settings.layout.rowCount) + spaceRowHeightInKeys
         )
     }
     
-    var settingsRowHeight: CGFloat {
+    private var settingsRowHeight: CGFloat {
         return max(screenSize.width, screenSize.height) * 0.04
     }
     
-    var keySize: CGSize {
+    private var keySize: CGSize {
         let keyWidth = min(maxKeyWidth, screenSize.width / sizeInKeys.width)
         
         let maxKeyboardHeight = (screenSize.height * maxKeyboardHeightRatio - settingsRowHeight)
@@ -129,18 +137,18 @@ class KeyboardView: UIView {
         )
     }
     
-    var halfKeyboardSize: CGSize {
+    private var halfKeyboardSize: CGSize {
         return CGSize(
             width: keySize.width * CGFloat(settings.layout.columnCount / 2),
             height: keySize.height * CGFloat(settings.layout.rowCount)
         )
     }
     
-    var spaceRowHeight: CGFloat {
+    private var spaceRowHeight: CGFloat {
         return spaceRowHeightInKeys * keySize.height
     }
 
-    var size: CGSize {
+    private var size: CGSize {
         return CGSize(
             width: keySize.width * sizeInKeys.width,
             height: keySize.height * sizeInKeys.height + settingsRowHeight
@@ -148,13 +156,13 @@ class KeyboardView: UIView {
     }
     
     
-    var widthConstraint: NSLayoutConstraint?
-    var heightConstraint: NSLayoutConstraint?
+    private var widthConstraint: NSLayoutConstraint?
+    private var heightConstraint: NSLayoutConstraint?
     
-    let keyboardView = UIView()
-    let keyboardStackView = UIStackView()
+    private let keyboardView = UIView()
+    private let keyboardStackView = UIStackView()
     
-    override func prepareForInterfaceBuilder() {
+    override internal func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         
         configure()
@@ -166,7 +174,7 @@ class KeyboardView: UIView {
         }
     }
     
-    func configure() {
+    internal func configure() {
         if settingsRowView.layoutModeSegmentedControl.numberOfSegments < 2 {
             settingsRowView.layoutModeSegmentedControl.insertSegment(withTitle: verticalModeLabel, at: 1, animated: false)
         }
@@ -259,11 +267,11 @@ class KeyboardView: UIView {
         }
     }
     
-    var layoutContainerView = UIView()
-    let spaceRowView = SpaceRowView()
-    let settingsRowView = SettingsRowView()
+    private var layoutContainerView = UIView()
+    private let spaceRowView = SpaceRowView()
+    private let settingsRowView = SettingsRowView()
     
-    override init(frame: CGRect = .zero) {
+    override private init(frame: CGRect = .zero) {
         super.init(frame: frame)
         
         addSubview(keyboardView)
@@ -299,11 +307,11 @@ class KeyboardView: UIView {
         settingsView.backButton.addTarget(self, action: #selector(hideSettings), for: .allTouchEvents)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required internal init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func keyboardModeDidChange(segmentedControl: UISegmentedControl) {
+    @objc private func keyboardModeDidChange(segmentedControl: UISegmentedControl) {
         
         switch segmentedControl.selectedSegmentIndex {
             
@@ -320,9 +328,9 @@ class KeyboardView: UIView {
         configure()
     }
     
-    var layoutView = KeyboardLayoutView(layout: KeyboardSettings().layout)
+    private var layoutView = KeyboardLayoutView(layout: KeyboardSettings().layout)
     
-    func updateKeyboardLayout() {
+    internal func updateKeyboardLayout() {
         layoutView.removeFromSuperview()
         
         layoutView = KeyboardLayoutView(layout: settings.layout)
@@ -332,18 +340,18 @@ class KeyboardView: UIView {
         set(colorScheme: colorScheme)
     }
     
-    func addKeyboardLayout() {
+    private func addKeyboardLayout() {
         layoutContainerView.addSubview(layoutView)
         layoutView.alignBounds()
     }
     
-    let settingsView = SettingsView()
+    private let settingsView = SettingsView()
     
-    var settingsRightConstraint: NSLayoutConstraint!
+    private var settingsRightConstraint: NSLayoutConstraint!
     
-    let settingsAnimateDuration = 0.3
+    private let settingsAnimateDuration = 0.3
     
-    func showSettings() {
+    @objc private func showSettings() {
         addSubview(settingsView)
         
         settingsRightConstraint = settingsView.rightAnchor.constraint(equalTo: rightAnchor, constant: settingsView.widthConstraint.constant)
@@ -365,7 +373,7 @@ class KeyboardView: UIView {
         }
     }
     
-    func hideSettings() {
+    @objc private func hideSettings() {
         
         layoutIfNeeded()
         

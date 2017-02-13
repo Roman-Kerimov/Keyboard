@@ -17,7 +17,7 @@ class KeyboardSettings: NSObject {
         case `default` = "default"
     }
     
-    private let layoutKey = "layout"
+    private let layoutKey = "LBPQsNPr8gJHi8Ds05etypaTVEiq8X1"
     var layout: KeyboardLayout {
         get {
             return KeyboardLayout.list.filter { $0.name == (UserDefaults.standard.string(forKey: layoutKey) ?? "")}.first ?? .qwerty
@@ -29,7 +29,7 @@ class KeyboardSettings: NSObject {
         }
     }
     
-    private let allowMultipleSpacesKey = "allowMultipleSpaces"
+    private let allowMultipleSpacesKey = "Bf0SJQhe74RweCC2EbRvoOAFhW5qKKx"
     var allowMultipleSpaces: Bool {
         get {
             return UserDefaults.standard.bool(forKey: allowMultipleSpacesKey)
@@ -47,7 +47,7 @@ class KeyboardSettings: NSObject {
     
     #else
     
-    private let layoutModeKey = "layoutMode"
+    private let layoutModeKey = "PPlmVhk2uT98JemxOJdtAS88aRi3qv9"
     var layoutMode: KeyboardLayoutMode {
         get {
             return KeyboardLayoutMode(rawValue: UserDefaults.standard.string(forKey: layoutModeKey) ?? "") ?? .default

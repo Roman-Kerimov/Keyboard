@@ -43,7 +43,7 @@ extension Language {
 
 extension UIViewController {
     
-    func newViewWillAppear(_ animated: Bool) {
+    func proxy_viewWillAppear(_ animated: Bool) {
         updateLocalizedStrings()
     }
     
@@ -54,7 +54,7 @@ extension UIViewController {
 
 extension UIView {
     
-    func newDidMoveToWindow() {
+    func proxy_didMoveToWindow() {
         updateLocalizedStrings()
     }
     
@@ -82,8 +82,8 @@ struct Localization {
             return
         }
         
-        swapMethods(UIViewController.self, #selector(UIViewController.viewWillAppear(_:)), #selector(UIViewController.newViewWillAppear(_:)))
-        swapMethods(UIView.self, #selector(UIView.didMoveToWindow), #selector(UIView.newDidMoveToWindow))
+        swapMethods(UIViewController.self, #selector(UIViewController.viewWillAppear(_:)), #selector(UIViewController.proxy_viewWillAppear(_:)) )
+        swapMethods(UIView.self, #selector(UIView.didMoveToWindow), #selector(UIView.proxy_didMoveToWindow))
         
         swapped = true
     }

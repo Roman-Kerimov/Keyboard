@@ -14,9 +14,6 @@ class KeyboardViewController: UIInputViewController {
     let keyboardView = KeyboardView()
     let settings = KeyboardSettings()
     
-    var layoutView = KeyboardLayoutView(layout: KeyboardSettings().layout)
-    let settingsView = SettingsView()
-    
     override func loadView() {
         view = keyboardView
     }
@@ -34,15 +31,9 @@ class KeyboardViewController: UIInputViewController {
         
         KeyboardViewController.shared = self
         
-        addKeyboardLayout()
-        
         keyboardView.settingsRowView.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
         
         keyboardView.settingsRowView.hideButton.addTarget(self, action: #selector(dismissKeyboard), for: .touchUpInside)
-        
-        keyboardView.settingsRowView.settingsButton.addTarget(self, action: #selector(showSettings), for: .touchUpInside)
-        
-        settingsView.backButton.addTarget(self, action: #selector(hideSettings), for: .allTouchEvents)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -159,63 +150,6 @@ class KeyboardViewController: UIInputViewController {
         default:
             textDocumentProxy.insertText(label)
         }
-    }
-    
-    var settingsRightConstraint: NSLayoutConstraint!
-    
-    let settingsAnimateDuration = 0.3
-    
-    func showSettings() {
-        view.addSubview(settingsView)
-        
-        settingsRightConstraint = settingsView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: settingsView.widthConstraint.constant)
-        
-        NSLayoutConstraint.activate([
-            settingsView.topAnchor.constraint(equalTo: view.topAnchor),
-            settingsView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            settingsRightConstraint,
-            settingsView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
-        
-        view.layoutIfNeeded()
-        
-        settingsRightConstraint.constant = 0
-        
-        UIView.animate(withDuration: settingsAnimateDuration) {
-            self.settingsView.backButton.backgroundColor = self.settingsView.shadeColor
-            self.view.layoutIfNeeded()
-        }
-    }
-    
-    func hideSettings() {
-        
-        view.layoutIfNeeded()
-        
-        settingsRightConstraint.constant = self.settingsView.widthConstraint.constant
-        
-        UIView.animate(withDuration: settingsAnimateDuration) {
-            self.settingsView.backButton.backgroundColor = .clear
-            self.view.layoutIfNeeded()
-        }
-        
-        Timer.scheduledTimer(withTimeInterval: settingsAnimateDuration, repeats: false) { (timer) in
-            self.settingsView.removeFromSuperview()
-        }
-    }
-
-    func updateKeyboardLayout() {
-        layoutView.removeFromSuperview()
-        
-        layoutView = KeyboardLayoutView(layout: settings.layout)
-        addKeyboardLayout()
-        
-        keyboardView.configure()
-        keyboardView.colorScheme = keyboardView.colorScheme
-    }
-    
-    func addKeyboardLayout() {
-        keyboardView.layoutContainerView.addSubview(layoutView)
-        layoutView.alignBounds()
     }
 }
 

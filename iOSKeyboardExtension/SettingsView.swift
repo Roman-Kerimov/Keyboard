@@ -85,7 +85,7 @@ class SettingsView: UIStackView, UITableViewDelegate, UITableViewDataSource {
             
             settings.layout = KeyboardLayout.list[indexPath.row]
             
-            KeyboardViewController.shared.updateKeyboardLayout()
+            KeyboardViewController.shared.keyboardView.updateKeyboardLayout()
             
         case .boolSection:
             break

@@ -26,22 +26,26 @@ class KeyboardView: UIView {
     
     var colorScheme: KeyboardColorScheme = .default {
         didSet {
-            for key in keys {
-                key.colorScheme = colorScheme
-            }
-            
-            settingsRowView.colorScheme = colorScheme
-            
-            #if TARGET_INTERFACE_BUILDER
-                keyboardView.backgroundColor = colorScheme.fakeBackroundColorForInterfaceBuilder
-            #endif
+            set(colorScheme: colorScheme)
         }
+    }
+    
+    private func set(colorScheme: KeyboardColorScheme) {
+        for key in keys {
+            key.colorScheme = colorScheme
+        }
+        
+        settingsRowView.colorScheme = colorScheme
+        
+        #if TARGET_INTERFACE_BUILDER
+            keyboardView.backgroundColor = colorScheme.fakeBackroundColorForInterfaceBuilder
+        #endif
     }
     
     private var keys: [KeyView] {
         var keyViews: [KeyView] = []
         
-        for halfKeyboard in layoutView!.halfKeyboards {
+        for halfKeyboard in layoutView.halfKeyboards {
             for row in halfKeyboard.rows {
                 keyViews += row.arrangedSubviews as! [KeyView]
             }
@@ -241,17 +245,13 @@ class KeyboardView: UIView {
             keyboardView.heightAnchor.constraint(equalToConstant: size.height).isActive = true
         #endif
         
-        layoutView?.halfKeyboardSize = halfKeyboardSize
+        layoutView.halfKeyboardSize = halfKeyboardSize
         spaceRowView.height = spaceRowHeight
         settingsRowView.height = settingsRowHeight
         
         for key in keys {
             key.configure(for: self)
         }
-    }
-    
-    var layoutView: KeyboardLayoutView? {
-        return layoutContainerView.subviews.filter { $0 is KeyboardLayoutView }.first as? KeyboardLayoutView
     }
     
     var layoutContainerView = UIView()
@@ -278,11 +278,7 @@ class KeyboardView: UIView {
         keyboardStackView.translatesAutoresizingMaskIntoConstraints = false
         
         keyboardStackView.addArrangedSubview(layoutContainerView)
-        #if TARGET_INTERFACE_BUILDER
-            let layoutView = KeyboardLayoutView(layout: .qwerty)
-            layoutContainerView.addSubview(layoutView)
-            layoutView.alignBounds()
-        #endif
+        addKeyboardLayout()
         
         keyboardStackView.addArrangedSubview(spaceRowView)
         keyboardStackView.addArrangedSubview(settingsRowView)
@@ -292,6 +288,10 @@ class KeyboardView: UIView {
         settingsRowView.widthAnchor.constraint(equalTo: keyboardStackView.widthAnchor).isActive = true
         
         settingsRowView.layoutModeSegmentedControl.addTarget(self, action: #selector(keyboardModeDidChange), for: .allEvents)
+        
+        settingsRowView.settingsButton.addTarget(self, action: #selector(showSettings), for: .touchUpInside)
+        
+        settingsView.backButton.addTarget(self, action: #selector(hideSettings), for: .allTouchEvents)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -313,5 +313,66 @@ class KeyboardView: UIView {
         }
         
         configure()
+    }
+    
+    var layoutView = KeyboardLayoutView(layout: KeyboardSettings().layout)
+    
+    func updateKeyboardLayout() {
+        layoutView.removeFromSuperview()
+        
+        layoutView = KeyboardLayoutView(layout: settings.layout)
+        addKeyboardLayout()
+        
+        configure()
+        set(colorScheme: colorScheme)
+    }
+    
+    func addKeyboardLayout() {
+        layoutContainerView.addSubview(layoutView)
+        layoutView.alignBounds()
+    }
+    
+    let settingsView = SettingsView()
+    
+    var settingsRightConstraint: NSLayoutConstraint!
+    
+    let settingsAnimateDuration = 0.3
+    
+    func showSettings() {
+        addSubview(settingsView)
+        
+        settingsRightConstraint = settingsView.rightAnchor.constraint(equalTo: rightAnchor, constant: settingsView.widthConstraint.constant)
+        
+        NSLayoutConstraint.activate([
+            settingsView.topAnchor.constraint(equalTo: topAnchor),
+            settingsView.leftAnchor.constraint(equalTo: leftAnchor),
+            settingsRightConstraint,
+            settingsView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            ])
+        
+        layoutIfNeeded()
+        
+        settingsRightConstraint.constant = 0
+        
+        UIView.animate(withDuration: settingsAnimateDuration) {
+            self.settingsView.backButton.backgroundColor = self.settingsView.shadeColor
+            self.layoutIfNeeded()
+        }
+    }
+    
+    func hideSettings() {
+        
+        layoutIfNeeded()
+        
+        settingsRightConstraint.constant = self.settingsView.widthConstraint.constant
+        
+        UIView.animate(withDuration: settingsAnimateDuration) {
+            self.settingsView.backButton.backgroundColor = .clear
+            self.layoutIfNeeded()
+        }
+        
+        Timer.scheduledTimer(withTimeInterval: settingsAnimateDuration, repeats: false) { (timer) in
+            self.settingsView.removeFromSuperview()
+        }
     }
 }

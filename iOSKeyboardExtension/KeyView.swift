@@ -34,12 +34,10 @@ class KeyView: UIView {
     
     var maxKeyWidth: CGFloat!
     
-    func configure(for keyboardView: KeyboardView) {
-        maxKeyWidth = keyboardView.maxKeyWidth
+    func configure(maxKeyWidth: CGFloat, keySize: CGSize, minimalScreenSize: CGSize, sizeInKeysForVerticalMode: CGSize) {
+        self.maxKeyWidth = maxKeyWidth
         
-        let width = keyboardView.keySize.width
-        
-        let keySpace = width * 0.1
+        let keySpace = keySize.width * 0.1
         
         backgroundView.layer.cornerRadius = keySpace
         
@@ -53,8 +51,8 @@ class KeyView: UIView {
         backgroundView.layoutMargins = UIEdgeInsets(top: verticalShiftLabelIndent, left: horizontalShiftLabelIndent, bottom: verticalShiftLabelIndent, right: horizontalShiftLabelIndent)
         
         let keyWidthForCalculateFontSize = max(
-            keyboardView.keySize.width,
-            keyboardView.minimalScreenSize.width / keyboardView.sizeInKeysForVerticalMode.width
+            keySize.width,
+            minimalScreenSize.width / sizeInKeysForVerticalMode.width
         )
         
         let labelFontSize = keyWidthForCalculateFontSize * 6/15

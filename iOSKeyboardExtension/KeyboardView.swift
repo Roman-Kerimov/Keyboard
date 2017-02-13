@@ -175,7 +175,7 @@ class KeyboardView: UIView {
         let horizontalModeIndex = modeSegmentLabels.index(of: horizontalModeLabel)!
         
         if settings.layoutMode == .default {
-            if bounds.width < minimalScreenSize.height {
+            if bounds.width < self.minimalScreenSize.height {
                 settings.layoutMode = .vertical
             }
             else {
@@ -204,7 +204,7 @@ class KeyboardView: UIView {
             abort()
         }
         
-        if screenSize.height < minimalScreenSize.height {
+        if screenSize.height < self.minimalScreenSize.height {
             settingsRowView.layoutModeSegmentedControl.selectedSegmentIndex = horizontalModeIndex
             settingsRowView.layoutModeSegmentedControl.removeSegment(at: verticalModeIndex, animated: false)
         }
@@ -213,7 +213,7 @@ class KeyboardView: UIView {
             
         case verticalModeIndex:
             keyboardStackView.alignment = .trailing
-            sizeInKeys = sizeInKeysForVerticalMode
+            sizeInKeys = self.sizeInKeysForVerticalMode
             
         case horizontalModeIndex:
             keyboardStackView.alignment = .center
@@ -249,8 +249,13 @@ class KeyboardView: UIView {
         spaceRowView.height = spaceRowHeight
         settingsRowView.height = settingsRowHeight
         
+        let maxKeyWidth = self.maxKeyWidth
+        let keySize = self.keySize
+        let minimalScreenSize = self.minimalScreenSize
+        let sizeInKeysForVerticalMode = self.sizeInKeysForVerticalMode
+        
         for key in keys {
-            key.configure(for: self)
+            key.configure(maxKeyWidth: maxKeyWidth, keySize: keySize, minimalScreenSize: minimalScreenSize, sizeInKeysForVerticalMode: sizeInKeysForVerticalMode)
         }
     }
     

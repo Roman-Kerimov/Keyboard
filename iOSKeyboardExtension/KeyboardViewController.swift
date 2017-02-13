@@ -28,7 +28,7 @@ class KeyboardViewController: UIInputViewController {
         super.viewDidLoad()
         
         // Perform custom UI setup here
-        
+        Localization.initialize()
         KeyboardViewController.shared = self
         
         keyboardView.settingsRowView.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)

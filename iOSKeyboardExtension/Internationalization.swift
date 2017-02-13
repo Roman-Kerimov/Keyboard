@@ -42,28 +42,24 @@ extension Language {
 }
 
 extension UIViewController {
-    open override class func initialize() {
-        guard self == UIViewController.self else {
-            return
-        }
-        
-        swapMethods(self, #selector(viewWillAppear(_:)), #selector(newViewWillAppear(_:)))
-    }
     
     func newViewWillAppear(_ animated: Bool) {
         updateLocalizedStrings()
     }
     
     func updateLocalizedStrings() {
-        view.updateLocalizedStrings()
+        
     }
 }
 
 extension UIView {
+    
+    func newDidMoveToWindow() {
+        updateLocalizedStrings()
+    }
+    
     func updateLocalizedStrings() {
-        for view in subviews {
-            view.updateLocalizedStrings()
-        }
+        
     }
     
     open override func prepareForInterfaceBuilder() {
@@ -73,17 +69,33 @@ extension UIView {
     }
 }
 
-internal func swapMethods(_ self: AnyClass, _ originalSelector: Selector, _ newSelector: Selector) {
+struct Localization {
+    private static var swapped: Bool = false
     
-    let originalMethod = class_getInstanceMethod(self, originalSelector)
-    let newMethod = class_getInstanceMethod(self, newSelector)
-    
-    let didAddMethod = class_addMethod(self, originalSelector, method_getImplementation(newMethod), method_getTypeEncoding(newMethod))
-    
-    if didAddMethod {
-        class_replaceMethod(self, newSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod))
+    static func initialize() {
+        
+        if swapped {
+            return
+        }
+        
+        swapMethods(UIViewController.self, #selector(UIViewController.viewWillAppear(_:)), #selector(UIViewController.newViewWillAppear(_:)))
+        swapMethods(UIView.self, #selector(UIView.didMoveToWindow), #selector(UIView.newDidMoveToWindow))
+        
+        swapped = true
     }
-    else {
-        method_exchangeImplementations(originalMethod, newMethod)
+    
+    private static func swapMethods(_ anyClass: AnyClass, _ originalSelector: Selector, _ newSelector: Selector) {
+        
+        let originalMethod = class_getInstanceMethod(anyClass, originalSelector)
+        let newMethod = class_getInstanceMethod(anyClass, newSelector)
+        
+        let didAddMethod = class_addMethod(anyClass, originalSelector, method_getImplementation(newMethod), method_getTypeEncoding(newMethod))
+        
+        if didAddMethod {
+            class_replaceMethod(anyClass, newSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod))
+        }
+        else {
+            method_exchangeImplementations(originalMethod, newMethod)
+        }
     }
 }

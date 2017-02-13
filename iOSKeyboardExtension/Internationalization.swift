@@ -59,7 +59,11 @@ extension UIView {
     }
     
     func updateLocalizedStrings() {
-        
+        #if TARGET_INTERFACE_BUILDER
+            for view in subviews {
+                view.updateLocalizedStrings()
+            }
+        #endif
     }
     
     open override func prepareForInterfaceBuilder() {

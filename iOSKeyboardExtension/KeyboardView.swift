@@ -82,7 +82,7 @@ class KeyboardView: UIView {
     let maxKeyboardHeightRatio: CGFloat = 0.56
     
     var maxKeyWidth: CGFloat {
-        return 94 * scaleFactor
+        return 102.4 * scaleFactor
     }
     private func maxKeyHeight(fromWidth width: CGFloat) -> CGFloat {
         return width * 0.94

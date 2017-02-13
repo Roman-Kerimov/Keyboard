@@ -14,8 +14,8 @@ class KeyboardViewController: UIInputViewController {
     let keyboardView = KeyboardView()
     let settings = KeyboardSettings()
     
-    var layoutViewController = KeyboardLayoutViewController()
-    let settingsViewController = SettingsViewController()
+    var layoutView = KeyboardLayoutView(layout: KeyboardSettings().layout)
+    let settingsView = SettingsView()
     
     override func loadView() {
         view = keyboardView
@@ -42,7 +42,7 @@ class KeyboardViewController: UIInputViewController {
         
         keyboardView.settingsRowView.settingsButton.addTarget(self, action: #selector(showSettings), for: .touchUpInside)
         
-        settingsViewController.settingsView.backButton.addTarget(self, action: #selector(hideSettings), for: .allTouchEvents)
+        settingsView.backButton.addTarget(self, action: #selector(hideSettings), for: .allTouchEvents)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -166,16 +166,15 @@ class KeyboardViewController: UIInputViewController {
     let settingsAnimateDuration = 0.3
     
     func showSettings() {
-        addChildViewController(settingsViewController)
-        view.addSubview(settingsViewController.view)
+        view.addSubview(settingsView)
         
-        settingsRightConstraint = settingsViewController.view.rightAnchor.constraint(equalTo: view.rightAnchor, constant: settingsViewController.settingsView.widthConstraint.constant)
+        settingsRightConstraint = settingsView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: settingsView.widthConstraint.constant)
         
         NSLayoutConstraint.activate([
-            settingsViewController.view.topAnchor.constraint(equalTo: view.topAnchor),
-            settingsViewController.view.leftAnchor.constraint(equalTo: view.leftAnchor),
+            settingsView.topAnchor.constraint(equalTo: view.topAnchor),
+            settingsView.leftAnchor.constraint(equalTo: view.leftAnchor),
             settingsRightConstraint,
-            settingsViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            settingsView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         
         view.layoutIfNeeded()
@@ -183,7 +182,7 @@ class KeyboardViewController: UIInputViewController {
         settingsRightConstraint.constant = 0
         
         UIView.animate(withDuration: settingsAnimateDuration) {
-            self.settingsViewController.settingsView.backButton.backgroundColor = self.settingsViewController.settingsView.shadeColor
+            self.settingsView.backButton.backgroundColor = self.settingsView.shadeColor
             self.view.layoutIfNeeded()
         }
     }
@@ -192,23 +191,22 @@ class KeyboardViewController: UIInputViewController {
         
         view.layoutIfNeeded()
         
-        settingsRightConstraint.constant = self.settingsViewController.settingsView.widthConstraint.constant
+        settingsRightConstraint.constant = self.settingsView.widthConstraint.constant
         
         UIView.animate(withDuration: settingsAnimateDuration) {
-            self.settingsViewController.settingsView.backButton.backgroundColor = .clear
+            self.settingsView.backButton.backgroundColor = .clear
             self.view.layoutIfNeeded()
         }
         
         Timer.scheduledTimer(withTimeInterval: settingsAnimateDuration, repeats: false) { (timer) in
-            self.settingsViewController.view.removeFromSuperview()
+            self.settingsView.removeFromSuperview()
         }
     }
 
     func updateKeyboardLayout() {
-        layoutViewController.view.removeFromSuperview()
-        layoutViewController.removeFromParentViewController()
+        layoutView.removeFromSuperview()
         
-        layoutViewController = KeyboardLayoutViewController()
+        layoutView = KeyboardLayoutView(layout: settings.layout)
         addKeyboardLayout()
         
         keyboardView.configure()
@@ -216,9 +214,8 @@ class KeyboardViewController: UIInputViewController {
     }
     
     func addKeyboardLayout() {
-        addChildViewController(layoutViewController)
-        keyboardView.layoutContainerView.addSubview(layoutViewController.view)
-        layoutViewController.view.alignBounds()
+        keyboardView.layoutContainerView.addSubview(layoutView)
+        layoutView.alignBounds()
     }
 }
 

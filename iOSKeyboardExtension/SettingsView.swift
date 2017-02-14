@@ -9,58 +9,27 @@
 import UIKit
 
 @IBDesignable
-class SettingsView: UIStackView, UITableViewDelegate, UITableViewDataSource {
-    
-    @IBInspectable var language: String = Language.en.rawValue
-    
-    let shadeColor = UIColor.black.withAlphaComponent(0.3)
+internal class SettingsView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
     let settings = KeyboardSettings()
-    
-    let backButton = UIButton()
-    
-    let tableView = UITableView(frame: CGRect(), style: .grouped)
-    
-    var widthConstraint: NSLayoutConstraint!
     
     override func updateLocalizedStrings() {
         super.updateLocalizedStrings()
         
-        tableView.reloadData()
+        reloadData()
     }
     
-    override func prepareForInterfaceBuilder() {
-        super.prepareForInterfaceBuilder()
+    internal init() {
+        super.init(frame: .zero, style: .grouped)
         
-        backButton.backgroundColor = shadeColor
-        Language.current = Language(rawValue: language) ?? .en
-    }
-
-    override init(frame: CGRect = .zero) {
-        super.init(frame: frame)
-        
-        backButton.backgroundColor = UIColor.black.withAlphaComponent(0.01)
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        axis = .horizontal
-        distribution = .fill
-        
-        translatesAutoresizingMaskIntoConstraints = false
-        backButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        addArrangedSubview(backButton)
-        addArrangedSubview(tableView)
-        
-        widthConstraint = tableView.widthAnchor.constraint(equalToConstant: 280)
-        widthConstraint.isActive = true
+        delegate = self
+        dataSource = self
     }
     
-    required init(coder: NSCoder) {
+    required internal init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+        
     private enum Section {
         case keyboardLayouts, boolSection
     }
@@ -164,7 +133,7 @@ class SettingsView: UIStackView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func switchDidChange(sender: UISwitch) {
-        switch boolCells[tableView.indexPath(for: sender.superview as! UITableViewCell)!.row] {
+        switch boolCells[indexPath(for: sender.superview as! UITableViewCell)!.row] {
         case .allowMultipleSpaces:
             settings.allowMultipleSpaces = sender.isOn
         }

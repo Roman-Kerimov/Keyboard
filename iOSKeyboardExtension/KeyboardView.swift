@@ -304,7 +304,7 @@ internal class KeyboardView: UIView {
         
         settingsRowView.settingsButton.addTarget(self, action: #selector(showSettings), for: .touchUpInside)
         
-        settingsView.backButton.addTarget(self, action: #selector(hideSettings), for: .allTouchEvents)
+        settingsContainerView.backButton.addTarget(self, action: #selector(hideSettings), for: .allTouchEvents)
     }
     
     required internal init?(coder aDecoder: NSCoder) {
@@ -345,22 +345,22 @@ internal class KeyboardView: UIView {
         layoutView.alignBounds()
     }
     
-    private let settingsView = SettingsView()
+    private let settingsContainerView = SettingsContainerView()
     
     private var settingsRightConstraint: NSLayoutConstraint!
     
     private let settingsAnimateDuration = 0.3
     
     @objc private func showSettings() {
-        addSubview(settingsView)
+        addSubview(settingsContainerView)
         
-        settingsRightConstraint = settingsView.rightAnchor.constraint(equalTo: rightAnchor, constant: settingsView.widthConstraint.constant)
+        settingsRightConstraint = settingsContainerView.rightAnchor.constraint(equalTo: rightAnchor, constant: settingsContainerView.widthConstraint.constant)
         
         NSLayoutConstraint.activate([
-            settingsView.topAnchor.constraint(equalTo: topAnchor),
-            settingsView.leftAnchor.constraint(equalTo: leftAnchor),
+            settingsContainerView.topAnchor.constraint(equalTo: topAnchor),
+            settingsContainerView.leftAnchor.constraint(equalTo: leftAnchor),
             settingsRightConstraint,
-            settingsView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            settingsContainerView.bottomAnchor.constraint(equalTo: bottomAnchor)
             ])
         
         layoutIfNeeded()
@@ -368,7 +368,7 @@ internal class KeyboardView: UIView {
         settingsRightConstraint.constant = 0
         
         UIView.animate(withDuration: settingsAnimateDuration) {
-            self.settingsView.backButton.backgroundColor = self.settingsView.shadeColor
+            self.settingsContainerView.backButton.backgroundColor = self.settingsContainerView.shadeColor
             self.layoutIfNeeded()
         }
     }
@@ -377,15 +377,15 @@ internal class KeyboardView: UIView {
         
         layoutIfNeeded()
         
-        settingsRightConstraint.constant = self.settingsView.widthConstraint.constant
+        settingsRightConstraint.constant = self.settingsContainerView.widthConstraint.constant
         
         UIView.animate(withDuration: settingsAnimateDuration) {
-            self.settingsView.backButton.backgroundColor = .clear
+            self.settingsContainerView.backButton.backgroundColor = .clear
             self.layoutIfNeeded()
         }
         
         Timer.scheduledTimer(withTimeInterval: settingsAnimateDuration, repeats: false) { (timer) in
-            self.settingsView.removeFromSuperview()
+            self.settingsContainerView.removeFromSuperview()
         }
     }
 }

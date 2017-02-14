@@ -16,7 +16,7 @@
                         <viewControllerLayoutGuide type="top" id="gel-YS-cqR"/>
                         <viewControllerLayoutGuide type="bottom" id="JDr-fY-eZk"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Tlj-yJ-DDS" customClass="SettingsView" customModule="iOSKeyboardExtension">
+                    <view key="view" contentMode="scaleToFill" id="Tlj-yJ-DDS" customClass="SettingsContainerView" customModule="iOSKeyboardExtension">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

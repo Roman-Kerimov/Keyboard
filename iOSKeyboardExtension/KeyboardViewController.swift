@@ -30,7 +30,6 @@ class KeyboardViewController: UIInputViewController {
         // Perform custom UI setup here
         Localization.initialize()
         KeyboardViewController.shared = self
-        keyboardView.colorScheme = .default
         
         keyboardView.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
         
@@ -67,8 +66,12 @@ class KeyboardViewController: UIInputViewController {
     override func textDidChange(_ textInput: UITextInput?) {
         // The app has just changed the document's contents, the document context has been updated.
         
-        if textDocumentProxy.keyboardAppearance == .dark {
+        let proxy = self.textDocumentProxy
+        
+        if proxy.keyboardAppearance == .dark {
             keyboardView.colorScheme = .dark
+        } else {
+            keyboardView.colorScheme = .default
         }
     }
     

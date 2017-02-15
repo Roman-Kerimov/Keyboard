@@ -30,8 +30,6 @@ internal class KeyboardView: UIView {
     }
     */
     
-    private let settings = KeyboardSettings()
-    
     internal var colorScheme: KeyboardColorScheme = .default {
         didSet {
             set(colorScheme: colorScheme)

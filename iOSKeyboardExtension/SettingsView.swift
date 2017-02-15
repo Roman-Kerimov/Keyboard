@@ -11,8 +11,6 @@ import UIKit
 @IBDesignable
 internal class SettingsView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
-    let settings = KeyboardSettings()
-    
     override func updateLocalizedStrings() {
         super.updateLocalizedStrings()
         

@@ -8,6 +8,7 @@
 
 import UIKit
 
+@IBDesignable
 class SettingsContainerView: UIStackView {
     
     @IBInspectable var language: String = Language.en.rawValue

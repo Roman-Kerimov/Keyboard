@@ -29,10 +29,11 @@ class SettingsContainerView: UIStackView {
     var widthConstraint: NSLayoutConstraint!
 
     override func prepareForInterfaceBuilder() {
+        Language.current = Language(rawValue: language) ?? .en
+        
         super.prepareForInterfaceBuilder()
         
         backButton.backgroundColor = shadeColor
-        Language.current = Language(rawValue: language) ?? .en
     }
     
     override init(frame: CGRect = .zero) {

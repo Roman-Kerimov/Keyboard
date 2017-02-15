@@ -13,11 +13,18 @@ class SettingsContainerView: UIStackView {
     
     @IBInspectable var language: String = Language.en.rawValue
     
+    override func updateLocalizedStrings() {
+        super.updateLocalizedStrings()
+        
+        settingsViewController.title = SettingsTitle.string
+    }
+    
     let shadeColor = UIColor.black.withAlphaComponent(0.3)
     
     let backButton = UIButton()
     
-    let settingsView = SettingsView()
+    let navigationController = UINavigationController()
+    let settingsViewController = ViewController <SettingsView> ()
     
     var widthConstraint: NSLayoutConstraint!
 
@@ -40,10 +47,12 @@ class SettingsContainerView: UIStackView {
         backButton.translatesAutoresizingMaskIntoConstraints = false
         
         addArrangedSubview(backButton)
-        addArrangedSubview(settingsView)
+        addArrangedSubview(navigationController.view)
         
-        widthConstraint = settingsView.widthAnchor.constraint(equalToConstant: 280)
+        widthConstraint = navigationController.view.widthAnchor.constraint(equalToConstant: 280)
         widthConstraint.isActive = true
+        
+        navigationController.viewControllers = [settingsViewController]
     }
     
     required init(coder: NSCoder) {

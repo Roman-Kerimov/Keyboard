@@ -62,6 +62,20 @@ struct AllowMultipleSpacesTitle: LocalizableString {
     static var sv: String {return ""}
 }
 
+struct SettingsTitle: LocalizableString {
+    static var cs: String {return ""}
+    static var de: String {return ""}
+    static var en: String {return "Settings"}
+    static var es: String {return ""}
+    static var fr: String {return ""}
+    static var it: String {return ""}
+    static var nl: String {return ""}
+    static var pl: String {return ""}
+    static var pt: String {return ""}
+    static var ru: String {return "Настройки"}
+    static var sv: String {return ""}
+}
+
 /*
 struct StringName: LocalizableString {
     static var cs: String {return ""}

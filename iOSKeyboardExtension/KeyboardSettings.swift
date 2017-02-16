@@ -61,13 +61,3 @@ class KeyboardSettings: NSObject {
     
     #endif
 }
-
-extension UIView {
-    var settings: KeyboardSettings {
-        struct Stored {
-            static let settings = KeyboardSettings()
-        }
-        
-        return Stored.settings
-    }
-}

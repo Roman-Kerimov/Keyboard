@@ -123,7 +123,7 @@ internal class SettingsView: UITableView, UITableViewDelegate, UITableViewDataSo
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+        let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
 
         switch Section.list[indexPath.section] {
         case .keyboardLayouts:
@@ -153,6 +153,17 @@ internal class SettingsView: UITableView, UITableViewDelegate, UITableViewDataSo
             
         case .appLanguage:
             cell.textLabel?.text = AppLanguageTitle.string
+            
+            let languageCode = Language.current.rawValue
+            let locale = Locale(identifier: languageCode)
+            
+            if locale.scriptCode == nil {
+                cell.detailTextLabel?.text = locale.localizedString(forIdentifier: languageCode)
+            }
+            else {
+                cell.detailTextLabel?.text = locale.localizedString(forLanguageCode: locale.languageCode!)
+            }
+            
             cell.accessoryType = .disclosureIndicator
         }
         

@@ -38,8 +38,8 @@ class LanguageTableView: UITableView, UITableViewDelegate, UITableViewDataSource
         
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
         
-        cell.textLabel?.text = locale.localizedString(forLanguageCode: language.rawValue)?.capitalized(with: locale)
-        cell.detailTextLabel?.text = Locale(identifier: Language.current.rawValue).localizedString(forLanguageCode: language.rawValue)?.localizedCapitalized
+        cell.textLabel?.text = locale.localizedString(forIdentifier: language.rawValue)
+        cell.detailTextLabel?.text = Locale(identifier: Language.current.rawValue).localizedString(forIdentifier: language.rawValue)
         
         if language == Language.current {
             cell.accessoryType = .checkmark

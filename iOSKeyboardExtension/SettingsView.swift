@@ -15,6 +15,8 @@ internal class SettingsView: UITableView, UITableViewDelegate, UITableViewDataSo
         super.updateLocalizedStrings()
         
         reloadData()
+        
+        languageTableViewController.title = AppLanguageTitle.string
     }
     
     internal init() {
@@ -29,20 +31,23 @@ internal class SettingsView: UITableView, UITableViewDelegate, UITableViewDataSo
     }
         
     private enum Section {
-        case keyboardLayouts, boolSection
+        case keyboardLayouts, boolSection, appLanguage
+        
+        static let list = values(of: Section.self)
     }
-    
-    private let sections: [Section] = [.keyboardLayouts, .boolSection]
     
     private enum BoolCell {
         case allowMultipleSpaces
+        
+        static let list = values(of: BoolCell.self)
     }
-    private let boolCells: [BoolCell] = [.allowMultipleSpaces]
+    
+    private let languageTableViewController: ViewController<LanguageTableView> = .init()
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)!
         
-        switch sections[indexPath.section] {
+        switch Section.list[indexPath.section] {
         case .keyboardLayouts:
             for cell in tableView.visibleCells {
                 cell.accessoryType = .none
@@ -56,6 +61,9 @@ internal class SettingsView: UITableView, UITableViewDelegate, UITableViewDataSo
             
         case .boolSection:
             break
+            
+        case .appLanguage:
+            KeyboardViewController.shared.keyboardView.settingsContainerView.navigationController.pushViewController(languageTableViewController, animated: true)
         }
         
         cell.isSelected = false
@@ -65,34 +73,49 @@ internal class SettingsView: UITableView, UITableViewDelegate, UITableViewDataSo
 
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return sections.count
+        return Section.list.count
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
-        switch sections[section] {
+        switch Section.list[section] {
+            
         case .keyboardLayouts:
             return KeyboardLayout.list.count
+            
         case .boolSection:
-            return boolCells.count
+            return BoolCell.list.count
+            
+        case .appLanguage:
+            return 1
         }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch sections[section] {
+        switch Section.list[section] {
+            
         case .keyboardLayouts:
             return KeyboardLayoutSectionTitle.string
+            
         case .boolSection:
+            return nil
+            
+        case .appLanguage:
             return nil
         }
     }
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        switch sections[section] {
+        switch Section.list[section] {
+            
         case .keyboardLayouts:
             return nil
+            
         case .boolSection:
+            return nil
+            
+        case .appLanguage:
             return nil
         }
     }
@@ -100,7 +123,7 @@ internal class SettingsView: UITableView, UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
 
-        switch sections[indexPath.section] {
+        switch Section.list[indexPath.section] {
         case .keyboardLayouts:
             let layout = KeyboardLayout.list[indexPath.row]
             
@@ -120,18 +143,22 @@ internal class SettingsView: UITableView, UITableViewDelegate, UITableViewDataSo
             
             cellSwitch.addTarget(self, action: #selector(switchDidChange(sender:)), for: .allEvents)
             
-            switch boolCells[indexPath.row] {
+            switch BoolCell.list[indexPath.row] {
             case .allowMultipleSpaces:
                 cell.textLabel?.text = AllowMultipleSpacesTitle.string
                 cellSwitch.isOn = settings.allowMultipleSpaces
             }
+            
+        case .appLanguage:
+            cell.textLabel?.text = AppLanguageTitle.string
+            cell.accessoryType = .disclosureIndicator
         }
         
         return cell
     }
     
     func switchDidChange(sender: UISwitch) {
-        switch boolCells[indexPath(for: sender.superview as! UITableViewCell)!.row] {
+        switch BoolCell.list[indexPath(for: sender.superview as! UITableViewCell)!.row] {
         case .allowMultipleSpaces:
             settings.allowMultipleSpaces = sender.isOn
         }

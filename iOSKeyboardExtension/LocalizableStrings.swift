@@ -34,6 +34,20 @@ struct ConversionModeTitle: LocalizableString {
     static var sv: String {return ""} // Å å
 }
 
+struct SettingsTitle: LocalizableString {
+    static var cs: String {return ""}
+    static var de: String {return ""}
+    static var en: String {return "Settings"}
+    static var es: String {return ""}
+    static var fr: String {return ""}
+    static var it: String {return ""}
+    static var nl: String {return ""}
+    static var pl: String {return ""}
+    static var pt: String {return ""}
+    static var ru: String {return "Настройки"}
+    static var sv: String {return ""}
+}
+
 struct KeyboardLayoutSectionTitle: LocalizableString {
     static var cs: String {return "Klávesnice"}
     static var de: String {return "Tastatur"}
@@ -62,17 +76,17 @@ struct AllowMultipleSpacesTitle: LocalizableString {
     static var sv: String {return ""}
 }
 
-struct SettingsTitle: LocalizableString {
+struct AppLanguageTitle: LocalizableString {
     static var cs: String {return ""}
     static var de: String {return ""}
-    static var en: String {return "Settings"}
+    static var en: String {return "Language"}
     static var es: String {return ""}
     static var fr: String {return ""}
     static var it: String {return ""}
     static var nl: String {return ""}
     static var pl: String {return ""}
     static var pt: String {return ""}
-    static var ru: String {return "Настройки"}
+    static var ru: String {return "Язык"}
     static var sv: String {return ""}
 }
 

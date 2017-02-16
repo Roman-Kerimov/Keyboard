@@ -21,6 +21,10 @@ extension Language {
         
         set {
             UserDefaults.standard.set(newValue.rawValue, forKey: currentKey)
+            
+            for viewController in loadedViewControllers {
+                viewController.updateLocalizedStrings()
+            }
         }
     }
     #endif
@@ -39,16 +43,63 @@ extension Language {
         
         return .en
     }
+    
+    static var list: [Language] {
+        struct Stored {
+            static let list = values(of: Language.self)
+        }
+        return Stored.list
+    }
 }
 
+internal func values<Enum: Hashable>(of: Enum.Type) -> [Enum] {
+    var iterateEnum: AnyIterator<Enum> {
+        var index = 0
+        
+        return AnyIterator {
+            let next = withUnsafeBytes(of: &index) {
+                $0.load(as: Enum.self)
+            }
+            
+            if next.hashValue != index {
+                return nil
+            }
+            
+            index += 1
+            
+            return next
+        }
+    }
+    
+    var values: [Enum] = []
+    
+    for value in iterateEnum {
+        values.append(value)
+    }
+    
+    return values
+}
+
+private var loadedViewControllers: [UIViewController] = []
+
 extension UIViewController {
+    
+    func proxy_viewDidLoad() {
+        loadedViewControllers.append(self)
+    }
     
     func proxy_viewWillAppear(_ animated: Bool) {
         updateLocalizedStrings()
     }
     
+    func proxy_viewWillDisappear(_ animated: Bool) {
+        if self == KeyboardViewController.shared {
+            loadedViewControllers.removeAll()
+        }
+    }
+    
     func updateLocalizedStrings() {
-        
+        view.updateLocalizedStrings()
     }
 }
 
@@ -59,11 +110,9 @@ extension UIView {
     }
     
     func updateLocalizedStrings() {
-        #if TARGET_INTERFACE_BUILDER
-            for view in subviews {
-                view.updateLocalizedStrings()
-            }
-        #endif
+        for view in subviews {
+            view.updateLocalizedStrings()
+        }
     }
     
     open override func prepareForInterfaceBuilder() {
@@ -82,7 +131,10 @@ struct Localization {
             return
         }
         
+        swapMethods(UIViewController.self, #selector(UIViewController.viewDidLoad), #selector(UIViewController.proxy_viewDidLoad) )
         swapMethods(UIViewController.self, #selector(UIViewController.viewWillAppear(_:)), #selector(UIViewController.proxy_viewWillAppear(_:)) )
+        swapMethods(UIViewController.self, #selector(UIViewController.viewWillDisappear(_:)), #selector(UIViewController.proxy_viewWillDisappear(_:)) )
+        
         swapMethods(UIView.self, #selector(UIView.didMoveToWindow), #selector(UIView.proxy_didMoveToWindow))
         
         swapped = true

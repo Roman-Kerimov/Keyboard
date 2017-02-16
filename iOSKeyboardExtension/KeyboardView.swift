@@ -343,7 +343,7 @@ internal class KeyboardView: UIView {
         layoutView.alignBounds()
     }
     
-    private let settingsContainerView = SettingsContainerView()
+    internal let settingsContainerView = SettingsContainerView()
     
     private var settingsRightConstraint: NSLayoutConstraint!
     

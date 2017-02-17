@@ -340,7 +340,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 964AB92A1D1B63C0004C827C /* Build configuration list for PBXProject "iOSKeyboard" */;
+			buildConfigurationList = 964AB92A1D1B63C0004C827C /* Build configuration list for PBXProject "Keyboard" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -945,7 +945,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		964AB92A1D1B63C0004C827C /* Build configuration list for PBXProject "iOSKeyboard" */ = {
+		964AB92A1D1B63C0004C827C /* Build configuration list for PBXProject "Keyboard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				964AB92B1D1B63C0004C827C /* Debug */,

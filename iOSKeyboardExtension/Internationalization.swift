@@ -16,7 +16,7 @@ extension Language {
     private static let currentKey = "rrvfFT9eUMTqwVCEW4cbDo3c4TJsa1O"
     static var current: Language {
         get {
-            return Language(rawValue: UserDefaults.standard.string(forKey: currentKey) ?? "") ?? preffered
+            return Language(rawValue: UserDefaults.standard.string(forKey: currentKey) ?? "") ?? preferredList.first ?? .en
         }
         
         set {
@@ -29,19 +29,20 @@ extension Language {
     }
     #endif
     
-    private static var preffered: Language {
-        let languages = UserDefaults.standard.array(forKey: "AppleLanguages") as! [String]
+    static var preferredList: [Language] {
+        let languageCodes = UserDefaults.standard.array(forKey: "AppleLanguages") as! [String]
+        var languages: [Language] = []
         
-        for languageCode in languages {
+        for languageCode in languageCodes {
             if let language = Language(rawValue: languageCode) {
-                return language
+                languages.append(language)
             }
-            else if let language = Language(rawValue: languageCode.components(separatedBy: "-").first ?? "") {
-                return language
+            else if let language = Language(rawValue: languageCode.components(separatedBy: "-").dropLast().joined(separator: "-")) {
+                languages.append(language)
             }
         }
         
-        return .en
+        return languages
     }
     
     static var list: [Language] {

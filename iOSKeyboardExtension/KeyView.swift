@@ -217,7 +217,7 @@ class KeyView: UIView {
                 y: gestureCurrentPoint.y - gestureStartPoint.y
             )
             
-            let threshold = CGPoint(x: maxKeyWidth / 2, y: bounds.size.height / 4)
+            let threshold = CGPoint(x: min(maxKeyWidth / 2, bounds.size.width / 4), y: bounds.size.height / 4)
             
             let isUpShift = offset.y < -threshold.y
             let isDownShift = offset.y > threshold.y

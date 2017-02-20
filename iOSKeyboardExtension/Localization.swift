@@ -7,8 +7,8 @@
 //
 
 enum Language: String {
-    case az = "az"
-    case az_Cyrl = "az-Cyrl"
+    //case az = "az"
+    //case az_Cyrl = "az-Cyrl"
     case ca = "ca"
     case cs = "cs"
     case da = "da"
@@ -40,8 +40,8 @@ enum Language: String {
 }
 
 protocol LocalizableString {
-    static var az: String {get}
-    static var az_Cyrl: String {get}
+    //static var az: String {get}
+    //static var az_Cyrl: String {get}
     static var ca: String {get}
     static var cs: String {get}
     static var da: String {get}
@@ -76,8 +76,8 @@ extension LocalizableString {
     static var string: String {
         switch Language.current {
             
-        case .az: return az
-        case .az_Cyrl: return az_Cyrl
+        //case .az: return az
+        //case .az_Cyrl: return az_Cyrl
         case .ca: return ca
         case .cs: return cs
         case .da: return da

@@ -64,7 +64,7 @@ class KeyView: UIView {
         shiftLeftLabel.font = shiftLabelFont
         shiftRightLabel.font = shiftLabelFont
         
-        if mainLabel == deleteLabel {
+        if specialKey == .delete {
             label.font = shiftLabelFont
         }
     }
@@ -81,6 +81,10 @@ class KeyView: UIView {
     let shiftRightLabel = ShiftLabel()
     
     var backgroundView: UIView!
+    
+    convenience init(key: SpecialKey) {
+        self.init(label: key.label)
+    }
     
     init(label: String, shiftDownLabel: String = "") {
         mainLabel = label
@@ -116,22 +120,22 @@ class KeyView: UIView {
         self.shiftDownLabel.bottomAnchor.constraint(equalTo: backgroundView.layoutMarginsGuide.bottomAnchor).isActive = true
         self.shiftUpLabel.text = KeyboardLayout.shiftUpDictionary[label]
         
-        if mainLabel == spaceLabel {
+        if specialKey == .space {
             self.shiftUpLabel.topAnchor.constraint(equalTo: backgroundView.layoutMarginsGuide.topAnchor).isActive = true
             self.shiftUpLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
             
             self.shiftDownLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-            self.shiftDownLabel.text = returnLabel
+            self.shiftDownLabel.text = SpecialKey.return.label
             
             addSubview(shiftLeftLabel)
             shiftLeftLabel.leftAnchor.constraint(equalTo: backgroundView.layoutMarginsGuide.leftAnchor).isActive = true
             shiftLeftLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-            shiftLeftLabel.text = unionLabel
+            shiftLeftLabel.text = SpecialKey.union.label
             
             addSubview(shiftRightLabel)
             shiftRightLabel.rightAnchor.constraint(equalTo: backgroundView.layoutMarginsGuide.rightAnchor).isActive = true
             shiftRightLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-            shiftRightLabel.text = tabLabel
+            shiftRightLabel.text = SpecialKey.tab.label
         }
         else {
             self.shiftUpLabel.topAnchor.constraint(equalTo: backgroundView.layoutMarginsGuide.topAnchor).isActive = true
@@ -172,7 +176,7 @@ class KeyView: UIView {
             
             gestureStartPoint = gesture.location(in: self)
             
-            if label.text == deleteLabel {
+            if specialKey == .delete {
                 KeyboardViewController.shared.keyAction(label: self.label.text!)
                 
                 autorepeatThread = Thread(block: {
@@ -195,7 +199,7 @@ class KeyView: UIView {
             
             autorepeatThread?.cancel()
             
-            if label.text != deleteLabel {
+            if specialKey != .delete {
                 KeyboardViewController.shared.keyAction(label: self.label.text!)
             }
             
@@ -234,7 +238,7 @@ class KeyView: UIView {
                 if shiftUpLabel.text != nil {
                     label.text = shiftUpLabel.text
                 }
-                else if isCharacterLabel {
+                else if specialKey == nil {
                     label.text = mainLabel.uppercased()
                 }
             }
@@ -250,17 +254,23 @@ class KeyView: UIView {
         }
     }
     
-    var isCharacterLabel: Bool {
-        return mainLabel != deleteLabel
-            && mainLabel != spaceLabel
-        	&& mainLabel != returnLabel
-        	&& mainLabel != tabLabel
-        	&& mainLabel != unionLabel
+    var specialKey: SpecialKey? {
+        guard let label = label.text else {
+            return nil
+        }
+        
+        return SpecialKey(rawValue: label)
     }
 }
 
-let deleteLabel = "delete"
-let spaceLabel = " "
-let returnLabel = "return"
-let tabLabel = "tab"
-let unionLabel = "union"
+internal enum SpecialKey: String {
+    var label: String {
+        return rawValue
+    }
+    
+    case delete = "delete"
+    case space = " "
+    case `return` = "return"
+    case tab = "tab"
+    case union = "union"
+}

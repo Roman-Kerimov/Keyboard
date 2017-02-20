@@ -39,10 +39,10 @@ class SpaceRowView: UIStackView {
         
         axis = .horizontal
         
-        let spaceKey = KeyView(label: spaceLabel)
+        let spaceKey = KeyView(key: .space)
         addArrangedSubview(spaceKey)
         
-        let deleteKey = KeyView(label: deleteLabel)
+        let deleteKey = KeyView(key: .delete)
         addArrangedSubview(deleteKey)
         deleteKey.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.3).isActive = true
     }

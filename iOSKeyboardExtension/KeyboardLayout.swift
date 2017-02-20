@@ -38,7 +38,7 @@ struct KeyboardLayout {
         ",": ";",
         "?": "!",
         "'": "\"",
-        spaceLabel: "_"
+        SpecialKey.space.label: "_"
     ]
     
     static let shiftDown = KeyboardLayout(

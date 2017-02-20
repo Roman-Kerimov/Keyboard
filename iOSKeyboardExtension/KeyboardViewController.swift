@@ -99,12 +99,17 @@ class KeyboardViewController: UIInputViewController {
     
     func keyAction(label: String) {
         
-        switch label {
+        guard let specialKey = SpecialKey(rawValue: label) else {
+            textDocumentProxy.insertText(label)
+            return
+        }
+        
+        switch specialKey {
             
-        case deleteLabel:
+        case .delete:
             textDocumentProxy.deleteBackward()
             
-        case spaceLabel:
+        case .space:
             if settings.allowMultipleSpaces {
                 textDocumentProxy.insertText(" ")
             }
@@ -117,13 +122,13 @@ class KeyboardViewController: UIInputViewController {
                 textDocumentProxy.insertText(" ")
             }
             
-        case returnLabel:
+        case .return:
             textDocumentProxy.insertText("\n")
             
-        case tabLabel:
+        case .tab:
             textDocumentProxy.insertText("\t")
             
-        case unionLabel:
+        case .union:
             var maxSuffixLength = KeyboardLayout.unionDictionary.keys.map { $0.characters.count }.max()!
             
             Suffix: while maxSuffixLength > 0 {
@@ -146,9 +151,6 @@ class KeyboardViewController: UIInputViewController {
                 
                 maxSuffixLength -= 1
             }
-        
-        default:
-            textDocumentProxy.insertText(label)
         }
     }
 }

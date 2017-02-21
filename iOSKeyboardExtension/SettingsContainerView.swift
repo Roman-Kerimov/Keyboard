@@ -24,7 +24,7 @@ class SettingsContainerView: UIStackView {
     let backButton = UIButton()
     
     let navigationController = UINavigationController()
-    let settingsViewController = ViewController <SettingsView> ()
+    let settingsViewController = ViewController <SettingsTableView> ()
     
     var widthConstraint: NSLayoutConstraint!
 

@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-internal class SettingsView: UITableView, UITableViewDelegate, UITableViewDataSource {
+internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
     let settings = KeyboardSettings()
     

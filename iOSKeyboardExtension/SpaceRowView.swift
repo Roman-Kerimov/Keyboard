@@ -32,6 +32,12 @@ class SpaceRowView: UIStackView {
     
     private var heightConstraint: NSLayoutConstraint?
     
+    let nextKeyboardKey = KeyView(key: .nextKeyboard)
+    let dismissKeyboardKey = KeyView(key: .dismissKeyboard)
+    let spaceKey = KeyView(key: .space)
+    let deleteKey = KeyView(key: .delete)
+    let settingsKey = KeyView(key: .settings)
+    
     init() {
         super.init(frame: CGRect())
         
@@ -39,16 +45,25 @@ class SpaceRowView: UIStackView {
         
         axis = .horizontal
         
-        let spaceKey = KeyView(key: .space)
+        addArrangedSubview(nextKeyboardKey)
+        addArrangedSubview(dismissKeyboardKey)
         addArrangedSubview(spaceKey)
-        
-        let deleteKey = KeyView(key: .delete)
         addArrangedSubview(deleteKey)
-        deleteKey.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.3).isActive = true
+        addArrangedSubview(settingsKey)
     }
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
+    func configure(keyboardWidth: CGFloat) {
+        
+        let compactKeyWidth = keyboardWidth / 8
+        
+        nextKeyboardKey.width = compactKeyWidth
+        dismissKeyboardKey.width = compactKeyWidth
+        settingsKey.width = compactKeyWidth
+        
+        deleteKey.width = keyboardWidth / 5
+    }
 }

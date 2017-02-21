@@ -14,6 +14,10 @@ internal class KeyboardView: UIView {
     @IBInspectable internal var darkColorScheme: Bool = false
     @IBInspectable internal var alternateLayoutMode: Bool = false
     
+    internal var nextKeyboardKey: KeyView {
+        return spaceRowView.nextKeyboardKey
+    }
+    
     internal var nextKeyboardButton: UIButton {
         return settingsRowView.nextKeyboardButton
     }
@@ -265,6 +269,8 @@ internal class KeyboardView: UIView {
         for key in keys {
             key.configure(maxKeyWidth: maxKeyWidth, keySize: keySize, minimalScreenSize: minimalScreenSize, sizeInKeysForVerticalMode: sizeInKeysForVerticalMode)
         }
+        
+        spaceRowView.configure(keyboardWidth: size.width)
     }
     
     private var layoutContainerView = UIView()
@@ -351,7 +357,7 @@ internal class KeyboardView: UIView {
     
     private let settingsAnimateDuration = 0.3
     
-    @objc private func showSettings() {
+    @objc internal func showSettings() {
         addSubview(settingsContainerView)
         
         settingsRightConstraint = settingsContainerView.rightAnchor.constraint(equalTo: rightAnchor, constant: settingsContainerView.widthConstraint.constant)

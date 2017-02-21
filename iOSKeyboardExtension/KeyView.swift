@@ -8,7 +8,13 @@
 
 import UIKit
 
-class KeyView: UIView {
+class KeyView: UIButton {
+    
+    override func addTarget(_ target: Any?, action: Selector, for controlEvents: UIControlEvents) {
+        super.addTarget(target, action: action, for: controlEvents)
+        
+        removeGestureRecognizer(longPressGestureRecognizer)
+    }
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -17,6 +23,15 @@ class KeyView: UIView {
         // Drawing code
     }
     */
+    
+    internal var width: CGFloat = 0 {
+        didSet {
+            widthConstraint.constant = width
+            widthConstraint.isActive = true
+        }
+    }
+    
+    private var widthConstraint: NSLayoutConstraint!
     
     var colorScheme: KeyboardColorScheme = .default {
         didSet {
@@ -56,7 +71,7 @@ class KeyView: UIView {
         )
         
         let labelFontSize = keyWidthForCalculateFontSize * 6/15
-        label.font = UIFont.systemFont(ofSize: labelFontSize)
+        label.font = label.font.withSize(labelFontSize)
         
         let shiftLabelFont = UIFont.systemFont(ofSize: labelFontSize/1.8)
         shiftUpLabel.font = shiftLabelFont
@@ -64,11 +79,32 @@ class KeyView: UIView {
         shiftLeftLabel.font = shiftLabelFont
         shiftRightLabel.font = shiftLabelFont
         
-        if specialKey == .delete {
-            label.font = shiftLabelFont
+        guard let specialKey = self.specialKey else {
+            return
+        }
+        
+        switch specialKey {
+        case .delete, .return:
+            label.font = label.font.withSize(shiftLabelFont.pointSize)
+            
+        case .dismissKeyboard:
+            label.font = label.font.withSize(shiftLabelFont.pointSize * 1.2)
+            
+        case .nextKeyboard:
+            label.font = label.font.withSize(shiftLabelFont.pointSize * 1.5)
+            centerXLabelConstraint.constant = label.font.pointSize * 0.02
+            centerYLabelConstraint.constant = label.font.pointSize * 0.05
+            
+        case .settings:
+            label.font = label.font.withSize(shiftLabelFont.pointSize * 2.5)
+            centerXLabelConstraint.constant = label.font.pointSize * 0.025
+            
+        default:
+            break
         }
     }
     
+    var centerXLabelConstraint: NSLayoutConstraint!
     var centerYLabelConstraint: NSLayoutConstraint!
     
     let mainLabel: String
@@ -84,13 +120,22 @@ class KeyView: UIView {
     
     convenience init(key: SpecialKey) {
         self.init(label: key.label)
+        
+        if key == .nextKeyboard || key == .dismissKeyboard {
+            label.font = UIFont(name: "FiraSans", size: 1)
+        }
     }
     
     init(label: String, shiftDownLabel: String = "") {
         mainLabel = label
         super.init(frame: CGRect())
         
+        widthConstraint = self.widthAnchor.constraint(equalToConstant: 0)
+        self.label.numberOfLines = 3
+        
         backgroundView = UIView()
+        backgroundView.isUserInteractionEnabled = false
+        backgroundView.isExclusiveTouch = false
         addSubview(backgroundView)
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -110,7 +155,9 @@ class KeyView: UIView {
         
         self.label.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8).isActive = true
         
-        self.label.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
+        centerXLabelConstraint = self.label.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0)
+        centerXLabelConstraint.isActive = true
+        
         centerYLabelConstraint = self.label.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 0)
         centerYLabelConstraint.isActive = true
         
@@ -145,7 +192,7 @@ class KeyView: UIView {
             self.shiftDownLabel.text = shiftDownLabel
         }
         
-        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressGestureAction(gesture:)))
+        longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressGestureAction(gesture:)))
         addGestureRecognizer(longPressGestureRecognizer)
         
         longPressGestureRecognizer.minimumPressDuration = 0
@@ -156,6 +203,8 @@ class KeyView: UIView {
         mainLabel = ""
         super.init(coder: aDecoder)
     }
+    
+    var longPressGestureRecognizer: UILongPressGestureRecognizer!
 
     var gestureStartPoint: CGPoint!
     
@@ -273,4 +322,7 @@ internal enum SpecialKey: String {
     case `return` = "return"
     case tab = "tab"
     case union = "union"
+    case nextKeyboard = "🌐"
+    case dismissKeyboard = "\n⌨\nˇ"
+    case settings = "𑁔"
 }

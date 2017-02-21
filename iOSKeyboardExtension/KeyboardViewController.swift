@@ -31,6 +31,8 @@ class KeyboardViewController: UIInputViewController {
         Localization.initialize()
         KeyboardViewController.shared = self
         
+        keyboardView.nextKeyboardKey.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
+        
         keyboardView.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
         
         keyboardView.hideButton.addTarget(self, action: #selector(dismissKeyboard), for: .touchUpInside)
@@ -151,6 +153,15 @@ class KeyboardViewController: UIInputViewController {
                 
                 maxSuffixLength -= 1
             }
+            
+        case .dismissKeyboard:
+            dismissKeyboard()
+            
+        case .settings:
+            keyboardView.showSettings()
+            
+        case .nextKeyboard:
+            break
         }
     }
 }

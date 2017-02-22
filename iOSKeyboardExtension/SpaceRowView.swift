@@ -21,7 +21,7 @@ class SpaceRowView: RowView {
     let nextKeyboardKey = KeyView(key: .nextKeyboard)
     let dismissKeyboardKey = KeyView(key: .dismissKeyboard)
     let spaceKey = KeyView(key: .space)
-    let deleteKey = KeyView(key: .delete)
+    let returnKey = KeyView(key: .return)
     let settingsKey = KeyView(key: .settings)
     
     internal override init() {
@@ -30,7 +30,7 @@ class SpaceRowView: RowView {
         addArrangedSubview(nextKeyboardKey)
         addArrangedSubview(dismissKeyboardKey)
         addArrangedSubview(spaceKey)
-        addArrangedSubview(deleteKey)
+        addArrangedSubview(returnKey)
         addArrangedSubview(settingsKey)
     }
     
@@ -46,6 +46,6 @@ class SpaceRowView: RowView {
         dismissKeyboardKey.width = compactKeyWidth
         settingsKey.width = compactKeyWidth
         
-        deleteKey.width = keyboardWidth / 5
+        returnKey.width = keyboardWidth / 5
     }
 }

@@ -172,7 +172,7 @@ class KeyView: UIButton {
             self.shiftUpLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
             
             self.shiftDownLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-            self.shiftDownLabel.text = SpecialKey.return.label
+            self.shiftDownLabel.text = SpecialKey.space.label
             
             addSubview(shiftLeftLabel)
             shiftLeftLabel.leftAnchor.constraint(equalTo: backgroundView.layoutMarginsGuide.leftAnchor).isActive = true

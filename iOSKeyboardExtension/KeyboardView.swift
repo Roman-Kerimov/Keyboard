@@ -53,7 +53,7 @@ internal class KeyboardView: UIView {
             }
         }
         
-        keyViews += deleteRowView.arrangedSubviews as! [KeyView]
+        keyViews += deleteRowView.arrangedSubviews.filter {$0 is KeyView} as! [KeyView]
         keyViews += spaceRowView.arrangedSubviews as! [KeyView]
         
         return keyViews

@@ -48,8 +48,13 @@ class KeyboardViewController: UIInputViewController {
         }
     }
     
-    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
-        keyboardView.configure()
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        
+        coordinator.animate(alongsideTransition: nil) { (context) in
+            self.keyboardView.configure()
+        }
+        
+        super.viewWillTransition(to: size, with: coordinator)
     }
     
     override func didReceiveMemoryWarning() {

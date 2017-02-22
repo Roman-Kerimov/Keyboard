@@ -130,6 +130,9 @@ class KeyView: UIButton {
         mainLabel = label
         super.init(frame: CGRect())
         
+        // It is for activation of touch events
+        backgroundColor = UIColor.white.withAlphaComponent(0.001)
+        
         widthConstraint = self.widthAnchor.constraint(equalToConstant: 0)
         self.label.numberOfLines = 3
         

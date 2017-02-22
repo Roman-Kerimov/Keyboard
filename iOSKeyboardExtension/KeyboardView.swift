@@ -53,6 +53,7 @@ internal class KeyboardView: UIView {
             }
         }
         
+        keyViews += deleteRowView.arrangedSubviews as! [KeyView]
         keyViews += spaceRowView.arrangedSubviews as! [KeyView]
         
         return keyViews
@@ -79,6 +80,7 @@ internal class KeyboardView: UIView {
         #endif
     }
     
+    private let deleteRowHeightInKeys: CGFloat = 1
     private let spaceRowHeightInKeys: CGFloat = 1
     
     private let maxKeyboardHeightRatio: CGFloat = 0.56
@@ -95,14 +97,14 @@ internal class KeyboardView: UIView {
     private var sizeInKeysForVerticalMode: CGSize {
         return CGSize(
             width: CGFloat(settings.layout.columnCount / 2) + 0.5,
-            height: CGFloat(settings.layout.rowCount * 2) + spaceRowHeightInKeys
+            height: deleteRowHeightInKeys + CGFloat(settings.layout.rowCount * 2) + spaceRowHeightInKeys
         )
     }
     
     private var sizeInKeysForHorizontalMode: CGSize {
         return CGSize(
             width: CGFloat(settings.layout.columnCount),
-            height: CGFloat(settings.layout.rowCount) + spaceRowHeightInKeys
+            height: deleteRowHeightInKeys + CGFloat(settings.layout.rowCount) + spaceRowHeightInKeys
         )
     }
     
@@ -132,6 +134,10 @@ internal class KeyboardView: UIView {
             width: keySize.width * CGFloat(settings.layout.columnCount / 2),
             height: keySize.height * CGFloat(settings.layout.rowCount)
         )
+    }
+    
+    private var deleteRowHeight: CGFloat {
+        return deleteRowHeightInKeys * keySize.height
     }
     
     private var spaceRowHeight: CGFloat {
@@ -215,6 +221,7 @@ internal class KeyboardView: UIView {
             keyboardView.heightAnchor.constraint(equalToConstant: size.height).isActive = true
         #endif
         
+        deleteRowView.height = deleteRowHeight
         layoutView.halfKeyboardSize = halfKeyboardSize
         spaceRowView.height = spaceRowHeight
         
@@ -230,6 +237,7 @@ internal class KeyboardView: UIView {
         spaceRowView.configure(keyboardWidth: size.width)
     }
     
+    private var deleteRowView = DeleteRowView()
     private var layoutContainerView = UIView()
     private let spaceRowView = SpaceRowView()
     
@@ -252,11 +260,14 @@ internal class KeyboardView: UIView {
         keyboardStackView.axis = .vertical
         keyboardStackView.translatesAutoresizingMaskIntoConstraints = false
         
+        keyboardStackView.addArrangedSubview(deleteRowView)
+        
         keyboardStackView.addArrangedSubview(layoutContainerView)
         addKeyboardLayout()
         
         keyboardStackView.addArrangedSubview(spaceRowView)
         
+        layoutContainerView.widthAnchor.constraint(equalTo: deleteRowView.widthAnchor).isActive = true
         layoutContainerView.widthAnchor.constraint(equalTo: spaceRowView.widthAnchor).isActive = true
         
         settingsContainerView.backButton.addTarget(self, action: #selector(hideSettings), for: .allTouchEvents)

@@ -18,6 +18,20 @@ class SpaceRowView: RowView {
     }
     */
     
+    internal override var size: CGSize {
+        didSet {
+            super.size = size
+            
+            let compactKeyWidth = size.width / 8
+            
+            nextKeyboardKey.width = compactKeyWidth
+            dismissKeyboardKey.width = compactKeyWidth
+            settingsKey.width = compactKeyWidth
+            
+            returnKey.width = size.width / 5
+        }
+    }
+    
     let nextKeyboardKey = KeyView(key: .nextKeyboard)
     let dismissKeyboardKey = KeyView(key: .dismissKeyboard)
     let spaceKey = KeyView(key: .space)
@@ -36,16 +50,5 @@ class SpaceRowView: RowView {
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func configure(keyboardWidth: CGFloat) {
-        
-        let compactKeyWidth = keyboardWidth / 8
-        
-        nextKeyboardKey.width = compactKeyWidth
-        dismissKeyboardKey.width = compactKeyWidth
-        settingsKey.width = compactKeyWidth
-        
-        returnKey.width = keyboardWidth / 5
     }
 }

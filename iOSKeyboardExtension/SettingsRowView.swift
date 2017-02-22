@@ -8,8 +8,8 @@
 
 import UIKit
 
-let horizontalModeLabel = "▄▄"
-let verticalModeLabel = "▝█▖"
+let horizontalModeLabel = SpecialKey.horizontalMode.label
+let verticalModeLabel = SpecialKey.verticalMode.label
 let modeSegmentLabels = [horizontalModeLabel, verticalModeLabel]
 
 class SettingsRowView: UIStackView {

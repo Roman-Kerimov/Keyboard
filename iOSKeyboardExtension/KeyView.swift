@@ -325,4 +325,6 @@ internal enum SpecialKey: String {
     case nextKeyboard = "🌐"
     case dismissKeyboard = "\n⌨\nˇ"
     case settings = "𑁔"
+    case horizontalMode = "▄▄"
+    case verticalMode = "▝█▖"
 }

@@ -33,7 +33,7 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
     }
         
     private enum Section {
-        case keyboardLayouts, boolSection, appLanguage
+        case keyboardMode, keyboardLayouts, boolSection, appLanguage
         
         static let list = values(of: Section.self)
     }
@@ -50,6 +50,7 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
         let cell = tableView.cellForRow(at: indexPath)!
         
         switch Section.list[indexPath.section] {
+            
         case .keyboardLayouts:
             for cell in tableView.visibleCells {
                 cell.accessoryType = .none
@@ -61,11 +62,11 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
             
             KeyboardViewController.shared.keyboardView.updateKeyboardLayout()
             
-        case .boolSection:
-            break
-            
         case .appLanguage:
             KeyboardViewController.shared.keyboardView.settingsContainerView.navigationController.pushViewController(languageTableViewController, animated: true)
+            
+        default:
+            break
         }
         
         cell.isSelected = false
@@ -89,7 +90,7 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
         case .boolSection:
             return BoolCell.list.count
             
-        case .appLanguage:
+        default:
             return 1
         }
     }
@@ -100,32 +101,40 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
         case .keyboardLayouts:
             return KeyboardLayoutSectionTitle.string
             
-        case .boolSection:
-            return nil
-            
-        case .appLanguage:
+        default:
             return nil
         }
     }
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        switch Section.list[section] {
-            
-        case .keyboardLayouts:
-            return nil
-            
-        case .boolSection:
-            return nil
-            
-        case .appLanguage:
-            return nil
-        }
+        return nil
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
 
         switch Section.list[indexPath.section] {
+            
+        case .keyboardMode:
+            let layoutModeSegmentedControlItems = [SpecialKey.horizontalMode.label, SpecialKey.verticalMode.label]
+            let layoutModeSegmentedControl = UISegmentedControl(items: layoutModeSegmentedControlItems)
+            
+            switch settings.layoutMode {
+            case .horizontal:
+                layoutModeSegmentedControl.selectedSegmentIndex = layoutModeSegmentedControlItems.index(of: SpecialKey.horizontalMode.label)!
+                
+            case .vertical:
+                layoutModeSegmentedControl.selectedSegmentIndex = layoutModeSegmentedControlItems.index(of: SpecialKey.verticalMode.label)!
+                
+            case .default:
+                layoutModeSegmentedControl.selectedSegmentIndex = 0
+            }
+            
+            layoutModeSegmentedControl.addTarget(self, action: #selector(action(layoutModeSegmentedControl:)), for: .allEvents)
+            
+            cell.accessoryView = layoutModeSegmentedControl
+            cell.textLabel?.text = KeyboardShapeCellTitle.string
+            
         case .keyboardLayouts:
             let layout = KeyboardLayout.list[indexPath.row]
             
@@ -168,6 +177,13 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
         }
         
         return cell
+    }
+    
+    @objc private func action(layoutModeSegmentedControl: UISegmentedControl) {
+        let selectedSegmentIndex = layoutModeSegmentedControl.selectedSegmentIndex
+        let selectedSegmentTitle = layoutModeSegmentedControl.titleForSegment(at: selectedSegmentIndex)!
+        
+        KeyboardViewController.shared.keyAction(label: selectedSegmentTitle)
     }
     
     func switchDidChange(sender: UISwitch) {

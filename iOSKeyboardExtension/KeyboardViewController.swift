@@ -154,14 +154,22 @@ class KeyboardViewController: UIInputViewController {
                 maxSuffixLength -= 1
             }
             
+        case .nextKeyboard:
+            break
+            
         case .dismissKeyboard:
             dismissKeyboard()
             
         case .settings:
             keyboardView.showSettings()
             
-        case .nextKeyboard:
-            break
+        case .horizontalMode:
+            settings.layoutMode = .horizontal
+            keyboardView.configure()
+            
+        case .verticalMode:
+            settings.layoutMode = .vertical
+            keyboardView.configure()
         }
     }
 }

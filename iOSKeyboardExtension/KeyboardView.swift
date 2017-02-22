@@ -83,7 +83,7 @@ internal class KeyboardView: UIView {
     private let deleteRowHeightInKeys: CGFloat = 1
     private let spaceRowHeightInKeys: CGFloat = 1
     
-    private let maxKeyboardHeightRatio: CGFloat = 0.56
+    private let maxKeyboardHeightRatio: CGFloat = 0.59
     
     private var maxKeyWidth: CGFloat {
         return 102.4 * scaleFactor

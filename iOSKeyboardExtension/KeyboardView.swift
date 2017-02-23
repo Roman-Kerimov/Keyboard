@@ -221,17 +221,9 @@ internal class KeyboardView: UIView {
             keyboardView.heightAnchor.constraint(equalToConstant: size.height).isActive = true
         #endif
         
-        deleteRowView.size = CGSize(
-            width: size.width,
-            height: deleteRowHeight
-        )
-        
+        deleteRowView.height = deleteRowHeight
         layoutView.halfKeyboardSize = halfKeyboardSize
-        
-        spaceRowView.size = CGSize(
-            width: size.width,
-            height: spaceRowHeight
-        )
+        spaceRowView.height = spaceRowHeight
         
         let maxKeyWidth = self.maxKeyWidth
         let keySize = self.keySize

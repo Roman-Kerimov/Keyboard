@@ -18,20 +18,6 @@ class SpaceRowView: RowView {
     }
     */
     
-    internal override var size: CGSize {
-        didSet {
-            super.size = size
-            
-            let compactKeyWidth = size.width / 8
-            
-            nextKeyboardKey.width = compactKeyWidth
-            dismissKeyboardKey.width = compactKeyWidth
-            settingsKey.width = compactKeyWidth
-            
-            returnKey.width = size.width / 5
-        }
-    }
-    
     let nextKeyboardKey = KeyView(key: .nextKeyboard)
     let dismissKeyboardKey = KeyView(key: .dismissKeyboard)
     let spaceKey = KeyView(key: .space)
@@ -41,11 +27,21 @@ class SpaceRowView: RowView {
     internal override init() {
         super.init()
         
+        let compactKeyMultiplier: CGFloat = 1/8
+        
         addArrangedSubview(nextKeyboardKey)
+        nextKeyboardKey.widthAnchor.constraint(equalTo: widthAnchor, multiplier: compactKeyMultiplier).isActive = true
+        
         addArrangedSubview(dismissKeyboardKey)
+        dismissKeyboardKey.widthAnchor.constraint(equalTo: widthAnchor, multiplier: compactKeyMultiplier).isActive = true
+        
         addArrangedSubview(spaceKey)
+        
         addArrangedSubview(returnKey)
+        returnKey.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1/5).isActive = true
+        
         addArrangedSubview(settingsKey)
+        settingsKey.widthAnchor.constraint(equalTo: widthAnchor, multiplier: compactKeyMultiplier).isActive = true
     }
     
     required init(coder: NSCoder) {

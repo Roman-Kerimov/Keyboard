@@ -24,15 +24,6 @@ class KeyView: UIButton {
     }
     */
     
-    internal var width: CGFloat = 0 {
-        didSet {
-            widthConstraint.constant = width
-            widthConstraint.isActive = true
-        }
-    }
-    
-    private var widthConstraint: NSLayoutConstraint!
-    
     var colorScheme: KeyboardColorScheme = .default {
         didSet {
             backgroundView.backgroundColor = colorScheme.keyColor
@@ -133,7 +124,6 @@ class KeyView: UIButton {
         // It is for activation of touch events
         backgroundColor = UIColor.white.withAlphaComponent(0.001)
         
-        widthConstraint = self.widthAnchor.constraint(equalToConstant: 0)
         self.label.numberOfLines = 3
         
         backgroundView = UIView()

@@ -9,14 +9,6 @@
 import UIKit
 
 class DeleteRowView: RowView {
-
-    internal override var size: CGSize {
-        didSet {
-            super.size = size
-            
-            deleteKey.width = size.width / 5
-        }
-    }
     
     let deleteKey = KeyView(key: .delete)
     
@@ -24,7 +16,9 @@ class DeleteRowView: RowView {
         super.init()
         
         addArrangedSubview(UIView())
+        
         addArrangedSubview(deleteKey)
+        deleteKey.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1/5).isActive = true
     }
     
     internal required init(coder: NSCoder) {

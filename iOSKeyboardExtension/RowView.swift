@@ -18,31 +18,26 @@ class RowView: UIStackView {
     }
     */
 
-    internal var size: CGSize = .zero {
+    var height: CGFloat = 0 {
         didSet {
-            widthConstraint.constant = size.width
-            widthConstraint.isActive = true
-            
-            heightConstraint.constant = size.height
+            heightConstraint.constant = height
             heightConstraint.isActive = true
         }
     }
     
-    private var widthConstraint: NSLayoutConstraint!
     private var heightConstraint: NSLayoutConstraint!
     
-    internal init() {
+    init() {
         super.init(frame: .zero)
         
         translatesAutoresizingMaskIntoConstraints = false
         
         axis = .horizontal
         
-        widthConstraint = widthAnchor.constraint(equalToConstant: 0)
         heightConstraint = heightAnchor.constraint(equalToConstant: 0)
     }
     
-    internal required init(coder: NSCoder) {
+    required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }

@@ -64,7 +64,16 @@ class KeyView: UIButton {
         let labelFontSize = keyWidthForCalculateFontSize * 6/15
         label.font = label.font.withSize(labelFontSize)
         
-        let shiftLabelFont = UIFont.systemFont(ofSize: labelFontSize/1.8)
+        let deleteLabelFontSize = labelFontSize/1.8
+    
+        let decreaseCoefficientWeight: CGFloat = 0.2
+        let decreaseCoefficientForNarrowKeys =
+            (keySize.width/keyWidthForCalculateFontSize + decreaseCoefficientWeight)
+            / (1 + decreaseCoefficientWeight)
+        
+        let shiftLabelFont = UIFont.systemFont(
+            ofSize: deleteLabelFontSize * decreaseCoefficientForNarrowKeys
+        )
         shiftUpLabel.font = shiftLabelFont
         shiftDownLabel.font = shiftLabelFont
         shiftLeftLabel.font = shiftLabelFont
@@ -76,18 +85,18 @@ class KeyView: UIButton {
         
         switch specialKey {
         case .delete, .return:
-            label.font = label.font.withSize(shiftLabelFont.pointSize)
+            label.font = label.font.withSize(deleteLabelFontSize)
             
         case .dismissKeyboard:
-            label.font = label.font.withSize(shiftLabelFont.pointSize * 1.2)
+            label.font = label.font.withSize(deleteLabelFontSize * 1.2)
             
         case .nextKeyboard:
-            label.font = label.font.withSize(shiftLabelFont.pointSize * 1.5)
+            label.font = label.font.withSize(deleteLabelFontSize * 1.5)
             centerXLabelConstraint.constant = label.font.pointSize * 0.02
             centerYLabelConstraint.constant = label.font.pointSize * 0.05
             
         case .settings:
-            label.font = label.font.withSize(shiftLabelFont.pointSize * 2.5)
+            label.font = label.font.withSize(deleteLabelFontSize * 2.5)
             centerXLabelConstraint.constant = label.font.pointSize * 0.025
             
         default:

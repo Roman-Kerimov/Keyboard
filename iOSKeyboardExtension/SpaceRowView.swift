@@ -32,16 +32,16 @@ class SpaceRowView: RowView {
         addArrangedSubview(nextKeyboardKey)
         nextKeyboardKey.widthAnchor.constraint(equalTo: widthAnchor, multiplier: compactKeyMultiplier).isActive = true
         
-        addArrangedSubview(dismissKeyboardKey)
-        dismissKeyboardKey.widthAnchor.constraint(equalTo: widthAnchor, multiplier: compactKeyMultiplier).isActive = true
+        addArrangedSubview(settingsKey)
+        settingsKey.widthAnchor.constraint(equalTo: widthAnchor, multiplier: compactKeyMultiplier).isActive = true
         
         addArrangedSubview(spaceKey)
         
         addArrangedSubview(returnKey)
         returnKey.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1/5).isActive = true
         
-        addArrangedSubview(settingsKey)
-        settingsKey.widthAnchor.constraint(equalTo: widthAnchor, multiplier: compactKeyMultiplier).isActive = true
+        addArrangedSubview(dismissKeyboardKey)
+        dismissKeyboardKey.widthAnchor.constraint(equalTo: widthAnchor, multiplier: compactKeyMultiplier).isActive = true
     }
     
     required init(coder: NSCoder) {

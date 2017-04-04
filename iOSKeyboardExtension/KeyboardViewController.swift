@@ -48,6 +48,12 @@ class KeyboardViewController: UIInputViewController {
         }
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        previousDocumentContext = DocumentContext(beforeInput: nil, afterInput: nil)
+    }
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         
         coordinator.animate(alongsideTransition: nil) { (context) in
@@ -76,6 +82,36 @@ class KeyboardViewController: UIInputViewController {
         } else {
             keyboardView.colorScheme = .default
         }
+        
+        moveInputToEndOfAlphanumericSequence()
+    }
+    
+    private var previousDocumentContext: DocumentContext = .init(beforeInput: nil, afterInput: nil)
+    
+    func moveInputToEndOfAlphanumericSequence() {
+        
+        guard textDocumentProxy.documentContext != previousDocumentContext else {
+            return
+        }
+        
+        previousDocumentContext = textDocumentProxy.documentContext
+        
+        guard let unicodeScalarBeforeInput = textDocumentProxy.documentContextBeforeInput?.unicodeScalars.last else {
+            return
+        }
+        
+        guard let unicodeScalarAfterInput = textDocumentProxy.documentContextAfterInput?.unicodeScalars.first else {
+            return
+        }
+        
+        guard CharacterSet.alphanumerics.contains(unicodeScalarBeforeInput)
+            && CharacterSet.alphanumerics.contains(unicodeScalarAfterInput) else {
+            return
+        }
+        
+        let alphanumericSequence = textDocumentProxy.documentContextAfterInput?.components(separatedBy: CharacterSet.alphanumerics.inverted).first ?? ""
+        
+        textDocumentProxy.adjustTextPosition(byCharacterOffset: alphanumericSequence.characters.count)
     }
     
     var isLastWhitespace: Bool {
@@ -183,5 +219,20 @@ extension UIView {
             rightAnchor.constraint(equalTo: superview!.rightAnchor),
             bottomAnchor.constraint(equalTo: superview!.bottomAnchor),
         ])
+    }
+}
+
+struct DocumentContext: Equatable {
+    let beforeInput: String?
+    let afterInput: String?
+    
+    static func ==(left: DocumentContext, right: DocumentContext) -> Bool {
+        return left.beforeInput == right.beforeInput && left.afterInput == right.afterInput
+    }
+}
+
+extension UITextDocumentProxy {
+    var documentContext: DocumentContext {
+        return DocumentContext(beforeInput: documentContextBeforeInput, afterInput: documentContextAfterInput)
     }
 }

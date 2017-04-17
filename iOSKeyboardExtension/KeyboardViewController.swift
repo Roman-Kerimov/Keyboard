@@ -11,6 +11,10 @@ import UIKit
 class KeyboardViewController: UIInputViewController {
     static var shared: KeyboardViewController!
     
+    internal func updateDocumentContext() {
+        keyboardView.documentContext = textDocumentProxy.documentContext
+    }
+    
     let keyboardView = KeyboardView()
     let settings = KeyboardSettings()
     
@@ -51,7 +55,7 @@ class KeyboardViewController: UIInputViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        previousDocumentContext = DocumentContext(beforeInput: nil, afterInput: nil)
+        previousDocumentContext = .init()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -84,11 +88,12 @@ class KeyboardViewController: UIInputViewController {
         }
         
         moveInputToEndOfAlphanumericSequence()
+        updateDocumentContext()
     }
     
-    private var previousDocumentContext: DocumentContext = .init(beforeInput: nil, afterInput: nil)
+    private var previousDocumentContext: DocumentContext = .init()
     
-    func moveInputToEndOfAlphanumericSequence() {
+    private func moveInputToEndOfAlphanumericSequence() {
         
         guard textDocumentProxy.documentContext != previousDocumentContext else {
             return
@@ -136,7 +141,9 @@ class KeyboardViewController: UIInputViewController {
         }
     }
     
-    func keyAction(label: String) {
+    func keyAction(label: String, offcet: Int = 0) {
+        
+        textDocumentProxy.adjustTextPosition(byCharacterOffset: offcet)
         
         guard let specialKey = SpecialKey(rawValue: label) else {
             textDocumentProxy.insertText(label)
@@ -208,6 +215,8 @@ class KeyboardViewController: UIInputViewController {
             settings.layoutMode = .vertical
             keyboardView.configure()
         }
+        
+        textDocumentProxy.adjustTextPosition(byCharacterOffset: -offcet)
     }
 }
 
@@ -229,10 +238,20 @@ struct DocumentContext: Equatable {
     static func ==(left: DocumentContext, right: DocumentContext) -> Bool {
         return left.beforeInput == right.beforeInput && left.afterInput == right.afterInput
     }
+    
+    init() {
+        beforeInput = nil
+        afterInput = nil
+    }
+    
+    init(beforeInput: String?, afterInput: String?) {
+        self.beforeInput = beforeInput
+        self.afterInput = afterInput
+    }
 }
 
 extension UITextDocumentProxy {
     var documentContext: DocumentContext {
-        return DocumentContext(beforeInput: documentContextBeforeInput, afterInput: documentContextAfterInput)
+        return .init(beforeInput: documentContextBeforeInput, afterInput: documentContextAfterInput)
     }
 }

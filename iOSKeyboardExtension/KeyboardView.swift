@@ -14,6 +14,12 @@ internal class KeyboardView: UIView {
     @IBInspectable internal var darkColorScheme: Bool = false
     @IBInspectable internal var alternateLayoutMode: Bool = false
     
+    internal var documentContext: DocumentContext = .init() {
+        didSet {
+            characterSequenceView.characters = .init(documentContext.beforeInput?.components(separatedBy: CharacterSet.alphanumerics.inverted).last?.characters ?? .init())
+        }
+    }
+    
     internal var nextKeyboardKey: KeyView {
         return spaceRowView.nextKeyboardKey
     }
@@ -39,9 +45,15 @@ internal class KeyboardView: UIView {
             key.colorScheme = colorScheme
         }
         
+        characterSequenceView.colorScheme = colorScheme
+        
         #if TARGET_INTERFACE_BUILDER
             keyboardView.backgroundColor = colorScheme.fakeBackroundColorForInterfaceBuilder
         #endif
+    }
+    
+    private var characterSequenceView: CharacterSequenceView {
+        return deleteRowView.characterSequence
     }
     
     private var keys: [KeyView] {
@@ -233,6 +245,12 @@ internal class KeyboardView: UIView {
         for key in keys {
             key.configure(maxKeyWidth: maxKeyWidth, keySize: keySize, minimalScreenSize: minimalScreenSize, sizeInKeysForVerticalMode: sizeInKeysForVerticalMode)
         }
+        
+        deleteRowView.characterSequence.layout.itemSize = .init(
+            width: max(keySize.width, minimalScreenSize.width/sizeInKeysForVerticalMode.width)/4,
+            height: keySize.height
+        )
+        deleteRowView.characterSequence.reloadData()
     }
     
     private var deleteRowView = DeleteRowView()

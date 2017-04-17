@@ -122,7 +122,7 @@ class KeyView: UIButton {
         super.init(frame: CGRect())
         
         // It is for activation of touch events
-        backgroundColor = UIColor.white.withAlphaComponent(0.001)
+        backgroundColor = .touchableClear
         
         self.label.numberOfLines = 3
         
@@ -220,6 +220,7 @@ class KeyView: UIButton {
             
             if specialKey == .delete {
                 KeyboardViewController.shared.keyAction(label: self.label.text!)
+                KeyboardViewController.shared.updateDocumentContext()
                 
                 autorepeatThread = Thread(block: {
                     let thread = self.autorepeatThread!
@@ -228,6 +229,7 @@ class KeyView: UIButton {
                     
                     while thread.isCancelled == false {
                         KeyboardViewController.shared.keyAction(label: self.label.text!)
+                        KeyboardViewController.shared.updateDocumentContext()
                         Thread.sleep(forTimeInterval: 0.1)
                     }
                     
@@ -243,6 +245,7 @@ class KeyView: UIButton {
             
             if specialKey != .delete {
                 KeyboardViewController.shared.keyAction(label: self.label.text!)
+                KeyboardViewController.shared.updateDocumentContext()
             }
             
             backgroundView.backgroundColor = colorScheme.keyColor

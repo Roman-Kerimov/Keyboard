@@ -78,14 +78,6 @@ class KeyView: UIButton {
         case .delete, .return:
             label.font = label.font.withSize(shiftLabelFont.pointSize)
             
-        case .dismissKeyboard:
-            label.font = label.font.withSize(shiftLabelFont.pointSize * 1.2)
-            
-        case .nextKeyboard:
-            label.font = label.font.withSize(shiftLabelFont.pointSize * 1.5)
-            centerXLabelConstraint.constant = label.font.pointSize * 0.02
-            centerYLabelConstraint.constant = label.font.pointSize * 0.05
-            
         case .settings:
             label.font = label.font.withSize(shiftLabelFont.pointSize * 2.5)
             centerXLabelConstraint.constant = label.font.pointSize * 0.025
@@ -113,7 +105,7 @@ class KeyView: UIButton {
         self.init(label: key.label)
         
         if key == .nextKeyboard || key == .dismissKeyboard {
-            label.font = UIFont(name: "FiraSans", size: 1)
+            //label.font =
         }
     }
     

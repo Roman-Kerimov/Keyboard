@@ -27,7 +27,6 @@
 		966194D31DE2FCEF007FCF02 /* KeyboardLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966194D21DE2FCEF007FCF02 /* KeyboardLayoutView.swift */; };
 		9665F3761E9D847300850F97 /* CharacterSequenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665F3751E9D847300850F97 /* CharacterSequenceView.swift */; };
 		9665F3781E9D921500850F97 /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665F3771E9D921500850F97 /* CharacterCollectionViewCell.swift */; };
-		9676A6AC1E17C7400091B155 /* FiraSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9676A6AB1E17C4830091B155 /* FiraSans-Regular.ttf */; };
 		9685BCFF1E06815700702C84 /* KeyboardSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9685BCFE1E06815700702C84 /* KeyboardSettings.swift */; };
 		968694C11EA0F3D100E6C9D0 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968694C01EA0F3D100E6C9D0 /* UIColorExtension.swift */; };
 		9694E23B1E29D1BC00ED3A85 /* LocalizableStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9694E23A1E29D1BC00ED3A85 /* LocalizableStrings.swift */; };
@@ -88,7 +87,6 @@
 		966194D21DE2FCEF007FCF02 /* KeyboardLayoutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutView.swift; sourceTree = "<group>"; };
 		9665F3751E9D847300850F97 /* CharacterSequenceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterSequenceView.swift; sourceTree = "<group>"; };
 		9665F3771E9D921500850F97 /* CharacterCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCell.swift; sourceTree = "<group>"; };
-		9676A6AB1E17C4830091B155 /* FiraSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FiraSans-Regular.ttf"; sourceTree = "<group>"; };
 		9685BCFE1E06815700702C84 /* KeyboardSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardSettings.swift; sourceTree = "<group>"; };
 		968694C01EA0F3D100E6C9D0 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		9694E23A1E29D1BC00ED3A85 /* LocalizableStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizableStrings.swift; sourceTree = "<group>"; };
@@ -175,7 +173,6 @@
 				9694E23C1E29D72800ED3A85 /* Internationalization.swift */,
 				96D2B8DC1E35538B006772A5 /* Localization.swift */,
 				9694E23A1E29D1BC00ED3A85 /* LocalizableStrings.swift */,
-				9676A6AB1E17C4830091B155 /* FiraSans-Regular.ttf */,
 				964AB96B1D1B6535004C827C /* Info.plist */,
 				964FE8221D1CA9D400D41EA7 /* Keyboard.storyboard */,
 			);
@@ -278,7 +275,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9676A6AC1E17C7400091B155 /* FiraSans-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

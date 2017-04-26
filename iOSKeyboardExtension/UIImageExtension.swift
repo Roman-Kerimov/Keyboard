@@ -8,11 +8,16 @@
 
 import UIKit
 
+public enum PDFExtension: String {
+    case pdf = "pdf"
+    case ai = "ai"
+}
+
 extension UIImage {
-    public convenience init?(fromPDF pdfName: String, withScale scale: CGFloat, for object: AnyObject) {
+    public convenience init?(fromPDF pdfName: String, withExtension pdfExtension: PDFExtension, withScale scale: CGFloat, for object: AnyObject) {
         let bundle: Bundle = .init(for: type(of: object))
         
-        guard let pdfURL = bundle.url(forResource: pdfName, withExtension: "pdf") else {
+        guard let pdfURL = bundle.url(forResource: pdfName, withExtension: pdfExtension.rawValue) else {
             return nil
         }
         

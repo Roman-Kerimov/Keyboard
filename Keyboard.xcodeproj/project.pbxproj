@@ -36,8 +36,9 @@
 		96BC5F561DEB961F002E0752 /* ShiftLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BC5F551DEB961F002E0752 /* ShiftLabel.swift */; };
 		96D2B8DD1E35538B006772A5 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D2B8DC1E35538B006772A5 /* Localization.swift */; };
 		96EA39D71EAFDDDE00F3D804 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EA39D61EAFDDDE00F3D804 /* UIImageExtension.swift */; };
-		96EA39DB1EB0629000F3D804 /* NextKeyboard.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 96EA39DA1EB0629000F3D804 /* NextKeyboard.pdf */; };
-		96EA39DE1EB0AAF200F3D804 /* HideKeyboard.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 96EA39DD1EB0AAF200F3D804 /* HideKeyboard.pdf */; };
+		96EA39E21EB0EEDE00F3D804 /* Labels_HideKeyboard.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96EA39DF1EB0EEDD00F3D804 /* Labels_HideKeyboard.ai */; };
+		96EA39E31EB0EEDE00F3D804 /* Labels_NextKeyboard.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96EA39E01EB0EEDD00F3D804 /* Labels_NextKeyboard.ai */; };
+		96EA39E41EB0EEDE00F3D804 /* Labels.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96EA39E11EB0EEDD00F3D804 /* Labels.ai */; };
 		96F8D1D11E26FAE0000D1DFC /* SettingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8D1D01E26FAE0000D1DFC /* SettingsTableView.swift */; };
 /* End PBXBuildFile section */
 
@@ -99,8 +100,9 @@
 		96BC5F551DEB961F002E0752 /* ShiftLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftLabel.swift; sourceTree = "<group>"; };
 		96D2B8DC1E35538B006772A5 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		96EA39D61EAFDDDE00F3D804 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
-		96EA39DA1EB0629000F3D804 /* NextKeyboard.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = NextKeyboard.pdf; sourceTree = "<group>"; };
-		96EA39DD1EB0AAF200F3D804 /* HideKeyboard.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = HideKeyboard.pdf; sourceTree = "<group>"; };
+		96EA39DF1EB0EEDD00F3D804 /* Labels_HideKeyboard.ai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Labels_HideKeyboard.ai; sourceTree = "<group>"; };
+		96EA39E01EB0EEDD00F3D804 /* Labels_NextKeyboard.ai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Labels_NextKeyboard.ai; sourceTree = "<group>"; };
+		96EA39E11EB0EEDD00F3D804 /* Labels.ai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Labels.ai; sourceTree = "<group>"; };
 		96F8D1D01E26FAE0000D1DFC /* SettingsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -190,8 +192,9 @@
 		96EA39DC1EB0867100F3D804 /* Labels */ = {
 			isa = PBXGroup;
 			children = (
-				96EA39DA1EB0629000F3D804 /* NextKeyboard.pdf */,
-				96EA39DD1EB0AAF200F3D804 /* HideKeyboard.pdf */,
+				96EA39E11EB0EEDD00F3D804 /* Labels.ai */,
+				96EA39E01EB0EEDD00F3D804 /* Labels_NextKeyboard.ai */,
+				96EA39DF1EB0EEDD00F3D804 /* Labels_HideKeyboard.ai */,
 			);
 			name = Labels;
 			sourceTree = "<group>";
@@ -292,8 +295,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96EA39DB1EB0629000F3D804 /* NextKeyboard.pdf in Resources */,
-				96EA39DE1EB0AAF200F3D804 /* HideKeyboard.pdf in Resources */,
+				96EA39E41EB0EEDE00F3D804 /* Labels.ai in Resources */,
+				96EA39E31EB0EEDE00F3D804 /* Labels_NextKeyboard.ai in Resources */,
+				96EA39E21EB0EEDE00F3D804 /* Labels_HideKeyboard.ai in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

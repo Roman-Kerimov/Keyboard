@@ -88,7 +88,7 @@ class KeyView: UIButton {
         }
         
         if imageLabelView.image != nil {
-            imageLabelView.image = UIImage.init(fromPDF: mainLabel, withScale: labelFontSize/24, for: self)?.withRenderingMode(.alwaysTemplate)
+            imageLabelView.image = UIImage.init(fromPDF: labelFileName, withExtension: .ai, withScale: labelFontSize/24, for: self)?.withRenderingMode(.alwaysTemplate)
         }
     }
     
@@ -96,6 +96,10 @@ class KeyView: UIButton {
     var centerYLabelConstraint: NSLayoutConstraint!
     
     let mainLabel: String
+    
+    private var labelFileName: String {
+        return "Labels_\(mainLabel)"
+    }
     
     let label = UILabel()
     let imageLabelView: UIImageView = .init()
@@ -215,7 +219,7 @@ class KeyView: UIButton {
         imageLabelView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         imageLabelView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         
-        if let imageLabel: UIImage = UIImage.init(fromPDF: mainLabel, withScale: 1, for: self) {
+        if let imageLabel: UIImage = UIImage.init(fromPDF: labelFileName, withExtension: .ai, withScale: 1, for: self) {
             imageLabelView.image = imageLabel
             self.label.isHidden = true
         }

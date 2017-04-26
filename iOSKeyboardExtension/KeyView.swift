@@ -349,7 +349,7 @@ internal enum SpecialKey: String {
     case union = "union"
     case nextKeyboard = "NextKeyboard"
     case dismissKeyboard = "HideKeyboard"
-    case settings = "𑁔"
+    case settings = "Settings"
     case horizontalMode = "▄▄"
     case verticalMode = "▝█▖"
 }

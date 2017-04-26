@@ -29,6 +29,7 @@ class KeyView: UIButton {
             backgroundView.backgroundColor = colorScheme.keyColor
             
             label.textColor = colorScheme.labelColor
+            tintColor = colorScheme.labelColor
             shiftUpLabel.textColor = colorScheme.shiftLabelColor
             shiftDownLabel.textColor = colorScheme.shiftLabelColor
             shiftLeftLabel.textColor = colorScheme.shiftLabelColor
@@ -85,6 +86,10 @@ class KeyView: UIButton {
         default:
             break
         }
+        
+        if imageLabelView.image != nil {
+            imageLabelView.image = UIImage.init(fromPDF: mainLabel, withScale: labelFontSize, for: self)?.withRenderingMode(.alwaysTemplate)
+        }
     }
     
     var centerXLabelConstraint: NSLayoutConstraint!
@@ -93,6 +98,7 @@ class KeyView: UIButton {
     let mainLabel: String
     
     let label = UILabel()
+    let imageLabelView: UIImageView = .init()
     let shiftUpLabel = ShiftLabel()
     let shiftDownLabel = ShiftLabel()
     
@@ -109,6 +115,33 @@ class KeyView: UIButton {
         }
     }
     
+    private var highlightColor: UIColor!
+    
+    override internal var isHighlighted: Bool {
+        didSet {
+            super.isHighlighted = isHighlighted
+            
+            if isHighlighted {
+                
+                backgroundView.backgroundColor = highlightColor
+                label.textColor = colorScheme.activeLabelColor
+                shiftUpLabel.isHidden = true
+                shiftDownLabel.isHidden = true
+                shiftLeftLabel.isHidden = true
+                shiftRightLabel.isHidden = true
+            }
+            else {
+                
+                backgroundView.backgroundColor = colorScheme.keyColor
+                label.textColor = colorScheme.labelColor
+                shiftUpLabel.isHidden = false
+                shiftDownLabel.isHidden = false
+                shiftLeftLabel.isHidden = false
+                shiftRightLabel.isHidden = false
+            }
+        }
+    }
+    
     init(label: String, shiftDownLabel: String = "") {
         mainLabel = label
         super.init(frame: CGRect())
@@ -116,7 +149,7 @@ class KeyView: UIButton {
         // It is for activation of touch events
         backgroundColor = .touchableClear
         
-        self.label.numberOfLines = 3
+        highlightColor = tintColor
         
         backgroundView = UIView()
         backgroundView.isUserInteractionEnabled = false
@@ -177,6 +210,16 @@ class KeyView: UIButton {
             self.shiftDownLabel.text = shiftDownLabel
         }
         
+        addSubview(imageLabelView)
+        imageLabelView.translatesAutoresizingMaskIntoConstraints = false
+        imageLabelView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        imageLabelView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        
+        if let imageLabel: UIImage = UIImage.init(fromPDF: mainLabel, withScale: 1, for: self) {
+            imageLabelView.image = imageLabel
+            self.label.isHidden = true
+        }
+        
         longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressGestureAction(gesture:)))
         addGestureRecognizer(longPressGestureRecognizer)
         
@@ -201,12 +244,7 @@ class KeyView: UIButton {
             
         case .began:
             
-            backgroundView.backgroundColor = tintColor
-            label.textColor = colorScheme.activeLabelColor
-            shiftUpLabel.isHidden = true
-            shiftDownLabel.isHidden = true
-            shiftLeftLabel.isHidden = true
-            shiftRightLabel.isHidden = true
+            isHighlighted = true
             
             gestureStartPoint = gesture.location(in: self)
             
@@ -240,12 +278,7 @@ class KeyView: UIButton {
                 KeyboardViewController.shared.updateDocumentContext()
             }
             
-            backgroundView.backgroundColor = colorScheme.keyColor
-            label.textColor = colorScheme.labelColor
-            shiftUpLabel.isHidden = false
-            shiftDownLabel.isHidden = false
-            shiftLeftLabel.isHidden = false
-            shiftRightLabel.isHidden = false
+            isHighlighted = false
             
             label.text = mainLabel
             
@@ -310,7 +343,7 @@ internal enum SpecialKey: String {
     case `return` = "return"
     case tab = "tab"
     case union = "union"
-    case nextKeyboard = "🌐"
+    case nextKeyboard = "NextKeyboard"
     case dismissKeyboard = "\n⌨\nˇ"
     case settings = "𑁔"
     case horizontalMode = "▄▄"

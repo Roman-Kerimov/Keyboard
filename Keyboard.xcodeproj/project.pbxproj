@@ -35,6 +35,8 @@
 		969F15F71E54EE3600C0DD7D /* LanguageTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969F15F61E54EE3600C0DD7D /* LanguageTableView.swift */; };
 		96BC5F561DEB961F002E0752 /* ShiftLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BC5F551DEB961F002E0752 /* ShiftLabel.swift */; };
 		96D2B8DD1E35538B006772A5 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D2B8DC1E35538B006772A5 /* Localization.swift */; };
+		96EA39D71EAFDDDE00F3D804 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EA39D61EAFDDDE00F3D804 /* UIImageExtension.swift */; };
+		96EA39DB1EB0629000F3D804 /* NextKeyboard.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 96EA39DA1EB0629000F3D804 /* NextKeyboard.pdf */; };
 		96F8D1D11E26FAE0000D1DFC /* SettingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8D1D01E26FAE0000D1DFC /* SettingsTableView.swift */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +97,8 @@
 		969F15F61E54EE3600C0DD7D /* LanguageTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageTableView.swift; sourceTree = "<group>"; };
 		96BC5F551DEB961F002E0752 /* ShiftLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftLabel.swift; sourceTree = "<group>"; };
 		96D2B8DC1E35538B006772A5 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		96EA39D61EAFDDDE00F3D804 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		96EA39DA1EB0629000F3D804 /* NextKeyboard.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = NextKeyboard.pdf; sourceTree = "<group>"; };
 		96F8D1D01E26FAE0000D1DFC /* SettingsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -170,13 +174,23 @@
 				9685BCFE1E06815700702C84 /* KeyboardSettings.swift */,
 				969F15F41E549BD300C0DD7D /* ViewController<UIView>.swift */,
 				968694C01EA0F3D100E6C9D0 /* UIColorExtension.swift */,
+				96EA39D61EAFDDDE00F3D804 /* UIImageExtension.swift */,
 				9694E23C1E29D72800ED3A85 /* Internationalization.swift */,
 				96D2B8DC1E35538B006772A5 /* Localization.swift */,
 				9694E23A1E29D1BC00ED3A85 /* LocalizableStrings.swift */,
 				964AB96B1D1B6535004C827C /* Info.plist */,
 				964FE8221D1CA9D400D41EA7 /* Keyboard.storyboard */,
+				96EA39DC1EB0867100F3D804 /* Labels */,
 			);
 			path = iOSKeyboardExtension;
+			sourceTree = "<group>";
+		};
+		96EA39DC1EB0867100F3D804 /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				96EA39DA1EB0629000F3D804 /* NextKeyboard.pdf */,
+			);
+			name = Labels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,6 +289,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96EA39DB1EB0629000F3D804 /* NextKeyboard.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +312,7 @@
 			files = (
 				966194D31DE2FCEF007FCF02 /* KeyboardLayoutView.swift in Sources */,
 				96D2B8DD1E35538B006772A5 /* Localization.swift in Sources */,
+				96EA39D71EAFDDDE00F3D804 /* UIImageExtension.swift in Sources */,
 				965D15CB1D32F7C90098FA57 /* HalfKeyboardView.swift in Sources */,
 				9665F3761E9D847300850F97 /* CharacterSequenceView.swift in Sources */,
 				964AB96A1D1B6535004C827C /* KeyboardViewController.swift in Sources */,

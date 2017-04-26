@@ -37,6 +37,7 @@
 		96D2B8DD1E35538B006772A5 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D2B8DC1E35538B006772A5 /* Localization.swift */; };
 		96EA39D71EAFDDDE00F3D804 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EA39D61EAFDDDE00F3D804 /* UIImageExtension.swift */; };
 		96EA39DB1EB0629000F3D804 /* NextKeyboard.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 96EA39DA1EB0629000F3D804 /* NextKeyboard.pdf */; };
+		96EA39DE1EB0AAF200F3D804 /* HideKeyboard.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 96EA39DD1EB0AAF200F3D804 /* HideKeyboard.pdf */; };
 		96F8D1D11E26FAE0000D1DFC /* SettingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8D1D01E26FAE0000D1DFC /* SettingsTableView.swift */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +100,7 @@
 		96D2B8DC1E35538B006772A5 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		96EA39D61EAFDDDE00F3D804 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		96EA39DA1EB0629000F3D804 /* NextKeyboard.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = NextKeyboard.pdf; sourceTree = "<group>"; };
+		96EA39DD1EB0AAF200F3D804 /* HideKeyboard.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = HideKeyboard.pdf; sourceTree = "<group>"; };
 		96F8D1D01E26FAE0000D1DFC /* SettingsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -189,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				96EA39DA1EB0629000F3D804 /* NextKeyboard.pdf */,
+				96EA39DD1EB0AAF200F3D804 /* HideKeyboard.pdf */,
 			);
 			name = Labels;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				96EA39DB1EB0629000F3D804 /* NextKeyboard.pdf in Resources */,
+				96EA39DE1EB0AAF200F3D804 /* HideKeyboard.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

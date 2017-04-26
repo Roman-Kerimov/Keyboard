@@ -88,7 +88,7 @@ class KeyView: UIButton {
         }
         
         if imageLabelView.image != nil {
-            imageLabelView.image = UIImage.init(fromPDF: mainLabel, withScale: labelFontSize, for: self)?.withRenderingMode(.alwaysTemplate)
+            imageLabelView.image = UIImage.init(fromPDF: mainLabel, withScale: labelFontSize/24, for: self)?.withRenderingMode(.alwaysTemplate)
         }
     }
     
@@ -344,7 +344,7 @@ internal enum SpecialKey: String {
     case tab = "tab"
     case union = "union"
     case nextKeyboard = "NextKeyboard"
-    case dismissKeyboard = "\n⌨\nˇ"
+    case dismissKeyboard = "HideKeyboard"
     case settings = "𑁔"
     case horizontalMode = "▄▄"
     case verticalMode = "▝█▖"

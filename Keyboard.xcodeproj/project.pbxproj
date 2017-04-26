@@ -196,8 +196,8 @@
 			children = (
 				96EA39E11EB0EEDD00F3D804 /* Labels.ai */,
 				96EA39E01EB0EEDD00F3D804 /* Labels_NextKeyboard.ai */,
-				96767C241EB11E28004D847C /* Labels_Settings.ai */,
 				96EA39DF1EB0EEDD00F3D804 /* Labels_HideKeyboard.ai */,
+				96767C241EB11E28004D847C /* Labels_Settings.ai */,
 			);
 			name = Labels;
 			sourceTree = "<group>";

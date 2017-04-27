@@ -262,8 +262,12 @@ class KeyView: UIButton {
                     Thread.sleep(forTimeInterval: 0.5)
                     
                     while thread.isCancelled == false {
-                        KeyboardViewController.shared.keyAction(label: self.label.text!)
-                        KeyboardViewController.shared.updateDocumentContext()
+                        
+                        OperationQueue.main.addOperation {
+                            KeyboardViewController.shared.keyAction(label: self.label.text!)
+                            KeyboardViewController.shared.updateDocumentContext()
+                        }
+                        
                         Thread.sleep(forTimeInterval: 0.1)
                     }
                     

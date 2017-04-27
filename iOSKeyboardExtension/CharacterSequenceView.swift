@@ -77,11 +77,24 @@ class CharacterSequenceView: UICollectionView, UICollectionViewDelegateFlowLayou
             
             updateInteractiveMovementTargetPosition(targetPosition)
             
+            deleteKey.isHighlighted = gesture.location(in: self).x > bounds.width
+            
         case .ended:
             endInteractiveMovement()
             
         default:
             cancelInteractiveMovement()
+        }
+    }
+    
+    override func endInteractiveMovement() {
+        super.endInteractiveMovement()
+        
+        if deleteKey.isHighlighted {
+            KeyboardViewController.shared.keyAction(label: SpecialKey.delete.label)
+            deleteKey.isHighlighted = false
+            
+            KeyboardViewController.shared.updateDocumentContext()
         }
     }
     
@@ -103,11 +116,17 @@ class CharacterSequenceView: UICollectionView, UICollectionViewDelegateFlowLayou
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         
         KeyboardViewController.shared.keyAction(label: SpecialKey.delete.label, offcet: sourceIndexPath.item - characters.count + 1)
-        KeyboardViewController.shared.keyAction(label: String(characters[sourceIndexPath.item]), offcet: destinationIndexPath.item - characters.count + 1)
         
-        KeyboardViewController.shared.updateDocumentContext()
+        if !deleteKey.isHighlighted {
+            KeyboardViewController.shared.keyAction(label: String(characters[sourceIndexPath.item]), offcet: destinationIndexPath.item - characters.count + 1)
+        }
+        else {
+            deleteKey.isHighlighted = false
+        }
     }
     
-    
+    internal var deleteKey: KeyView {
+        return KeyboardViewController.shared.keyboardView.deleteKey
+    }
 
 }

@@ -23,6 +23,10 @@ internal class KeyboardView: UIView {
     internal var nextKeyboardKey: KeyView {
         return spaceRowView.nextKeyboardKey
     }
+    
+    internal var deleteKey: KeyView {
+        return deleteRowView.deleteKey
+    }
 
     /*
     // Only override draw() if you perform custom drawing.

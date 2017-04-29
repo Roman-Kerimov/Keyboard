@@ -16,7 +16,7 @@ internal class KeyboardView: UIView {
     
     internal var documentContext: DocumentContext = .init() {
         didSet {
-            characterSequenceView.characters = .init(documentContext.beforeInput?.components(separatedBy: CharacterSet.alphanumerics.inverted).last?.characters ?? .init())
+            characterSequenceView.characters = .init(documentContext.beforeInput?.components(separatedBy: CharacterSet.whitespaces).last?.characters ?? .init())
         }
     }
     

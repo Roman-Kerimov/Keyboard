@@ -31,6 +31,7 @@ class CharacterSequenceView: UICollectionView, UICollectionViewDelegateFlowLayou
     }
     
     internal let layout: UICollectionViewFlowLayout = .init()
+    private var longPressGestureRecognizer: UILongPressGestureRecognizer!
     
     let characterCellReuseIdentifier = "fWz2pPGnOBKbeARRwDdJswgBqDYSA6P"
     
@@ -50,7 +51,7 @@ class CharacterSequenceView: UICollectionView, UICollectionViewDelegateFlowLayou
         
         print()
         
-        let longPressGestureRecognizer: UILongPressGestureRecognizer = .init(target: self, action: #selector(handleLongPressGesture(from:)))
+        longPressGestureRecognizer = UILongPressGestureRecognizer.init(target: self, action: #selector(handleLongPressGesture(from:)))
         addGestureRecognizer(longPressGestureRecognizer)
         longPressGestureRecognizer.minimumPressDuration = 0
         
@@ -63,24 +64,97 @@ class CharacterSequenceView: UICollectionView, UICollectionViewDelegateFlowLayou
         fatalError("init(coder:) has not been implemented")
     }
     
-    func handleLongPressGesture(from gesture: UILongPressGestureRecognizer) {
+    private var activeIndexPath: IndexPath? {
+        willSet {
+            if let newValue = newValue {
+                activeCell = cellForItem(at: newValue) as! CharacterCollectionViewCell
+            }
+        }
+    }
+    
+    private var activeCell: CharacterCollectionViewCell!
+    
+    private enum CharacterSequenceActionStage {
+        case interactiveMovement, uppercase, lowercase
+    }
+    
+    private var actionStage: CharacterSequenceActionStage = .interactiveMovement {
+        didSet {
+            guard let activeIndexPath = activeIndexPath else {
+                return
+            }
+            
+            let isChangeStage = actionStage != oldValue
+            let isInteractiveMovement = actionStage == .interactiveMovement
+            let isUppercase = actionStage == .uppercase
+            let isLowercase = actionStage == .lowercase
+            
+            if isInteractiveMovement && isChangeStage {
+                beginInteractiveMovementForItem(at: activeIndexPath)
+                activeCell.title.text = String.init(characters[activeIndexPath.item])
+            }
+            else if isInteractiveMovement {
+                let touchPosition = longPressGestureRecognizer.location(in: longPressGestureRecognizer.view!)
+                let targetPosition: CGPoint = .init(x: touchPosition.x, y: center.y)
+                
+                updateInteractiveMovementTargetPosition(targetPosition)
+                deleteKey.isHighlighted = longPressGestureRecognizer.location(in: self).x > bounds.width
+            }
+            else if isUppercase && isChangeStage {
+                cancelInteractiveMovement()
+                activeCell.title.text = activeCell.title.text?.uppercased()
+            }
+            else if isLowercase && isChangeStage {
+                cancelInteractiveMovement()
+                activeCell.title.text = activeCell.title.text?.lowercased()
+            }
+        }
+    }
+    
+    @objc private func handleLongPressGesture(from gesture: UILongPressGestureRecognizer) {
+        let gestureLocation: CGPoint = gesture.location(in: self)
+        
         switch gesture.state {
         case .began:
-            guard let selectedIndexPath = indexPathForItem(at: gesture.location(in: self)) else {
+            activeIndexPath = indexPathForItem(at: gesture.location(in: self))
+            guard let activeIndexPath = activeIndexPath else {
                 break
             }
-            beginInteractiveMovementForItem(at: selectedIndexPath)
+            
+            beginInteractiveMovementForItem(at: activeIndexPath)
             
         case .changed:
-            let touchPosition = gesture.location(in: gesture.view!)
-            let targetPosition: CGPoint = .init(x: touchPosition.x, y: center.y)
             
-            updateInteractiveMovementTargetPosition(targetPosition)
-            
-            deleteKey.isHighlighted = gesture.location(in: self).x > bounds.width
+            if gestureLocation.y < 0 {
+                actionStage = .uppercase
+            }
+            else if gestureLocation.y > bounds.height * 3 {
+                actionStage = .lowercase
+            }
+            else {
+                actionStage = .interactiveMovement
+            }
             
         case .ended:
-            endInteractiveMovement()
+            
+            switch actionStage {
+                
+            case .interactiveMovement:
+                endInteractiveMovement()
+                
+            case .uppercase, .lowercase:
+                guard let activeIndexPath = activeIndexPath else {
+                    break
+                }
+                
+                KeyboardViewController.shared.keyAction(label: SpecialKey.delete.label, offcet: activeIndexPath.item - characters.count + 1)
+                KeyboardViewController.shared.keyAction(label: activeCell.title.text!, offcet: activeIndexPath.item - characters.count + 1)
+                
+                KeyboardViewController.shared.updateDocumentContext()
+            }
+            
+            self.activeIndexPath = nil
+            actionStage = .interactiveMovement
             
         default:
             cancelInteractiveMovement()
@@ -96,6 +170,12 @@ class CharacterSequenceView: UICollectionView, UICollectionViewDelegateFlowLayou
             
             KeyboardViewController.shared.updateDocumentContext()
         }
+    }
+    
+    override func cancelInteractiveMovement() {
+        super.cancelInteractiveMovement()
+        
+        deleteKey.isHighlighted = false
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

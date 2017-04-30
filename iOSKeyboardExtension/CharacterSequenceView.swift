@@ -37,7 +37,7 @@ class CharacterSequenceView: UICollectionView, UICollectionViewDelegateFlowLayou
     
     init() {
 
-        layout.sectionInset = .zero
+        layout.sectionInset = .init(top: 0, left: 0, bottom: 0, right: layout.itemSize.width)
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 0
         
@@ -48,8 +48,6 @@ class CharacterSequenceView: UICollectionView, UICollectionViewDelegateFlowLayou
         
         register(CharacterCollectionViewCell.self, forCellWithReuseIdentifier: characterCellReuseIdentifier)
         backgroundColor = .clear
-        
-        print()
         
         longPressGestureRecognizer = UILongPressGestureRecognizer.init(target: self, action: #selector(handleLongPressGesture(from:)))
         addGestureRecognizer(longPressGestureRecognizer)
@@ -62,6 +60,16 @@ class CharacterSequenceView: UICollectionView, UICollectionViewDelegateFlowLayou
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func reloadData() {
+        super.reloadData()
+        
+        OperationQueue.main.addOperation {
+            if self.contentSize.width > self.frame.size.width {
+                self.scrollToItem(at: IndexPath.init(row: self.characters.count - 1, section: 0), at: .right, animated: true)
+            }
+        }
     }
     
     private var activeIndexPath: IndexPath? {
@@ -98,7 +106,7 @@ class CharacterSequenceView: UICollectionView, UICollectionViewDelegateFlowLayou
                 let targetPosition: CGPoint = .init(x: touchPosition.x, y: center.y)
                 
                 updateInteractiveMovementTargetPosition(targetPosition)
-                deleteKey.isHighlighted = longPressGestureRecognizer.location(in: self).x > bounds.width
+                deleteKey.isHighlighted = longPressGestureRecognizer.location(in: KeyboardViewController.shared.keyboardView.deleteKey).x > 0
             }
             else if isUppercase && isChangeStage {
                 cancelInteractiveMovement()

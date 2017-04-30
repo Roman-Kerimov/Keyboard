@@ -29,11 +29,11 @@ class SpaceRowView: RowView {
         
         let compactKeyMultiplier: CGFloat = 1/8
         
-        addArrangedSubview(nextKeyboardKey)
-        nextKeyboardKey.widthAnchor.constraint(equalTo: widthAnchor, multiplier: compactKeyMultiplier).isActive = true
-        
         addArrangedSubview(settingsKey)
         settingsKey.widthAnchor.constraint(equalTo: widthAnchor, multiplier: compactKeyMultiplier).isActive = true
+        
+        addArrangedSubview(nextKeyboardKey)
+        nextKeyboardKey.widthAnchor.constraint(equalTo: widthAnchor, multiplier: compactKeyMultiplier).isActive = true
         
         addArrangedSubview(spaceKey)
         

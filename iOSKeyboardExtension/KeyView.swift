@@ -301,8 +301,8 @@ class KeyView: UIButton {
             
             let threshold = CGPoint(x: min(maxKeyWidth / 2, bounds.size.width / 4), y: bounds.size.height / 4)
             
-            let isUpShift = offset.y < -threshold.y
-            let isDownShift = offset.y > threshold.y
+            let isShiftUp = offset.y < -threshold.y
+            let isShiftDown = offset.y > threshold.y
             let isLeftShift = offset.x < -threshold.x
             let isRightShift = offset.x > threshold.x
             
@@ -312,7 +312,7 @@ class KeyView: UIButton {
             else if isRightShift && shiftRightLabel.text != nil {
                 label.text = shiftRightLabel.text
             }
-            else if isUpShift {
+            else if isShiftUp {
                 if shiftUpLabel.text != nil {
                     label.text = shiftUpLabel.text
                 }
@@ -320,10 +320,10 @@ class KeyView: UIButton {
                     label.text = mainLabel.uppercased()
                 }
             }
-            else if isDownShift && isRightShift && shiftDownLabel.text != "" {
+            else if isShiftDown && isRightShift && shiftDownLabel.text != "" {
                 label.text = String(shiftDownLabel.text!.characters.last!)
             }
-            else if isDownShift && shiftDownLabel.text != "" {
+            else if isShiftDown && shiftDownLabel.text != "" {
                 label.text = String(shiftDownLabel.text!.characters.first!)
             }
             else {

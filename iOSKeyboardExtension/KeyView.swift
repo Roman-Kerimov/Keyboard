@@ -307,27 +307,22 @@ class KeyView: UIButton {
             let isRightShift = offset.x > threshold.x
             
             if isLeftShift && shiftLeftLabel.text != nil {
-                label.text = shiftLeftLabel.text
+                keyState = .shiftLeft
             }
             else if isRightShift && shiftRightLabel.text != nil {
-                label.text = shiftRightLabel.text
+                keyState = .shiftRight
             }
             else if isShiftUp {
-                if shiftUpLabel.text != nil {
-                    label.text = shiftUpLabel.text
-                }
-                else if specialKey == nil {
-                    label.text = mainLabel.uppercased()
-                }
+                keyState = .shiftUp
             }
             else if isShiftDown && isRightShift && shiftDownLabel.text != "" {
-                label.text = String(shiftDownLabel.text!.characters.last!)
+                keyState = .shiftDownRight
             }
             else if isShiftDown && shiftDownLabel.text != "" {
-                label.text = String(shiftDownLabel.text!.characters.first!)
+                keyState = .shiftDown
             }
             else {
-                label.text = mainLabel
+                keyState = .tap
             }
         }
     }
@@ -339,9 +334,47 @@ class KeyView: UIButton {
         
         return SpecialKey(rawValue: label)
     }
+    
+    var keyState: KeyState = .default {
+        didSet {
+            isHighlighted = true
+            
+            switch keyState {
+            case .default:
+                label.text = mainLabel
+                isHighlighted = false
+            case .tap:
+                label.text = mainLabel
+                
+            case .shiftUp:
+                if shiftUpLabel.text != nil {
+                    label.text = shiftUpLabel.text
+                }
+                else if specialKey == nil {
+                    label.text = mainLabel.uppercased()
+                }
+                
+            case .shiftDown:
+                label.text = String(shiftDownLabel.text!.characters.first!)
+                
+            case .shiftDownRight:
+                label.text = String(shiftDownLabel.text!.characters.last!)
+                
+            case .shiftLeft:
+                label.text = shiftLeftLabel.text
+                
+            case .shiftRight:
+                label.text = shiftRightLabel.text
+            }
+        }
+    }
+}
+    
+public enum KeyState {
+    case `default`, tap, shiftUp, shiftDown, shiftLeft, shiftRight, shiftDownRight
 }
 
-internal enum SpecialKey: String {
+public enum SpecialKey: String {
     var label: String {
         return rawValue
     }

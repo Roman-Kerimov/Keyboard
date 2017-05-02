@@ -16,7 +16,35 @@ internal class KeyboardView: UIView {
     
     internal var documentContext: DocumentContext = .init() {
         didSet {
-            characterSequenceView.characters = .init(documentContext.beforeInput?.components(separatedBy: CharacterSet.whitespaces).last?.characters ?? .init())
+            let documentContextBeforeInput: String = documentContext.beforeInput ?? .init()
+            
+            var characterSequence: [Character] = .init()
+            var spaceCount = 0
+            
+            var isLastSpace: Bool = false
+            
+            for (index, character) in documentContextBeforeInput.characters.reversed().enumerated() {
+                
+                switch character {
+                case Character.space, Character.return, Character.tab:
+                    spaceCount += 1
+                    
+                    if index == 0 {
+                        isLastSpace = true
+                    }
+                    
+                default:
+                    break
+                }
+                
+                characterSequence = [character] + characterSequence
+                
+                if (!isLastSpace && spaceCount == 1) || (isLastSpace && spaceCount == 2) {
+                    break
+                }
+            }
+            
+            characterSequenceView.characters = characterSequence
         }
     }
     

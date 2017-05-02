@@ -197,6 +197,8 @@ class CharacterSequenceView: UICollectionView, UICollectionViewDelegateFlowLayou
         cell.title.text = String.init(characters[indexPath.row])
         cell.title.textColor = colorScheme.labelColor
         cell.title.font = UIFont(name: "Courier New", size: 1.4 * layout.itemSize.width)
+        cell.backgroundColor = colorScheme.labelColor.withAlphaComponent(0.05)
+
         
         return cell
     }

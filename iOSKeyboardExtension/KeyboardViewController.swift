@@ -87,13 +87,13 @@ class KeyboardViewController: UIInputViewController {
             keyboardView.colorScheme = .default
         }
         
-        moveInputToEndOfAlphanumericSequence()
+        normalizeTextPosition()
         updateDocumentContext()
     }
     
     private var previousDocumentContext: DocumentContext = .init()
     
-    private func moveInputToEndOfAlphanumericSequence() {
+    private func normalizeTextPosition() {
         
         guard textDocumentProxy.documentContext != previousDocumentContext else {
             return
@@ -101,23 +101,64 @@ class KeyboardViewController: UIInputViewController {
         
         previousDocumentContext = textDocumentProxy.documentContext
         
-        guard let unicodeScalarBeforeInput = textDocumentProxy.documentContextBeforeInput?.unicodeScalars.last else {
+        if cancelNextNormalization {
+            cancelNextNormalization = false
             return
         }
         
-        guard let unicodeScalarAfterInput = textDocumentProxy.documentContextAfterInput?.unicodeScalars.first else {
+        let documentContextBeforeInput = textDocumentProxy.documentContextBeforeInput ?? .init()
+        var documentContextAfterInput = textDocumentProxy.documentContextAfterInput ?? .init()
+        
+        guard let characterBeforeInput = documentContextBeforeInput.characters.last else {
             return
         }
         
-        guard CharacterSet.alphanumerics.contains(unicodeScalarBeforeInput)
-            && CharacterSet.alphanumerics.contains(unicodeScalarAfterInput) else {
+        guard let characterAfterInput = documentContextAfterInput.characters.first else {
             return
         }
         
-        let alphanumericSequence = textDocumentProxy.documentContextAfterInput?.components(separatedBy: CharacterSet.alphanumerics.inverted).first ?? ""
+        if characterBeforeInput != .space
+            && characterBeforeInput != .return
+            && characterBeforeInput != .tab
+            && CharacterSet.alphanumerics.contains(characterAfterInput.unicodeScalar) {
+            
+            moveToSequenceEnd(of: .alphanumerics)
+            return
+        }
         
-        textDocumentProxy.adjustTextPosition(byCharacterOffset: alphanumericSequence.characters.count)
+        if characterBeforeInput == .space
+            && characterAfterInput != .return
+            && characterAfterInput != .tab {
+            
+            moveToSequenceStart(of: CharacterSet.init(charactersIn: Character.space.string))
+            return
+        }
+        
+        if characterAfterInput == .space {
+            
+            let characterAfterSequenceOfSpaces = documentContextAfterInput.characters.filter({$0 != .space}).first
+
+            if characterAfterSequenceOfSpaces == nil || characterAfterSequenceOfSpaces! == .return || characterAfterSequenceOfSpaces! == .tab {
+                
+                cancelNextNormalization = true
+                moveToSequenceEnd(of: CharacterSet.init(charactersIn: Character.space.string))
+            }
+        }
     }
+    
+    var cancelNextNormalization = false
+    
+    func moveToSequenceStart(of characterSet: CharacterSet) {
+        let sequence = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: characterSet.inverted).last!.characters ?? .init()
+        textDocumentProxy.adjustTextPosition(byCharacterOffset: -sequence.count)
+    }
+    
+    func moveToSequenceEnd(of characterSet: CharacterSet) {
+        let sequence = textDocumentProxy.documentContextAfterInput?.components(separatedBy: characterSet.inverted).first!.characters ?? .init()
+        textDocumentProxy.adjustTextPosition(byCharacterOffset: sequence.count)
+    }
+
+    var isMoveRight: Bool = true
     
     var isLastWhitespace: Bool {
         if let character = textDocumentProxy.documentContextBeforeInput?.characters.last {
@@ -160,6 +201,7 @@ class KeyboardViewController: UIInputViewController {
                 textDocumentProxy.insertText(" ")
             }
             else if isNextWhitespace {
+                cancelNextNormalization = true
                 textDocumentProxy.adjustTextPosition(byCharacterOffset: 1)
             }
             else if textDocumentProxy.documentContextBeforeInput != nil &&

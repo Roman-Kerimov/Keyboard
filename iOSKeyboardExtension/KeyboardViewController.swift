@@ -148,8 +148,6 @@ class KeyboardViewController: UIInputViewController {
         let sequence = textDocumentProxy.documentContextAfterInput?.components(separatedBy: characterSet.inverted).first!.characters ?? .init()
         textDocumentProxy.adjustTextPosition(byCharacterOffset: sequence.count)
     }
-
-    var isMoveRight: Bool = true
     
     var isLastWhitespace: Bool {
         if let character = textDocumentProxy.documentContextBeforeInput?.characters.last {

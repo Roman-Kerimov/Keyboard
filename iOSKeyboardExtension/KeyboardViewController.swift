@@ -123,26 +123,17 @@ class KeyboardViewController: UIInputViewController {
             && CharacterSet.alphanumerics.contains(characterAfterInput.unicodeScalar) {
             
             moveToSequenceEnd(of: .alphanumerics)
-            return
         }
-        
-        if characterBeforeInput == .space
+        else if characterAfterInput == .space {
+            moveToSequenceEnd(of: CharacterSet.init(charactersIn: Character.space.string))
+        }
+        else if characterBeforeInput == .space
+            && characterAfterInput != .space
             && characterAfterInput != .return
             && characterAfterInput != .tab {
             
-            moveToSequenceStart(of: CharacterSet.init(charactersIn: Character.space.string))
-            return
-        }
-        
-        if characterAfterInput == .space {
-            
-            let characterAfterSequenceOfSpaces = documentContextAfterInput.characters.filter({$0 != .space}).first
-
-            if characterAfterSequenceOfSpaces == nil || characterAfterSequenceOfSpaces! == .return || characterAfterSequenceOfSpaces! == .tab {
-                
-                cancelNextNormalization = true
-                moveToSequenceEnd(of: CharacterSet.init(charactersIn: Character.space.string))
-            }
+            cancelNextNormalization = true
+            textDocumentProxy.adjustTextPosition(byCharacterOffset: -1)
         }
     }
     

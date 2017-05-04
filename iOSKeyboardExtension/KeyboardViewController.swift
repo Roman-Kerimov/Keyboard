@@ -106,14 +106,11 @@ class KeyboardViewController: UIInputViewController {
             return
         }
         
-        let documentContextBeforeInput = textDocumentProxy.documentContextBeforeInput ?? .init()
-        var documentContextAfterInput = textDocumentProxy.documentContextAfterInput ?? .init()
-        
-        guard let characterBeforeInput = documentContextBeforeInput.characters.last else {
+        guard let characterBeforeInput = textDocumentProxy.characterBeforeInput else {
             return
         }
         
-        guard let characterAfterInput = documentContextAfterInput.characters.first else {
+        guard let characterAfterInput = textDocumentProxy.characterAfterInput else {
             return
         }
         
@@ -140,12 +137,12 @@ class KeyboardViewController: UIInputViewController {
     var cancelNextNormalization = false
     
     func moveToSequenceStart(of characterSet: CharacterSet) {
-        let sequence = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: characterSet.inverted).last!.characters ?? .init()
+        let sequence = textDocumentProxy.stringBeforeInput?.components(separatedBy: characterSet.inverted).last!.characters ?? .init()
         textDocumentProxy.adjustTextPosition(byCharacterOffset: -sequence.count)
     }
     
     func moveToSequenceEnd(of characterSet: CharacterSet) {
-        let sequence = textDocumentProxy.documentContextAfterInput?.components(separatedBy: characterSet.inverted).first!.characters ?? .init()
+        let sequence = textDocumentProxy.stringAfterInput?.components(separatedBy: characterSet.inverted).first!.characters ?? .init()
         textDocumentProxy.adjustTextPosition(byCharacterOffset: sequence.count)
     }
     
@@ -284,5 +281,21 @@ struct DocumentContext: Equatable {
 extension UITextDocumentProxy {
     var documentContext: DocumentContext {
         return .init(beforeInput: documentContextBeforeInput, afterInput: documentContextAfterInput)
+    }
+    
+    var stringBeforeInput: String? {
+        return documentContext.beforeInput
+    }
+    
+    var stringAfterInput: String? {
+        return documentContext.afterInput
+    }
+    
+    var characterBeforeInput: Character? {
+        return stringBeforeInput?.characters.last
+    }
+    
+    var characterAfterInput: Character? {
+        return stringAfterInput?.characters.first
     }
 }

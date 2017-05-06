@@ -155,8 +155,8 @@ class CharacterSequenceView: UICollectionView, UICollectionViewDelegateFlowLayou
                     break
                 }
                 
-                KeyboardViewController.shared.keyAction(label: SpecialKey.delete.label, offcet: activeIndexPath.item - characters.count + 1)
-                KeyboardViewController.shared.keyAction(label: activeCell.title.text!, offcet: activeIndexPath.item - characters.count + 1)
+                KeyboardViewController.shared.keyAction(label: SpecialKey.delete.label, offset: activeIndexPath.item - characters.count + 1)
+                KeyboardViewController.shared.keyAction(label: activeCell.title.text!, offset: activeIndexPath.item - characters.count + 1)
                 
                 KeyboardViewController.shared.updateDocumentContext()
             }
@@ -205,10 +205,10 @@ class CharacterSequenceView: UICollectionView, UICollectionViewDelegateFlowLayou
     
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         
-        KeyboardViewController.shared.keyAction(label: SpecialKey.delete.label, offcet: sourceIndexPath.item - characters.count + 1)
+        KeyboardViewController.shared.keyAction(label: SpecialKey.delete.label, offset: sourceIndexPath.item - characters.count + 1)
         
         if !deleteKey.isHighlighted {
-            KeyboardViewController.shared.keyAction(label: String(characters[sourceIndexPath.item]), offcet: destinationIndexPath.item - characters.count + 1)
+            KeyboardViewController.shared.keyAction(label: String(characters[sourceIndexPath.item]), offset: destinationIndexPath.item - characters.count + 1)
         }
         else {
             deleteKey.isHighlighted = false

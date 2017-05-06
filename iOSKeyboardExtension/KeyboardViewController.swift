@@ -169,6 +169,15 @@ class KeyboardViewController: UIInputViewController {
         textDocumentProxy.adjustTextPosition(byCharacterOffset: offcet)
         
         guard let specialKey = SpecialKey(rawValue: label) else {
+            
+            if textDocumentProxy.isSpaceReturnTabOrNilBeforeInput
+                && !textDocumentProxy.isSpaceReturnTabOrNilAfterInput
+                && !CharacterSet.punctuationCharacters.contains(textDocumentProxy.characterAfterInput!.unicodeScalar){
+                
+                textDocumentProxy.insertText(Character.space.string)
+                textDocumentProxy.adjustTextPosition(byCharacterOffset: -1)
+            }
+            
             textDocumentProxy.insertText(label)
             return
         }
@@ -176,7 +185,34 @@ class KeyboardViewController: UIInputViewController {
         switch specialKey {
             
         case .delete:
-            textDocumentProxy.deleteBackward()
+            if settings.allowMultipleSpaces == true {
+                textDocumentProxy.deleteBackward()
+            }
+            else if textDocumentProxy.characterBeforeInput == .space
+                && !textDocumentProxy.isSpaceReturnTabOrNilAfterInput
+                && !CharacterSet.punctuationCharacters.contains(textDocumentProxy.characterAfterInput!.unicodeScalar) {
+                
+                cancelNextNormalization = true
+                textDocumentProxy.adjustTextPosition(byCharacterOffset: -1)
+            }
+            else {
+                textDocumentProxy.deleteBackward()
+            }
+            
+            if textDocumentProxy.characterBeforeInput != .space
+                && textDocumentProxy.isSpaceReturnTabOrNilBeforeInput
+                && textDocumentProxy.characterAfterInput == .space {
+                
+                textDocumentProxy.adjustTextPosition(byCharacterOffset: 1)
+                textDocumentProxy.deleteBackward()
+            }
+            
+            if settings.allowMultipleSpaces == false
+                && textDocumentProxy.characterBeforeInput == .space
+                && textDocumentProxy.characterAfterInput == .space {
+                
+                keyAction(label: SpecialKey.delete.label)
+            }
             
         case .space:
             if settings.allowMultipleSpaces {

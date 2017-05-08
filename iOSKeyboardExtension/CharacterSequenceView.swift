@@ -173,7 +173,11 @@ class CharacterSequenceView: UICollectionView, UICollectionViewDelegateFlowLayou
         super.endInteractiveMovement()
         
         if deleteKey.isHighlighted {
-            KeyboardViewController.shared.keyAction(label: SpecialKey.removeCharacter.label)
+            
+            if characters[activeIndexPath!.item] == .space && activeIndexPath?.item == characters.count - 1 {
+                KeyboardViewController.shared.keyAction(label: SpecialKey.removeCharacter.label)
+            }
+            
             deleteKey.isHighlighted = false
             
             KeyboardViewController.shared.normalizeTextPosition()
@@ -218,7 +222,9 @@ class CharacterSequenceView: UICollectionView, UICollectionViewDelegateFlowLayou
         let sourceCharacter = characters[sourceIndexPath.item]
         let destinationCharacter = characters[destinationIndexPath.item]
         
-        KeyboardViewController.shared.keyAction(label: sourceCharacter.string, offset: destinationOffset)
+        if !deleteKey.isHighlighted {
+            KeyboardViewController.shared.keyAction(label: sourceCharacter.string, offset: destinationOffset)
+        }
         
         if sourceCharacter == .space && destinationCharacter == .space {
             KeyboardViewController.shared.updateDocumentContext()

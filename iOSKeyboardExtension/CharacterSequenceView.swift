@@ -215,7 +215,14 @@ class CharacterSequenceView: UICollectionView, UICollectionViewDelegateFlowLayou
             KeyboardViewController.shared.keyAction(label: SpecialKey.removeCharacter.label, offset: sourceOffset)
         }
         
-        KeyboardViewController.shared.keyAction(label: characters[sourceIndexPath.item].string, offset: destinationOffset)
+        let sourceCharacter = characters[sourceIndexPath.item]
+        let destinationCharacter = characters[destinationIndexPath.item]
+        
+        KeyboardViewController.shared.keyAction(label: sourceCharacter.string, offset: destinationOffset)
+        
+        if sourceCharacter == .space && destinationCharacter == .space {
+            KeyboardViewController.shared.updateDocumentContext()
+        }
     }
     
     internal var deleteKey: KeyView {

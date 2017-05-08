@@ -173,9 +173,10 @@ class CharacterSequenceView: UICollectionView, UICollectionViewDelegateFlowLayou
         super.endInteractiveMovement()
         
         if deleteKey.isHighlighted {
-            KeyboardViewController.shared.keyAction(label: SpecialKey.delete.label)
+            KeyboardViewController.shared.keyAction(label: SpecialKey.removeCharacter.label)
             deleteKey.isHighlighted = false
             
+            KeyboardViewController.shared.normalizeTextPosition()
             KeyboardViewController.shared.updateDocumentContext()
         }
     }
@@ -198,21 +199,23 @@ class CharacterSequenceView: UICollectionView, UICollectionViewDelegateFlowLayou
         cell.title.textColor = colorScheme.labelColor
         cell.title.font = UIFont(name: "Courier New", size: 1.4 * layout.itemSize.width)
         cell.backgroundColor = colorScheme.labelColor.withAlphaComponent(0.05)
-
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         
-        KeyboardViewController.shared.keyAction(label: SpecialKey.delete.label, offset: sourceIndexPath.item - characters.count + 1)
+        let sourceOffset = sourceIndexPath.item - characters.count + 1
+        let destinationOffset = destinationIndexPath.item - characters.count + 1
         
-        if !deleteKey.isHighlighted {
-            KeyboardViewController.shared.keyAction(label: String(characters[sourceIndexPath.item]), offset: destinationIndexPath.item - characters.count + 1)
+        if sourceOffset > destinationOffset {
+            KeyboardViewController.shared.keyAction(label: SpecialKey.delete.label, offset: sourceOffset)
         }
         else {
-            deleteKey.isHighlighted = false
+            KeyboardViewController.shared.keyAction(label: SpecialKey.removeCharacter.label, offset: sourceOffset)
         }
+        
+        KeyboardViewController.shared.keyAction(label: characters[sourceIndexPath.item].string, offset: destinationOffset)
     }
     
     internal var deleteKey: KeyView {

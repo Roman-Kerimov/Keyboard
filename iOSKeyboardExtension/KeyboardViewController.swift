@@ -93,7 +93,7 @@ class KeyboardViewController: UIInputViewController {
     
     private var previousDocumentContext: DocumentContext = .init()
     
-    private func normalizeTextPosition() {
+    internal func normalizeTextPosition() {
         
         guard textDocumentProxy.documentContext != previousDocumentContext else {
             return
@@ -172,7 +172,8 @@ class KeyboardViewController: UIInputViewController {
             
             if textDocumentProxy.isSpaceReturnTabOrNilBeforeInput
                 && !textDocumentProxy.isSpaceReturnTabOrNilAfterInput
-                && !CharacterSet.punctuationCharacters.contains(textDocumentProxy.characterAfterInput!.unicodeScalar){
+                && !CharacterSet.punctuationCharacters.contains(textDocumentProxy.characterAfterInput!.unicodeScalar)
+                && offset == 0 {
                 
                 textDocumentProxy.insertText(Character.space.string)
                 textDocumentProxy.adjustTextPosition(byCharacterOffset: -1)
@@ -213,6 +214,9 @@ class KeyboardViewController: UIInputViewController {
                 
                 keyAction(label: SpecialKey.delete.label)
             }
+            
+        case .removeCharacter:
+            textDocumentProxy.deleteBackward()
             
         case .space:
             if settings.allowMultipleSpaces {

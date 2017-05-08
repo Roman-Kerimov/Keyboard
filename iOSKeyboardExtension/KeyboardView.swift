@@ -21,25 +21,31 @@ internal class KeyboardView: UIView {
             var characterSequence: [Character] = .init()
             var spaceCount = 0
             
-            var isLastSpace: Bool = false
+            characterSequenceView.characters = characterSequence
             
-            for (index, character) in documentContextBeforeInput.characters.reversed().enumerated() {
+            var isNonspaceSequence: Bool = false
+            
+            for character in documentContextBeforeInput.characters.reversed() {
                 
                 switch character {
-                case Character.space, Character.return, Character.tab:
+                case Character.space:
                     spaceCount += 1
                     
-                    if index == 0 {
-                        isLastSpace = true
-                    }
+                case Character.return, Character.tab:
+                    return
                     
                 default:
+                    isNonspaceSequence = true
+                    spaceCount = 0
+                }
+                
+                if spaceCount == 2 {
                     break
                 }
                 
                 characterSequence = [character] + characterSequence
                 
-                if (!isLastSpace && spaceCount == 1) || (isLastSpace && spaceCount == 2) {
+                if spaceCount == 1 && isNonspaceSequence {
                     break
                 }
             }

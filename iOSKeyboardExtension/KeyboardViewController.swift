@@ -99,6 +99,13 @@ class KeyboardViewController: UIInputViewController {
             return
         }
         
+        if previousDocumentContext.beforeInput == textDocumentProxy.stringBeforeInput
+            || previousDocumentContext.afterInput == textDocumentProxy.stringAfterInput {
+            
+            previousDocumentContext = textDocumentProxy.documentContext
+            return
+        }
+        
         previousDocumentContext = textDocumentProxy.documentContext
         
         if cancelNextNormalization {
@@ -119,7 +126,9 @@ class KeyboardViewController: UIInputViewController {
             
             moveToSequenceEnd(of: .alphanumerics)
         }
-        else if characterAfterInput == .space {
+        else if characterBeforeInput == .space
+            && characterAfterInput == .space {
+            
             moveToSequenceEnd(of: CharacterSet.init(charactersIn: Character.space.string))
         }
         else if characterBeforeInput == .space

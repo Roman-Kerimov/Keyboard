@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		960F6E931EC9ED0400EFC7B7 /* CharacterCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960F6E921EC9ED0400EFC7B7 /* CharacterCollectionView.swift */; };
 		9633A3C81E5DFA3C00DFA503 /* RowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9633A3C71E5DFA3C00DFA503 /* RowView.swift */; };
 		9633A3CA1E5DFE8D00DFA503 /* DeleteRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9633A3C91E5DFE8D00DFA503 /* DeleteRowView.swift */; };
 		964AB9351D1B6490004C827C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964AB9341D1B6490004C827C /* AppDelegate.swift */; };
@@ -69,6 +70,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		960F6E921EC9ED0400EFC7B7 /* CharacterCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterCollectionView.swift; sourceTree = "<group>"; };
 		9633A3C71E5DFA3C00DFA503 /* RowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RowView.swift; sourceTree = "<group>"; };
 		9633A3C91E5DFE8D00DFA503 /* DeleteRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteRowView.swift; sourceTree = "<group>"; };
 		964AB9311D1B6490004C827C /* iOSKeyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSKeyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -174,6 +176,7 @@
 				965D15CA1D32F7C90098FA57 /* HalfKeyboardView.swift */,
 				9633A3C91E5DFE8D00DFA503 /* DeleteRowView.swift */,
 				9665F3751E9D847300850F97 /* CharacterSequenceView.swift */,
+				960F6E921EC9ED0400EFC7B7 /* CharacterCollectionView.swift */,
 				9665F3771E9D921500850F97 /* CharacterCollectionViewCell.swift */,
 				9654DF791D4E1D0900DDB0EF /* SpaceRowView.swift */,
 				9633A3C71E5DFA3C00DFA503 /* RowView.swift */,
@@ -344,6 +347,7 @@
 				9633A3C81E5DFA3C00DFA503 /* RowView.swift in Sources */,
 				9633A3CA1E5DFE8D00DFA503 /* DeleteRowView.swift in Sources */,
 				96F8D1D11E26FAE0000D1DFC /* SettingsTableView.swift in Sources */,
+				960F6E931EC9ED0400EFC7B7 /* CharacterCollectionView.swift in Sources */,
 				96530D671DD1C9A9004E8BAA /* KeyboardLayout.swift in Sources */,
 				968694C11EA0F3D100E6C9D0 /* UIColorExtension.swift in Sources */,
 				96C49DC51EB7DF1F006F93ED /* CharacterExtension.swift in Sources */,

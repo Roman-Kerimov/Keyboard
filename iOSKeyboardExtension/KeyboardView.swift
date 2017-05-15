@@ -84,6 +84,7 @@ internal class KeyboardView: UIView {
         }
         
         characterSequenceView.colorScheme = colorScheme
+        layoutView.unicodeCollectionView.colorScheme = colorScheme
         
         #if TARGET_INTERFACE_BUILDER
             keyboardView.backgroundColor = colorScheme.fakeBackroundColorForInterfaceBuilder
@@ -133,10 +134,19 @@ internal class KeyboardView: UIView {
     private let deleteRowHeightInKeys: CGFloat = 1
     private let spaceRowHeightInKeys: CGFloat = 1
     
+    private var unicodeCollectionWidthInKeys: CGFloat {
+        if settings.layoutMode == .horizontal && isPrefferedVerticalMode {
+            return 1
+        }
+        else {
+            return 0.5
+        }
+    }
+    
     private let maxKeyboardHeightRatio: CGFloat = 0.59
     
     private var maxKeyWidth: CGFloat {
-        return 102.4 * scaleFactor
+        return 1024/sizeInKeys.width * scaleFactor
     }
     private func maxKeyHeight(fromWidth width: CGFloat) -> CGFloat {
         return width * 0.94
@@ -146,14 +156,14 @@ internal class KeyboardView: UIView {
     
     private var sizeInKeysForVerticalMode: CGSize {
         return CGSize(
-            width: CGFloat(settings.layout.columnCount / 2) + 0.5,
+            width: CGFloat(settings.layout.columnCount / 2) + 0.5 + unicodeCollectionWidthInKeys,
             height: deleteRowHeightInKeys + CGFloat(settings.layout.rowCount * 2) + spaceRowHeightInKeys
         )
     }
     
     private var sizeInKeysForHorizontalMode: CGSize {
         return CGSize(
-            width: CGFloat(settings.layout.columnCount),
+            width: CGFloat(settings.layout.columnCount) + unicodeCollectionWidthInKeys,
             height: deleteRowHeightInKeys + CGFloat(settings.layout.rowCount) + spaceRowHeightInKeys
         )
     }
@@ -194,6 +204,10 @@ internal class KeyboardView: UIView {
         return spaceRowHeightInKeys * keySize.height
     }
 
+    private var unicodeCollectionWidth: CGFloat {
+        return unicodeCollectionWidthInKeys * keySize.width
+    }
+
     private var size: CGSize {
         return CGSize(
             width: keySize.width * sizeInKeys.width,
@@ -220,10 +234,14 @@ internal class KeyboardView: UIView {
         }
     }
     
+    private var isPrefferedVerticalMode: Bool {
+        return bounds.width < self.minimalScreenSize.height
+    }
+    
     internal func configure() {
         
         if settings.layoutMode == .default {
-            if bounds.width < self.minimalScreenSize.height {
+            if isPrefferedVerticalMode {
                 settings.layoutMode = .vertical
             }
             else {
@@ -275,6 +293,8 @@ internal class KeyboardView: UIView {
         layoutView.halfKeyboardSize = halfKeyboardSize
         spaceRowView.height = spaceRowHeight
         
+        layoutView.unicodeCollectionView.width = unicodeCollectionWidth
+
         let maxKeyWidth = self.maxKeyWidth
         let keySize = self.keySize
         let minimalScreenSize = self.minimalScreenSize
@@ -331,7 +351,7 @@ internal class KeyboardView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private var layoutView = KeyboardLayoutView(layout: KeyboardSettings().layout)
+    internal var layoutView = KeyboardLayoutView(layout: KeyboardSettings().layout)
     
     internal func updateKeyboardLayout() {
         layoutView.removeFromSuperview()

@@ -18,8 +18,9 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         addSubview(title)
         title.translatesAutoresizingMaskIntoConstraints = false
         
-        title.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        title.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        title.alignBounds()
+        title.adjustsFontSizeToFitWidth = true
+        title.textAlignment = .center
         
         backgroundColor = .touchableClear
     }

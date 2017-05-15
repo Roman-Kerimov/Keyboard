@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		960F6E931EC9ED0400EFC7B7 /* CharacterCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960F6E921EC9ED0400EFC7B7 /* CharacterCollectionView.swift */; };
+		960F6E951EC9F7E600EFC7B7 /* UnicodeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960F6E941EC9F7E600EFC7B7 /* UnicodeCollectionView.swift */; };
 		9633A3C81E5DFA3C00DFA503 /* RowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9633A3C71E5DFA3C00DFA503 /* RowView.swift */; };
 		9633A3CA1E5DFE8D00DFA503 /* DeleteRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9633A3C91E5DFE8D00DFA503 /* DeleteRowView.swift */; };
 		964AB9351D1B6490004C827C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964AB9341D1B6490004C827C /* AppDelegate.swift */; };
@@ -71,6 +72,7 @@
 
 /* Begin PBXFileReference section */
 		960F6E921EC9ED0400EFC7B7 /* CharacterCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterCollectionView.swift; sourceTree = "<group>"; };
+		960F6E941EC9F7E600EFC7B7 /* UnicodeCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnicodeCollectionView.swift; sourceTree = "<group>"; };
 		9633A3C71E5DFA3C00DFA503 /* RowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RowView.swift; sourceTree = "<group>"; };
 		9633A3C91E5DFE8D00DFA503 /* DeleteRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteRowView.swift; sourceTree = "<group>"; };
 		964AB9311D1B6490004C827C /* iOSKeyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSKeyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -176,6 +178,7 @@
 				965D15CA1D32F7C90098FA57 /* HalfKeyboardView.swift */,
 				9633A3C91E5DFE8D00DFA503 /* DeleteRowView.swift */,
 				9665F3751E9D847300850F97 /* CharacterSequenceView.swift */,
+				960F6E941EC9F7E600EFC7B7 /* UnicodeCollectionView.swift */,
 				960F6E921EC9ED0400EFC7B7 /* CharacterCollectionView.swift */,
 				9665F3771E9D921500850F97 /* CharacterCollectionViewCell.swift */,
 				9654DF791D4E1D0900DDB0EF /* SpaceRowView.swift */,
@@ -330,6 +333,7 @@
 			files = (
 				966194D31DE2FCEF007FCF02 /* KeyboardLayoutView.swift in Sources */,
 				96D2B8DD1E35538B006772A5 /* Localization.swift in Sources */,
+				960F6E951EC9F7E600EFC7B7 /* UnicodeCollectionView.swift in Sources */,
 				96EA39D71EAFDDDE00F3D804 /* UIImageExtension.swift in Sources */,
 				965D15CB1D32F7C90098FA57 /* HalfKeyboardView.swift in Sources */,
 				9665F3761E9D847300850F97 /* CharacterSequenceView.swift in Sources */,

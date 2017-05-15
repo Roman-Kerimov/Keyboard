@@ -19,6 +19,7 @@ class KeyboardLayoutView: UIView {
     */
     
     var halfKeyboards: [HalfKeyboardView] = []
+    internal let unicodeCollectionView: UnicodeCollectionView = .init()
     
     var halfKeyboardSize = CGSize() {
         didSet {
@@ -50,8 +51,14 @@ class KeyboardLayoutView: UIView {
             addSubview(halfKeyboard)
         }
         
+        addSubview(unicodeCollectionView)
+        
+        unicodeCollectionView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        unicodeCollectionView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        unicodeCollectionView.heightAnchor.constraint(equalTo: heightAnchor).isActive = true
+        
         halfKeyboards.first!.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        halfKeyboards.first!.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        halfKeyboards.first!.leftAnchor.constraint(equalTo: unicodeCollectionView.rightAnchor).isActive = true
         halfKeyboards.last!.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         halfKeyboards.last!.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         

@@ -42,6 +42,11 @@ class CharacterCollectionView: UICollectionView, UICollectionViewDelegateFlowLay
         register(CharacterCollectionViewCell.self, forCellWithReuseIdentifier: characterCellReuseIdentifier)
         backgroundColor = .clear
         
+        translatesAutoresizingMaskIntoConstraints = false
+        
+        showsVerticalScrollIndicator = false
+        showsHorizontalScrollIndicator = false
+        
         #if TARGET_INTERFACE_BUILDER
             characters = .init("CharacterCollectionView".characters)
         #endif

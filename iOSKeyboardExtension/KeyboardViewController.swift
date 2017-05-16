@@ -151,28 +151,6 @@ class KeyboardViewController: UIInputViewController {
         textDocumentProxy.adjustTextPosition(byCharacterOffset: sequence.count)
     }
     
-    var isLastWhitespace: Bool {
-        if let character = textDocumentProxy.documentContextBeforeInput?.characters.last {
-            return String(character).rangeOfCharacter(from: .whitespacesAndNewlines) != nil
-        }
-        else {
-            return false
-        }
-    }
-    
-    var isNextWhitespace: Bool {
-        if let character = textDocumentProxy.documentContextAfterInput?.characters.first {
-            if String(character) == "\t" {
-                return false
-            }
-            
-            return String(character).rangeOfCharacter(from: .whitespaces) != nil
-        }
-        else {
-            return false
-        }
-    }
-    
     func keyAction(label: String, offset: Int = 0) {
         
         textDocumentProxy.adjustTextPosition(byCharacterOffset: offset)
@@ -231,13 +209,11 @@ class KeyboardViewController: UIInputViewController {
             if settings.allowMultipleSpaces {
                 textDocumentProxy.insertText(" ")
             }
-            else if isNextWhitespace {
+            else if textDocumentProxy.characterAfterInput == .space {
                 cancelNextNormalization = true
                 textDocumentProxy.adjustTextPosition(byCharacterOffset: 1)
             }
-            else if textDocumentProxy.documentContextBeforeInput != nil &&
-                textDocumentProxy.documentContextBeforeInput != "" &&
-                !isLastWhitespace {
+            else if textDocumentProxy.isSpaceReturnTabOrNilBeforeInput == false {
                 textDocumentProxy.insertText(" ")
             }
             

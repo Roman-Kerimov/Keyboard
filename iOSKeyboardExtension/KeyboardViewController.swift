@@ -113,25 +113,17 @@ class KeyboardViewController: UIInputViewController {
             return
         }
         
-        guard let characterBeforeInput = textDocumentProxy.characterBeforeInput else {
-            return
-        }
-        
-        guard let characterAfterInput = textDocumentProxy.characterAfterInput else {
-            return
-        }
-        
         if textDocumentProxy.characterBeforeInput?.isSpaceReturnOrTab == false
-            && CharacterSet.alphanumerics.contains(characterAfterInput.unicodeScalar) {
+            && CharacterSet.alphanumerics.contains(textDocumentProxy.characterAfterInput?.unicodeScalar ?? Character.space.unicodeScalar) {
             
             moveToSequenceEnd(of: .alphanumerics)
         }
-        else if characterBeforeInput == .space
-            && characterAfterInput == .space {
+        else if textDocumentProxy.characterBeforeInput == .space
+            && textDocumentProxy.characterAfterInput == .space {
             
             moveToSequenceEnd(of: CharacterSet.init(charactersIn: Character.space.string))
         }
-        else if characterBeforeInput == .space
+        else if textDocumentProxy.characterBeforeInput == .space
             && textDocumentProxy.characterAfterInput?.isSpaceReturnOrTab == false {
             
             cancelNextNormalization = true

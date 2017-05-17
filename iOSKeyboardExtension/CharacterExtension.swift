@@ -20,4 +20,10 @@ extension Character {
     var string: String {
         return String.init(self)
     }
+    
+    var isSpaceReturnOrTab: Bool {
+        return self == .space
+            || self == .return
+            || self == .tab
+    }
 }

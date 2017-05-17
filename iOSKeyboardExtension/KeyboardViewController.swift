@@ -121,7 +121,7 @@ class KeyboardViewController: UIInputViewController {
             return
         }
         
-        if textDocumentProxy.isSpaceReturnTabOrNilBeforeInput == false
+        if textDocumentProxy.characterBeforeInput?.isSpaceReturnOrTab == false
             && CharacterSet.alphanumerics.contains(characterAfterInput.unicodeScalar) {
             
             moveToSequenceEnd(of: .alphanumerics)
@@ -132,7 +132,7 @@ class KeyboardViewController: UIInputViewController {
             moveToSequenceEnd(of: CharacterSet.init(charactersIn: Character.space.string))
         }
         else if characterBeforeInput == .space
-            && textDocumentProxy.isSpaceReturnTabOrNilAfterInput == false {
+            && textDocumentProxy.characterAfterInput?.isSpaceReturnOrTab == false {
             
             cancelNextNormalization = true
             textDocumentProxy.adjustTextPosition(byCharacterOffset: -1)
@@ -157,8 +157,8 @@ class KeyboardViewController: UIInputViewController {
         
         guard let specialKey = SpecialKey(rawValue: label) else {
             
-            if textDocumentProxy.isSpaceReturnTabOrNilBeforeInput
-                && !textDocumentProxy.isSpaceReturnTabOrNilAfterInput
+            if textDocumentProxy.characterBeforeInput?.isSpaceReturnOrTab != false
+                && textDocumentProxy.characterAfterInput?.isSpaceReturnOrTab == false
                 && !CharacterSet.punctuationCharacters.contains(textDocumentProxy.characterAfterInput!.unicodeScalar)
                 && offset == 0 {
                 
@@ -177,7 +177,7 @@ class KeyboardViewController: UIInputViewController {
                 textDocumentProxy.deleteBackward()
             }
             else if textDocumentProxy.characterBeforeInput == .space
-                && !textDocumentProxy.isSpaceReturnTabOrNilAfterInput
+                && textDocumentProxy.characterAfterInput?.isSpaceReturnOrTab == false
                 && !CharacterSet.punctuationCharacters.contains(textDocumentProxy.characterAfterInput!.unicodeScalar) {
                 
                 cancelNextNormalization = true
@@ -188,7 +188,7 @@ class KeyboardViewController: UIInputViewController {
             }
             
             if textDocumentProxy.characterBeforeInput != .space
-                && textDocumentProxy.isSpaceReturnTabOrNilBeforeInput
+                && textDocumentProxy.characterBeforeInput?.isSpaceReturnOrTab != false
                 && textDocumentProxy.characterAfterInput == .space {
                 
                 textDocumentProxy.adjustTextPosition(byCharacterOffset: 1)
@@ -213,7 +213,7 @@ class KeyboardViewController: UIInputViewController {
                 cancelNextNormalization = true
                 textDocumentProxy.adjustTextPosition(byCharacterOffset: 1)
             }
-            else if textDocumentProxy.isSpaceReturnTabOrNilBeforeInput == false {
+            else if textDocumentProxy.characterBeforeInput?.isSpaceReturnOrTab == false {
                 textDocumentProxy.insertText(" ")
             }
             
@@ -318,19 +318,5 @@ extension UITextDocumentProxy {
     
     var characterAfterInput: Character? {
         return stringAfterInput?.characters.first
-    }
-    
-    var isSpaceReturnTabOrNilBeforeInput: Bool {
-        return characterBeforeInput == .space
-            || characterBeforeInput == .return
-            || characterBeforeInput == .tab
-            || characterBeforeInput == nil
-    }
-    
-    var isSpaceReturnTabOrNilAfterInput: Bool {
-        return characterAfterInput == .space
-            || characterAfterInput == .return
-            || characterAfterInput == .tab
-            || characterAfterInput == nil
     }
 }

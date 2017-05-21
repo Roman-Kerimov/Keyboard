@@ -200,6 +200,10 @@ internal class KeyboardView: UIView {
         return deleteRowHeightInKeys * keySize.height
     }
     
+    private var layoutContainerHeight: CGFloat {
+        return backgroundView.bounds.height - deleteRowHeight - spaceRowHeight
+    }
+    
     private var spaceRowHeight: CGFloat {
         return spaceRowHeightInKeys * keySize.height
     }
@@ -215,12 +219,9 @@ internal class KeyboardView: UIView {
         )
     }
     
-    
-    private var widthConstraint: NSLayoutConstraint?
     private var heightConstraint: NSLayoutConstraint?
     
     private let backgroundView: UIView = .init()
-    private let keyboardStackView = UIStackView()
     
     override internal func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
@@ -258,22 +259,13 @@ internal class KeyboardView: UIView {
             }
         }
         
-        if settings.layoutMode == .horizontal || screenSize.height < self.minimalScreenSize.height {
-            keyboardStackView.alignment = .center
+        let isHorizontalMode = settings.layoutMode == .horizontal || screenSize.height < self.minimalScreenSize.height
+        
+        if isHorizontalMode {
             sizeInKeys = sizeInKeysForHorizontalMode
         }
         else {
-            keyboardStackView.alignment = .trailing
             sizeInKeys = self.sizeInKeysForVerticalMode
-        }
-        
-        if widthConstraint != nil {
-            widthConstraint?.constant = size.width
-        }
-        else {
-            widthConstraint = layoutContainerView.widthAnchor.constraint(equalToConstant: size.width)
-            widthConstraint?.priority = 999
-            widthConstraint?.isActive = true
         }
         
         if heightConstraint != nil {
@@ -291,10 +283,27 @@ internal class KeyboardView: UIView {
             backgroundView.frame.origin = .init(x: 0, y: bounds.height - size.height)
         #endif
         
-        deleteRowView.height = deleteRowHeight
-        layoutView.halfKeyboardSize = halfKeyboardSize
-        spaceRowView.height = spaceRowHeight
+        deleteRowView.frame.size = .init(width: size.width, height: deleteRowHeight)
         
+        layoutContainerView.frame.size = .init(width: size.width, height: layoutContainerHeight)
+        layoutContainerView.frame.origin.y = deleteRowHeight
+        
+        spaceRowView.frame.size = .init(width: size.width, height: spaceRowHeight)
+        spaceRowView.frame.origin.y = deleteRowHeight + layoutContainerHeight
+        
+        if isHorizontalMode {
+            deleteRowView.center.x = backgroundView.bounds.midX
+            layoutContainerView.center.x = backgroundView.bounds.midX
+            spaceRowView.center.x = backgroundView.bounds.midX
+        }
+        else {
+            let originX = backgroundView.bounds.maxX - size.width
+            deleteRowView.frame.origin.x = originX
+            layoutContainerView.frame.origin.x = originX
+            spaceRowView.frame.origin.x = originX
+        }
+        
+        layoutView.halfKeyboardSize = halfKeyboardSize
         layoutView.unicodeCollectionView.width = unicodeCollectionWidth
 
         let maxKeyWidth = self.maxKeyWidth
@@ -322,20 +331,10 @@ internal class KeyboardView: UIView {
         
         addSubview(backgroundView)
         
-        backgroundView.addSubview(keyboardStackView)
-        keyboardStackView.alignBounds()
-        keyboardStackView.axis = .vertical
-        keyboardStackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        keyboardStackView.addArrangedSubview(deleteRowView)
-        
-        keyboardStackView.addArrangedSubview(layoutContainerView)
+        backgroundView.addSubview(deleteRowView)
+        backgroundView.addSubview(spaceRowView)
+        backgroundView.addSubview(layoutContainerView)
         addKeyboardLayout()
-        
-        keyboardStackView.addArrangedSubview(spaceRowView)
-        
-        layoutContainerView.widthAnchor.constraint(equalTo: deleteRowView.widthAnchor).isActive = true
-        layoutContainerView.widthAnchor.constraint(equalTo: spaceRowView.widthAnchor).isActive = true
         
         settingsContainerView.backButton.addTarget(self, action: #selector(hideSettings), for: .allTouchEvents)
     }

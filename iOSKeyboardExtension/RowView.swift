@@ -17,24 +17,11 @@ class RowView: UIStackView {
         // Drawing code
     }
     */
-
-    var height: CGFloat = 0 {
-        didSet {
-            heightConstraint.constant = height
-            heightConstraint.isActive = true
-        }
-    }
-    
-    private var heightConstraint: NSLayoutConstraint!
     
     init() {
         super.init(frame: .zero)
         
-        translatesAutoresizingMaskIntoConstraints = false
-        
         axis = .horizontal
-        
-        heightConstraint = heightAnchor.constraint(equalToConstant: 0)
     }
     
     required init(coder: NSCoder) {

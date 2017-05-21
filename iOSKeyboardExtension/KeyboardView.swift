@@ -334,7 +334,11 @@ internal class KeyboardView: UIView {
         backgroundView.addSubview(deleteRowView)
         backgroundView.addSubview(spaceRowView)
         backgroundView.addSubview(layoutContainerView)
-        addKeyboardLayout()
+        
+        layoutContainerView.addSubview(layoutView)
+        layoutView.alignBounds()
+        
+        layoutView.layout = settings.layout
         
         settingsContainerView.backButton.addTarget(self, action: #selector(hideSettings), for: .allTouchEvents)
     }
@@ -343,22 +347,7 @@ internal class KeyboardView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    internal var layoutView = KeyboardLayoutView(layout: KeyboardSettings().layout)
-    
-    internal func updateKeyboardLayout() {
-        layoutView.removeFromSuperview()
-        
-        layoutView = KeyboardLayoutView(layout: settings.layout)
-        addKeyboardLayout()
-        
-        configure()
-        set(colorScheme: colorScheme)
-    }
-    
-    private func addKeyboardLayout() {
-        layoutContainerView.addSubview(layoutView)
-        layoutView.alignBounds()
-    }
+    internal var layoutView = KeyboardLayoutView()
     
     internal let settingsContainerView = SettingsContainerView()
     

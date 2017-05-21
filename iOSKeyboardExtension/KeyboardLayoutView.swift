@@ -18,6 +18,24 @@ class KeyboardLayoutView: UIView {
     }
     */
     
+    public var layout: KeyboardLayout = .qwerty {
+        didSet {
+            
+            for (rowIndex, labelsRow) in layout.labels.enumerated() {
+                for (columnIndex, label) in labelsRow.enumerated() {
+                    
+                    let keyView = keys[rowIndex][columnIndex]
+                    keyView.mainLabel = label
+                    keyView.shiftDownLabel.text = KeyboardLayout.shiftDown.labels[rowIndex][columnIndex]
+                    keyView.shiftUpLabel.text = KeyboardLayout.shiftUpDictionary[label]
+                }
+            }
+            
+        }
+    }
+    
+    var keys: [[KeyView]] = Array.init(repeating: Array.init(repeating: .init(), count: 10), count: 3)
+    
     var halfKeyboards: [HalfKeyboardView] = []
     internal let unicodeCollectionView: UnicodeCollectionView = .init()
     
@@ -40,7 +58,7 @@ class KeyboardLayoutView: UIView {
     private var halfKeyboardHeightConstraint: NSLayoutConstraint?
     private var halfKeyboardWidthConstraint: NSLayoutConstraint?
     
-    init(layout: KeyboardLayout) {
+    init() {
         super.init(frame: CGRect())
         
         translatesAutoresizingMaskIntoConstraints = false
@@ -65,8 +83,8 @@ class KeyboardLayoutView: UIView {
         halfKeyboards.first!.widthAnchor.constraint(equalTo: halfKeyboards.last!.widthAnchor).isActive = true
         halfKeyboards.first!.heightAnchor.constraint(equalTo: halfKeyboards.last!.heightAnchor).isActive = true
         
-        for (rowIndex, labelsRow) in layout.labels.enumerated() {
-            for (columnIndex, label) in labelsRow.enumerated() {
+        for rowIndex in 0...2 {
+            for columnIndex in 0...9 {
                 
                 let halfKeyboardIndex: Int
                 
@@ -77,9 +95,11 @@ class KeyboardLayoutView: UIView {
                     halfKeyboardIndex = 1
                 }
                 
-                let key = KeyView(label: label, shiftDownLabel: KeyboardLayout.shiftDown.labels[rowIndex][columnIndex])
+                let keyView = KeyView.init()
                 
-                halfKeyboards[halfKeyboardIndex].rows[rowIndex].addArrangedSubview(key)
+                halfKeyboards[halfKeyboardIndex].rows[rowIndex].addArrangedSubview(keyView)
+                
+                keys[rowIndex][columnIndex] = keyView
             }
         }
     }
@@ -87,5 +107,4 @@ class KeyboardLayoutView: UIView {
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
 }

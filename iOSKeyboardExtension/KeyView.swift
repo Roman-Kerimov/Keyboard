@@ -95,7 +95,11 @@ class KeyView: UIButton {
     var centerXLabelConstraint: NSLayoutConstraint!
     var centerYLabelConstraint: NSLayoutConstraint!
     
-    let mainLabel: String
+    public var mainLabel: String {
+        didSet {
+            label.text = mainLabel
+        }
+    }
     
     private var labelFileName: String {
         return "Labels_\(mainLabel)"
@@ -104,7 +108,7 @@ class KeyView: UIButton {
     let label = UILabel()
     let imageLabelView: UIImageView = .init()
     let shiftUpLabel = ShiftLabel()
-    let shiftDownLabel = ShiftLabel()
+    public let shiftDownLabel = ShiftLabel()
     
     let shiftLeftLabel = ShiftLabel()
     let shiftRightLabel = ShiftLabel()
@@ -146,7 +150,7 @@ class KeyView: UIButton {
         }
     }
     
-    init(label: String, shiftDownLabel: String = "") {
+    init(label: String = "", shiftDownLabel: String = "") {
         mainLabel = label
         super.init(frame: CGRect())
         

@@ -87,7 +87,7 @@ internal class KeyboardView: UIView {
         layoutView.unicodeCollectionView.colorScheme = colorScheme
         
         #if TARGET_INTERFACE_BUILDER
-            keyboardView.backgroundColor = colorScheme.fakeBackroundColorForInterfaceBuilder
+            backgroundView.backgroundColor = colorScheme.fakeBackroundColorForInterfaceBuilder
         #endif
     }
     
@@ -219,7 +219,7 @@ internal class KeyboardView: UIView {
     private var widthConstraint: NSLayoutConstraint?
     private var heightConstraint: NSLayoutConstraint?
     
-    private let keyboardView = UIView()
+    private let backgroundView: UIView = .init()
     private let keyboardStackView = UIStackView()
     
     override internal func prepareForInterfaceBuilder() {
@@ -285,8 +285,10 @@ internal class KeyboardView: UIView {
             heightConstraint!.isActive = true
         }
         
+        backgroundView.frame.size = .init(width: bounds.width, height: size.height)
+        
         #if TARGET_INTERFACE_BUILDER
-            keyboardView.heightAnchor.constraint(equalToConstant: size.height).isActive = true
+            backgroundView.frame.origin = .init(x: 0, y: bounds.height - size.height)
         #endif
         
         deleteRowView.height = deleteRowHeight
@@ -318,18 +320,9 @@ internal class KeyboardView: UIView {
     override private init(frame: CGRect = .zero) {
         super.init(frame: frame)
         
-        addSubview(keyboardView)
-        keyboardView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(backgroundView)
         
-        #if !TARGET_INTERFACE_BUILDER
-            keyboardView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        #endif
-        
-        keyboardView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        keyboardView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-        keyboardView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        
-        keyboardView.addSubview(keyboardStackView)
+        backgroundView.addSubview(keyboardStackView)
         keyboardStackView.alignBounds()
         keyboardStackView.axis = .vertical
         keyboardStackView.translatesAutoresizingMaskIntoConstraints = false

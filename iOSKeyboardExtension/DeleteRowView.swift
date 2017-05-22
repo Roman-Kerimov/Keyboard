@@ -24,10 +24,10 @@ class DeleteRowView: RowView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func configure(size: CGSize) {
-        super.configure(size: size)
+    override func configure(size: CGSize, labelFontSize: CGFloat) {
+        super.configure(size: size, labelFontSize: labelFontSize)
         
-        deleteKey.frame.size = .init(width: size.width / 5, height: size.height)
+        deleteKey.configure(size: .init(width: size.width / 5, height: size.height), labelFontSize: labelFontSize)
         deleteKey.frame.origin.x = size.width - deleteKey.frame.width
         
         characterSequence.frame.size = .init(width: deleteKey.frame.origin.x, height: size.height)

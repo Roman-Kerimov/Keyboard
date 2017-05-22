@@ -187,6 +187,10 @@ internal class KeyboardView: UIView {
         )
     }
     
+    private var labelFontSize: CGFloat {
+        return max(keySize.width, minimalScreenSize.width / sizeInKeysForVerticalMode.width) * 6/15
+    }
+    
     private var halfKeyboardSize: CGSize {
         return CGSize(
             width: keySize.width * CGFloat(settings.layout.columnCount / 2),
@@ -282,26 +286,24 @@ internal class KeyboardView: UIView {
         #endif
         
         
-        let maxKeyWidth = self.maxKeyWidth
         let keySize = self.keySize
-        let minimalScreenSize = self.minimalScreenSize
-        let sizeInKeysForVerticalMode = self.sizeInKeysForVerticalMode
+        let labelFontSize: CGFloat = self.labelFontSize
         
         deleteRowView.configure(
-            size: .init(width: size.width, height: deleteRowHeight)
+            size: .init(width: size.width, height: deleteRowHeight), labelFontSize: labelFontSize
         )
         deleteRowView.frame.origin.y = 0
         
         layoutView.configure(
             size: .init(width: size.width, height: layoutHeight),
             halfKeyboardSize: halfKeyboardSize,
-            keySize: keySize,
+            keySize: keySize, labelFontSize: labelFontSize,
             unicodeCollectionWidth: unicodeCollectionWidth
         )
         layoutView.frame.origin.y = deleteRowHeight
         
         spaceRowView.configure(
-            size: .init(width: size.width, height: spaceRowHeight)
+            size: .init(width: size.width, height: spaceRowHeight), labelFontSize: labelFontSize
         )
         spaceRowView.frame.origin.y = deleteRowHeight + layoutHeight
         
@@ -316,10 +318,6 @@ internal class KeyboardView: UIView {
             deleteRowView.frame.origin.x = originX
             layoutView.frame.origin.x = originX
             spaceRowView.frame.origin.x = originX
-        }
-        
-        for key in keys {
-            key.configure(maxKeyWidth: maxKeyWidth, keySize: keySize, minimalScreenSize: minimalScreenSize, sizeInKeysForVerticalMode: sizeInKeysForVerticalMode)
         }
         
         deleteRowView.characterSequence.layout.itemSize = .init(

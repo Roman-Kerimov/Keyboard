@@ -18,12 +18,28 @@ class ShiftLabel: UILabel {
     }
     */
     
+    override var text: String? {
+        didSet {
+            super.text = text
+            
+            frame.size = intrinsicContentSize
+        }
+    }
+    
+    override var font: UIFont! {
+        didSet {
+            super.font = font
+            
+            frame.size = intrinsicContentSize
+        }
+    }
+    
     init() {
         super.init(frame: CGRect())
         
-        translatesAutoresizingMaskIntoConstraints = false
         adjustsFontSizeToFitWidth = true
         baselineAdjustment = .alignCenters
+        textAlignment = .center
     }
     
     required init(coder: NSCoder) {

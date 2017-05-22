@@ -39,62 +39,6 @@ class KeyView: UIButton {
         }
     }
     
-    var maxKeyWidth: CGFloat!
-    
-    func configure(maxKeyWidth: CGFloat, keySize: CGSize, minimalScreenSize: CGSize, sizeInKeysForVerticalMode: CGSize) {
-        self.maxKeyWidth = maxKeyWidth
-        
-        let keySpace = keySize.width * 0.1
-        
-        backgroundView.layer.cornerRadius = keySpace
-        
-        let keyEdgeInset = keySpace / 2
-        
-        layoutMargins = UIEdgeInsets(top: keyEdgeInset, left: keyEdgeInset, bottom: keyEdgeInset, right: keyEdgeInset)
-        
-        let verticalShiftLabelIndent = keySpace * 1/4
-        let horizontalShiftLabelIndent = keySpace * 1/2
-
-        backgroundView.layoutMargins = UIEdgeInsets(top: verticalShiftLabelIndent, left: horizontalShiftLabelIndent, bottom: verticalShiftLabelIndent, right: horizontalShiftLabelIndent)
-        
-        let keyWidthForCalculateFontSize = max(
-            keySize.width,
-            minimalScreenSize.width / sizeInKeysForVerticalMode.width
-        )
-        
-        let labelFontSize = keyWidthForCalculateFontSize * 6/15
-        label.font = label.font.withSize(labelFontSize)
-        
-        let shiftLabelFont = UIFont.systemFont(ofSize: labelFontSize/1.8)
-        shiftUpLabel.font = shiftLabelFont
-        shiftDownLabel.font = shiftLabelFont
-        shiftLeftLabel.font = shiftLabelFont
-        shiftRightLabel.font = shiftLabelFont
-        
-        guard let specialKey = self.specialKey else {
-            return
-        }
-        
-        switch specialKey {
-        case .delete, .return:
-            label.font = label.font.withSize(shiftLabelFont.pointSize)
-            
-        case .settings:
-            label.font = label.font.withSize(shiftLabelFont.pointSize * 2.5)
-            centerXLabelConstraint.constant = label.font.pointSize * 0.025
-            
-        default:
-            break
-        }
-        
-        if imageLabelView.image != nil {
-            imageLabelView.image = UIImage.init(fromPDF: labelFileName, withExtension: .ai, withScale: labelFontSize/24, for: self)?.withRenderingMode(.alwaysTemplate)
-        }
-    }
-    
-    var centerXLabelConstraint: NSLayoutConstraint!
-    var centerYLabelConstraint: NSLayoutConstraint!
-    
     public var mainLabel: String {
         didSet {
             label.text = mainLabel
@@ -105,7 +49,7 @@ class KeyView: UIButton {
         return "Labels_\(mainLabel)"
     }
     
-    let label = UILabel()
+    let label: ShiftLabel = .init()
     let imageLabelView: UIImageView = .init()
     let shiftUpLabel = ShiftLabel()
     public let shiftDownLabel = ShiftLabel()
@@ -163,65 +107,32 @@ class KeyView: UIButton {
         backgroundView.isUserInteractionEnabled = false
         backgroundView.isExclusiveTouch = false
         addSubview(backgroundView)
-        backgroundView.translatesAutoresizingMaskIntoConstraints = false
-        
-        backgroundView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        backgroundView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        
-        backgroundView.widthAnchor.constraint(equalTo: layoutMarginsGuide.widthAnchor).isActive = true
-        backgroundView.heightAnchor.constraint(equalTo: layoutMarginsGuide.heightAnchor).isActive = true
         
         addSubview(self.label)
-        self.label.translatesAutoresizingMaskIntoConstraints = false
         self.label.text = mainLabel
         self.label.textAlignment = .center
         self.label.adjustsFontSizeToFitWidth = true
         
         self.label.baselineAdjustment = .alignCenters
         
-        self.label.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8).isActive = true
-        
-        centerXLabelConstraint = self.label.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0)
-        centerXLabelConstraint.isActive = true
-        
-        centerYLabelConstraint = self.label.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 0)
-        centerYLabelConstraint.isActive = true
         
         addSubview(self.shiftUpLabel)
         addSubview(self.shiftDownLabel)
         
-        self.shiftDownLabel.bottomAnchor.constraint(equalTo: backgroundView.layoutMarginsGuide.bottomAnchor).isActive = true
-        self.shiftUpLabel.text = KeyboardLayout.shiftUpDictionary[label]
-        
         if specialKey == .space {
-            self.shiftUpLabel.topAnchor.constraint(equalTo: backgroundView.layoutMarginsGuide.topAnchor).isActive = true
-            self.shiftUpLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-            
-            self.shiftDownLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
             self.shiftDownLabel.text = SpecialKey.space.label
             
             addSubview(shiftLeftLabel)
-            shiftLeftLabel.leftAnchor.constraint(equalTo: backgroundView.layoutMarginsGuide.leftAnchor).isActive = true
-            shiftLeftLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
             shiftLeftLabel.text = SpecialKey.union.label
             
             addSubview(shiftRightLabel)
-            shiftRightLabel.rightAnchor.constraint(equalTo: backgroundView.layoutMarginsGuide.rightAnchor).isActive = true
-            shiftRightLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
             shiftRightLabel.text = SpecialKey.tab.label
         }
         else {
-            self.shiftUpLabel.topAnchor.constraint(equalTo: backgroundView.layoutMarginsGuide.topAnchor).isActive = true
-            self.shiftUpLabel.leftAnchor.constraint(equalTo: backgroundView.layoutMarginsGuide.leftAnchor).isActive = true
-            
-            self.shiftDownLabel.rightAnchor.constraint(equalTo: backgroundView.layoutMarginsGuide.rightAnchor).isActive = true
             self.shiftDownLabel.text = shiftDownLabel
         }
         
         addSubview(imageLabelView)
-        imageLabelView.translatesAutoresizingMaskIntoConstraints = false
-        imageLabelView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        imageLabelView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         
         if let imageLabel: UIImage = UIImage.init(fromPDF: labelFileName, withExtension: .ai, withScale: 1, for: self) {
             imageLabelView.image = imageLabel
@@ -238,6 +149,70 @@ class KeyView: UIButton {
         //fatalError("init(coder:) has not been implemented")
         mainLabel = ""
         super.init(coder: aDecoder)
+    }
+    
+    func configure(size: CGSize, labelFontSize: CGFloat) {
+        frame.size = size
+        
+        label.font = label.font.withSize(labelFontSize)
+        
+        let shiftLabelFont = UIFont.systemFont(ofSize: labelFontSize/1.8)
+        shiftUpLabel.font = shiftLabelFont
+        shiftDownLabel.font = shiftLabelFont
+        shiftLeftLabel.font = shiftLabelFont
+        shiftRightLabel.font = shiftLabelFont
+        
+        if let specialKey = self.specialKey {
+            switch specialKey {
+            case .delete, .return:
+                label.font = label.font.withSize(shiftLabelFont.pointSize)
+                
+            case .settings:
+                label.font = label.font.withSize(shiftLabelFont.pointSize * 2.5)
+                
+            default:
+                break
+            }
+            
+            if imageLabelView.image != nil {
+                imageLabelView.image = UIImage.init(fromPDF: labelFileName, withExtension: .ai, withScale: labelFontSize/24, for: self)?.withRenderingMode(.alwaysTemplate)
+            }
+        }
+        
+        let keySpace = size.height * 0.1
+        
+        backgroundView.layer.cornerRadius = keySpace
+        
+        let keyEdgeInset = keySpace / 2
+        
+        backgroundView.frame = frame.insetBy(dx: keyEdgeInset, dy: keyEdgeInset)
+        backgroundView.frame.origin = .init(x: keyEdgeInset, y: keyEdgeInset)
+        
+        let verticalShiftLabelIndent = keySpace * 2.2
+        let horizontalShiftLabelIndent = keySpace * 0.5
+        
+        label.center = backgroundView.center
+        
+        shiftUpLabel.center.y = verticalShiftLabelIndent
+        shiftDownLabel.center.y = frame.height - verticalShiftLabelIndent
+
+        if specialKey == .space {
+            shiftUpLabel.center.x = backgroundView.center.x
+            shiftDownLabel.center.x = backgroundView.center.x
+        }
+        else {
+            shiftUpLabel.frame.origin.x = horizontalShiftLabelIndent
+            shiftDownLabel.frame.origin.x = frame.width - shiftDownLabel.frame.width - horizontalShiftLabelIndent
+        }
+
+        shiftLeftLabel.frame.origin.x = horizontalShiftLabelIndent
+        shiftLeftLabel.center.y = frame.midY
+        
+        shiftRightLabel.frame.origin.x = frame.maxX - shiftRightLabel.frame.width - horizontalShiftLabelIndent
+        shiftRightLabel.center.y = frame.midY
+        
+        imageLabelView.frame.size = imageLabelView.intrinsicContentSize
+        imageLabelView.center = .init(x: frame.midX, y: frame.midY)
     }
     
     var longPressGestureRecognizer: UILongPressGestureRecognizer!
@@ -303,7 +278,7 @@ class KeyView: UIButton {
                 y: gestureCurrentPoint.y - gestureStartPoint.y
             )
             
-            let threshold = CGPoint(x: min(maxKeyWidth / 2, bounds.size.width / 4), y: bounds.size.height / 4)
+            let threshold = CGPoint(x: bounds.size.height / 2, y: bounds.size.height / 4)
             
             let isShiftUp = offset.y < -threshold.y
             let isShiftDown = offset.y > threshold.y

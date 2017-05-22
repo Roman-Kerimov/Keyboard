@@ -42,8 +42,8 @@ class SpaceRowView: RowView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func configure(size: CGSize) {
-        super.configure(size: size)
+    override func configure(size: CGSize, labelFontSize: CGFloat) {
+        super.configure(size: size, labelFontSize: labelFontSize)
         
         let allParts = keys.map {$0.proportion} .reduce(0, +)
         
@@ -51,7 +51,7 @@ class SpaceRowView: RowView {
         for (proportion, keyView) in keys {
             let keyWidth = size.width * proportion/allParts
             
-            keyView.frame.size = .init(width: keyWidth, height: size.height)
+            keyView.configure(size: .init(width: keyWidth, height: size.height), labelFontSize: labelFontSize)
             keyView.frame.origin.x = originX
             
             originX += keyWidth

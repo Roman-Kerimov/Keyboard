@@ -26,8 +26,6 @@ class HalfKeyboardView: UIStackView {
         axis = .vertical
         distribution = .fillEqually
         
-        translatesAutoresizingMaskIntoConstraints = false
-        
         for _ in 0..<rowCount {
             let row = UIStackView()
             

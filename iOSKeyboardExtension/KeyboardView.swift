@@ -285,7 +285,11 @@ internal class KeyboardView: UIView {
         
         deleteRowView.frame.size = .init(width: size.width, height: deleteRowHeight)
         
-        layoutView.frame.size = .init(width: size.width, height: layoutHeight)
+        layoutView.configure(
+            size: .init(width: size.width, height: layoutHeight),
+            halfKeyboardSize: halfKeyboardSize,
+            unicodeCollectionWidth: unicodeCollectionWidth
+        )
         layoutView.frame.origin.y = deleteRowHeight
         
         spaceRowView.frame.size = .init(width: size.width, height: spaceRowHeight)
@@ -302,9 +306,6 @@ internal class KeyboardView: UIView {
             layoutView.frame.origin.x = originX
             spaceRowView.frame.origin.x = originX
         }
-        
-        layoutView.halfKeyboardSize = halfKeyboardSize
-        layoutView.unicodeCollectionView.width = unicodeCollectionWidth
 
         let maxKeyWidth = self.maxKeyWidth
         let keySize = self.keySize

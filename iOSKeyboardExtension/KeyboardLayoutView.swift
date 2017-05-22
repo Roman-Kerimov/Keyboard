@@ -39,25 +39,6 @@ class KeyboardLayoutView: UIView {
     var halfKeyboards: [HalfKeyboardView] = []
     internal let unicodeCollectionView: UnicodeCollectionView = .init()
     
-    var halfKeyboardSize = CGSize() {
-        didSet {
-            if halfKeyboardWidthConstraint != nil && halfKeyboardHeightConstraint != nil  {
-            	halfKeyboardWidthConstraint!.constant = halfKeyboardSize.width
-                halfKeyboardHeightConstraint!.constant = halfKeyboardSize.height
-            }
-            else {
-                halfKeyboardWidthConstraint = halfKeyboards.first!.widthAnchor.constraint(equalToConstant: halfKeyboardSize.width)
-                halfKeyboardWidthConstraint!.isActive = true
-                
-                halfKeyboardHeightConstraint = halfKeyboards.first!.heightAnchor.constraint(equalToConstant: halfKeyboardSize.height)
-                halfKeyboardHeightConstraint!.isActive = true
-            }
-        }
-    }
-    
-    private var halfKeyboardHeightConstraint: NSLayoutConstraint?
-    private var halfKeyboardWidthConstraint: NSLayoutConstraint?
-    
     init() {
         super.init(frame: .zero)
         
@@ -68,18 +49,6 @@ class KeyboardLayoutView: UIView {
         }
         
         addSubview(unicodeCollectionView)
-        
-        unicodeCollectionView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        unicodeCollectionView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        unicodeCollectionView.heightAnchor.constraint(equalTo: heightAnchor).isActive = true
-        
-        halfKeyboards.first!.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        halfKeyboards.first!.leftAnchor.constraint(equalTo: unicodeCollectionView.rightAnchor).isActive = true
-        halfKeyboards.last!.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-        halfKeyboards.last!.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        
-        halfKeyboards.first!.widthAnchor.constraint(equalTo: halfKeyboards.last!.widthAnchor).isActive = true
-        halfKeyboards.first!.heightAnchor.constraint(equalTo: halfKeyboards.last!.heightAnchor).isActive = true
         
         for rowIndex in 0...2 {
             for columnIndex in 0...9 {
@@ -104,5 +73,23 @@ class KeyboardLayoutView: UIView {
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configure(size: CGSize, halfKeyboardSize: CGSize, unicodeCollectionWidth: CGFloat) {
+        frame.size = size
+        
+        for (halfKeyboardIndex, halfKeyboard) in halfKeyboards.enumerated() {
+            halfKeyboard.frame.size = halfKeyboardSize
+            
+            if halfKeyboardIndex == 0 {
+                halfKeyboard.frame.origin.x = unicodeCollectionWidth
+            }
+            else {
+                halfKeyboard.frame.origin.x = size.width - halfKeyboard.frame.width
+                halfKeyboard.frame.origin.y = size.height - halfKeyboard.frame.height
+            }
+        }
+        
+        unicodeCollectionView.size = .init(width: unicodeCollectionWidth, height: size.height)
     }
 }

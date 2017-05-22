@@ -18,22 +18,17 @@ class UnicodeCollectionView: CharacterCollectionView {
     }
     */
 
-    internal var width: CGFloat = 0 {
+    internal var size: CGSize = .zero {
         didSet {
-            widthConstraint.constant = width
-            widthConstraint.isActive = true
+            frame.size = size
             
-            layout.itemSize = .init(width: width, height: width)
+            layout.itemSize = .init(width: size.width, height: size.width)
             reloadData()
         }
     }
     
-    private var widthConstraint: NSLayoutConstraint!
-    
     internal override init() {
         super.init()
-        
-        widthConstraint = widthAnchor.constraint(equalToConstant: 0)
         
         layout.minimumLineSpacing = 0
         

@@ -18,33 +18,44 @@ class SpaceRowView: RowView {
     }
     */
     
-    let nextKeyboardKey = KeyView(key: .nextKeyboard)
-    let dismissKeyboardKey = KeyView(key: .dismissKeyboard)
-    let spaceKey = KeyView(key: .space)
-    let returnKey = KeyView(key: .return)
-    let settingsKey = KeyView(key: .settings)
+    let keys: [(proportion: CGFloat, view: KeyView)] = [
+        (5, .init(key: .settings)),
+        (5, .init(key: .nextKeyboard)),
+        (17,.init(key: .space)),
+        (8, .init(key: .return)),
+        (5, .init(key: .dismissKeyboard)),
+    ]
+    
+    var nextKeyboardKey: KeyView {
+        return keys.filter {$0.view.specialKey == SpecialKey.nextKeyboard} .first!.view
+    }
     
     internal override init() {
         super.init()
         
-        let compactKeyMultiplier: CGFloat = 1/8
-        
-        addArrangedSubview(settingsKey)
-        settingsKey.widthAnchor.constraint(equalTo: widthAnchor, multiplier: compactKeyMultiplier).isActive = true
-        
-        addArrangedSubview(nextKeyboardKey)
-        nextKeyboardKey.widthAnchor.constraint(equalTo: widthAnchor, multiplier: compactKeyMultiplier).isActive = true
-        
-        addArrangedSubview(spaceKey)
-        
-        addArrangedSubview(returnKey)
-        returnKey.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1/5).isActive = true
-        
-        addArrangedSubview(dismissKeyboardKey)
-        dismissKeyboardKey.widthAnchor.constraint(equalTo: widthAnchor, multiplier: compactKeyMultiplier).isActive = true
+        for key in keys {
+            addSubview(key.view)
+        }
     }
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func configure(size: CGSize) {
+        super.configure(size: size)
+        
+        let allParts = keys.map {$0.proportion} .reduce(0, +)
+        
+        var originX: CGFloat = 0
+        for (proportion, keyView) in keys {
+            let keyWidth = size.width * proportion/allParts
+            
+            keyView.frame.size = .init(width: keyWidth, height: size.height)
+            keyView.frame.origin.x = originX
+            
+            originX += keyWidth
+        }
+        
     }
 }

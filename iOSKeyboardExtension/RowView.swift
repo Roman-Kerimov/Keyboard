@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RowView: UIStackView {
+class RowView: UIView {
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -20,11 +20,13 @@ class RowView: UIStackView {
     
     init() {
         super.init(frame: .zero)
-        
-        axis = .horizontal
     }
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configure(size: CGSize) {
+        frame.size = size
     }
 }

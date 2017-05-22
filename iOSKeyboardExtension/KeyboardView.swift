@@ -102,8 +102,8 @@ internal class KeyboardView: UIView {
             keyViews += row
         }
         
-        keyViews += deleteRowView.arrangedSubviews.filter {$0 is KeyView} as! [KeyView]
-        keyViews += spaceRowView.arrangedSubviews as! [KeyView]
+        keyViews.append(deleteRowView.deleteKey)
+        keyViews += spaceRowView.keys.map {$0.view}
         
         return keyViews
     }
@@ -281,12 +281,16 @@ internal class KeyboardView: UIView {
             backgroundView.frame.origin = .init(x: 0, y: bounds.height - size.height)
         #endif
         
+        
         let maxKeyWidth = self.maxKeyWidth
         let keySize = self.keySize
         let minimalScreenSize = self.minimalScreenSize
         let sizeInKeysForVerticalMode = self.sizeInKeysForVerticalMode
         
-        deleteRowView.frame.size = .init(width: size.width, height: deleteRowHeight)
+        deleteRowView.configure(
+            size: .init(width: size.width, height: deleteRowHeight)
+        )
+        deleteRowView.frame.origin.y = 0
         
         layoutView.configure(
             size: .init(width: size.width, height: layoutHeight),
@@ -296,8 +300,11 @@ internal class KeyboardView: UIView {
         )
         layoutView.frame.origin.y = deleteRowHeight
         
-        spaceRowView.frame.size = .init(width: size.width, height: spaceRowHeight)
+        spaceRowView.configure(
+            size: .init(width: size.width, height: spaceRowHeight)
+        )
         spaceRowView.frame.origin.y = deleteRowHeight + layoutHeight
+        
         
         if isHorizontalMode {
             deleteRowView.center.x = backgroundView.bounds.midX

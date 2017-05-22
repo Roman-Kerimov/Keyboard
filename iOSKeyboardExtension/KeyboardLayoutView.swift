@@ -59,9 +59,7 @@ class KeyboardLayoutView: UIView {
     private var halfKeyboardWidthConstraint: NSLayoutConstraint?
     
     init() {
-        super.init(frame: CGRect())
-        
-        translatesAutoresizingMaskIntoConstraints = false
+        super.init(frame: .zero)
         
         for _ in 0...1 {
             let halfKeyboard = HalfKeyboardView(rowCount: layout.rowCount)

@@ -200,7 +200,7 @@ internal class KeyboardView: UIView {
         return deleteRowHeightInKeys * keySize.height
     }
     
-    private var layoutContainerHeight: CGFloat {
+    private var layoutHeight: CGFloat {
         return backgroundView.bounds.height - deleteRowHeight - spaceRowHeight
     }
     
@@ -285,21 +285,21 @@ internal class KeyboardView: UIView {
         
         deleteRowView.frame.size = .init(width: size.width, height: deleteRowHeight)
         
-        layoutContainerView.frame.size = .init(width: size.width, height: layoutContainerHeight)
-        layoutContainerView.frame.origin.y = deleteRowHeight
+        layoutView.frame.size = .init(width: size.width, height: layoutHeight)
+        layoutView.frame.origin.y = deleteRowHeight
         
         spaceRowView.frame.size = .init(width: size.width, height: spaceRowHeight)
-        spaceRowView.frame.origin.y = deleteRowHeight + layoutContainerHeight
+        spaceRowView.frame.origin.y = deleteRowHeight + layoutHeight
         
         if isHorizontalMode {
             deleteRowView.center.x = backgroundView.bounds.midX
-            layoutContainerView.center.x = backgroundView.bounds.midX
+            layoutView.center.x = backgroundView.bounds.midX
             spaceRowView.center.x = backgroundView.bounds.midX
         }
         else {
             let originX = backgroundView.bounds.maxX - size.width
             deleteRowView.frame.origin.x = originX
-            layoutContainerView.frame.origin.x = originX
+            layoutView.frame.origin.x = originX
             spaceRowView.frame.origin.x = originX
         }
         
@@ -323,7 +323,7 @@ internal class KeyboardView: UIView {
     }
     
     private var deleteRowView = DeleteRowView()
-    private var layoutContainerView = UIView()
+    internal var layoutView = KeyboardLayoutView()
     private let spaceRowView = SpaceRowView()
     
     override private init(frame: CGRect = .zero) {
@@ -333,10 +333,7 @@ internal class KeyboardView: UIView {
         
         backgroundView.addSubview(deleteRowView)
         backgroundView.addSubview(spaceRowView)
-        backgroundView.addSubview(layoutContainerView)
-        
-        layoutContainerView.addSubview(layoutView)
-        layoutView.alignBounds()
+        backgroundView.addSubview(layoutView)
         
         layoutView.layout = settings.layout
         
@@ -346,8 +343,6 @@ internal class KeyboardView: UIView {
     required internal init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    internal var layoutView = KeyboardLayoutView()
     
     internal let settingsContainerView = SettingsContainerView()
     

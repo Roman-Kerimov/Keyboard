@@ -98,10 +98,8 @@ internal class KeyboardView: UIView {
     private var keys: [KeyView] {
         var keyViews: [KeyView] = []
         
-        for halfKeyboard in layoutView.halfKeyboards {
-            for row in halfKeyboard.rows {
-                keyViews += row.arrangedSubviews as! [KeyView]
-            }
+        for row in layoutView.keys {
+            keyViews += row
         }
         
         keyViews += deleteRowView.arrangedSubviews.filter {$0 is KeyView} as! [KeyView]
@@ -283,11 +281,17 @@ internal class KeyboardView: UIView {
             backgroundView.frame.origin = .init(x: 0, y: bounds.height - size.height)
         #endif
         
+        let maxKeyWidth = self.maxKeyWidth
+        let keySize = self.keySize
+        let minimalScreenSize = self.minimalScreenSize
+        let sizeInKeysForVerticalMode = self.sizeInKeysForVerticalMode
+        
         deleteRowView.frame.size = .init(width: size.width, height: deleteRowHeight)
         
         layoutView.configure(
             size: .init(width: size.width, height: layoutHeight),
             halfKeyboardSize: halfKeyboardSize,
+            keySize: keySize,
             unicodeCollectionWidth: unicodeCollectionWidth
         )
         layoutView.frame.origin.y = deleteRowHeight
@@ -306,11 +310,6 @@ internal class KeyboardView: UIView {
             layoutView.frame.origin.x = originX
             spaceRowView.frame.origin.x = originX
         }
-
-        let maxKeyWidth = self.maxKeyWidth
-        let keySize = self.keySize
-        let minimalScreenSize = self.minimalScreenSize
-        let sizeInKeysForVerticalMode = self.sizeInKeysForVerticalMode
         
         for key in keys {
             key.configure(maxKeyWidth: maxKeyWidth, keySize: keySize, minimalScreenSize: minimalScreenSize, sizeInKeysForVerticalMode: sizeInKeysForVerticalMode)

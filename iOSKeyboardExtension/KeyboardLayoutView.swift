@@ -36,14 +36,14 @@ class KeyboardLayoutView: UIView {
     
     var keys: [[KeyView]] = Array.init(repeating: Array.init(repeating: .init(), count: 10), count: 3)
     
-    var halfKeyboards: [HalfKeyboardView] = []
+    var halfKeyboards: [UIView] = .init()
     internal let unicodeCollectionView: UnicodeCollectionView = .init()
     
     init() {
         super.init(frame: .zero)
         
         for _ in 0...1 {
-            let halfKeyboard = HalfKeyboardView(rowCount: layout.rowCount)
+            let halfKeyboard: UIView = .init()
             halfKeyboards.append(halfKeyboard)
             addSubview(halfKeyboard)
         }
@@ -64,7 +64,7 @@ class KeyboardLayoutView: UIView {
                 
                 let keyView = KeyView.init()
                 
-                halfKeyboards[halfKeyboardIndex].rows[rowIndex].addArrangedSubview(keyView)
+                halfKeyboards[halfKeyboardIndex].addSubview(keyView)
                 
                 keys[rowIndex][columnIndex] = keyView
             }
@@ -75,7 +75,7 @@ class KeyboardLayoutView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(size: CGSize, halfKeyboardSize: CGSize, unicodeCollectionWidth: CGFloat) {
+    func configure(size: CGSize, halfKeyboardSize: CGSize, keySize: CGSize, unicodeCollectionWidth: CGFloat) {
         frame.size = size
         
         for (halfKeyboardIndex, halfKeyboard) in halfKeyboards.enumerated() {
@@ -91,5 +91,23 @@ class KeyboardLayoutView: UIView {
         }
         
         unicodeCollectionView.size = .init(width: unicodeCollectionWidth, height: size.height)
+        
+        for (rowIndex, row) in keys.enumerated() {
+            for (keyIndex, key) in row.enumerated() {
+                
+                let halfKeyboardIndex: Int
+                
+                if keyIndex < layout.columnCount/2 {
+                    halfKeyboardIndex = 0
+                }
+                else {
+                    halfKeyboardIndex = 1
+                }
+                
+                key.frame.origin.x = keySize.width * .init(keyIndex - row.count/2 * halfKeyboardIndex)
+                key.frame.origin.y = keySize.height * .init(rowIndex)
+                key.frame.size = keySize
+            }
+        }
     }
 }

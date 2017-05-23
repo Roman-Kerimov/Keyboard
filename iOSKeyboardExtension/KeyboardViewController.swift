@@ -205,7 +205,9 @@ class KeyboardViewController: UIInputViewController {
                 && textDocumentProxy.characterBeforeInput == .space
                 && textDocumentProxy.characterAfterInput == .space {
                 
-                keyAction(label: SpecialKey.delete.label)
+                cancelNextNormalization = true
+                textDocumentProxy.adjustTextPosition(byCharacterOffset: 1)
+                textDocumentProxy.deleteBackward()
             }
             
         case .removeCharacter:

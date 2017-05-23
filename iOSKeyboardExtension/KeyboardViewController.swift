@@ -36,6 +36,14 @@ class KeyboardViewController: UIInputViewController {
         KeyboardViewController.shared = self
         
         keyboardView.nextKeyboardKey.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
+        
+        // Hack for working of the keyboard height constraint
+        let hiddenView: UILabel = .init()
+        hiddenView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(hiddenView)
+        hiddenView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+        hiddenView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        hiddenView.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {

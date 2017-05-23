@@ -35,7 +35,7 @@
 		9694E23D1E29D72800ED3A85 /* Internationalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9694E23C1E29D72800ED3A85 /* Internationalization.swift */; };
 		969F15F51E549BD300C0DD7D /* ViewController<UIView>.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969F15F41E549BD300C0DD7D /* ViewController<UIView>.swift */; };
 		969F15F71E54EE3600C0DD7D /* LanguageTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969F15F61E54EE3600C0DD7D /* LanguageTableView.swift */; };
-		96BC5F561DEB961F002E0752 /* ShiftLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BC5F551DEB961F002E0752 /* ShiftLabel.swift */; };
+		96BC5F561DEB961F002E0752 /* LabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BC5F551DEB961F002E0752 /* LabelView.swift */; };
 		96C49DC51EB7DF1F006F93ED /* CharacterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C49DC41EB7DF1F006F93ED /* CharacterExtension.swift */; };
 		96D2B8DD1E35538B006772A5 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D2B8DC1E35538B006772A5 /* Localization.swift */; };
 		96EA39D71EAFDDDE00F3D804 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EA39D61EAFDDDE00F3D804 /* UIImageExtension.swift */; };
@@ -102,7 +102,7 @@
 		9694E23C1E29D72800ED3A85 /* Internationalization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Internationalization.swift; sourceTree = "<group>"; };
 		969F15F41E549BD300C0DD7D /* ViewController<UIView>.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController<UIView>.swift"; sourceTree = "<group>"; };
 		969F15F61E54EE3600C0DD7D /* LanguageTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageTableView.swift; sourceTree = "<group>"; };
-		96BC5F551DEB961F002E0752 /* ShiftLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftLabel.swift; sourceTree = "<group>"; };
+		96BC5F551DEB961F002E0752 /* LabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelView.swift; sourceTree = "<group>"; };
 		96C49DC41EB7DF1F006F93ED /* CharacterExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterExtension.swift; sourceTree = "<group>"; };
 		96D2B8DC1E35538B006772A5 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		96EA39D61EAFDDDE00F3D804 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
@@ -181,7 +181,7 @@
 				9654DF791D4E1D0900DDB0EF /* SpaceRowView.swift */,
 				9633A3C71E5DFA3C00DFA503 /* RowView.swift */,
 				965D15C81D32AE3B0098FA57 /* KeyView.swift */,
-				96BC5F551DEB961F002E0752 /* ShiftLabel.swift */,
+				96BC5F551DEB961F002E0752 /* LabelView.swift */,
 				9685BCFE1E06815700702C84 /* KeyboardSettings.swift */,
 				969F15F41E549BD300C0DD7D /* ViewController<UIView>.swift */,
 				968694C01EA0F3D100E6C9D0 /* UIColorExtension.swift */,
@@ -334,7 +334,7 @@
 				96EA39D71EAFDDDE00F3D804 /* UIImageExtension.swift in Sources */,
 				9665F3761E9D847300850F97 /* CharacterSequenceView.swift in Sources */,
 				964AB96A1D1B6535004C827C /* KeyboardViewController.swift in Sources */,
-				96BC5F561DEB961F002E0752 /* ShiftLabel.swift in Sources */,
+				96BC5F561DEB961F002E0752 /* LabelView.swift in Sources */,
 				9665F3781E9D921500850F97 /* CharacterCollectionViewCell.swift in Sources */,
 				964ECA7E1E536FE8008E8757 /* SettingsContainerView.swift in Sources */,
 				965D15C91D32AE3B0098FA57 /* KeyView.swift in Sources */,

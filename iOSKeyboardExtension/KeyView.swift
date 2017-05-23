@@ -28,20 +28,32 @@ class KeyView: UIButton {
         didSet {
             backgroundView.backgroundColor = colorScheme.keyColor
             
-            label.textColor = colorScheme.labelColor
+            mainLabelView.textColor = colorScheme.labelColor
             tintColor = colorScheme.labelColor
-            shiftUpLabel.textColor = colorScheme.shiftLabelColor
-            shiftDownLabel.textColor = colorScheme.shiftLabelColor
-            shiftLeftLabel.textColor = colorScheme.shiftLabelColor
-            shiftRightLabel.textColor = colorScheme.shiftLabelColor
+            shiftUpLabelView.textColor = colorScheme.shiftLabelColor
+            shiftDownLabelView.textColor = colorScheme.shiftLabelColor
+            shiftLeftLabelView.textColor = colorScheme.shiftLabelColor
+            shiftRightLabelView.textColor = colorScheme.shiftLabelColor
             
             backgroundView.layer.borderColor = colorScheme.borderColor.cgColor
         }
     }
     
-    public var mainLabel: String {
+    public var mainLabel: String = "" {
         didSet {
-            label.text = mainLabel
+            mainLabelView.text = mainLabel
+        }
+    }
+    
+    public var shiftDownLabel: String = "" {
+        didSet {
+            shiftDownLabelView.text = shiftDownLabel
+        }
+    }
+    
+    public var shiftUpLabel: String = "" {
+        didSet {
+            shiftUpLabelView.text = shiftUpLabel
         }
     }
     
@@ -49,15 +61,15 @@ class KeyView: UIButton {
         return "Labels_\(mainLabel)"
     }
     
-    let label: ShiftLabel = .init()
-    let imageLabelView: UIImageView = .init()
-    let shiftUpLabel = ShiftLabel()
-    public let shiftDownLabel = ShiftLabel()
+    private let mainLabelView: LabelView = .init()
+    private let imageLabelView: UIImageView = .init()
+    private let shiftUpLabelView: LabelView = .init()
+    private let shiftDownLabelView: LabelView = .init()
     
-    let shiftLeftLabel = ShiftLabel()
-    let shiftRightLabel = ShiftLabel()
+    private let shiftLeftLabelView: LabelView = .init()
+    private let shiftRightLabelView: LabelView = .init()
     
-    var backgroundView: UIView!
+    private var backgroundView: UIView!
     
     convenience init(key: SpecialKey) {
         self.init(label: key.label)
@@ -76,27 +88,28 @@ class KeyView: UIButton {
             if isHighlighted {
                 
                 backgroundView.backgroundColor = highlightColor
-                label.textColor = colorScheme.activeLabelColor
-                shiftUpLabel.isHidden = true
-                shiftDownLabel.isHidden = true
-                shiftLeftLabel.isHidden = true
-                shiftRightLabel.isHidden = true
+                mainLabelView.textColor = colorScheme.activeLabelColor
+                shiftUpLabelView.isHidden = true
+                shiftDownLabelView.isHidden = true
+                shiftLeftLabelView.isHidden = true
+                shiftRightLabelView.isHidden = true
             }
             else {
                 
                 backgroundView.backgroundColor = colorScheme.keyColor
-                label.textColor = colorScheme.labelColor
-                shiftUpLabel.isHidden = false
-                shiftDownLabel.isHidden = false
-                shiftLeftLabel.isHidden = false
-                shiftRightLabel.isHidden = false
+                mainLabelView.textColor = colorScheme.labelColor
+                shiftUpLabelView.isHidden = false
+                shiftDownLabelView.isHidden = false
+                shiftLeftLabelView.isHidden = false
+                shiftRightLabelView.isHidden = false
             }
         }
     }
     
     init(label: String = "", shiftDownLabel: String = "") {
-        mainLabel = label
         super.init(frame: CGRect())
+        
+        mainLabel = label
         
         // It is for activation of touch events
         backgroundColor = .touchableClear
@@ -108,35 +121,30 @@ class KeyView: UIButton {
         backgroundView.isExclusiveTouch = false
         addSubview(backgroundView)
         
-        addSubview(self.label)
-        self.label.text = mainLabel
-        self.label.textAlignment = .center
-        self.label.adjustsFontSizeToFitWidth = true
+        addSubview(mainLabelView)
+        mainLabelView.text = mainLabel
         
-        self.label.baselineAdjustment = .alignCenters
-        
-        
-        addSubview(self.shiftUpLabel)
-        addSubview(self.shiftDownLabel)
+        addSubview(shiftUpLabelView)
+        addSubview(shiftDownLabelView)
         
         if specialKey == .space {
-            self.shiftDownLabel.text = SpecialKey.space.label
+            shiftDownLabelView.text = SpecialKey.space.label
             
-            addSubview(shiftLeftLabel)
-            shiftLeftLabel.text = SpecialKey.union.label
+            addSubview(shiftLeftLabelView)
+            shiftLeftLabelView.text = SpecialKey.union.label
             
-            addSubview(shiftRightLabel)
-            shiftRightLabel.text = SpecialKey.tab.label
+            addSubview(shiftRightLabelView)
+            shiftRightLabelView.text = SpecialKey.tab.label
         }
         else {
-            self.shiftDownLabel.text = shiftDownLabel
+            shiftDownLabelView.text = shiftDownLabel
         }
         
         addSubview(imageLabelView)
         
         if let imageLabel: UIImage = UIImage.init(fromPDF: labelFileName, withExtension: .ai, withScale: 1, for: self) {
             imageLabelView.image = imageLabel
-            self.label.isHidden = true
+            mainLabelView.isHidden = true
         }
         
         longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressGestureAction(gesture:)))
@@ -146,29 +154,27 @@ class KeyView: UIButton {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        //fatalError("init(coder:) has not been implemented")
-        mainLabel = ""
-        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
     }
     
     func configure(size: CGSize, labelFontSize: CGFloat) {
         frame.size = size
         
-        label.font = label.font.withSize(labelFontSize)
+        mainLabelView.font = mainLabelView.font.withSize(labelFontSize)
         
         let shiftLabelFont = UIFont.systemFont(ofSize: labelFontSize/1.8)
-        shiftUpLabel.font = shiftLabelFont
-        shiftDownLabel.font = shiftLabelFont
-        shiftLeftLabel.font = shiftLabelFont
-        shiftRightLabel.font = shiftLabelFont
+        shiftUpLabelView.font = shiftLabelFont
+        shiftDownLabelView.font = shiftLabelFont
+        shiftLeftLabelView.font = shiftLabelFont
+        shiftRightLabelView.font = shiftLabelFont
         
         if let specialKey = self.specialKey {
             switch specialKey {
             case .delete, .return:
-                label.font = label.font.withSize(shiftLabelFont.pointSize)
+                mainLabelView.font = mainLabelView.font.withSize(shiftLabelFont.pointSize)
                 
             case .settings:
-                label.font = label.font.withSize(shiftLabelFont.pointSize * 2.5)
+                mainLabelView.font = mainLabelView.font.withSize(shiftLabelFont.pointSize * 2.5)
                 
             default:
                 break
@@ -191,25 +197,25 @@ class KeyView: UIButton {
         let verticalShiftLabelIndent = keySpace * 2.2
         let horizontalShiftLabelIndent = keySpace * 0.5
         
-        label.center = backgroundView.center
+        mainLabelView.center = backgroundView.center
         
-        shiftUpLabel.center.y = verticalShiftLabelIndent
-        shiftDownLabel.center.y = frame.height - verticalShiftLabelIndent
+        shiftUpLabelView.center.y = verticalShiftLabelIndent
+        shiftDownLabelView.center.y = frame.height - verticalShiftLabelIndent
 
         if specialKey == .space {
-            shiftUpLabel.center.x = backgroundView.center.x
-            shiftDownLabel.center.x = backgroundView.center.x
+            shiftUpLabelView.center.x = backgroundView.center.x
+            shiftDownLabelView.center.x = backgroundView.center.x
         }
         else {
-            shiftUpLabel.frame.origin.x = horizontalShiftLabelIndent
-            shiftDownLabel.frame.origin.x = frame.width - shiftDownLabel.frame.width - horizontalShiftLabelIndent
+            shiftUpLabelView.frame.origin.x = horizontalShiftLabelIndent
+            shiftDownLabelView.frame.origin.x = frame.width - shiftDownLabelView.frame.width - horizontalShiftLabelIndent
         }
 
-        shiftLeftLabel.frame.origin.x = horizontalShiftLabelIndent
-        shiftLeftLabel.center.y = frame.midY
+        shiftLeftLabelView.frame.origin.x = horizontalShiftLabelIndent
+        shiftLeftLabelView.center.y = frame.midY
         
-        shiftRightLabel.frame.origin.x = frame.maxX - shiftRightLabel.frame.width - horizontalShiftLabelIndent
-        shiftRightLabel.center.y = frame.midY
+        shiftRightLabelView.frame.origin.x = frame.maxX - shiftRightLabelView.frame.width - horizontalShiftLabelIndent
+        shiftRightLabelView.center.y = frame.midY
         
         imageLabelView.frame.size = imageLabelView.intrinsicContentSize
         imageLabelView.center = .init(x: frame.midX, y: frame.midY)
@@ -232,7 +238,7 @@ class KeyView: UIButton {
             gestureStartPoint = gesture.location(in: self)
             
             if specialKey == .delete {
-                KeyboardViewController.shared.keyAction(label: self.label.text!)
+                KeyboardViewController.shared.keyAction(label: mainLabelView.text!)
                 KeyboardViewController.shared.updateDocumentContext()
                 
                 autorepeatThread = Thread(block: {
@@ -243,7 +249,7 @@ class KeyView: UIButton {
                     while thread.isCancelled == false {
                         
                         OperationQueue.main.addOperation {
-                            KeyboardViewController.shared.keyAction(label: self.label.text!)
+                            KeyboardViewController.shared.keyAction(label: self.mainLabelView.text!)
                             KeyboardViewController.shared.updateDocumentContext()
                         }
                         
@@ -261,13 +267,13 @@ class KeyView: UIButton {
             autorepeatThread?.cancel()
             
             if specialKey != .delete {
-                KeyboardViewController.shared.keyAction(label: self.label.text!)
+                KeyboardViewController.shared.keyAction(label: mainLabelView.text!)
                 KeyboardViewController.shared.updateDocumentContext()
             }
             
             isHighlighted = false
             
-            label.text = mainLabel
+            mainLabelView.text = mainLabel
             
         default:
             
@@ -285,19 +291,19 @@ class KeyView: UIButton {
             let isLeftShift = offset.x < -threshold.x
             let isRightShift = offset.x > threshold.x
             
-            if isLeftShift && shiftLeftLabel.text != nil {
+            if isLeftShift && shiftLeftLabelView.text != nil {
                 keyState = .shiftLeft
             }
-            else if isRightShift && shiftRightLabel.text != nil {
+            else if isRightShift && shiftRightLabelView.text != nil {
                 keyState = .shiftRight
             }
             else if isShiftUp {
                 keyState = .shiftUp
             }
-            else if isShiftDown && isRightShift && shiftDownLabel.text != "" {
+            else if isShiftDown && isRightShift && shiftDownLabelView.text != "" {
                 keyState = .shiftDownRight
             }
-            else if isShiftDown && shiftDownLabel.text != "" {
+            else if isShiftDown && shiftDownLabelView.text != "" {
                 keyState = .shiftDown
             }
             else {
@@ -307,7 +313,7 @@ class KeyView: UIButton {
     }
     
     var specialKey: SpecialKey? {
-        guard let label = label.text else {
+        guard let label = mainLabelView.text else {
             return nil
         }
         
@@ -320,30 +326,30 @@ class KeyView: UIButton {
             
             switch keyState {
             case .default:
-                label.text = mainLabel
+                mainLabelView.text = mainLabel
                 isHighlighted = false
             case .tap:
-                label.text = mainLabel
+                mainLabelView.text = mainLabel
                 
             case .shiftUp:
-                if shiftUpLabel.text != nil {
-                    label.text = shiftUpLabel.text
+                if shiftUpLabelView.text != nil {
+                    mainLabelView.text = shiftUpLabelView.text
                 }
                 else if specialKey == nil {
-                    label.text = mainLabel.uppercased()
+                    mainLabelView.text = mainLabel.uppercased()
                 }
                 
             case .shiftDown:
-                label.text = String(shiftDownLabel.text!.characters.first!)
+                mainLabelView.text = String(shiftDownLabelView.text!.characters.first!)
                 
             case .shiftDownRight:
-                label.text = String(shiftDownLabel.text!.characters.last!)
+                mainLabelView.text = String(shiftDownLabelView.text!.characters.last!)
                 
             case .shiftLeft:
-                label.text = shiftLeftLabel.text
+                mainLabelView.text = shiftLeftLabelView.text
                 
             case .shiftRight:
-                label.text = shiftRightLabel.text
+                mainLabelView.text = shiftRightLabelView.text
             }
         }
     }

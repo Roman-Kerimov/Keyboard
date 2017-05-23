@@ -1,6 +1,6 @@
 //
-//  ShiftLabel.swift
-//  iOSKeyboard
+//  LabelView.swift
+//  Keyboard
 //
 //  Created by Roman Kerimov on 28.11.16.
 //
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ShiftLabel: UILabel {
+class LabelView: UILabel {
 
     /*
     // Only override draw() if you perform custom drawing.

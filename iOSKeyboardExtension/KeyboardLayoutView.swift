@@ -27,10 +27,7 @@ class KeyboardLayoutView: UIView {
                     let keyView = keys[rowIndex][columnIndex]
                     keyView.mainLabel = label
                     keyView.shiftDownLabel = KeyboardLayout.shiftDown.labels[rowIndex][columnIndex]
-                    
-                    if let shiftUpLabel = KeyboardLayout.shiftUpDictionary[label] {
-                        keyView.shiftUpLabel = shiftUpLabel
-                    }
+                    keyView.shiftUpLabel = KeyboardLayout.shiftUpDictionary[label] ?? ""
                 }
             }
             

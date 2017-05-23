@@ -110,6 +110,7 @@ class KeyView: UIButton {
         super.init(frame: CGRect())
         
         mainLabel = label
+        shiftUpLabelView.text = KeyboardLayout.shiftUpDictionary[label]
         
         // It is for activation of touch events
         backgroundColor = .touchableClear

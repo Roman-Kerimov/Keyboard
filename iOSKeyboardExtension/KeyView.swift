@@ -213,13 +213,13 @@ class KeyView: UIButton {
         }
 
         shiftLeftLabelView.frame.origin.x = horizontalShiftLabelIndent
-        shiftLeftLabelView.center.y = frame.midY
+        shiftLeftLabelView.center.y = backgroundView.center.y
         
-        shiftRightLabelView.frame.origin.x = frame.maxX - shiftRightLabelView.frame.width - horizontalShiftLabelIndent
-        shiftRightLabelView.center.y = frame.midY
+        shiftRightLabelView.frame.origin.x = frame.width - shiftRightLabelView.frame.width - horizontalShiftLabelIndent
+        shiftRightLabelView.center.y = backgroundView.center.y
         
         imageLabelView.frame.size = imageLabelView.intrinsicContentSize
-        imageLabelView.center = .init(x: frame.midX, y: frame.midY)
+        imageLabelView.center = backgroundView.center
     }
     
     var longPressGestureRecognizer: UILongPressGestureRecognizer!

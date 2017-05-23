@@ -341,21 +341,24 @@ internal class KeyboardView: UIView {
         backgroundView.addSubview(layoutView)
         
         layoutView.layout = settings.layout
-        
-        settingsContainerView.backButton.addTarget(self, action: #selector(hideSettings), for: .allTouchEvents)
     }
     
     required internal init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    internal let settingsContainerView = SettingsContainerView()
+    internal var settingsContainerView: SettingsContainerView!
     
     private var settingsRightConstraint: NSLayoutConstraint!
     
     private let settingsAnimateDuration = 0.3
     
     @objc internal func showSettings() {
+        if settingsContainerView == nil {
+            settingsContainerView = SettingsContainerView.init()
+            settingsContainerView.backButton.addTarget(self, action: #selector(hideSettings), for: .allTouchEvents)
+        }
+        
         addSubview(settingsContainerView)
         
         settingsRightConstraint = settingsContainerView.rightAnchor.constraint(equalTo: rightAnchor, constant: settingsContainerView.widthConstraint.constant)

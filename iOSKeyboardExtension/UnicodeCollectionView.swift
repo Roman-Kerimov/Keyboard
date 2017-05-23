@@ -44,6 +44,7 @@ class UnicodeCollectionView: CharacterCollectionView {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! CharacterCollectionViewCell
+        cell.configure()
         
         cell.title.font = UIFont.systemFont(ofSize: 0.7 * layout.itemSize.width)
         

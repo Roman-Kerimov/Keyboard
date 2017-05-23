@@ -16,9 +16,6 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         
         addSubview(title)
-        title.translatesAutoresizingMaskIntoConstraints = false
-        
-        title.alignBounds()
         title.adjustsFontSizeToFitWidth = true
         title.textAlignment = .center
         
@@ -27,5 +24,9 @@ class CharacterCollectionViewCell: UICollectionViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configure() {
+        title.frame.size = frame.size
     }
 }

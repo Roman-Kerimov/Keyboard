@@ -172,6 +172,7 @@ class CharacterSequenceView: CharacterCollectionView {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! CharacterCollectionViewCell
+        cell.configure()
             
         cell.title.font = UIFont(name: "Courier New", size: 1.4 * layout.itemSize.width)
         cell.backgroundColor = colorScheme.labelColor.withAlphaComponent(0.05)

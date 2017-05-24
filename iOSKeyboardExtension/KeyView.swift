@@ -333,7 +333,7 @@ class KeyView: UIButton {
                 mainLabelView.text = mainLabel
                 
             case .shiftUp:
-                if shiftUpLabelView.text != nil {
+                if shiftUpLabelView.text != nil && shiftUpLabelView.text != "" {
                     mainLabelView.text = shiftUpLabelView.text
                 }
                 else if specialKey == nil {

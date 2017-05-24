@@ -159,7 +159,19 @@ class KeyboardViewController: UIInputViewController {
     
     func keyAction(label: String, offset: Int = 0) {
         
-        textDocumentProxy.adjustTextPosition(byCharacterOffset: offset)
+        let offsetString: String
+        let utf16Offset: Int
+        
+        if offset < 0 {
+            offsetString = .init(textDocumentProxy.stringBeforeInput?.characters.suffix(-offset) ?? .init())
+            utf16Offset = -offsetString.utf16.count
+        }
+        else {
+            offsetString = .init(textDocumentProxy.stringAfterInput?.characters.prefix(offset) ?? .init())
+            utf16Offset = offsetString.utf16.count
+        }
+            
+        textDocumentProxy.adjustTextPosition(byCharacterOffset: utf16Offset)
         
         guard let specialKey = SpecialKey(rawValue: label) else {
             
@@ -273,7 +285,7 @@ class KeyboardViewController: UIInputViewController {
             keyboardView.configure()
         }
         
-        textDocumentProxy.adjustTextPosition(byCharacterOffset: -offset)
+        textDocumentProxy.adjustTextPosition(byCharacterOffset: -utf16Offset)
     }
 }
 

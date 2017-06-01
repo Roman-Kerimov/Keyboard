@@ -18,7 +18,7 @@ class CharacterCollectionView: UICollectionView, UICollectionViewDelegateFlowLay
     }
     */
 
-    var characters: [Character] = .init() {
+    var characters: [String] = .init() {
         didSet {
             reloadData()
         }

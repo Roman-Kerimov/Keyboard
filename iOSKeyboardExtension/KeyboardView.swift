@@ -18,7 +18,7 @@ internal class KeyboardView: UIView {
         didSet {
             let documentContextBeforeInput: String = documentContext.beforeInput ?? .init()
             
-            var characterSequence: [Character] = .init()
+            var characterSequence: [String] = .init()
             var spaceCount = 0
             
             characterSequenceView.characters = characterSequence
@@ -43,7 +43,7 @@ internal class KeyboardView: UIView {
                     break
                 }
                 
-                characterSequence = [character] + characterSequence
+                characterSequence = [character.description] + characterSequence
                 
                 if spaceCount == 1 && isNonspaceSequence {
                     break

@@ -53,7 +53,7 @@ class UnicodeCollectionView: CharacterCollectionView {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        KeyboardViewController.shared.keyAction(label: characters[indexPath.item].string)
+        KeyboardViewController.shared.keyAction(label: characters[indexPath.item].description)
         KeyboardViewController.shared.updateDocumentContext()
     }
 }

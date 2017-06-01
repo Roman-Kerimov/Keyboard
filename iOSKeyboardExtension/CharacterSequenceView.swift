@@ -196,7 +196,7 @@ class CharacterSequenceView: CharacterCollectionView {
         let destinationCharacter = characters[destinationIndexPath.item]
         
         if !deleteKey.isHighlighted {
-            KeyboardViewController.shared.keyAction(label: sourceCharacter.string, offset: destinationOffset)
+            KeyboardViewController.shared.keyAction(label: sourceCharacter.description, offset: destinationOffset)
         }
         
         if sourceCharacter == .space && destinationCharacter == .space {

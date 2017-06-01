@@ -9,9 +9,9 @@
 import Foundation
 
 extension Character {
-    static let space: Character = .init(" ")
-    static let `return`: Character = .init("\n")
-    static let tab: Character = .init("\t")
+    static let space: Character = " "
+    static let `return`: Character = "\n"
+    static let tab: Character = "\t"
     
     private var unicodeScalar: UnicodeScalar {
         return String.init(self).unicodeScalars.first!
@@ -19,10 +19,6 @@ extension Character {
     
     func belongsTo(_ characterSet: CharacterSet) -> Bool {
         return characterSet.contains(self.unicodeScalar)
-    }
-    
-    var string: String {
-        return String.init(self)
     }
     
     var isSpaceReturnOrTab: Bool {

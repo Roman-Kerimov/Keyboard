@@ -56,9 +56,7 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
             
             cell.accessoryType = .checkmark
             
-            KeyboardSettings.shared.layout = KeyboardLayout.list[indexPath.row]
-            
-            KeyboardViewController.shared.keyboardView.layoutView.layout = KeyboardSettings.shared.layout
+            KeyboardViewController.shared.keyboardView.layout = KeyboardLayout.list[indexPath.row]
             
         case .appLanguage:
             KeyboardViewController.shared.keyboardView.settingsContainerView.navigationController.pushViewController(languageTableViewController, animated: true)

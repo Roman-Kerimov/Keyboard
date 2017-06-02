@@ -357,9 +357,21 @@ internal class KeyboardView: UIView {
         deleteRowView.characterSequence.reloadData()
     }
     
-    private var deleteRowView = DeleteRowView()
-    internal var layoutView = KeyboardLayoutView()
-    private let spaceRowView = SpaceRowView()
+    private let deleteRowView: DeleteRowView = .init()
+    private let layoutView: KeyboardLayoutView = .init()
+    private let spaceRowView: SpaceRowView = .init()
+    
+    public var layout: KeyboardLayout {
+        set {
+            KeyboardSettings.shared.layout = newValue
+            layoutView.layout = newValue
+            configure()
+        }
+        
+        get {
+            return KeyboardSettings.shared.layout
+        }
+    }
     
     override private init(frame: CGRect = .zero) {
         super.init(frame: frame)

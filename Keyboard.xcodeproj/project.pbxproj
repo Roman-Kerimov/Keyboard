@@ -28,6 +28,7 @@
 		966194D31DE2FCEF007FCF02 /* KeyboardLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966194D21DE2FCEF007FCF02 /* KeyboardLayoutView.swift */; };
 		9665F3761E9D847300850F97 /* CharacterSequenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665F3751E9D847300850F97 /* CharacterSequenceView.swift */; };
 		9665F3781E9D921500850F97 /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665F3771E9D921500850F97 /* CharacterCollectionViewCell.swift */; };
+		967491B51EE16BDD00DC19E0 /* CharacterSetExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967491B41EE16BDD00DC19E0 /* CharacterSetExtension.swift */; };
 		96767C251EB11E28004D847C /* Labels_Settings.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96767C241EB11E28004D847C /* Labels_Settings.ai */; };
 		96848D9F1EE05F080009869A /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96848D9E1EE05F080009869A /* StringExtension.swift */; };
 		96848DA11EE0B64F0009869A /* UnicodeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96848DA01EE0B64F0009869A /* UnicodeTable.swift */; };
@@ -97,6 +98,7 @@
 		966194D21DE2FCEF007FCF02 /* KeyboardLayoutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutView.swift; sourceTree = "<group>"; };
 		9665F3751E9D847300850F97 /* CharacterSequenceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterSequenceView.swift; sourceTree = "<group>"; };
 		9665F3771E9D921500850F97 /* CharacterCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCell.swift; sourceTree = "<group>"; };
+		967491B41EE16BDD00DC19E0 /* CharacterSetExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterSetExtension.swift; sourceTree = "<group>"; };
 		96767C241EB11E28004D847C /* Labels_Settings.ai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Labels_Settings.ai; sourceTree = "<group>"; };
 		96848D9E1EE05F080009869A /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		96848DA01EE0B64F0009869A /* UnicodeTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnicodeTable.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				96EA39D61EAFDDDE00F3D804 /* UIImageExtension.swift */,
 				96C49DC41EB7DF1F006F93ED /* CharacterExtension.swift */,
 				96848D9E1EE05F080009869A /* StringExtension.swift */,
+				967491B41EE16BDD00DC19E0 /* CharacterSetExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				967491B51EE16BDD00DC19E0 /* CharacterSetExtension.swift in Sources */,
 				966194D31DE2FCEF007FCF02 /* KeyboardLayoutView.swift in Sources */,
 				96D2B8DD1E35538B006772A5 /* Localization.swift in Sources */,
 				960F6E951EC9F7E600EFC7B7 /* UnicodeCollectionView.swift in Sources */,

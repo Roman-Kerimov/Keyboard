@@ -52,7 +52,11 @@ internal class KeyboardView: UIView {
             
             characterSequenceView.characters = characterSequence
             
-            let textForSearch = documentContextBeforeInput.components(separatedBy: .whitespacesAndNewlines).last ?? ""
+            let textForSearch =
+                documentContextBeforeInput
+                    .components(separatedBy: .whitespacesAndNewlines).last?
+                    .components(separatedBy: CharacterSet.printableASCII.inverted).last ?? .init()
+            
             unicodeCollectionView.search(byName: textForSearch)
         }
     }

@@ -51,6 +51,9 @@ internal class KeyboardView: UIView {
             }
             
             characterSequenceView.characters = characterSequence
+            
+            let textForSearch = documentContextBeforeInput.components(separatedBy: .whitespacesAndNewlines).last ?? ""
+            unicodeCollectionView.search(byName: textForSearch)
         }
     }
     
@@ -93,6 +96,10 @@ internal class KeyboardView: UIView {
     
     private var characterSequenceView: CharacterSequenceView {
         return deleteRowView.characterSequence
+    }
+    
+    private var unicodeCollectionView: UnicodeCollectionView {
+        return layoutView.unicodeCollectionView
     }
     
     private var keys: [KeyView] {

@@ -9,12 +9,18 @@
 import UIKit
 
 class KeyboardSettings: NSObject {
+    
+    static let shared: KeyboardSettings = .init()
 
     enum KeyboardLayoutMode: String {
         case horizontal = "horizontal"
         case vertical = "vertical"
         
         case `default` = "default"
+    }
+    
+    private override init() {
+        super.init()
     }
     
     private let layoutKey = "LBPQsNPr8gJHi8Ds05etypaTVEiq8X1"

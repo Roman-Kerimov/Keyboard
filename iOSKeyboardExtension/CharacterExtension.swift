@@ -12,6 +12,7 @@ extension Character {
     static let space: Character = " "
     static let `return`: Character = "\n"
     static let tab: Character = "\t"
+    static let reverseSolidus: Character = "\\"
     
     private var unicodeScalar: UnicodeScalar {
         return String.init(self).unicodeScalars.first!

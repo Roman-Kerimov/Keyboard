@@ -12,4 +12,5 @@ extension String {
     static let space: String = Character.space.description
     static let `return`: String = Character.return.description
     static let tab: String = Character.tab.description
+    static let reverseSolidus: String = Character.reverseSolidus.description
 }

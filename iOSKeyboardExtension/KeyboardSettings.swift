@@ -41,12 +41,6 @@ class KeyboardSettings: NSObject {
         }
     }
     
-    #if TARGET_INTERFACE_BUILDER
-    
-    var layoutMode: KeyboardLayoutMode = .default
-    
-    #else
-    
     private let layoutModeKey = "PPlmVhk2uT98JemxOJdtAS88aRi3qv9"
     var layoutMode: KeyboardLayoutMode {
         get {
@@ -59,5 +53,4 @@ class KeyboardSettings: NSObject {
         }
     }
     
-    #endif
 }

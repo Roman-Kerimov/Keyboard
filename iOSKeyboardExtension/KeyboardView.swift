@@ -83,6 +83,25 @@ internal class KeyboardView: UIView {
     
     private let settings = KeyboardSettings()
     
+    
+
+    #if TARGET_INTERFACE_BUILDER
+    
+        private var layoutMode: KeyboardSettings.KeyboardLayoutMode = .default
+    
+    #else
+        private var layoutMode: KeyboardSettings.KeyboardLayoutMode {
+            get {
+                return KeyboardSettings().layoutMode
+            }
+            
+            set {
+                KeyboardSettings().layoutMode = newValue
+            }
+        }
+    
+    #endif
+
     internal var colorScheme: KeyboardColorScheme = .default {
         didSet {
             set(colorScheme: colorScheme)
@@ -148,7 +167,7 @@ internal class KeyboardView: UIView {
     private let spaceRowHeightInKeys: CGFloat = 1
     
     private var unicodeCollectionWidthInKeys: CGFloat {
-        if settings.layoutMode == .horizontal && isPrefferedVerticalMode {
+        if layoutMode == .horizontal && isPrefferedVerticalMode {
             return 1
         }
         else {
@@ -258,25 +277,25 @@ internal class KeyboardView: UIView {
     
     internal func configure() {
         
-        if settings.layoutMode == .default {
+        if layoutMode == .default {
             if isPrefferedVerticalMode {
-                settings.layoutMode = .vertical
+                layoutMode = .vertical
             }
             else {
-                settings.layoutMode = .horizontal
+                layoutMode = .horizontal
             }
         }
         
         if alternateLayoutMode {
-            if settings.layoutMode == .vertical {
-                settings.layoutMode = .horizontal
+            if layoutMode == .vertical {
+                layoutMode = .horizontal
             }
             else {
-                settings.layoutMode = .vertical
+                layoutMode = .vertical
             }
         }
         
-        let isHorizontalMode = settings.layoutMode == .horizontal || screenSize.height < self.minimalScreenSize.height
+        let isHorizontalMode = layoutMode == .horizontal || screenSize.height < self.minimalScreenSize.height
         
         if isHorizontalMode {
             sizeInKeys = sizeInKeysForHorizontalMode

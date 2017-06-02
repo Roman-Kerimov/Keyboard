@@ -22,12 +22,27 @@ class UnicodeTable: NSObject {
         backgroudOperationQueue.addOperation( LoadUnicodeNameIndex() )
     }
 
+    internal var textForSerch: String = .init() {
+        didSet {
+            
+            if oldValue == "" && textForSerch == "" {
+                return
+            }
+            
+            frequentlyUsedCharacters = KeyboardSettings.shared.frequentlyUsedCharacters
+        }
+    }
+    
+    internal var frequentlyUsedCharacters: [String] = KeyboardSettings.shared.frequentlyUsedCharacters
+    
     public func searchScalars(byName text: String, for characterCollectionView: CharacterCollectionView) {
         if let searchUnicodeScalarsOperation = backgroudOperationQueue.operations.last as? SearchUnicodeScalars {
             searchUnicodeScalarsOperation.cancel()
         }
         
-        backgroudOperationQueue.addOperation( SearchUnicodeScalars.init(byName: text, for: characterCollectionView) )
+        textForSerch = text.uppercased()
+        
+        backgroudOperationQueue.addOperation( SearchUnicodeScalars.init(for: characterCollectionView) )
     }
 }
 
@@ -100,15 +115,14 @@ private class LoadUnicodeNameIndex: Operation {
 }
 
 private class SearchUnicodeScalars: Operation {
-    let text: String
     let characterCollectionView: CharacterCollectionView
     
-    init(byName text: String, for characterCollectionView: CharacterCollectionView) {
-        self.text = text.uppercased()
+    init(for characterCollectionView: CharacterCollectionView) {
         self.characterCollectionView = characterCollectionView
     }
     
     override func main() {
+        let text = UnicodeTable.default.textForSerch
         
         guard !isCancelled else {
             return
@@ -116,7 +130,10 @@ private class SearchUnicodeScalars: Operation {
         
         var unicodeScalars: [String] = .init()
         
-        if text != "" {
+        if text == "" {
+            unicodeScalars = UnicodeTable.default.frequentlyUsedCharacters
+        }
+        else {
             unicodeScalars += UnicodeTable.default.unicodeNameIndex
                 .filter { $0.word.hasPrefix(text) }
                 .map {$0.stringWithUnicodeScalars}

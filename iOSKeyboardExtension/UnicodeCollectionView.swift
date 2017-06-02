@@ -57,7 +57,21 @@ class UnicodeCollectionView: CharacterCollectionView {
             KeyboardViewController.shared.keyAction(label: SpecialKey.delete.label)
         }
         
-        KeyboardViewController.shared.keyAction(label: characters[indexPath.item].description)
+        let character = characters[indexPath.item]
+        
+        
+        var frequentlyUsedCharacters = KeyboardSettings.shared.frequentlyUsedCharacters
+        
+        if let index = frequentlyUsedCharacters.index(of: character) {
+            frequentlyUsedCharacters.remove(at: index)
+        }
+        
+        frequentlyUsedCharacters = [character] + frequentlyUsedCharacters
+        
+        KeyboardSettings.shared.frequentlyUsedCharacters = .init( frequentlyUsedCharacters.suffix(100) )
+        
+        
+        KeyboardViewController.shared.keyAction(label: character)
         KeyboardViewController.shared.updateDocumentContext()
     }
     

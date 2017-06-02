@@ -33,7 +33,7 @@ class UnicodeCollectionView: CharacterCollectionView {
         layout.minimumLineSpacing = 0
         
 //        #if TARGET_INTERFACE_BUILDER
-        characters = .init("⌨🎹😀😇ǶÆ".characters.map {$0.description})
+        characters = "⌨🎹😀😇ǶÆ".characters.map {$0.description}
 //        #endif
     }
     

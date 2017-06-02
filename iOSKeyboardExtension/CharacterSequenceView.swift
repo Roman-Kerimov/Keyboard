@@ -32,7 +32,7 @@ class CharacterSequenceView: CharacterCollectionView {
         longPressGestureRecognizer.minimumPressDuration = 0
         
         #if TARGET_INTERFACE_BUILDER
-            characters = .init("keyboard".characters)
+            characters = "keyboard".characters.map {$0.description}
         #endif
     }
     

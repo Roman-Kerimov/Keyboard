@@ -46,7 +46,7 @@ class CharacterCollectionView: UICollectionView, UICollectionViewDelegateFlowLay
         showsHorizontalScrollIndicator = false
         
         #if TARGET_INTERFACE_BUILDER
-            characters = .init("CharacterCollectionView".characters)
+            characters = "CharacterCollectionView".characters.map {$0.description}
         #endif
     }
     

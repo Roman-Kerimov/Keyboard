@@ -352,6 +352,8 @@ class KeyView: UIButton {
             case .shiftRight:
                 mainLabelView.text = shiftRightLabelView.text
             }
+            
+            mainLabelView.center = backgroundView.center
         }
     }
 }

@@ -82,4 +82,12 @@ class UnicodeCollectionView: CharacterCollectionView {
         
         UnicodeTable.default.searchScalars(byName: text.replacingOccurrences(of: .reverseSolidus, with: ""), for: self)
     }
+    
+    override func reloadData() {
+        super.reloadData()
+        
+        if numberOfItems(inSection: 0) > 0 {
+            self.scrollToItem(at: .init(row: 0, section: 0), at: .top, animated: false)
+        }
+    }
 }

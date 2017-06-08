@@ -154,7 +154,7 @@ internal class KeyboardView: UIView {
         #if TARGET_INTERFACE_BUILDER
             return bounds.size
         #else
-        	let nativeSize = UIScreen.main.bounds.size
+            let nativeSize = UIScreen.main.bounds.size
             return CGSize(width: nativeSize.width * scaleFactor, height: nativeSize.height * scaleFactor)
         #endif
     }
@@ -305,8 +305,8 @@ internal class KeyboardView: UIView {
         }
         else {
             heightConstraint = heightAnchor.constraint(equalToConstant: size.height)
-            heightConstraint!.priority = 999
-            heightConstraint!.isActive = true
+            heightConstraint?.priority = .defaultHigh
+            heightConstraint?.isActive = true
         }
         
         backgroundView.frame.size = .init(width: bounds.width, height: size.height)

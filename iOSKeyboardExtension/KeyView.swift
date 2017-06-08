@@ -228,7 +228,7 @@ class KeyView: UIButton {
     
     var autorepeatThread: Thread?
     
-    func longPressGestureAction(gesture: UIGestureRecognizer) {
+    @objc func longPressGestureAction(gesture: UIGestureRecognizer) {
         
         switch gesture.state {
             
@@ -260,7 +260,7 @@ class KeyView: UIButton {
                     Thread.exit()
                 })
                 
-            	autorepeatThread?.start()
+                autorepeatThread?.start()
             }
             
         case .ended:

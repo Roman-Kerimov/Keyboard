@@ -33,7 +33,7 @@ class UnicodeCollectionView: CharacterCollectionView {
         layout.minimumLineSpacing = 0
         
         #if TARGET_INTERFACE_BUILDER
-            characters = "⌨🎹😀😇ǶÆ".characters.map {$0.description}
+            characters = .init("⌨🎹😀😇ǶÆ".characters)
         #endif
     }
     
@@ -71,7 +71,7 @@ class UnicodeCollectionView: CharacterCollectionView {
         KeyboardSettings.shared.frequentlyUsedCharacters = .init( frequentlyUsedCharacters.suffix(100) )
         
         
-        KeyboardViewController.shared.keyAction(label: character)
+        KeyboardViewController.shared.keyAction(label: character.description)
         KeyboardViewController.shared.updateDocumentContext()
     }
     

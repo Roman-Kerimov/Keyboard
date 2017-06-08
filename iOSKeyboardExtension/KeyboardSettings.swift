@@ -60,13 +60,14 @@ class KeyboardSettings: NSObject {
     }
     
     private let frequentlyUsedCharactersKey = "LBg6QhTolnUzmtHXeo960LT1ZNd3i07"
-    var frequentlyUsedCharacters: [String] {
+    var frequentlyUsedCharacters: [Character] {
         get {
-            return UserDefaults.standard.object(forKey: frequentlyUsedCharactersKey) as? [String] ?? .init()
+            let characterStrings = UserDefaults.standard.object(forKey: frequentlyUsedCharactersKey) as? [String] ?? .init()
+            return characterStrings.map {Character.init($0)}
         }
         
         set {
-            UserDefaults.standard.set(newValue, forKey: frequentlyUsedCharactersKey)
+            UserDefaults.standard.set(newValue.map {$0.description}, forKey: frequentlyUsedCharactersKey)
             UserDefaults.standard.synchronize()
         }
     }

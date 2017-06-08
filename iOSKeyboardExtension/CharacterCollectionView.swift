@@ -18,7 +18,7 @@ class CharacterCollectionView: UICollectionView, UICollectionViewDelegateFlowLay
     }
     */
 
-    var characters: [String] = .init() {
+    var characters: [Character] = .init() {
         didSet {
             reloadData()
         }
@@ -46,7 +46,7 @@ class CharacterCollectionView: UICollectionView, UICollectionViewDelegateFlowLay
         showsHorizontalScrollIndicator = false
         
         #if TARGET_INTERFACE_BUILDER
-            characters = "CharacterCollectionView".characters.map {$0.description}
+            characters = .init("CharacterCollectionView".characters)
         #endif
     }
     
@@ -62,15 +62,15 @@ class CharacterCollectionView: UICollectionView, UICollectionViewDelegateFlowLay
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: characterCellReuseIdentifier, for: indexPath) as! CharacterCollectionViewCell
         
-        var characterString = characters[indexPath.row]
+        var character = characters[indexPath.row]
         
-        if characterString.unicodeScalars.count == 1
-            && characterString.applyingTransform(.toUnicodeName, reverse: false)?.contains("COMBINING") == true {
+        if character.unicodeScalars.count == 1
+            && character.description.applyingTransform(.toUnicodeName, reverse: false)?.contains("COMBINING") == true {
             
-            characterString = "◌" + characterString
+            character = .init("◌" + character.description)
         }
         
-        cell.title.text = characterString
+        cell.title.text = character.description
         cell.title.textColor = colorScheme.labelColor
         
         return cell

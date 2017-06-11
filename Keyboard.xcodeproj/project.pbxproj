@@ -36,6 +36,8 @@
 		968694C11EA0F3D100E6C9D0 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968694C01EA0F3D100E6C9D0 /* UIColorExtension.swift */; };
 		9694E23B1E29D1BC00ED3A85 /* LocalizableStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9694E23A1E29D1BC00ED3A85 /* LocalizableStrings.swift */; };
 		9694E23D1E29D72800ED3A85 /* Internationalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9694E23C1E29D72800ED3A85 /* Internationalization.swift */; };
+		969E83031EED830C009A1F2D /* ConfigurableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969E83021EED830C009A1F2D /* ConfigurableViewProtocol.swift */; };
+		969E83051EED842E009A1F2D /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969E83041EED842E009A1F2D /* UIViewExtension.swift */; };
 		969F15F51E549BD300C0DD7D /* ViewController<UIView>.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969F15F41E549BD300C0DD7D /* ViewController<UIView>.swift */; };
 		969F15F71E54EE3600C0DD7D /* LanguageTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969F15F61E54EE3600C0DD7D /* LanguageTableView.swift */; };
 		96BC5F561DEB961F002E0752 /* LabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BC5F551DEB961F002E0752 /* LabelView.swift */; };
@@ -106,6 +108,8 @@
 		968694C01EA0F3D100E6C9D0 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		9694E23A1E29D1BC00ED3A85 /* LocalizableStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizableStrings.swift; sourceTree = "<group>"; };
 		9694E23C1E29D72800ED3A85 /* Internationalization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Internationalization.swift; sourceTree = "<group>"; };
+		969E83021EED830C009A1F2D /* ConfigurableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableViewProtocol.swift; sourceTree = "<group>"; };
+		969E83041EED842E009A1F2D /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		969F15F41E549BD300C0DD7D /* ViewController<UIView>.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController<UIView>.swift"; sourceTree = "<group>"; };
 		969F15F61E54EE3600C0DD7D /* LanguageTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageTableView.swift; sourceTree = "<group>"; };
 		96BC5F551DEB961F002E0752 /* LabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelView.swift; sourceTree = "<group>"; };
@@ -191,6 +195,7 @@
 				96BC5F551DEB961F002E0752 /* LabelView.swift */,
 				9685BCFE1E06815700702C84 /* KeyboardSettings.swift */,
 				969F15F41E549BD300C0DD7D /* ViewController<UIView>.swift */,
+				969E83021EED830C009A1F2D /* ConfigurableViewProtocol.swift */,
 				96848D9D1EE05EE10009869A /* Extensions */,
 				9694E23C1E29D72800ED3A85 /* Internationalization.swift */,
 				96D2B8DC1E35538B006772A5 /* Localization.swift */,
@@ -210,6 +215,7 @@
 				96C49DC41EB7DF1F006F93ED /* CharacterExtension.swift */,
 				96848D9E1EE05F080009869A /* StringExtension.swift */,
 				967491B41EE16BDD00DC19E0 /* CharacterSetExtension.swift */,
+				969E83041EED842E009A1F2D /* UIViewExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -347,6 +353,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				969E83051EED842E009A1F2D /* UIViewExtension.swift in Sources */,
 				967491B51EE16BDD00DC19E0 /* CharacterSetExtension.swift in Sources */,
 				966194D31DE2FCEF007FCF02 /* KeyboardLayoutView.swift in Sources */,
 				96D2B8DD1E35538B006772A5 /* Localization.swift in Sources */,
@@ -367,6 +374,7 @@
 				96848DA11EE0B64F0009869A /* UnicodeTable.swift in Sources */,
 				9633A3C81E5DFA3C00DFA503 /* RowView.swift in Sources */,
 				9633A3CA1E5DFE8D00DFA503 /* DeleteRowView.swift in Sources */,
+				969E83031EED830C009A1F2D /* ConfigurableViewProtocol.swift in Sources */,
 				96F8D1D11E26FAE0000D1DFC /* SettingsTableView.swift in Sources */,
 				960F6E931EC9ED0400EFC7B7 /* CharacterCollectionView.swift in Sources */,
 				96530D671DD1C9A9004E8BAA /* KeyboardLayout.swift in Sources */,

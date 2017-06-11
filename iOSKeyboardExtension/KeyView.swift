@@ -8,7 +8,7 @@
 
 import UIKit
 
-class KeyView: UIButton {
+class KeyView: UIButton, ConfigurableView {
     
     override func addTarget(_ target: Any?, action: Selector, for controlEvents: UIControlEvents) {
         super.addTarget(target, action: action, for: controlEvents)
@@ -158,7 +158,11 @@ class KeyView: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(size: CGSize, labelFontSize: CGFloat) {
+    public func configure() {
+        configure(size: frame.size, labelFontSize: mainLabelView.font.pointSize)
+    }
+    
+    public func configure(size: CGSize, labelFontSize: CGFloat) {
         frame.size = size
         
         mainLabelView.font = mainLabelView.font.withSize(labelFontSize)

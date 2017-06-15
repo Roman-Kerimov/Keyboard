@@ -158,14 +158,17 @@ class KeyView: UIButton, ConfigurableView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private var baseFontSize: CGFloat = 0
+    
     public func configure() {
-        configure(size: frame.size, labelFontSize: mainLabelView.font.pointSize)
+        configure(size: frame.size, labelFontSize: baseFontSize)
     }
     
     public func configure(size: CGSize, labelFontSize: CGFloat) {
         frame.size = size
+        baseFontSize = labelFontSize
         
-        mainLabelView.font = mainLabelView.font.withSize(labelFontSize)
+        mainLabelView.font = mainLabelView.font.withSize(baseFontSize)
         
         let shiftLabelFont = UIFont.systemFont(ofSize: labelFontSize/1.8)
         shiftUpLabelView.font = shiftLabelFont

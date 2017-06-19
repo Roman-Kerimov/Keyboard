@@ -15,6 +15,9 @@ struct KeyboardColorScheme {
     let shiftLabelColor: UIColor
     let settingsLabelColor: UIColor
     
+    let unicodeNameTextColor: UIColor
+    let unicodeNameBackgroundColor: UIColor
+    
     let fakeBackroundColorForInterfaceBuilder: UIColor
     
     var borderColor: UIColor {
@@ -29,6 +32,9 @@ struct KeyboardColorScheme {
         shiftLabelColor: UIColor.black.withAlphaComponent(0.4),
         settingsLabelColor: .lightGray,
         
+        unicodeNameTextColor: .white,
+        unicodeNameBackgroundColor: .init(white: 0.4, alpha: 0.8),
+        
         fakeBackroundColorForInterfaceBuilder: UIColor.black.withAlphaComponent(0.1)
     )
     
@@ -37,6 +43,9 @@ struct KeyboardColorScheme {
         labelColor: .white,
         shiftLabelColor: UIColor.white.withAlphaComponent(0.5),
         settingsLabelColor: .lightGray,
+        
+        unicodeNameTextColor: .black,
+        unicodeNameBackgroundColor: .init(white: 1, alpha: 0.8),
         
         fakeBackroundColorForInterfaceBuilder: .darkGray
     )

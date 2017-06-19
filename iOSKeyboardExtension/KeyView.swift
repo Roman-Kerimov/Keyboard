@@ -237,6 +237,8 @@ class KeyView: UIButton, ConfigurableView {
     
     @objc func longPressGestureAction(gesture: UIGestureRecognizer) {
         
+        KeyboardViewController.shared.keyboardView.unicodeCollectionView.isHiddenUnicodeNames = true
+        
         switch gesture.state {
             
         case .began:

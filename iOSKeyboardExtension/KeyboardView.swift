@@ -121,7 +121,7 @@ internal class KeyboardView: UIView {
         return deleteRowView.characterSequence
     }
     
-    private var unicodeCollectionView: UnicodeCollectionView {
+    public var unicodeCollectionView: UnicodeCollectionView {
         return layoutView.unicodeCollectionView
     }
     

@@ -42,6 +42,8 @@ class KeyboardLayoutView: UIView {
     init() {
         super.init(frame: .zero)
         
+        clipsToBounds = true
+        
         for _ in 0...1 {
             let halfKeyboard: UIView = .init()
             halfKeyboards.append(halfKeyboard)

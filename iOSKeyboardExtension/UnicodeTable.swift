@@ -130,6 +130,14 @@ private class SearchUnicodeScalars: Operation {
         
         var unicodeScalars: [Character] = .init()
         
+        func updateUnicodeCollectionView() {
+            if characterCollectionView.characters != unicodeScalars {
+                OperationQueue.main.addOperation {
+                    self.characterCollectionView.characters = unicodeScalars
+                }
+            }
+        }
+        
         if text == "" {
             unicodeScalars = UnicodeTable.default.frequentlyUsedCharacters
         }
@@ -145,9 +153,7 @@ private class SearchUnicodeScalars: Operation {
             return
         }
         
-        OperationQueue.main.addOperation {
-            self.characterCollectionView.characters = unicodeScalars
-        }
+        updateUnicodeCollectionView()
         
         if text != "" {
             unicodeScalars += UnicodeTable.default.unicodeNameIndex
@@ -161,8 +167,6 @@ private class SearchUnicodeScalars: Operation {
             return
         }
         
-        OperationQueue.main.addOperation {
-            self.characterCollectionView.characters = unicodeScalars
-        }
+        updateUnicodeCollectionView()
     }
 }

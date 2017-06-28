@@ -156,8 +156,17 @@ private class SearchUnicodeScalars: Operation {
                 return .init(flag)
             }
             
-            foundCharacters += Locale.regionCodes.filter {$0 == text} .map {
-                flag(fromRegionCode: $0)
+            if text.count == 2 && Locale.regionCodes.contains(text) {
+                foundCharacters.append(flag(fromRegionCode: text))
+                
+                for localeIdentifier in (Locale.availableIdentifiers.filter { $0.hasSuffix(text) } + ["en_\(text)"]) {
+                    if let currencySymbol = Locale.init(identifier: localeIdentifier).currencySymbol {
+                        if currencySymbol.count == 1 {
+                            foundCharacters.append(.init(currencySymbol))
+                            break
+                        }
+                    }
+                }
             }
             
             foundCharacters += UnicodeTable.default.unicodeNameIndex

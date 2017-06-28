@@ -177,7 +177,8 @@ private class SearchUnicodeScalars: Operation {
             
             foundCharacters += Locale.regionCodes.filter {
                 let regionName = Locale.init(identifier: "en").localizedString(forRegionCode: $0)!.uppercased()
-                return regionName.hasPrefix(text) || regionName.contains(.space + text) || regionName.contains("-" + text)
+                return foundCharacters.first ?? .space != flag(fromRegionCode: $0)
+                    && (regionName.hasPrefix(text) || regionName.contains(.space + text) || regionName.contains("-" + text))
             }.map {
                 flag(fromRegionCode: $0)
             }

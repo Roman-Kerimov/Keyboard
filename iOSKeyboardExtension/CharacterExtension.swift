@@ -8,6 +8,8 @@
 
 import Foundation
 
+let unicodeNameSeparator = ", "
+
 extension Character {
     static let space: Character = " "
     static let `return`: Character = "\n"
@@ -30,9 +32,17 @@ extension Character {
     
     var unicodeName: String {
         var outputString = self.description.applyingTransform(.toUnicodeName, reverse: false) ?? ""
-        outputString = outputString.replacingOccurrences(of: "}\\N{", with: ", ")
+        outputString = outputString.replacingOccurrences(of: "}\\N{", with: unicodeNameSeparator)
         outputString = outputString.replacingOccurrences(of: "\\N{", with: .space)
         outputString = outputString.replacingOccurrences(of: "}", with: .space)
+        
+        if outputString.hasPrefix(.space) {
+            outputString = .init(outputString.suffix(outputString.count - 1))
+        }
+        
+        if outputString.hasSuffix(.space) {
+            outputString = .init(outputString.prefix(outputString.count - 1))
+        }
         
         return outputString
     }

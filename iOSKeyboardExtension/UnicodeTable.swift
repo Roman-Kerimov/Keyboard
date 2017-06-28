@@ -128,25 +128,50 @@ private class SearchUnicodeScalars: Operation {
             return
         }
         
-        var unicodeScalars: [Character] = .init()
+        var foundCharacters: [Character] = .init()
         
         func updateUnicodeCollectionView() {
-            if characterCollectionView.characters != unicodeScalars {
+            if characterCollectionView.characters != foundCharacters {
                 OperationQueue.main.addOperation {
-                    self.characterCollectionView.characters = unicodeScalars
+                    self.characterCollectionView.characters = foundCharacters
                 }
             }
         }
         
         if text == "" {
-            unicodeScalars = UnicodeTable.default.frequentlyUsedCharacters
+            foundCharacters = UnicodeTable.default.frequentlyUsedCharacters
         }
         else {
-            unicodeScalars += UnicodeTable.default.unicodeNameIndex
+            
+            func flag(fromRegionCode regionCode: String) -> Character {
+                var flag: String = .init()
+                
+                for unicodeScalar in regionCode.unicodeScalars {
+                    
+                    let regionalIndicatorLetter: Unicode.Scalar = Unicode.Scalar.init(unicodeScalar.value + 0x1F1A5)!
+                    
+                    flag.append(regionalIndicatorLetter.description)
+                }
+                
+                return .init(flag)
+            }
+            
+            foundCharacters += Locale.regionCodes.filter {$0 == text} .map {
+                flag(fromRegionCode: $0)
+            }
+            
+            foundCharacters += UnicodeTable.default.unicodeNameIndex
                 .filter { $0.word.hasPrefix(text) }
                 .map {$0.stringWithUnicodeScalars}
                 .joined()
                 .unicodeScalars.map {Character.init($0)}
+            
+            foundCharacters += Locale.regionCodes.filter {
+                let regionName = Locale.init(identifier: "en").localizedString(forRegionCode: $0)!.uppercased()
+                return regionName.hasPrefix(text) || regionName.contains(.space + text) || regionName.contains("-" + text)
+            }.map {
+                flag(fromRegionCode: $0)
+            }
         }
         
         guard !isCancelled else {
@@ -156,7 +181,7 @@ private class SearchUnicodeScalars: Operation {
         updateUnicodeCollectionView()
         
         if text != "" {
-            unicodeScalars += UnicodeTable.default.unicodeNameIndex
+            foundCharacters += UnicodeTable.default.unicodeNameIndex
                 .filter { $0.word.hasPrefix(text) == false && $0.word.contains(text) }
                 .map {$0.stringWithUnicodeScalars}
                 .joined()

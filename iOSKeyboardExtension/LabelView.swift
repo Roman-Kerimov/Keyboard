@@ -44,6 +44,7 @@ class LabelView: UILabel {
         super.init(frame: CGRect())
         
         adjustsFontSizeToFitWidth = true
+        textAlignment = .center
     }
     
     required init(coder: NSCoder) {

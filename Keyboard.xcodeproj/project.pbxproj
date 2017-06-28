@@ -47,6 +47,7 @@
 		96EA39E21EB0EEDE00F3D804 /* Labels_HideKeyboard.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96EA39DF1EB0EEDD00F3D804 /* Labels_HideKeyboard.ai */; };
 		96EA39E31EB0EEDE00F3D804 /* Labels_NextKeyboard.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96EA39E01EB0EEDD00F3D804 /* Labels_NextKeyboard.ai */; };
 		96EA39E41EB0EEDE00F3D804 /* Labels.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96EA39E11EB0EEDD00F3D804 /* Labels.ai */; };
+		96F716B91F0438B6004A77C7 /* LocaleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F716B81F0438B6004A77C7 /* LocaleExtension.swift */; };
 		96F8D1D11E26FAE0000D1DFC /* SettingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8D1D01E26FAE0000D1DFC /* SettingsTableView.swift */; };
 /* End PBXBuildFile section */
 
@@ -119,6 +120,7 @@
 		96EA39DF1EB0EEDD00F3D804 /* Labels_HideKeyboard.ai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Labels_HideKeyboard.ai; sourceTree = "<group>"; };
 		96EA39E01EB0EEDD00F3D804 /* Labels_NextKeyboard.ai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Labels_NextKeyboard.ai; sourceTree = "<group>"; };
 		96EA39E11EB0EEDD00F3D804 /* Labels.ai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Labels.ai; sourceTree = "<group>"; };
+		96F716B81F0438B6004A77C7 /* LocaleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleExtension.swift; sourceTree = "<group>"; };
 		96F8D1D01E26FAE0000D1DFC /* SettingsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -216,6 +218,7 @@
 				96848D9E1EE05F080009869A /* StringExtension.swift */,
 				967491B41EE16BDD00DC19E0 /* CharacterSetExtension.swift */,
 				969E83041EED842E009A1F2D /* UIViewExtension.swift */,
+				96F716B81F0438B6004A77C7 /* LocaleExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				964ECA7E1E536FE8008E8757 /* SettingsContainerView.swift in Sources */,
 				965D15C91D32AE3B0098FA57 /* KeyView.swift in Sources */,
 				965D15C11D3146BB0098FA57 /* KeyboardView.swift in Sources */,
+				96F716B91F0438B6004A77C7 /* LocaleExtension.swift in Sources */,
 				969F15F71E54EE3600C0DD7D /* LanguageTableView.swift in Sources */,
 				9694E23B1E29D1BC00ED3A85 /* LocalizableStrings.swift in Sources */,
 				969F15F51E549BD300C0DD7D /* ViewController<UIView>.swift in Sources */,

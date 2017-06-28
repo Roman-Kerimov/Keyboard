@@ -11,12 +11,7 @@ import Foundation
 extension CharacterSet {
     
     static let printableASCII: CharacterSet = .init(
-        charactersIn: ClosedRange.init(
-            uncheckedBounds: (
-                lower: UnicodeScalar.init(0x20)!,
-                upper: UnicodeScalar.init(0x7E)!
-            )
-        )
+        charactersIn: ClosedRange.init(uncheckedBounds: (lower: " ", upper: "~"))
     )
     
 }

@@ -130,6 +130,14 @@ private class SearchUnicodeScalars: Operation {
         
         var foundCharacters: [Character] = .init()
         
+        func findCharacters(whereWord: (String) -> Bool) -> [Character] {
+            return UnicodeTable.default.unicodeNameIndex
+                .filter { whereWord($0.word) }
+                .map {$0.stringWithUnicodeScalars}
+                .joined()
+                .unicodeScalars.map {Character.init($0)}
+        }
+        
         func updateUnicodeCollectionView() {
             if characterCollectionView.characters != foundCharacters {
                 OperationQueue.main.addOperation {
@@ -169,11 +177,7 @@ private class SearchUnicodeScalars: Operation {
                 }
             }
             
-            foundCharacters += UnicodeTable.default.unicodeNameIndex
-                .filter { $0.word.hasPrefix(text) }
-                .map {$0.stringWithUnicodeScalars}
-                .joined()
-                .unicodeScalars.map {Character.init($0)}
+            foundCharacters += findCharacters(whereWord: {$0.hasPrefix(text) } )
             
             foundCharacters += Locale.regionCodes.filter {
                 let regionName = Locale.init(identifier: "en").localizedString(forRegionCode: $0)!.uppercased()
@@ -191,11 +195,7 @@ private class SearchUnicodeScalars: Operation {
         updateUnicodeCollectionView()
         
         if text != "" {
-            foundCharacters += UnicodeTable.default.unicodeNameIndex
-                .filter { $0.word.hasPrefix(text) == false && $0.word.contains(text) }
-                .map {$0.stringWithUnicodeScalars}
-                .joined()
-                .unicodeScalars.map {Character.init($0)}
+            foundCharacters += findCharacters(whereWord: { !$0.hasPrefix(text) && $0.contains(text) } )
         }
         
         guard !isCancelled else {

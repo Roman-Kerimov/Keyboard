@@ -229,11 +229,33 @@ class KeyView: UIButton, ConfigurableView {
         imageLabelView.center = backgroundView.center
     }
     
-    var longPressGestureRecognizer: UILongPressGestureRecognizer!
-
-    var gestureStartPoint: CGPoint!
+    private func input() {
+        KeyboardViewController.shared.keyAction(label: mainLabelView.text!)
+        KeyboardViewController.shared.updateDocumentContext()
+    }
     
-    var autorepeatThread: Thread?
+    private var autorepeatStartTimer: Timer?
+    private var repeatTimer: Timer?
+    
+    private func startAutorepeat() {
+        input()
+        
+        autorepeatStartTimer = .scheduledTimer(withTimeInterval: 0.5, repeats: false) {_ in
+            self.repeatTimer = .scheduledTimer(withTimeInterval: 0.1, repeats: true) {_ in
+                DispatchQueue.main.async {
+                    self.input()
+                }
+            }
+        }
+    }
+    
+    private func stopAutorepeat() {
+        autorepeatStartTimer?.invalidate()
+        repeatTimer?.invalidate()
+    }
+    
+    var longPressGestureRecognizer: UILongPressGestureRecognizer!
+    var gestureStartPoint: CGPoint!
     
     @objc func longPressGestureAction(gesture: UIGestureRecognizer) {
         
@@ -248,37 +270,16 @@ class KeyView: UIButton, ConfigurableView {
             gestureStartPoint = gesture.location(in: self)
             
             if specialKey == .delete {
-                KeyboardViewController.shared.keyAction(label: mainLabelView.text!)
-                KeyboardViewController.shared.updateDocumentContext()
-                
-                autorepeatThread = Thread(block: {
-                    let thread = self.autorepeatThread!
-                    
-                    Thread.sleep(forTimeInterval: 0.5)
-                    
-                    while thread.isCancelled == false {
-                        
-                        OperationQueue.main.addOperation {
-                            KeyboardViewController.shared.keyAction(label: self.mainLabelView.text!)
-                            KeyboardViewController.shared.updateDocumentContext()
-                        }
-                        
-                        Thread.sleep(forTimeInterval: 0.1)
-                    }
-                    
-                    Thread.exit()
-                })
-                
-                autorepeatThread?.start()
+                startAutorepeat()
             }
             
         case .ended:
             
-            autorepeatThread?.cancel()
-            
-            if specialKey != .delete {
-                KeyboardViewController.shared.keyAction(label: mainLabelView.text!)
-                KeyboardViewController.shared.updateDocumentContext()
+            if specialKey == .delete {
+                stopAutorepeat()
+            }
+            else {
+                input()
             }
             
             isHighlighted = false

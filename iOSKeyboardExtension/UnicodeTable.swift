@@ -142,6 +142,10 @@ private class SearchUnicodeScalars: Operation {
                 .joined()
                 .unicodeScalars.map {Character.init($0)}
                 .sorted {
+                    guard !isCancelled else {
+                        return true
+                    }
+                    
                     for characterSet in sortOrder {
                         if $0.belongsTo(characterSet) && $1.belongsTo(characterSet) {
                             return $0 < $1

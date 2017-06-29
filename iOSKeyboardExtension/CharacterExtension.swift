@@ -16,12 +16,8 @@ extension Character {
     static let tab: Character = "\t"
     static let reverseSolidus: Character = "\\"
     
-    private var unicodeScalar: UnicodeScalar {
-        return String.init(self).unicodeScalars.first!
-    }
-    
     func belongsTo(_ characterSet: CharacterSet) -> Bool {
-        return characterSet.contains(self.unicodeScalar)
+        return characterSet.contains(self.unicodeScalars.first!)
     }
     
     var isSpaceReturnOrTab: Bool {

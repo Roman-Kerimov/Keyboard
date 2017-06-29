@@ -117,6 +117,11 @@ private class LoadUnicodeNameIndex: Operation {
 private class SearchUnicodeScalars: Operation {
     let characterCollectionView: CharacterCollectionView
     
+    let sortOrder: [CharacterSet] = [
+        .emoticons,
+        .emoji,
+    ]
+    
     init(for characterCollectionView: CharacterCollectionView) {
         self.characterCollectionView = characterCollectionView
     }
@@ -136,6 +141,21 @@ private class SearchUnicodeScalars: Operation {
                 .map {$0.stringWithUnicodeScalars}
                 .joined()
                 .unicodeScalars.map {Character.init($0)}
+                .sorted {
+                    for characterSet in sortOrder {
+                        if $0.belongsTo(characterSet) && $1.belongsTo(characterSet) {
+                            return $0 < $1
+                        }
+                        else if $0.belongsTo(characterSet) && !$1.belongsTo(characterSet) {
+                            return true
+                        }
+                        else if !$0.belongsTo(characterSet) && $1.belongsTo(characterSet) {
+                            return false
+                        }
+                    }
+                    
+                    return $0 < $1
+                }
         }
         
         func updateUnicodeCollectionView() {

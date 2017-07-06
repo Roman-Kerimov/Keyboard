@@ -238,6 +238,305 @@ struct AppLanguageTitle: LocalizableString {
     static var vi:		String {return "Ngôn ngữ"}
 }
 
+//MARK: - Return labels
+
+struct GO: LocalizableString {
+    static var az:        String {return ""}
+    static var az_Cyrl:   String {return ""}
+    static var ca:        String {return ""}
+    static var cs:        String {return ""}
+    static var da:        String {return ""}
+    static var de:        String {return ""}
+    static var el:        String {return ""}
+    static var en:        String {return "Go"}
+    static var eo:        String {return ""}
+    static var es:        String {return ""}
+    static var es_MX:     String {return ""}
+    static var fi:        String {return ""}
+    static var fr:        String {return ""}
+    static var hr:        String {return ""}
+    static var hu:        String {return ""}
+    static var id:        String {return ""}
+    static var it:        String {return ""}
+    static var ms:        String {return ""}
+    static var nb:        String {return ""}
+    static var nl:        String {return ""}
+    static var pl:        String {return ""}
+    static var pt_PT:     String {return ""}
+    static var pt_BR:     String {return ""}
+    static var ro:        String {return ""}
+    static var ru:        String {return "Перейти"}
+    static var sk:        String {return ""}
+    static var sv:        String {return ""}
+    static var tr:        String {return ""}
+    static var uk:        String {return ""}
+    static var vi:        String {return ""}
+}
+
+struct JOIN: LocalizableString {
+    static var az:        String {return ""}
+    static var az_Cyrl:   String {return ""}
+    static var ca:        String {return ""}
+    static var cs:        String {return ""}
+    static var da:        String {return ""}
+    static var de:        String {return ""}
+    static var el:        String {return ""}
+    static var en:        String {return "Join"}
+    static var eo:        String {return ""}
+    static var es:        String {return ""}
+    static var es_MX:     String {return ""}
+    static var fi:        String {return ""}
+    static var fr:        String {return ""}
+    static var hr:        String {return ""}
+    static var hu:        String {return ""}
+    static var id:        String {return ""}
+    static var it:        String {return ""}
+    static var ms:        String {return ""}
+    static var nb:        String {return ""}
+    static var nl:        String {return ""}
+    static var pl:        String {return ""}
+    static var pt_PT:     String {return ""}
+    static var pt_BR:     String {return ""}
+    static var ro:        String {return ""}
+    static var ru:        String {return "Подключить"}
+    static var sk:        String {return ""}
+    static var sv:        String {return ""}
+    static var tr:        String {return ""}
+    static var uk:        String {return ""}
+    static var vi:        String {return ""}
+}
+
+struct NEXT: LocalizableString {
+    static var az:        String {return ""}
+    static var az_Cyrl:   String {return ""}
+    static var ca:        String {return ""}
+    static var cs:        String {return ""}
+    static var da:        String {return ""}
+    static var de:        String {return ""}
+    static var el:        String {return ""}
+    static var en:        String {return "Next"}
+    static var eo:        String {return ""}
+    static var es:        String {return ""}
+    static var es_MX:     String {return ""}
+    static var fi:        String {return ""}
+    static var fr:        String {return ""}
+    static var hr:        String {return ""}
+    static var hu:        String {return ""}
+    static var id:        String {return ""}
+    static var it:        String {return ""}
+    static var ms:        String {return ""}
+    static var nb:        String {return ""}
+    static var nl:        String {return ""}
+    static var pl:        String {return ""}
+    static var pt_PT:     String {return ""}
+    static var pt_BR:     String {return ""}
+    static var ro:        String {return ""}
+    static var ru:        String {return "Далее"}
+    static var sk:        String {return ""}
+    static var sv:        String {return ""}
+    static var tr:        String {return ""}
+    static var uk:        String {return ""}
+    static var vi:        String {return ""}
+}
+
+struct ROUTE: LocalizableString {
+    static var az:        String {return ""}
+    static var az_Cyrl:   String {return ""}
+    static var ca:        String {return ""}
+    static var cs:        String {return ""}
+    static var da:        String {return ""}
+    static var de:        String {return ""}
+    static var el:        String {return ""}
+    static var en:        String {return "Route"}
+    static var eo:        String {return ""}
+    static var es:        String {return ""}
+    static var es_MX:     String {return ""}
+    static var fi:        String {return ""}
+    static var fr:        String {return ""}
+    static var hr:        String {return ""}
+    static var hu:        String {return ""}
+    static var id:        String {return ""}
+    static var it:        String {return ""}
+    static var ms:        String {return ""}
+    static var nb:        String {return ""}
+    static var nl:        String {return ""}
+    static var pl:        String {return ""}
+    static var pt_PT:     String {return ""}
+    static var pt_BR:     String {return ""}
+    static var ro:        String {return ""}
+    static var ru:        String {return "Маршрут"}
+    static var sk:        String {return ""}
+    static var sv:        String {return ""}
+    static var tr:        String {return ""}
+    static var uk:        String {return ""}
+    static var vi:        String {return ""}
+}
+
+struct SEARCH: LocalizableString {
+    static var az:        String {return ""}
+    static var az_Cyrl:   String {return ""}
+    static var ca:        String {return ""}
+    static var cs:        String {return ""}
+    static var da:        String {return ""}
+    static var de:        String {return ""}
+    static var el:        String {return ""}
+    static var en:        String {return "Search"}
+    static var eo:        String {return ""}
+    static var es:        String {return ""}
+    static var es_MX:     String {return ""}
+    static var fi:        String {return ""}
+    static var fr:        String {return ""}
+    static var hr:        String {return ""}
+    static var hu:        String {return ""}
+    static var id:        String {return ""}
+    static var it:        String {return ""}
+    static var ms:        String {return ""}
+    static var nb:        String {return ""}
+    static var nl:        String {return ""}
+    static var pl:        String {return ""}
+    static var pt_PT:     String {return ""}
+    static var pt_BR:     String {return ""}
+    static var ro:        String {return ""}
+    static var ru:        String {return "Найти"}
+    static var sk:        String {return ""}
+    static var sv:        String {return ""}
+    static var tr:        String {return ""}
+    static var uk:        String {return ""}
+    static var vi:        String {return ""}
+}
+
+struct SEND: LocalizableString {
+    static var az:        String {return ""}
+    static var az_Cyrl:   String {return ""}
+    static var ca:        String {return ""}
+    static var cs:        String {return ""}
+    static var da:        String {return ""}
+    static var de:        String {return ""}
+    static var el:        String {return ""}
+    static var en:        String {return "Send"}
+    static var eo:        String {return ""}
+    static var es:        String {return ""}
+    static var es_MX:     String {return ""}
+    static var fi:        String {return ""}
+    static var fr:        String {return ""}
+    static var hr:        String {return ""}
+    static var hu:        String {return ""}
+    static var id:        String {return ""}
+    static var it:        String {return ""}
+    static var ms:        String {return ""}
+    static var nb:        String {return ""}
+    static var nl:        String {return ""}
+    static var pl:        String {return ""}
+    static var pt_PT:     String {return ""}
+    static var pt_BR:     String {return ""}
+    static var ro:        String {return ""}
+    static var ru:        String {return "Отправить"}
+    static var sk:        String {return ""}
+    static var sv:        String {return ""}
+    static var tr:        String {return ""}
+    static var uk:        String {return ""}
+    static var vi:        String {return ""}
+}
+
+struct DONE: LocalizableString {
+    static var az:        String {return ""}
+    static var az_Cyrl:   String {return ""}
+    static var ca:        String {return ""}
+    static var cs:        String {return ""}
+    static var da:        String {return ""}
+    static var de:        String {return ""}
+    static var el:        String {return ""}
+    static var en:        String {return "Done"}
+    static var eo:        String {return ""}
+    static var es:        String {return ""}
+    static var es_MX:     String {return ""}
+    static var fi:        String {return ""}
+    static var fr:        String {return ""}
+    static var hr:        String {return ""}
+    static var hu:        String {return ""}
+    static var id:        String {return ""}
+    static var it:        String {return ""}
+    static var ms:        String {return ""}
+    static var nb:        String {return ""}
+    static var nl:        String {return ""}
+    static var pl:        String {return ""}
+    static var pt_PT:     String {return ""}
+    static var pt_BR:     String {return ""}
+    static var ro:        String {return ""}
+    static var ru:        String {return "Готово"}
+    static var sk:        String {return ""}
+    static var sv:        String {return ""}
+    static var tr:        String {return ""}
+    static var uk:        String {return ""}
+    static var vi:        String {return ""}
+}
+
+struct EMERGENCY_CALL: LocalizableString {
+    static var az:        String {return ""}
+    static var az_Cyrl:   String {return ""}
+    static var ca:        String {return ""}
+    static var cs:        String {return ""}
+    static var da:        String {return ""}
+    static var de:        String {return ""}
+    static var el:        String {return ""}
+    static var en:        String {return "Emergency\nCall"}
+    static var eo:        String {return ""}
+    static var es:        String {return ""}
+    static var es_MX:     String {return ""}
+    static var fi:        String {return ""}
+    static var fr:        String {return ""}
+    static var hr:        String {return ""}
+    static var hu:        String {return ""}
+    static var id:        String {return ""}
+    static var it:        String {return ""}
+    static var ms:        String {return ""}
+    static var nb:        String {return ""}
+    static var nl:        String {return ""}
+    static var pl:        String {return ""}
+    static var pt_PT:     String {return ""}
+    static var pt_BR:     String {return ""}
+    static var ro:        String {return ""}
+    static var ru:        String {return "Экстренный\nвызов"}
+    static var sk:        String {return ""}
+    static var sv:        String {return ""}
+    static var tr:        String {return ""}
+    static var uk:        String {return ""}
+    static var vi:        String {return ""}
+}
+
+struct CONTINUE: LocalizableString {
+    static var az:        String {return ""}
+    static var az_Cyrl:   String {return ""}
+    static var ca:        String {return ""}
+    static var cs:        String {return ""}
+    static var da:        String {return ""}
+    static var de:        String {return ""}
+    static var el:        String {return ""}
+    static var en:        String {return "Continue"}
+    static var eo:        String {return ""}
+    static var es:        String {return ""}
+    static var es_MX:     String {return ""}
+    static var fi:        String {return ""}
+    static var fr:        String {return ""}
+    static var hr:        String {return ""}
+    static var hu:        String {return ""}
+    static var id:        String {return ""}
+    static var it:        String {return ""}
+    static var ms:        String {return ""}
+    static var nb:        String {return ""}
+    static var nl:        String {return ""}
+    static var pl:        String {return ""}
+    static var pt_PT:     String {return ""}
+    static var pt_BR:     String {return ""}
+    static var ro:        String {return ""}
+    static var ru:        String {return "Продолжить"}
+    static var sk:        String {return ""}
+    static var sv:        String {return ""}
+    static var tr:        String {return ""}
+    static var uk:        String {return ""}
+    static var vi:        String {return ""}
+}
+
 /*
 struct StringName: LocalizableString {
     static var az:		String {return ""}

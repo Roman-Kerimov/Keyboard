@@ -10,6 +10,42 @@ import UIKit
 
 class KeyView: UIButton, ConfigurableView {
     
+    override func updateLocalizedStrings() {
+        super.updateLocalizedStrings()
+        
+        guard specialKey == .return else {
+            return
+        }
+        
+        guard let returnKeyType = KeyboardViewController.shared.textDocumentProxy.returnKeyType else {
+            return
+        }
+        
+        switch returnKeyType {
+            
+        case .default:
+            mainLabelView.text = SpecialKey.return.label
+        case .go:
+            mainLabelView.text = GO.string
+        case .join:
+            mainLabelView.text = JOIN.string
+        case .next:
+            mainLabelView.text = NEXT.string
+        case .route:
+            mainLabelView.text = ROUTE.string
+        case .search, .google, .yahoo:
+            mainLabelView.text = SEARCH.string
+        case .send:
+            mainLabelView.text = SEND.string
+        case .done:
+            mainLabelView.text = DONE.string
+        case .emergencyCall:
+            mainLabelView.text = EMERGENCY_CALL.string
+        case .continue:
+            mainLabelView.text = CONTINUE.string
+        }
+    }
+    
     override func addTarget(_ target: Any?, action: Selector, for controlEvents: UIControlEvents) {
         super.addTarget(target, action: action, for: controlEvents)
         
@@ -36,6 +72,9 @@ class KeyView: UIButton, ConfigurableView {
             shiftRightLabelView.textColor = colorScheme.shiftLabelColor
             
             backgroundView.layer.borderColor = colorScheme.borderColor.cgColor
+            
+            updateLocalizedStrings()
+            isHighlighted = false
         }
     }
     
@@ -85,7 +124,14 @@ class KeyView: UIButton, ConfigurableView {
         didSet {
             super.isHighlighted = isHighlighted
             
-            if isHighlighted {
+            let returnKeyType = KeyboardViewController.shared.textDocumentProxy.returnKeyType
+            
+            if isHighlighted != (
+                    specialKey == .return
+                        && returnKeyType != .default
+                        && returnKeyType != .next
+                        && returnKeyType != .continue
+                ) {
                 
                 backgroundView.backgroundColor = highlightColor
                 mainLabelView.textColor = colorScheme.activeLabelColor
@@ -124,6 +170,7 @@ class KeyView: UIButton, ConfigurableView {
         
         addSubview(mainLabelView)
         mainLabelView.text = mainLabel
+        mainLabelView.numberOfLines = 2
         
         addSubview(shiftUpLabelView)
         addSubview(shiftDownLabelView)
@@ -205,6 +252,7 @@ class KeyView: UIButton, ConfigurableView {
         let verticalShiftLabelIndent = keySpace * 2.2
         let horizontalShiftLabelIndent = keySpace * 0.5
         
+        mainLabelView.frame.size.width = size.width - keySpace * 2
         mainLabelView.center = backgroundView.center
         
         shiftUpLabelView.center.y = verticalShiftLabelIndent
@@ -230,7 +278,13 @@ class KeyView: UIButton, ConfigurableView {
     }
     
     private func input() {
-        KeyboardViewController.shared.keyAction(label: mainLabelView.text!)
+        if specialKey == .return {
+            KeyboardViewController.shared.keyAction(label: SpecialKey.return.label)
+        }
+        else {
+            KeyboardViewController.shared.keyAction(label: mainLabelView.text ?? "")
+        }
+        
         KeyboardViewController.shared.updateDocumentContext()
     }
     
@@ -282,9 +336,7 @@ class KeyView: UIButton, ConfigurableView {
                 input()
             }
             
-            isHighlighted = false
-            
-            mainLabelView.text = mainLabel
+            keyState = .default
             
         default:
             
@@ -324,11 +376,7 @@ class KeyView: UIButton, ConfigurableView {
     }
     
     var specialKey: SpecialKey? {
-        guard let label = mainLabelView.text else {
-            return nil
-        }
-        
-        return SpecialKey(rawValue: label)
+        return SpecialKey(rawValue: mainLabel)
     }
     
     var keyState: KeyState = .default {
@@ -338,9 +386,12 @@ class KeyView: UIButton, ConfigurableView {
             switch keyState {
             case .default:
                 mainLabelView.text = mainLabel
+                updateLocalizedStrings()
                 isHighlighted = false
+                
             case .tap:
                 mainLabelView.text = mainLabel
+                updateLocalizedStrings()
                 
             case .shiftUp:
                 if shiftUpLabelView.text != nil && shiftUpLabelView.text != "" {

@@ -25,7 +25,7 @@ struct KeyboardColorScheme {
         return .clear
     }
     
-    let activeLabelColor: UIColor = .white
+    let specialReturnLabelColor: UIColor = .white
 
     static let light = KeyboardColorScheme(
         keyColor: .white,

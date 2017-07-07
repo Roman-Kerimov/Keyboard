@@ -125,20 +125,29 @@ class KeyView: UIButton, ConfigurableView {
         return specialKey != nil && specialKey != .space && returnKeyType != .default
     }
     
+    private var isSpecialReturnType: Bool {
+        return specialKey == .return
+            && returnKeyType != .default
+            && returnKeyType != .next
+            && returnKeyType != .continue
+    }
+    
     override internal var isHighlighted: Bool {
         didSet {
             super.isHighlighted = isHighlighted
             
-            if isHighlighted != (
-                    specialKey == .return
-                        && returnKeyType != .default
-                        && returnKeyType != .next
-                        && returnKeyType != .continue
-                ) {
+            backgroundView.backgroundColor = colorScheme.serviceKeyColor
+            mainLabelView.textColor = colorScheme.labelColor
+            imageLabelView.tintColor = colorScheme.labelColor
+            
+            if isHighlighted != isServiceKey {
                 
-                backgroundView.backgroundColor = tintColor
-                mainLabelView.textColor = colorScheme.activeLabelColor
-                imageLabelView.tintColor = colorScheme.activeLabelColor
+                if isSpecialReturnType {
+                    backgroundView.backgroundColor = tintColor
+                    mainLabelView.textColor = colorScheme.specialReturnLabelColor
+                    imageLabelView.tintColor = colorScheme.specialReturnLabelColor
+                }
+                
                 shiftUpLabelView.isHidden = true
                 shiftDownLabelView.isHidden = true
                 shiftLeftLabelView.isHidden = true
@@ -146,10 +155,7 @@ class KeyView: UIButton, ConfigurableView {
             }
             else {
                 
-                if isServiceKey {
-                    backgroundView.backgroundColor = colorScheme.serviceKeyColor
-                }
-                else {
+                if !isSpecialReturnType {
                     backgroundView.backgroundColor = colorScheme.keyColor
                 }
                 

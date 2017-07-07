@@ -121,6 +121,10 @@ class KeyView: UIButton, ConfigurableView {
         }
     }
     
+    private var isServiceKey: Bool {
+        return specialKey != nil && specialKey != .space && returnKeyType != .default
+    }
+    
     override internal var isHighlighted: Bool {
         didSet {
             super.isHighlighted = isHighlighted
@@ -142,7 +146,13 @@ class KeyView: UIButton, ConfigurableView {
             }
             else {
                 
-                backgroundView.backgroundColor = colorScheme.keyColor
+                if isServiceKey {
+                    backgroundView.backgroundColor = colorScheme.serviceKeyColor
+                }
+                else {
+                    backgroundView.backgroundColor = colorScheme.keyColor
+                }
+                
                 mainLabelView.textColor = colorScheme.labelColor
                 imageLabelView.tintColor = colorScheme.labelColor
                 shiftUpLabelView.isHidden = false

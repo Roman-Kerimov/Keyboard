@@ -135,6 +135,7 @@ class KeyView: UIButton, ConfigurableView {
                 
                 backgroundView.backgroundColor = highlightColor
                 mainLabelView.textColor = colorScheme.activeLabelColor
+                imageLabelView.tintColor = colorScheme.activeLabelColor
                 shiftUpLabelView.isHidden = true
                 shiftDownLabelView.isHidden = true
                 shiftLeftLabelView.isHidden = true
@@ -144,6 +145,7 @@ class KeyView: UIButton, ConfigurableView {
                 
                 backgroundView.backgroundColor = colorScheme.keyColor
                 mainLabelView.textColor = colorScheme.labelColor
+                imageLabelView.tintColor = colorScheme.labelColor
                 shiftUpLabelView.isHidden = false
                 shiftDownLabelView.isHidden = false
                 shiftLeftLabelView.isHidden = false

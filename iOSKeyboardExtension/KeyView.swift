@@ -13,11 +13,7 @@ class KeyView: UIButton, ConfigurableView {
     override func updateLocalizedStrings() {
         super.updateLocalizedStrings()
         
-        guard specialKey == .return else {
-            return
-        }
-        
-        guard let returnKeyType = KeyboardViewController.shared.textDocumentProxy.returnKeyType else {
+        guard let returnKeyType = returnKeyType else {
             return
         }
         
@@ -62,16 +58,10 @@ class KeyView: UIButton, ConfigurableView {
     
     var colorScheme: KeyboardColorScheme = .default {
         didSet {
-            backgroundView.backgroundColor = colorScheme.keyColor
-            
-            mainLabelView.textColor = colorScheme.labelColor
-            tintColor = colorScheme.labelColor
             shiftUpLabelView.textColor = colorScheme.shiftLabelColor
             shiftDownLabelView.textColor = colorScheme.shiftLabelColor
             shiftLeftLabelView.textColor = colorScheme.shiftLabelColor
             shiftRightLabelView.textColor = colorScheme.shiftLabelColor
-            
-            backgroundView.layer.borderColor = colorScheme.borderColor.cgColor
             
             updateLocalizedStrings()
             isHighlighted = false
@@ -118,13 +108,22 @@ class KeyView: UIButton, ConfigurableView {
         }
     }
     
-    private var highlightColor: UIColor!
+    private var returnKeyType: UIReturnKeyType? {
+        if specialKey == .return {
+            #if TARGET_INTERFACE_BUILDER
+                return .default
+            #else
+                return KeyboardViewController.shared.textDocumentProxy.returnKeyType
+            #endif
+        }
+        else {
+            return nil
+        }
+    }
     
     override internal var isHighlighted: Bool {
         didSet {
             super.isHighlighted = isHighlighted
-            
-            let returnKeyType = KeyboardViewController.shared.textDocumentProxy.returnKeyType
             
             if isHighlighted != (
                     specialKey == .return
@@ -133,7 +132,7 @@ class KeyView: UIButton, ConfigurableView {
                         && returnKeyType != .continue
                 ) {
                 
-                backgroundView.backgroundColor = highlightColor
+                backgroundView.backgroundColor = tintColor
                 mainLabelView.textColor = colorScheme.activeLabelColor
                 imageLabelView.tintColor = colorScheme.activeLabelColor
                 shiftUpLabelView.isHidden = true
@@ -162,8 +161,6 @@ class KeyView: UIButton, ConfigurableView {
         
         // It is for activation of touch events
         backgroundColor = .touchableClear
-        
-        highlightColor = tintColor
         
         backgroundView = UIView()
         backgroundView.isUserInteractionEnabled = false

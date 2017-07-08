@@ -13,6 +13,11 @@ class KeyboardViewController: UIInputViewController {
     
     internal func updateDocumentContext() {
         keyboardView.documentContext = textDocumentProxy.documentContext
+        
+        if textDocumentProxy.enablesReturnKeyAutomatically == true {
+            keyboardView.returnKey.isEnabled = textDocumentProxy.documentContext.beforeInput?.isEmpty == false
+                || textDocumentProxy.documentContext.afterInput?.isEmpty == false
+        }
     }
     
     let keyboardView = KeyboardView()

@@ -169,6 +169,19 @@ class KeyView: UIButton, ConfigurableView {
         }
     }
     
+    override var isEnabled: Bool {
+        didSet {
+            if isEnabled {
+                isHighlighted = false
+            }
+            else {
+                backgroundView.backgroundColor = colorScheme.serviceKeyColor
+                mainLabelView.textColor = colorScheme.disabledKeyLabelColor
+                imageLabelView.tintColor = colorScheme.disabledKeyLabelColor
+            }
+        }
+    }
+    
     init(label: String = "", shiftDownLabel: String = "") {
         super.init(frame: CGRect())
         

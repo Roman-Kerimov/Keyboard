@@ -21,10 +21,7 @@ struct KeyboardColorScheme {
     
     let fakeBackroundColorForInterfaceBuilder: UIColor
     
-    var borderColor: UIColor {
-        return .clear
-    }
-    
+    let disabledKeyLabelColor: UIColor = #colorLiteral(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
     let specialReturnLabelColor: UIColor = .white
 
     static let light = KeyboardColorScheme(

@@ -26,8 +26,12 @@ class SpaceRowView: RowView {
         (5, .init(key: .dismissKeyboard)),
     ]
     
-    var nextKeyboardKey: KeyView {
-        return keys.filter {$0.view.specialKey == SpecialKey.nextKeyboard} .first!.view
+    internal var nextKeyboardKey: KeyView {
+        return keys.filter {$0.view.specialKey == .nextKeyboard} .first!.view
+    }
+    
+    internal var returnKey: KeyView {
+        return keys.filter {$0.view.specialKey == .return} .first!.view
     }
     
     internal override init() {

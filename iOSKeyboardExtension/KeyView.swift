@@ -221,14 +221,16 @@ class KeyView: UIButton, ConfigurableView {
     }
     
     private var baseFontSize: CGFloat = 0
+    private var spacing: CGFloat = 0
     
     public func configure() {
-        configure(size: frame.size, labelFontSize: baseFontSize)
+        configure(size: frame.size, spacing: spacing, labelFontSize: baseFontSize)
     }
     
-    public func configure(size: CGSize, labelFontSize: CGFloat) {
+    public func configure(size: CGSize, spacing: CGFloat, labelFontSize: CGFloat) {
         frame.size = size
         baseFontSize = labelFontSize
+        self.spacing = spacing
         
         mainLabelView.font = mainLabelView.font.withSize(baseFontSize)
         
@@ -255,19 +257,17 @@ class KeyView: UIButton, ConfigurableView {
             }
         }
         
-        let keySpace = size.height * 0.1
+        backgroundView.layer.cornerRadius = spacing
         
-        backgroundView.layer.cornerRadius = keySpace
-        
-        let keyEdgeInset = keySpace / 2
+        let keyEdgeInset = spacing / 2
         
         backgroundView.frame = frame.insetBy(dx: keyEdgeInset, dy: keyEdgeInset)
         backgroundView.frame.origin = .init(x: keyEdgeInset, y: keyEdgeInset)
         
-        let verticalShiftLabelIndent = keySpace * 2.2
-        let horizontalShiftLabelIndent = keySpace * 0.5
+        let verticalShiftLabelIndent = spacing * 2.2
+        let horizontalShiftLabelIndent = spacing * 0.5
         
-        mainLabelView.frame.size.width = size.width - keySpace * 2
+        mainLabelView.frame.size.width = size.width - spacing * 2
         mainLabelView.center = backgroundView.center
         
         shiftUpLabelView.center.y = verticalShiftLabelIndent

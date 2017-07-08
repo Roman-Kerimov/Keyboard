@@ -159,8 +159,21 @@ internal class KeyboardView: UIView {
         #endif
     }
     
-    private let deleteRowHeightInKeys: CGFloat = 1
-    private let spaceRowHeightInKeys: CGFloat = 1
+    private var coefficientOfIncreaseForMainButtons: CGFloat {
+        if layoutMode == .horizontal && isPrefferedVerticalMode {
+            return 1.2
+        }
+        else {
+            return 1
+        }
+    }
+    
+    private var deleteRowHeightInKeys: CGFloat {
+        return 1 / coefficientOfIncreaseForMainButtons
+    }
+    private var spaceRowHeightInKeys: CGFloat {
+        return deleteRowHeightInKeys
+    }
     
     private var unicodeCollectionWidthInKeys: CGFloat {
         if layoutMode == .horizontal && isPrefferedVerticalMode {
@@ -206,7 +219,7 @@ internal class KeyboardView: UIView {
             height: min(
                 max(
                     min(
-                        maxKeyboardHeight / sizeInKeysForVerticalMode.height,
+                        maxKeyboardHeight / sizeInKeysForVerticalMode.height * coefficientOfIncreaseForMainButtons,
                         maxKeyHeight(fromWidth: maxKeyWidth)
                     ),
                     maxKeyHeight(fromWidth: keyWidth)
@@ -297,7 +310,7 @@ internal class KeyboardView: UIView {
             sizeInKeys = sizeInKeysForHorizontalMode
         }
         else {
-            sizeInKeys = self.sizeInKeysForVerticalMode
+            sizeInKeys = sizeInKeysForVerticalMode
         }
         
         if heightConstraint != nil {
@@ -317,23 +330,24 @@ internal class KeyboardView: UIView {
         
         
         let keySize = self.keySize
+        let keySpacing = deleteRowHeight * 0.1
         let labelFontSize: CGFloat = self.labelFontSize
         
         deleteRowView.configure(
-            size: .init(width: size.width, height: deleteRowHeight), labelFontSize: labelFontSize
+            size: .init(width: size.width, height: deleteRowHeight), keySpacing: keySpacing, labelFontSize: labelFontSize
         )
         deleteRowView.frame.origin.y = 0
         
         layoutView.configure(
             size: .init(width: size.width, height: layoutHeight),
             halfKeyboardSize: halfKeyboardSize,
-            keySize: keySize, labelFontSize: labelFontSize,
+            keySize: keySize, keySpacing: keySpacing, labelFontSize: labelFontSize,
             unicodeCollectionWidth: unicodeCollectionWidth
         )
         layoutView.frame.origin.y = deleteRowHeight
         
         spaceRowView.configure(
-            size: .init(width: size.width, height: spaceRowHeight), labelFontSize: labelFontSize
+            size: .init(width: size.width, height: spaceRowHeight), keySpacing: keySpacing, labelFontSize: labelFontSize
         )
         spaceRowView.frame.origin.y = deleteRowHeight + layoutHeight
         

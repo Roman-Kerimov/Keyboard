@@ -265,7 +265,7 @@ class KeyView: UIButton, ConfigurableView {
         backgroundView.frame.origin = .init(x: keyEdgeInset, y: keyEdgeInset)
         
         let verticalShiftLabelIndent = spacing * 2.2
-        let horizontalShiftLabelIndent = spacing * 0.5
+        let horizontalShiftLabelIndent = spacing * 1.0
         
         mainLabelView.frame.size.width = size.width - spacing * 2
         mainLabelView.center = backgroundView.center

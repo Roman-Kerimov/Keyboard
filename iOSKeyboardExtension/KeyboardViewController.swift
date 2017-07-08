@@ -15,8 +15,7 @@ class KeyboardViewController: UIInputViewController {
         keyboardView.documentContext = textDocumentProxy.documentContext
         
         if textDocumentProxy.enablesReturnKeyAutomatically == true {
-            keyboardView.returnKey.isEnabled = textDocumentProxy.documentContext.beforeInput?.isEmpty == false
-                || textDocumentProxy.documentContext.afterInput?.isEmpty == false
+            keyboardView.returnKey.isEnabled = textDocumentProxy.hasText
         }
     }
     

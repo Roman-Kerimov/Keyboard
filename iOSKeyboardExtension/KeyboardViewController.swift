@@ -128,6 +128,22 @@ class KeyboardViewController: UIInputViewController {
         updateDocumentContext()
     }
     
+    override var needsInputModeSwitchKey: Bool {
+        guard Bundle.main.executablePath?.contains(".appex/") == true else {
+            return false
+        }
+        
+        #if TARGET_INTERFACE_BUILDER
+            return true
+        #else
+            if #available(iOS 11.0, *) {
+                return super.needsInputModeSwitchKey
+            } else {
+                return true
+            }
+        #endif
+    }
+    
     private var previousDocumentContext: DocumentContext = .init()
     
     internal func normalizeTextPosition() {

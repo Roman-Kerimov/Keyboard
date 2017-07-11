@@ -8,8 +8,26 @@
 
 import UIKit
 
+extension UIView {
+    open override var inputViewController: UIInputViewController? {
+        return KeyboardViewController.shared
+    }
+}
+
+extension UIViewController {
+    open override var inputViewController: UIInputViewController? {
+        return KeyboardViewController.shared
+    }
+}
+
+extension UIApplication {
+    open override var inputViewController: UIInputViewController? {
+        return KeyboardViewController.shared
+    }
+}
+
 class KeyboardViewController: UIInputViewController {
-    static var shared: KeyboardViewController!
+    static var shared: KeyboardViewController = .init()
     
     internal func updateDocumentContext() {
         keyboardView.documentContext = textDocumentProxy.documentContext
@@ -37,6 +55,8 @@ class KeyboardViewController: UIInputViewController {
         // Perform custom UI setup here
         Localization.initialize()
         KeyboardViewController.shared = self
+        
+        keyboardView.frame = UIScreen.main.bounds
         
         keyboardView.nextKeyboardKey.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
         

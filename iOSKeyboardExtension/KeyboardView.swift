@@ -326,6 +326,11 @@ internal class KeyboardView: UIView {
             heightConstraint?.isActive = true
         }
         
+        #if !TARGET_INTERFACE_BUILDER
+            frame = UIScreen.main.bounds
+            frame.size.height = size.height
+        #endif
+        
         backgroundView.frame.size = .init(width: bounds.width, height: size.height)
         
         #if TARGET_INTERFACE_BUILDER

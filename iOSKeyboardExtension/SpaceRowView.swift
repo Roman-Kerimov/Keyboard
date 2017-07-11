@@ -58,8 +58,8 @@ class SpaceRowView: RowView {
             var keyWidth = size.width * proportion/allParts + freeSpace
             freeSpace = 0
             
-            #if !TARGET_INTERFACE_BUILDER
-                if #available(iOSApplicationExtension 11.0, *) {
+            if #available(iOS 11.0, *) {
+                #if !TARGET_INTERFACE_BUILDER
                     if keyView.mainLabel == SpecialKey.nextKeyboard.label
                         && KeyboardViewController.shared.needsInputModeSwitchKey == false {
                         
@@ -70,8 +70,8 @@ class SpaceRowView: RowView {
                     else {
                         keyView.isHidden = false
                     }
-                }
-            #endif
+                #endif
+            }
             
             keyView.configure(size: .init(width: keyWidth, height: size.height), spacing: keySpacing, labelFontSize: labelFontSize)
             keyView.frame.origin.x = originX

@@ -12,7 +12,6 @@
 		9633A3C81E5DFA3C00DFA503 /* RowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9633A3C71E5DFA3C00DFA503 /* RowView.swift */; };
 		9633A3CA1E5DFE8D00DFA503 /* DeleteRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9633A3C91E5DFE8D00DFA503 /* DeleteRowView.swift */; };
 		964AB9351D1B6490004C827C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964AB9341D1B6490004C827C /* AppDelegate.swift */; };
-		964AB9371D1B6490004C827C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964AB9361D1B6490004C827C /* ViewController.swift */; };
 		964AB93A1D1B6490004C827C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 964AB9381D1B6490004C827C /* Main.storyboard */; };
 		964AB93D1D1B6490004C827C /* iOSKeyboard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 964AB93B1D1B6490004C827C /* iOSKeyboard.xcdatamodeld */; };
 		964AB93F1D1B6490004C827C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 964AB93E1D1B6490004C827C /* Assets.xcassets */; };
@@ -22,6 +21,40 @@
 		964ECA7E1E536FE8008E8757 /* SettingsContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964ECA7D1E536FE8008E8757 /* SettingsContainerView.swift */; };
 		964ED5481DF5765E006AD952 /* KeyboardColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964ED5471DF5765E006AD952 /* KeyboardColorScheme.swift */; };
 		96530D671DD1C9A9004E8BAA /* KeyboardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96530D661DD1C9A9004E8BAA /* KeyboardLayout.swift */; };
+		96533A761F12938D00B07CA3 /* KeyboardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96530D661DD1C9A9004E8BAA /* KeyboardLayout.swift */; };
+		96533A771F12938D00B07CA3 /* KeyboardColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964ED5471DF5765E006AD952 /* KeyboardColorScheme.swift */; };
+		96533A781F12938D00B07CA3 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964AB9691D1B6535004C827C /* KeyboardViewController.swift */; };
+		96533A791F12938D00B07CA3 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965D15C01D3146BB0098FA57 /* KeyboardView.swift */; };
+		96533A7A1F12938D00B07CA3 /* SettingsContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964ECA7D1E536FE8008E8757 /* SettingsContainerView.swift */; };
+		96533A7B1F12938D00B07CA3 /* SettingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8D1D01E26FAE0000D1DFC /* SettingsTableView.swift */; };
+		96533A7C1F12938D00B07CA3 /* LanguageTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969F15F61E54EE3600C0DD7D /* LanguageTableView.swift */; };
+		96533A7D1F12938D00B07CA3 /* KeyboardLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966194D21DE2FCEF007FCF02 /* KeyboardLayoutView.swift */; };
+		96533A7E1F12938D00B07CA3 /* DeleteRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9633A3C91E5DFE8D00DFA503 /* DeleteRowView.swift */; };
+		96533A7F1F12938D00B07CA3 /* CharacterSequenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665F3751E9D847300850F97 /* CharacterSequenceView.swift */; };
+		96533A801F12938D00B07CA3 /* UnicodeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960F6E941EC9F7E600EFC7B7 /* UnicodeCollectionView.swift */; };
+		96533A811F12938D00B07CA3 /* UnicodeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96848DA01EE0B64F0009869A /* UnicodeTable.swift */; };
+		96533A821F12938D00B07CA3 /* CharacterCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960F6E921EC9ED0400EFC7B7 /* CharacterCollectionView.swift */; };
+		96533A831F12938D00B07CA3 /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665F3771E9D921500850F97 /* CharacterCollectionViewCell.swift */; };
+		96533A841F12938D00B07CA3 /* SpaceRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9654DF791D4E1D0900DDB0EF /* SpaceRowView.swift */; };
+		96533A851F12938D00B07CA3 /* RowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9633A3C71E5DFA3C00DFA503 /* RowView.swift */; };
+		96533A861F12938D00B07CA3 /* KeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965D15C81D32AE3B0098FA57 /* KeyView.swift */; };
+		96533A871F12938D00B07CA3 /* LabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BC5F551DEB961F002E0752 /* LabelView.swift */; };
+		96533A881F12938D00B07CA3 /* KeyboardSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9685BCFE1E06815700702C84 /* KeyboardSettings.swift */; };
+		96533A891F12938D00B07CA3 /* ViewController<UIView>.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969F15F41E549BD300C0DD7D /* ViewController<UIView>.swift */; };
+		96533A8A1F12938D00B07CA3 /* ConfigurableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969E83021EED830C009A1F2D /* ConfigurableViewProtocol.swift */; };
+		96533A8B1F1293A500B07CA3 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968694C01EA0F3D100E6C9D0 /* UIColorExtension.swift */; };
+		96533A8C1F1293A500B07CA3 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EA39D61EAFDDDE00F3D804 /* UIImageExtension.swift */; };
+		96533A8D1F1293A500B07CA3 /* CharacterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C49DC41EB7DF1F006F93ED /* CharacterExtension.swift */; };
+		96533A8E1F1293A500B07CA3 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96848D9E1EE05F080009869A /* StringExtension.swift */; };
+		96533A8F1F1293A500B07CA3 /* CharacterSetExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967491B41EE16BDD00DC19E0 /* CharacterSetExtension.swift */; };
+		96533A901F1293A500B07CA3 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969E83041EED842E009A1F2D /* UIViewExtension.swift */; };
+		96533A911F1293A500B07CA3 /* LocaleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F716B81F0438B6004A77C7 /* LocaleExtension.swift */; };
+		96533A921F1293A500B07CA3 /* Internationalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9694E23C1E29D72800ED3A85 /* Internationalization.swift */; };
+		96533A931F1293A500B07CA3 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D2B8DC1E35538B006772A5 /* Localization.swift */; };
+		96533A941F1293A500B07CA3 /* LocalizableStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9694E23A1E29D1BC00ED3A85 /* LocalizableStrings.swift */; };
+		96533A951F1293B000B07CA3 /* Labels_NextKeyboard.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96EA39E01EB0EEDD00F3D804 /* Labels_NextKeyboard.ai */; };
+		96533A961F1293B000B07CA3 /* Labels_HideKeyboard.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96EA39DF1EB0EEDD00F3D804 /* Labels_HideKeyboard.ai */; };
+		96533A971F1293B000B07CA3 /* Labels_Settings.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96767C241EB11E28004D847C /* Labels_Settings.ai */; };
 		9654DF7A1D4E1D0900DDB0EF /* SpaceRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9654DF791D4E1D0900DDB0EF /* SpaceRowView.swift */; };
 		965D15C11D3146BB0098FA57 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965D15C01D3146BB0098FA57 /* KeyboardView.swift */; };
 		965D15C91D32AE3B0098FA57 /* KeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965D15C81D32AE3B0098FA57 /* KeyView.swift */; };
@@ -46,7 +79,6 @@
 		96EA39D71EAFDDDE00F3D804 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EA39D61EAFDDDE00F3D804 /* UIImageExtension.swift */; };
 		96EA39E21EB0EEDE00F3D804 /* Labels_HideKeyboard.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96EA39DF1EB0EEDD00F3D804 /* Labels_HideKeyboard.ai */; };
 		96EA39E31EB0EEDE00F3D804 /* Labels_NextKeyboard.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96EA39E01EB0EEDD00F3D804 /* Labels_NextKeyboard.ai */; };
-		96EA39E41EB0EEDE00F3D804 /* Labels.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96EA39E11EB0EEDD00F3D804 /* Labels.ai */; };
 		96F716B91F0438B6004A77C7 /* LocaleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F716B81F0438B6004A77C7 /* LocaleExtension.swift */; };
 		96F8D1D11E26FAE0000D1DFC /* SettingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8D1D01E26FAE0000D1DFC /* SettingsTableView.swift */; };
 /* End PBXBuildFile section */
@@ -82,7 +114,6 @@
 		9633A3C91E5DFE8D00DFA503 /* DeleteRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteRowView.swift; sourceTree = "<group>"; };
 		964AB9311D1B6490004C827C /* iOSKeyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSKeyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		964AB9341D1B6490004C827C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		964AB9361D1B6490004C827C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		964AB9391D1B6490004C827C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		964AB93C1D1B6490004C827C /* iOSKeyboard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iOSKeyboard.xcdatamodel; sourceTree = "<group>"; };
 		964AB93E1D1B6490004C827C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -164,7 +195,6 @@
 			isa = PBXGroup;
 			children = (
 				964AB9341D1B6490004C827C /* AppDelegate.swift */,
-				964AB9361D1B6490004C827C /* ViewController.swift */,
 				964AB9381D1B6490004C827C /* Main.storyboard */,
 				964AB93E1D1B6490004C827C /* Assets.xcassets */,
 				964AB9401D1B6490004C827C /* LaunchScreen.storyboard */,
@@ -322,9 +352,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96533A951F1293B000B07CA3 /* Labels_NextKeyboard.ai in Resources */,
 				964AB9421D1B6490004C827C /* LaunchScreen.storyboard in Resources */,
+				96533A961F1293B000B07CA3 /* Labels_HideKeyboard.ai in Resources */,
 				964AB93F1D1B6490004C827C /* Assets.xcassets in Resources */,
 				964AB93A1D1B6490004C827C /* Main.storyboard in Resources */,
+				96533A971F1293B000B07CA3 /* Labels_Settings.ai in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,7 +365,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96EA39E41EB0EEDE00F3D804 /* Labels.ai in Resources */,
 				96767C251EB11E28004D847C /* Labels_Settings.ai in Resources */,
 				96EA39E31EB0EEDE00F3D804 /* Labels_NextKeyboard.ai in Resources */,
 				96EA39E21EB0EEDE00F3D804 /* Labels_HideKeyboard.ai in Resources */,
@@ -346,9 +378,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				964AB9371D1B6490004C827C /* ViewController.swift in Sources */,
+				96533A901F1293A500B07CA3 /* UIViewExtension.swift in Sources */,
+				96533A891F12938D00B07CA3 /* ViewController<UIView>.swift in Sources */,
+				96533A781F12938D00B07CA3 /* KeyboardViewController.swift in Sources */,
+				96533A871F12938D00B07CA3 /* LabelView.swift in Sources */,
+				96533A791F12938D00B07CA3 /* KeyboardView.swift in Sources */,
 				964AB9351D1B6490004C827C /* AppDelegate.swift in Sources */,
+				96533A841F12938D00B07CA3 /* SpaceRowView.swift in Sources */,
+				96533A8A1F12938D00B07CA3 /* ConfigurableViewProtocol.swift in Sources */,
+				96533A8E1F1293A500B07CA3 /* StringExtension.swift in Sources */,
+				96533A811F12938D00B07CA3 /* UnicodeTable.swift in Sources */,
+				96533A921F1293A500B07CA3 /* Internationalization.swift in Sources */,
+				96533A8C1F1293A500B07CA3 /* UIImageExtension.swift in Sources */,
+				96533A7F1F12938D00B07CA3 /* CharacterSequenceView.swift in Sources */,
+				96533A911F1293A500B07CA3 /* LocaleExtension.swift in Sources */,
+				96533A941F1293A500B07CA3 /* LocalizableStrings.swift in Sources */,
+				96533A831F12938D00B07CA3 /* CharacterCollectionViewCell.swift in Sources */,
+				96533A8D1F1293A500B07CA3 /* CharacterExtension.swift in Sources */,
+				96533A7E1F12938D00B07CA3 /* DeleteRowView.swift in Sources */,
+				96533A801F12938D00B07CA3 /* UnicodeCollectionView.swift in Sources */,
+				96533A851F12938D00B07CA3 /* RowView.swift in Sources */,
+				96533A7B1F12938D00B07CA3 /* SettingsTableView.swift in Sources */,
+				96533A8F1F1293A500B07CA3 /* CharacterSetExtension.swift in Sources */,
+				96533A861F12938D00B07CA3 /* KeyView.swift in Sources */,
+				96533A931F1293A500B07CA3 /* Localization.swift in Sources */,
+				96533A771F12938D00B07CA3 /* KeyboardColorScheme.swift in Sources */,
+				96533A8B1F1293A500B07CA3 /* UIColorExtension.swift in Sources */,
+				96533A7D1F12938D00B07CA3 /* KeyboardLayoutView.swift in Sources */,
+				96533A7A1F12938D00B07CA3 /* SettingsContainerView.swift in Sources */,
+				96533A821F12938D00B07CA3 /* CharacterCollectionView.swift in Sources */,
+				96533A7C1F12938D00B07CA3 /* LanguageTableView.swift in Sources */,
+				96533A761F12938D00B07CA3 /* KeyboardLayout.swift in Sources */,
 				964AB93D1D1B6490004C827C /* iOSKeyboard.xcdatamodeld in Sources */,
+				96533A881F12938D00B07CA3 /* KeyboardSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

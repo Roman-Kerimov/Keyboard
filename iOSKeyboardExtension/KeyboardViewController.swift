@@ -188,12 +188,18 @@ class KeyboardViewController: UIInputViewController {
     
     func moveToSequenceStart(of characterSet: CharacterSet) {
         let sequence = textDocumentProxy.stringBeforeInput?.components(separatedBy: characterSet.inverted).last!.characters ?? .init()
-        textDocumentProxy.adjustTextPosition(byCharacterOffset: -sequence.count)
+        
+        DispatchQueue.main.async {
+            self.textDocumentProxy.adjustTextPosition(byCharacterOffset: -sequence.count)
+        }
     }
     
     func moveToSequenceEnd(of characterSet: CharacterSet) {
         let sequence = textDocumentProxy.stringAfterInput?.components(separatedBy: characterSet.inverted).first!.characters ?? .init()
-        textDocumentProxy.adjustTextPosition(byCharacterOffset: sequence.count)
+        
+        DispatchQueue.main.async {
+            self.textDocumentProxy.adjustTextPosition(byCharacterOffset: sequence.count)
+        }
     }
     
     func keyAction(label: String, offset: Int = 0) {

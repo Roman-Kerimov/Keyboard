@@ -327,8 +327,10 @@ internal class KeyboardView: UIView {
         }
         
         #if !TARGET_INTERFACE_BUILDER
-            frame = UIScreen.main.bounds
-            frame.size.height = size.height
+            if !Bundle.main.bundlePath.hasSuffix(".appex") {
+                frame = UIScreen.main.bounds
+                frame.size.height = size.height
+            }
         #endif
         
         backgroundView.frame.size = .init(width: bounds.width, height: size.height)

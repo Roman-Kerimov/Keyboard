@@ -457,7 +457,6 @@ public enum SpecialKey: String {
     }
     
     case delete = "delete"
-    case removeCharacter = "removeCharacter"
     case space = " "
     case `return` = "return"
     case tab = "tab"

@@ -267,9 +267,6 @@ class KeyboardViewController: UIInputViewController {
                 textDocumentProxy.deleteBackward()
             }
             
-        case .removeCharacter:
-            textDocumentProxy.deleteBackward()
-            
         case .space:
             if KeyboardSettings.shared.allowMultipleSpaces {
                 textDocumentProxy.insertText(" ")
@@ -372,5 +369,11 @@ extension UITextDocumentProxy {
     
     var characterAfterInput: Character? {
         return stringAfterInput?.characters.first
+    }
+    
+    public func deleteBackward(_ count: Int) {
+        for _ in 0..<count {
+            deleteBackward()
+        }
     }
 }

@@ -147,13 +147,12 @@ class CharacterSequenceView: CharacterCollectionView {
     
     override func endInteractiveMovement() {
         if deleteKey.isHighlighted {
+            cancelInteractiveMovement()
+            
             performBatchUpdates({
                 performCharacterSequenceUpdates {
-                    cancelInteractiveMovement()
-                    deleteItems(at: [activeIndexPath!])
                     characters.remove(at: activeIndexPath!.item)
-                    
-                    reloadData()
+                    deleteItems(at: [activeIndexPath!])
                 }
             })
             

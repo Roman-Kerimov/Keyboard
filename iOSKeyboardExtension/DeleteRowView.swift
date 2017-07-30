@@ -30,6 +30,7 @@ class DeleteRowView: RowView {
         deleteKey.configure(size: .init(width: size.width / 5, height: size.height), spacing: keySpacing, labelFontSize: labelFontSize)
         deleteKey.frame.origin.x = size.width - deleteKey.frame.width
         
-        characterSequence.frame.size = .init(width: deleteKey.frame.origin.x, height: size.height)
+        characterSequence.contentInset = .init(top: 0, left: 0, bottom: 0, right: deleteKey.frame.width)
+        characterSequence.frame.size = .init(width: frame.width, height: size.height)
     }
 }

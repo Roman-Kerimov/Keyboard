@@ -146,6 +146,20 @@ class CharacterSequenceView: CharacterCollectionView {
     }
     
     override func endInteractiveMovement() {
+        let activeCell = self.activeCell!
+        
+        func disableAtimations() {
+            UIView.setAnimationsEnabled(false)
+            activeCell.isHidden = true
+        }
+        
+        func enableAtimations() {
+            UIView.setAnimationsEnabled(true)
+            activeCell.isHidden = false
+        }
+        
+        disableAtimations()
+        
         if deleteKey.isHighlighted {
             cancelInteractiveMovement()
             
@@ -154,12 +168,16 @@ class CharacterSequenceView: CharacterCollectionView {
                     characters.remove(at: activeIndexPath!.item)
                     deleteItems(at: [activeIndexPath!])
                 }
+            }, completion: { _ in
+                enableAtimations()
             })
             
             return
         }
         
         super.endInteractiveMovement()
+        
+        enableAtimations()
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

@@ -195,8 +195,7 @@ class CharacterSequenceView: CharacterCollectionView {
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         
         performCharacterSequenceUpdates {
-            let sourceCharacter = characters[sourceIndexPath.item]
-            characters.remove(at: sourceIndexPath.item)
+            let sourceCharacter = characters.remove(at: sourceIndexPath.item)
             characters.insert(sourceCharacter, at: destinationIndexPath.item)
         }
     }

@@ -172,6 +172,7 @@ class CharacterSequenceView: CharacterCollectionView {
                 enableAtimations()
             })
             
+            deleteKey.isHighlighted = false
             return
         }
         

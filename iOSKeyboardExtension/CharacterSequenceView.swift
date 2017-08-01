@@ -58,6 +58,14 @@ class CharacterSequenceView: CharacterCollectionView {
         }
     }
     
+    private var activeCharacter: Character? {
+        guard let activeIndexPath = activeIndexPath else {
+            return nil
+        }
+        
+        return characters[activeIndexPath.item]
+    }
+    
     private var activeCell: CharacterCollectionViewCell!
     
     private enum CharacterSequenceActionStage {
@@ -164,15 +172,52 @@ class CharacterSequenceView: CharacterCollectionView {
             cancelInteractiveMovement()
             
             performBatchUpdates({
-                performCharacterSequenceUpdates {
-                    characters.remove(at: activeIndexPath!.item)
-                    deleteItems(at: [activeIndexPath!])
+                if activeCharacter == .space && activeIndexPath?.item == characters.count - 1 {
+                    KeyboardViewController.shared.keyAction(label: SpecialKey.delete.label)
+                }
+                else {
+                    performCharacterSequenceUpdates {
+                        characters.remove(at: activeIndexPath!.item)
+                        deleteItems(at: [activeIndexPath!])
+                    }
                 }
             }, completion: { _ in
                 enableAtimations()
+                KeyboardViewController.shared.updateDocumentContext()
             })
             
             deleteKey.isHighlighted = false
+            return
+        }
+        
+        if activeCharacter == .space {
+            let destinationIndexPath: IndexPath = .init(row: .init(activeCell.center.x / layout.itemSize.width), section: 0)
+            
+            cancelInteractiveMovement()
+            
+            let shouldDeleteSpace = activeIndexPath?.item == characters.count - 1
+            
+            performBatchUpdates({
+                performCharacterSequenceUpdates {
+                    if activeIndexPath?.item == 0 {
+                        characters.insert(.space, at: destinationIndexPath.item + 1)
+                    }
+                    else {
+                        characters.insert(.space, at: destinationIndexPath.item)
+                    }
+                    
+                    insertItems(at: [destinationIndexPath])
+                }
+            }, completion: { (_) in
+                enableAtimations()
+                
+                if shouldDeleteSpace {
+                    KeyboardViewController.shared.keyAction(label: SpecialKey.delete.label)
+                }
+                
+                KeyboardViewController.shared.updateDocumentContext()
+            })
+            
             return
         }
         

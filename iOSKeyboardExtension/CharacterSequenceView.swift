@@ -255,7 +255,20 @@ class CharacterSequenceView: CharacterCollectionView {
     func performCharacterSequenceUpdates(_ updates: () -> Void) {
         KeyboardViewController.shared.textDocumentProxy.deleteBackward(characters.count)
         updates()
+        removeDoubleSpace()
         KeyboardViewController.shared.textDocumentProxy.insertText(.init(characters))
+    }
+    
+    private func removeDoubleSpace() {
+        for (index, character) in characters.enumerated() {
+            if character == .space && index > 0 && characters[index - 1] == .space {
+                performBatchUpdates({
+                    characters.remove(at: index)
+                    deleteItems(at: [.init(row: index, section: 0)])
+                })
+                break
+            }
+        }
     }
     
     internal var deleteKey: KeyView {

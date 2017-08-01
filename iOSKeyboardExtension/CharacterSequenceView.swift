@@ -154,7 +154,9 @@ class CharacterSequenceView: CharacterCollectionView {
     }
     
     override func endInteractiveMovement() {
-        let activeCell = self.activeCell!
+        guard let activeCell = self.activeCell else {
+            return
+        }
         
         func disableAtimations() {
             UIView.setAnimationsEnabled(false)

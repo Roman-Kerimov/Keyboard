@@ -195,9 +195,15 @@ class CharacterSequenceView: CharacterCollectionView {
             
             cancelInteractiveMovement()
             
-            let shouldDeleteSpace = activeIndexPath?.item == characters.count - 1
+            var shouldDeleteSpace: Bool = activeIndexPath?.item == characters.count - 1
             
             performBatchUpdates({
+                guard destinationIndexPath.item < characters.count - 1 else {
+                    shouldDeleteSpace = false
+                    
+                    return
+                }
+                
                 performCharacterSequenceUpdates {
                     if activeIndexPath?.item == 0 {
                         characters.insert(.space, at: destinationIndexPath.item + 1)

@@ -244,6 +244,24 @@ class CharacterSequenceView: CharacterCollectionView {
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, targetIndexPathForMoveFromItemAt originalIndexPath: IndexPath, toProposedIndexPath proposedIndexPath: IndexPath) -> IndexPath {
+        
+        if characters[proposedIndexPath.item] == .space
+            && activeCharacter != .space
+            && activeIndexPath != proposedIndexPath {
+            
+            if proposedIndexPath.item == 0 {
+                return .init(row: proposedIndexPath.item + 1, section: 0)
+            }
+            
+            if proposedIndexPath.item == characters.count - 1 {
+                return .init(row: proposedIndexPath.item - 1, section: 0)
+            }
+        }
+        
+        return proposedIndexPath
+    }
+    
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         
         performCharacterSequenceUpdates {

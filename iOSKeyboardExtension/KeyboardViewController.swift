@@ -169,12 +169,12 @@ class KeyboardViewController: UIInputViewController {
         if textDocumentProxy.characterBeforeInput?.isSpaceReturnOrTab == false
             && textDocumentProxy.characterAfterInput?.belongsTo(.alphanumerics) == true {
             
-            moveToSequenceEnd(of: .alphanumerics)
+            textDocumentProxy.moveToSequenceEnd(of: .alphanumerics)
         }
         else if textDocumentProxy.characterBeforeInput == .space
             && textDocumentProxy.characterAfterInput == .space {
             
-            moveToSequenceEnd(of: CharacterSet.init(charactersIn: .space))
+            textDocumentProxy.moveToSequenceEnd(of: CharacterSet.init(charactersIn: .space))
         }
         else if textDocumentProxy.characterBeforeInput == .space
             && textDocumentProxy.characterAfterInput?.isSpaceReturnOrTab == false {
@@ -185,22 +185,6 @@ class KeyboardViewController: UIInputViewController {
     }
     
     var cancelNextNormalization = false
-    
-    func moveToSequenceStart(of characterSet: CharacterSet) {
-        let sequence = textDocumentProxy.stringBeforeInput?.components(separatedBy: characterSet.inverted).last!.characters ?? .init()
-        
-        DispatchQueue.main.async {
-            self.textDocumentProxy.adjustTextPosition(byCharacterOffset: -sequence.count)
-        }
-    }
-    
-    func moveToSequenceEnd(of characterSet: CharacterSet) {
-        let sequence = textDocumentProxy.stringAfterInput?.components(separatedBy: characterSet.inverted).first!.characters ?? .init()
-        
-        DispatchQueue.main.async {
-            self.textDocumentProxy.adjustTextPosition(byCharacterOffset: sequence.count)
-        }
-    }
     
     func keyAction(label: String, offset: Int = 0) {
         
@@ -374,6 +358,22 @@ extension UITextDocumentProxy {
     public func deleteBackward(_ count: Int) {
         for _ in 0..<count {
             deleteBackward()
+        }
+    }
+    
+    func moveToSequenceStart(of characterSet: CharacterSet) {
+        let sequence = stringBeforeInput?.components(separatedBy: characterSet.inverted).last!.characters ?? .init()
+        
+        DispatchQueue.main.async {
+            self.adjustTextPosition(byCharacterOffset: -sequence.count)
+        }
+    }
+    
+    func moveToSequenceEnd(of characterSet: CharacterSet) {
+        let sequence = stringAfterInput?.components(separatedBy: characterSet.inverted).first!.characters ?? .init()
+        
+        DispatchQueue.main.async {
+            self.adjustTextPosition(byCharacterOffset: sequence.count)
         }
     }
 }

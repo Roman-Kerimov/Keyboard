@@ -275,6 +275,10 @@ class CharacterSequenceView: CharacterCollectionView {
         updates()
         removeDoubleSpace()
         KeyboardViewController.shared.textDocumentProxy.insertText(.init(characters))
+        
+        performBatchUpdates({
+            reloadItems(at: indexPathsForVisibleItems)
+        })
     }
     
     private func removeDoubleSpace() {

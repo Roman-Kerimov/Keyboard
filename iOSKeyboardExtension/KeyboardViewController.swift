@@ -251,6 +251,13 @@ class KeyboardViewController: UIInputViewController {
                 textDocumentProxy.deleteBackward()
             }
             
+            if textDocumentProxy.characterBeforeInput?.isSpaceReturnOrTab == false
+                && textDocumentProxy.characterAfterInput?.isSpaceReturnOrTab == false {
+                
+                textDocumentProxy.insertText(.space)
+                textDocumentProxy.adjustTextPosition(byCharacterOffset: -1)
+            }
+            
         case .space:
             if KeyboardSettings.shared.allowMultipleSpaces {
                 textDocumentProxy.insertText(" ")
@@ -263,11 +270,19 @@ class KeyboardViewController: UIInputViewController {
                 textDocumentProxy.insertText(" ")
             }
             
-        case .return:
-            textDocumentProxy.insertText("\n")
+        case .return, .tab:
             
-        case .tab:
-            textDocumentProxy.insertText("\t")
+            if specialKey == .return {
+                textDocumentProxy.insertText("\n")
+            }
+            
+            if specialKey == .tab {
+                textDocumentProxy.insertText("\t")
+            }
+            
+            if !KeyboardSettings.shared.allowMultipleSpaces && textDocumentProxy.characterAfterInput == .space {
+                textDocumentProxy.deleteForward(sequenceOf: .init(charactersIn: .space))
+            }
             
         case .union:
             var maxSuffixLength = KeyboardLayout.unionDictionary.keys.map { $0.characters.count }.max()!
@@ -355,25 +370,42 @@ extension UITextDocumentProxy {
         return stringAfterInput?.characters.first
     }
     
+    private func characterSequenceStringBeforeInput(of characterSet: CharacterSet) -> String {
+        return .init(stringBeforeInput?.components(separatedBy: characterSet.inverted).last!.characters ?? .init())
+    }
+    
+    private func characterSequenceStringAfterInput(of characterSet: CharacterSet) -> String {
+        return .init(stringAfterInput?.components(separatedBy: characterSet.inverted).first!.characters ?? .init())
+    }
+    
     public func deleteBackward(_ count: Int) {
         for _ in 0..<count {
             deleteBackward()
         }
     }
     
-    func moveTextPositionToSequenceStart(of characterSet: CharacterSet) {
-        let sequence = stringBeforeInput?.components(separatedBy: characterSet.inverted).last!.characters ?? .init()
+    public func deleteBackward(sequenceOf characterSet: CharacterSet) {
+        let stringForDelete: String = characterSequenceStringBeforeInput(of: characterSet)
         
+        deleteBackward(stringForDelete.count)
+    }
+    
+    public func deleteForward(sequenceOf characterSet: CharacterSet) {
+        let stringForDelete: String = characterSequenceStringAfterInput(of: characterSet)
+        
+        adjustTextPosition(byCharacterOffset: stringForDelete.utf16.count)
+        deleteBackward(stringForDelete.count)
+    }
+    
+    func moveTextPositionToSequenceStart(of characterSet: CharacterSet) {
         DispatchQueue.main.async {
-            self.adjustTextPosition(byCharacterOffset: -sequence.count)
+            self.adjustTextPosition(byCharacterOffset: -self.characterSequenceStringBeforeInput(of: characterSet).utf16.count)
         }
     }
     
     func moveTextPositionToSequenceEnd(of characterSet: CharacterSet) {
-        let sequence = stringAfterInput?.components(separatedBy: characterSet.inverted).first!.characters ?? .init()
-        
         DispatchQueue.main.async {
-            self.adjustTextPosition(byCharacterOffset: sequence.count)
+            self.adjustTextPosition(byCharacterOffset: self.characterSequenceStringAfterInput(of: characterSet).utf16.count)
         }
     }
 }

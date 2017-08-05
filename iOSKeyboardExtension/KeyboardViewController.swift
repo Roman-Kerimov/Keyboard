@@ -169,12 +169,12 @@ class KeyboardViewController: UIInputViewController {
         if textDocumentProxy.characterBeforeInput?.isSpaceReturnOrTab == false
             && textDocumentProxy.characterAfterInput?.belongsTo(.alphanumerics) == true {
             
-            textDocumentProxy.moveToSequenceEnd(of: .alphanumerics)
+            textDocumentProxy.moveTextPositionToSequenceEnd(of: .alphanumerics)
         }
         else if textDocumentProxy.characterBeforeInput == .space
             && textDocumentProxy.characterAfterInput == .space {
             
-            textDocumentProxy.moveToSequenceEnd(of: CharacterSet.init(charactersIn: .space))
+            textDocumentProxy.moveTextPositionToSequenceEnd(of: .init(charactersIn: .space))
         }
         else if textDocumentProxy.characterBeforeInput == .space
             && textDocumentProxy.characterAfterInput?.isSpaceReturnOrTab == false {
@@ -361,7 +361,7 @@ extension UITextDocumentProxy {
         }
     }
     
-    func moveToSequenceStart(of characterSet: CharacterSet) {
+    func moveTextPositionToSequenceStart(of characterSet: CharacterSet) {
         let sequence = stringBeforeInput?.components(separatedBy: characterSet.inverted).last!.characters ?? .init()
         
         DispatchQueue.main.async {
@@ -369,7 +369,7 @@ extension UITextDocumentProxy {
         }
     }
     
-    func moveToSequenceEnd(of characterSet: CharacterSet) {
+    func moveTextPositionToSequenceEnd(of characterSet: CharacterSet) {
         let sequence = stringAfterInput?.components(separatedBy: characterSet.inverted).first!.characters ?? .init()
         
         DispatchQueue.main.async {

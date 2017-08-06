@@ -193,7 +193,8 @@ class CharacterSequenceView: CharacterCollectionView {
         }
         
         if activeCharacter == .space {
-            let destinationIndexPath: IndexPath = .init(row: .init(activeCell.center.x / layout.itemSize.width), section: 0)
+            let destinationIndexPath: IndexPath = indexPathForItem(at: activeCell.center)
+                ?? .init(row: characters.count - 1, section: 0)
             
             cancelInteractiveMovement()
             

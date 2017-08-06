@@ -32,7 +32,7 @@ class CharacterSequenceView: CharacterCollectionView {
         longPressGestureRecognizer.minimumPressDuration = 0
         
         #if TARGET_INTERFACE_BUILDER
-            characters = .init("keyboard".characters)
+            characters = .init("keyboard😀".characters)
         #endif
     }
     
@@ -233,12 +233,16 @@ class CharacterSequenceView: CharacterCollectionView {
         enableAtimations()
     }
     
+    private var characterFont: UIFont {
+        return UIFont(name: "Courier New", size: 1.4 * layout.itemSize.width)!
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! CharacterCollectionViewCell
         cell.configure()
             
-        cell.title.font = UIFont(name: "Courier New", size: 1.4 * layout.itemSize.width)
+        cell.title.font = characterFont
         cell.backgroundColor = colorScheme.labelColor.withAlphaComponent(0.05)
         
         return cell
@@ -260,6 +264,27 @@ class CharacterSequenceView: CharacterCollectionView {
         }
         
         return proposedIndexPath
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let label: UILabel = .init()
+        label.text = characters[indexPath.item].description
+        label.font = characterFont
+        
+        return .init(
+            width: max(
+                layout.itemSize.width,
+                label.intrinsicContentSize.width
+            ),
+            
+            height: layout.itemSize.height
+        )
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {

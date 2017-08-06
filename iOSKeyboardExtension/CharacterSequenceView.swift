@@ -308,9 +308,23 @@ class CharacterSequenceView: CharacterCollectionView {
     
     func performCharacterSequenceUpdates(_ updates: () -> Void) {
         KeyboardViewController.shared.textDocumentProxy.deleteBackward(characters.count)
+        
+        let shouldRemoveFirstSpace = characters.first != .space
+        
         updates()
+        
         removeDoubleSpace()
-        KeyboardViewController.shared.textDocumentProxy.insertText(.init(characters))
+        
+        let text: String
+        
+        if characters.first == .space && shouldRemoveFirstSpace {
+            text = .init(characters.suffix(characters.count - 1))
+        }
+        else {
+            text = .init(characters)
+        }
+        
+        KeyboardViewController.shared.textDocumentProxy.insertText(text)
     }
     
     private func removeDoubleSpace() {

@@ -58,7 +58,7 @@ internal class KeyboardView: UIView {
                     .components(separatedBy: CharacterSet.printableASCII.inverted).last ?? .init()
             
             if textForSearch.contains(.reverseSolidus) {
-                textForSearch = .reverseSolidus + ( textForSearch.components(separatedBy: .reverseSolidus).last ?? .init() )
+                textForSearch = .reverseSolidus + ( textForSearch.components(separatedBy: String.reverseSolidus).last ?? .init() )
             }
             
             unicodeCollectionView.search(byName: textForSearch)

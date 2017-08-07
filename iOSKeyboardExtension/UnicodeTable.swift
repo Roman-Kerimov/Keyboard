@@ -70,9 +70,9 @@ private class LoadUnicodeNameIndex: Operation {
                 
                 for word in unicodeScalar.description
                     .applyingTransform(.toUnicodeName, reverse: false)!
-                    .replacingOccurrences(of: "\\N{", with: .space)
-                    .replacingOccurrences(of: "}", with: .space)
-                    .components(separatedBy: .space) {
+                    .replacingOccurrences(of: "\\N{", with: String.space)
+                    .replacingOccurrences(of: "}", with: String.space)
+                    .components(separatedBy: String.space) {
                         
                         guard word != "" else {
                             continue

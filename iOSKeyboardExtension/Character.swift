@@ -29,8 +29,8 @@ extension Character {
     var unicodeName: String {
         var outputString = self.description.applyingTransform(.toUnicodeName, reverse: false) ?? ""
         outputString = outputString.replacingOccurrences(of: "}\\N{", with: unicodeNameSeparator)
-        outputString = outputString.replacingOccurrences(of: "\\N{", with: .space)
-        outputString = outputString.replacingOccurrences(of: "}", with: .space)
+        outputString = outputString.replacingOccurrences(of: "\\N{", with: String.space)
+        outputString = outputString.replacingOccurrences(of: "}", with: String.space)
         
         if outputString.hasPrefix(.space) {
             outputString = .init(outputString.suffix(outputString.count - 1))

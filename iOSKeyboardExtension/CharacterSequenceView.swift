@@ -25,7 +25,6 @@ class CharacterSequenceView: CharacterCollectionView {
 
         layout.sectionInset = .init(top: 0, left: 0, bottom: 0, right: layout.itemSize.width)
         layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 0
         
         longPressGestureRecognizer = UILongPressGestureRecognizer.init(target: self, action: #selector(handleLongPressGesture(from:)))
         addGestureRecognizer(longPressGestureRecognizer)
@@ -255,6 +254,7 @@ class CharacterSequenceView: CharacterCollectionView {
             
         cell.title.font = characterFont
         cell.backgroundColor = colorScheme.labelColor.withAlphaComponent(0.05)
+        cell.layer.cornerRadius = layout.itemSize.width * 0.3
         
         return cell
     }
@@ -293,9 +293,18 @@ class CharacterSequenceView: CharacterCollectionView {
         )
     }
     
+    var characterSpacing: CGFloat {
+        return floor(layout.itemSize.width * 0.1)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        
+        return characterSpacing
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         
-        return 0
+        return characterSpacing
     }
     
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {

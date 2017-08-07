@@ -1,5 +1,5 @@
 //
-//  UIColorExtension.swift
+//  UIColor.swift
 //  Keyboard
 //
 //  Created by Roman Kerimov on 14.04.17.

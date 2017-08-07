@@ -1,6 +1,6 @@
 //
-//  UIViewExtension.swift
-//  iOSKeyboardExtension
+//  UIView.swift
+//  Keyboard
 //
 //  Created by Roman Kerimov on 11/06/2017.
 //

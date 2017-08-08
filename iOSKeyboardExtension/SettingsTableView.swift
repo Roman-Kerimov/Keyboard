@@ -16,7 +16,7 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
         
         reloadData()
         
-        languageTableViewController.title = AppLanguageTitle.string
+        languageTableViewController.title = LANGUAGE.string
     }
     
     internal init() {
@@ -95,7 +95,7 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
         switch Section.list[section] {
             
         case .keyboardLayouts:
-            return KeyboardLayoutSectionTitle.string
+            return KEYBOARD.string
             
         default:
             return nil
@@ -129,7 +129,7 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
             layoutModeSegmentedControl.addTarget(self, action: #selector(action(layoutModeSegmentedControl:)), for: .allEvents)
             
             cell.accessoryView = layoutModeSegmentedControl
-            cell.textLabel?.text = KeyboardShapeCellTitle.string
+            cell.textLabel?.text = SHAPE.string
             
         case .keyboardLayouts:
             let layout = KeyboardLayout.list[indexPath.row]
@@ -152,12 +152,12 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
             
             switch BoolCell.list[indexPath.row] {
             case .allowMultipleSpaces:
-                cell.textLabel?.text = AllowMultipleSpacesTitle.string
+                cell.textLabel?.text = MULTIPLE_SPACES.string
                 cellSwitch.isOn = KeyboardSettings.shared.allowMultipleSpaces
             }
             
         case .appLanguage:
-            cell.textLabel?.text = AppLanguageTitle.string
+            cell.textLabel?.text = LANGUAGE.string
             
             let languageCode = Language.current.rawValue
             let locale = Locale(identifier: languageCode)

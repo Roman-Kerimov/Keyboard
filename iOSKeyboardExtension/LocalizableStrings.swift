@@ -6,73 +6,7 @@
 //
 //
 
-struct NonConversionModeTitle: LocalizableString {
-    static var az:		String {return ""}
-    static var az_Cyrl: String {return ""}
-    static var ca:		String {return ""}
-    static var cs:		String {return ""}
-    static var da:		String {return ""}
-    static var de:		String {return "ss"}
-    static var el: 		String {return ""}
-    static var en:		String {return "ae"}
-    static var eo:		String {return ""}
-    static var es:		String {return "nn"}
-    static var es_MX:	String {return ""}
-    static var fi:		String {return ""}
-    static var fr:		String {return ""}
-    static var hr:		String {return ""}
-    static var hu: 		String {return ""}
-    static var id:		String {return ""}
-    static var it:		String {return ""}
-    static var ms:		String {return ""}
-    static var nb:		String {return ""}
-    static var nl:		String {return ""}
-    static var pl:		String {return ""}
-    static var pt_PT:	String {return ""}
-    static var pt_BR:	String {return ""}
-    static var ro: 		String {return ""}
-    static var ru:		String {return "ya"}
-    static var sk:		String {return ""}
-    static var sv:		String {return ""}
-    static var tr:		String {return ""}
-    static var uk:		String {return ""}
-    static var vi:		String {return ""}
-}
-
-struct ConversionModeTitle: LocalizableString {
-    static var az:		String {return ""}
-    static var az_Cyrl: String {return ""}
-    static var ca:		String {return ""}
-    static var cs:		String {return ""} // Ů ů
-    static var da:		String {return ""}
-    static var de:		String {return "ß"}
-    static var el: 		String {return ""}
-    static var en:		String {return "æ"}
-    static var eo:		String {return ""}
-    static var es:		String {return "ñ"}
-    static var es_MX:	String {return ""}
-    static var fi:		String {return ""}
-    static var fr:		String {return ""} // Ç ç
-    static var hr:		String {return ""}
-    static var hu: 		String {return ""}
-    static var id:		String {return ""}
-    static var it:		String {return ""}
-    static var ms:		String {return ""}
-    static var nb:		String {return ""}
-    static var nl:		String {return ""} // .. '
-    static var pl:		String {return ""} // Ą ą		Ę ę
-    static var pt_PT:	String {return ""}
-    static var pt_BR:	String {return ""}
-    static var ro: 		String {return ""}
-    static var ru:		String {return "я"}
-    static var sk:		String {return ""}
-    static var sv:		String {return ""} // Å å
-    static var tr:		String {return ""}
-    static var uk:		String {return ""}
-    static var vi:		String {return ""}
-}
-
-struct SettingsTitle: LocalizableString {
+struct SETTINGS: LocalizableString {
     static var az:		String {return ""}
     static var az_Cyrl: String {return ""}
     static var ca:		String {return "Configuració"}
@@ -106,7 +40,7 @@ struct SettingsTitle: LocalizableString {
     static var vi:		String {return "Cài đặt"}
 }
 
-struct KeyboardShapeCellTitle: LocalizableString {
+struct SHAPE: LocalizableString {
     static var az:		String {return ""}
     static var az_Cyrl:	String {return ""}
     static var ca:		String {return ""}
@@ -139,7 +73,7 @@ struct KeyboardShapeCellTitle: LocalizableString {
     static var vi:		String {return ""}
 }
 
-struct KeyboardLayoutSectionTitle: LocalizableString {
+struct KEYBOARD: LocalizableString {
     static var az:		String {return ""}
     static var az_Cyrl: String {return ""}
     static var ca:		String {return "Teclat"}
@@ -172,7 +106,7 @@ struct KeyboardLayoutSectionTitle: LocalizableString {
     static var vi:		String {return "Bàn phím"}
 }
 
-struct AllowMultipleSpacesTitle: LocalizableString {
+struct MULTIPLE_SPACES: LocalizableString {
     static var az:		String {return ""}
     static var az_Cyrl: String {return ""}
     static var ca:		String {return ""}
@@ -205,7 +139,7 @@ struct AllowMultipleSpacesTitle: LocalizableString {
     static var vi:		String {return ""}
 }
 
-struct AppLanguageTitle: LocalizableString {
+struct LANGUAGE: LocalizableString {
     static var az:		String {return ""}
     static var az_Cyrl: String {return ""}
     static var ca:		String {return es}

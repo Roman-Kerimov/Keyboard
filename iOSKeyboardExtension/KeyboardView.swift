@@ -376,7 +376,7 @@ internal class KeyboardView: UIView {
         }
         
         deleteRowView.characterSequence.layout.itemSize = .init(
-            width: .init(Int.init(max(keySize.width, minimalScreenSize.width/5.5)/4)),
+            width: floor(max(keySize.width, minimalScreenSize.width/5.5)/4),
             height: deleteRowHeight
         )
         deleteRowView.characterSequence.reloadData()

@@ -29,6 +29,25 @@
             <point key="canvasLocation" x="1639" y="427"/>
         </scene>
         <!--View Controller-->
+        <scene sceneID="Djd-0O-kMx">
+            <objects>
+                <viewController storyboardIdentifier="LanguageTableView" id="jg9-1r-ogL" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tW9-Im-vID"/>
+                        <viewControllerLayoutGuide type="bottom" id="pby-ha-NTX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PHL-4B-NF9" customClass="SettingsContainerView_LanguageTableView" customModule="iOSKeyboard">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <size key="freeformSize" width="320" height="568"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nxn-OR-jYt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2423" y="40"/>
+        </scene>
+        <!--View Controller-->
         <scene sceneID="djl-km-V8n">
             <objects>
                 <viewController storyboardIdentifier="LegalNoticesView" id="3Ph-4M-r4f" sceneMemberID="viewController">

@@ -43,7 +43,7 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
         static let list = values(of: BoolCell.self)
     }
     
-    private let languageTableViewController: ViewController<LanguageTableView> = .init()
+    internal let languageTableViewController: ViewController<LanguageTableView> = .init()
     internal let legalNoticesViewController: ViewController<LegalNoticesTextView> = .init()
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -17,6 +17,7 @@ class SettingsContainerView: UIStackView {
         super.updateLocalizedStrings()
         
         settingsViewController.title = SETTINGS.string
+        settingsViewController.updateLocalizedStrings()
     }
     
     let shadeColor = UIColor.black.withAlphaComponent(0.3)

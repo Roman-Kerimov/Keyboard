@@ -17,15 +17,35 @@
                         <viewControllerLayoutGuide type="bottom" id="JDr-fY-eZk"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Tlj-yJ-DDS" customClass="SettingsContainerView" customModule="iOSKeyboardExtension">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="1300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
+                    <size key="freeformSize" width="320" height="1300"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="seB-M8-P8f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1710" y="56"/>
+            <point key="canvasLocation" x="1639" y="427"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="djl-km-V8n">
+            <objects>
+                <viewController storyboardIdentifier="LegalNoticesView" id="3Ph-4M-r4f" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8uQ-62-8lx"/>
+                        <viewControllerLayoutGuide type="bottom" id="hoY-DH-D4b"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kSH-KL-8VU" customClass="SettingsContainerView_LegalNoticesView" customModule="iOSKeyboard">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <size key="freeformSize" width="320" height="568"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2oM-DO-OHZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2423" y="813"/>
         </scene>
         <!--Keyboard View Controller-->
         <scene sceneID="8D7-HL-cUB">
@@ -42,7 +62,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iVd-RV-nqM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2.3999999999999999" y="56.221889055472268"/>
+            <point key="canvasLocation" x="-6" y="41"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="57d-qI-8ES">
@@ -63,7 +83,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M4m-9G-nt1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="771" y="56"/>
+            <point key="canvasLocation" x="773" y="41"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="GeJ-Kx-6fg">
@@ -84,7 +104,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jfp-Hh-2jG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4" y="789"/>
+            <point key="canvasLocation" x="-8" y="814"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="PAV-Gi-J8L">
@@ -106,7 +126,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rZq-i1-21t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="773" y="788"/>
+            <point key="canvasLocation" x="773" y="813"/>
         </scene>
     </scenes>
 </document>

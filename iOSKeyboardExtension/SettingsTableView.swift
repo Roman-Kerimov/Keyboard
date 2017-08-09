@@ -17,6 +17,7 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
         reloadData()
         
         languageTableViewController.title = LANGUAGE.string
+        legalNoticesViewController.title = LEGAL_NOTICES.string
     }
     
     internal init() {
@@ -30,8 +31,8 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
         fatalError("init(coder:) has not been implemented")
     }
         
-    private enum Section {
-        case keyboardMode, keyboardLayouts, boolSection, appLanguage
+    internal enum Section {
+        case keyboardMode, keyboardLayouts, boolSection, appLanguage, about
         
         static let list = values(of: Section.self)
     }
@@ -43,6 +44,7 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
     }
     
     private let languageTableViewController: ViewController<LanguageTableView> = .init()
+    internal let legalNoticesViewController: ViewController<LegalNoticesTextView> = .init()
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)!
@@ -59,7 +61,12 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
             KeyboardViewController.shared.keyboardView.layout = KeyboardLayout.list[indexPath.row]
             
         case .appLanguage:
-            KeyboardViewController.shared.keyboardView.settingsContainerView.navigationController.pushViewController(languageTableViewController, animated: true)
+            KeyboardViewController.shared.keyboardView.settingsContainerView.navigationController
+                .pushViewController(languageTableViewController, animated: true)
+            
+        case .about:
+            KeyboardViewController.shared.keyboardView.settingsContainerView.navigationController
+                .pushViewController(legalNoticesViewController, animated: true)
             
         default:
             break
@@ -97,13 +104,26 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
         case .keyboardLayouts:
             return KEYBOARD.string
             
+        case .about:
+            return ABOUT.string
+            
         default:
             return nil
         }
     }
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        return nil
+        switch Section.list[section] {
+            
+        case .about:
+            let bundle: Bundle = .init(for: type(of: self))
+            let versionNumber = bundle.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+            let buildNumber = bundle.object(forInfoDictionaryKey: "CFBundleVersion") as! String
+            return "\(VERSION.string): \(versionNumber) (\(buildNumber))"
+            
+        default:
+            return nil
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -169,6 +189,10 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
                 cell.detailTextLabel?.text = locale.localizedString(forLanguageCode: locale.languageCode!)
             }
             
+            cell.accessoryType = .disclosureIndicator
+            
+        case .about:
+            cell.textLabel?.text = LEGAL_NOTICES.string
             cell.accessoryType = .disclosureIndicator
         }
         

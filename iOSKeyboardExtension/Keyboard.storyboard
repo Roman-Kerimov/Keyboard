@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Settings-->
         <scene sceneID="xrn-lH-IEa">
             <objects>
-                <viewController storyboardIdentifier="SettingsView" id="6o1-hM-Hff" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="izfgpPfwNHHRUR8q" title="Settings" id="6o1-hM-Hff" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gel-YS-cqR"/>
                         <viewControllerLayoutGuide type="bottom" id="JDr-fY-eZk"/>
@@ -28,10 +28,10 @@
             </objects>
             <point key="canvasLocation" x="1639" y="427"/>
         </scene>
-        <!--View Controller-->
+        <!--Language-->
         <scene sceneID="Djd-0O-kMx">
             <objects>
-                <viewController storyboardIdentifier="LanguageTableView" id="jg9-1r-ogL" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NcsYfk7mdonBwgVI" title="Language" id="jg9-1r-ogL" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tW9-Im-vID"/>
                         <viewControllerLayoutGuide type="bottom" id="pby-ha-NTX"/>
@@ -47,10 +47,10 @@
             </objects>
             <point key="canvasLocation" x="2423" y="40"/>
         </scene>
-        <!--View Controller-->
+        <!--Legal Notices-->
         <scene sceneID="djl-km-V8n">
             <objects>
-                <viewController storyboardIdentifier="LegalNoticesView" id="3Ph-4M-r4f" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="A2wZ7Ce2JhYpf6NX" title="Legal Notices" id="3Ph-4M-r4f" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8uQ-62-8lx"/>
                         <viewControllerLayoutGuide type="bottom" id="hoY-DH-D4b"/>
@@ -66,10 +66,10 @@
             </objects>
             <point key="canvasLocation" x="2423" y="813"/>
         </scene>
-        <!--Keyboard View Controller-->
+        <!--Light & Standard-->
         <scene sceneID="8D7-HL-cUB">
             <objects>
-                <viewController storyboardIdentifier="Light" id="iPZ-iz-MAm" customClass="KeyboardViewController" customModule="iOSKeyboardExtension" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QVdcCR894yh0xZca" title="Light &amp; Standard" id="iPZ-iz-MAm" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hKn-PQ-Uu7"/>
                         <viewControllerLayoutGuide type="bottom" id="WZN-dL-Yhu"/>
@@ -83,10 +83,10 @@
             </objects>
             <point key="canvasLocation" x="-6" y="41"/>
         </scene>
-        <!--View Controller-->
+        <!--Light & Alternate-->
         <scene sceneID="57d-qI-8ES">
             <objects>
-                <viewController storyboardIdentifier="Light AlternateLayoutMode" id="7H2-I5-WHd" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ol7WRgkt67P4Ndgl" title="Light &amp; Alternate" id="7H2-I5-WHd" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="085-ef-uIk"/>
                         <viewControllerLayoutGuide type="bottom" id="bzN-IU-IpS"/>
@@ -104,10 +104,10 @@
             </objects>
             <point key="canvasLocation" x="773" y="41"/>
         </scene>
-        <!--View Controller-->
+        <!--Dark & Standard-->
         <scene sceneID="GeJ-Kx-6fg">
             <objects>
-                <viewController storyboardIdentifier="Dark" id="05e-C9-ntO" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ON7OjRjAufSaMWvl" title="Dark &amp; Standard" id="05e-C9-ntO" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NR2-Xb-dTo"/>
                         <viewControllerLayoutGuide type="bottom" id="j13-NA-xqG"/>
@@ -125,10 +125,10 @@
             </objects>
             <point key="canvasLocation" x="-8" y="814"/>
         </scene>
-        <!--View Controller-->
+        <!--Dark & Alternate-->
         <scene sceneID="PAV-Gi-J8L">
             <objects>
-                <viewController storyboardIdentifier="Dark AlternateLayoutMode" id="mex-WL-eDw" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ycGuEoz6QqeRaYkb" title="Dark &amp; Alternate" id="mex-WL-eDw" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xKj-op-max"/>
                         <viewControllerLayoutGuide type="bottom" id="zqd-xT-211"/>

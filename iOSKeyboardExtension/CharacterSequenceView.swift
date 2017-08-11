@@ -140,8 +140,9 @@ class CharacterSequenceView: CharacterCollectionView {
                     break
                 }
                 
-                KeyboardViewController.shared.keyAction(label: SpecialKey.delete.label, offset: activeIndexPath.item - characters.count + 1)
-                KeyboardViewController.shared.keyAction(label: activeCell.title.text!, offset: activeIndexPath.item - characters.count + 1)
+                performCharacterSequenceUpdates {
+                    characters[activeIndexPath.item] = Character.init(activeCell.title.text!)
+                }
             }
             
             self.activeIndexPath = nil

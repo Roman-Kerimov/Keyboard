@@ -26,4 +26,12 @@ enum CharacterComponent {
     case ringAbove
     case cedilla
     case stroke, diagonalStroke
+    case macronAbove
+    case breveAbove
+    case ogonekAbove, ogonekBelow
+    case dotAbove
+    case caronAbove
+    case longLeg
+    case L
+    case doubleAcuteAbove
 }

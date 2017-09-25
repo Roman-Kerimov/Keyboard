@@ -17,4 +17,13 @@ enum CharacterComponent {
     
     case capital
     case turned
+    case superscript
+    case graveAbove
+    case acuteAbove
+    case circumflexAbove
+    case tildeAbove
+    case diaeresisAbove
+    case ringAbove
+    case cedilla
+    case stroke, diagonalStroke
 }

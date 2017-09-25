@@ -17,6 +17,10 @@
 		9633A3CA1E5DFE8D00DFA503 /* DeleteRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9633A3C91E5DFE8D00DFA503 /* DeleteRowView.swift */; };
 		963BA6631F3B1FD000BFE3A7 /* LegalTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963BA6621F3B1FD000BFE3A7 /* LegalTextView.swift */; };
 		963BA6641F3B1FD000BFE3A7 /* LegalTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963BA6621F3B1FD000BFE3A7 /* LegalTextView.swift */; };
+		9643FC4D1F78F8D5004DA2C0 /* CharacterComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9643FC4C1F78F8D5004DA2C0 /* CharacterComponent.swift */; };
+		9643FC4E1F78F8D5004DA2C0 /* CharacterComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9643FC4C1F78F8D5004DA2C0 /* CharacterComponent.swift */; };
+		9643FC501F78F94B004DA2C0 /* CharacterToComponentsDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9643FC4F1F78F94B004DA2C0 /* CharacterToComponentsDictionary.swift */; };
+		9643FC511F78F94B004DA2C0 /* CharacterToComponentsDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9643FC4F1F78F94B004DA2C0 /* CharacterToComponentsDictionary.swift */; };
 		964AB9351D1B6490004C827C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964AB9341D1B6490004C827C /* AppDelegate.swift */; };
 		964AB93A1D1B6490004C827C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 964AB9381D1B6490004C827C /* Main.storyboard */; };
 		964AB93D1D1B6490004C827C /* iOSKeyboard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 964AB93B1D1B6490004C827C /* iOSKeyboard.xcdatamodeld */; };
@@ -125,6 +129,8 @@
 		9633A3C71E5DFA3C00DFA503 /* RowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RowView.swift; sourceTree = "<group>"; };
 		9633A3C91E5DFE8D00DFA503 /* DeleteRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteRowView.swift; sourceTree = "<group>"; };
 		963BA6621F3B1FD000BFE3A7 /* LegalTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalTextView.swift; sourceTree = "<group>"; };
+		9643FC4C1F78F8D5004DA2C0 /* CharacterComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterComponent.swift; sourceTree = "<group>"; };
+		9643FC4F1F78F94B004DA2C0 /* CharacterToComponentsDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterToComponentsDictionary.swift; sourceTree = "<group>"; };
 		96464A1C1F3AF2A5006F8F6B /* SettingsContainerView_LegalNoticesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContainerView_LegalNoticesView.swift; sourceTree = "<group>"; };
 		964AB9311D1B6490004C827C /* iOSKeyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSKeyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		964AB9341D1B6490004C827C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -234,6 +240,8 @@
 				964FE8221D1CA9D400D41EA7 /* Keyboard.storyboard */,
 				96464A1F1F3AF4D2006F8F6B /* For Interface Builder */,
 				96530D661DD1C9A9004E8BAA /* KeyboardLayout.swift */,
+				9643FC4C1F78F8D5004DA2C0 /* CharacterComponent.swift */,
+				9643FC4F1F78F94B004DA2C0 /* CharacterToComponentsDictionary.swift */,
 				964ED5471DF5765E006AD952 /* KeyboardColorScheme.swift */,
 				964AB9691D1B6535004C827C /* KeyboardViewController.swift */,
 				965D15C01D3146BB0098FA57 /* KeyboardView.swift */,
@@ -406,6 +414,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9643FC4D1F78F8D5004DA2C0 /* CharacterComponent.swift in Sources */,
 				96533A901F1293A500B07CA3 /* UIView.swift in Sources */,
 				96533A891F12938D00B07CA3 /* ViewController<UIView>.swift in Sources */,
 				965A22161F3B2D6D000430E6 /* SettingsContainerView_LegalNoticesView.swift in Sources */,
@@ -425,6 +434,7 @@
 				96533A831F12938D00B07CA3 /* CharacterCollectionViewCell.swift in Sources */,
 				96533A8D1F1293A500B07CA3 /* Character.swift in Sources */,
 				96533A7E1F12938D00B07CA3 /* DeleteRowView.swift in Sources */,
+				9643FC501F78F94B004DA2C0 /* CharacterToComponentsDictionary.swift in Sources */,
 				96533A801F12938D00B07CA3 /* UnicodeCollectionView.swift in Sources */,
 				96533A851F12938D00B07CA3 /* RowView.swift in Sources */,
 				96533A7B1F12938D00B07CA3 /* SettingsTableView.swift in Sources */,
@@ -474,6 +484,7 @@
 				964ED5481DF5765E006AD952 /* KeyboardColorScheme.swift in Sources */,
 				961FC32F1F3ADD9B00ADB15D /* LegalNoticesTextView.swift in Sources */,
 				9654DF7A1D4E1D0900DDB0EF /* SpaceRowView.swift in Sources */,
+				9643FC4E1F78F8D5004DA2C0 /* CharacterComponent.swift in Sources */,
 				96848DA11EE0B64F0009869A /* UnicodeTable.swift in Sources */,
 				9633A3C81E5DFA3C00DFA503 /* RowView.swift in Sources */,
 				9633A3CA1E5DFE8D00DFA503 /* DeleteRowView.swift in Sources */,
@@ -484,6 +495,7 @@
 				968694C11EA0F3D100E6C9D0 /* UIColor.swift in Sources */,
 				96C49DC51EB7DF1F006F93ED /* Character.swift in Sources */,
 				9685BCFF1E06815700702C84 /* KeyboardSettings.swift in Sources */,
+				9643FC511F78F94B004DA2C0 /* CharacterToComponentsDictionary.swift in Sources */,
 				969221E61F3BA91A005E5913 /* SettingsContainerView_LanguageTableView.swift in Sources */,
 				96848D9F1EE05F080009869A /* String.swift in Sources */,
 				9694E23D1E29D72800ED3A85 /* Internationalization.swift in Sources */,

@@ -111,82 +111,82 @@ let characterToComponentsDictionary: [Character: [CharacterComponent]] = [
     "@":            [.commercialAt],
 
     //0041          ; LATIN CAPITAL LETTER A
-    "a":            [.a, .capital],
+    "A":            [.a, .capital],
 
     //0042          ; LATIN CAPITAL LETTER B
-    "b":            [.b, .capital],
+    "B":            [.b, .capital],
 
     //0043          ; LATIN CAPITAL LETTER C
-    "c":            [.c, .capital],
+    "C":            [.c, .capital],
 
     //0044          ; LATIN CAPITAL LETTER D
-    "d":            [.d, .capital],
+    "D":            [.d, .capital],
 
     //0045          ; LATIN CAPITAL LETTER E
-    "e":            [.e, .capital],
+    "E":            [.e, .capital],
 
     //0046          ; LATIN CAPITAL LETTER F
-    "f":            [.f, .capital],
+    "F":            [.f, .capital],
 
     //0047          ; LATIN CAPITAL LETTER G
-    "g":            [.g, .capital],
+    "G":            [.g, .capital],
 
     //0048          ; LATIN CAPITAL LETTER H
-    "h":            [.h, .capital],
+    "H":            [.h, .capital],
 
     //0049          ; LATIN CAPITAL LETTER I
-    "i":            [.i, .capital],
+    "I":            [.i, .capital],
 
     //004A          ; LATIN CAPITAL LETTER J
-    "j":            [.j, .capital],
+    "J":            [.j, .capital],
 
     //004B          ; LATIN CAPITAL LETTER K
-    "k":            [.k, .capital],
+    "K":            [.k, .capital],
 
     //004C          ; LATIN CAPITAL LETTER L
-    "l":            [.l, .capital],
+    "L":            [.l, .capital],
 
     //004D          ; LATIN CAPITAL LETTER M
-    "m":            [.m, .capital],
+    "M":            [.m, .capital],
 
     //004E          ; LATIN CAPITAL LETTER N
-    "n":            [.n, .capital],
+    "N":            [.n, .capital],
 
     //004F          ; LATIN CAPITAL LETTER O
-    "o":            [.o, .capital],
+    "O":            [.o, .capital],
 
     //0050          ; LATIN CAPITAL LETTER P
-    "p":            [.p, .capital],
+    "P":            [.p, .capital],
 
     //0051          ; LATIN CAPITAL LETTER Q
-    "q":            [.q, .capital],
+    "Q":            [.q, .capital],
 
     //0052          ; LATIN CAPITAL LETTER R
-    "r":            [.r, .capital],
+    "R":            [.r, .capital],
 
     //0053          ; LATIN CAPITAL LETTER S
-    "s":            [.s, .capital],
+    "S":            [.s, .capital],
 
     //0054          ; LATIN CAPITAL LETTER T
-    "t":            [.t, .capital],
+    "T":            [.t, .capital],
 
     //0055          ; LATIN CAPITAL LETTER U
-    "u":            [.u, .capital],
+    "U":            [.u, .capital],
 
     //0056          ; LATIN CAPITAL LETTER V
-    "v":            [.v, .capital],
+    "V":            [.v, .capital],
 
     //0057          ; LATIN CAPITAL LETTER W
-    "w":            [.w, .capital],
+    "W":            [.w, .capital],
 
     //0058          ; LATIN CAPITAL LETTER X
-    "x":            [.x, .capital],
+    "X":            [.x, .capital],
 
     //0059          ; LATIN CAPITAL LETTER Y
-    "y":            [.y, .capital],
+    "Y":            [.y, .capital],
 
     //005A          ; LATIN CAPITAL LETTER Z
-    "z":            [.z, .capital],
+    "Z":            [.z, .capital],
 
     //005B          ; LEFT SQUARE BRACKET
     "[":            [.squareBracket],

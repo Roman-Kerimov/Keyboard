@@ -12,579 +12,579 @@ let characterToComponentsDictionary: [Character: [CharacterComponent]] = [
     // MARK: - 0000..007F; Basic Latin
     
     //0020          ; SPACE
-    " ":            [.space],
+    " ": [.space],
     
     //0021          ; EXCLAMATION MARK
-    "!":            [.exclamationMark],
+    "!": [.exclamationMark],
     
     //0022          ; QUOTATION MARK
-    "\"":           [.quotationMark],
+    "\"": [.quotationMark],
     
     //0023          ; NUMBER SIGN
-    "#":            [.numberSign],
+    "#": [.numberSign],
     
     //0024          ; DOLLAR SIGN
-    "$":            [.dollarSign],
+    "$": [.dollarSign],
     
     //0025          ; PERCENT SIGN
-    "%":            [.percentSign],
+    "%": [.percentSign],
     
     //0026          ; AMPERSAND
-    "&":            [.ampersand],
+    "&": [.ampersand],
     
     //0027          ; APOSTROPHE
-    "'":            [.apostrophe],
+    "'": [.apostrophe],
     
     //0028          ; LEFT PARENTHESIS
-    "(":            [.parenthesis],
+    "(": [.parenthesis],
     
     //0029          ; RIGHT PARENTHESIS
-    ")":            [.parenthesis, .turned],
+    ")": [.parenthesis, .turned],
     
     //002A          ; ASTERISK
-    "*":            [.asterisk],
+    "*": [.asterisk],
     
     //002B          ; PLUS SIGN
-    "+":            [.plusSign],
+    "+": [.plusSign],
     
     //002C          ; COMMA
-    ",":            [.comma],
+    ",": [.comma],
     
     //002D          ; HYPHEN-MINUS
-    "-":            [.hyphenMinus],
+    "-": [.hyphenMinus],
     
     //002E          ; FULL STOP
-    ".":            [.fullStop],
+    ".": [.fullStop],
     
     //002F          ; SOLIDUS
-    "/":            [.solidus],
+    "/": [.solidus],
     
     //0030          ; DIGIT ZERO
-    "0":            [.zero],
+    "0": [.zero],
     
     //0031          ; DIGIT ONE
-    "1":            [.one],
+    "1": [.one],
     
     //0032          ; DIGIT TWO
-    "2":            [.two],
+    "2": [.two],
     
     //0033          ; DIGIT THREE
-    "3":            [.three],
+    "3": [.three],
     
     //0034          ; DIGIT FOUR
-    "4":            [.four],
+    "4": [.four],
     
     //0035          ; DIGIT FIVE
-    "5":            [.five],
+    "5": [.five],
     
     //0036          ; DIGIT SIX
-    "6":            [.six],
+    "6": [.six],
     
     //0037          ; DIGIT SEVEN
-    "7":            [.seven],
+    "7": [.seven],
     
     //0038          ; DIGIT EIGHT
-    "8":            [.eight],
+    "8": [.eight],
     
     //0039          ; DIGIT NINE
-    "9":            [.nine],
+    "9": [.nine],
     
     //003A          ; COLON
-    ":":            [.colon],
+    ":": [.colon],
 
     //003B          ; SEMICOLON
-    ";":            [.semicolon],
+    ";": [.semicolon],
 
     //003C          ; LESS-THAN SIGN
-    "<":            [.lessThanSign],
+    "<": [.lessThanSign],
 
     //003D          ; EQUALS SIGN
-    "=":            [.equalsSign],
+    "=": [.equalsSign],
 
     //003E          ; GREATER-THAN SIGN
-    ">":            [.greaterThanSign],
+    ">": [.greaterThanSign],
 
     //003F          ; QUESTION MARK
-    "?":            [.questionMark],
+    "?": [.questionMark],
 
     //0040          ; COMMERCIAL AT
-    "@":            [.commercialAt],
+    "@": [.commercialAt],
 
     //0041          ; LATIN CAPITAL LETTER A
-    "A":            [.a, .capital],
+    "A": [.a, .capital],
 
     //0042          ; LATIN CAPITAL LETTER B
-    "B":            [.b, .capital],
+    "B": [.b, .capital],
 
     //0043          ; LATIN CAPITAL LETTER C
-    "C":            [.c, .capital],
+    "C": [.c, .capital],
 
     //0044          ; LATIN CAPITAL LETTER D
-    "D":            [.d, .capital],
+    "D": [.d, .capital],
 
     //0045          ; LATIN CAPITAL LETTER E
-    "E":            [.e, .capital],
+    "E": [.e, .capital],
 
     //0046          ; LATIN CAPITAL LETTER F
-    "F":            [.f, .capital],
+    "F": [.f, .capital],
 
     //0047          ; LATIN CAPITAL LETTER G
-    "G":            [.g, .capital],
+    "G": [.g, .capital],
 
     //0048          ; LATIN CAPITAL LETTER H
-    "H":            [.h, .capital],
+    "H": [.h, .capital],
 
     //0049          ; LATIN CAPITAL LETTER I
-    "I":            [.i, .capital],
+    "I": [.i, .capital],
 
     //004A          ; LATIN CAPITAL LETTER J
-    "J":            [.j, .capital],
+    "J": [.j, .capital],
 
     //004B          ; LATIN CAPITAL LETTER K
-    "K":            [.k, .capital],
+    "K": [.k, .capital],
 
     //004C          ; LATIN CAPITAL LETTER L
-    "L":            [.l, .capital],
+    "L": [.l, .capital],
 
     //004D          ; LATIN CAPITAL LETTER M
-    "M":            [.m, .capital],
+    "M": [.m, .capital],
 
     //004E          ; LATIN CAPITAL LETTER N
-    "N":            [.n, .capital],
+    "N": [.n, .capital],
 
     //004F          ; LATIN CAPITAL LETTER O
-    "O":            [.o, .capital],
+    "O": [.o, .capital],
 
     //0050          ; LATIN CAPITAL LETTER P
-    "P":            [.p, .capital],
+    "P": [.p, .capital],
 
     //0051          ; LATIN CAPITAL LETTER Q
-    "Q":            [.q, .capital],
+    "Q": [.q, .capital],
 
     //0052          ; LATIN CAPITAL LETTER R
-    "R":            [.r, .capital],
+    "R": [.r, .capital],
 
     //0053          ; LATIN CAPITAL LETTER S
-    "S":            [.s, .capital],
+    "S": [.s, .capital],
 
     //0054          ; LATIN CAPITAL LETTER T
-    "T":            [.t, .capital],
+    "T": [.t, .capital],
 
     //0055          ; LATIN CAPITAL LETTER U
-    "U":            [.u, .capital],
+    "U": [.u, .capital],
 
     //0056          ; LATIN CAPITAL LETTER V
-    "V":            [.v, .capital],
+    "V": [.v, .capital],
 
     //0057          ; LATIN CAPITAL LETTER W
-    "W":            [.w, .capital],
+    "W": [.w, .capital],
 
     //0058          ; LATIN CAPITAL LETTER X
-    "X":            [.x, .capital],
+    "X": [.x, .capital],
 
     //0059          ; LATIN CAPITAL LETTER Y
-    "Y":            [.y, .capital],
+    "Y": [.y, .capital],
 
     //005A          ; LATIN CAPITAL LETTER Z
-    "Z":            [.z, .capital],
+    "Z": [.z, .capital],
 
     //005B          ; LEFT SQUARE BRACKET
-    "[":            [.squareBracket],
+    "[": [.squareBracket],
 
     //005C          ; REVERSE SOLIDUS
-    "\\":           [.reverseSolidus],
+    "\\": [.reverseSolidus],
 
     //005D          ; RIGHT SQUARE BRACKET
-    "]":            [.squareBracket, .turned],
+    "]": [.squareBracket, .turned],
 
     //005E          ; CIRCUMFLEX ACCENT
-    "^":            [.caret],
+    "^": [.caret],
 
     //005F          ; LOW LINE
-    "_":            [.lowLine],
+    "_": [.lowLine],
 
     //0060          ; GRAVE ACCENT
-    "`":            [.graveAccent],
+    "`": [.graveAccent],
 
     //0061          ; LATIN SMALL LETTER A
-    "a":            [.a],
+    "a": [.a],
 
     //0062          ; LATIN SMALL LETTER B
-    "b":            [.b],
+    "b": [.b],
 
     //0063          ; LATIN SMALL LETTER C
-    "c":            [.c],
+    "c": [.c],
 
     //0064          ; LATIN SMALL LETTER D
-    "d":            [.d],
+    "d": [.d],
 
     //0065          ; LATIN SMALL LETTER E
-    "e":            [.e],
+    "e": [.e],
 
     //0066          ; LATIN SMALL LETTER F
-    "f":            [.f],
+    "f": [.f],
 
     //0067          ; LATIN SMALL LETTER G
-    "g":            [.g],
+    "g": [.g],
 
     //0068          ; LATIN SMALL LETTER H
-    "h":            [.h],
+    "h": [.h],
 
     //0069          ; LATIN SMALL LETTER I
-    "i":            [.i],
+    "i": [.i],
 
     //006A          ; LATIN SMALL LETTER J
-    "j":            [.j],
+    "j": [.j],
 
     //006B          ; LATIN SMALL LETTER K
-    "k":            [.k],
+    "k": [.k],
 
     //006C          ; LATIN SMALL LETTER L
-    "l":            [.l],
+    "l": [.l],
 
     //006D          ; LATIN SMALL LETTER M
-    "m":            [.m],
+    "m": [.m],
 
     //006E          ; LATIN SMALL LETTER N
-    "n":            [.n],
+    "n": [.n],
 
     //006F          ; LATIN SMALL LETTER O
-    "o":            [.o],
+    "o": [.o],
 
     //0070          ; LATIN SMALL LETTER P
-    "p":            [.p],
+    "p": [.p],
 
     //0071          ; LATIN SMALL LETTER Q
-    "q":            [.q],
+    "q": [.q],
 
     //0072          ; LATIN SMALL LETTER R
-    "r":            [.r],
+    "r": [.r],
 
     //0073          ; LATIN SMALL LETTER S
-    "s":            [.s],
+    "s": [.s],
 
     //0074          ; LATIN SMALL LETTER T
-    "t":            [.t],
+    "t": [.t],
 
     //0075          ; LATIN SMALL LETTER U
-    "u":            [.u],
+    "u": [.u],
 
     //0076          ; LATIN SMALL LETTER V
-    "v":            [.v],
+    "v": [.v],
 
     //0077          ; LATIN SMALL LETTER W
-    "w":            [.w],
+    "w": [.w],
 
     //0078          ; LATIN SMALL LETTER X
-    "x":            [.x],
+    "x": [.x],
 
     //0079          ; LATIN SMALL LETTER Y
-    "y":            [.y],
+    "y": [.y],
 
     //007A          ; LATIN SMALL LETTER Z
-    "z":            [.z],
+    "z": [.z],
 
     //007B          ; LEFT CURLY BRACKET
-    "{":            [.curlyBracket],
+    "{": [.curlyBracket],
 
     //007C          ; VERTICAL LINE
-    "|":            [.verticalLine],
+    "|": [.verticalLine],
 
     //007D          ; RIGHT CURLY BRACKET
-    "}":            [.curlyBracket, .turned],
+    "}": [.curlyBracket, .turned],
 
     //007E          ; TILDE
-    "~":            [.tilde],
+    "~": [.tilde],
 
     
     // MARK: - 0080..00FF; Latin-1 Supplement
     
     //00A0          ; NO-BREAK SPACE
-    " ":            [],
+    " ": [],
 
     //00A1          ; INVERTED EXCLAMATION MARK
-    "¡":            [.exclamationMark, .turned],
+    "¡": [.exclamationMark, .turned],
 
     //00A2          ; CENT SIGN
-    "¢":            [],
+    "¢": [],
 
     //00A3          ; POUND SIGN
-    "£":            [],
+    "£": [],
 
     //00A4          ; CURRENCY SIGN
-    "¤":            [],
+    "¤": [],
 
     //00A5          ; YEN SIGN
-    "¥":            [],
+    "¥": [],
 
     //00A6          ; BROKEN BAR
-    "¦":            [],
+    "¦": [],
 
     //00A7          ; SECTION SIGN
-    "§":            [],
+    "§": [],
 
     //00A8          ; DIAERESIS
-    "¨":            [],
+    "¨": [],
 
     //00A9          ; COPYRIGHT SIGN
-    "©":            [],
+    "©": [],
 
     //00AA          ; FEMININE ORDINAL INDICATOR
-    "ª":            [],
+    "ª": [],
 
     //00AB          ; LEFT-POINTING DOUBLE ANGLE QUOTATION MARK
-    "«":            [],
+    "«": [],
 
     //00AC          ; NOT SIGN
-    "¬":            [],
+    "¬": [],
 
     //00AD          ; SOFT HYPHEN
-    "­":            [],
+    "­": [],
 
     //00AE          ; REGISTERED SIGN
-    "®":            [],
+    "®": [],
 
     //00AF          ; MACRON
-    "¯":            [],
+    "¯": [],
 
     //00B0          ; DEGREE SIGN
-    "°":            [],
+    "°": [],
 
     //00B1          ; PLUS-MINUS SIGN
-    "±":            [.plusSign, .hyphenMinus],
+    "±": [.plusSign, .hyphenMinus],
 
     //00B2          ; SUPERSCRIPT TWO
-    "²":            [.two, .superscript],
+    "²": [.two, .superscript],
 
     //00B3          ; SUPERSCRIPT THREE
-    "³":            [.three, .superscript],
+    "³": [.three, .superscript],
 
     //00B4          ; ACUTE ACCENT
-    "´":            [],
+    "´": [],
 
     //00B5          ; MICRO SIGN
-    "µ":            [],
+    "µ": [],
 
     //00B6          ; PILCROW SIGN
-    "¶":            [],
+    "¶": [],
 
     //00B7          ; MIDDLE DOT
-    "·":            [],
+    "·": [],
 
     //00B8          ; CEDILLA
-    "¸":            [],
+    "¸": [],
 
     //00B9          ; SUPERSCRIPT ONE
-    "¹":            [.one, .superscript],
+    "¹": [.one, .superscript],
 
     //00BA          ; MASCULINE ORDINAL INDICATOR
-    "º":            [],
+    "º": [],
 
     //00BB          ; RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK
-    "»":            [],
+    "»": [],
 
     //00BC          ; VULGAR FRACTION ONE QUARTER
-    "¼":            [.one, .four],
+    "¼": [.one, .four],
 
     //00BD          ; VULGAR FRACTION ONE HALF
-    "½":            [.one, .two],
+    "½": [.one, .two],
 
     //00BE          ; VULGAR FRACTION THREE QUARTERS
-    "¾":            [.three, .four],
+    "¾": [.three, .four],
 
     //00BF          ; INVERTED QUESTION MARK
-    "¿":            [.questionMark, .turned],
+    "¿": [.questionMark, .turned],
 
     //00C0          ; LATIN CAPITAL LETTER A WITH GRAVE
-    "À":            [.a, .graveAbove, .capital],
+    "À": [.a, .graveAbove, .capital],
 
     //00C1          ; LATIN CAPITAL LETTER A WITH ACUTE
-    "Á":            [.a, .acuteAbove, .capital],
+    "Á": [.a, .acuteAbove, .capital],
 
     //00C2          ; LATIN CAPITAL LETTER A WITH CIRCUMFLEX
-    "Â":            [.a, .circumflexAbove, .capital],
+    "Â": [.a, .circumflexAbove, .capital],
 
     //00C3          ; LATIN CAPITAL LETTER A WITH TILDE
-    "Ã":            [.a, .tildeAbove, .capital],
+    "Ã": [.a, .tildeAbove, .capital],
 
     //00C4          ; LATIN CAPITAL LETTER A WITH DIAERESIS
-    "Ä":            [.a, .diaeresisAbove, .capital],
+    "Ä": [.a, .diaeresisAbove, .capital],
 
     //00C5          ; LATIN CAPITAL LETTER A WITH RING ABOVE
-    "Å":            [.a, .ringAbove, .capital],
+    "Å": [.a, .ringAbove, .capital],
 
     //00C6          ; LATIN CAPITAL LETTER AE
-    "Æ":            [.a, .e, .capital],
+    "Æ": [.a, .e, .capital],
 
     //00C7          ; LATIN CAPITAL LETTER C WITH CEDILLA
-    "Ç":            [.c, .cedilla, .capital],
+    "Ç": [.c, .cedilla, .capital],
 
     //00C8          ; LATIN CAPITAL LETTER E WITH GRAVE
-    "È":            [.e, .graveAbove, .capital],
+    "È": [.e, .graveAbove, .capital],
 
     //00C9          ; LATIN CAPITAL LETTER E WITH ACUTE
-    "É":            [.e, .acuteAbove, .capital],
+    "É": [.e, .acuteAbove, .capital],
 
     //00CA          ; LATIN CAPITAL LETTER E WITH CIRCUMFLEX
-    "Ê":            [.e, .circumflexAbove, .capital],
+    "Ê": [.e, .circumflexAbove, .capital],
 
     //00CB          ; LATIN CAPITAL LETTER E WITH DIAERESIS
-    "Ë":            [.e, .diaeresisAbove, .capital],
+    "Ë": [.e, .diaeresisAbove, .capital],
 
     //00CC          ; LATIN CAPITAL LETTER I WITH GRAVE
-    "Ì":            [.i, .graveAbove, .capital],
+    "Ì": [.i, .graveAbove, .capital],
 
     //00CD          ; LATIN CAPITAL LETTER I WITH ACUTE
-    "Í":            [.i, .acuteAbove, .capital],
+    "Í": [.i, .acuteAbove, .capital],
 
     //00CE          ; LATIN CAPITAL LETTER I WITH CIRCUMFLEX
-    "Î":            [.i, .circumflexAbove, .capital],
+    "Î": [.i, .circumflexAbove, .capital],
 
     //00CF          ; LATIN CAPITAL LETTER I WITH DIAERESIS
-    "Ï":            [.i, .diaeresisAbove, .capital],
+    "Ï": [.i, .diaeresisAbove, .capital],
 
     //00D0          ; LATIN CAPITAL LETTER ETH
-    "Ð":            [.d, .h, .capital],
+    "Ð": [.d, .h, .capital],
 
     //00D1          ; LATIN CAPITAL LETTER N WITH TILDE
-    "Ñ":            [.n, .tildeAbove, .capital],
+    "Ñ": [.n, .tildeAbove, .capital],
 
     //00D2          ; LATIN CAPITAL LETTER O WITH GRAVE
-    "Ò":            [.o, .graveAbove, .capital],
+    "Ò": [.o, .graveAbove, .capital],
 
     //00D3          ; LATIN CAPITAL LETTER O WITH ACUTE
-    "Ó":            [.o, .acuteAbove, .capital],
+    "Ó": [.o, .acuteAbove, .capital],
 
     //00D4          ; LATIN CAPITAL LETTER O WITH CIRCUMFLEX
-    "Ô":            [.o, .circumflexAbove, .capital],
+    "Ô": [.o, .circumflexAbove, .capital],
 
     //00D5          ; LATIN CAPITAL LETTER O WITH TILDE
-    "Õ":            [.o, .tildeAbove, .capital],
+    "Õ": [.o, .tildeAbove, .capital],
 
     //00D6          ; LATIN CAPITAL LETTER O WITH DIAERESIS
-    "Ö":            [.o, .diaeresisAbove, .capital],
+    "Ö": [.o, .diaeresisAbove, .capital],
 
     //00D7          ; MULTIPLICATION SIGN
-    "×":            [],
+    "×": [],
 
     //00D8          ; LATIN CAPITAL LETTER O WITH STROKE
-    "Ø":            [.o, .diagonalStroke, .capital],
+    "Ø": [.o, .diagonalStroke, .capital],
 
     //00D9          ; LATIN CAPITAL LETTER U WITH GRAVE
-    "Ù":            [.u, .graveAbove, .capital],
+    "Ù": [.u, .graveAbove, .capital],
 
     //00DA          ; LATIN CAPITAL LETTER U WITH ACUTE
-    "Ú":            [.u, .acuteAbove, .capital],
+    "Ú": [.u, .acuteAbove, .capital],
 
     //00DB          ; LATIN CAPITAL LETTER U WITH CIRCUMFLEX
-    "Û":            [.u, .circumflexAbove, .capital],
+    "Û": [.u, .circumflexAbove, .capital],
 
     //00DC          ; LATIN CAPITAL LETTER U WITH DIAERESIS
-    "Ü":            [.u, .diaeresisAbove, .capital],
+    "Ü": [.u, .diaeresisAbove, .capital],
 
     //00DD          ; LATIN CAPITAL LETTER Y WITH ACUTE
-    "Ý":            [.y, .acuteAbove, .capital],
+    "Ý": [.y, .acuteAbove, .capital],
 
     //00DE          ; LATIN CAPITAL LETTER THORN
-    "Þ":            [.b, .p, .capital],
+    "Þ": [.b, .p, .capital],
 
     //00DF          ; LATIN SMALL LETTER SHARP S
-    "ß":            [.s, .s],
+    "ß": [.s, .s],
 
     //00E0          ; LATIN SMALL LETTER A WITH GRAVE
-    "à":            [.a, .graveAbove],
+    "à": [.a, .graveAbove],
 
     //00E1          ; LATIN SMALL LETTER A WITH ACUTE
-    "á":            [.a, .acuteAbove],
+    "á": [.a, .acuteAbove],
 
     //00E2          ; LATIN SMALL LETTER A WITH CIRCUMFLEX
-    "â":            [.a, .circumflexAbove],
+    "â": [.a, .circumflexAbove],
 
     //00E3          ; LATIN SMALL LETTER A WITH TILDE
-    "ã":            [.a, .tildeAbove],
+    "ã": [.a, .tildeAbove],
 
     //00E4          ; LATIN SMALL LETTER A WITH DIAERESIS
-    "ä":            [.a, .diaeresisAbove],
+    "ä": [.a, .diaeresisAbove],
 
     //00E5          ; LATIN SMALL LETTER A WITH RING ABOVE
-    "å":            [.a, .ringAbove],
+    "å": [.a, .ringAbove],
 
     //00E6          ; LATIN SMALL LETTER AE
-    "æ":            [.a, .e],
+    "æ": [.a, .e],
 
     //00E7          ; LATIN SMALL LETTER C WITH CEDILLA
-    "ç":            [.c, .cedilla],
+    "ç": [.c, .cedilla],
 
     //00E8          ; LATIN SMALL LETTER E WITH GRAVE
-    "è":            [.e, .graveAbove],
+    "è": [.e, .graveAbove],
 
     //00E9          ; LATIN SMALL LETTER E WITH ACUTE
-    "é":            [.e, .acuteAbove],
+    "é": [.e, .acuteAbove],
 
     //00EA          ; LATIN SMALL LETTER E WITH CIRCUMFLEX
-    "ê":            [.e, .circumflexAbove],
+    "ê": [.e, .circumflexAbove],
 
     //00EB          ; LATIN SMALL LETTER E WITH DIAERESIS
-    "ë":            [.e, .diaeresisAbove],
+    "ë": [.e, .diaeresisAbove],
 
     //00EC          ; LATIN SMALL LETTER I WITH GRAVE
-    "ì":            [.i, .graveAbove],
+    "ì": [.i, .graveAbove],
 
     //00ED          ; LATIN SMALL LETTER I WITH ACUTE
-    "í":            [.i, .acuteAbove],
+    "í": [.i, .acuteAbove],
 
     //00EE          ; LATIN SMALL LETTER I WITH CIRCUMFLEX
-    "î":            [.i, .circumflexAbove],
+    "î": [.i, .circumflexAbove],
 
     //00EF          ; LATIN SMALL LETTER I WITH DIAERESIS
-    "ï":            [.i, .diaeresisAbove],
+    "ï": [.i, .diaeresisAbove],
 
     //00F0          ; LATIN SMALL LETTER ETH
-    "ð":            [.d, .h],
+    "ð": [.d, .h],
 
     //00F1          ; LATIN SMALL LETTER N WITH TILDE
-    "ñ":            [.n, .tildeAbove],
+    "ñ": [.n, .tildeAbove],
 
     //00F2          ; LATIN SMALL LETTER O WITH GRAVE
-    "ò":            [.o, .graveAbove],
+    "ò": [.o, .graveAbove],
 
     //00F3          ; LATIN SMALL LETTER O WITH ACUTE
-    "ó":            [.o, .acuteAbove],
+    "ó": [.o, .acuteAbove],
 
     //00F4          ; LATIN SMALL LETTER O WITH CIRCUMFLEX
-    "ô":            [.o, .circumflexAbove],
+    "ô": [.o, .circumflexAbove],
 
     //00F5          ; LATIN SMALL LETTER O WITH TILDE
-    "õ":            [.o, .tildeAbove],
+    "õ": [.o, .tildeAbove],
 
     //00F6          ; LATIN SMALL LETTER O WITH DIAERESIS
-    "ö":            [.o, .diaeresisAbove],
+    "ö": [.o, .diaeresisAbove],
 
     //00F7          ; DIVISION SIGN
-    "÷":            [],
+    "÷": [],
 
     //00F8          ; LATIN SMALL LETTER O WITH STROKE
-    "ø":            [.o, .diagonalStroke],
+    "ø": [.o, .diagonalStroke],
 
     //00F9          ; LATIN SMALL LETTER U WITH GRAVE
-    "ù":            [.u, .graveAbove],
+    "ù": [.u, .graveAbove],
 
     //00FA          ; LATIN SMALL LETTER U WITH ACUTE
-    "ú":            [.u, .acuteAbove],
+    "ú": [.u, .acuteAbove],
 
     //00FB          ; LATIN SMALL LETTER U WITH CIRCUMFLEX
-    "û":            [.u, .circumflexAbove],
+    "û": [.u, .circumflexAbove],
 
     //00FC          ; LATIN SMALL LETTER U WITH DIAERESIS
-    "ü":            [.u, .diaeresisAbove],
+    "ü": [.u, .diaeresisAbove],
 
     //00FD          ; LATIN SMALL LETTER Y WITH ACUTE
-    "ý":            [.y, .acuteAbove],
+    "ý": [.y, .acuteAbove],
 
     //00FE          ; LATIN SMALL LETTER THORN
-    "þ":            [.b, .p],
+    "þ": [.b, .p],
 
     //00FF          ; LATIN SMALL LETTER Y WITH DIAERESIS
-    "ÿ":            [.y, .diaeresisAbove],
+    "ÿ": [.y, .diaeresisAbove],
 
 ]

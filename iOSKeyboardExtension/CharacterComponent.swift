@@ -18,21 +18,25 @@ enum CharacterComponent {
     case space, exclamationMark, quotationMark, numberSign, dollarSign, percentSign, ampersand, apostrophe, parenthesis, asterisk, plusSign, comma, hyphenMinus, fullStop, solidus, colon, semicolon, lessThanSign, equalsSign, greaterThanSign, questionMark, commercialAt, squareBracket, reverseSolidus, caret, lowLine, graveAccent, curlyBracket, verticalLine, tilde
     
     case capital, smallCapital
-    case turned, reversed, inverted
+    case turned, reversed, inverted, ramsHorn
     case superscript
     
     case stroke, diagonalStroke
     case longLeg
     case L
-    case hook, retroflexHook, palatalHook
+    case hook, retroflexHook, palatalHook, rhoticHook
     case topbar
     case tone
-    case open
+    case open, closed
     case horn
-    case curl
+    case curl, belt
     case tail
+    case dTop
     case sBottom
     case uTop
+    case wTop
+    
+    case script
     
     case cedilla
     case ogonekBelow, ogonekAbove

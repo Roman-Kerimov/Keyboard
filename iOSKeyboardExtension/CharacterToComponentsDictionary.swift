@@ -1063,7 +1063,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ƛ": [.l, .y, .diagonalStroke],
 
     //019C          ; LATIN CAPITAL LETTER TURNED M
-    "Ɯ": [.u, .u, .capital],
+    "Ɯ": [.m, .turned, .capital],
 
     //019D          ; LATIN CAPITAL LETTER N WITH LEFT HOOK
     "Ɲ": [.n, .hook, .capital],
@@ -1601,5 +1601,296 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
 
     //024F          ; LATIN SMALL LETTER Y WITH STROKE
     "ɏ": [.y, .stroke],
+
+    
+    // MARK: - 0250..02AF; IPA Extensions
+    
+    //0250          ; LATIN SMALL LETTER TURNED A
+    "ɐ": [.a, .turned],
+
+    //0251          ; LATIN SMALL LETTER ALPHA
+    "ɑ": [.a, .y],
+
+    //0252          ; LATIN SMALL LETTER TURNED ALPHA
+    "ɒ": [.a, .y, .turned],
+
+    //0253          ; LATIN SMALL LETTER B WITH HOOK
+    "ɓ": [.b, .hook],
+
+    //0254          ; LATIN SMALL LETTER OPEN O
+    "ɔ": [.o, .open],
+
+    //0255          ; LATIN SMALL LETTER C WITH CURL
+    "ɕ": [.s, .curl],
+
+    //0256          ; LATIN SMALL LETTER D WITH TAIL
+    "ɖ": [.d, .retroflexHook],
+
+    //0257          ; LATIN SMALL LETTER D WITH HOOK
+    "ɗ": [.d, .hook],
+
+    //0258          ; LATIN SMALL LETTER REVERSED E
+    "ɘ": [.e, .reversed],
+
+    //0259          ; LATIN SMALL LETTER SCHWA
+    "ə": [.a, .h],
+
+    //025A          ; LATIN SMALL LETTER SCHWA WITH HOOK
+    "ɚ": [.a, .h, .rhoticHook],
+
+    //025B          ; LATIN SMALL LETTER OPEN E
+    "ɛ": [.e, .open],
+
+    //025C          ; LATIN SMALL LETTER REVERSED OPEN E
+    "ɜ": [.e, .open, .reversed],
+
+    //025D          ; LATIN SMALL LETTER REVERSED OPEN E WITH HOOK
+    "ɝ": [.e, .open, .reversed, .rhoticHook],
+
+    //025E          ; LATIN SMALL LETTER CLOSED REVERSED OPEN E
+    "ɞ": [.e, .open, .closed, .reversed],
+
+    //025F          ; LATIN SMALL LETTER DOTLESS J WITH STROKE
+    "ɟ": [.j, .stroke, .dotAbove],
+
+    //0260          ; LATIN SMALL LETTER G WITH HOOK
+    "ɠ": [.g, .hook],
+
+    //0261          ; LATIN SMALL LETTER SCRIPT G
+    "ɡ": [.g, .script],
+
+    //0262          ; LATIN LETTER SMALL CAPITAL G
+    "ɢ": [.g, .smallCapital],
+
+    //0263          ; LATIN SMALL LETTER GAMMA
+    "ɣ": [.g, .y],
+
+    //0264          ; LATIN SMALL LETTER RAMS HORN
+    "ɤ": [.o, .ramsHorn],
+
+    //0265          ; LATIN SMALL LETTER TURNED H
+    "ɥ": [.h, .turned],
+
+    //0266          ; LATIN SMALL LETTER H WITH HOOK
+    "ɦ": [.h, .hook],
+
+    //0267          ; LATIN SMALL LETTER HENG WITH HOOK
+    "ɧ": [.h, .g, .hook],
+
+    //0268          ; LATIN SMALL LETTER I WITH STROKE
+    "ɨ": [.i, .stroke],
+
+    //0269          ; LATIN SMALL LETTER IOTA
+    "ɩ": [.i, .y],
+
+    //026A          ; LATIN LETTER SMALL CAPITAL I
+    "ɪ": [.i, .smallCapital],
+
+    //026B          ; LATIN SMALL LETTER L WITH MIDDLE TILDE
+    "ɫ": [.l, .tilde],
+
+    //026C          ; LATIN SMALL LETTER L WITH BELT
+    "ɬ": [.l, .belt],
+
+    //026D          ; LATIN SMALL LETTER L WITH RETROFLEX HOOK
+    "ɭ": [.l, .retroflexHook],
+
+    //026E          ; LATIN SMALL LETTER LEZH
+    "ɮ": [.l, .z, .h],
+
+    //026F          ; LATIN SMALL LETTER TURNED M
+    "ɯ": [.m, .turned],
+
+    //0270          ; LATIN SMALL LETTER TURNED M WITH LONG LEG
+    "ɰ": [.m, .l, .turned], //?!
+
+    //0271          ; LATIN SMALL LETTER M WITH HOOK
+    "ɱ": [.m, .hook],
+
+    //0272          ; LATIN SMALL LETTER N WITH LEFT HOOK
+    "ɲ": [.n, .hook],
+
+    //0273          ; LATIN SMALL LETTER N WITH RETROFLEX HOOK
+    "ɳ": [.n, .retroflexHook],
+
+    //0274          ; LATIN LETTER SMALL CAPITAL N
+    "ɴ": [.n, .smallCapital],
+
+    //0275          ; LATIN SMALL LETTER BARRED O
+    "ɵ": [.o, .stroke],
+
+    //0276          ; LATIN LETTER SMALL CAPITAL OE
+    "ɶ": [.o, .e, .smallCapital],
+
+    //0277          ; LATIN SMALL LETTER CLOSED OMEGA
+    "ɷ": [.o, .y, .closed],
+
+    //0278          ; LATIN SMALL LETTER PHI
+    "ɸ": [.p, .h],
+
+    //0279          ; LATIN SMALL LETTER TURNED R
+    "ɹ": [.r, .turned],
+
+    //027A          ; LATIN SMALL LETTER TURNED R WITH LONG LEG
+    "ɺ": [.r, .longLeg, .turned],
+
+    //027B          ; LATIN SMALL LETTER TURNED R WITH HOOK
+    "ɻ": [.r, .retroflexHook, .turned],
+
+    //027C          ; LATIN SMALL LETTER R WITH LONG LEG
+    "ɼ": [.r, .longLeg],
+
+    //027D          ; LATIN SMALL LETTER R WITH TAIL
+    "ɽ": [.r, .retroflexHook],
+
+    //027E          ; LATIN SMALL LETTER R WITH FISHHOOK
+    "ɾ": [.r, .hook],
+
+    //027F          ; LATIN SMALL LETTER REVERSED R WITH FISHHOOK
+    "ɿ": [.r, .hook, .reversed],
+
+    //0280          ; LATIN LETTER SMALL CAPITAL R
+    "ʀ": [.r, .smallCapital],
+
+    //0281          ; LATIN LETTER SMALL CAPITAL INVERTED R
+    "ʁ": [.r, .smallCapital, .inverted],
+
+    //0282          ; LATIN SMALL LETTER S WITH HOOK
+    "ʂ": [.s, .retroflexHook],
+
+    //0283          ; LATIN SMALL LETTER ESH
+    "ʃ": [.s, .h],
+
+    //0284          ; LATIN SMALL LETTER DOTLESS J WITH STROKE AND HOOK
+    "ʄ": [.j, .stroke, .hook],
+
+    //0285          ; LATIN SMALL LETTER SQUAT REVERSED ESH
+    "ʅ": [.r, .retroflexHook, .hook, .reversed],
+
+    //0286          ; LATIN SMALL LETTER ESH WITH CURL
+    "ʆ": [.s, .h, .curl],
+
+    //0287          ; LATIN SMALL LETTER TURNED T
+    "ʇ": [.t, .turned],
+
+    //0288          ; LATIN SMALL LETTER T WITH RETROFLEX HOOK
+    "ʈ": [.t, .retroflexHook],
+
+    //0289          ; LATIN SMALL LETTER U BAR
+    "ʉ": [.u, .stroke],
+
+    //028A          ; LATIN SMALL LETTER UPSILON
+    "ʊ": [.u, .y],
+
+    //028B          ; LATIN SMALL LETTER V WITH HOOK
+    "ʋ": [.v, .h],
+
+    //028C          ; LATIN SMALL LETTER TURNED V
+    "ʌ": [.v, .turned],
+
+    //028D          ; LATIN SMALL LETTER TURNED W
+    "ʍ": [.w, .turned],
+
+    //028E          ; LATIN SMALL LETTER TURNED Y
+    "ʎ": [.y, .turned],
+
+    //028F          ; LATIN LETTER SMALL CAPITAL Y
+    "ʏ": [.y, .smallCapital],
+
+    //0290          ; LATIN SMALL LETTER Z WITH RETROFLEX HOOK
+    "ʐ": [.z, .retroflexHook],
+
+    //0291          ; LATIN SMALL LETTER Z WITH CURL
+    "ʑ": [.z, .curl],
+
+    //0292          ; LATIN SMALL LETTER EZH
+    "ʒ": [.z, .h],
+
+    //0293          ; LATIN SMALL LETTER EZH WITH CURL
+    "ʓ": [.z, .h, .curl],
+
+    //0294          ; LATIN LETTER GLOTTAL STOP
+    "ʔ": [.apostrophe, .h],
+
+    //0295          ; LATIN LETTER PHARYNGEAL VOICED FRICATIVE
+    "ʕ": [.apostrophe, .h, .reversed],
+
+    //0296          ; LATIN LETTER INVERTED GLOTTAL STOP
+    "ʖ": [.apostrophe, .h, .inverted],
+
+    //0297          ; LATIN LETTER STRETCHED C
+    "ʗ": [.c, .h],
+
+    //0298          ; LATIN LETTER BILABIAL CLICK
+    "ʘ": [.o, .click],
+
+    //0299          ; LATIN LETTER SMALL CAPITAL B
+    "ʙ": [.b, .smallCapital],
+
+    //029A          ; LATIN SMALL LETTER CLOSED OPEN E
+    "ʚ": [.e, .open, .closed],
+
+    //029B          ; LATIN LETTER SMALL CAPITAL G WITH HOOK
+    "ʛ": [.g, .hook, .smallCapital],
+
+    //029C          ; LATIN LETTER SMALL CAPITAL H
+    "ʜ": [.h, .smallCapital],
+
+    //029D          ; LATIN SMALL LETTER J WITH CROSSED-TAIL
+    "ʝ": [.j, .curl],
+
+    //029E          ; LATIN SMALL LETTER TURNED K
+    "ʞ": [.k, .turned],
+
+    //029F          ; LATIN LETTER SMALL CAPITAL L
+    "ʟ": [.l, .smallCapital],
+
+    //02A0          ; LATIN SMALL LETTER Q WITH HOOK
+    "ʠ": [.q, .hook],
+
+    //02A1          ; LATIN LETTER GLOTTAL STOP WITH STROKE
+    "ʡ": [.apostrophe, .h, .stroke],
+
+    //02A2          ; LATIN LETTER REVERSED GLOTTAL STOP WITH STROKE
+    "ʢ": [.apostrophe, .h, .stroke, .reversed],
+
+    //02A3          ; LATIN SMALL LETTER DZ DIGRAPH
+    "ʣ": [.d, .z],
+
+    //02A4          ; LATIN SMALL LETTER DEZH DIGRAPH
+    "ʤ": [.d, .z, .h],
+
+    //02A5          ; LATIN SMALL LETTER DZ DIGRAPH WITH CURL
+    "ʥ": [.d, .z, .curl],
+
+    //02A6          ; LATIN SMALL LETTER TS DIGRAPH
+    "ʦ": [.t, .s],
+
+    //02A7          ; LATIN SMALL LETTER TESH DIGRAPH
+    "ʧ": [.t, .s, .h],
+
+    //02A8          ; LATIN SMALL LETTER TC DIGRAPH WITH CURL
+    "ʨ": [.t, .s, .curl],
+
+    //02A9          ; LATIN SMALL LETTER FENG DIGRAPH
+    "ʩ": [.f, .n, .g],
+
+    //02AA          ; LATIN SMALL LETTER LS DIGRAPH
+    "ʪ": [.l, .s],
+
+    //02AB          ; LATIN SMALL LETTER LZ DIGRAPH
+    "ʫ": [.l, .z],
+
+    //02AC          ; LATIN LETTER BILABIAL PERCUSSIVE
+    "ʬ": [.w, .wTop],
+
+    //02AD          ; LATIN LETTER BIDENTAL PERCUSSIVE
+    "ʭ": [.d, .dTop],
+
+    //02AE          ; LATIN SMALL LETTER TURNED H WITH FISHHOOK
+    "ʮ": [.h, .hook, .turned],
+
+    //02AF          ; LATIN SMALL LETTER TURNED H WITH FISHHOOK AND TAIL
+    "ʯ": [.h, .retroflexHook, .hook, .turned],
 
 ]

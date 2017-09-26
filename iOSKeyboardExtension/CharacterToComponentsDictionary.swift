@@ -486,7 +486,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "Ý": [.y, .acuteAbove, .capital],
 
     //00DE          ; LATIN CAPITAL LETTER THORN
-    "Þ": [.b, .p, .capital],
+    "Þ": [.t, .h, .capital],
 
     //00DF          ; LATIN SMALL LETTER SHARP S
     "ß": [.s, .s],
@@ -582,7 +582,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ý": [.y, .acuteAbove],
 
     //00FE          ; LATIN SMALL LETTER THORN
-    "þ": [.b, .p],
+    "þ": [.t, .h],
 
     //00FF          ; LATIN SMALL LETTER Y WITH DIAERESIS
     "ÿ": [.y, .diaeresisAbove],
@@ -974,5 +974,632 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
 
     //017F          ; LATIN SMALL LETTER LONG S
     "ſ": [.s, .l],
+
+    
+    // MARK: - 0180..024F; Latin Extended-B
+    
+    //0180          ; LATIN SMALL LETTER B WITH STROKE
+    "ƀ": [.b, .stroke],
+
+    //0181          ; LATIN CAPITAL LETTER B WITH HOOK
+    "Ɓ": [.b, .hook, .capital],
+
+    //0182          ; LATIN CAPITAL LETTER B WITH TOPBAR
+    "Ƃ": [.b, .topbar, .capital],
+
+    //0183          ; LATIN SMALL LETTER B WITH TOPBAR
+    "ƃ": [.b, .topbar],
+
+    //0184          ; LATIN CAPITAL LETTER TONE SIX
+    "Ƅ": [.six, .tone, .capital],
+
+    //0185          ; LATIN SMALL LETTER TONE SIX
+    "ƅ": [.six, .tone],
+
+    //0186          ; LATIN CAPITAL LETTER OPEN O
+    "Ɔ": [.o, .open, .capital],
+
+    //0187          ; LATIN CAPITAL LETTER C WITH HOOK
+    "Ƈ": [.c, .hook, .capital],
+
+    //0188          ; LATIN SMALL LETTER C WITH HOOK
+    "ƈ": [.c, .hook],
+
+    //0189          ; LATIN CAPITAL LETTER AFRICAN D
+    "Ɖ": [.d, .retroflexHook, .capital],
+
+    //018A          ; LATIN CAPITAL LETTER D WITH HOOK
+    "Ɗ": [.d, .hook, .capital],
+
+    //018B          ; LATIN CAPITAL LETTER D WITH TOPBAR
+    "Ƌ": [.d, .topbar, .capital],
+
+    //018C          ; LATIN SMALL LETTER D WITH TOPBAR
+    "ƌ": [.d, .topbar],
+
+    //018D          ; LATIN SMALL LETTER TURNED DELTA
+    "ƍ": [.d, .y, .turned],
+
+    //018E          ; LATIN CAPITAL LETTER REVERSED E
+    "Ǝ": [.e, .reversed, .capital],
+
+    //018F          ; LATIN CAPITAL LETTER SCHWA
+    "Ə": [.a, .h, .capital],
+
+    //0190          ; LATIN CAPITAL LETTER OPEN E
+    "Ɛ": [.e, .open, .capital],
+
+    //0191          ; LATIN CAPITAL LETTER F WITH HOOK
+    "Ƒ": [.f, .hook, .capital],
+
+    //0192          ; LATIN SMALL LETTER F WITH HOOK
+    "ƒ": [.f, .hook],
+
+    //0193          ; LATIN CAPITAL LETTER G WITH HOOK
+    "Ɠ": [.g, .hook, .capital],
+
+    //0194          ; LATIN CAPITAL LETTER GAMMA
+    "Ɣ": [.g, .y, .capital],
+
+    //0195          ; LATIN SMALL LETTER HV
+    "ƕ": [.h, .v],
+
+    //0196          ; LATIN CAPITAL LETTER IOTA
+    "Ɩ": [.i, .y, .capital],
+
+    //0197          ; LATIN CAPITAL LETTER I WITH STROKE
+    "Ɨ": [.i, .stroke],
+
+    //0198          ; LATIN CAPITAL LETTER K WITH HOOK
+    "Ƙ": [.k, .hook, .capital],
+
+    //0199          ; LATIN SMALL LETTER K WITH HOOK
+    "ƙ": [.k, .hook],
+
+    //019A          ; LATIN SMALL LETTER L WITH BAR
+    "ƚ": [.l, .stroke],
+
+    //019B          ; LATIN SMALL LETTER LAMBDA WITH STROKE
+    "ƛ": [.l, .y, .diagonalStroke],
+
+    //019C          ; LATIN CAPITAL LETTER TURNED M
+    "Ɯ": [.u, .u, .capital],
+
+    //019D          ; LATIN CAPITAL LETTER N WITH LEFT HOOK
+    "Ɲ": [.n, .hook, .capital],
+
+    //019E          ; LATIN SMALL LETTER N WITH LONG RIGHT LEG
+    "ƞ": [.n, .longLeg],
+
+    //019F          ; LATIN CAPITAL LETTER O WITH MIDDLE TILDE
+    "Ɵ": [.o, .stroke, .capital],
+
+    //01A0          ; LATIN CAPITAL LETTER O WITH HORN
+    "Ơ": [.o, .horn, .capital],
+
+    //01A1          ; LATIN SMALL LETTER O WITH HORN
+    "ơ": [.o, .horn],
+
+    //01A2          ; LATIN CAPITAL LETTER OI
+    "Ƣ": [.o, .i, .capital],
+
+    //01A3          ; LATIN SMALL LETTER OI
+    "ƣ": [.o, .i],
+
+    //01A4          ; LATIN CAPITAL LETTER P WITH HOOK
+    "Ƥ": [.p, .hook, .capital],
+
+    //01A5          ; LATIN SMALL LETTER P WITH HOOK
+    "ƥ": [.p, .hook],
+
+    //01A6          ; LATIN LETTER YR
+    "Ʀ": [.r, .smallCapital, .capital],
+
+    //01A7          ; LATIN CAPITAL LETTER TONE TWO
+    "Ƨ": [.two, .tone, .capital],
+
+    //01A8          ; LATIN SMALL LETTER TONE TWO
+    "ƨ": [.two, .tone],
+
+    //01A9          ; LATIN CAPITAL LETTER ESH
+    "Ʃ": [.s, .h, .capital],
+
+    //01AA          ; LATIN LETTER REVERSED ESH LOOP
+    "ƪ": [.s, .h, .curl, .inverted],
+
+    //01AB          ; LATIN SMALL LETTER T WITH PALATAL HOOK
+    "ƫ": [.t, .palatalHook],
+
+    //01AC          ; LATIN CAPITAL LETTER T WITH HOOK
+    "Ƭ": [.t, .hook, .capital],
+
+    //01AD          ; LATIN SMALL LETTER T WITH HOOK
+    "ƭ": [.t, .hook],
+
+    //01AE          ; LATIN CAPITAL LETTER T WITH RETROFLEX HOOK
+    "Ʈ": [.t, .retroflexHook, .capital],
+
+    //01AF          ; LATIN CAPITAL LETTER U WITH HORN
+    "Ư": [.u, .horn, .capital],
+
+    //01B0          ; LATIN SMALL LETTER U WITH HORN
+    "ư": [.u, .horn],
+
+    //01B1          ; LATIN CAPITAL LETTER UPSILON
+    "Ʊ": [.u, .y, .capital],
+
+    //01B2          ; LATIN CAPITAL LETTER V WITH HOOK
+    "Ʋ": [.v, .h, .capital],
+
+    //01B3          ; LATIN CAPITAL LETTER Y WITH HOOK
+    "Ƴ": [.y, .hook, .capital],
+
+    //01B4          ; LATIN SMALL LETTER Y WITH HOOK
+    "ƴ": [.y, .hook],
+
+    //01B5          ; LATIN CAPITAL LETTER Z WITH STROKE
+    "Ƶ": [.z, .stroke, .capital],
+
+    //01B6          ; LATIN SMALL LETTER Z WITH STROKE
+    "ƶ": [.z, .stroke],
+
+    //01B7          ; LATIN CAPITAL LETTER EZH
+    "Ʒ": [.z, .h, .capital],
+
+    //01B8          ; LATIN CAPITAL LETTER EZH REVERSED
+    "Ƹ": [.z, .h, .reversed, .capital],
+
+    //01B9          ; LATIN SMALL LETTER EZH REVERSED
+    "ƹ": [.z, .h, .reversed],
+
+    //01BA          ; LATIN SMALL LETTER EZH WITH TAIL
+    "ƺ": [.z, .h, .tail],
+
+    //01BB          ; LATIN LETTER TWO WITH STROKE
+    "ƻ": [.two, .stroke],
+
+    //01BC          ; LATIN CAPITAL LETTER TONE FIVE
+    "Ƽ": [.five, .tone, .capital],
+
+    //01BD          ; LATIN SMALL LETTER TONE FIVE
+    "ƽ": [.five, .tone],
+
+    //01BE          ; LATIN LETTER INVERTED GLOTTAL STOP WITH STROKE
+    "ƾ": [.t, .sBottom],
+
+    //01BF          ; LATIN LETTER WYNN
+    "ƿ": [.w, .h],
+
+    //01C0          ; LATIN LETTER DENTAL CLICK
+    "ǀ": [.d, .click],
+
+    //01C1          ; LATIN LETTER LATERAL CLICK
+    "ǁ": [.l, .click],
+
+    //01C2          ; LATIN LETTER ALVEOLAR CLICK
+    "ǂ": [.j, .click],
+
+    //01C3          ; LATIN LETTER RETROFLEX CLICK
+    "ǃ": [.t, .click],
+
+    //01C4          ; LATIN CAPITAL LETTER DZ WITH CARON
+    "Ǆ": [.d, .capital, .joiner, .z, .caronAbove, .capital],
+
+    //01C5          ; LATIN CAPITAL LETTER D WITH SMALL LETTER Z WITH CARON
+    "ǅ": [.d, .capital, .joiner, .z, .caronAbove],
+    
+    //01C6          ; LATIN SMALL LETTER DZ WITH CARON
+    "ǆ": [.d, .joiner, .z, .caronAbove],
+
+    //01C7          ; LATIN CAPITAL LETTER LJ
+    "Ǉ": [.l, .capital, .joiner, .j, .capital],
+
+    //01C8          ; LATIN CAPITAL LETTER L WITH SMALL LETTER J
+    "ǈ": [.l, .capital, .joiner, .j],
+
+    //01C9          ; LATIN SMALL LETTER LJ
+    "ǉ": [.l, .joiner, .j],
+
+    //01CA          ; LATIN CAPITAL LETTER NJ
+    "Ǌ": [.n, .capital, .joiner, .j, .capital],
+
+    //01CB          ; LATIN CAPITAL LETTER N WITH SMALL LETTER J
+    "ǋ": [.n, .capital, .joiner, .j],
+
+    //01CC          ; LATIN SMALL LETTER NJ
+    "ǌ": [.n, .joiner, .j],
+
+    //01CD          ; LATIN CAPITAL LETTER A WITH CARON
+    "Ǎ": [.a, .caronAbove, .capital],
+
+    //01CE          ; LATIN SMALL LETTER A WITH CARON
+    "ǎ": [.a, .caronAbove],
+
+    //01CF          ; LATIN CAPITAL LETTER I WITH CARON
+    "Ǐ": [.i, .caronAbove, .capital],
+
+    //01D0          ; LATIN SMALL LETTER I WITH CARON
+    "ǐ": [.i, .caronAbove],
+
+    //01D1          ; LATIN CAPITAL LETTER O WITH CARON
+    "Ǒ": [.o, .caronAbove, .capital],
+
+    //01D2          ; LATIN SMALL LETTER O WITH CARON
+    "ǒ": [.o, .caronAbove],
+
+    //01D3          ; LATIN CAPITAL LETTER U WITH CARON
+    "Ǔ": [.u, .caronAbove, .capital],
+
+    //01D4          ; LATIN SMALL LETTER U WITH CARON
+    "ǔ": [.u, .caronAbove],
+
+    //01D5          ; LATIN CAPITAL LETTER U WITH DIAERESIS AND MACRON
+    "Ǖ": [.u, .diaeresisAbove, .macronAbove, .capital],
+
+    //01D6          ; LATIN SMALL LETTER U WITH DIAERESIS AND MACRON
+    "ǖ": [.u, .diaeresisAbove, .macronAbove],
+
+    //01D7          ; LATIN CAPITAL LETTER U WITH DIAERESIS AND ACUTE
+    "Ǘ": [.u, .diaeresisAbove, .acuteAbove, .capital],
+
+    //01D8          ; LATIN SMALL LETTER U WITH DIAERESIS AND ACUTE
+    "ǘ": [.u, .diaeresisAbove, .acuteAbove],
+
+    //01D9          ; LATIN CAPITAL LETTER U WITH DIAERESIS AND CARON
+    "Ǚ": [.u, .diaeresisAbove, .caronAbove, .capital],
+
+    //01DA          ; LATIN SMALL LETTER U WITH DIAERESIS AND CARON
+    "ǚ": [.u, .diaeresisAbove, .caronAbove],
+
+    //01DB          ; LATIN CAPITAL LETTER U WITH DIAERESIS AND GRAVE
+    "Ǜ": [.u, .diaeresisAbove, .graveAbove, .capital],
+
+    //01DC          ; LATIN SMALL LETTER U WITH DIAERESIS AND GRAVE
+    "ǜ": [.u, .diaeresisAbove, .graveAbove],
+
+    //01DD          ; LATIN SMALL LETTER TURNED E
+    "ǝ": [.e, .turned],
+
+    //01DE          ; LATIN CAPITAL LETTER A WITH DIAERESIS AND MACRON
+    "Ǟ": [.a, .diaeresisAbove, .macronAbove, .capital],
+
+    //01DF          ; LATIN SMALL LETTER A WITH DIAERESIS AND MACRON
+    "ǟ": [.a, .diaeresisAbove, .macronAbove],
+
+    //01E0          ; LATIN CAPITAL LETTER A WITH DOT ABOVE AND MACRON
+    "Ǡ": [.a, .dotAbove, .macronAbove, .capital],
+
+    //01E1          ; LATIN SMALL LETTER A WITH DOT ABOVE AND MACRON
+    "ǡ": [.a, .dotAbove, .macronAbove],
+
+    //01E2          ; LATIN CAPITAL LETTER AE WITH MACRON
+    "Ǣ": [.a, .e, .macronAbove, .capital],
+
+    //01E3          ; LATIN SMALL LETTER AE WITH MACRON
+    "ǣ": [.a, .e, .macronAbove],
+
+    //01E4          ; LATIN CAPITAL LETTER G WITH STROKE
+    "Ǥ": [.g, .stroke, .capital],
+
+    //01E5          ; LATIN SMALL LETTER G WITH STROKE
+    "ǥ": [.g, .stroke],
+
+    //01E6          ; LATIN CAPITAL LETTER G WITH CARON
+    "Ǧ": [.g, .caronAbove, .capital],
+
+    //01E7          ; LATIN SMALL LETTER G WITH CARON
+    "ǧ": [.g, .caronAbove],
+
+    //01E8          ; LATIN CAPITAL LETTER K WITH CARON
+    "Ǩ": [.k, .caronAbove, .capital],
+
+    //01E9          ; LATIN SMALL LETTER K WITH CARON
+    "ǩ": [.k, .caronAbove],
+
+    //01EA          ; LATIN CAPITAL LETTER O WITH OGONEK
+    "Ǫ": [.o, .ogonekBelow, .capital],
+
+    //01EB          ; LATIN SMALL LETTER O WITH OGONEK
+    "ǫ": [.o, .ogonekBelow],
+
+    //01EC          ; LATIN CAPITAL LETTER O WITH OGONEK AND MACRON
+    "Ǭ": [.o, .ogonekBelow, .macronAbove, .capital],
+
+    //01ED          ; LATIN SMALL LETTER O WITH OGONEK AND MACRON
+    "ǭ": [.o, .ogonekBelow, .macronAbove],
+
+    //01EE          ; LATIN CAPITAL LETTER EZH WITH CARON
+    "Ǯ": [.z, .h, .caronAbove, .capital],
+
+    //01EF          ; LATIN SMALL LETTER EZH WITH CARON
+    "ǯ": [.z, .h, .caronAbove],
+
+    //01F0          ; LATIN SMALL LETTER J WITH CARON
+    "ǰ": [.j, .caronAbove],
+
+    //01F1          ; LATIN CAPITAL LETTER DZ
+    "Ǳ": [.d, .capital, .joiner, .z, .capital],
+
+    //01F2          ; LATIN CAPITAL LETTER D WITH SMALL LETTER Z
+    "ǲ": [.d, .capital, .joiner, .z],
+
+    //01F3          ; LATIN SMALL LETTER DZ
+    "ǳ": [.d, .joiner, .z],
+
+    //01F4          ; LATIN CAPITAL LETTER G WITH ACUTE
+    "Ǵ": [.g, .acuteAbove, .capital],
+
+    //01F5          ; LATIN SMALL LETTER G WITH ACUTE
+    "ǵ": [.g, .acuteAbove],
+
+    //01F6          ; LATIN CAPITAL LETTER HWAIR
+    "Ƕ": [.h, .v, .capital],
+
+    //01F7          ; LATIN CAPITAL LETTER WYNN
+    "Ƿ": [.w, .h, .capital],
+
+    //01F8          ; LATIN CAPITAL LETTER N WITH GRAVE
+    "Ǹ": [.n, .graveAbove, .capital],
+
+    //01F9          ; LATIN SMALL LETTER N WITH GRAVE
+    "ǹ": [.n, .graveAbove],
+
+    //01FA          ; LATIN CAPITAL LETTER A WITH RING ABOVE AND ACUTE
+    "Ǻ": [.a, .ringAbove, .acuteAbove, .capital],
+
+    //01FB          ; LATIN SMALL LETTER A WITH RING ABOVE AND ACUTE
+    "ǻ": [.a, .ringAbove, .acuteAbove],
+
+    //01FC          ; LATIN CAPITAL LETTER AE WITH ACUTE
+    "Ǽ": [.a, .e, .acuteAbove, .capital],
+
+    //01FD          ; LATIN SMALL LETTER AE WITH ACUTE
+    "ǽ": [.a, .e, .acuteAbove],
+
+    //01FE          ; LATIN CAPITAL LETTER O WITH STROKE AND ACUTE
+    "Ǿ": [.o, .diagonalStroke, .acuteAbove, .capital],
+
+    //01FF          ; LATIN SMALL LETTER O WITH STROKE AND ACUTE
+    "ǿ": [.o, .diagonalStroke, .acuteAbove],
+
+    //0200          ; LATIN CAPITAL LETTER A WITH DOUBLE GRAVE
+    "Ȁ": [.a, .doubleGraveAbove, .capital],
+
+    //0201          ; LATIN SMALL LETTER A WITH DOUBLE GRAVE
+    "ȁ": [.a, .doubleGraveAbove],
+
+    //0202          ; LATIN CAPITAL LETTER A WITH INVERTED BREVE
+    "Ȃ": [.a, .invertedBreveAbove, .capital],
+
+    //0203          ; LATIN SMALL LETTER A WITH INVERTED BREVE
+    "ȃ": [.a, .invertedBreveAbove],
+
+    //0204          ; LATIN CAPITAL LETTER E WITH DOUBLE GRAVE
+    "Ȅ": [.e, .doubleGraveAbove, .capital],
+
+    //0205          ; LATIN SMALL LETTER E WITH DOUBLE GRAVE
+    "ȅ": [.e, .doubleGraveAbove],
+
+    //0206          ; LATIN CAPITAL LETTER E WITH INVERTED BREVE
+    "Ȇ": [.e, .invertedBreveAbove, .capital],
+
+    //0207          ; LATIN SMALL LETTER E WITH INVERTED BREVE
+    "ȇ": [.e, .invertedBreveAbove],
+
+    //0208          ; LATIN CAPITAL LETTER I WITH DOUBLE GRAVE
+    "Ȉ": [.i, .doubleGraveAbove, .capital],
+
+    //0209          ; LATIN SMALL LETTER I WITH DOUBLE GRAVE
+    "ȉ": [.i, .doubleGraveAbove],
+
+    //020A          ; LATIN CAPITAL LETTER I WITH INVERTED BREVE
+    "Ȋ": [.i, .invertedBreveAbove, .capital],
+
+    //020B          ; LATIN SMALL LETTER I WITH INVERTED BREVE
+    "ȋ": [.i, .invertedBreveAbove],
+
+    //020C          ; LATIN CAPITAL LETTER O WITH DOUBLE GRAVE
+    "Ȍ": [.o, .doubleGraveAbove, .capital],
+
+    //020D          ; LATIN SMALL LETTER O WITH DOUBLE GRAVE
+    "ȍ": [.o, .doubleGraveAbove],
+
+    //020E          ; LATIN CAPITAL LETTER O WITH INVERTED BREVE
+    "Ȏ": [.o, .invertedBreveAbove, .capital],
+
+    //020F          ; LATIN SMALL LETTER O WITH INVERTED BREVE
+    "ȏ": [.o, .invertedBreveAbove],
+
+    //0210          ; LATIN CAPITAL LETTER R WITH DOUBLE GRAVE
+    "Ȑ": [.r, .doubleGraveAbove, .capital],
+
+    //0211          ; LATIN SMALL LETTER R WITH DOUBLE GRAVE
+    "ȑ": [.r, .doubleGraveAbove],
+
+    //0212          ; LATIN CAPITAL LETTER R WITH INVERTED BREVE
+    "Ȓ": [.r, .invertedBreveAbove, .capital],
+
+    //0213          ; LATIN SMALL LETTER R WITH INVERTED BREVE
+    "ȓ": [.r, .invertedBreveAbove],
+
+    //0214          ; LATIN CAPITAL LETTER U WITH DOUBLE GRAVE
+    "Ȕ": [.u, .doubleGraveAbove, .capital],
+
+    //0215          ; LATIN SMALL LETTER U WITH DOUBLE GRAVE
+    "ȕ": [.u, .doubleGraveAbove],
+
+    //0216          ; LATIN CAPITAL LETTER U WITH INVERTED BREVE
+    "Ȗ": [.u, .invertedBreveAbove, .capital],
+
+    //0217          ; LATIN SMALL LETTER U WITH INVERTED BREVE
+    "ȗ": [.u, .invertedBreveAbove],
+
+    //0218          ; LATIN CAPITAL LETTER S WITH COMMA BELOW
+    "Ș": [.s, .commaBelow, .capital],
+
+    //0219          ; LATIN SMALL LETTER S WITH COMMA BELOW
+    "ș": [.s, .commaBelow],
+
+    //021A          ; LATIN CAPITAL LETTER T WITH COMMA BELOW
+    "Ț": [.t, .commaBelow, .capital],
+
+    //021B          ; LATIN SMALL LETTER T WITH COMMA BELOW
+    "ț": [.t, .commaBelow],
+
+    //021C          ; LATIN CAPITAL LETTER YOGH
+    "Ȝ": [.g, .h, .capital],
+
+    //021D          ; LATIN SMALL LETTER YOGH
+    "ȝ": [.g, .h],
+
+    //021E          ; LATIN CAPITAL LETTER H WITH CARON
+    "Ȟ": [.h, .caronAbove, .capital],
+
+    //021F          ; LATIN SMALL LETTER H WITH CARON
+    "ȟ": [.h, .caronAbove],
+
+    //0220          ; LATIN CAPITAL LETTER N WITH LONG RIGHT LEG
+    "Ƞ": [.n, .longLeg, .capital],
+
+    //0221          ; LATIN SMALL LETTER D WITH CURL
+    "ȡ": [.d, .curl],
+
+    //0222          ; LATIN CAPITAL LETTER OU
+    "Ȣ": [.o, .uTop, .capital],
+
+    //0223          ; LATIN SMALL LETTER OU
+    "ȣ": [.o, .uTop],
+
+    //0224          ; LATIN CAPITAL LETTER Z WITH HOOK
+    "Ȥ": [.z, .hook, .capital],
+
+    //0225          ; LATIN SMALL LETTER Z WITH HOOK
+    "ȥ": [.z, .hook],
+
+    //0226          ; LATIN CAPITAL LETTER A WITH DOT ABOVE
+    "Ȧ": [.a, .dotAbove, .capital],
+
+    //0227          ; LATIN SMALL LETTER A WITH DOT ABOVE
+    "ȧ": [.a, .dotAbove],
+
+    //0228          ; LATIN CAPITAL LETTER E WITH CEDILLA
+    "Ȩ": [.e, .cedilla, .capital],
+
+    //0229          ; LATIN SMALL LETTER E WITH CEDILLA
+    "ȩ": [.e, .cedilla],
+
+    //022A          ; LATIN CAPITAL LETTER O WITH DIAERESIS AND MACRON
+    "Ȫ": [.o, .diaeresisAbove, .macronAbove, .capital],
+
+    //022B          ; LATIN SMALL LETTER O WITH DIAERESIS AND MACRON
+    "ȫ": [.o, .diaeresisAbove, .macronAbove],
+
+    //022C          ; LATIN CAPITAL LETTER O WITH TILDE AND MACRON
+    "Ȭ": [.o, .tildeAbove, .macronAbove, .capital],
+
+    //022D          ; LATIN SMALL LETTER O WITH TILDE AND MACRON
+    "ȭ": [.o, .tildeAbove, .macronAbove],
+
+    //022E          ; LATIN CAPITAL LETTER O WITH DOT ABOVE
+    "Ȯ": [.o, .dotAbove, .capital],
+
+    //022F          ; LATIN SMALL LETTER O WITH DOT ABOVE
+    "ȯ": [.o, .dotAbove],
+
+    //0230          ; LATIN CAPITAL LETTER O WITH DOT ABOVE AND MACRON
+    "Ȱ": [.o, .dotAbove, .macronAbove, .capital],
+
+    //0231          ; LATIN SMALL LETTER O WITH DOT ABOVE AND MACRON
+    "ȱ": [.o, .dotAbove, .macronAbove],
+
+    //0232          ; LATIN CAPITAL LETTER Y WITH MACRON
+    "Ȳ": [.y, .macronAbove, .capital],
+
+    //0233          ; LATIN SMALL LETTER Y WITH MACRON
+    "ȳ": [.y, .macronAbove],
+
+    //0234          ; LATIN SMALL LETTER L WITH CURL
+    "ȴ": [.l, .curl],
+
+    //0235          ; LATIN SMALL LETTER N WITH CURL
+    "ȵ": [.n, .curl],
+
+    //0236          ; LATIN SMALL LETTER T WITH CURL
+    "ȶ": [.t, .curl],
+
+    //0237          ; LATIN SMALL LETTER DOTLESS J
+    "ȷ": [.j, .dotAbove],
+
+    //0238          ; LATIN SMALL LETTER DB DIGRAPH
+    "ȸ": [.d, .b],
+
+    //0239          ; LATIN SMALL LETTER QP DIGRAPH
+    "ȹ": [.q, .p],
+
+    //023A          ; LATIN CAPITAL LETTER A WITH STROKE
+    "Ⱥ": [.a, .diagonalStroke, .capital],
+
+    //023B          ; LATIN CAPITAL LETTER C WITH STROKE
+    "Ȼ": [.c, .diagonalStroke, .capital],
+
+    //023C          ; LATIN SMALL LETTER C WITH STROKE
+    "ȼ": [.c, .diagonalStroke],
+
+    //023D          ; LATIN CAPITAL LETTER L WITH BAR
+    "Ƚ": [.l, .stroke, .capital],
+
+    //023E          ; LATIN CAPITAL LETTER T WITH DIAGONAL STROKE
+    "Ⱦ": [.t, .diagonalStroke, .capital],
+
+    //023F          ; LATIN SMALL LETTER S WITH SWASH TAIL
+    "ȿ": [.s, .tail],
+
+    //0240          ; LATIN SMALL LETTER Z WITH SWASH TAIL
+    "ɀ": [.z, .tail],
+
+    //0241          ; LATIN CAPITAL LETTER GLOTTAL STOP
+    "Ɂ": [.h, .h, .capital],
+
+    //0242          ; LATIN SMALL LETTER GLOTTAL STOP
+    "ɂ": [.h, .h],
+
+    //0243          ; LATIN CAPITAL LETTER B WITH STROKE
+    "Ƀ": [.b, .stroke, .capital],
+
+    //0244          ; LATIN CAPITAL LETTER U BAR
+    "Ʉ": [.u, .stroke, .capital],
+
+    //0245          ; LATIN CAPITAL LETTER TURNED V
+    "Ʌ": [.v, .turned, .capital],
+
+    //0246          ; LATIN CAPITAL LETTER E WITH STROKE
+    "Ɇ": [.e, .diagonalStroke, .capital],
+
+    //0247          ; LATIN SMALL LETTER E WITH STROKE
+    "ɇ": [.e, .diagonalStroke],
+
+    //0248          ; LATIN CAPITAL LETTER J WITH STROKE
+    "Ɉ": [.j, .stroke, .capital],
+
+    //0249          ; LATIN SMALL LETTER J WITH STROKE
+    "ɉ": [.j, .stroke],
+
+    //024A          ; LATIN CAPITAL LETTER SMALL Q WITH HOOK TAIL
+    "Ɋ": [.q, .retroflexHook, .capital], //?!
+
+    //024B          ; LATIN SMALL LETTER Q WITH HOOK TAIL
+    "ɋ": [.q, .retroflexHook],
+
+    //024C          ; LATIN CAPITAL LETTER R WITH STROKE
+    "Ɍ": [.r, .stroke, .capital],
+
+    //024D          ; LATIN SMALL LETTER R WITH STROKE
+    "ɍ": [.r, .stroke],
+
+    //024E          ; LATIN CAPITAL LETTER Y WITH STROKE
+    "Ɏ": [.y, .stroke, .capital],
+
+    //024F          ; LATIN SMALL LETTER Y WITH STROKE
+    "ɏ": [.y, .stroke],
 
 ]

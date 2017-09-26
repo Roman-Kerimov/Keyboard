@@ -9,29 +9,47 @@ import Foundation
 
 enum CharacterComponent {
     
+    case joiner
+    
     case a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z
     
     case zero, one, two, three, four, five, six, seven, eight, nine
     
     case space, exclamationMark, quotationMark, numberSign, dollarSign, percentSign, ampersand, apostrophe, parenthesis, asterisk, plusSign, comma, hyphenMinus, fullStop, solidus, colon, semicolon, lessThanSign, equalsSign, greaterThanSign, questionMark, commercialAt, squareBracket, reverseSolidus, caret, lowLine, graveAccent, curlyBracket, verticalLine, tilde
     
-    case capital
-    case turned
+    case capital, smallCapital
+    case turned, reversed, inverted
     case superscript
-    case graveAbove
-    case acuteAbove
-    case circumflexAbove
-    case tildeAbove
-    case diaeresisAbove
-    case ringAbove
-    case cedilla
+    
     case stroke, diagonalStroke
-    case macronAbove
-    case breveAbove
-    case ogonekAbove, ogonekBelow
-    case dotAbove
-    case caronAbove
     case longLeg
     case L
+    case hook, retroflexHook, palatalHook
+    case topbar
+    case tone
+    case open
+    case horn
+    case curl
+    case tail
+    case sBottom
+    case uTop
+    
+    case cedilla
+    case ogonekBelow, ogonekAbove
+    case commaBelow
+    case diaeresisAbove
+    case dotAbove
+    case tildeAbove
+    case macronAbove
+    case breveAbove
+    case invertedBreveAbove
+    case caronAbove
+    case ringAbove
+    case acuteAbove
+    case graveAbove
+    case circumflexAbove
     case doubleAcuteAbove
+    case doubleGraveAbove
+    
+    case click
 }

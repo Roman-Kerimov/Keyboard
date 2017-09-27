@@ -19,12 +19,12 @@ enum CharacterComponent {
     
     case capital, smallCapital
     case turned, reversed, inverted, ramsHorn
-    case superscript
+    case superscript, `subscript`
     
     case stroke, diagonalStroke
     case longLeg
     case L
-    case hook, retroflexHook, palatalHook, rhoticHook
+    case hook, retroflexHook, palatalHook
     case topbar
     case tone
     case open, closed
@@ -39,21 +39,51 @@ enum CharacterComponent {
     case script
     
     case cedilla
-    case ogonekBelow, ogonekAbove
+    case ogonek, ogonekBelow, ogonekAbove
     case commaBelow
-    case diaeresisAbove
-    case dotAbove
+    case diaeresis, diaeresisAbove
+    case dot, dotAbove
     case tildeAbove
-    case macronAbove
-    case breveAbove
-    case invertedBreveAbove
-    case caronAbove
-    case ringAbove
-    case acuteAbove
-    case graveAbove
-    case circumflexAbove
+    case macron, macronAbove
+    case breve, breveAbove
+    case invertedBreve, invertedBreveAbove
+    case caron, caronAbove
+    case ring, ringAbove
+    case acute, acuteAbove
+    case grave, graveAbove
+    case circumflex, circumflexAbove
+    case cross
     case doubleAcuteAbove
     case doubleGraveAbove
     
+    case doubled
+    
     case click
+    case long, halfLong
+    case rhoticHook
+    case modifierPlus
+    case modifierMinus
+    case unaspirated
+    case modifierPrime
+    case shelf
+    
+    case modifierTack
+    case arrowhead
+    case arrow
+    
+    case up
+    case left
+    case right
+    case down
+    
+    case topHalf
+    case leftHalf
+    case rightHalf
+    case bottomHalf
+
+    case extraHightTone
+    case hightTone
+    case midTone
+    case lowTone
+    case extraLowTone
 }

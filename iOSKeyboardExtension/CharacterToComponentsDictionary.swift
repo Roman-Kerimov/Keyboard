@@ -324,7 +324,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "§": [],
 
     //00A8          ; DIAERESIS
-    "¨": [],
+    "¨": [.diaeresis, .superscript],
 
     //00A9          ; COPYRIGHT SIGN
     "©": [],
@@ -369,10 +369,10 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "¶": [],
 
     //00B7          ; MIDDLE DOT
-    "·": [],
+    "·": [.dot],
 
     //00B8          ; CEDILLA
-    "¸": [],
+    "¸": [.cedilla],
 
     //00B9          ; SUPERSCRIPT ONE
     "¹": [.one, .superscript],
@@ -1892,5 +1892,248 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
 
     //02AF          ; LATIN SMALL LETTER TURNED H WITH FISHHOOK AND TAIL
     "ʯ": [.h, .retroflexHook, .hook, .turned],
+
+    
+    // MARK: - 02B0..02FF; Spacing Modifier Letters
+    
+    //02B0          ; MODIFIER LETTER SMALL H
+    "ʰ": [.h, .superscript],
+
+    //02B1          ; MODIFIER LETTER SMALL H WITH HOOK
+    "ʱ": [.h, .hook, .superscript],
+
+    //02B2          ; MODIFIER LETTER SMALL J
+    "ʲ": [.j, .superscript],
+
+    //02B3          ; MODIFIER LETTER SMALL R
+    "ʳ": [.r, .superscript],
+
+    //02B4          ; MODIFIER LETTER SMALL TURNED R
+    "ʴ": [.r, .turned, .superscript],
+
+    //02B5          ; MODIFIER LETTER SMALL TURNED R WITH HOOK
+    "ʵ": [.r, .turned, .retroflexHook, .superscript],
+
+    //02B6          ; MODIFIER LETTER SMALL CAPITAL INVERTED R
+    "ʶ": [.r, .smallCapital, .inverted, .superscript],
+
+    //02B7          ; MODIFIER LETTER SMALL W
+    "ʷ": [.w, .superscript],
+
+    //02B8          ; MODIFIER LETTER SMALL Y
+    "ʸ": [.y, .superscript],
+
+    //02B9          ; MODIFIER LETTER PRIME
+    "ʹ": [.modifierPrime],
+
+    //02BA          ; MODIFIER LETTER DOUBLE PRIME
+    "ʺ": [.modifierPrime, .doubled],
+
+    //02BB          ; MODIFIER LETTER TURNED COMMA
+    "ʻ": [.comma, .turned, .superscript],
+
+    //02BC          ; MODIFIER LETTER APOSTROPHE
+    "ʼ": [.comma, .superscript],
+
+    //02BD          ; MODIFIER LETTER REVERSED COMMA
+    "ʽ": [.comma, .reversed, .superscript],
+
+    //02BE          ; MODIFIER LETTER RIGHT HALF RING
+    "ʾ": [.ring, .rightHalf, .superscript],
+
+    //02BF          ; MODIFIER LETTER LEFT HALF RING
+    "ʿ": [.ring, .leftHalf, .superscript],
+
+    //02C0          ; MODIFIER LETTER GLOTTAL STOP
+    "ˀ": [.apostrophe, .h, .superscript],
+
+    //02C1          ; MODIFIER LETTER REVERSED GLOTTAL STOP
+    "ˁ": [.apostrophe, .h, .reversed, .superscript],
+
+    //02C2          ; MODIFIER LETTER LEFT ARROWHEAD
+    "˂": [.arrowhead, .left, .superscript],
+
+    //02C3          ; MODIFIER LETTER RIGHT ARROWHEAD
+    "˃": [.arrowhead, .left, .superscript],
+
+    //02C4          ; MODIFIER LETTER UP ARROWHEAD
+    "˄": [.arrowhead, .up, .superscript],
+
+    //02C5          ; MODIFIER LETTER DOWN ARROWHEAD
+    "˅": [.arrowhead, .down, .superscript],
+
+    //02C6          ; MODIFIER LETTER CIRCUMFLEX ACCENT
+    "ˆ": [.circumflex, .superscript],
+
+    //02C7          ; CARON
+    "ˇ": [.caron, .superscript],
+
+    //02C8          ; MODIFIER LETTER VERTICAL LINE
+    "ˈ": [.verticalLine, .superscript],
+
+    //02C9          ; MODIFIER LETTER MACRON
+    "ˉ": [.macron, .superscript],
+
+    //02CA          ; MODIFIER LETTER ACUTE ACCENT
+    "ˊ": [.acute, .superscript],
+
+    //02CB          ; MODIFIER LETTER GRAVE ACCENT
+    "ˋ": [.grave, .superscript],
+
+    //02CC          ; MODIFIER LETTER LOW VERTICAL LINE
+    "ˌ": [.verticalLine, .subscript],
+
+    //02CD          ; MODIFIER LETTER LOW MACRON
+    "ˍ": [.macron, .subscript],
+
+    //02CE          ; MODIFIER LETTER LOW GRAVE ACCENT
+    "ˎ": [.grave, .subscript],
+
+    //02CF          ; MODIFIER LETTER LOW ACUTE ACCENT
+    "ˏ": [.acute, .subscript],
+
+    //02D0          ; MODIFIER LETTER TRIANGULAR COLON
+    "ː": [.long],
+
+    //02D1          ; MODIFIER LETTER HALF TRIANGULAR COLON
+    "ˑ": [.halfLong],
+
+    //02D2          ; MODIFIER LETTER CENTRED RIGHT HALF RING
+    "˒": [.ring, .rightHalf, .subscript],
+
+    //02D3          ; MODIFIER LETTER CENTRED LEFT HALF RING
+    "˓": [.ring, .leftHalf, .subscript],
+
+    //02D4          ; MODIFIER LETTER UP TACK
+    "˔": [.modifierTack, .up],
+
+    //02D5          ; MODIFIER LETTER DOWN TACK
+    "˕": [.modifierTack, .down],
+
+    //02D6          ; MODIFIER LETTER PLUS SIGN
+    "˖": [.modifierPlus],
+
+    //02D7          ; MODIFIER LETTER MINUS SIGN
+    "˗": [.modifierMinus],
+
+    //02D8          ; BREVE
+    "˘": [.breve, .superscript],
+
+    //02D9          ; DOT ABOVE
+    "˙": [.dot, .superscript],
+
+    //02DA          ; RING ABOVE
+    "˚": [.ring, .superscript],
+
+    //02DB          ; OGONEK
+    "˛": [.ogonek, .subscript],
+
+    //02DC          ; SMALL TILDE
+    "˜": [.tilde, .superscript],
+
+    //02DD          ; DOUBLE ACUTE ACCENT
+    "˝": [.acute, .doubled, .superscript],
+
+    //02DE          ; MODIFIER LETTER RHOTIC HOOK
+    "˞": [.rhoticHook],
+
+    //02DF          ; MODIFIER LETTER CROSS ACCENT
+    "˟": [.cross, .superscript],
+
+    //02E0          ; MODIFIER LETTER SMALL GAMMA
+    "ˠ": [.g, .y, .superscript],
+
+    //02E1          ; MODIFIER LETTER SMALL L
+    "ˡ": [.l, .superscript],
+
+    //02E2          ; MODIFIER LETTER SMALL S
+    "ˢ": [.s, .superscript],
+
+    //02E3          ; MODIFIER LETTER SMALL X
+    "ˣ": [.x, .superscript],
+
+    //02E4          ; MODIFIER LETTER SMALL REVERSED GLOTTAL STOP
+    "ˤ": [],
+
+    //02E5          ; MODIFIER LETTER EXTRA-HIGH TONE BAR
+    "˥": [.extraHightTone],
+
+    //02E6          ; MODIFIER LETTER HIGH TONE BAR
+    "˦": [.hightTone],
+
+    //02E7          ; MODIFIER LETTER MID TONE BAR
+    "˧": [.midTone],
+
+    //02E8          ; MODIFIER LETTER LOW TONE BAR
+    "˨": [.lowTone],
+
+    //02E9          ; MODIFIER LETTER EXTRA-LOW TONE BAR
+    "˩": [.extraLowTone],
+
+    //02EA          ; MODIFIER LETTER YIN DEPARTING TONE MARK
+    "˪": [],
+
+    //02EB          ; MODIFIER LETTER YANG DEPARTING TONE MARK
+    "˫": [],
+
+    //02EC          ; MODIFIER LETTER VOICING
+    "ˬ": [.caron, .subscript],
+
+    //02ED          ; MODIFIER LETTER UNASPIRATED
+    "˭": [.unaspirated, .superscript],
+
+    //02EE          ; MODIFIER LETTER DOUBLE APOSTROPHE
+    "ˮ": [.comma, .doubled, .superscript],
+
+    //02EF          ; MODIFIER LETTER LOW DOWN ARROWHEAD
+    "˯": [.arrowhead, .down, .subscript],
+
+    //02F0          ; MODIFIER LETTER LOW UP ARROWHEAD
+    "˰": [.arrowhead, .down, .subscript],
+
+    //02F1          ; MODIFIER LETTER LOW LEFT ARROWHEAD
+    "˱": [.arrowhead, .left, .subscript],
+
+    //02F2          ; MODIFIER LETTER LOW RIGHT ARROWHEAD
+    "˲": [.arrowhead, .right, .subscript],
+
+    //02F3          ; MODIFIER LETTER LOW RING
+    "˳": [.ring, .subscript],
+
+    //02F4          ; MODIFIER LETTER MIDDLE GRAVE ACCENT
+    "˴": [.grave],
+
+    //02F5          ; MODIFIER LETTER MIDDLE DOUBLE GRAVE ACCENT
+    "˵": [.grave, .doubled],
+
+    //02F6          ; MODIFIER LETTER MIDDLE DOUBLE ACUTE ACCENT
+    "˶": [.acute, .doubled],
+
+    //02F7          ; MODIFIER LETTER LOW TILDE
+    "˷": [.tilde, .subscript],
+
+    //02F8          ; MODIFIER LETTER RAISED COLON
+    "˸": [.colon, .superscript],
+
+    //02F9          ; MODIFIER LETTER BEGIN HIGH TONE
+    "˹": [.squareBracket, .topHalf],
+
+    //02FA          ; MODIFIER LETTER END HIGH TONE
+    "˺": [.squareBracket, .turned, .topHalf],
+
+    //02FB          ; MODIFIER LETTER BEGIN LOW TONE
+    "˻": [.squareBracket, .bottomHalf],
+
+    //02FC          ; MODIFIER LETTER END LOW TONE
+    "˼": [.squareBracket, .turned, .bottomHalf],
+
+    //02FD          ; MODIFIER LETTER SHELF
+    "˽": [.shelf],
+
+    //02FE          ; MODIFIER LETTER OPEN SHELF
+    "˾": [.shelf, .open],
+
+    //02FF          ; MODIFIER LETTER LOW LEFT ARROW
+    "˿": [.arrow, .left, .subscript],
 
 ]

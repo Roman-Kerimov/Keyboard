@@ -396,11 +396,11 @@ class KeyView: UIButton, ConfigurableView {
                     }
                     
                 case .down:
-                    mainLabelView.text = String(shiftDownLabelView.text!.characters.first!)
+                    mainLabelView.text = String(shiftDownLabelView.text!.first!)
                     
                 case .downRight:
-                    if shiftDownLabelView.text!.characters.count > 1 {
-                        mainLabelView.text = String(shiftDownLabelView.text!.characters.last!)
+                    if shiftDownLabelView.text!.count > 1 {
+                        mainLabelView.text = String(shiftDownLabelView.text!.last!)
                     }
                     else {
                         mainLabelView.text = ""

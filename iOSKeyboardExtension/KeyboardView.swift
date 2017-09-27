@@ -25,7 +25,7 @@ internal class KeyboardView: UIView {
             
             var isNonspaceSequence: Bool = false
             
-            for character in documentContextBeforeInput.characters.reversed() {
+            for character in documentContextBeforeInput.reversed() {
                 
                 switch character {
                 case Character.space:

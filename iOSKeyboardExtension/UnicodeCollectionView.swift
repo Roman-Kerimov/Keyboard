@@ -85,7 +85,7 @@ class UnicodeCollectionView: CharacterCollectionView {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        for _ in textForSearch.characters {
+        for _ in textForSearch {
             KeyboardViewController.shared.keyAction(label: SpecialKey.delete.label)
         }
         

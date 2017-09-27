@@ -24,7 +24,6 @@
 		964AB9351D1B6490004C827C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964AB9341D1B6490004C827C /* AppDelegate.swift */; };
 		964AB93A1D1B6490004C827C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 964AB9381D1B6490004C827C /* Main.storyboard */; };
 		964AB93D1D1B6490004C827C /* iOSKeyboard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 964AB93B1D1B6490004C827C /* iOSKeyboard.xcdatamodeld */; };
-		964AB93F1D1B6490004C827C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 964AB93E1D1B6490004C827C /* Assets.xcassets */; };
 		964AB9421D1B6490004C827C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 964AB9401D1B6490004C827C /* LaunchScreen.storyboard */; };
 		964AB96A1D1B6535004C827C /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964AB9691D1B6535004C827C /* KeyboardViewController.swift */; };
 		964AB96E1D1B6535004C827C /* iOSKeyboardExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 964AB9671D1B6535004C827C /* iOSKeyboardExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -145,7 +144,6 @@
 		964AB9341D1B6490004C827C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		964AB9391D1B6490004C827C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		964AB93C1D1B6490004C827C /* iOSKeyboard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iOSKeyboard.xcdatamodel; sourceTree = "<group>"; };
-		964AB93E1D1B6490004C827C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		964AB9411D1B6490004C827C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		964AB9431D1B6490004C827C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		964AB9671D1B6535004C827C /* iOSKeyboardExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iOSKeyboardExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -248,7 +246,6 @@
 			children = (
 				964AB9341D1B6490004C827C /* AppDelegate.swift */,
 				964AB9381D1B6490004C827C /* Main.storyboard */,
-				964AB93E1D1B6490004C827C /* Assets.xcassets */,
 				964AB9401D1B6490004C827C /* LaunchScreen.storyboard */,
 				964AB9431D1B6490004C827C /* Info.plist */,
 				964AB93B1D1B6490004C827C /* iOSKeyboard.xcdatamodeld */,
@@ -448,7 +445,6 @@
 				96533A951F1293B000B07CA3 /* Labels_NextKeyboard.ai in Resources */,
 				964AB9421D1B6490004C827C /* LaunchScreen.storyboard in Resources */,
 				96533A961F1293B000B07CA3 /* Labels_HideKeyboard.ai in Resources */,
-				964AB93F1D1B6490004C827C /* Assets.xcassets in Resources */,
 				964AB93A1D1B6490004C827C /* Main.storyboard in Resources */,
 				96533A971F1293B000B07CA3 /* Labels_Settings.ai in Resources */,
 			);
@@ -683,7 +679,6 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -739,7 +734,6 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

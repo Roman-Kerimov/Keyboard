@@ -396,22 +396,22 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "¿": [.questionMark, .turned],
 
     //00C0          ; LATIN CAPITAL LETTER A WITH GRAVE
-    "À": [.a, .graveAbove, .capital],
+    "À": [.a, .grave, .above, .capital],
 
     //00C1          ; LATIN CAPITAL LETTER A WITH ACUTE
-    "Á": [.a, .acuteAbove, .capital],
+    "Á": [.a, .acute, .above, .capital],
 
     //00C2          ; LATIN CAPITAL LETTER A WITH CIRCUMFLEX
-    "Â": [.a, .circumflexAbove, .capital],
+    "Â": [.a, .circumflex, .above, .capital],
 
     //00C3          ; LATIN CAPITAL LETTER A WITH TILDE
-    "Ã": [.a, .tildeAbove, .capital],
+    "Ã": [.a, .tilde, .above, .capital],
 
     //00C4          ; LATIN CAPITAL LETTER A WITH DIAERESIS
-    "Ä": [.a, .diaeresisAbove, .capital],
+    "Ä": [.a, .diaeresis, .above, .capital],
 
     //00C5          ; LATIN CAPITAL LETTER A WITH RING ABOVE
-    "Å": [.a, .ringAbove, .capital],
+    "Å": [.a, .ring, .above, .capital],
 
     //00C6          ; LATIN CAPITAL LETTER AE
     "Æ": [.a, .e, .capital],
@@ -420,49 +420,49 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "Ç": [.c, .cedilla, .capital],
 
     //00C8          ; LATIN CAPITAL LETTER E WITH GRAVE
-    "È": [.e, .graveAbove, .capital],
+    "È": [.e, .grave, .above, .capital],
 
     //00C9          ; LATIN CAPITAL LETTER E WITH ACUTE
-    "É": [.e, .acuteAbove, .capital],
+    "É": [.e, .acute, .above, .capital],
 
     //00CA          ; LATIN CAPITAL LETTER E WITH CIRCUMFLEX
-    "Ê": [.e, .circumflexAbove, .capital],
+    "Ê": [.e, .circumflex, .above, .capital],
 
     //00CB          ; LATIN CAPITAL LETTER E WITH DIAERESIS
-    "Ë": [.e, .diaeresisAbove, .capital],
+    "Ë": [.e, .diaeresis, .above, .capital],
 
     //00CC          ; LATIN CAPITAL LETTER I WITH GRAVE
-    "Ì": [.i, .graveAbove, .capital],
+    "Ì": [.i, .grave, .above, .capital],
 
     //00CD          ; LATIN CAPITAL LETTER I WITH ACUTE
-    "Í": [.i, .acuteAbove, .capital],
+    "Í": [.i, .acute, .above, .capital],
 
     //00CE          ; LATIN CAPITAL LETTER I WITH CIRCUMFLEX
-    "Î": [.i, .circumflexAbove, .capital],
+    "Î": [.i, .circumflex, .above, .capital],
 
     //00CF          ; LATIN CAPITAL LETTER I WITH DIAERESIS
-    "Ï": [.i, .diaeresisAbove, .capital],
+    "Ï": [.i, .diaeresis, .above, .capital],
 
     //00D0          ; LATIN CAPITAL LETTER ETH
     "Ð": [.d, .h, .capital],
 
     //00D1          ; LATIN CAPITAL LETTER N WITH TILDE
-    "Ñ": [.n, .tildeAbove, .capital],
+    "Ñ": [.n, .tilde, .above, .capital],
 
     //00D2          ; LATIN CAPITAL LETTER O WITH GRAVE
-    "Ò": [.o, .graveAbove, .capital],
+    "Ò": [.o, .grave, .above, .capital],
 
     //00D3          ; LATIN CAPITAL LETTER O WITH ACUTE
-    "Ó": [.o, .acuteAbove, .capital],
+    "Ó": [.o, .acute, .above, .capital],
 
     //00D4          ; LATIN CAPITAL LETTER O WITH CIRCUMFLEX
-    "Ô": [.o, .circumflexAbove, .capital],
+    "Ô": [.o, .circumflex, .above, .capital],
 
     //00D5          ; LATIN CAPITAL LETTER O WITH TILDE
-    "Õ": [.o, .tildeAbove, .capital],
+    "Õ": [.o, .tilde, .above, .capital],
 
     //00D6          ; LATIN CAPITAL LETTER O WITH DIAERESIS
-    "Ö": [.o, .diaeresisAbove, .capital],
+    "Ö": [.o, .diaeresis, .above, .capital],
 
     //00D7          ; MULTIPLICATION SIGN
     "×": [],
@@ -471,19 +471,19 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "Ø": [.o, .diagonalStroke, .capital],
 
     //00D9          ; LATIN CAPITAL LETTER U WITH GRAVE
-    "Ù": [.u, .graveAbove, .capital],
+    "Ù": [.u, .grave, .above, .capital],
 
     //00DA          ; LATIN CAPITAL LETTER U WITH ACUTE
-    "Ú": [.u, .acuteAbove, .capital],
+    "Ú": [.u, .acute, .above, .capital],
 
     //00DB          ; LATIN CAPITAL LETTER U WITH CIRCUMFLEX
-    "Û": [.u, .circumflexAbove, .capital],
+    "Û": [.u, .circumflex, .above, .capital],
 
     //00DC          ; LATIN CAPITAL LETTER U WITH DIAERESIS
-    "Ü": [.u, .diaeresisAbove, .capital],
+    "Ü": [.u, .diaeresis, .above, .capital],
 
     //00DD          ; LATIN CAPITAL LETTER Y WITH ACUTE
-    "Ý": [.y, .acuteAbove, .capital],
+    "Ý": [.y, .acute, .above, .capital],
 
     //00DE          ; LATIN CAPITAL LETTER THORN
     "Þ": [.t, .h, .capital],
@@ -492,22 +492,22 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ß": [.s, .s],
 
     //00E0          ; LATIN SMALL LETTER A WITH GRAVE
-    "à": [.a, .graveAbove],
+    "à": [.a, .grave, .above],
 
     //00E1          ; LATIN SMALL LETTER A WITH ACUTE
-    "á": [.a, .acuteAbove],
+    "á": [.a, .acute, .above],
 
     //00E2          ; LATIN SMALL LETTER A WITH CIRCUMFLEX
-    "â": [.a, .circumflexAbove],
+    "â": [.a, .circumflex, .above],
 
     //00E3          ; LATIN SMALL LETTER A WITH TILDE
-    "ã": [.a, .tildeAbove],
+    "ã": [.a, .tilde, .above],
 
     //00E4          ; LATIN SMALL LETTER A WITH DIAERESIS
-    "ä": [.a, .diaeresisAbove],
+    "ä": [.a, .diaeresis, .above],
 
     //00E5          ; LATIN SMALL LETTER A WITH RING ABOVE
-    "å": [.a, .ringAbove],
+    "å": [.a, .ring, .above],
 
     //00E6          ; LATIN SMALL LETTER AE
     "æ": [.a, .e],
@@ -516,49 +516,49 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ç": [.c, .cedilla],
 
     //00E8          ; LATIN SMALL LETTER E WITH GRAVE
-    "è": [.e, .graveAbove],
+    "è": [.e, .grave, .above],
 
     //00E9          ; LATIN SMALL LETTER E WITH ACUTE
-    "é": [.e, .acuteAbove],
+    "é": [.e, .acute, .above],
 
     //00EA          ; LATIN SMALL LETTER E WITH CIRCUMFLEX
-    "ê": [.e, .circumflexAbove],
+    "ê": [.e, .circumflex, .above],
 
     //00EB          ; LATIN SMALL LETTER E WITH DIAERESIS
-    "ë": [.e, .diaeresisAbove],
+    "ë": [.e, .diaeresis, .above],
 
     //00EC          ; LATIN SMALL LETTER I WITH GRAVE
-    "ì": [.i, .graveAbove],
+    "ì": [.i, .grave, .above],
 
     //00ED          ; LATIN SMALL LETTER I WITH ACUTE
-    "í": [.i, .acuteAbove],
+    "í": [.i, .acute, .above],
 
     //00EE          ; LATIN SMALL LETTER I WITH CIRCUMFLEX
-    "î": [.i, .circumflexAbove],
+    "î": [.i, .circumflex, .above],
 
     //00EF          ; LATIN SMALL LETTER I WITH DIAERESIS
-    "ï": [.i, .diaeresisAbove],
+    "ï": [.i, .diaeresis, .above],
 
     //00F0          ; LATIN SMALL LETTER ETH
     "ð": [.d, .h],
 
     //00F1          ; LATIN SMALL LETTER N WITH TILDE
-    "ñ": [.n, .tildeAbove],
+    "ñ": [.n, .tilde, .above],
 
     //00F2          ; LATIN SMALL LETTER O WITH GRAVE
-    "ò": [.o, .graveAbove],
+    "ò": [.o, .grave, .above],
 
     //00F3          ; LATIN SMALL LETTER O WITH ACUTE
-    "ó": [.o, .acuteAbove],
+    "ó": [.o, .acute, .above],
 
     //00F4          ; LATIN SMALL LETTER O WITH CIRCUMFLEX
-    "ô": [.o, .circumflexAbove],
+    "ô": [.o, .circumflex, .above],
 
     //00F5          ; LATIN SMALL LETTER O WITH TILDE
-    "õ": [.o, .tildeAbove],
+    "õ": [.o, .tilde, .above],
 
     //00F6          ; LATIN SMALL LETTER O WITH DIAERESIS
-    "ö": [.o, .diaeresisAbove],
+    "ö": [.o, .diaeresis, .above],
 
     //00F7          ; DIVISION SIGN
     "÷": [],
@@ -567,76 +567,76 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ø": [.o, .diagonalStroke],
 
     //00F9          ; LATIN SMALL LETTER U WITH GRAVE
-    "ù": [.u, .graveAbove],
+    "ù": [.u, .grave, .above],
 
     //00FA          ; LATIN SMALL LETTER U WITH ACUTE
-    "ú": [.u, .acuteAbove],
+    "ú": [.u, .acute, .above],
 
     //00FB          ; LATIN SMALL LETTER U WITH CIRCUMFLEX
-    "û": [.u, .circumflexAbove],
+    "û": [.u, .circumflex, .above],
 
     //00FC          ; LATIN SMALL LETTER U WITH DIAERESIS
-    "ü": [.u, .diaeresisAbove],
+    "ü": [.u, .diaeresis, .above],
 
     //00FD          ; LATIN SMALL LETTER Y WITH ACUTE
-    "ý": [.y, .acuteAbove],
+    "ý": [.y, .acute, .above],
 
     //00FE          ; LATIN SMALL LETTER THORN
     "þ": [.t, .h],
 
     //00FF          ; LATIN SMALL LETTER Y WITH DIAERESIS
-    "ÿ": [.y, .diaeresisAbove],
+    "ÿ": [.y, .diaeresis, .above],
 
     
     // MARK: - 0100..017F; Latin Extended-A
     
     //0100          ; LATIN CAPITAL LETTER A WITH MACRON
-    "Ā": [.a, .macronAbove, .capital],
+    "Ā": [.a, .macron, .above, .capital],
 
     //0101          ; LATIN SMALL LETTER A WITH MACRON
-    "ā": [.a, .macronAbove],
+    "ā": [.a, .macron, .above],
 
     //0102          ; LATIN CAPITAL LETTER A WITH BREVE
-    "Ă": [.a, .breveAbove, .capital],
+    "Ă": [.a, .breve, .above, .capital],
 
     //0103          ; LATIN SMALL LETTER A WITH BREVE
-    "ă": [.a, .breveAbove],
+    "ă": [.a, .breve, .above],
 
     //0104          ; LATIN CAPITAL LETTER A WITH OGONEK
-    "Ą": [.a, .ogonekBelow, .capital],
+    "Ą": [.a, .ogonek, .below, .capital],
 
     //0105          ; LATIN SMALL LETTER A WITH OGONEK
-    "ą": [.a, .ogonekBelow],
+    "ą": [.a, .ogonek, .below],
 
     //0106          ; LATIN CAPITAL LETTER C WITH ACUTE
-    "Ć": [.c, .acuteAbove, .capital],
+    "Ć": [.c, .acute, .above, .capital],
 
     //0107          ; LATIN SMALL LETTER C WITH ACUTE
-    "ć": [.c, .acuteAbove],
+    "ć": [.c, .acute, .above],
 
     //0108          ; LATIN CAPITAL LETTER C WITH CIRCUMFLEX
-    "Ĉ": [.c, .circumflexAbove, .capital],
+    "Ĉ": [.c, .circumflex, .above, .capital],
 
     //0109          ; LATIN SMALL LETTER C WITH CIRCUMFLEX
-    "ĉ": [.c, .circumflexAbove],
+    "ĉ": [.c, .circumflex, .above],
 
     //010A          ; LATIN CAPITAL LETTER C WITH DOT ABOVE
-    "Ċ": [.c, .dotAbove, .capital],
+    "Ċ": [.c, .dot, .above, .capital],
 
     //010B          ; LATIN SMALL LETTER C WITH DOT ABOVE
-    "ċ": [.c, .dotAbove],
+    "ċ": [.c, .dot, .above],
 
     //010C          ; LATIN CAPITAL LETTER C WITH CARON
-    "Č": [.c, .caronAbove, .capital],
+    "Č": [.c, .caron, .above, .capital],
 
     //010D          ; LATIN SMALL LETTER C WITH CARON
-    "č": [.c, .caronAbove],
+    "č": [.c, .caron, .above],
 
     //010E          ; LATIN CAPITAL LETTER D WITH CARON
-    "Ď": [.d, .caronAbove, .capital],
+    "Ď": [.d, .caron, .above, .capital],
     
     //010F          ; LATIN SMALL LETTER D WITH CARON
-    "ď": [.d, .caronAbove],
+    "ď": [.d, .caron, .above],
 
     //0110          ; LATIN CAPITAL LETTER D WITH STROKE
     "Đ": [.d, .stroke, .capital],
@@ -645,52 +645,52 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "đ": [.d, .stroke],
 
     //0112          ; LATIN CAPITAL LETTER E WITH MACRON
-    "Ē": [.e, .macronAbove, .capital],
+    "Ē": [.e, .macron, .above, .capital],
 
     //0113          ; LATIN SMALL LETTER E WITH MACRON
-    "ē": [.e, .macronAbove],
+    "ē": [.e, .macron, .above],
 
     //0114          ; LATIN CAPITAL LETTER E WITH BREVE
-    "Ĕ": [.e, .breveAbove, .capital],
+    "Ĕ": [.e, .breve, .above, .capital],
 
     //0115          ; LATIN SMALL LETTER E WITH BREVE
-    "ĕ": [.e, .breveAbove],
+    "ĕ": [.e, .breve, .above],
 
     //0116          ; LATIN CAPITAL LETTER E WITH DOT ABOVE
-    "Ė": [.e, .dotAbove, .capital],
+    "Ė": [.e, .dot, .above, .capital],
 
     //0117          ; LATIN SMALL LETTER E WITH DOT ABOVE
-    "ė": [.e, .dotAbove],
+    "ė": [.e, .dot, .above],
 
     //0118          ; LATIN CAPITAL LETTER E WITH OGONEK
-    "Ę": [.e, .ogonekBelow, .capital],
+    "Ę": [.e, .ogonek, .below, .capital],
 
     //0119          ; LATIN SMALL LETTER E WITH OGONEK
-    "ę": [.e, .ogonekBelow],
+    "ę": [.e, .ogonek, .below],
 
     //011A          ; LATIN CAPITAL LETTER E WITH CARON
-    "Ě": [.e, .caronAbove, .capital],
+    "Ě": [.e, .caron, .above, .capital],
 
     //011B          ; LATIN SMALL LETTER E WITH CARON
-    "ě": [.e, .caronAbove],
+    "ě": [.e, .caron, .above],
 
     //011C          ; LATIN CAPITAL LETTER G WITH CIRCUMFLEX
-    "Ĝ": [.g, .circumflexAbove, .capital],
+    "Ĝ": [.g, .circumflex, .above, .capital],
 
     //011D          ; LATIN SMALL LETTER G WITH CIRCUMFLEX
-    "ĝ": [.g, .circumflexAbove],
+    "ĝ": [.g, .circumflex, .above],
 
     //011E          ; LATIN CAPITAL LETTER G WITH BREVE
-    "Ğ": [.g, .breveAbove, .capital],
+    "Ğ": [.g, .breve, .above, .capital],
 
     //011F          ; LATIN SMALL LETTER G WITH BREVE
-    "ğ": [.g, .breveAbove],
+    "ğ": [.g, .breve, .above],
 
     //0120          ; LATIN CAPITAL LETTER G WITH DOT ABOVE
-    "Ġ": [.g, .dotAbove, .capital],
+    "Ġ": [.g, .dot, .above, .capital],
 
     //0121          ; LATIN SMALL LETTER G WITH DOT ABOVE
-    "ġ": [.g, .dotAbove],
+    "ġ": [.g, .dot, .above],
 
     //0122          ; LATIN CAPITAL LETTER G WITH CEDILLA
     "Ģ": [.g, .cedilla, .capital],
@@ -699,10 +699,10 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ģ": [.g, .cedilla],
 
     //0124          ; LATIN CAPITAL LETTER H WITH CIRCUMFLEX
-    "Ĥ": [.h, .circumflexAbove, .capital],
+    "Ĥ": [.h, .circumflex, .above, .capital],
 
     //0125          ; LATIN SMALL LETTER H WITH CIRCUMFLEX
-    "ĥ": [.h, .circumflexAbove],
+    "ĥ": [.h, .circumflex, .above],
 
     //0126          ; LATIN CAPITAL LETTER H WITH STROKE
     "Ħ": [.h, .stroke, .capital],
@@ -711,34 +711,34 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ħ": [.h, .stroke],
 
     //0128          ; LATIN CAPITAL LETTER I WITH TILDE
-    "Ĩ": [.i, .tildeAbove, .capital],
+    "Ĩ": [.i, .tilde, .above, .capital],
 
     //0129          ; LATIN SMALL LETTER I WITH TILDE
-    "ĩ": [.i, .tildeAbove],
+    "ĩ": [.i, .tilde, .above],
 
     //012A          ; LATIN CAPITAL LETTER I WITH MACRON
-    "Ī": [.i, .macronAbove, .capital],
+    "Ī": [.i, .macron, .above, .capital],
 
     //012B          ; LATIN SMALL LETTER I WITH MACRON
-    "ī": [.i, .macronAbove],
+    "ī": [.i, .macron, .above],
 
     //012C          ; LATIN CAPITAL LETTER I WITH BREVE
-    "Ĭ": [.i, .breveAbove, .capital],
+    "Ĭ": [.i, .breve, .above, .capital],
 
     //012D          ; LATIN SMALL LETTER I WITH BREVE
-    "ĭ": [.i, .breveAbove],
+    "ĭ": [.i, .breve, .above],
 
     //012E          ; LATIN CAPITAL LETTER I WITH OGONEK
-    "Į": [.i, .ogonekAbove, .capital],
+    "Į": [.i, .ogonek, .above, .capital],
 
     //012F          ; LATIN SMALL LETTER I WITH OGONEK
-    "į": [.i, .ogonekAbove],
+    "į": [.i, .ogonek, .above],
 
     //0130          ; LATIN CAPITAL LETTER I WITH DOT ABOVE
-    "İ": [.i, .dotAbove, .capital],
+    "İ": [.i, .dot, .above, .capital],
 
     //0131          ; LATIN SMALL LETTER DOTLESS I
-    "ı": [.i, .dotAbove],
+    "ı": [.i, .dot, .above],
 
     //0132          ; LATIN CAPITAL LIGATURE IJ
     "Ĳ": [.i, .j, .capital],
@@ -747,10 +747,10 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ĳ": [.i, .j],
 
     //0134          ; LATIN CAPITAL LETTER J WITH CIRCUMFLEX
-    "Ĵ": [.j, .circumflexAbove, .capital],
+    "Ĵ": [.j, .circumflex, .above, .capital],
 
     //0135          ; LATIN SMALL LETTER J WITH CIRCUMFLEX
-    "ĵ": [.j, .circumflexAbove],
+    "ĵ": [.j, .circumflex, .above],
 
     //0136          ; LATIN CAPITAL LETTER K WITH CEDILLA
     "Ķ": [.k, .cedilla, .capital],
@@ -762,10 +762,10 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ĸ": [.k, .longLeg],
 
     //0139          ; LATIN CAPITAL LETTER L WITH ACUTE
-    "Ĺ": [.l, .acuteAbove, .capital],
+    "Ĺ": [.l, .acute, .above, .capital],
 
     //013A          ; LATIN SMALL LETTER L WITH ACUTE
-    "ĺ": [.l, .acuteAbove],
+    "ĺ": [.l, .acute, .above],
 
     //013B          ; LATIN CAPITAL LETTER L WITH CEDILLA
     "Ļ": [.l, .cedilla, .capital],
@@ -774,10 +774,10 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ļ": [.l, .cedilla],
 
     //013D          ; LATIN CAPITAL LETTER L WITH CARON
-    "Ľ": [.l, .caronAbove, .capital],
+    "Ľ": [.l, .caron, .above, .capital],
 
     //013E          ; LATIN SMALL LETTER L WITH CARON
-    "ľ": [.l, .caronAbove],
+    "ľ": [.l, .caron, .above],
 
     //013F          ; LATIN CAPITAL LETTER L WITH MIDDLE DOT
     "ĿL": [.l, .L, .capital],
@@ -793,10 +793,10 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ł": [.l, .diagonalStroke],
 
     //0143          ; LATIN CAPITAL LETTER N WITH ACUTE
-    "Ń": [.n, .acuteAbove, .capital],
+    "Ń": [.n, .acute, .above, .capital],
 
     //0144          ; LATIN SMALL LETTER N WITH ACUTE
-    "ń": [.n, .acuteAbove],
+    "ń": [.n, .acute, .above],
 
     //0145          ; LATIN CAPITAL LETTER N WITH CEDILLA
     "Ņ": [.n, .cedilla, .capital],
@@ -805,10 +805,10 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ņ": [.n, .cedilla],
 
     //0147          ; LATIN CAPITAL LETTER N WITH CARON
-    "Ň": [.n, .caronAbove, .capital],
+    "Ň": [.n, .caron, .above, .capital],
 
     //0148          ; LATIN SMALL LETTER N WITH CARON
-    "ň": [.n, .caronAbove],
+    "ň": [.n, .caron, .above],
 
     //0149          ; LATIN SMALL LETTER N PRECEDED BY APOSTROPHE
     "ŉ": [],
@@ -820,22 +820,22 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ŋ": [.n, .g],
 
     //014C          ; LATIN CAPITAL LETTER O WITH MACRON
-    "Ō": [.o, .macronAbove, .capital],
+    "Ō": [.o, .macron, .above, .capital],
 
     //014D          ; LATIN SMALL LETTER O WITH MACRON
-    "ō": [.o, .macronAbove],
+    "ō": [.o, .macron, .above],
 
     //014E          ; LATIN CAPITAL LETTER O WITH BREVE
-    "Ŏ": [.o, .breveAbove, .capital],
+    "Ŏ": [.o, .breve, .above, .capital],
 
     //014F          ; LATIN SMALL LETTER O WITH BREVE
-    "ŏ": [.o, .breveAbove],
+    "ŏ": [.o, .breve, .above],
 
     //0150          ; LATIN CAPITAL LETTER O WITH DOUBLE ACUTE
-    "Ő": [.o, .doubleAcuteAbove, .capital],
+    "Ő": [.o, .doubleAcute, .above, .capital],
 
     //0151          ; LATIN SMALL LETTER O WITH DOUBLE ACUTE
-    "ő": [.o, .doubleAcuteAbove],
+    "ő": [.o, .doubleAcute, .above],
 
     //0152          ; LATIN CAPITAL LIGATURE OE
     "Œ": [.o, .e, .capital],
@@ -844,10 +844,10 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "œ": [.e, .e],
 
     //0154          ; LATIN CAPITAL LETTER R WITH ACUTE
-    "Ŕ": [.r, .acuteAbove, .capital],
+    "Ŕ": [.r, .acute, .above, .capital],
 
     //0155          ; LATIN SMALL LETTER R WITH ACUTE
-    "ŕ": [.r, .acuteAbove],
+    "ŕ": [.r, .acute, .above],
 
     //0156          ; LATIN CAPITAL LETTER R WITH CEDILLA
     "Ŗ": [.r, .cedilla, .capital],
@@ -856,22 +856,22 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ŗ": [.r, .cedilla],
 
     //0158          ; LATIN CAPITAL LETTER R WITH CARON
-    "Ř": [.r, .caronAbove, .capital],
+    "Ř": [.r, .caron, .above, .capital],
 
     //0159          ; LATIN SMALL LETTER R WITH CARON
-    "ř": [.r, .caronAbove],
+    "ř": [.r, .caron, .above],
 
     //015A          ; LATIN CAPITAL LETTER S WITH ACUTE
-    "Ś": [.s, .acuteAbove, .capital],
+    "Ś": [.s, .acute, .above, .capital],
 
     //015B          ; LATIN SMALL LETTER S WITH ACUTE
-    "ś": [.s, .acuteAbove],
+    "ś": [.s, .acute, .above],
 
     //015C          ; LATIN CAPITAL LETTER S WITH CIRCUMFLEX
-    "Ŝ": [.s, .circumflexAbove, .capital],
+    "Ŝ": [.s, .circumflex, .above, .capital],
 
     //015D          ; LATIN SMALL LETTER S WITH CIRCUMFLEX
-    "ŝ": [.s, .circumflexAbove],
+    "ŝ": [.s, .circumflex, .above],
 
     //015E          ; LATIN CAPITAL LETTER S WITH CEDILLA
     "Ş": [.s, .cedilla, .capital],
@@ -880,10 +880,10 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ş": [.s, .cedilla],
 
     //0160          ; LATIN CAPITAL LETTER S WITH CARON
-    "Š": [.s, .caronAbove, .capital],
+    "Š": [.s, .caron, .above, .capital],
 
     //0161          ; LATIN SMALL LETTER S WITH CARON
-    "š": [.s, .caronAbove],
+    "š": [.s, .caron, .above],
 
     //0162          ; LATIN CAPITAL LETTER T WITH CEDILLA
     "Ţ": [.t, .cedilla, .capital],
@@ -892,10 +892,10 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ţ": [.t, .cedilla],
 
     //0164          ; LATIN CAPITAL LETTER T WITH CARON
-    "Ť": [.t, .caronAbove, .capital],
+    "Ť": [.t, .caron, .above, .capital],
 
     //0165          ; LATIN SMALL LETTER T WITH CARON
-    "ť": [.t, .caronAbove],
+    "ť": [.t, .caron, .above],
 
     //0166          ; LATIN CAPITAL LETTER T WITH STROKE
     "Ŧ": [.t, .stroke, .capital],
@@ -904,73 +904,73 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ŧ": [.t, .stroke],
 
     //0168          ; LATIN CAPITAL LETTER U WITH TILDE
-    "Ũ": [.u, .tildeAbove, .capital],
+    "Ũ": [.u, .tilde, .above, .capital],
 
     //0169          ; LATIN SMALL LETTER U WITH TILDE
-    "ũ": [.u, .tildeAbove],
+    "ũ": [.u, .tilde, .above],
 
     //016A          ; LATIN CAPITAL LETTER U WITH MACRON
-    "Ū": [.u, .macronAbove, .capital],
+    "Ū": [.u, .macron, .above, .capital],
 
     //016B          ; LATIN SMALL LETTER U WITH MACRON
-    "ū": [.u, .macronAbove],
+    "ū": [.u, .macron, .above],
 
     //016C          ; LATIN CAPITAL LETTER U WITH BREVE
-    "Ŭ": [.u, .breveAbove, .capital],
+    "Ŭ": [.u, .breve, .above, .capital],
 
     //016D          ; LATIN SMALL LETTER U WITH BREVE
-    "ŭ": [.u, .breveAbove],
+    "ŭ": [.u, .breve, .above],
 
     //016E          ; LATIN CAPITAL LETTER U WITH RING ABOVE
-    "Ů": [.u, .ringAbove, .capital],
+    "Ů": [.u, .ring, .above, .capital],
 
     //016F          ; LATIN SMALL LETTER U WITH RING ABOVE
-    "ů": [.u, .ringAbove],
+    "ů": [.u, .ring, .above],
 
     //0170          ; LATIN CAPITAL LETTER U WITH DOUBLE ACUTE
-    "Ű": [.u, .doubleAcuteAbove, .capital],
+    "Ű": [.u, .doubleAcute, .above, .capital],
 
     //0171          ; LATIN SMALL LETTER U WITH DOUBLE ACUTE
-    "ű": [.u, .doubleAcuteAbove],
+    "ű": [.u, .doubleAcute, .above],
 
     //0172          ; LATIN CAPITAL LETTER U WITH OGONEK
-    "Ų": [.u, .ogonekBelow, .capital],
+    "Ų": [.u, .ogonek, .below, .capital],
 
     //0173          ; LATIN SMALL LETTER U WITH OGONEK
-    "ų": [.u, .ogonekBelow],
+    "ų": [.u, .ogonek, .below],
 
     //0174          ; LATIN CAPITAL LETTER W WITH CIRCUMFLEX
-    "Ŵ": [.w, .circumflexAbove, .capital],
+    "Ŵ": [.w, .circumflex, .above, .capital],
 
     //0175          ; LATIN SMALL LETTER W WITH CIRCUMFLEX
-    "ŵ": [.w, .circumflexAbove],
+    "ŵ": [.w, .circumflex, .above],
 
     //0176          ; LATIN CAPITAL LETTER Y WITH CIRCUMFLEX
-    "Ŷ": [.y, .circumflexAbove, .capital],
+    "Ŷ": [.y, .circumflex, .above, .capital],
 
     //0177          ; LATIN SMALL LETTER Y WITH CIRCUMFLEX
-    "ŷ": [.y, .circumflexAbove],
+    "ŷ": [.y, .circumflex, .above],
 
     //0178          ; LATIN CAPITAL LETTER Y WITH DIAERESIS
-    "Ÿ": [.y, .diaeresisAbove, .capital],
+    "Ÿ": [.y, .diaeresis, .above, .capital],
 
     //0179          ; LATIN CAPITAL LETTER Z WITH ACUTE
-    "Ź": [.z, .acuteAbove, .capital],
+    "Ź": [.z, .acute, .above, .capital],
 
     //017A          ; LATIN SMALL LETTER Z WITH ACUTE
-    "ź": [.z, .acuteAbove],
+    "ź": [.z, .acute, .above],
 
     //017B          ; LATIN CAPITAL LETTER Z WITH DOT ABOVE
-    "Ż": [.z, .dotAbove, .capital],
+    "Ż": [.z, .dot, .above, .capital],
 
     //017C          ; LATIN SMALL LETTER Z WITH DOT ABOVE
-    "ż": [.z, .dotAbove],
+    "ż": [.z, .dot, .above],
 
     //017D          ; LATIN CAPITAL LETTER Z WITH CARON
-    "Ž": [.z, .caronAbove, .capital],
+    "Ž": [.z, .caron, .above, .capital],
 
     //017E          ; LATIN SMALL LETTER Z WITH CARON
-    "ž": [.z, .caronAbove],
+    "ž": [.z, .caron, .above],
 
     //017F          ; LATIN SMALL LETTER LONG S
     "ſ": [.s, .l],
@@ -1183,13 +1183,13 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ǃ": [.t, .click],
 
     //01C4          ; LATIN CAPITAL LETTER DZ WITH CARON
-    "Ǆ": [.d, .capital, .joiner, .z, .caronAbove, .capital],
+    "Ǆ": [.d, .capital, .joiner, .z, .caron, .above, .capital],
 
     //01C5          ; LATIN CAPITAL LETTER D WITH SMALL LETTER Z WITH CARON
-    "ǅ": [.d, .capital, .joiner, .z, .caronAbove],
+    "ǅ": [.d, .capital, .joiner, .z, .caron, .above],
     
     //01C6          ; LATIN SMALL LETTER DZ WITH CARON
-    "ǆ": [.d, .joiner, .z, .caronAbove],
+    "ǆ": [.d, .joiner, .z, .caron, .above],
 
     //01C7          ; LATIN CAPITAL LETTER LJ
     "Ǉ": [.l, .capital, .joiner, .j, .capital],
@@ -1210,73 +1210,73 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ǌ": [.n, .joiner, .j],
 
     //01CD          ; LATIN CAPITAL LETTER A WITH CARON
-    "Ǎ": [.a, .caronAbove, .capital],
+    "Ǎ": [.a, .caron, .above, .capital],
 
     //01CE          ; LATIN SMALL LETTER A WITH CARON
-    "ǎ": [.a, .caronAbove],
+    "ǎ": [.a, .caron, .above],
 
     //01CF          ; LATIN CAPITAL LETTER I WITH CARON
-    "Ǐ": [.i, .caronAbove, .capital],
+    "Ǐ": [.i, .caron, .above, .capital],
 
     //01D0          ; LATIN SMALL LETTER I WITH CARON
-    "ǐ": [.i, .caronAbove],
+    "ǐ": [.i, .caron, .above],
 
     //01D1          ; LATIN CAPITAL LETTER O WITH CARON
-    "Ǒ": [.o, .caronAbove, .capital],
+    "Ǒ": [.o, .caron, .above, .capital],
 
     //01D2          ; LATIN SMALL LETTER O WITH CARON
-    "ǒ": [.o, .caronAbove],
+    "ǒ": [.o, .caron, .above],
 
     //01D3          ; LATIN CAPITAL LETTER U WITH CARON
-    "Ǔ": [.u, .caronAbove, .capital],
+    "Ǔ": [.u, .caron, .above, .capital],
 
     //01D4          ; LATIN SMALL LETTER U WITH CARON
-    "ǔ": [.u, .caronAbove],
+    "ǔ": [.u, .caron, .above],
 
     //01D5          ; LATIN CAPITAL LETTER U WITH DIAERESIS AND MACRON
-    "Ǖ": [.u, .diaeresisAbove, .macronAbove, .capital],
+    "Ǖ": [.u, .diaeresis, .above, .macron, .above, .capital],
 
     //01D6          ; LATIN SMALL LETTER U WITH DIAERESIS AND MACRON
-    "ǖ": [.u, .diaeresisAbove, .macronAbove],
+    "ǖ": [.u, .diaeresis, .above, .macron, .above],
 
     //01D7          ; LATIN CAPITAL LETTER U WITH DIAERESIS AND ACUTE
-    "Ǘ": [.u, .diaeresisAbove, .acuteAbove, .capital],
+    "Ǘ": [.u, .diaeresis, .above, .acute, .above, .capital],
 
     //01D8          ; LATIN SMALL LETTER U WITH DIAERESIS AND ACUTE
-    "ǘ": [.u, .diaeresisAbove, .acuteAbove],
+    "ǘ": [.u, .diaeresis, .above, .acute, .above],
 
     //01D9          ; LATIN CAPITAL LETTER U WITH DIAERESIS AND CARON
-    "Ǚ": [.u, .diaeresisAbove, .caronAbove, .capital],
+    "Ǚ": [.u, .diaeresis, .above, .caron, .above, .capital],
 
     //01DA          ; LATIN SMALL LETTER U WITH DIAERESIS AND CARON
-    "ǚ": [.u, .diaeresisAbove, .caronAbove],
+    "ǚ": [.u, .diaeresis, .above, .caron, .above],
 
     //01DB          ; LATIN CAPITAL LETTER U WITH DIAERESIS AND GRAVE
-    "Ǜ": [.u, .diaeresisAbove, .graveAbove, .capital],
+    "Ǜ": [.u, .diaeresis, .above, .grave, .above, .capital],
 
     //01DC          ; LATIN SMALL LETTER U WITH DIAERESIS AND GRAVE
-    "ǜ": [.u, .diaeresisAbove, .graveAbove],
+    "ǜ": [.u, .diaeresis, .above, .grave, .above],
 
     //01DD          ; LATIN SMALL LETTER TURNED E
     "ǝ": [.e, .turned],
 
     //01DE          ; LATIN CAPITAL LETTER A WITH DIAERESIS AND MACRON
-    "Ǟ": [.a, .diaeresisAbove, .macronAbove, .capital],
+    "Ǟ": [.a, .diaeresis, .above, .macron, .above, .capital],
 
     //01DF          ; LATIN SMALL LETTER A WITH DIAERESIS AND MACRON
-    "ǟ": [.a, .diaeresisAbove, .macronAbove],
+    "ǟ": [.a, .diaeresis, .above, .macron, .above],
 
     //01E0          ; LATIN CAPITAL LETTER A WITH DOT ABOVE AND MACRON
-    "Ǡ": [.a, .dotAbove, .macronAbove, .capital],
+    "Ǡ": [.a, .dot, .above, .macron, .above, .capital],
 
     //01E1          ; LATIN SMALL LETTER A WITH DOT ABOVE AND MACRON
-    "ǡ": [.a, .dotAbove, .macronAbove],
+    "ǡ": [.a, .dot, .above, .macron, .above],
 
     //01E2          ; LATIN CAPITAL LETTER AE WITH MACRON
-    "Ǣ": [.a, .e, .macronAbove, .capital],
+    "Ǣ": [.a, .e, .macron, .above, .capital],
 
     //01E3          ; LATIN SMALL LETTER AE WITH MACRON
-    "ǣ": [.a, .e, .macronAbove],
+    "ǣ": [.a, .e, .macron, .above],
 
     //01E4          ; LATIN CAPITAL LETTER G WITH STROKE
     "Ǥ": [.g, .stroke, .capital],
@@ -1285,37 +1285,37 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ǥ": [.g, .stroke],
 
     //01E6          ; LATIN CAPITAL LETTER G WITH CARON
-    "Ǧ": [.g, .caronAbove, .capital],
+    "Ǧ": [.g, .caron, .above, .capital],
 
     //01E7          ; LATIN SMALL LETTER G WITH CARON
-    "ǧ": [.g, .caronAbove],
+    "ǧ": [.g, .caron, .above],
 
     //01E8          ; LATIN CAPITAL LETTER K WITH CARON
-    "Ǩ": [.k, .caronAbove, .capital],
+    "Ǩ": [.k, .caron, .above, .capital],
 
     //01E9          ; LATIN SMALL LETTER K WITH CARON
-    "ǩ": [.k, .caronAbove],
+    "ǩ": [.k, .caron, .above],
 
     //01EA          ; LATIN CAPITAL LETTER O WITH OGONEK
-    "Ǫ": [.o, .ogonekBelow, .capital],
+    "Ǫ": [.o, .ogonek, .below, .capital],
 
     //01EB          ; LATIN SMALL LETTER O WITH OGONEK
-    "ǫ": [.o, .ogonekBelow],
+    "ǫ": [.o, .ogonek, .below],
 
     //01EC          ; LATIN CAPITAL LETTER O WITH OGONEK AND MACRON
-    "Ǭ": [.o, .ogonekBelow, .macronAbove, .capital],
+    "Ǭ": [.o, .ogonek, .below, .macron, .above, .capital],
 
     //01ED          ; LATIN SMALL LETTER O WITH OGONEK AND MACRON
-    "ǭ": [.o, .ogonekBelow, .macronAbove],
+    "ǭ": [.o, .ogonek, .below, .macron, .above],
 
     //01EE          ; LATIN CAPITAL LETTER EZH WITH CARON
-    "Ǯ": [.z, .h, .caronAbove, .capital],
+    "Ǯ": [.z, .h, .caron, .above, .capital],
 
     //01EF          ; LATIN SMALL LETTER EZH WITH CARON
-    "ǯ": [.z, .h, .caronAbove],
+    "ǯ": [.z, .h, .caron, .above],
 
     //01F0          ; LATIN SMALL LETTER J WITH CARON
-    "ǰ": [.j, .caronAbove],
+    "ǰ": [.j, .caron, .above],
 
     //01F1          ; LATIN CAPITAL LETTER DZ
     "Ǳ": [.d, .capital, .joiner, .z, .capital],
@@ -1327,10 +1327,10 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ǳ": [.d, .joiner, .z],
 
     //01F4          ; LATIN CAPITAL LETTER G WITH ACUTE
-    "Ǵ": [.g, .acuteAbove, .capital],
+    "Ǵ": [.g, .acute, .above, .capital],
 
     //01F5          ; LATIN SMALL LETTER G WITH ACUTE
-    "ǵ": [.g, .acuteAbove],
+    "ǵ": [.g, .acute, .above],
 
     //01F6          ; LATIN CAPITAL LETTER HWAIR
     "Ƕ": [.h, .v, .capital],
@@ -1339,112 +1339,112 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "Ƿ": [.w, .h, .capital],
 
     //01F8          ; LATIN CAPITAL LETTER N WITH GRAVE
-    "Ǹ": [.n, .graveAbove, .capital],
+    "Ǹ": [.n, .grave, .above, .capital],
 
     //01F9          ; LATIN SMALL LETTER N WITH GRAVE
-    "ǹ": [.n, .graveAbove],
+    "ǹ": [.n, .grave, .above],
 
     //01FA          ; LATIN CAPITAL LETTER A WITH RING ABOVE AND ACUTE
-    "Ǻ": [.a, .ringAbove, .acuteAbove, .capital],
+    "Ǻ": [.a, .ring, .above, .acute, .above, .capital],
 
     //01FB          ; LATIN SMALL LETTER A WITH RING ABOVE AND ACUTE
-    "ǻ": [.a, .ringAbove, .acuteAbove],
+    "ǻ": [.a, .ring, .above, .acute, .above],
 
     //01FC          ; LATIN CAPITAL LETTER AE WITH ACUTE
-    "Ǽ": [.a, .e, .acuteAbove, .capital],
+    "Ǽ": [.a, .e, .acute, .above, .capital],
 
     //01FD          ; LATIN SMALL LETTER AE WITH ACUTE
-    "ǽ": [.a, .e, .acuteAbove],
+    "ǽ": [.a, .e, .acute, .above],
 
     //01FE          ; LATIN CAPITAL LETTER O WITH STROKE AND ACUTE
-    "Ǿ": [.o, .diagonalStroke, .acuteAbove, .capital],
+    "Ǿ": [.o, .diagonalStroke, .acute, .above, .capital],
 
     //01FF          ; LATIN SMALL LETTER O WITH STROKE AND ACUTE
-    "ǿ": [.o, .diagonalStroke, .acuteAbove],
+    "ǿ": [.o, .diagonalStroke, .acute, .above],
 
     //0200          ; LATIN CAPITAL LETTER A WITH DOUBLE GRAVE
-    "Ȁ": [.a, .doubleGraveAbove, .capital],
+    "Ȁ": [.a, .doubleGrave, .above, .capital],
 
     //0201          ; LATIN SMALL LETTER A WITH DOUBLE GRAVE
-    "ȁ": [.a, .doubleGraveAbove],
+    "ȁ": [.a, .doubleGrave, .above],
 
     //0202          ; LATIN CAPITAL LETTER A WITH INVERTED BREVE
-    "Ȃ": [.a, .invertedBreveAbove, .capital],
+    "Ȃ": [.a, .invertedBreve, .above, .capital],
 
     //0203          ; LATIN SMALL LETTER A WITH INVERTED BREVE
-    "ȃ": [.a, .invertedBreveAbove],
+    "ȃ": [.a, .invertedBreve, .above],
 
     //0204          ; LATIN CAPITAL LETTER E WITH DOUBLE GRAVE
-    "Ȅ": [.e, .doubleGraveAbove, .capital],
+    "Ȅ": [.e, .doubleGrave, .above, .capital],
 
     //0205          ; LATIN SMALL LETTER E WITH DOUBLE GRAVE
-    "ȅ": [.e, .doubleGraveAbove],
+    "ȅ": [.e, .doubleGrave, .above],
 
     //0206          ; LATIN CAPITAL LETTER E WITH INVERTED BREVE
-    "Ȇ": [.e, .invertedBreveAbove, .capital],
+    "Ȇ": [.e, .invertedBreve, .above, .capital],
 
     //0207          ; LATIN SMALL LETTER E WITH INVERTED BREVE
-    "ȇ": [.e, .invertedBreveAbove],
+    "ȇ": [.e, .invertedBreve, .above],
 
     //0208          ; LATIN CAPITAL LETTER I WITH DOUBLE GRAVE
-    "Ȉ": [.i, .doubleGraveAbove, .capital],
+    "Ȉ": [.i, .doubleGrave, .above, .capital],
 
     //0209          ; LATIN SMALL LETTER I WITH DOUBLE GRAVE
-    "ȉ": [.i, .doubleGraveAbove],
+    "ȉ": [.i, .doubleGrave, .above],
 
     //020A          ; LATIN CAPITAL LETTER I WITH INVERTED BREVE
-    "Ȋ": [.i, .invertedBreveAbove, .capital],
+    "Ȋ": [.i, .invertedBreve, .above, .capital],
 
     //020B          ; LATIN SMALL LETTER I WITH INVERTED BREVE
-    "ȋ": [.i, .invertedBreveAbove],
+    "ȋ": [.i, .invertedBreve, .above],
 
     //020C          ; LATIN CAPITAL LETTER O WITH DOUBLE GRAVE
-    "Ȍ": [.o, .doubleGraveAbove, .capital],
+    "Ȍ": [.o, .doubleGrave, .above, .capital],
 
     //020D          ; LATIN SMALL LETTER O WITH DOUBLE GRAVE
-    "ȍ": [.o, .doubleGraveAbove],
+    "ȍ": [.o, .doubleGrave, .above],
 
     //020E          ; LATIN CAPITAL LETTER O WITH INVERTED BREVE
-    "Ȏ": [.o, .invertedBreveAbove, .capital],
+    "Ȏ": [.o, .invertedBreve, .above, .capital],
 
     //020F          ; LATIN SMALL LETTER O WITH INVERTED BREVE
-    "ȏ": [.o, .invertedBreveAbove],
+    "ȏ": [.o, .invertedBreve, .above],
 
     //0210          ; LATIN CAPITAL LETTER R WITH DOUBLE GRAVE
-    "Ȑ": [.r, .doubleGraveAbove, .capital],
+    "Ȑ": [.r, .doubleGrave, .above, .capital],
 
     //0211          ; LATIN SMALL LETTER R WITH DOUBLE GRAVE
-    "ȑ": [.r, .doubleGraveAbove],
+    "ȑ": [.r, .doubleGrave, .above],
 
     //0212          ; LATIN CAPITAL LETTER R WITH INVERTED BREVE
-    "Ȓ": [.r, .invertedBreveAbove, .capital],
+    "Ȓ": [.r, .invertedBreve, .above, .capital],
 
     //0213          ; LATIN SMALL LETTER R WITH INVERTED BREVE
-    "ȓ": [.r, .invertedBreveAbove],
+    "ȓ": [.r, .invertedBreve, .above],
 
     //0214          ; LATIN CAPITAL LETTER U WITH DOUBLE GRAVE
-    "Ȕ": [.u, .doubleGraveAbove, .capital],
+    "Ȕ": [.u, .doubleGrave, .above, .capital],
 
     //0215          ; LATIN SMALL LETTER U WITH DOUBLE GRAVE
-    "ȕ": [.u, .doubleGraveAbove],
+    "ȕ": [.u, .doubleGrave, .above],
 
     //0216          ; LATIN CAPITAL LETTER U WITH INVERTED BREVE
-    "Ȗ": [.u, .invertedBreveAbove, .capital],
+    "Ȗ": [.u, .invertedBreve, .above, .capital],
 
     //0217          ; LATIN SMALL LETTER U WITH INVERTED BREVE
-    "ȗ": [.u, .invertedBreveAbove],
+    "ȗ": [.u, .invertedBreve, .above],
 
     //0218          ; LATIN CAPITAL LETTER S WITH COMMA BELOW
-    "Ș": [.s, .commaBelow, .capital],
+    "Ș": [.s, .comma, .below, .capital],
 
     //0219          ; LATIN SMALL LETTER S WITH COMMA BELOW
-    "ș": [.s, .commaBelow],
+    "ș": [.s, .comma, .below],
 
     //021A          ; LATIN CAPITAL LETTER T WITH COMMA BELOW
-    "Ț": [.t, .commaBelow, .capital],
+    "Ț": [.t, .comma, .below, .capital],
 
     //021B          ; LATIN SMALL LETTER T WITH COMMA BELOW
-    "ț": [.t, .commaBelow],
+    "ț": [.t, .comma, .below],
 
     //021C          ; LATIN CAPITAL LETTER YOGH
     "Ȝ": [.g, .h, .capital],
@@ -1453,10 +1453,10 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ȝ": [.g, .h],
 
     //021E          ; LATIN CAPITAL LETTER H WITH CARON
-    "Ȟ": [.h, .caronAbove, .capital],
+    "Ȟ": [.h, .caron, .above, .capital],
 
     //021F          ; LATIN SMALL LETTER H WITH CARON
-    "ȟ": [.h, .caronAbove],
+    "ȟ": [.h, .caron, .above],
 
     //0220          ; LATIN CAPITAL LETTER N WITH LONG RIGHT LEG
     "Ƞ": [.n, .longLeg, .capital],
@@ -1477,10 +1477,10 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ȥ": [.z, .hook],
 
     //0226          ; LATIN CAPITAL LETTER A WITH DOT ABOVE
-    "Ȧ": [.a, .dotAbove, .capital],
+    "Ȧ": [.a, .dot, .above, .capital],
 
     //0227          ; LATIN SMALL LETTER A WITH DOT ABOVE
-    "ȧ": [.a, .dotAbove],
+    "ȧ": [.a, .dot, .above],
 
     //0228          ; LATIN CAPITAL LETTER E WITH CEDILLA
     "Ȩ": [.e, .cedilla, .capital],
@@ -1489,34 +1489,34 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ȩ": [.e, .cedilla],
 
     //022A          ; LATIN CAPITAL LETTER O WITH DIAERESIS AND MACRON
-    "Ȫ": [.o, .diaeresisAbove, .macronAbove, .capital],
+    "Ȫ": [.o, .diaeresis, .above, .macron, .above, .capital],
 
     //022B          ; LATIN SMALL LETTER O WITH DIAERESIS AND MACRON
-    "ȫ": [.o, .diaeresisAbove, .macronAbove],
+    "ȫ": [.o, .diaeresis, .above, .macron, .above],
 
     //022C          ; LATIN CAPITAL LETTER O WITH TILDE AND MACRON
-    "Ȭ": [.o, .tildeAbove, .macronAbove, .capital],
+    "Ȭ": [.o, .tilde, .above, .macron, .above, .capital],
 
     //022D          ; LATIN SMALL LETTER O WITH TILDE AND MACRON
-    "ȭ": [.o, .tildeAbove, .macronAbove],
+    "ȭ": [.o, .tilde, .above, .macron, .above],
 
     //022E          ; LATIN CAPITAL LETTER O WITH DOT ABOVE
-    "Ȯ": [.o, .dotAbove, .capital],
+    "Ȯ": [.o, .dot, .above, .capital],
 
     //022F          ; LATIN SMALL LETTER O WITH DOT ABOVE
-    "ȯ": [.o, .dotAbove],
+    "ȯ": [.o, .dot, .above],
 
     //0230          ; LATIN CAPITAL LETTER O WITH DOT ABOVE AND MACRON
-    "Ȱ": [.o, .dotAbove, .macronAbove, .capital],
+    "Ȱ": [.o, .dot, .above, .macron, .above, .capital],
 
     //0231          ; LATIN SMALL LETTER O WITH DOT ABOVE AND MACRON
-    "ȱ": [.o, .dotAbove, .macronAbove],
+    "ȱ": [.o, .dot, .above, .macron, .above],
 
     //0232          ; LATIN CAPITAL LETTER Y WITH MACRON
-    "Ȳ": [.y, .macronAbove, .capital],
+    "Ȳ": [.y, .macron, .above, .capital],
 
     //0233          ; LATIN SMALL LETTER Y WITH MACRON
-    "ȳ": [.y, .macronAbove],
+    "ȳ": [.y, .macron, .above],
 
     //0234          ; LATIN SMALL LETTER L WITH CURL
     "ȴ": [.l, .curl],
@@ -1528,7 +1528,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ȶ": [.t, .curl],
 
     //0237          ; LATIN SMALL LETTER DOTLESS J
-    "ȷ": [.j, .dotAbove],
+    "ȷ": [.j, .dot, .above],
 
     //0238          ; LATIN SMALL LETTER DB DIGRAPH
     "ȸ": [.d, .b],
@@ -1651,7 +1651,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ɞ": [.e, .open, .closed, .reversed],
 
     //025F          ; LATIN SMALL LETTER DOTLESS J WITH STROKE
-    "ɟ": [.j, .stroke, .dotAbove],
+    "ɟ": [.j, .stroke, .dot, .above],
 
     //0260          ; LATIN SMALL LETTER G WITH HOOK
     "ɠ": [.g, .hook],

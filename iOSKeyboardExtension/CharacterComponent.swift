@@ -39,24 +39,25 @@ enum CharacterComponent {
     case script
     
     case cedilla
-    case ogonek, ogonekBelow, ogonekAbove
-    case commaBelow
-    case diaeresis, diaeresisAbove
-    case dot, dotAbove
-    case tildeAbove
-    case macron, macronAbove
-    case breve, breveAbove
-    case invertedBreve, invertedBreveAbove
-    case caron, caronAbove
-    case ring, ringAbove
-    case acute, acuteAbove
-    case grave, graveAbove
-    case circumflex, circumflexAbove
+    case ogonek
+    case diaeresis
+    case dot
+    case macron
+    case breve
+    case invertedBreve
+    case caron
+    case ring
+    case acute
+    case grave
+    case circumflex
     case cross
-    case doubleAcuteAbove
-    case doubleGraveAbove
+    case doubleAcute
+    case doubleGrave
     
     case doubled
+    
+    case above
+    case below
     
     case click
     case long, halfLong

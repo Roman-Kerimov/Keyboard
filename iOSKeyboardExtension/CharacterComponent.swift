@@ -51,8 +51,6 @@ enum CharacterComponent {
     case grave
     case circumflex
     case cross
-    case doubleAcute
-    case doubleGrave
     
     case doubled
     

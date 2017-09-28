@@ -832,10 +832,10 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ŏ": [.o, .breve, .above],
 
     //0150          ; LATIN CAPITAL LETTER O WITH DOUBLE ACUTE
-    "Ő": [.o, .doubleAcute, .above, .capital],
+    "Ő": [.o, .acute, .doubled, .above, .capital],
 
     //0151          ; LATIN SMALL LETTER O WITH DOUBLE ACUTE
-    "ő": [.o, .doubleAcute, .above],
+    "ő": [.o, .acute, .doubled, .above],
 
     //0152          ; LATIN CAPITAL LIGATURE OE
     "Œ": [.o, .e, .capital],
@@ -928,10 +928,10 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ů": [.u, .ring, .above],
 
     //0170          ; LATIN CAPITAL LETTER U WITH DOUBLE ACUTE
-    "Ű": [.u, .doubleAcute, .above, .capital],
+    "Ű": [.u, .acute, .doubled, .above, .capital],
 
     //0171          ; LATIN SMALL LETTER U WITH DOUBLE ACUTE
-    "ű": [.u, .doubleAcute, .above],
+    "ű": [.u, .acute, .doubled, .above],
 
     //0172          ; LATIN CAPITAL LETTER U WITH OGONEK
     "Ų": [.u, .ogonek, .below, .capital],
@@ -1363,10 +1363,10 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ǿ": [.o, .diagonalStroke, .acute, .above],
 
     //0200          ; LATIN CAPITAL LETTER A WITH DOUBLE GRAVE
-    "Ȁ": [.a, .doubleGrave, .above, .capital],
+    "Ȁ": [.a, .grave, .doubled, .above, .capital],
 
     //0201          ; LATIN SMALL LETTER A WITH DOUBLE GRAVE
-    "ȁ": [.a, .doubleGrave, .above],
+    "ȁ": [.a, .grave, .doubled, .above],
 
     //0202          ; LATIN CAPITAL LETTER A WITH INVERTED BREVE
     "Ȃ": [.a, .invertedBreve, .above, .capital],
@@ -1375,10 +1375,10 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ȃ": [.a, .invertedBreve, .above],
 
     //0204          ; LATIN CAPITAL LETTER E WITH DOUBLE GRAVE
-    "Ȅ": [.e, .doubleGrave, .above, .capital],
+    "Ȅ": [.e, .grave, .doubled, .above, .capital],
 
     //0205          ; LATIN SMALL LETTER E WITH DOUBLE GRAVE
-    "ȅ": [.e, .doubleGrave, .above],
+    "ȅ": [.e, .grave, .doubled, .above],
 
     //0206          ; LATIN CAPITAL LETTER E WITH INVERTED BREVE
     "Ȇ": [.e, .invertedBreve, .above, .capital],
@@ -1387,10 +1387,10 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ȇ": [.e, .invertedBreve, .above],
 
     //0208          ; LATIN CAPITAL LETTER I WITH DOUBLE GRAVE
-    "Ȉ": [.i, .doubleGrave, .above, .capital],
+    "Ȉ": [.i, .grave, .doubled, .above, .capital],
 
     //0209          ; LATIN SMALL LETTER I WITH DOUBLE GRAVE
-    "ȉ": [.i, .doubleGrave, .above],
+    "ȉ": [.i, .grave, .doubled, .above],
 
     //020A          ; LATIN CAPITAL LETTER I WITH INVERTED BREVE
     "Ȋ": [.i, .invertedBreve, .above, .capital],
@@ -1399,10 +1399,10 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ȋ": [.i, .invertedBreve, .above],
 
     //020C          ; LATIN CAPITAL LETTER O WITH DOUBLE GRAVE
-    "Ȍ": [.o, .doubleGrave, .above, .capital],
+    "Ȍ": [.o, .grave, .doubled, .above, .capital],
 
     //020D          ; LATIN SMALL LETTER O WITH DOUBLE GRAVE
-    "ȍ": [.o, .doubleGrave, .above],
+    "ȍ": [.o, .grave, .doubled, .above],
 
     //020E          ; LATIN CAPITAL LETTER O WITH INVERTED BREVE
     "Ȏ": [.o, .invertedBreve, .above, .capital],
@@ -1411,10 +1411,10 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ȏ": [.o, .invertedBreve, .above],
 
     //0210          ; LATIN CAPITAL LETTER R WITH DOUBLE GRAVE
-    "Ȑ": [.r, .doubleGrave, .above, .capital],
+    "Ȑ": [.r, .grave, .doubled, .above, .capital],
 
     //0211          ; LATIN SMALL LETTER R WITH DOUBLE GRAVE
-    "ȑ": [.r, .doubleGrave, .above],
+    "ȑ": [.r, .grave, .doubled, .above],
 
     //0212          ; LATIN CAPITAL LETTER R WITH INVERTED BREVE
     "Ȓ": [.r, .invertedBreve, .above, .capital],
@@ -1423,10 +1423,10 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ȓ": [.r, .invertedBreve, .above],
 
     //0214          ; LATIN CAPITAL LETTER U WITH DOUBLE GRAVE
-    "Ȕ": [.u, .doubleGrave, .above, .capital],
+    "Ȕ": [.u, .grave, .doubled, .above, .capital],
 
     //0215          ; LATIN SMALL LETTER U WITH DOUBLE GRAVE
-    "ȕ": [.u, .doubleGrave, .above],
+    "ȕ": [.u, .grave, .doubled, .above],
 
     //0216          ; LATIN CAPITAL LETTER U WITH INVERTED BREVE
     "Ȗ": [.u, .invertedBreve, .above, .capital],

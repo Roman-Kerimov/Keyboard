@@ -17,11 +17,14 @@ enum CharacterComponent {
     
     case space, exclamationMark, quotationMark, numberSign, dollarSign, percentSign, ampersand, apostrophe, parenthesis, asterisk, plusSign, comma, hyphenMinus, fullStop, solidus, colon, semicolon, lessThanSign, equalsSign, greaterThanSign, questionMark, commercialAt, squareBracket, reverseSolidus, caret, lowLine, graveAccent, curlyBracket, verticalLine, tilde
     
+    case minusSign
+    
     case capital, smallCapital
     case turned, reversed, inverted, ramsHorn
     case superscript, `subscript`
     
-    case stroke, diagonalStroke
+    case stroke, shortStroke, longStroke
+    case diagonalStroke, shortDiagonalStroke, longDiagonalStroke
     case longLeg
     case L
     case hook, retroflexHook, palatalHook
@@ -51,10 +54,18 @@ enum CharacterComponent {
     case grave
     case circumflex
     case cross
+    case line
+    case bridge
+    case invertedBridge
+    case square
+    case verticalTilde
+    case zigzag
     
     case doubled
+    case double
     
-    case above
+    case above, aboveRight
+    case combining
     case below
     
     case click
@@ -66,9 +77,10 @@ enum CharacterComponent {
     case modifierPrime
     case shelf
     
-    case modifierTack
+    case tack, modifierTack
     case arrowhead
     case arrow
+    case angle
     
     case up
     case left

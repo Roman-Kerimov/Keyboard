@@ -2136,4 +2136,343 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     //02FF          ; MODIFIER LETTER LOW LEFT ARROW
     "˿": [.arrow, .left, .subscript],
 
+    
+    // MARK: - 0300..036F; Combining Diacritical Marks
+    
+    //0300          ; COMBINING GRAVE ACCENT
+    "̀": [.grave, .above],
+
+    //0301          ; COMBINING ACUTE ACCENT
+    "́": [.acute, .above],
+
+    //0302          ; COMBINING CIRCUMFLEX ACCENT
+    "̂": [.circumflex, .above],
+
+    //0303          ; COMBINING TILDE
+    "̃": [.tilde, .above],
+
+    //0304          ; COMBINING MACRON
+    "̄": [.macron, .above],
+
+    //0305          ; COMBINING OVERLINE
+    "̅": [.line, .above],
+
+    //0306          ; COMBINING BREVE
+    "̆": [.breve, .above],
+
+    //0307          ; COMBINING DOT ABOVE
+    "̇": [.dot, .above],
+
+    //0308          ; COMBINING DIAERESIS
+    "̈": [.diaeresis, .above],
+
+    //0309          ; COMBINING HOOK ABOVE
+    "̉": [.hook, .above],
+
+    //030A          ; COMBINING RING ABOVE
+    "̊": [.ring, .above],
+
+    //030B          ; COMBINING DOUBLE ACUTE ACCENT
+    "̋": [.acute, .doubled, .above],
+
+    //030C          ; COMBINING CARON
+    "̌": [.caron, .above],
+
+    //030D          ; COMBINING VERTICAL LINE ABOVE
+    "̍": [.verticalLine, .above],
+
+    //030E          ; COMBINING DOUBLE VERTICAL LINE ABOVE
+    "̎": [.verticalLine, .doubled, .above],
+
+    //030F          ; COMBINING DOUBLE GRAVE ACCENT
+    "̏": [.grave, .doubled, .above],
+
+    //0310          ; COMBINING CANDRABINDU
+    "̐": [.breve, .above, .dot],
+
+    //0311          ; COMBINING INVERTED BREVE
+    "̑": [.invertedBreve, .above],
+
+    //0312          ; COMBINING TURNED COMMA ABOVE
+    "̒": [.comma, .turned, .above],
+
+    //0313          ; COMBINING COMMA ABOVE
+    "̓": [.comma, .above],
+
+    //0314          ; COMBINING REVERSED COMMA ABOVE
+    "̔": [.comma, .reversed, .above],
+
+    //0315          ; COMBINING COMMA ABOVE RIGHT
+    "̕": [.comma, .aboveRight],
+
+    //0316          ; COMBINING GRAVE ACCENT BELOW
+    "̖": [.grave, .below],
+
+    //0317          ; COMBINING ACUTE ACCENT BELOW
+    "̗": [.acute, .below],
+
+    //0318          ; COMBINING LEFT TACK BELOW
+    "̘": [.tack, .left, .below],
+
+    //0319          ; COMBINING RIGHT TACK BELOW
+    "̙": [.tack, .right, .below],
+
+    //031A          ; COMBINING LEFT ANGLE ABOVE
+    "̚": [.angle, .left, .above],
+
+    //031B          ; COMBINING HORN
+    "̛": [.horn],
+
+    //031C          ; COMBINING LEFT HALF RING BELOW
+    "̜": [.ring, .leftHalf, .below],
+
+    //031D          ; COMBINING UP TACK BELOW
+    "̝": [.tack, .up, .below],
+
+    //031E          ; COMBINING DOWN TACK BELOW
+    "̞": [.tack, .down, .below],
+
+    //031F          ; COMBINING PLUS SIGN BELOW
+    "̟": [.plusSign, .below],
+
+    //0320          ; COMBINING MINUS SIGN BELOW
+    "̠": [.minusSign, .below],
+
+    //0321          ; COMBINING PALATALIZED HOOK BELOW
+    "̡": [.palatalHook, .below],
+
+    //0322          ; COMBINING RETROFLEX HOOK BELOW
+    "̢": [.retroflexHook, .below],
+
+    //0323          ; COMBINING DOT BELOW
+    "̣": [.dot, .below],
+
+    //0324          ; COMBINING DIAERESIS BELOW
+    "̤": [.diaeresis, .below],
+
+    //0325          ; COMBINING RING BELOW
+    "̥": [.ring, .below],
+
+    //0326          ; COMBINING COMMA BELOW
+    "̦": [.comma, .below],
+
+    //0327          ; COMBINING CEDILLA
+    "̧": [.cedilla, .combining],
+
+    //0328          ; COMBINING OGONEK
+    "̨": [.ogonek, .below],
+
+    //0329          ; COMBINING VERTICAL LINE BELOW
+    "̩": [.verticalLine, .below],
+
+    //032A          ; COMBINING BRIDGE BELOW
+    "̪": [.bridge, .below],
+
+    //032B          ; COMBINING INVERTED DOUBLE ARCH BELOW
+    "̫": [.breve, .doubled, .below],
+
+    //032C          ; COMBINING CARON BELOW
+    "̬": [.caron, .below],
+
+    //032D          ; COMBINING CIRCUMFLEX ACCENT BELOW
+    "̭": [.circumflex, .below],
+
+    //032E          ; COMBINING BREVE BELOW
+    "̮": [.breve, .below],
+
+    //032F          ; COMBINING INVERTED BREVE BELOW
+    "̯": [.invertedBreve, .below],
+
+    //0330          ; COMBINING TILDE BELOW
+    "̰": [.tilde, .below],
+
+    //0331          ; COMBINING MACRON BELOW
+    "̱": [.macron, .below],
+
+    //0332          ; COMBINING LOW LINE
+    "̲": [.line, .below],
+
+    //0333          ; COMBINING DOUBLE LOW LINE
+    "̳": [.line, .doubled, .below],
+
+    //0334          ; COMBINING TILDE OVERLAY
+    "̴": [.tilde, .combining],
+
+    //0335          ; COMBINING SHORT STROKE OVERLAY
+    "̵": [.shortStroke],
+
+    //0336          ; COMBINING LONG STROKE OVERLAY
+    "̶": [.longStroke],
+
+    //0337          ; COMBINING SHORT SOLIDUS OVERLAY
+    "̷": [.shortDiagonalStroke],
+
+    //0338          ; COMBINING LONG SOLIDUS OVERLAY
+    "̸": [.longDiagonalStroke],
+
+    //0339          ; COMBINING RIGHT HALF RING BELOW
+    "̹": [.ring, .rightHalf, .below],
+
+    //033A          ; COMBINING INVERTED BRIDGE BELOW
+    "̺": [.invertedBridge, .below],
+
+    //033B          ; COMBINING SQUARE BELOW
+    "̻": [.square, .below],
+
+    //033C          ; COMBINING SEAGULL BELOW
+    "̼": [.invertedBreve, .doubled, .below],
+
+    //033D          ; COMBINING X ABOVE
+    "̽": [.cross, .above],
+
+    //033E          ; COMBINING VERTICAL TILDE
+    "̾": [.verticalTilde, .above],
+
+    //033F          ; COMBINING DOUBLE OVERLINE
+    "̿": [.line, .doubled, .above],
+
+    //0340          ; COMBINING GRAVE TONE MARK
+    "̀": [],
+
+    //0341          ; COMBINING ACUTE TONE MARK
+    "́": [],
+
+    //0342          ; COMBINING GREEK PERISPOMENI
+    "͂": [],
+
+    //0343          ; COMBINING GREEK KORONIS
+    "̓": [],
+
+    //0344          ; COMBINING GREEK DIALYTIKA TONOS
+    "̈́": [],
+
+    //0345          ; COMBINING GREEK YPOGEGRAMMENI
+    "ͅ": [],
+
+    //0346          ; COMBINING BRIDGE ABOVE
+    "͆": [.bridge, .above],
+
+    //0347          ; COMBINING EQUALS SIGN BELOW
+    "͇": [.equalsSign, .below],
+
+    //0348          ; COMBINING DOUBLE VERTICAL LINE BELOW
+    "͈": [.verticalLine, .doubled, .below],
+
+    //0349          ; COMBINING LEFT ANGLE BELOW
+    "͉": [.angle, .left, .below],
+
+    //034A          ; COMBINING NOT TILDE ABOVE
+    "͊": [.tilde, .solidus, .above],
+
+    //034B          ; COMBINING HOMOTHETIC ABOVE
+    "͋": [.tilde, .colon, .above],
+
+    //034C          ; COMBINING ALMOST EQUAL TO ABOVE
+    "͌": [.tilde, .doubled, .above],
+
+    //034D          ; COMBINING LEFT RIGHT ARROW BELOW
+    "͍": [.arrow, .left, .right, .below],
+
+    //034E          ; COMBINING UPWARDS ARROW BELOW
+    "͎": [.arrow, .up, .below],
+
+    //034F          ; COMBINING GRAPHEME JOINER
+    "͏": [],
+
+    //0350          ; COMBINING RIGHT ARROWHEAD ABOVE
+    "͐": [.arrowhead, .right, .above],
+
+    //0351          ; COMBINING LEFT HALF RING ABOVE
+    "͑": [.ring, .leftHalf, .above],
+
+    //0352          ; COMBINING FERMATA
+    "͒": [.invertedBreve, .above, .dot],
+
+    //0353          ; COMBINING X BELOW
+    "͓": [.cross, .below],
+
+    //0354          ; COMBINING LEFT ARROWHEAD BELOW
+    "͔": [.arrowhead, .left, .below],
+
+    //0355          ; COMBINING RIGHT ARROWHEAD BELOW
+    "͕": [.arrowhead, .right, .below],
+
+    //0356          ; COMBINING RIGHT ARROWHEAD AND UP ARROWHEAD BELOW
+    "͖": [.arrowhead, .right, .below, .arrowhead, .up],
+
+    //0357          ; COMBINING RIGHT HALF RING ABOVE
+    "͗": [.ring, .rightHalf, .above],
+
+    //0358          ; COMBINING DOT ABOVE RIGHT
+    "͘": [.dot, .aboveRight],
+
+    //0359          ; COMBINING ASTERISK BELOW
+    "͙": [.asterisk, .below],
+
+    //035A          ; COMBINING DOUBLE RING BELOW
+    "͚": [.ring, .double, .below],
+
+    //035B          ; COMBINING ZIGZAG ABOVE
+    "͛": [.zigzag, .above],
+
+    //035C          ; COMBINING DOUBLE BREVE BELOW
+    "͜": [.breve, .double, .below],
+
+    //035D          ; COMBINING DOUBLE BREVE
+    "͝": [.breve, .double, .above],
+
+    //035E          ; COMBINING DOUBLE MACRON
+    "͞": [.macron, .double, .above],
+
+    //035F          ; COMBINING DOUBLE MACRON BELOW
+    "͟": [.macron, .double, .below],
+
+    //0360          ; COMBINING DOUBLE TILDE
+    "͠": [.tilde, .double, .above],
+
+    //0361          ; COMBINING DOUBLE INVERTED BREVE
+    "͡": [.invertedBreve, .double, .above],
+
+    //0362          ; COMBINING DOUBLE RIGHTWARDS ARROW BELOW
+    "͢": [.arrow, .right, .double, .below],
+
+    //0363          ; COMBINING LATIN SMALL LETTER A
+    "ͣ": [.a, .above],
+
+    //0364          ; COMBINING LATIN SMALL LETTER E
+    "ͤ": [.e, .above],
+
+    //0365          ; COMBINING LATIN SMALL LETTER I
+    "ͥ": [.i, .above],
+
+    //0366          ; COMBINING LATIN SMALL LETTER O
+    "ͦ": [.o, .above],
+
+    //0367          ; COMBINING LATIN SMALL LETTER U
+    "ͧ": [.u, .above],
+
+    //0368          ; COMBINING LATIN SMALL LETTER C
+    "ͨ": [.c, .above],
+
+    //0369          ; COMBINING LATIN SMALL LETTER D
+    "ͩ": [.d, .above],
+
+    //036A          ; COMBINING LATIN SMALL LETTER H
+    "ͪ": [.h, .above],
+
+    //036B          ; COMBINING LATIN SMALL LETTER M
+    "ͫ": [.m, .above],
+
+    //036C          ; COMBINING LATIN SMALL LETTER R
+    "ͬ": [.r, .above],
+
+    //036D          ; COMBINING LATIN SMALL LETTER T
+    "ͭ": [.t, .above],
+
+    //036E          ; COMBINING LATIN SMALL LETTER V
+    "ͮ": [.v, .above],
+
+    //036F          ; COMBINING LATIN SMALL LETTER X
+    "ͯ": [.x, .above],
+
 ]

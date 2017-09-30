@@ -2619,4 +2619,51 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     //03FE          ; GREEK CAPITAL DOTTED LUNATE SIGMA SYMBOL
     //03FF          ; GREEK CAPITAL REVERSED DOTTED LUNATE SIGMA SYMBOL
 
+    // MARK: - 1AB0..1AFF; Combining Diacritical Marks Extended
+    
+    //1AB0          ; COMBINING DOUBLED CIRCUMFLEX ACCENT
+    "᪰": [.circumflex, .doubled, .above],
+
+    //1AB1          ; COMBINING DIAERESIS-RING
+    "᪱": [.diaeresis, .ring, .above],
+
+    //1AB2          ; COMBINING INFINITY
+    "᪲": [.ring, .doubled, .above],
+
+    //1AB3          ; COMBINING DOWNWARDS ARROW
+    "᪳": [.arrow, .down, .above],
+
+    //1AB4          ; COMBINING TRIPLE DOT
+    "᪴": [.diaeresis, .dot, .above],
+
+    //1AB5          ; COMBINING X-X BELOW
+    "᪵": [.cross, .doubled, .below],
+
+    //1AB6          ; COMBINING WIGGLY LINE BELOW
+    "᪶": [.line, .w, .below],
+
+    //1AB7          ; COMBINING OPEN MARK BELOW
+    "᪷": [.open, .below],
+
+    //1AB8          ; COMBINING DOUBLE OPEN MARK BELOW
+    "᪸": [.open, .doubled, .below],
+
+    //1AB9          ; COMBINING LIGHT CENTRALIZATION STROKE BELOW
+    "᪹": [.diagonalStroke, .below],
+
+    //1ABA          ; COMBINING STRONG CENTRALIZATION STROKE BELOW
+    "᪺": [.diagonalStroke, .dot, .below],
+
+    //1ABB          ; COMBINING PARENTHESES ABOVE
+    "᪻": [.parenthesis, .above],
+
+    //1ABC          ; COMBINING DOUBLE PARENTHESES ABOVE
+    "᪼": [.parenthesis, .doubled, .above],
+
+    //1ABD          ; COMBINING PARENTHESES BELOW
+    "᪽": [.parenthesis, .below],
+
+    //1ABE          ; COMBINING PARENTHESES OVERLAY
+    "᪾": [.parenthesis, .combining],
+    
 ]

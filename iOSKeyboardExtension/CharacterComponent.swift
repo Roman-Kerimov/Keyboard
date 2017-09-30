@@ -23,7 +23,7 @@ enum CharacterComponent {
     case turned, reversed, inverted, ramsHorn, sideways
     case superscript, `subscript`
     
-    case stroke, shortStroke, longStroke
+    case stroke, shortStroke, longStroke, lightCentralizationStroke
     case diagonalStroke, shortDiagonalStroke, longDiagonalStroke
     case longLeg
     case L
@@ -61,11 +61,12 @@ enum CharacterComponent {
     case square
     case verticalTilde
     case zigzag
+    case snake
     
     case doubled
     case double
     
-    case above, aboveRight
+    case above, aboveLeft, aboveRight
     case combining
     case below
     

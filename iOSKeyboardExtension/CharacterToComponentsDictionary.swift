@@ -2394,7 +2394,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "͕": [.arrowhead, .right, .below],
 
     //0356          ; COMBINING RIGHT ARROWHEAD AND UP ARROWHEAD BELOW
-    "͖": [.arrowhead, .right, .below, .arrowhead, .up],
+    "͖": [.arrowhead, .right, .arrowhead, .up, .below],
 
     //0357          ; COMBINING RIGHT HALF RING ABOVE
     "͗": [.ring, .rightHalf, .above],
@@ -3278,5 +3278,198 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
 
     //1DBF          ; MODIFIER LETTER SMALL THETA
     "ᶿ": [.t, .h, .y, .superscript],
+
+    
+    // MARK: - 1DC0..1DFF; Combining Diacritical Marks Supplement
+    
+    //1DC0          ; COMBINING DOTTED GRAVE ACCENT
+    "᷀": [], //Greek
+
+    //1DC1          ; COMBINING DOTTED ACUTE ACCENT
+    "᷁": [], //Greek
+
+    //1DC2          ; COMBINING SNAKE BELOW
+    "᷂": [.snake, .below],
+
+    //1DC3          ; COMBINING SUSPENSION MARK
+    "᷃": [], //Glagolitic
+
+    //1DC4          ; COMBINING MACRON-ACUTE
+    "᷄": [.macron, .acute, .above],
+
+    //1DC5          ; COMBINING GRAVE-MACRON
+    "᷅": [.grave, .macron, .above],
+
+    //1DC6          ; COMBINING MACRON-GRAVE
+    "᷆": [.macron, .grave, .above],
+
+    //1DC7          ; COMBINING ACUTE-MACRON
+    "᷇": [.acute, .macron, .above],
+
+    //1DC8          ; COMBINING GRAVE-ACUTE-GRAVE
+    "᷈": [.caron, .grave, .above],
+
+    //1DC9          ; COMBINING ACUTE-GRAVE-ACUTE
+    "᷉": [.circumflex, .acute, .above],
+
+    //1DCA          ; COMBINING LATIN SMALL LETTER R BELOW
+    "᷊": [.r, .below],
+
+    //1DCB          ; COMBINING BREVE-MACRON
+    "᷋": [.breve, .macron, .above],
+
+    //1DCC          ; COMBINING MACRON-BREVE
+    "᷌": [.macron, .breve, .above],
+
+    //1DCD          ; COMBINING DOUBLE CIRCUMFLEX ABOVE
+    "᷍": [.circumflex, .double, .above],
+
+    //1DCE          ; COMBINING OGONEK ABOVE
+    "᷎": [.ogonek, .above],
+
+    //1DCF          ; COMBINING ZIGZAG BELOW
+    "᷏": [.zigzag, .below],
+
+    //1DD0          ; COMBINING IS BELOW
+    "᷐": [.i, .s, .below],
+
+    //1DD1          ; COMBINING UR ABOVE
+    "᷑": [.u, .r, .above],
+
+    //1DD2          ; COMBINING US ABOVE
+    "᷒": [.u, .s, .above],
+
+    //1DD3          ; COMBINING LATIN SMALL LETTER FLATTENED OPEN A ABOVE
+    "ᷓ": [.a, .open, .above],
+
+    //1DD4          ; COMBINING LATIN SMALL LETTER AE
+    "ᷔ": [.a, .e, .above],
+
+    //1DD5          ; COMBINING LATIN SMALL LETTER AO
+    "ᷕ": [.a, .o, .above],
+
+    //1DD6          ; COMBINING LATIN SMALL LETTER AV
+    "ᷖ": [.a, .v, .above],
+
+    //1DD7          ; COMBINING LATIN SMALL LETTER C CEDILLA
+    "ᷗ": [.c, .cedilla, .above],
+
+    //1DD8          ; COMBINING LATIN SMALL LETTER INSULAR D
+    "ᷘ": [.d, .insular, .above],
+
+    //1DD9          ; COMBINING LATIN SMALL LETTER ETH
+    "ᷙ": [.d, .h, .above],
+
+    //1DDA          ; COMBINING LATIN SMALL LETTER G
+    "ᷚ": [.g, .above],
+
+    //1DDB          ; COMBINING LATIN LETTER SMALL CAPITAL G
+    "ᷛ": [.g, .smallCapital, .above],
+
+    //1DDC          ; COMBINING LATIN SMALL LETTER K
+    "ᷜ": [.k, .above],
+
+    //1DDD          ; COMBINING LATIN SMALL LETTER L
+    "ᷝ": [.l, .above],
+
+    //1DDE          ; COMBINING LATIN LETTER SMALL CAPITAL L
+    "ᷞ": [.l, .smallCapital, .above],
+
+    //1DDF          ; COMBINING LATIN LETTER SMALL CAPITAL M
+    "ᷟ": [.m, .smallCapital, .above],
+
+    //1DE0          ; COMBINING LATIN SMALL LETTER N
+    "ᷠ": [.n, .above],
+
+    //1DE1          ; COMBINING LATIN LETTER SMALL CAPITAL N
+    "ᷡ": [.n, .smallCapital, .above],
+
+    //1DE2          ; COMBINING LATIN LETTER SMALL CAPITAL R
+    "ᷢ": [.r, .smallCapital, .above],
+
+    //1DE3          ; COMBINING LATIN SMALL LETTER R ROTUNDA
+    "ᷣ": [.r, .rightHalf, .above],
+
+    //1DE4          ; COMBINING LATIN SMALL LETTER S
+    "ᷤ": [.s, .above],
+
+    //1DE5          ; COMBINING LATIN SMALL LETTER LONG S
+    "ᷥ": [.s, .l, .above],
+
+    //1DE6          ; COMBINING LATIN SMALL LETTER Z
+    "ᷦ": [.z, .above],
+
+    //1DE7          ; COMBINING LATIN SMALL LETTER ALPHA
+    "ᷧ": [.a, .y, .above],
+
+    //1DE8          ; COMBINING LATIN SMALL LETTER B
+    "ᷨ": [.b, .above],
+
+    //1DE9          ; COMBINING LATIN SMALL LETTER BETA
+    "ᷩ": [.b, .h, .above],
+
+    //1DEA          ; COMBINING LATIN SMALL LETTER SCHWA
+    "ᷪ": [.a, .h, .above],
+
+    //1DEB          ; COMBINING LATIN SMALL LETTER F
+    "ᷫ": [.f, .above],
+
+    //1DEC          ; COMBINING LATIN SMALL LETTER L WITH DOUBLE MIDDLE TILDE
+    "ᷬ": [.l, .tilde, .doubled],
+
+    //1DED          ; COMBINING LATIN SMALL LETTER O WITH LIGHT CENTRALIZATION STROKE
+    "ᷭ": [.o, .lightCentralizationStroke],
+
+    //1DEE          ; COMBINING LATIN SMALL LETTER P
+    "ᷮ": [.p, .above],
+
+    //1DEF          ; COMBINING LATIN SMALL LETTER ESH
+    "ᷯ": [.s, .h, .above],
+
+    //1DF0          ; COMBINING LATIN SMALL LETTER U WITH LIGHT CENTRALIZATION STROKE
+    "ᷰ": [.u, .lightCentralizationStroke],
+
+    //1DF1          ; COMBINING LATIN SMALL LETTER W
+    "ᷱ": [.w, .above],
+
+
+    //1DF2          ; COMBINING LATIN SMALL LETTER A WITH DIAERESIS
+    "ᷲ": [.a, .diaeresis, .above, .above],
+
+    //1DF3          ; COMBINING LATIN SMALL LETTER O WITH DIAERESIS
+    "ᷳ": [.o, .diaeresis, .above, .above],
+
+    //1DF4          ; COMBINING LATIN SMALL LETTER U WITH DIAERESIS
+    "ᷴ": [.u, .diaeresis, .above, .above],
+    
+    //1DF5          ; COMBINING UP TACK ABOVE
+    "᷵": [.tack, .up, .above],
+
+    //1DF6          ; COMBINING KAVYKA ABOVE RIGHT
+    "᷶": [], //Typicon
+
+    //1DF7          ; COMBINING KAVYKA ABOVE LEFT
+    "᷷": [], //Typicon
+
+    //1DF8          ; COMBINING DOT ABOVE LEFT
+    "᷸": [.dot, .aboveLeft],
+
+    //1DF9          ; COMBINING WIDE INVERTED BRIDGE BELOW
+    "᷹": [], //Typicon
+
+    //1DFB          ; COMBINING DELETION MARK
+    "᷻": [], //Newa
+
+    //1DFC          ; COMBINING DOUBLE INVERTED BREVE BELOW
+    "᷼": [.invertedBreve, .double, .below],
+
+    //1DFD          ; COMBINING ALMOST EQUAL TO BELOW
+    "᷽": [.tilde, .doubled, .below],
+
+    //1DFE          ; COMBINING LEFT ARROWHEAD ABOVE
+    "᷾": [.arrowhead, .left, .above],
+
+    //1DFF          ; COMBINING RIGHT ARROWHEAD AND DOWN ARROWHEAD BELOW
+    "᷿": [.arrowhead, .right, .arrowhead, .up, .below],
 
 ]

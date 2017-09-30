@@ -32,7 +32,7 @@ enum CharacterComponent {
     case tone
     case open, closed
     case horn
-    case curl, belt
+    case curl, belt, crossedTail
     case tail
     case dTop
     case sBottom

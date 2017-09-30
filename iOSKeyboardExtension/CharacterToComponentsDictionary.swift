@@ -1837,7 +1837,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ʜ": [.h, .smallCapital],
 
     //029D          ; LATIN SMALL LETTER J WITH CROSSED-TAIL
-    "ʝ": [.j, .curl],
+    "ʝ": [.j, .crossedTail],
 
     //029E          ; LATIN SMALL LETTER TURNED K
     "ʞ": [.k, .turned],
@@ -3083,5 +3083,200 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
 
     //1D7F          ; LATIN SMALL LETTER UPSILON WITH STROKE
     "ᵿ": [.u, .y, .stroke],
+
+    
+    // MARK: - 1D80..1DBF; Phonetic Extensions Supplement
+    
+    //1D80          ; LATIN SMALL LETTER B WITH PALATAL HOOK
+    "ᶀ": [.b, .palatalHook],
+
+    //1D81          ; LATIN SMALL LETTER D WITH PALATAL HOOK
+    "ᶁ": [.d, .palatalHook],
+
+    //1D82          ; LATIN SMALL LETTER F WITH PALATAL HOOK
+    "ᶂ": [.f, .palatalHook],
+
+    //1D83          ; LATIN SMALL LETTER G WITH PALATAL HOOK
+    "ᶃ": [.g, .palatalHook],
+
+    //1D84          ; LATIN SMALL LETTER K WITH PALATAL HOOK
+    "ᶄ": [.k, .palatalHook],
+
+    //1D85          ; LATIN SMALL LETTER L WITH PALATAL HOOK
+    "ᶅ": [.l, .palatalHook],
+
+    //1D86          ; LATIN SMALL LETTER M WITH PALATAL HOOK
+    "ᶆ": [.m, .palatalHook],
+
+    //1D87          ; LATIN SMALL LETTER N WITH PALATAL HOOK
+    "ᶇ": [.n, .palatalHook],
+
+    //1D88          ; LATIN SMALL LETTER P WITH PALATAL HOOK
+    "ᶈ": [.p, .palatalHook],
+
+    //1D89          ; LATIN SMALL LETTER R WITH PALATAL HOOK
+    "ᶉ": [.r, .palatalHook],
+
+    //1D8A          ; LATIN SMALL LETTER S WITH PALATAL HOOK
+    "ᶊ": [.s, .palatalHook],
+
+    //1D8B          ; LATIN SMALL LETTER ESH WITH PALATAL HOOK
+    "ᶋ": [.s, .h, .palatalHook],
+
+    //1D8C          ; LATIN SMALL LETTER V WITH PALATAL HOOK
+    "ᶌ": [.v, .palatalHook],
+
+    //1D8D          ; LATIN SMALL LETTER X WITH PALATAL HOOK
+    "ᶍ": [.x, .palatalHook],
+
+    //1D8E          ; LATIN SMALL LETTER Z WITH PALATAL HOOK
+    "ᶎ": [.z, .palatalHook],
+
+    //1D8F          ; LATIN SMALL LETTER A WITH RETROFLEX HOOK
+    "ᶏ": [.a, .retroflexHook],
+
+    //1D90          ; LATIN SMALL LETTER ALPHA WITH RETROFLEX HOOK
+    "ᶐ": [.a, .y, .retroflexHook],
+
+    //1D91          ; LATIN SMALL LETTER D WITH HOOK AND TAIL
+    "ᶑ": [.d, .retroflexHook, .hook],
+
+    //1D92          ; LATIN SMALL LETTER E WITH RETROFLEX HOOK
+    "ᶒ": [.e, .retroflexHook],
+
+    //1D93          ; LATIN SMALL LETTER OPEN E WITH RETROFLEX HOOK
+    "ᶓ": [.e, .open, .retroflexHook],
+
+    //1D94          ; LATIN SMALL LETTER REVERSED OPEN E WITH RETROFLEX HOOK
+    "ᶔ": [.e, .open, .retroflexHook, .reversed],
+
+    //1D95          ; LATIN SMALL LETTER SCHWA WITH RETROFLEX HOOK
+    "ᶕ": [.a, .h, .retroflexHook],
+
+    //1D96          ; LATIN SMALL LETTER I WITH RETROFLEX HOOK
+    "ᶖ": [.i, .retroflexHook],
+
+    //1D97          ; LATIN SMALL LETTER OPEN O WITH RETROFLEX HOOK
+    "ᶗ": [.o, .open, .retroflexHook],
+
+    //1D98          ; LATIN SMALL LETTER ESH WITH RETROFLEX HOOK
+    "ᶘ": [.s, .h, .retroflexHook],
+
+    //1D99          ; LATIN SMALL LETTER U WITH RETROFLEX HOOK
+    "ᶙ": [.u, .retroflexHook],
+
+    //1D9A          ; LATIN SMALL LETTER EZH WITH RETROFLEX HOOK
+    "ᶚ": [.z, .h, .retroflexHook],
+
+    //1D9B          ; MODIFIER LETTER SMALL TURNED ALPHA
+    "ᶛ": [.a, .y, .turned, .superscript],
+
+    //1D9C          ; MODIFIER LETTER SMALL C
+    "ᶜ": [.c, .superscript],
+
+    //1D9D          ; MODIFIER LETTER SMALL C WITH CURL
+    "ᶝ": [.s, .curl, .superscript],
+
+    //1D9E          ; MODIFIER LETTER SMALL ETH
+    "ᶞ": [.d, .h, .superscript],
+
+    //1D9F          ; MODIFIER LETTER SMALL REVERSED OPEN E
+    "ᶟ": [.e, .open, .reversed, .superscript],
+
+    //1DA0          ; MODIFIER LETTER SMALL F
+    "ᶠ": [.f, .superscript],
+
+    //1DA1          ; MODIFIER LETTER SMALL DOTLESS J WITH STROKE
+    "ᶡ": [.j, .stroke, .dot, .superscript],
+
+    //1DA2          ; MODIFIER LETTER SMALL SCRIPT G
+    "ᶢ": [.g, .script, .superscript],
+
+    //1DA3          ; MODIFIER LETTER SMALL TURNED H
+    "ᶣ": [.h, .turned, .superscript],
+
+    //1DA4          ; MODIFIER LETTER SMALL I WITH STROKE
+    "ᶤ": [.i, .stroke, .superscript],
+
+    //1DA5          ; MODIFIER LETTER SMALL IOTA
+    "ᶥ": [.i, .y, .superscript],
+
+    //1DA6          ; MODIFIER LETTER SMALL CAPITAL I
+    "ᶦ": [.i, .smallCapital, .superscript],
+
+    //1DA7          ; MODIFIER LETTER SMALL CAPITAL I WITH STROKE
+    "ᶧ": [.i, .smallCapital, .stroke, .superscript],
+
+    //1DA8          ; MODIFIER LETTER SMALL J WITH CROSSED-TAIL
+    "ᶨ": [.j, .crossedTail, .superscript],
+
+    //1DA9          ; MODIFIER LETTER SMALL L WITH RETROFLEX HOOK
+    "ᶩ": [.l, .retroflexHook, .superscript],
+
+    //1DAA          ; MODIFIER LETTER SMALL L WITH PALATAL HOOK
+    "ᶪ": [.l, .palatalHook, .superscript],
+
+    //1DAB          ; MODIFIER LETTER SMALL CAPITAL L
+    "ᶫ": [.l, .smallCapital, .superscript],
+
+    //1DAC          ; MODIFIER LETTER SMALL M WITH HOOK
+    "ᶬ": [.m, .f, .superscript],
+
+    //1DAD          ; MODIFIER LETTER SMALL TURNED M WITH LONG LEG
+    "ᶭ": [.m, .longLeg, .turned, .superscript],
+
+    //1DAE          ; MODIFIER LETTER SMALL N WITH LEFT HOOK
+    "ᶮ": [.n, .hook, .superscript],
+
+    //1DAF          ; MODIFIER LETTER SMALL N WITH RETROFLEX HOOK
+    "ᶯ": [.n, .retroflexHook, .superscript],
+
+    //1DB0          ; MODIFIER LETTER SMALL CAPITAL N
+    "ᶰ": [.n, .smallCapital, .superscript],
+
+    //1DB1          ; MODIFIER LETTER SMALL BARRED O
+    "ᶱ": [.o, .stroke, .superscript],
+
+    //1DB2          ; MODIFIER LETTER SMALL PHI
+    "ᶲ": [.p, .h, .superscript],
+
+    //1DB3          ; MODIFIER LETTER SMALL S WITH HOOK
+    "ᶳ": [.s, .retroflexHook, .superscript],
+
+    //1DB4          ; MODIFIER LETTER SMALL ESH
+    "ᶴ": [.s, .h, .superscript],
+
+    //1DB5          ; MODIFIER LETTER SMALL T WITH PALATAL HOOK
+    "ᶵ": [.t, .palatalHook, .superscript],
+
+    //1DB6          ; MODIFIER LETTER SMALL U BAR
+    "ᶶ": [.u, .stroke, .superscript],
+
+    //1DB7          ; MODIFIER LETTER SMALL UPSILON
+    "ᶷ": [.u, .y, .superscript],
+
+    //1DB8          ; MODIFIER LETTER SMALL CAPITAL U
+    "ᶸ": [.u, .smallCapital, .superscript],
+
+    //1DB9          ; MODIFIER LETTER SMALL V WITH HOOK
+    "ᶹ": [.v, .h, .superscript],
+
+    //1DBA          ; MODIFIER LETTER SMALL TURNED V
+    "ᶺ": [.v, .turned, .superscript],
+
+    //1DBB          ; MODIFIER LETTER SMALL Z
+    "ᶻ": [.z, .superscript],
+
+    //1DBC          ; MODIFIER LETTER SMALL Z WITH RETROFLEX HOOK
+    "ᶼ": [.z, .retroflexHook, .superscript],
+
+    //1DBD          ; MODIFIER LETTER SMALL Z WITH CURL
+    "ᶽ": [.z, .curl, .superscript],
+
+    //1DBE          ; MODIFIER LETTER SMALL EZH
+    "ᶾ": [.z, .h, .superscript],
+
+    //1DBF          ; MODIFIER LETTER SMALL THETA
+    "ᶿ": [.t, .h, .y, .superscript],
 
 ]

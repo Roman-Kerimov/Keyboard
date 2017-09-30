@@ -2833,73 +2833,73 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ᴫ": [.l, .k, .smallCapital],
 
     //1D2C          ; MODIFIER LETTER CAPITAL A
-    "ᴬ": [.a, .smallCapital, .superscript],
+    "ᴬ": [.a, .capital, .superscript],
 
     //1D2D          ; MODIFIER LETTER CAPITAL AE
-    "ᴭ": [.a, .e, .smallCapital, .superscript],
+    "ᴭ": [.a, .e, .capital, .superscript],
 
     //1D2E          ; MODIFIER LETTER CAPITAL B
-    "ᴮ": [.b, .smallCapital, .superscript],
+    "ᴮ": [.b, .capital, .superscript],
 
     //1D2F          ; MODIFIER LETTER CAPITAL BARRED B
-    "ᴯ": [.b, .stroke, .smallCapital, .superscript],
+    "ᴯ": [.b, .stroke, .capital, .superscript],
 
     //1D30          ; MODIFIER LETTER CAPITAL D
-    "ᴰ": [.d, .smallCapital, .superscript],
+    "ᴰ": [.d, .capital, .superscript],
 
     //1D31          ; MODIFIER LETTER CAPITAL E
-    "ᴱ": [.e, .smallCapital, .superscript],
+    "ᴱ": [.e, .capital, .superscript],
 
     //1D32          ; MODIFIER LETTER CAPITAL REVERSED E
-    "ᴲ": [.e, .smallCapital, .reversed, .superscript],
+    "ᴲ": [.e, .capital, .reversed, .superscript],
 
     //1D33          ; MODIFIER LETTER CAPITAL G
-    "ᴳ": [.g, .smallCapital, .superscript],
+    "ᴳ": [.g, .capital, .superscript],
 
     //1D34          ; MODIFIER LETTER CAPITAL H
-    "ᴴ": [.h, .smallCapital, .superscript],
+    "ᴴ": [.h, .capital, .superscript],
 
     //1D35          ; MODIFIER LETTER CAPITAL I
-    "ᴵ": [.i, .smallCapital, .superscript],
+    "ᴵ": [.i, .capital, .superscript],
 
     //1D36          ; MODIFIER LETTER CAPITAL J
-    "ᴶ": [.j, .smallCapital, .superscript],
+    "ᴶ": [.j, .capital, .superscript],
 
     //1D37          ; MODIFIER LETTER CAPITAL K
-    "ᴷ": [.k, .smallCapital, .superscript],
+    "ᴷ": [.k, .capital, .superscript],
 
     //1D38          ; MODIFIER LETTER CAPITAL L
-    "ᴸ": [.l, .smallCapital, .superscript],
+    "ᴸ": [.l, .capital, .superscript],
 
     //1D39          ; MODIFIER LETTER CAPITAL M
-    "ᴹ": [.m, .smallCapital, .superscript],
+    "ᴹ": [.m, .capital, .superscript],
 
     //1D3A          ; MODIFIER LETTER CAPITAL N
-    "ᴺ": [.n, .smallCapital, .superscript],
+    "ᴺ": [.n, .capital, .superscript],
 
     //1D3B          ; MODIFIER LETTER CAPITAL REVERSED N
-    "ᴻ": [.n, .smallCapital, .reversed, .superscript],
+    "ᴻ": [.n, .capital, .reversed, .superscript],
 
     //1D3C          ; MODIFIER LETTER CAPITAL O
-    "ᴼ": [.o, .smallCapital, .superscript],
+    "ᴼ": [.o, .capital, .superscript],
 
     //1D3D          ; MODIFIER LETTER CAPITAL OU
-    "ᴽ": [.o, .uTop, .smallCapital, .superscript],
+    "ᴽ": [.o, .uTop, .capital, .superscript],
 
     //1D3E          ; MODIFIER LETTER CAPITAL P
-    "ᴾ": [.p, .smallCapital, .superscript],
+    "ᴾ": [.p, .capital, .superscript],
 
     //1D3F          ; MODIFIER LETTER CAPITAL R
-    "ᴿ": [.r, .smallCapital, .superscript],
+    "ᴿ": [.r, .capital, .superscript],
 
     //1D40          ; MODIFIER LETTER CAPITAL T
-    "ᵀ": [.t, .smallCapital, .superscript],
+    "ᵀ": [.t, .capital, .superscript],
 
     //1D41          ; MODIFIER LETTER CAPITAL U
-    "ᵁ": [.u, .smallCapital, .superscript],
+    "ᵁ": [.u, .capital, .superscript],
 
     //1D42          ; MODIFIER LETTER CAPITAL W
-    "ᵂ": [.w, .smallCapital, .superscript],
+    "ᵂ": [.w, .capital, .superscript],
 
     //1D43          ; MODIFIER LETTER SMALL A
     "ᵃ": [.a, .superscript],

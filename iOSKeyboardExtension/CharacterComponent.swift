@@ -20,7 +20,7 @@ enum CharacterComponent {
     case minusSign
     
     case capital, smallCapital
-    case turned, reversed, inverted, ramsHorn
+    case turned, reversed, inverted, ramsHorn, sideways
     case superscript, `subscript`
     
     case stroke, shortStroke, longStroke
@@ -40,6 +40,7 @@ enum CharacterComponent {
     case wTop
     
     case script
+    case insular
     
     case cedilla
     case ogonek

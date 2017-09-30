@@ -2332,17 +2332,13 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "̿": [.line, .doubled, .above],
 
     //0340          ; COMBINING GRAVE TONE MARK
-    "̀": [],
-
     //0341          ; COMBINING ACUTE TONE MARK
-    "́": [],
 
     //0342          ; COMBINING GREEK PERISPOMENI
     "͂": [],
 
     //0343          ; COMBINING GREEK KORONIS
-    "̓": [],
-
+    
     //0344          ; COMBINING GREEK DIALYTIKA TONOS
     "̈́": [],
 

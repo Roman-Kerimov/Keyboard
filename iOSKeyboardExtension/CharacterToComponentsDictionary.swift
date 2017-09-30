@@ -2642,6 +2642,13 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     //03FD          ; GREEK CAPITAL REVERSED LUNATE SIGMA SYMBOL
     //03FE          ; GREEK CAPITAL DOTTED LUNATE SIGMA SYMBOL
     //03FF          ; GREEK CAPITAL REVERSED DOTTED LUNATE SIGMA SYMBOL
+    
+    
+    // MARK: - 0400..04FF; Cyrillic
+    
+    //043B          ; CYRILLIC SMALL LETTER EL
+    "л": [.l, .k],
+
 
     // MARK: - 1AB0..1AFF; Combining Diacritical Marks Extended
     

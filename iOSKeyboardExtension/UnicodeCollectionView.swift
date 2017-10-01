@@ -34,7 +34,7 @@ class UnicodeCollectionView: CharacterCollectionView {
         clipsToBounds = false
         
         #if TARGET_INTERFACE_BUILDER
-            characters = .init("⌨🎹😀😇ǶÆ".characters)
+            characters = .init("⌨🎹😀😇ǶÆ")
             
             isHiddenUnicodeNames = false
         #endif

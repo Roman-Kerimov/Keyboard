@@ -32,7 +32,7 @@ enum CharacterComponent {
     case tone
     case open, closed
     case horn
-    case curl, belt, crossedTail
+    case curl, belt, crossedTail, loop
     case tail
     case dTop
     case sBottom
@@ -41,6 +41,7 @@ enum CharacterComponent {
     
     case script
     case insular
+    case middleWelsh
     
     case cedilla
     case ogonek

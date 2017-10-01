@@ -3472,4 +3472,775 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     //1DFF          ; COMBINING RIGHT ARROWHEAD AND DOWN ARROWHEAD BELOW
     "᷿": [.arrowhead, .right, .arrowhead, .up, .below],
 
+    
+    // MARK: - 1E00..1EFF; Latin Extended Additional
+    
+    //1E00          ; LATIN CAPITAL LETTER A WITH RING BELOW
+    "Ḁ": [.a, .capital, .ring, .below],
+
+    //1E01          ; LATIN SMALL LETTER A WITH RING BELOW
+    "ḁ": [.a, .ring, .below],
+
+    //1E02          ; LATIN CAPITAL LETTER B WITH DOT ABOVE
+    "Ḃ": [.b, .capital, .dot, .above],
+
+    //1E03          ; LATIN SMALL LETTER B WITH DOT ABOVE
+    "ḃ": [.b, .dot, .above],
+
+    //1E04          ; LATIN CAPITAL LETTER B WITH DOT BELOW
+    "Ḅ": [.b, .capital, .dot, .below],
+
+    //1E05          ; LATIN SMALL LETTER B WITH DOT BELOW
+    "ḅ": [.b, .dot, .below],
+
+    //1E06          ; LATIN CAPITAL LETTER B WITH LINE BELOW
+    "Ḇ": [.b, .capital, .macron, .below],
+
+    //1E07          ; LATIN SMALL LETTER B WITH LINE BELOW
+    "ḇ": [.b, .macron, .below],
+
+    //1E08          ; LATIN CAPITAL LETTER C WITH CEDILLA AND ACUTE
+    "Ḉ": [.c, .capital, .cedilla, .acute, .above],
+
+    //1E09          ; LATIN SMALL LETTER C WITH CEDILLA AND ACUTE
+    "ḉ": [.c, .cedilla, .acute, .above],
+
+    //1E0A          ; LATIN CAPITAL LETTER D WITH DOT ABOVE
+    "Ḋ": [.d, .capital, .dot, .above],
+
+    //1E0B          ; LATIN SMALL LETTER D WITH DOT ABOVE
+    "ḋ": [.d, .dot, .above],
+
+    //1E0C          ; LATIN CAPITAL LETTER D WITH DOT BELOW
+    "Ḍ": [.d, .capital, .dot, .below],
+
+    //1E0D          ; LATIN SMALL LETTER D WITH DOT BELOW
+    "ḍ": [.d, .dot, .below],
+
+    //1E0E          ; LATIN CAPITAL LETTER D WITH LINE BELOW
+    "Ḏ": [.d, .capital, .macron, .below],
+
+    //1E0F          ; LATIN SMALL LETTER D WITH LINE BELOW
+    "ḏ": [.d, .macron, .below],
+
+    //1E10          ; LATIN CAPITAL LETTER D WITH CEDILLA
+    "Ḑ": [.d, .capital, .cedilla],
+
+    //1E11          ; LATIN SMALL LETTER D WITH CEDILLA
+    "ḑ": [.d, .cedilla],
+
+    //1E12          ; LATIN CAPITAL LETTER D WITH CIRCUMFLEX BELOW
+    "Ḓ": [.d, .capital, .circumflex, .below],
+
+    //1E13          ; LATIN SMALL LETTER D WITH CIRCUMFLEX BELOW
+    "ḓ": [.d, .circumflex, .below],
+
+    //1E14          ; LATIN CAPITAL LETTER E WITH MACRON AND GRAVE
+    "Ḕ": [.e, .capital, .macron, .above, .grave, .above],
+
+    //1E15          ; LATIN SMALL LETTER E WITH MACRON AND GRAVE
+    "ḕ": [.e, .macron, .above, .grave, .above],
+
+    //1E16          ; LATIN CAPITAL LETTER E WITH MACRON AND ACUTE
+    "Ḗ": [.e, .capital, .macron, .above, .acute, .above],
+
+    //1E17          ; LATIN SMALL LETTER E WITH MACRON AND ACUTE
+    "ḗ": [.e, .macron, .above, .acute, .above],
+
+    //1E18          ; LATIN CAPITAL LETTER E WITH CIRCUMFLEX BELOW
+    "Ḙ": [.e, .capital, .circumflex, .below],
+
+    //1E19          ; LATIN SMALL LETTER E WITH CIRCUMFLEX BELOW
+    "ḙ": [.e, .circumflex, .below],
+
+    //1E1A          ; LATIN CAPITAL LETTER E WITH TILDE BELOW
+    "Ḛ": [.e, .capital, .tilde, .below],
+
+    //1E1B          ; LATIN SMALL LETTER E WITH TILDE BELOW
+    "ḛ": [.e, .tilde, .below],
+
+    //1E1C          ; LATIN CAPITAL LETTER E WITH CEDILLA AND BREVE
+    "Ḝ": [.e, .capital, .cedilla, .breve, .above],
+
+    //1E1D          ; LATIN SMALL LETTER E WITH CEDILLA AND BREVE
+    "ḝ": [.e, .cedilla, .breve, .above],
+
+    //1E1E          ; LATIN CAPITAL LETTER F WITH DOT ABOVE
+    "Ḟ": [.f, .capital, .dot, .above],
+
+    //1E1F          ; LATIN SMALL LETTER F WITH DOT ABOVE
+    "ḟ": [.f, .dot, .above],
+
+    //1E20          ; LATIN CAPITAL LETTER G WITH MACRON
+    "Ḡ": [.g, .capital, .macron, .above],
+
+    //1E21          ; LATIN SMALL LETTER G WITH MACRON
+    "ḡ": [.g, .macron, .above],
+
+    //1E22          ; LATIN CAPITAL LETTER H WITH DOT ABOVE
+    "Ḣ": [.h, .capital, .dot, .above],
+
+    //1E23          ; LATIN SMALL LETTER H WITH DOT ABOVE
+    "ḣ": [.h, .dot, .above],
+
+    //1E24          ; LATIN CAPITAL LETTER H WITH DOT BELOW
+    "Ḥ": [.h, .capital, .dot, .below],
+
+    //1E25          ; LATIN SMALL LETTER H WITH DOT BELOW
+    "ḥ": [.h, .dot, .below],
+
+    //1E26          ; LATIN CAPITAL LETTER H WITH DIAERESIS
+    "Ḧ": [.h, .capital, .diaeresis, .above],
+
+    //1E27          ; LATIN SMALL LETTER H WITH DIAERESIS
+    "ḧ": [.h, .diaeresis, .above],
+
+    //1E28          ; LATIN CAPITAL LETTER H WITH CEDILLA
+    "Ḩ": [.h, .capital, .cedilla],
+
+    //1E29          ; LATIN SMALL LETTER H WITH CEDILLA
+    "ḩ": [.h, .cedilla],
+
+    //1E2A          ; LATIN CAPITAL LETTER H WITH BREVE BELOW
+    "Ḫ": [.h, .capital, .breve, .below],
+
+    //1E2B          ; LATIN SMALL LETTER H WITH BREVE BELOW
+    "ḫ": [.h, .breve, .below],
+
+    //1E2C          ; LATIN CAPITAL LETTER I WITH TILDE BELOW
+    "Ḭ": [.i, .capital, .tilde, .below],
+
+    //1E2D          ; LATIN SMALL LETTER I WITH TILDE BELOW
+    "ḭ": [.i, .tilde, .below],
+
+    //1E2E          ; LATIN CAPITAL LETTER I WITH DIAERESIS AND ACUTE
+    "Ḯ": [.i, .capital, .diaeresis, .above, .acute, .above],
+
+    //1E2F          ; LATIN SMALL LETTER I WITH DIAERESIS AND ACUTE
+    "ḯ": [.i, .diaeresis, .above, .acute, .above],
+
+    //1E30          ; LATIN CAPITAL LETTER K WITH ACUTE
+    "Ḱ": [.k, .capital, .acute, .above],
+
+    //1E31          ; LATIN SMALL LETTER K WITH ACUTE
+    "ḱ": [.k, .acute, .above],
+
+    //1E32          ; LATIN CAPITAL LETTER K WITH DOT BELOW
+    "Ḳ": [.k, .capital, .dot, .below],
+
+    //1E33          ; LATIN SMALL LETTER K WITH DOT BELOW
+    "ḳ": [.k, .dot, .below],
+
+    //1E34          ; LATIN CAPITAL LETTER K WITH LINE BELOW
+    "Ḵ": [.k, .capital, .macron, .below],
+
+    //1E35          ; LATIN SMALL LETTER K WITH LINE BELOW
+    "ḵ": [.k, .macron, .below],
+
+    //1E36          ; LATIN CAPITAL LETTER L WITH DOT BELOW
+    "Ḷ": [.l, .capital, .dot, .below],
+
+    //1E37          ; LATIN SMALL LETTER L WITH DOT BELOW
+    "ḷ": [.l, .dot, .below],
+
+    //1E38          ; LATIN CAPITAL LETTER L WITH DOT BELOW AND MACRON
+    "Ḹ": [.l, .capital, .dot, .below, .macron, .above],
+
+    //1E39          ; LATIN SMALL LETTER L WITH DOT BELOW AND MACRON
+    "ḹ": [.l, .dot, .below, .macron, .above],
+
+    //1E3A          ; LATIN CAPITAL LETTER L WITH LINE BELOW
+    "Ḻ": [.l, .capital, .macron, .below],
+
+    //1E3B          ; LATIN SMALL LETTER L WITH LINE BELOW
+    "ḻ": [.l, .macron, .below],
+
+    //1E3C          ; LATIN CAPITAL LETTER L WITH CIRCUMFLEX BELOW
+    "Ḽ": [.l, .capital, .circumflex, .below],
+
+    //1E3D          ; LATIN SMALL LETTER L WITH CIRCUMFLEX BELOW
+    "ḽ": [.l, .circumflex, .below],
+
+    //1E3E          ; LATIN CAPITAL LETTER M WITH ACUTE
+    "Ḿ": [.m, .capital, .acute, .above],
+
+    //1E3F          ; LATIN SMALL LETTER M WITH ACUTE
+    "ḿ": [.m, .acute, .above],
+
+    //1E40          ; LATIN CAPITAL LETTER M WITH DOT ABOVE
+    "Ṁ": [.m, .capital, .dot, .above],
+
+    //1E41          ; LATIN SMALL LETTER M WITH DOT ABOVE
+    "ṁ": [.m, .dot, .above],
+
+    //1E42          ; LATIN CAPITAL LETTER M WITH DOT BELOW
+    "Ṃ": [.m, .capital, .dot, .below],
+
+    //1E43          ; LATIN SMALL LETTER M WITH DOT BELOW
+    "ṃ": [.m, .dot, .below],
+
+    //1E44          ; LATIN CAPITAL LETTER N WITH DOT ABOVE
+    "Ṅ": [.n, .capital, .dot, .above],
+
+    //1E45          ; LATIN SMALL LETTER N WITH DOT ABOVE
+    "ṅ": [.n, .dot, .above],
+
+    //1E46          ; LATIN CAPITAL LETTER N WITH DOT BELOW
+    "Ṇ": [.n, .capital, .dot, .below],
+
+    //1E47          ; LATIN SMALL LETTER N WITH DOT BELOW
+    "ṇ": [.n, .dot, .below],
+
+    //1E48          ; LATIN CAPITAL LETTER N WITH LINE BELOW
+    "Ṉ": [.n, .capital, .macron, .below],
+
+    //1E49          ; LATIN SMALL LETTER N WITH LINE BELOW
+    "ṉ": [.n, .macron, .below],
+
+    //1E4A          ; LATIN CAPITAL LETTER N WITH CIRCUMFLEX BELOW
+    "Ṋ": [.n, .capital, .circumflex, .below],
+
+    //1E4B          ; LATIN SMALL LETTER N WITH CIRCUMFLEX BELOW
+    "ṋ": [.n, .circumflex, .below],
+
+    //1E4C          ; LATIN CAPITAL LETTER O WITH TILDE AND ACUTE
+    "Ṍ": [.o, .capital, .tilde, .above, .acute, .above],
+
+    //1E4D          ; LATIN SMALL LETTER O WITH TILDE AND ACUTE
+    "ṍ": [.o, .tilde, .above, .acute, .above],
+
+    //1E4E          ; LATIN CAPITAL LETTER O WITH TILDE AND DIAERESIS
+    "Ṏ": [.o, .capital, .tilde, .above, .diaeresis, .above],
+
+    //1E4F          ; LATIN SMALL LETTER O WITH TILDE AND DIAERESIS
+    "ṏ": [.o, .tilde, .above, .diaeresis, .above],
+
+    //1E50          ; LATIN CAPITAL LETTER O WITH MACRON AND GRAVE
+    "Ṑ": [.o, .capital, .macron, .above, .grave, .above],
+
+    //1E51          ; LATIN SMALL LETTER O WITH MACRON AND GRAVE
+    "ṑ": [.o, .macron, .above, .grave, .above],
+
+    //1E52          ; LATIN CAPITAL LETTER O WITH MACRON AND ACUTE
+    "Ṓ": [.o, .capital, .macron, .above, .acute, .above],
+
+    //1E53          ; LATIN SMALL LETTER O WITH MACRON AND ACUTE
+    "ṓ": [.o, .macron, .above, .acute, .above],
+
+    //1E54          ; LATIN CAPITAL LETTER P WITH ACUTE
+    "Ṕ": [.p, .capital, .acute, .above],
+
+    //1E55          ; LATIN SMALL LETTER P WITH ACUTE
+    "ṕ": [.p, .acute, .above],
+
+    //1E56          ; LATIN CAPITAL LETTER P WITH DOT ABOVE
+    "Ṗ": [.p, .capital, .dot, .above],
+
+    //1E57          ; LATIN SMALL LETTER P WITH DOT ABOVE
+    "ṗ": [.p, .dot, .above],
+
+    //1E58          ; LATIN CAPITAL LETTER R WITH DOT ABOVE
+    "Ṙ": [.r, .capital, .dot, .above],
+
+    //1E59          ; LATIN SMALL LETTER R WITH DOT ABOVE
+    "ṙ": [.r, .dot, .above],
+
+    //1E5A          ; LATIN CAPITAL LETTER R WITH DOT BELOW
+    "Ṛ": [.r, .capital, .dot, .below],
+
+    //1E5B          ; LATIN SMALL LETTER R WITH DOT BELOW
+    "ṛ": [.r, .dot, .below],
+
+    //1E5C          ; LATIN CAPITAL LETTER R WITH DOT BELOW AND MACRON
+    "Ṝ": [.r, .capital, .dot, .below, .macron, .above],
+
+    //1E5D          ; LATIN SMALL LETTER R WITH DOT BELOW AND MACRON
+    "ṝ": [.r, .dot, .below, .macron, .above],
+
+    //1E5E          ; LATIN CAPITAL LETTER R WITH LINE BELOW
+    "Ṟ": [.r, .capital, .macron, .below],
+
+    //1E5F          ; LATIN SMALL LETTER R WITH LINE BELOW
+    "ṟ": [.r, .macron, .below],
+
+    //1E60          ; LATIN CAPITAL LETTER S WITH DOT ABOVE
+    "Ṡ": [.s, .capital, .dot, .above],
+
+    //1E61          ; LATIN SMALL LETTER S WITH DOT ABOVE
+    "ṡ": [.s, .dot, .above],
+
+    //1E62          ; LATIN CAPITAL LETTER S WITH DOT BELOW
+    "Ṣ": [.s, .capital, .dot, .below],
+
+    //1E63          ; LATIN SMALL LETTER S WITH DOT BELOW
+    "ṣ": [.s, .dot, .below],
+
+    //1E64          ; LATIN CAPITAL LETTER S WITH ACUTE AND DOT ABOVE
+    "Ṥ": [.s, .capital, .acute, .above, .dot, .above],
+
+    //1E65          ; LATIN SMALL LETTER S WITH ACUTE AND DOT ABOVE
+    "ṥ": [.s, .acute, .above, .dot, .above],
+
+    //1E66          ; LATIN CAPITAL LETTER S WITH CARON AND DOT ABOVE
+    "Ṧ": [.s, .capital, .caron, .above, .dot, .above],
+
+    //1E67          ; LATIN SMALL LETTER S WITH CARON AND DOT ABOVE
+    "ṧ": [.s, .caron, .above, .dot, .above],
+
+    //1E68          ; LATIN CAPITAL LETTER S WITH DOT BELOW AND DOT ABOVE
+    "Ṩ": [.s, .capital, .dot, .below, .dot, .above],
+
+    //1E69          ; LATIN SMALL LETTER S WITH DOT BELOW AND DOT ABOVE
+    "ṩ": [.s, .dot, .below, .dot, .above],
+
+    //1E6A          ; LATIN CAPITAL LETTER T WITH DOT ABOVE
+    "Ṫ": [.t, .capital, .dot, .above],
+
+    //1E6B          ; LATIN SMALL LETTER T WITH DOT ABOVE
+    "ṫ": [.t, .dot, .above],
+
+    //1E6C          ; LATIN CAPITAL LETTER T WITH DOT BELOW
+    "Ṭ": [.t, .capital, .dot, .below],
+
+    //1E6D          ; LATIN SMALL LETTER T WITH DOT BELOW
+    "ṭ": [.t, .dot, .below],
+
+    //1E6E          ; LATIN CAPITAL LETTER T WITH LINE BELOW
+    "Ṯ": [.t, .capital, .macron, .below],
+
+    //1E6F          ; LATIN SMALL LETTER T WITH LINE BELOW
+    "ṯ": [.t, .macron, .below],
+
+    //1E70          ; LATIN CAPITAL LETTER T WITH CIRCUMFLEX BELOW
+    "Ṱ": [.t, .capital, .circumflex, .below],
+
+    //1E71          ; LATIN SMALL LETTER T WITH CIRCUMFLEX BELOW
+    "ṱ": [.t, .circumflex, .below],
+
+    //1E72          ; LATIN CAPITAL LETTER U WITH DIAERESIS BELOW
+    "Ṳ": [.u, .capital, .diaeresis, .below],
+
+    //1E73          ; LATIN SMALL LETTER U WITH DIAERESIS BELOW
+    "ṳ": [.u, .diaeresis, .below],
+
+    //1E74          ; LATIN CAPITAL LETTER U WITH TILDE BELOW
+    "Ṵ": [.u, .capital, .tilde, .below],
+
+    //1E75          ; LATIN SMALL LETTER U WITH TILDE BELOW
+    "ṵ": [.u, .tilde, .below],
+
+    //1E76          ; LATIN CAPITAL LETTER U WITH CIRCUMFLEX BELOW
+    "Ṷ": [.u, .capital, .circumflex, .below],
+
+    //1E77          ; LATIN SMALL LETTER U WITH CIRCUMFLEX BELOW
+    "ṷ": [.u, .circumflex, .below],
+
+    //1E78          ; LATIN CAPITAL LETTER U WITH TILDE AND ACUTE
+    "Ṹ": [.u, .capital, .tilde, .above, .acute, .above],
+
+    //1E79          ; LATIN SMALL LETTER U WITH TILDE AND ACUTE
+    "ṹ": [.u, .tilde, .above, .acute, .above],
+
+    //1E7A          ; LATIN CAPITAL LETTER U WITH MACRON AND DIAERESIS
+    "Ṻ": [.u, .capital, .macron, .above, .diaeresis, .above],
+
+    //1E7B          ; LATIN SMALL LETTER U WITH MACRON AND DIAERESIS
+    "ṻ": [.u, .macron, .above, .diaeresis, .above],
+
+    //1E7C          ; LATIN CAPITAL LETTER V WITH TILDE
+    "Ṽ": [.v, .capital, .tilde, .above],
+
+    //1E7D          ; LATIN SMALL LETTER V WITH TILDE
+    "ṽ": [.v, .tilde, .above],
+
+    //1E7E          ; LATIN CAPITAL LETTER V WITH DOT BELOW
+    "Ṿ": [.v, .capital, .dot, .below],
+
+    //1E7F          ; LATIN SMALL LETTER V WITH DOT BELOW
+    "ṿ": [.v, .dot, .below],
+
+    //1E80          ; LATIN CAPITAL LETTER W WITH GRAVE
+    "Ẁ": [.w, .capital, .grave, .above],
+
+    //1E81          ; LATIN SMALL LETTER W WITH GRAVE
+    "ẁ": [.w, .grave, .above],
+
+    //1E82          ; LATIN CAPITAL LETTER W WITH ACUTE
+    "Ẃ": [.w, .capital, .acute, .above],
+
+    //1E83          ; LATIN SMALL LETTER W WITH ACUTE
+    "ẃ": [.w, .acute, .above],
+
+    //1E84          ; LATIN CAPITAL LETTER W WITH DIAERESIS
+    "Ẅ": [.w, .capital, .diaeresis, .above],
+
+    //1E85          ; LATIN SMALL LETTER W WITH DIAERESIS
+    "ẅ": [.w, .diaeresis, .above],
+
+    //1E86          ; LATIN CAPITAL LETTER W WITH DOT ABOVE
+    "Ẇ": [.w, .capital, .dot, .above],
+
+    //1E87          ; LATIN SMALL LETTER W WITH DOT ABOVE
+    "ẇ": [.w, .dot, .above],
+
+    //1E88          ; LATIN CAPITAL LETTER W WITH DOT BELOW
+    "Ẉ": [.w, .capital, .dot, .below],
+
+    //1E89          ; LATIN SMALL LETTER W WITH DOT BELOW
+    "ẉ": [.w, .dot, .below],
+
+    //1E8A          ; LATIN CAPITAL LETTER X WITH DOT ABOVE
+    "Ẋ": [.x, .capital, .dot, .above],
+
+    //1E8B          ; LATIN SMALL LETTER X WITH DOT ABOVE
+    "ẋ": [.x, .dot, .above],
+
+    //1E8C          ; LATIN CAPITAL LETTER X WITH DIAERESIS
+    "Ẍ": [.x, .capital, .diaeresis, .above],
+
+    //1E8D          ; LATIN SMALL LETTER X WITH DIAERESIS
+    "ẍ": [.x, .diaeresis, .above],
+
+    //1E8E          ; LATIN CAPITAL LETTER Y WITH DOT ABOVE
+    "Ẏ": [.y, .capital, .dot, .above],
+
+    //1E8F          ; LATIN SMALL LETTER Y WITH DOT ABOVE
+    "ẏ": [.y, .dot, .above],
+
+    //1E90          ; LATIN CAPITAL LETTER Z WITH CIRCUMFLEX
+    "Ẑ": [.z, .capital, .circumflex, .above],
+
+    //1E91          ; LATIN SMALL LETTER Z WITH CIRCUMFLEX
+    "ẑ": [.z, .circumflex, .above],
+
+    //1E92          ; LATIN CAPITAL LETTER Z WITH DOT BELOW
+    "Ẓ": [.z, .capital, .dot, .below],
+
+    //1E93          ; LATIN SMALL LETTER Z WITH DOT BELOW
+    "ẓ": [.z, .dot, .below],
+
+    //1E94          ; LATIN CAPITAL LETTER Z WITH LINE BELOW
+    "Ẕ": [.z, .capital, .dot, .below],
+
+    //1E95          ; LATIN SMALL LETTER Z WITH LINE BELOW
+    "ẕ": [.z, .dot, .below],
+
+    //1E96          ; LATIN SMALL LETTER H WITH LINE BELOW
+    "ẖ": [.h, .macron, .below],
+
+    //1E97          ; LATIN SMALL LETTER T WITH DIAERESIS
+    "ẗ": [.t, .diaeresis, .above],
+
+    //1E98          ; LATIN SMALL LETTER W WITH RING ABOVE
+    "ẘ": [.w, .ring, .above],
+
+    //1E99          ; LATIN SMALL LETTER Y WITH RING ABOVE
+    "ẙ": [.y, .ring, .above],
+
+    //1E9A          ; LATIN SMALL LETTER A WITH RIGHT HALF RING
+    "ẚ": [.a, .ring, .rightHalf],
+
+    //1E9B          ; LATIN SMALL LETTER LONG S WITH DOT ABOVE
+    "ẛ": [.s, .l, .dot, .above],
+
+    //1E9C          ; LATIN SMALL LETTER LONG S WITH DIAGONAL STROKE
+    "ẜ": [.s, .l, .diagonalStroke],
+
+    //1E9D          ; LATIN SMALL LETTER LONG S WITH HIGH STROKE
+    "ẝ": [.s, .l, .stroke],
+
+    //1E9E          ; LATIN CAPITAL LETTER SHARP S
+    "ẞ": [.s, .s, .capital],
+
+    //1E9F          ; LATIN SMALL LETTER DELTA
+    "ẟ": [.d, .h, .y],
+
+    //1EA0          ; LATIN CAPITAL LETTER A WITH DOT BELOW
+    "Ạ": [.a, .capital, .dot, .below],
+
+    //1EA1          ; LATIN SMALL LETTER A WITH DOT BELOW
+    "ạ": [.a, .dot, .below],
+
+    //1EA2          ; LATIN CAPITAL LETTER A WITH HOOK ABOVE
+    "Ả": [.a, .capital, .hook, .above],
+
+    //1EA3          ; LATIN SMALL LETTER A WITH HOOK ABOVE
+    "ả": [.a, .hook, .above],
+
+    //1EA4          ; LATIN CAPITAL LETTER A WITH CIRCUMFLEX AND ACUTE
+    "Ấ": [.a, .capital, .circumflex, .above, .acute, .above],
+
+    //1EA5          ; LATIN SMALL LETTER A WITH CIRCUMFLEX AND ACUTE
+    "ấ": [.a, .circumflex, .above, .acute, .above],
+
+    //1EA6          ; LATIN CAPITAL LETTER A WITH CIRCUMFLEX AND GRAVE
+    "Ầ": [.a, .capital, .circumflex, .above, .grave, .above],
+
+    //1EA7          ; LATIN SMALL LETTER A WITH CIRCUMFLEX AND GRAVE
+    "ầ": [.a, .circumflex, .above, .grave, .above],
+
+    //1EA8          ; LATIN CAPITAL LETTER A WITH CIRCUMFLEX AND HOOK ABOVE
+    "Ẩ": [.a, .capital, .circumflex, .above, .hook, .above],
+
+    //1EA9          ; LATIN SMALL LETTER A WITH CIRCUMFLEX AND HOOK ABOVE
+    "ẩ": [.a, .circumflex, .above, .hook, .above],
+
+    //1EAA          ; LATIN CAPITAL LETTER A WITH CIRCUMFLEX AND TILDE
+    "Ẫ": [.a, .capital, .circumflex, .above, .tilde, .above],
+
+    //1EAB          ; LATIN SMALL LETTER A WITH CIRCUMFLEX AND TILDE
+    "ẫ": [.a, .circumflex, .above, .tilde, .above],
+
+    //1EAC          ; LATIN CAPITAL LETTER A WITH CIRCUMFLEX AND DOT BELOW
+    "Ậ": [.a, .capital, .dot, .below, .circumflex, .above],
+
+    //1EAD          ; LATIN SMALL LETTER A WITH CIRCUMFLEX AND DOT BELOW
+    "ậ": [.a, .dot, .below, .circumflex, .above],
+
+    //1EAE          ; LATIN CAPITAL LETTER A WITH BREVE AND ACUTE
+    "Ắ": [.a, .capital, .breve, .above, .acute, .above],
+
+    //1EAF          ; LATIN SMALL LETTER A WITH BREVE AND ACUTE
+    "ắ": [.a, .breve, .above, .acute, .above],
+
+    //1EB0          ; LATIN CAPITAL LETTER A WITH BREVE AND GRAVE
+    "Ằ": [.a, .capital, .breve, .above, .grave, .above],
+
+    //1EB1          ; LATIN SMALL LETTER A WITH BREVE AND GRAVE
+    "ằ": [.a, .breve, .above, .grave, .above],
+
+    //1EB2          ; LATIN CAPITAL LETTER A WITH BREVE AND HOOK ABOVE
+    "Ẳ": [.a, .capital, .breve, .above, .hook, .above],
+
+    //1EB3          ; LATIN SMALL LETTER A WITH BREVE AND HOOK ABOVE
+    "ẳ": [.a, .breve, .above, .hook, .above],
+
+    //1EB4          ; LATIN CAPITAL LETTER A WITH BREVE AND TILDE
+    "Ẵ": [.a, .capital, .breve, .above, .tilde, .above],
+
+    //1EB5          ; LATIN SMALL LETTER A WITH BREVE AND TILDE
+    "ẵ": [.a, .breve, .above, .tilde, .above],
+
+    //1EB6          ; LATIN CAPITAL LETTER A WITH BREVE AND DOT BELOW
+    "Ặ": [.a, .capital, .dot, .below, .breve, .above],
+
+    //1EB7          ; LATIN SMALL LETTER A WITH BREVE AND DOT BELOW
+    "ặ": [.a, .dot, .below, .breve, .above],
+
+    //1EB8          ; LATIN CAPITAL LETTER E WITH DOT BELOW
+    "Ẹ": [.e,  .capital, .dot, .above],
+
+    //1EB9          ; LATIN SMALL LETTER E WITH DOT BELOW
+    "ẹ": [.e, .dot, .above],
+
+    //1EBA          ; LATIN CAPITAL LETTER E WITH HOOK ABOVE
+    "Ẻ": [.e, .capital, .hook, .above],
+
+    //1EBB          ; LATIN SMALL LETTER E WITH HOOK ABOVE
+    "ẻ": [.e, .hook, .above],
+
+    //1EBC          ; LATIN CAPITAL LETTER E WITH TILDE
+    "Ẽ": [.e, .capital, .tilde, .above],
+
+    //1EBD          ; LATIN SMALL LETTER E WITH TILDE
+    "ẽ": [.e, .tilde, .above],
+
+    //1EBE          ; LATIN CAPITAL LETTER E WITH CIRCUMFLEX AND ACUTE
+    "Ế": [.e, .capital, .circumflex, .above, .acute, .above],
+
+    //1EBF          ; LATIN SMALL LETTER E WITH CIRCUMFLEX AND ACUTE
+    "ế": [.e, .circumflex, .above, .acute, .above],
+
+    //1EC0          ; LATIN CAPITAL LETTER E WITH CIRCUMFLEX AND GRAVE
+    "Ề": [.e, .capital, .circumflex, .above, .grave, .above],
+
+    //1EC1          ; LATIN SMALL LETTER E WITH CIRCUMFLEX AND GRAVE
+    "ề": [.e, .circumflex, .above, .grave, .above],
+
+    //1EC2          ; LATIN CAPITAL LETTER E WITH CIRCUMFLEX AND HOOK ABOVE
+    "Ể": [.e, .capital, .circumflex, .above, .hook, .above],
+
+    //1EC3          ; LATIN SMALL LETTER E WITH CIRCUMFLEX AND HOOK ABOVE
+    "ể": [.e, .circumflex, .above, .hook, .above],
+
+    //1EC4          ; LATIN CAPITAL LETTER E WITH CIRCUMFLEX AND TILDE
+    "Ễ": [.e, .capital, .circumflex, .above, .tilde, .above],
+
+    //1EC5          ; LATIN SMALL LETTER E WITH CIRCUMFLEX AND TILDE
+    "ễ": [.e, .circumflex, .above, .tilde, .above],
+
+    //1EC6          ; LATIN CAPITAL LETTER E WITH CIRCUMFLEX AND DOT BELOW
+    "Ệ": [.e, .capital, .dot, .below, .circumflex, .above],
+
+    //1EC7          ; LATIN SMALL LETTER E WITH CIRCUMFLEX AND DOT BELOW
+    "ệ": [.e, .dot, .below, .circumflex, .above],
+
+    //1EC8          ; LATIN CAPITAL LETTER I WITH HOOK ABOVE
+    "Ỉ": [.i, .capital, .hook, .above],
+
+    //1EC9          ; LATIN SMALL LETTER I WITH HOOK ABOVE
+    "ỉ": [.i, .hook, .above],
+
+    //1ECA          ; LATIN CAPITAL LETTER I WITH DOT BELOW
+    "Ị": [.i, .capital, .dot, .below],
+
+    //1ECB          ; LATIN SMALL LETTER I WITH DOT BELOW
+    "ị": [.i, .dot, .below],
+
+    //1ECC          ; LATIN CAPITAL LETTER O WITH DOT BELOW
+    "Ọ": [.o, .capital, .dot, .below],
+
+    //1ECD          ; LATIN SMALL LETTER O WITH DOT BELOW
+    "ọ": [.o, .dot, .below],
+
+    //1ECE          ; LATIN CAPITAL LETTER O WITH HOOK ABOVE
+    "Ỏ": [.o, .capital, .hook, .above],
+
+    //1ECF          ; LATIN SMALL LETTER O WITH HOOK ABOVE
+    "ỏ": [.o, .hook, .above],
+
+    //1ED0          ; LATIN CAPITAL LETTER O WITH CIRCUMFLEX AND ACUTE
+    "Ố": [.o, .capital, .circumflex, .above, .acute, .above],
+
+    //1ED1          ; LATIN SMALL LETTER O WITH CIRCUMFLEX AND ACUTE
+    "ố": [.o, .circumflex, .above, .acute, .above],
+
+    //1ED2          ; LATIN CAPITAL LETTER O WITH CIRCUMFLEX AND GRAVE
+    "Ồ": [.o, .capital, .circumflex, .above, .grave, .above],
+
+    //1ED3          ; LATIN SMALL LETTER O WITH CIRCUMFLEX AND GRAVE
+    "ồ": [.o, .circumflex, .above, .grave, .above],
+
+    //1ED4          ; LATIN CAPITAL LETTER O WITH CIRCUMFLEX AND HOOK ABOVE
+    "Ổ": [.o, .capital, .circumflex, .above, .hook, .above],
+
+    //1ED5          ; LATIN SMALL LETTER O WITH CIRCUMFLEX AND HOOK ABOVE
+    "ổ": [.o, .circumflex, .above, .hook, .above],
+
+    //1ED6          ; LATIN CAPITAL LETTER O WITH CIRCUMFLEX AND TILDE
+    "Ỗ": [.o, .capital, .circumflex, .above, .tilde, .above],
+
+    //1ED7          ; LATIN SMALL LETTER O WITH CIRCUMFLEX AND TILDE
+    "ỗ": [.o, .circumflex, .above, .tilde, .above],
+
+    //1ED8          ; LATIN CAPITAL LETTER O WITH CIRCUMFLEX AND DOT BELOW
+    "Ộ": [.o, .capital, .dot, .below, .circumflex, .above],
+
+    //1ED9          ; LATIN SMALL LETTER O WITH CIRCUMFLEX AND DOT BELOW
+    "ộ": [.o, .dot, .below, .circumflex, .above],
+
+    //1EDA          ; LATIN CAPITAL LETTER O WITH HORN AND ACUTE
+    "Ớ": [.o, .capital, .horn, .acute, .above],
+
+    //1EDB          ; LATIN SMALL LETTER O WITH HORN AND ACUTE
+    "ớ": [.o, .horn, .acute, .above],
+
+    //1EDC          ; LATIN CAPITAL LETTER O WITH HORN AND GRAVE
+    "Ờ": [.o, .capital, .horn, .grave, .above],
+
+    //1EDD          ; LATIN SMALL LETTER O WITH HORN AND GRAVE
+    "ờ": [.o, .horn, .grave, .above],
+
+    //1EDE          ; LATIN CAPITAL LETTER O WITH HORN AND HOOK ABOVE
+    "Ở": [.o, .capital, .horn, .hook, .above],
+
+    //1EDF          ; LATIN SMALL LETTER O WITH HORN AND HOOK ABOVE
+    "ở": [.o, .horn, .hook, .above],
+
+    //1EE0          ; LATIN CAPITAL LETTER O WITH HORN AND TILDE
+    "Ỡ": [.o, .capital, .horn, .tilde, .above],
+
+    //1EE1          ; LATIN SMALL LETTER O WITH HORN AND TILDE
+    "ỡ": [.o, .horn, .tilde, .above],
+
+    //1EE2          ; LATIN CAPITAL LETTER O WITH HORN AND DOT BELOW
+    "Ợ": [.o, .capital, .horn, .dot, .below],
+
+    //1EE3          ; LATIN SMALL LETTER O WITH HORN AND DOT BELOW
+    "ợ": [.o, .horn, .dot, .below],
+
+    //1EE4          ; LATIN CAPITAL LETTER U WITH DOT BELOW
+    "Ụ": [.u, .capital, .dot, .below],
+
+    //1EE5          ; LATIN SMALL LETTER U WITH DOT BELOW
+    "ụ": [.u, .dot, .below],
+
+    //1EE6          ; LATIN CAPITAL LETTER U WITH HOOK ABOVE
+    "Ủ": [.u, .capital, .hook, .above],
+
+    //1EE7          ; LATIN SMALL LETTER U WITH HOOK ABOVE
+    "ủ": [.u, .hook, .above],
+
+    //1EE8          ; LATIN CAPITAL LETTER U WITH HORN AND ACUTE
+    "Ứ": [.u, .capital, .horn, .acute, .above],
+
+    //1EE9          ; LATIN SMALL LETTER U WITH HORN AND ACUTE
+    "ứ": [.u, .horn, .acute, .above],
+
+    //1EEA          ; LATIN CAPITAL LETTER U WITH HORN AND GRAVE
+    "Ừ": [.u, .capital, .horn, .grave, .above],
+
+    //1EEB          ; LATIN SMALL LETTER U WITH HORN AND GRAVE
+    "ừ": [.u, .horn, .grave, .above],
+
+    //1EEC          ; LATIN CAPITAL LETTER U WITH HORN AND HOOK ABOVE
+    "Ử": [.u, .capital, .horn, .hook, .above],
+
+    //1EED          ; LATIN SMALL LETTER U WITH HORN AND HOOK ABOVE
+    "ử": [.u, .horn, .hook, .above],
+
+    //1EEE          ; LATIN CAPITAL LETTER U WITH HORN AND TILDE
+    "Ữ": [.u, .capital, .horn, .tilde, .above],
+
+    //1EEF          ; LATIN SMALL LETTER U WITH HORN AND TILDE
+    "ữ": [.u, .horn, .tilde, .above],
+
+    //1EF0          ; LATIN CAPITAL LETTER U WITH HORN AND DOT BELOW
+    "Ự": [.u, .capital, .horn, .dot, .below],
+
+    //1EF1          ; LATIN SMALL LETTER U WITH HORN AND DOT BELOW
+    "ự": [.u, .horn, .dot, .below],
+
+    //1EF2          ; LATIN CAPITAL LETTER Y WITH GRAVE
+    "Ỳ": [.y, .capital, .grave, .above],
+
+    //1EF3          ; LATIN SMALL LETTER Y WITH GRAVE
+    "ỳ": [.y, .grave, .above],
+
+    //1EF4          ; LATIN CAPITAL LETTER Y WITH DOT BELOW
+    "Ỵ": [.y, .capital, .dot, .below],
+
+    //1EF5          ; LATIN SMALL LETTER Y WITH DOT BELOW
+    "ỵ": [.y, .dot, .below],
+
+    //1EF6          ; LATIN CAPITAL LETTER Y WITH HOOK ABOVE
+    "Ỷ": [.y, .capital, .hook, .above],
+
+    //1EF7          ; LATIN SMALL LETTER Y WITH HOOK ABOVE
+    "ỷ": [.y, .hook, .above],
+
+    //1EF8          ; LATIN CAPITAL LETTER Y WITH TILDE
+    "Ỹ": [.y, .capital, .tilde, .above],
+
+    //1EF9          ; LATIN SMALL LETTER Y WITH TILDE
+    "ỹ": [.y, .tilde, .above],
+
+    //1EFA          ; LATIN CAPITAL LETTER MIDDLE-WELSH LL
+    "Ỻ": [.l, .l, .middleWelsh, .capital],
+
+    //1EFB          ; LATIN SMALL LETTER MIDDLE-WELSH LL
+    "ỻ": [.l, .l, .middleWelsh],
+
+    //1EFC          ; LATIN CAPITAL LETTER MIDDLE-WELSH V
+    "Ỽ": [.v, .middleWelsh, .capital],
+
+    //1EFD          ; LATIN SMALL LETTER MIDDLE-WELSH V
+    "ỽ": [.v, .middleWelsh],
+
+    //1EFE          ; LATIN CAPITAL LETTER Y WITH LOOP
+    "Ỿ": [.y, .loop, .capital],
+
+    //1EFF          ; LATIN SMALL LETTER Y WITH LOOP
+    "ỿ": [.y, .loop],
+
 ]

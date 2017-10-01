@@ -104,9 +104,7 @@ internal class KeyboardView: UIView {
 
     internal var colorScheme: KeyboardColorScheme = .default {
         didSet {
-            DispatchQueue.main.async {
-                self.set(colorScheme: self.colorScheme)
-            }
+            set(colorScheme: colorScheme)
         }
     }
     

@@ -4536,4 +4536,133 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     //206E          ; NATIONAL DIGIT SHAPES
     //206F          ; NOMINAL DIGIT SHAPES
 
+    
+    // MARK: - 2070..209F; Superscripts and Subscripts
+    
+    //2070          ; SUPERSCRIPT ZERO
+    "⁰": [.zero, .superscript],
+
+    //2071          ; SUPERSCRIPT LATIN SMALL LETTER I
+    "ⁱ": [.i, .superscript],
+
+    //2074          ; SUPERSCRIPT FOUR
+    "⁴": [.four, .superscript],
+
+    //2075          ; SUPERSCRIPT FIVE
+    "⁵": [.five, .superscript],
+
+    //2076          ; SUPERSCRIPT SIX
+    "⁶": [.six, .superscript],
+
+    //2077          ; SUPERSCRIPT SEVEN
+    "⁷": [.seven, .superscript],
+
+    //2078          ; SUPERSCRIPT EIGHT
+    "⁸": [.eight, .superscript],
+
+    //2079          ; SUPERSCRIPT NINE
+    "⁹": [.nine, .superscript],
+
+    //207A          ; SUPERSCRIPT PLUS SIGN
+    "⁺": [.plusSign, .superscript],
+
+    //207B          ; SUPERSCRIPT MINUS
+    "⁻": [.minusSign, .superscript],
+
+    //207C          ; SUPERSCRIPT EQUALS SIGN
+    "⁼": [.equalsSign, .superscript],
+
+    //207D          ; SUPERSCRIPT LEFT PARENTHESIS
+    "⁽": [.parenthesis, .superscript],
+
+    //207E          ; SUPERSCRIPT RIGHT PARENTHESIS
+    "⁾": [.parenthesis, .turned, .superscript],
+
+    //207F          ; SUPERSCRIPT LATIN SMALL LETTER N
+    "ⁿ": [.n, .superscript],
+
+    //2080          ; SUBSCRIPT ZERO
+    "₀": [.zero, .subscript],
+
+    //2081          ; SUBSCRIPT ONE
+    "₁": [.one, .subscript],
+
+    //2082          ; SUBSCRIPT TWO
+    "₂": [.two, .subscript],
+
+    //2083          ; SUBSCRIPT THREE
+    "₃": [.three, .subscript],
+
+    //2084          ; SUBSCRIPT FOUR
+    "₄": [.four, .subscript],
+
+    //2085          ; SUBSCRIPT FIVE
+    "₅": [.five, .subscript],
+
+    //2086          ; SUBSCRIPT SIX
+    "₆": [.six, .subscript],
+
+    //2087          ; SUBSCRIPT SEVEN
+    "₇": [.seven, .subscript],
+
+    //2088          ; SUBSCRIPT EIGHT
+    "₈": [.eight, .subscript],
+
+    //2089          ; SUBSCRIPT NINE
+    "₉": [.nine, .subscript],
+
+    //208A          ; SUBSCRIPT PLUS SIGN
+    "₊": [.plusSign, .subscript],
+
+    //208B          ; SUBSCRIPT MINUS
+    "₋": [.minusSign, .subscript],
+
+    //208C          ; SUBSCRIPT EQUALS SIGN
+    "₌": [.equalsSign, .subscript],
+
+    //208D          ; SUBSCRIPT LEFT PARENTHESIS
+    "₍": [.parenthesis, .subscript],
+
+    //208E          ; SUBSCRIPT RIGHT PARENTHESIS
+    "₎": [.parenthesis, .turned, .subscript],
+
+    //2090          ; LATIN SUBSCRIPT SMALL LETTER A
+    "ₐ": [.a, .subscript],
+
+    //2091          ; LATIN SUBSCRIPT SMALL LETTER E
+    "ₑ": [.e, .subscript],
+
+    //2092          ; LATIN SUBSCRIPT SMALL LETTER O
+    "ₒ": [.o, .subscript],
+
+    //2093          ; LATIN SUBSCRIPT SMALL LETTER X
+    "ₓ": [.x, .subscript],
+
+    //2094          ; LATIN SUBSCRIPT SMALL LETTER SCHWA
+    "ₔ": [.a, .h, .subscript],
+
+    //2095          ; LATIN SUBSCRIPT SMALL LETTER H
+    "ₕ": [.h, .subscript],
+
+    //2096          ; LATIN SUBSCRIPT SMALL LETTER K
+    "ₖ": [.k, .subscript],
+
+    //2097          ; LATIN SUBSCRIPT SMALL LETTER L
+    "ₗ": [.l, .subscript],
+
+    //2098          ; LATIN SUBSCRIPT SMALL LETTER M
+    "ₘ": [.m, .subscript],
+
+    //2099          ; LATIN SUBSCRIPT SMALL LETTER N
+    "ₙ": [.n, .subscript],
+
+    //209A          ; LATIN SUBSCRIPT SMALL LETTER P
+    "ₚ": [.p, .subscript],
+
+    //209B          ; LATIN SUBSCRIPT SMALL LETTER S
+    "ₛ": [.s, .subscript],
+
+    //209C          ; LATIN SUBSCRIPT SMALL LETTER T
+    "ₜ": [.t, .subscript],
+
 ]

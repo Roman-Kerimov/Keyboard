@@ -10,6 +10,7 @@ import Foundation
 enum CharacterComponent {
     
     case joiner
+    case divisionSlash
     
     case a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z
     
@@ -17,10 +18,18 @@ enum CharacterComponent {
     
     case space, exclamationMark, quotationMark, numberSign, dollarSign, percentSign, ampersand, apostrophe, parenthesis, asterisk, plusSign, comma, hyphenMinus, fullStop, solidus, colon, semicolon, lessThanSign, equalsSign, greaterThanSign, questionMark, commercialAt, squareBracket, reverseSolidus, caret, lowLine, graveAccent, curlyBracket, verticalLine, tilde
     
+    case hyphen, quotation
+    case nonBreaking
+    
+    case commaQuotationMark, angleQuotationMark
+    
     case minusSign
+    case multiplicationSign
+    case divisionSign
     
     case capital, smallCapital
-    case turned, reversed, inverted, ramsHorn, sideways
+    case turned, reversed, inverted, ramsHorn, sideways, extra1, extra2
+    case extraLeft
     case superscript, `subscript`
     
     case stroke, shortStroke, longStroke, lightCentralizationStroke

@@ -300,7 +300,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     // MARK: - 0080..00FF; Latin-1 Supplement
     
     //00A0          ; NO-BREAK SPACE
-    " ": [],
+    " ": [.space, .nonBreaking],
 
     //00A1          ; INVERTED EXCLAMATION MARK
     "¡": [.exclamationMark, .turned],
@@ -351,7 +351,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "°": [],
 
     //00B1          ; PLUS-MINUS SIGN
-    "±": [.plusSign, .hyphenMinus],
+    "±": [.plusSign, .minusSign],
 
     //00B2          ; SUPERSCRIPT TWO
     "²": [.two, .superscript],
@@ -384,13 +384,13 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "»": [],
 
     //00BC          ; VULGAR FRACTION ONE QUARTER
-    "¼": [.one, .four],
+    "¼": [.one, .divisionSlash, .four],
 
     //00BD          ; VULGAR FRACTION ONE HALF
-    "½": [.one, .two],
+    "½": [.one, .divisionSlash, .two],
 
     //00BE          ; VULGAR FRACTION THREE QUARTERS
-    "¾": [.three, .four],
+    "¾": [.three, .divisionSlash, .four],
 
     //00BF          ; INVERTED QUESTION MARK
     "¿": [.questionMark, .turned],
@@ -465,7 +465,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "Ö": [.o, .diaeresis, .above, .capital],
 
     //00D7          ; MULTIPLICATION SIGN
-    "×": [],
+    "×": [.multiplicationSign],
 
     //00D8          ; LATIN CAPITAL LETTER O WITH STROKE
     "Ø": [.o, .diagonalStroke, .capital],
@@ -561,7 +561,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ö": [.o, .diaeresis, .above],
 
     //00F7          ; DIVISION SIGN
-    "÷": [],
+    "÷": [.divisionSign],
 
     //00F8          ; LATIN SMALL LETTER O WITH STROKE
     "ø": [.o, .diagonalStroke],
@@ -4242,5 +4242,298 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
 
     //1EFF          ; LATIN SMALL LETTER Y WITH LOOP
     "ỿ": [.y, .loop],
+
+    
+    // MARK: - 2000..206F; General Punctuation
+    
+    //2000          ; EN QUAD
+    //2001          ; EM QUAD
+    
+    //2002          ; EN SPACE
+    " ": [.space, .n],
+
+    //2003          ; EM SPACE
+    " ": [.space, .m],
+
+    //2004          ; THREE-PER-EM SPACE
+    " ": [.space, .m, .three],
+
+    //2005          ; FOUR-PER-EM SPACE
+    " ": [.space, .m, .four],
+
+    //2006          ; SIX-PER-EM SPACE
+    " ": [.space, .m, .six],
+
+    //2007          ; FIGURE SPACE
+    " ": [.space, .numberSign],
+
+    //2008          ; PUNCTUATION SPACE
+    " ": [.space, .fullStop],
+
+    //2009          ; THIN SPACE
+    " ": [.space, .m, .five],
+
+    //200A          ; HAIR SPACE
+    " ": [.space, .m, .seven],
+
+    //200B          ; ZERO WIDTH SPACE
+    "​": [.space, .zero],
+
+    //200C          ; ZERO WIDTH NON-JOINER
+    //200D          ; ZERO WIDTH JOINER
+    //200E          ; LEFT-TO-RIGHT MARK
+    //200F          ; RIGHT-TO-LEFT MARK
+    
+    //2010          ; HYPHEN
+    "‐": [.hyphen],
+
+    //2011          ; NON-BREAKING HYPHEN
+    "‑": [.hyphen, .nonBreaking],
+
+    //2012          ; FIGURE DASH
+    "‒": [.hyphen, .numberSign],
+
+    //2013          ; EN DASH
+    "–": [.hyphen, .n],
+
+    //2014          ; EM DASH
+    "—": [.hyphen, .m],
+
+    //2015          ; HORIZONTAL BAR
+    "―": [.hyphen, .quotation],
+
+    //2016          ; DOUBLE VERTICAL LINE
+    "‖": [.verticalLine, .doubled],
+
+    //2017          ; DOUBLE LOW LINE
+    "‗": [.lowLine, .doubled],
+
+    //2018          ; LEFT SINGLE QUOTATION MARK
+    "‘": [.commaQuotationMark, .turned, .superscript],
+
+    //2019          ; RIGHT SINGLE QUOTATION MARK
+    "’": [.commaQuotationMark, .superscript],
+
+    //201A          ; SINGLE LOW-9 QUOTATION MARK
+    "‚": [.commaQuotationMark, .subscript],
+
+    //201B          ; SINGLE HIGH-REVERSED-9 QUOTATION MARK
+    "‛": [.commaQuotationMark, .reversed, .superscript],
+
+    //201C          ; LEFT DOUBLE QUOTATION MARK
+    "“": [.commaQuotationMark, .doubled, .turned, .superscript],
+
+    //201D          ; RIGHT DOUBLE QUOTATION MARK
+    "”": [.commaQuotationMark, .doubled, .superscript],
+
+    //201E          ; DOUBLE LOW-9 QUOTATION MARK
+    "„": [.commaQuotationMark, .doubled, .subscript],
+
+    //201F          ; DOUBLE HIGH-REVERSED-9 QUOTATION MARK
+    "‟": [.commaQuotationMark, .doubled, .reversed, .superscript],
+
+    //2020          ; DAGGER
+    "†": [.asterisk, .extra1],
+
+    //2021          ; DOUBLE DAGGER
+    "‡": [.asterisk, .extra2],
+
+    //2022          ; BULLET
+    "•": [],
+
+    //2023          ; TRIANGULAR BULLET
+    "‣": [],
+
+    //2024          ; ONE DOT LEADER
+    "․": [],
+
+    //2025          ; TWO DOT LEADER
+    "‥": [],
+
+    //2026          ; HORIZONTAL ELLIPSIS
+    "…": [],
+
+    //2027          ; HYPHENATION POINT
+    "‧": [.hyphen, .fullStop],
+
+    //2028          ; LINE SEPARATOR
+    //2029          ; PARAGRAPH SEPARATOR
+    //202A          ; LEFT-TO-RIGHT EMBEDDING
+    //202B          ; RIGHT-TO-LEFT EMBEDDING
+    //202C          ; POP DIRECTIONAL FORMATTING
+    //202D          ; LEFT-TO-RIGHT OVERRIDE
+    //202E          ; RIGHT-TO-LEFT OVERRIDE
+
+    //202F          ; NARROW NO-BREAK SPACE
+    " ": [.space, .m, .five, .nonBreaking],
+
+    //2030          ; PER MILLE SIGN
+    "‰": [.percentSign, .extra1],
+
+    //2031          ; PER TEN THOUSAND SIGN
+    "‱": [.percentSign, .extra2],
+
+    //2032          ; PRIME
+    "′": [],
+
+    //2033          ; DOUBLE PRIME
+    "″": [],
+
+    //2034          ; TRIPLE PRIME
+    "‴": [],
+
+    //2035          ; REVERSED PRIME
+    "‵": [],
+
+    //2036          ; REVERSED DOUBLE PRIME
+    "‶": [],
+
+    //2037          ; REVERSED TRIPLE PRIME
+    "‷": [],
+
+    //2038          ; CARET
+    "‸": [.caret, .subscript],
+
+    //2039          ; SINGLE LEFT-POINTING ANGLE QUOTATION MARK
+    "‹": [.angleQuotationMark],
+
+    //203A          ; SINGLE RIGHT-POINTING ANGLE QUOTATION MARK
+    "›": [.angleQuotationMark, .turned],
+
+    //203B          ; REFERENCE MARK
+    "※": [],
+
+    //203C          ; DOUBLE EXCLAMATION MARK
+    "‼": [.exclamationMark, .joiner, .exclamationMark],
+
+    //203D          ; INTERROBANG
+    "‽": [.exclamationMark, .questionMark],
+
+    //203E          ; OVERLINE
+    "‾": [.line, .superscript],
+
+    //203F          ; UNDERTIE
+    "‿": [.breve, .subscript],
+
+    //2040          ; CHARACTER TIE
+    "⁀": [.invertedBreve, .superscript],
+
+    //2041          ; CARET INSERTION POINT
+    "⁁": [.caret, .diagonalStroke, .subscript],
+
+    //2042          ; ASTERISM
+    "⁂": [],
+
+    //2043          ; HYPHEN BULLET
+    "⁃": [],
+
+    //2044          ; FRACTION SLASH
+    "⁄": [.divisionSlash],
+
+    //2045          ; LEFT SQUARE BRACKET WITH QUILL
+    "⁅": [.squareBracket, .stroke],
+
+    //2046          ; RIGHT SQUARE BRACKET WITH QUILL
+    "⁆": [.squareBracket, .stroke, .turned],
+
+    //2047          ; DOUBLE QUESTION MARK
+    "⁇": [.questionMark, .joiner, .questionMark],
+
+    //2048          ; QUESTION EXCLAMATION MARK
+    "⁈": [.questionMark, .joiner, .exclamationMark],
+
+    //2049          ; EXCLAMATION QUESTION MARK
+    "⁉": [.exclamationMark, .joiner, .questionMark],
+
+    //204A          ; TIRONIAN SIGN ET
+    "⁊": [],
+
+    //204B          ; REVERSED PILCROW SIGN
+    "⁋": [],
+
+    //204C          ; BLACK LEFTWARDS BULLET
+    "⁌": [],
+
+    //204D          ; BLACK RIGHTWARDS BULLET
+    "⁍": [],
+
+    //204E          ; LOW ASTERISK
+    "⁎": [.asterisk, .subscript],
+
+    //204F          ; REVERSED SEMICOLON
+    "⁏": [.semicolon, .reversed],
+
+    //2050          ; CLOSE UP
+    "⁐": [],
+
+    //2051          ; TWO ASTERISKS ALIGNED VERTICALLY
+    "⁑": [.asterisk, .doubled],
+
+    //2052          ; COMMERCIAL MINUS SIGN
+    "⁒": [.percentSign, .dot],
+
+    //2053          ; SWUNG DASH
+    "⁓": [.tilde, .m],
+
+    //2054          ; INVERTED UNDERTIE
+    "⁔": [.invertedBreve, .subscript],
+
+    //2055          ; FLOWER PUNCTUATION MARK
+    "⁕": [], //Indic
+
+    //2056          ; THREE DOT PUNCTUATION
+    "⁖": [],
+
+    //2057          ; QUADRUPLE PRIME
+    "⁗": [],
+
+    //2058          ; FOUR DOT PUNCTUATION
+    "⁘": [],
+
+    //2059          ; FIVE DOT PUNCTUATION
+    "⁙": [],
+
+    //205A          ; TWO DOT PUNCTUATION
+    "⁚": [],
+
+    //205B          ; FOUR DOT MARK
+    "⁛": [],
+
+    //205C          ; DOTTED CROSS
+    "⁜": [],
+
+    //205D          ; TRICOLON
+    "⁝": [],
+
+    //205E          ; VERTICAL FOUR DOTS
+    "⁞": [],
+
+    //205F          ; MEDIUM MATHEMATICAL SPACE
+    " ": [.space, .plusSign],
+
+    //2060          ; WORD JOINER
+    "⁠": [.space, .zero, .nonBreaking],
+
+    //2061          ; FUNCTION APPLICATION
+    
+    //2062          ; INVISIBLE TIMES
+    "⁢": [.multiplicationSign, .extraLeft],
+
+    //2063          ; INVISIBLE SEPARATOR
+    "⁣": [.comma, .extraLeft],
+
+    //2064          ; INVISIBLE PLUS
+    "⁤": [.plusSign, .extraLeft],
+
+    //2066          ; LEFT-TO-RIGHT ISOLATE
+    //2067          ; RIGHT-TO-LEFT ISOLATE
+    //2068          ; FIRST STRONG ISOLATE
+    //2069          ; POP DIRECTIONAL ISOLATE
+    //206A          ; INHIBIT SYMMETRIC SWAPPING
+    //206B          ; ACTIVATE SYMMETRIC SWAPPING
+    //206C          ; INHIBIT ARABIC FORM SHAPING
+    //206D          ; ACTIVATE ARABIC FORM SHAPING
+    //206E          ; NATIONAL DIGIT SHAPES
+    //206F          ; NOMINAL DIGIT SHAPES
 
 ]

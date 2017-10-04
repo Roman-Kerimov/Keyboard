@@ -192,7 +192,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "[": [.squareBracket],
 
     //005C          ; REVERSE SOLIDUS
-    "\\": [.reverseSolidus],
+    "\\": [.solidus, .reversed],
 
     //005D          ; RIGHT SQUARE BRACKET
     "]": [.squareBracket, .turned],
@@ -2134,7 +2134,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "˾": [.shelf, .open],
 
     //02FF          ; MODIFIER LETTER LOW LEFT ARROW
-    "˿": [.arrow, .left, .subscript],
+    "˿": [.macron, .subscript, .lessThanSign],
 
     
     // MARK: - 0300..036F; Combining Diacritical Marks
@@ -2367,10 +2367,10 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "͌": [.tilde, .doubled, .above],
 
     //034D          ; COMBINING LEFT RIGHT ARROW BELOW
-    "͍": [.arrow, .left, .right, .below],
+    "͍": [.macron, .below, .lessThanSign, .greaterThanSign],
 
     //034E          ; COMBINING UPWARDS ARROW BELOW
-    "͎": [.arrow, .up, .below],
+    "͎": [.verticalLine, .below, .greaterThanSign],
 
     //034F          ; COMBINING GRAPHEME JOINER
     "͏": [],
@@ -2430,7 +2430,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "͡": [.invertedBreve, .double, .above],
 
     //0362          ; COMBINING DOUBLE RIGHTWARDS ARROW BELOW
-    "͢": [.arrow, .right, .double, .below],
+    "͢": [.macron, .double, .below, .greaterThanSign],
 
     //0363          ; COMBINING LATIN SMALL LETTER A
     "ͣ": [.a, .above],
@@ -2662,7 +2662,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "᪲": [.ring, .doubled, .above],
 
     //1AB3          ; COMBINING DOWNWARDS ARROW
-    "᪳": [.arrow, .down, .above],
+    "᪳": [.verticalLine, .above, .lessThanSign],
 
     //1AB4          ; COMBINING TRIPLE DOT
     "᪴": [.diaeresis, .dot, .above],
@@ -4664,5 +4664,107 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
 
     //209C          ; LATIN SUBSCRIPT SMALL LETTER T
     "ₜ": [.t, .subscript],
+
+    
+    // MARK: - 20D0..20FF; Combining Diacritical Marks for Symbols
+    
+    //20D0          ; COMBINING LEFT HARPOON ABOVE
+    "⃐": [.macron, .above, .lessThanSign, .topHalf],
+
+    //20D1          ; COMBINING RIGHT HARPOON ABOVE
+    "⃑": [.macron, .above, .greaterThanSign, .topHalf],
+
+    //20D2          ; COMBINING LONG VERTICAL LINE OVERLAY
+    "⃒": [.verticalLine, .combining],
+
+    //20D3          ; COMBINING SHORT VERTICAL LINE OVERLAY
+    "⃓": [.verticalLine, .combining, .short],
+
+    //20D4          ; COMBINING ANTICLOCKWISE ARROW ABOVE
+    "⃔": [.breve, .above, .lessThanSign],
+
+    //20D5          ; COMBINING CLOCKWISE ARROW ABOVE
+    "⃕": [.breve, .above, .greaterThanSign],
+
+    //20D6          ; COMBINING LEFT ARROW ABOVE
+    "⃖": [.macron, .above, .lessThanSign],
+
+    //20D7          ; COMBINING RIGHT ARROW ABOVE
+    "⃗": [.macron, .above, .greaterThanSign],
+
+    //20D8          ; COMBINING RING OVERLAY
+    "⃘": [.ring, .combining],
+
+    //20D9          ; COMBINING CLOCKWISE RING OVERLAY
+    "⃙": [.ring, .combining, .greaterThanSign],
+
+    //20DA          ; COMBINING ANTICLOCKWISE RING OVERLAY
+    "⃚": [.ring, .combining, .lessThanSign],
+
+    //20DB          ; COMBINING THREE DOTS ABOVE
+    "⃛": [],
+
+    //20DC          ; COMBINING FOUR DOTS ABOVE
+    "⃜": [],
+
+    //20DD          ; COMBINING ENCLOSING CIRCLE
+    "⃝": [],
+
+    //20DE          ; COMBINING ENCLOSING SQUARE
+    "⃞": [],
+
+    //20DF          ; COMBINING ENCLOSING DIAMOND
+    "⃟": [],
+
+    //20E0          ; COMBINING ENCLOSING CIRCLE BACKSLASH
+    "⃠": [],
+
+    //20E1          ; COMBINING LEFT RIGHT ARROW ABOVE
+    "⃡": [.macron, .above, .lessThanSign, .greaterThanSign],
+
+    //20E2          ; COMBINING ENCLOSING SCREEN
+    "⃢": [],
+
+    //20E3          ; COMBINING ENCLOSING KEYCAP
+    "⃣": [],
+
+    //20E4          ; COMBINING ENCLOSING UPWARD POINTING TRIANGLE
+    "⃤": [],
+
+    //20E5          ; COMBINING REVERSE SOLIDUS OVERLAY
+    "⃥": [.solidus, .reversed, .combining],
+
+    //20E6          ; COMBINING DOUBLE VERTICAL STROKE OVERLAY
+    "⃦": [.verticalLine, .doubled, .combining],
+
+    //20E7          ; COMBINING ANNUITY SYMBOL
+    "⃧": [],
+
+    //20E8          ; COMBINING TRIPLE UNDERDOT
+    "⃨": [],
+
+    //20E9          ; COMBINING WIDE BRIDGE ABOVE
+    "⃩": [],
+
+    //20EA          ; COMBINING LEFTWARDS ARROW OVERLAY
+    "⃪": [.stroke, .lessThanSign],
+
+    //20EB          ; COMBINING LONG DOUBLE SOLIDUS OVERLAY
+    "⃫": [.solidus, .doubled, .combining],
+
+    //20EC          ; COMBINING RIGHTWARDS HARPOON WITH BARB DOWNWARDS
+    "⃬": [.macron, .below, .greaterThanSign, .bottomHalf],
+
+    //20ED          ; COMBINING LEFTWARDS HARPOON WITH BARB DOWNWARDS
+    "⃭": [.macron, .below, .lessThanSign, .bottomHalf],
+
+    //20EE          ; COMBINING LEFT ARROW BELOW
+    "⃮": [.macron, .below, .lessThanSign],
+
+    //20EF          ; COMBINING RIGHT ARROW BELOW
+    "⃯": [.macron, .below, .greaterThanSign],
+
+    //20F0          ; COMBINING ASTERISK ABOVE
+    "⃰": [.asterisk, .above],
 
 ]

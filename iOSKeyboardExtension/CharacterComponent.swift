@@ -54,7 +54,7 @@ enum CharacterComponent {
     case insular
     case middleWelsh
     
-    case greek
+    case greek, final, symbol, lunate
     
     case doubleStruck
     case script

@@ -2499,30 +2499,79 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     //038E          ; GREEK CAPITAL LETTER UPSILON WITH TONOS
     //038F          ; GREEK CAPITAL LETTER OMEGA WITH TONOS
     //0390          ; GREEK SMALL LETTER IOTA WITH DIALYTIKA AND TONOS
+    
     //0391          ; GREEK CAPITAL LETTER ALPHA
+    "Α": [.a, .capital, .greek],
+
     //0392          ; GREEK CAPITAL LETTER BETA
+    "Β": [.b, .capital, .greek],
+
     //0393          ; GREEK CAPITAL LETTER GAMMA
+    "Γ": [.g, .capital, .greek],
+
     //0394          ; GREEK CAPITAL LETTER DELTA
+    "Δ": [.d, .capital, .greek],
+
     //0395          ; GREEK CAPITAL LETTER EPSILON
+    "Ε": [.e, .capital, .greek],
+
     //0396          ; GREEK CAPITAL LETTER ZETA
+    "Ζ": [.z, .capital, .greek],
+
     //0397          ; GREEK CAPITAL LETTER ETA
+    "Η": [.h, .capital, .greek],
+
     //0398          ; GREEK CAPITAL LETTER THETA
+    "Θ": [.t, .h, .capital, .greek],
+
     //0399          ; GREEK CAPITAL LETTER IOTA
+    "Ι": [.i, .capital, .greek],
+
     //039A          ; GREEK CAPITAL LETTER KAPPA
+    "Κ": [.k, .capital, .greek],
+
     //039B          ; GREEK CAPITAL LETTER LAMDA
+    "Λ": [.l, .capital, .greek],
+
     //039C          ; GREEK CAPITAL LETTER MU
+    "Μ": [.m, .capital, .greek],
+
     //039D          ; GREEK CAPITAL LETTER NU
+    "Ν": [.n, .capital, .greek],
+
     //039E          ; GREEK CAPITAL LETTER XI
+    "Ξ": [.x, .capital, .greek],
+
     //039F          ; GREEK CAPITAL LETTER OMICRON
+    "Ο": [.o, .capital, .greek],
+
     //03A0          ; GREEK CAPITAL LETTER PI
+    "Π": [.p, .capital, .greek],
+
     //03A1          ; GREEK CAPITAL LETTER RHO
+    "Ρ": [.r, .capital, .greek],
+
     //03A3          ; GREEK CAPITAL LETTER SIGMA
+    "Σ": [.s, .capital, .greek],
+
     //03A4          ; GREEK CAPITAL LETTER TAU
+    "Τ": [.t, .capital, .greek],
+
     //03A5          ; GREEK CAPITAL LETTER UPSILON
+    "Υ": [.y, .capital, .greek],
+
     //03A6          ; GREEK CAPITAL LETTER PHI
+    "Φ": [.p, .h, .capital, .greek],
+
     //03A7          ; GREEK CAPITAL LETTER CHI
+    "Χ": [.c, .h, .capital, .greek],
+
     //03A8          ; GREEK CAPITAL LETTER PSI
+    "Ψ": [.p, .s, .capital, .greek],
+
     //03A9          ; GREEK CAPITAL LETTER OMEGA
+    "Ω": [.o, .o, .capital, .greek],
+
     //03AA          ; GREEK CAPITAL LETTER IOTA WITH DIALYTIKA
     //03AB          ; GREEK CAPITAL LETTER UPSILON WITH DIALYTIKA
     //03AC          ; GREEK SMALL LETTER ALPHA WITH TONOS
@@ -2530,60 +2579,81 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     //03AE          ; GREEK SMALL LETTER ETA WITH TONOS
     //03AF          ; GREEK SMALL LETTER IOTA WITH TONOS
     //03B0          ; GREEK SMALL LETTER UPSILON WITH DIALYTIKA AND TONOS
-    //03B1          ; GREEK SMALL LETTER ALPHA
     
+    //03B1          ; GREEK SMALL LETTER ALPHA
+    "α": [.a, .greek],
+
     //03B2          ; GREEK SMALL LETTER BETA
-    "β": [.b, .y],
+    "β": [.b, .greek],
 
     //03B3          ; GREEK SMALL LETTER GAMMA
-    "γ": [.g, .y],
+    "γ": [.g, .greek],
 
     //03B4          ; GREEK SMALL LETTER DELTA
-    "δ": [.d, .y],
+    "δ": [.d, .greek],
 
     //03B5          ; GREEK SMALL LETTER EPSILON
+    "ε": [.e, .greek],
+
     //03B6          ; GREEK SMALL LETTER ZETA
+    "ζ": [.z, .greek],
+
     //03B7          ; GREEK SMALL LETTER ETA
-    
+    "η": [.h, .greek],
+
     //03B8          ; GREEK SMALL LETTER THETA
-    "θ": [.t, .h, .y],
+    "θ": [.t, .h, .greek],
 
     //03B9          ; GREEK SMALL LETTER IOTA
-    
+    "ι": [.i, .greek],
+
     //03BA          ; GREEK SMALL LETTER KAPPA
-    "κ": [.k, .y],
+    "κ": [.k, .greek],
 
     //03BB          ; GREEK SMALL LETTER LAMDA
+    "λ": [.l, .greek],
+
     //03BC          ; GREEK SMALL LETTER MU
+    "μ": [.m, .greek],
+
     //03BD          ; GREEK SMALL LETTER NU
+    "ν": [.n, .greek],
+
     //03BE          ; GREEK SMALL LETTER XI
+    "ξ": [.x, .greek],
+
     //03BF          ; GREEK SMALL LETTER OMICRON
-    
+    "ο": [.o, .greek],
+
     //03C0          ; GREEK SMALL LETTER PI
-    "π": [.p, .y],
+    "π": [.p, .greek],
 
     //03C1          ; GREEK SMALL LETTER RHO
-    "ρ": [.r, .y],
+    "ρ": [.r, .greek],
 
     //03C2          ; GREEK SMALL LETTER FINAL SIGMA
+    "ς": [.s, .greek, .final],
+
     //03C3          ; GREEK SMALL LETTER SIGMA
-    
+    "σ": [.s, .greek],
+
     //03C4          ; GREEK SMALL LETTER TAU
-    "τ": [.t, .y],
+    "τ": [.t, .greek],
 
     //03C5          ; GREEK SMALL LETTER UPSILON
-    
+    "υ": [.y, .greek],
+
     //03C6          ; GREEK SMALL LETTER PHI
-    "φ": [.f, .y],
+    "φ": [.p, .h, .greek],
 
     //03C7          ; GREEK SMALL LETTER CHI
-    "χ": [.x, .y],
+    "χ": [.c, .h, .greek],
 
     //03C8          ; GREEK SMALL LETTER PSI
-    "ψ": [.p, .s],
+    "ψ": [.p, .s, .greek],
 
     //03C9          ; GREEK SMALL LETTER OMEGA
-    "ω": [.o, .y],
+    "ω": [.o, .o, .greek],
 
     //03CA          ; GREEK SMALL LETTER IOTA WITH DIALYTIKA
     //03CB          ; GREEK SMALL LETTER UPSILON WITH DIALYTIKA
@@ -2594,20 +2664,30 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     //03D0          ; GREEK BETA SYMBOL
     
     //03D1          ; GREEK THETA SYMBOL
-    "ϑ": [.t, .y, .h],
+    "ϑ": [.t, .h, .greek, .symbol],
 
     //03D2          ; GREEK UPSILON WITH HOOK SYMBOL
     //03D3          ; GREEK UPSILON WITH ACUTE AND HOOK SYMBOL
     //03D4          ; GREEK UPSILON WITH DIAERESIS AND HOOK SYMBOL
+    
     //03D5          ; GREEK PHI SYMBOL
+    "ϕ": [.p, .h, .greek, .symbol],
+
     //03D6          ; GREEK PI SYMBOL
+    "ϖ": [.p, .greek, .symbol],
+
     //03D7          ; GREEK KAI SYMBOL
     //03D8          ; GREEK LETTER ARCHAIC KOPPA
     //03D9          ; GREEK SMALL LETTER ARCHAIC KOPPA
     //03DA          ; GREEK LETTER STIGMA
     //03DB          ; GREEK SMALL LETTER STIGMA
+    
     //03DC          ; GREEK LETTER DIGAMMA
+    "Ϝ": [.g, .g, .capital, .greek],
+
     //03DD          ; GREEK SMALL LETTER DIGAMMA
+    "ϝ": [.g, .g, .greek],
+
     //03DE          ; GREEK LETTER KOPPA
     //03DF          ; GREEK SMALL LETTER KOPPA
     //03E0          ; GREEK LETTER SAMPI
@@ -2626,13 +2706,24 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     //03ED          ; COPTIC SMALL LETTER SHIMA
     //03EE          ; COPTIC CAPITAL LETTER DEI
     //03EF          ; COPTIC SMALL LETTER DEI
+    
     //03F0          ; GREEK KAPPA SYMBOL
+    "ϰ": [.k, .greek, .symbol],
+
     //03F1          ; GREEK RHO SYMBOL
-    //03F2          ; GREEK LUNATE SIGMA SYMBOL
+    "ϱ": [.r, .greek, .symbol],
+
     //03F3          ; GREEK LETTER YOT
+    
     //03F4          ; GREEK CAPITAL THETA SYMBOL
+    "ϴ": [.t, .h, .capital, .greek, .symbol],
+
     //03F5          ; GREEK LUNATE EPSILON SYMBOL
+    "ϵ": [.e, .greek, .symbol, .lunate],
+
     //03F6          ; GREEK REVERSED LUNATE EPSILON SYMBOL
+    "϶": [.e, .greek, .symbol, .lunate, .reversed],
+
     //03F7          ; GREEK CAPITAL LETTER SHO
     //03F8          ; GREEK SMALL LETTER SHO
     //03F9          ; GREEK CAPITAL LUNATE SIGMA SYMBOL

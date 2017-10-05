@@ -30,7 +30,7 @@ enum CharacterComponent {
     case divisionSign
     
     case capital, smallCapital
-    case turned, reversed, inverted, ramsHorn, sideways, extra1, extra2
+    case extra0, turned, reversed, inverted, ramsHorn, sideways, extra1, extra2
     case extraLeft
     case superscript, `subscript`
     
@@ -49,6 +49,7 @@ enum CharacterComponent {
     case sBottom
     case uTop
     case wTop
+    case not
     
     case letterScript
     case insular

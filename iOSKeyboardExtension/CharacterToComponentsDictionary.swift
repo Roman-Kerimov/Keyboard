@@ -2358,7 +2358,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "͉": [.angle, .left, .below],
 
     //034A          ; COMBINING NOT TILDE ABOVE
-    "͊": [.tilde, .solidus, .above],
+    "͊": [.tilde, .not, .above],
 
     //034B          ; COMBINING HOMOTHETIC ABOVE
     "͋": [.tilde, .colon, .above],
@@ -4555,7 +4555,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "⁏": [.semicolon, .reversed],
 
     //2050          ; CLOSE UP
-    "⁐": [],
+    "⁐": [.invertedBreve, .breve],
 
     //2051          ; TWO ASTERISKS ALIGNED VERTICALLY
     "⁑": [.asterisk, .doubled],
@@ -5253,5 +5253,776 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
 
     //2199          ; SOUTH WEST ARROW
     "↙︎": [.solidus, .lessThanSign],
+
+    
+    // MARK: - 2200..22FF; Mathematical Operators
+    
+    //2200          ; FOR ALL
+    "∀": [],
+
+    //2201          ; COMPLEMENT
+    "∁": [],
+
+    //2202          ; PARTIAL DIFFERENTIAL
+    "∂": [.d, .greek, .symbol],
+
+    //2203          ; THERE EXISTS
+    "∃": [],
+
+    //2204          ; THERE DOES NOT EXIST
+    "∄": [],
+
+    //2205          ; EMPTY SET
+    "∅": [],
+
+    //2206          ; INCREMENT
+    "∆": [],
+
+    //2207          ; NABLA
+    "∇": [],
+
+    //2208          ; ELEMENT OF
+    "∈": [],
+
+    //2209          ; NOT AN ELEMENT OF
+    "∉": [],
+
+    //220A          ; SMALL ELEMENT OF
+    "∊": [],
+
+    //220B          ; CONTAINS AS MEMBER
+    "∋": [],
+
+    //220C          ; DOES NOT CONTAIN AS MEMBER
+    "∌": [],
+
+    //220D          ; SMALL CONTAINS AS MEMBER
+    "∍": [],
+
+    //220E          ; END OF PROOF
+    "∎": [],
+
+    //220F          ; N-ARY PRODUCT
+    "∏": [],
+
+    //2210          ; N-ARY COPRODUCT
+    "∐": [],
+
+    //2211          ; N-ARY SUMMATION
+    "∑": [],
+
+    //2212          ; MINUS SIGN
+    "−": [.minusSign],
+
+    //2213          ; MINUS-OR-PLUS SIGN
+    "∓": [.minusSign, .plusSign],
+
+    //2214          ; DOT PLUS
+    "∔": [.dot, .plusSign],
+
+    //2215          ; DIVISION SLASH
+    "∕": [.divisionSign, .extra2],
+
+    //2216          ; SET MINUS
+    "∖": [],
+
+    //2217          ; ASTERISK OPERATOR
+    "∗": [.multiplicationSign, .extra2],
+
+    //2218          ; RING OPERATOR
+    "∘": [],
+
+    //2219          ; BULLET OPERATOR
+    "∙": [],
+
+    //221A          ; SQUARE ROOT
+    "√": [],
+
+    //221B          ; CUBE ROOT
+    "∛": [],
+
+    //221C          ; FOURTH ROOT
+    "∜": [],
+
+    //221D          ; PROPORTIONAL TO
+    "∝": [],
+
+    //221E          ; INFINITY
+    "∞": [.zero, .extra1],
+
+    //221F          ; RIGHT ANGLE
+    "∟": [],
+
+    //2220          ; ANGLE
+    "∠": [],
+
+    //2221          ; MEASURED ANGLE
+    "∡": [],
+
+    //2222          ; SPHERICAL ANGLE
+    "∢": [],
+
+    //2223          ; DIVIDES
+    "∣": [],
+
+    //2224          ; DOES NOT DIVIDE
+    "∤": [],
+
+    //2225          ; PARALLEL TO
+    "∥": [],
+
+    //2226          ; NOT PARALLEL TO
+    "∦": [],
+
+    //2227          ; LOGICAL AND
+    "∧": [.ampersand, .extra0],
+
+    //2228          ; LOGICAL OR
+    "∨": [.verticalLine, .extra0],
+
+    //2229          ; INTERSECTION
+    "∩": [],
+
+    //222A          ; UNION
+    "∪": [],
+
+    //222B          ; INTEGRAL
+    "∫": [],
+
+    //222C          ; DOUBLE INTEGRAL
+    "∬": [],
+
+    //222D          ; TRIPLE INTEGRAL
+    "∭": [],
+
+    //222E          ; CONTOUR INTEGRAL
+    "∮": [],
+
+    //222F          ; SURFACE INTEGRAL
+    "∯": [],
+
+    //2230          ; VOLUME INTEGRAL
+    "∰": [],
+
+    //2231          ; CLOCKWISE INTEGRAL
+    "∱": [],
+
+    //2232          ; CLOCKWISE CONTOUR INTEGRAL
+    "∲": [],
+
+    //2233          ; ANTICLOCKWISE CONTOUR INTEGRAL
+    "∳": [],
+
+    //2234          ; THEREFORE
+    "∴": [],
+
+    //2235          ; BECAUSE
+    "∵": [],
+
+    //2236          ; RATIO
+    "∶": [.divisionSign, .extra1],
+
+    //2237          ; PROPORTION
+    "∷": [],
+
+    //2238          ; DOT MINUS
+    "∸": [.dot, .minusSign],
+
+    //2239          ; EXCESS
+    "∹": [.minusSign, .colon],
+
+    //223A          ; GEOMETRIC PROPORTION
+    "∺": [],
+
+    //223B          ; HOMOTHETIC
+    "∻": [.tilde, .colon],
+
+    //223C          ; TILDE OPERATOR
+    "∼": [],
+
+    //223D          ; REVERSED TILDE
+    "∽": [.tilde, .reversed],
+
+    //223E          ; INVERTED LAZY S
+    "∾": [],
+
+    //223F          ; SINE WAVE
+    "∿": [],
+
+    //2240          ; WREATH PRODUCT
+    "≀": [],
+
+    //2241          ; NOT TILDE
+    "≁": [.tilde, .not],
+
+    //2242          ; MINUS TILDE
+    "≂": [.minusSign, .tilde],
+
+    //2243          ; ASYMPTOTICALLY EQUAL TO
+    "≃": [.tilde, .equalsSign],
+
+    //2244          ; NOT ASYMPTOTICALLY EQUAL TO
+    "≄": [.tilde, .equalsSign, .not],
+
+    //2245          ; APPROXIMATELY EQUAL TO
+    "≅": [.tilde, .equalsSign, .equalsSign],
+
+    //2246          ; APPROXIMATELY BUT NOT ACTUALLY EQUAL TO
+    "≆": [.tilde, .equalsSign, .equalsSign, .not],
+
+    //2247          ; NEITHER APPROXIMATELY NOR ACTUALLY EQUAL TO
+    "≇": [.tilde, .not, .equalsSign, .equalsSign],
+
+    //2248          ; ALMOST EQUAL TO
+    "≈": [.tilde, .doubled],
+
+    //2249          ; NOT ALMOST EQUAL TO
+    "≉": [.tilde, .doubled, .not],
+
+    //224A          ; ALMOST EQUAL OR EQUAL TO
+    "≊": [.tilde, .doubled, .equalsSign],
+
+    //224B          ; TRIPLE TILDE
+    "≋": [.tilde, .doubled, .tilde],
+
+    //224C          ; ALL EQUAL TO
+    "≌": [.tilde, .equalsSign, .equalsSign, .reversed],
+
+    //224D          ; EQUIVALENT TO
+    "≍": [.breve, .invertedBreve],
+
+    //224E          ; GEOMETRICALLY EQUIVALENT TO
+    "≎": [],
+
+    //224F          ; DIFFERENCE BETWEEN
+    "≏": [],
+
+    //2250          ; APPROACHES THE LIMIT
+    "≐": [],
+
+    //2251          ; GEOMETRICALLY EQUAL TO
+    "≑": [],
+
+    //2252          ; APPROXIMATELY EQUAL TO OR THE IMAGE OF
+    "≒": [],
+
+    //2253          ; IMAGE OF OR APPROXIMATELY EQUAL TO
+    "≓": [],
+
+    //2254          ; COLON EQUALS
+    "≔": [.colon, .equalsSign],
+
+    //2255          ; EQUALS COLON
+    "≕": [.equalsSign, .colon],
+
+    //2256          ; RING IN EQUAL TO
+    "≖": [.equalsSign, .ring],
+
+    //2257          ; RING EQUAL TO
+    "≗": [.ring, .equalsSign],
+
+    //2258          ; CORRESPONDS TO
+    "≘": [.breve, .equalsSign],
+
+    //2259          ; ESTIMATES
+    "≙": [.circumflex, .equalsSign],
+
+    //225A          ; EQUIANGULAR TO
+    "≚": [.caron, .equalsSign],
+
+    //225B          ; STAR EQUALS
+    "≛": [.asterisk, .equalsSign],
+
+    //225C          ; DELTA EQUAL TO
+    "≜": [.d, .capital, .greek, .equalsSign],
+
+    //225D          ; EQUAL TO BY DEFINITION
+    "≝": [],
+
+    //225E          ; MEASURED BY
+    "≞": [.m, .equalsSign],
+
+    //225F          ; QUESTIONED EQUAL TO
+    "≟": [.questionMark, .equalsSign],
+
+    //2260          ; NOT EQUAL TO
+    "≠": [.equalsSign, .not],
+
+    //2261          ; IDENTICAL TO
+    "≡": [.equalsSign, .equalsSign],
+
+    //2262          ; NOT IDENTICAL TO
+    "≢": [.equalsSign, .equalsSign, .not],
+
+    //2263          ; STRICTLY EQUIVALENT TO
+    "≣": [.equalsSign, .equalsSign, .equalsSign],
+
+    //2264          ; LESS-THAN OR EQUAL TO
+    "≤": [.lessThanSign, .equalsSign],
+
+    //2265          ; GREATER-THAN OR EQUAL TO
+    "≥": [.greaterThanSign, .equalsSign],
+
+    //2266          ; LESS-THAN OVER EQUAL TO
+    "≦": [.lessThanSign, .equalsSign, .equalsSign],
+
+    //2267          ; GREATER-THAN OVER EQUAL TO
+    "≧": [.greaterThanSign, .equalsSign, .equalsSign],
+
+    //2268          ; LESS-THAN BUT NOT EQUAL TO
+    "≨": [.lessThanSign, .equalsSign, .equalsSign, .not],
+
+    //2269          ; GREATER-THAN BUT NOT EQUAL TO
+    "≩": [.greaterThanSign, .equalsSign, .equalsSign, .not],
+
+    //226A          ; MUCH LESS-THAN
+    "≪": [.lessThanSign, .lessThanSign],
+
+    //226B          ; MUCH GREATER-THAN
+    "≫": [.greaterThanSign, .greaterThanSign],
+
+    //226C          ; BETWEEN
+    "≬": [.parenthesis, .parenthesis, .turned],
+
+    //226D          ; NOT EQUIVALENT TO
+    "≭": [.breve, .invertedBreve, .not],
+
+    //226E          ; NOT LESS-THAN
+    "≮": [.lessThanSign, .not],
+
+    //226F          ; NOT GREATER-THAN
+    "≯": [.greaterThanSign, .not],
+
+    //2270          ; NEITHER LESS-THAN NOR EQUAL TO
+    "≰": [.lessThanSign, .equalsSign, .not],
+
+    //2271          ; NEITHER GREATER-THAN NOR EQUAL TO
+    "≱": [.greaterThanSign, .equalsSign, .not],
+
+    //2272          ; LESS-THAN OR EQUIVALENT TO
+    "≲": [.lessThanSign, .tilde],
+
+    //2273          ; GREATER-THAN OR EQUIVALENT TO
+    "≳": [.greaterThanSign, .tilde],
+
+    //2274          ; NEITHER LESS-THAN NOR EQUIVALENT TO
+    "≴": [.lessThanSign, .not, .tilde],
+
+    //2275          ; NEITHER GREATER-THAN NOR EQUIVALENT TO
+    "≵": [.greaterThanSign, .not, .tilde],
+
+    //2276          ; LESS-THAN OR GREATER-THAN
+    "≶": [.lessThanSign, .greaterThanSign],
+
+    //2277          ; GREATER-THAN OR LESS-THAN
+    "≷": [.greaterThanSign, .lessThanSign],
+
+    //2278          ; NEITHER LESS-THAN NOR GREATER-THAN
+    "≸": [.lessThanSign, .greaterThanSign, .not],
+
+    //2279          ; NEITHER GREATER-THAN NOR LESS-THAN
+    "≹": [.greaterThanSign, .lessThanSign, .not],
+
+    //227A          ; PRECEDES
+    "≺": [],
+
+    //227B          ; SUCCEEDS
+    "≻": [],
+
+    //227C          ; PRECEDES OR EQUAL TO
+    "≼": [],
+
+    //227D          ; SUCCEEDS OR EQUAL TO
+    "≽": [],
+
+    //227E          ; PRECEDES OR EQUIVALENT TO
+    "≾": [],
+
+    //227F          ; SUCCEEDS OR EQUIVALENT TO
+    "≿": [],
+
+    //2280          ; DOES NOT PRECEDE
+    "⊀": [],
+
+    //2281          ; DOES NOT SUCCEED
+    "⊁": [],
+
+    //2282          ; SUBSET OF
+    "⊂": [],
+
+    //2283          ; SUPERSET OF
+    "⊃": [],
+
+    //2284          ; NOT A SUBSET OF
+    "⊄": [],
+
+    //2285          ; NOT A SUPERSET OF
+    "⊅": [],
+
+    //2286          ; SUBSET OF OR EQUAL TO
+    "⊆": [],
+
+    //2287          ; SUPERSET OF OR EQUAL TO
+    "⊇": [],
+
+    //2288          ; NEITHER A SUBSET OF NOR EQUAL TO
+    "⊈": [],
+
+    //2289          ; NEITHER A SUPERSET OF NOR EQUAL TO
+    "⊉": [],
+
+    //228A          ; SUBSET OF WITH NOT EQUAL TO
+    "⊊": [],
+
+    //228B          ; SUPERSET OF WITH NOT EQUAL TO
+    "⊋": [],
+
+    //228C          ; MULTISET
+    "⊌": [],
+
+    //228D          ; MULTISET MULTIPLICATION
+    "⊍": [],
+
+    //228E          ; MULTISET UNION
+    "⊎": [],
+
+    //228F          ; SQUARE IMAGE OF
+    "⊏": [],
+
+    //2290          ; SQUARE ORIGINAL OF
+    "⊐": [],
+
+    //2291          ; SQUARE IMAGE OF OR EQUAL TO
+    "⊑": [],
+
+    //2292          ; SQUARE ORIGINAL OF OR EQUAL TO
+    "⊒": [],
+
+    //2293          ; SQUARE CAP
+    "⊓": [],
+
+    //2294          ; SQUARE CUP
+    "⊔": [],
+
+    //2295          ; CIRCLED PLUS
+    "⊕": [.plusSign, .ring],
+
+    //2296          ; CIRCLED MINUS
+    "⊖": [.minusSign, .ring],
+
+    //2297          ; CIRCLED TIMES
+    "⊗": [.multiplicationSign, .ring],
+
+    //2298          ; CIRCLED DIVISION SLASH
+    "⊘": [.divisionSign, .extra2, .ring],
+
+    //2299          ; CIRCLED DOT OPERATOR
+    "⊙": [.multiplicationSign, .extra1, .ring],
+
+    //229A          ; CIRCLED RING OPERATOR
+    "⊚": [.ring, .ring],
+
+    //229B          ; CIRCLED ASTERISK OPERATOR
+    "⊛": [.multiplicationSign, .extra2, .ring],
+
+    //229C          ; CIRCLED EQUALS
+    "⊜": [.equalsSign, .ring],
+
+    //229D          ; CIRCLED DASH
+    "⊝": [.hyphen, .ring],
+
+    //229E          ; SQUARED PLUS
+    "⊞": [],
+
+    //229F          ; SQUARED MINUS
+    "⊟": [],
+
+    //22A0          ; SQUARED TIMES
+    "⊠": [],
+
+    //22A1          ; SQUARED DOT OPERATOR
+    "⊡": [],
+
+    //22A2          ; RIGHT TACK
+    "⊢": [.tack, .right],
+
+    //22A3          ; LEFT TACK
+    "⊣": [.tack, .left],
+
+    //22A4          ; DOWN TACK
+    "⊤": [.tack, .down],
+
+    //22A5          ; UP TACK
+    "⊥": [.tack, .up],
+
+    //22A6          ; ASSERTION
+    "⊦": [],
+
+    //22A7          ; MODELS
+    "⊧": [],
+
+    //22A8          ; TRUE
+    "⊨": [],
+
+    //22A9          ; FORCES
+    "⊩": [],
+
+    //22AA          ; TRIPLE VERTICAL BAR RIGHT TURNSTILE
+    "⊪": [],
+
+    //22AB          ; DOUBLE VERTICAL BAR DOUBLE RIGHT TURNSTILE
+    "⊫": [],
+
+    //22AC          ; DOES NOT PROVE
+    "⊬": [],
+
+    //22AD          ; NOT TRUE
+    "⊭": [],
+
+    //22AE          ; DOES NOT FORCE
+    "⊮": [],
+
+    //22AF          ; NEGATED DOUBLE VERTICAL BAR DOUBLE RIGHT TURNSTILE
+    "⊯": [],
+
+    //22B0          ; PRECEDES UNDER RELATION
+    "⊰": [],
+
+    //22B1          ; SUCCEEDS UNDER RELATION
+    "⊱": [],
+
+    //22B2          ; NORMAL SUBGROUP OF
+    "⊲": [],
+
+    //22B3          ; CONTAINS AS NORMAL SUBGROUP
+    "⊳": [],
+
+    //22B4          ; NORMAL SUBGROUP OF OR EQUAL TO
+    "⊴": [],
+
+    //22B5          ; CONTAINS AS NORMAL SUBGROUP OR EQUAL TO
+    "⊵": [],
+
+    //22B6          ; ORIGINAL OF
+    "⊶": [],
+
+    //22B7          ; IMAGE OF
+    "⊷": [],
+
+    //22B8          ; MULTIMAP
+    "⊸": [],
+
+    //22B9          ; HERMITIAN CONJUGATE MATRIX
+    "⊹": [],
+
+    //22BA          ; INTERCALATE
+    "⊺": [],
+
+    //22BB          ; XOR
+    "⊻": [.verticalLine, .extra0, .minusSign],
+
+    //22BC          ; NAND
+    "⊼": [.minusSign, .ampersand, .extra0],
+
+    //22BD          ; NOR
+    "⊽": [.minusSign, .verticalLine, .extra0],
+
+    //22BE          ; RIGHT ANGLE WITH ARC
+    "⊾": [],
+
+    //22BF          ; RIGHT TRIANGLE
+    "⊿": [],
+
+    //22C0          ; N-ARY LOGICAL AND
+    "⋀": [],
+
+    //22C1          ; N-ARY LOGICAL OR
+    "⋁": [],
+
+    //22C2          ; N-ARY INTERSECTION
+    "⋂": [],
+
+    //22C3          ; N-ARY UNION
+    "⋃": [],
+
+    //22C4          ; DIAMOND OPERATOR
+    "⋄": [],
+
+    //22C5          ; DOT OPERATOR
+    "⋅": [.multiplicationSign, .extra1],
+
+    //22C6          ; STAR OPERATOR
+    "⋆": [],
+
+    //22C7          ; DIVISION TIMES
+    "⋇": [.divisionSign, .multiplicationSign],
+
+    //22C8          ; BOWTIE
+    "⋈": [],
+
+    //22C9          ; LEFT NORMAL FACTOR SEMIDIRECT PRODUCT
+    "⋉": [],
+
+    //22CA          ; RIGHT NORMAL FACTOR SEMIDIRECT PRODUCT
+    "⋊": [],
+
+    //22CB          ; LEFT SEMIDIRECT PRODUCT
+    "⋋": [],
+
+    //22CC          ; RIGHT SEMIDIRECT PRODUCT
+    "⋌": [],
+
+    //22CD          ; REVERSED TILDE EQUALS
+    "⋍": [.tilde, .equalsSign, .reversed],
+
+    //22CE          ; CURLY LOGICAL OR
+    "⋎": [],
+
+    //22CF          ; CURLY LOGICAL AND
+    "⋏": [],
+
+    //22D0          ; DOUBLE SUBSET
+    "⋐": [],
+
+    //22D1          ; DOUBLE SUPERSET
+    "⋑": [],
+
+    //22D2          ; DOUBLE INTERSECTION
+    "⋒": [],
+
+    //22D3          ; DOUBLE UNION
+    "⋓": [],
+
+    //22D4          ; PITCHFORK
+    "⋔": [],
+
+    //22D5          ; EQUAL AND PARALLEL TO
+    "⋕": [],
+
+    //22D6          ; LESS-THAN WITH DOT
+    "⋖": [.lessThanSign, .dot],
+
+    //22D7          ; GREATER-THAN WITH DOT
+    "⋗": [.greaterThanSign, .dot],
+
+    //22D8          ; VERY MUCH LESS-THAN
+    "⋘": [.lessThanSign, .lessThanSign, .lessThanSign],
+
+    //22D9          ; VERY MUCH GREATER-THAN
+    "⋙": [.greaterThanSign, .greaterThanSign, .greaterThanSign],
+
+    //22DA          ; LESS-THAN EQUAL TO OR GREATER-THAN
+    "⋚": [.lessThanSign, .equalsSign, .greaterThanSign],
+
+    //22DB          ; GREATER-THAN EQUAL TO OR LESS-THAN
+    "⋛": [.greaterThanSign, .equalsSign, .lessThanSign],
+
+    //22DC          ; EQUAL TO OR LESS-THAN
+    "⋜": [.equalsSign, .lessThanSign],
+
+    //22DD          ; EQUAL TO OR GREATER-THAN
+    "⋝": [.equalsSign, .greaterThanSign],
+
+    //22DE          ; EQUAL TO OR PRECEDES
+    "⋞": [],
+
+    //22DF          ; EQUAL TO OR SUCCEEDS
+    "⋟": [],
+
+    //22E0          ; DOES NOT PRECEDE OR EQUAL
+    "⋠": [],
+
+    //22E1          ; DOES NOT SUCCEED OR EQUAL
+    "⋡": [],
+
+    //22E2          ; NOT SQUARE IMAGE OF OR EQUAL TO
+    "⋢": [],
+
+    //22E3          ; NOT SQUARE ORIGINAL OF OR EQUAL TO
+    "⋣": [],
+
+    //22E4          ; SQUARE IMAGE OF OR NOT EQUAL TO
+    "⋤": [],
+
+    //22E5          ; SQUARE ORIGINAL OF OR NOT EQUAL TO
+    "⋥": [],
+
+    //22E6          ; LESS-THAN BUT NOT EQUIVALENT TO
+    "⋦": [.lessThanSign, .tilde, .not],
+
+    //22E7          ; GREATER-THAN BUT NOT EQUIVALENT TO
+    "⋧": [.greaterThanSign, .tilde, .not],
+
+    //22E8          ; PRECEDES BUT NOT EQUIVALENT TO
+    "⋨": [],
+
+    //22E9          ; SUCCEEDS BUT NOT EQUIVALENT TO
+    "⋩": [],
+
+    //22EA          ; NOT NORMAL SUBGROUP OF
+    "⋪": [],
+
+    //22EB          ; DOES NOT CONTAIN AS NORMAL SUBGROUP
+    "⋫": [],
+
+    //22EC          ; NOT NORMAL SUBGROUP OF OR EQUAL TO
+    "⋬": [],
+
+    //22ED          ; DOES NOT CONTAIN AS NORMAL SUBGROUP OR EQUAL
+    "⋭": [],
+
+    //22EE          ; VERTICAL ELLIPSIS
+    "⋮": [],
+
+    //22EF          ; MIDLINE HORIZONTAL ELLIPSIS
+    "⋯": [],
+
+    //22F0          ; UP RIGHT DIAGONAL ELLIPSIS
+    "⋰": [],
+
+    //22F1          ; DOWN RIGHT DIAGONAL ELLIPSIS
+    "⋱": [],
+
+    //22F2          ; ELEMENT OF WITH LONG HORIZONTAL STROKE
+    "⋲": [],
+
+    //22F3          ; ELEMENT OF WITH VERTICAL BAR AT END OF HORIZONTAL STROKE
+    "⋳": [],
+
+    //22F4          ; SMALL ELEMENT OF WITH VERTICAL BAR AT END OF HORIZONTAL STROKE
+    "⋴": [],
+
+    //22F5          ; ELEMENT OF WITH DOT ABOVE
+    "⋵": [],
+
+    //22F6          ; ELEMENT OF WITH OVERBAR
+    "⋶": [],
+
+    //22F7          ; SMALL ELEMENT OF WITH OVERBAR
+    "⋷": [],
+
+    //22F8          ; ELEMENT OF WITH UNDERBAR
+    "⋸": [],
+
+    //22F9          ; ELEMENT OF WITH TWO HORIZONTAL STROKES
+    "⋹": [],
+
+    //22FA          ; CONTAINS WITH LONG HORIZONTAL STROKE
+    "⋺": [],
+
+    //22FB          ; CONTAINS WITH VERTICAL BAR AT END OF HORIZONTAL STROKE
+    "⋻": [],
+
+    //22FC          ; SMALL CONTAINS WITH VERTICAL BAR AT END OF HORIZONTAL STROKE
+    "⋼": [],
+
+    //22FD          ; CONTAINS WITH OVERBAR
+    "⋽": [],
+
+    //22FE          ; SMALL CONTAINS WITH OVERBAR
+    "⋾": [],
+
+    //22FF          ; Z NOTATION BAG MEMBERSHIP
+    "⋿": [],
 
 ]

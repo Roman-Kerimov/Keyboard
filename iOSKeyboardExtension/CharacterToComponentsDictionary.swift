@@ -2906,19 +2906,19 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ᴥ": [.apostrophe, .h, .h],
 
     //1D26          ; GREEK LETTER SMALL CAPITAL GAMMA
-    "ᴦ": [.g, .y, .smallCapital],
+    "ᴦ": [.g, .greek, .smallCapital],
 
     //1D27          ; GREEK LETTER SMALL CAPITAL LAMDA
-    "ᴧ": [.l, .y, .smallCapital],
+    "ᴧ": [.l, .greek, .smallCapital],
 
     //1D28          ; GREEK LETTER SMALL CAPITAL PI
-    "ᴨ": [.p, .y, .smallCapital],
+    "ᴨ": [.p, .greek, .smallCapital],
 
     //1D29          ; GREEK LETTER SMALL CAPITAL RHO
-    "ᴩ": [.r, .y, .smallCapital],
+    "ᴩ": [.r, .greek, .smallCapital],
 
     //1D2A          ; GREEK LETTER SMALL CAPITAL PSI
-    "ᴪ": [.p, .s, .smallCapital],
+    "ᴪ": [.p, .s, .greek, .smallCapital],
 
     //1D2B          ; CYRILLIC LETTER SMALL CAPITAL EL
     "ᴫ": [.l, .k, .smallCapital],
@@ -3074,13 +3074,13 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ᵝ": [.b, .y, .superscript],
 
     //1D5E          ; MODIFIER LETTER SMALL GREEK GAMMA
-    "ᵞ": [.g, .y, .superscript],
+    "ᵞ": [.g, .greek, .superscript],
 
     //1D5F          ; MODIFIER LETTER SMALL DELTA
     "ᵟ": [.d, .y, .superscript],
 
     //1D60          ; MODIFIER LETTER SMALL GREEK PHI
-    "ᵠ": [.f, .y, .superscript],
+    "ᵠ": [.f, .greek, .superscript],
 
     //1D61          ; MODIFIER LETTER SMALL CHI
     "ᵡ": [.x, .y, .superscript],
@@ -3098,19 +3098,19 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ᵥ": [.v, .subscript],
 
     //1D66          ; GREEK SUBSCRIPT SMALL LETTER BETA
-    "ᵦ": [.b, .y, .subscript],
+    "ᵦ": [.b, .greek, .subscript],
 
     //1D67          ; GREEK SUBSCRIPT SMALL LETTER GAMMA
-    "ᵧ": [.g, .y, .subscript],
+    "ᵧ": [.g, .greek, .subscript],
 
     //1D68          ; GREEK SUBSCRIPT SMALL LETTER RHO
-    "ᵨ": [.r, .y, .subscript],
+    "ᵨ": [.r, .greek, .subscript],
 
     //1D69          ; GREEK SUBSCRIPT SMALL LETTER PHI
-    "ᵩ": [.f, .y, .subscript],
+    "ᵩ": [.f, .greek, .subscript],
 
     //1D6A          ; GREEK SUBSCRIPT SMALL LETTER CHI
-    "ᵪ": [.x, .y, .subscript],
+    "ᵪ": [.c, .h, .greek, .subscript],
 
     //1D6B          ; LATIN SMALL LETTER UE
     "ᵫ": [.u, .e],

@@ -336,7 +336,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "«": [],
 
     //00AC          ; NOT SIGN
-    "¬": [],
+    "¬": [.notSign],
 
     //00AD          ; SOFT HYPHEN
     "­": [],
@@ -5318,7 +5318,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "∓": [.minusSign, .plusSign],
 
     //2214          ; DOT PLUS
-    "∔": [.dot, .plusSign],
+    "∔": [.plusSign, .dot, .above],
 
     //2215          ; DIVISION SLASH
     "∕": [.divisionSign, .extra2],
@@ -5426,16 +5426,16 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "∷": [],
 
     //2238          ; DOT MINUS
-    "∸": [.dot, .minusSign],
+    "∸": [.minusSign, .dot, .above],
 
     //2239          ; EXCESS
     "∹": [.minusSign, .colon],
 
     //223A          ; GEOMETRIC PROPORTION
-    "∺": [],
+    "∺": [.colon, .minusSign, .colon],
 
     //223B          ; HOMOTHETIC
-    "∻": [.tilde, .colon],
+    "∻": [.tilde, .dot, .below, .dot, .above],
 
     //223C          ; TILDE OPERATOR
     "∼": [],
@@ -5462,16 +5462,16 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "≃": [.tilde, .equalsSign],
 
     //2244          ; NOT ASYMPTOTICALLY EQUAL TO
-    "≄": [.tilde, .equalsSign, .not],
+    "≄": [.tilde, .not, .equalsSign],
 
     //2245          ; APPROXIMATELY EQUAL TO
-    "≅": [.tilde, .equalsSign, .equalsSign],
+    "≅": [.tilde, .equalsSign, .doubled],
 
     //2246          ; APPROXIMATELY BUT NOT ACTUALLY EQUAL TO
-    "≆": [.tilde, .equalsSign, .equalsSign, .not],
+    "≆": [.tilde, .equalsSign, .doubled, .not],
 
     //2247          ; NEITHER APPROXIMATELY NOR ACTUALLY EQUAL TO
-    "≇": [.tilde, .not, .equalsSign, .equalsSign],
+    "≇": [.tilde, .not, .equalsSign, .doubled],
 
     //2248          ; ALMOST EQUAL TO
     "≈": [.tilde, .doubled],
@@ -5486,7 +5486,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "≋": [.tilde, .doubled, .tilde],
 
     //224C          ; ALL EQUAL TO
-    "≌": [.tilde, .equalsSign, .equalsSign, .reversed],
+    "≌": [.tilde, .equalsSign, .doubled, .reversed],
 
     //224D          ; EQUIVALENT TO
     "≍": [.breve, .invertedBreve],
@@ -5498,16 +5498,16 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "≏": [],
 
     //2250          ; APPROACHES THE LIMIT
-    "≐": [],
+    "≐": [.equalsSign, .dot, .above],
 
     //2251          ; GEOMETRICALLY EQUAL TO
-    "≑": [],
+    "≑": [.equalsSign, .dot, .below, .dot, .above],
 
     //2252          ; APPROXIMATELY EQUAL TO OR THE IMAGE OF
-    "≒": [],
+    "≒": [.equalsSign, .dot, .belowRight, .dot, .aboveLeft],
 
     //2253          ; IMAGE OF OR APPROXIMATELY EQUAL TO
-    "≓": [],
+    "≓": [.equalsSign, .dot, .belowLeft, .dot, .aboveRight],
 
     //2254          ; COLON EQUALS
     "≔": [.colon, .equalsSign],
@@ -5516,46 +5516,46 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "≕": [.equalsSign, .colon],
 
     //2256          ; RING IN EQUAL TO
-    "≖": [.equalsSign, .ring],
+    "≖": [.ring, .equalsSign],
 
     //2257          ; RING EQUAL TO
-    "≗": [.ring, .equalsSign],
+    "≗": [.equalsSign, .ring, .above],
 
     //2258          ; CORRESPONDS TO
-    "≘": [.breve, .equalsSign],
+    "≘": [.equalsSign, .invertedBreve, .above],
 
     //2259          ; ESTIMATES
-    "≙": [.circumflex, .equalsSign],
+    "≙": [.equalsSign, .circumflex, .above],
 
     //225A          ; EQUIANGULAR TO
-    "≚": [.caron, .equalsSign],
+    "≚": [.equalsSign, .caron, .above],
 
     //225B          ; STAR EQUALS
-    "≛": [.asterisk, .equalsSign],
+    "≛": [],
 
     //225C          ; DELTA EQUAL TO
-    "≜": [.d, .capital, .greek, .equalsSign],
+    "≜": [.equalsSign, .d, .capital, .greek, .above],
 
     //225D          ; EQUAL TO BY DEFINITION
     "≝": [],
 
     //225E          ; MEASURED BY
-    "≞": [.m, .equalsSign],
+    "≞": [.equalsSign, .m, .above],
 
     //225F          ; QUESTIONED EQUAL TO
-    "≟": [.questionMark, .equalsSign],
+    "≟": [.equalsSign, .questionMark, .above],
 
     //2260          ; NOT EQUAL TO
     "≠": [.equalsSign, .not],
 
     //2261          ; IDENTICAL TO
-    "≡": [.equalsSign, .equalsSign],
+    "≡": [.equalsSign, .doubled],
 
     //2262          ; NOT IDENTICAL TO
-    "≢": [.equalsSign, .equalsSign, .not],
+    "≢": [.equalsSign, .doubled, .not],
 
     //2263          ; STRICTLY EQUIVALENT TO
-    "≣": [.equalsSign, .equalsSign, .equalsSign],
+    "≣": [.equalsSign, .equalsSign],
 
     //2264          ; LESS-THAN OR EQUAL TO
     "≤": [.lessThanSign, .equalsSign],
@@ -5564,16 +5564,16 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "≥": [.greaterThanSign, .equalsSign],
 
     //2266          ; LESS-THAN OVER EQUAL TO
-    "≦": [.lessThanSign, .equalsSign, .equalsSign],
+    "≦": [.lessThanSign, .equalsSign, .doubled],
 
     //2267          ; GREATER-THAN OVER EQUAL TO
-    "≧": [.greaterThanSign, .equalsSign, .equalsSign],
+    "≧": [.greaterThanSign, .equalsSign, .doubled],
 
     //2268          ; LESS-THAN BUT NOT EQUAL TO
-    "≨": [.lessThanSign, .equalsSign, .equalsSign, .not],
+    "≨": [.lessThanSign, .equalsSign, .doubled, .not],
 
     //2269          ; GREATER-THAN BUT NOT EQUAL TO
-    "≩": [.greaterThanSign, .equalsSign, .equalsSign, .not],
+    "≩": [.greaterThanSign, .equalsSign, .doubled, .not],
 
     //226A          ; MUCH LESS-THAN
     "≪": [.lessThanSign, .lessThanSign],
@@ -5594,10 +5594,10 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "≯": [.greaterThanSign, .not],
 
     //2270          ; NEITHER LESS-THAN NOR EQUAL TO
-    "≰": [.lessThanSign, .equalsSign, .not],
+    "≰": [.lessThanSign, .not, .equalsSign],
 
     //2271          ; NEITHER GREATER-THAN NOR EQUAL TO
-    "≱": [.greaterThanSign, .equalsSign, .not],
+    "≱": [.greaterThanSign, .not, .equalsSign],
 
     //2272          ; LESS-THAN OR EQUIVALENT TO
     "≲": [.lessThanSign, .tilde],
@@ -6024,5 +6024,776 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
 
     //22FF          ; Z NOTATION BAG MEMBERSHIP
     "⋿": [],
+
+    
+    // MARK: - 2A00..2AFF; Supplemental Mathematical Operators
+    
+    //2A00          ; N-ARY CIRCLED DOT OPERATOR
+    "⨀": [],
+
+    //2A01          ; N-ARY CIRCLED PLUS OPERATOR
+    "⨁": [],
+
+    //2A02          ; N-ARY CIRCLED TIMES OPERATOR
+    "⨂": [],
+
+    //2A03          ; N-ARY UNION OPERATOR WITH DOT
+    "⨃": [],
+
+    //2A04          ; N-ARY UNION OPERATOR WITH PLUS
+    "⨄": [],
+
+    //2A05          ; N-ARY SQUARE INTERSECTION OPERATOR
+    "⨅": [],
+
+    //2A06          ; N-ARY SQUARE UNION OPERATOR
+    "⨆": [],
+
+    //2A07          ; TWO LOGICAL AND OPERATOR
+    "⨇": [.ampersand, .extra0, .ampersand, .extra0],
+
+    //2A08          ; TWO LOGICAL OR OPERATOR
+    "⨈": [.verticalLine, .extra0, .verticalLine, .extra0],
+
+    //2A09          ; N-ARY TIMES OPERATOR
+    "⨉": [],
+
+    //2A0A          ; MODULO TWO SUM
+    "⨊": [],
+
+    //2A0B          ; SUMMATION WITH INTEGRAL
+    "⨋": [],
+
+    //2A0C          ; QUADRUPLE INTEGRAL OPERATOR
+    "⨌": [],
+
+    //2A0D          ; FINITE PART INTEGRAL
+    "⨍": [],
+
+    //2A0E          ; INTEGRAL WITH DOUBLE STROKE
+    "⨎": [],
+
+    //2A0F          ; INTEGRAL AVERAGE WITH SLASH
+    "⨏": [],
+
+    //2A10          ; CIRCULATION FUNCTION
+    "⨐": [],
+
+    //2A11          ; ANTICLOCKWISE INTEGRATION
+    "⨑": [],
+
+    //2A12          ; LINE INTEGRATION WITH RECTANGULAR PATH AROUND POLE
+    "⨒": [],
+
+    //2A13          ; LINE INTEGRATION WITH SEMICIRCULAR PATH AROUND POLE
+    "⨓": [],
+
+    //2A14          ; LINE INTEGRATION NOT INCLUDING THE POLE
+    "⨔": [],
+
+    //2A15          ; INTEGRAL AROUND A POINT OPERATOR
+    "⨕": [],
+
+    //2A16          ; QUATERNION INTEGRAL OPERATOR
+    "⨖": [],
+
+    //2A17          ; INTEGRAL WITH LEFTWARDS ARROW WITH HOOK
+    "⨗": [],
+
+    //2A18          ; INTEGRAL WITH TIMES SIGN
+    "⨘": [],
+
+    //2A19          ; INTEGRAL WITH INTERSECTION
+    "⨙": [],
+
+    //2A1A          ; INTEGRAL WITH UNION
+    "⨚": [],
+
+    //2A1B          ; INTEGRAL WITH OVERBAR
+    "⨛": [],
+
+    //2A1C          ; INTEGRAL WITH UNDERBAR
+    "⨜": [],
+
+    //2A1D          ; JOIN
+    "⨝": [],
+
+    //2A1E          ; LARGE LEFT TRIANGLE OPERATOR
+    "⨞": [],
+
+    //2A1F          ; Z NOTATION SCHEMA COMPOSITION
+    "⨟": [],
+
+    //2A20          ; Z NOTATION SCHEMA PIPING
+    "⨠": [],
+
+    //2A21          ; Z NOTATION SCHEMA PROJECTION
+    "⨡": [],
+
+    //2A22          ; PLUS SIGN WITH SMALL CIRCLE ABOVE
+    "⨢": [.plusSign, .ring, .above],
+
+    //2A23          ; PLUS SIGN WITH CIRCUMFLEX ACCENT ABOVE
+    "⨣": [.plusSign, .circumflex, .above],
+
+    //2A24          ; PLUS SIGN WITH TILDE ABOVE
+    "⨤": [.plusSign, .tilde, .above],
+
+    //2A25          ; PLUS SIGN WITH DOT BELOW
+    "⨥": [.plusSign, .dot, .below],
+
+    //2A26          ; PLUS SIGN WITH TILDE BELOW
+    "⨦": [.plusSign, .tilde, .below],
+
+    //2A27          ; PLUS SIGN WITH SUBSCRIPT TWO
+    "⨧": [.plusSign, .two],
+
+    //2A28          ; PLUS SIGN WITH BLACK TRIANGLE
+    "⨨": [],
+
+    //2A29          ; MINUS SIGN WITH COMMA ABOVE
+    "⨩": [.minusSign, .comma, .above],
+
+    //2A2A          ; MINUS SIGN WITH DOT BELOW
+    "⨪": [.minusSign, .dot, .below],
+
+    //2A2B          ; MINUS SIGN WITH FALLING DOTS
+    "⨫": [.minusSign, .dot, .belowRight, .dot, .aboveLeft],
+
+    //2A2C          ; MINUS SIGN WITH RISING DOTS
+    "⨬": [.minusSign, .dot, .belowLeft, .dot, .aboveRight],
+
+    //2A2D          ; PLUS SIGN IN LEFT HALF CIRCLE
+    "⨭": [.plusSign, .ring, .leftHalf],
+
+    //2A2E          ; PLUS SIGN IN RIGHT HALF CIRCLE
+    "⨮": [.plusSign, .ring, .rightHalf],
+
+    //2A2F          ; VECTOR OR CROSS PRODUCT
+    "⨯": [],
+
+    //2A30          ; MULTIPLICATION SIGN WITH DOT ABOVE
+    "⨰": [.multiplicationSign, .dot, .above],
+
+    //2A31          ; MULTIPLICATION SIGN WITH UNDERBAR
+    "⨱": [.multiplicationSign, .macron, .below],
+
+    //2A32          ; SEMIDIRECT PRODUCT WITH BOTTOM CLOSED
+    "⨲": [],
+
+    //2A33          ; SMASH PRODUCT
+    "⨳": [],
+
+    //2A34          ; MULTIPLICATION SIGN IN LEFT HALF CIRCLE
+    "⨴": [.multiplicationSign, .ring, .leftHalf],
+
+    //2A35          ; MULTIPLICATION SIGN IN RIGHT HALF CIRCLE
+    "⨵": [.multiplicationSign, .ring, .rightHalf],
+
+    //2A36          ; CIRCLED MULTIPLICATION SIGN WITH CIRCUMFLEX ACCENT
+    "⨶": [.multiplicationSign, .ring, .circumflex, .above],
+
+    //2A37          ; MULTIPLICATION SIGN IN DOUBLE CIRCLE
+    "⨷": [.multiplicationSign, .ring, .doubled],
+
+    //2A38          ; CIRCLED DIVISION SIGN
+    "⨸": [.divisionSign, .ring],
+
+    //2A39          ; PLUS SIGN IN TRIANGLE
+    "⨹": [],
+
+    //2A3A          ; MINUS SIGN IN TRIANGLE
+    "⨺": [],
+
+    //2A3B          ; MULTIPLICATION SIGN IN TRIANGLE
+    "⨻": [],
+
+    //2A3C          ; INTERIOR PRODUCT
+    "⨼": [],
+
+    //2A3D          ; RIGHTHAND INTERIOR PRODUCT
+    "⨽": [],
+
+    //2A3E          ; Z NOTATION RELATIONAL COMPOSITION
+    "⨾": [],
+
+    //2A3F          ; AMALGAMATION OR COPRODUCT
+    "⨿": [],
+
+    //2A40          ; INTERSECTION WITH DOT
+    "⩀": [],
+
+    //2A41          ; UNION WITH MINUS SIGN
+    "⩁": [],
+
+    //2A42          ; UNION WITH OVERBAR
+    "⩂": [],
+
+    //2A43          ; INTERSECTION WITH OVERBAR
+    "⩃": [],
+
+    //2A44          ; INTERSECTION WITH LOGICAL AND
+    "⩄": [],
+
+    //2A45          ; UNION WITH LOGICAL OR
+    "⩅": [],
+
+    //2A46          ; UNION ABOVE INTERSECTION
+    "⩆": [],
+
+    //2A47          ; INTERSECTION ABOVE UNION
+    "⩇": [],
+
+    //2A48          ; UNION ABOVE BAR ABOVE INTERSECTION
+    "⩈": [],
+
+    //2A49          ; INTERSECTION ABOVE BAR ABOVE UNION
+    "⩉": [],
+
+    //2A4A          ; UNION BESIDE AND JOINED WITH UNION
+    "⩊": [],
+
+    //2A4B          ; INTERSECTION BESIDE AND JOINED WITH INTERSECTION
+    "⩋": [],
+
+    //2A4C          ; CLOSED UNION WITH SERIFS
+    "⩌": [],
+
+    //2A4D          ; CLOSED INTERSECTION WITH SERIFS
+    "⩍": [],
+
+    //2A4E          ; DOUBLE SQUARE INTERSECTION
+    "⩎": [],
+
+    //2A4F          ; DOUBLE SQUARE UNION
+    "⩏": [],
+
+    //2A50          ; CLOSED UNION WITH SERIFS AND SMASH PRODUCT
+    "⩐": [],
+
+    //2A51          ; LOGICAL AND WITH DOT ABOVE
+    "⩑": [.ampersand, .extra0, .dot, .above],
+
+    //2A52          ; LOGICAL OR WITH DOT ABOVE
+    "⩒": [.verticalLine, .extra0, .dot, .above],
+
+    //2A53          ; DOUBLE LOGICAL AND
+    "⩓": [.ampersand, .extra0, .doubled],
+
+    //2A54          ; DOUBLE LOGICAL OR
+    "⩔": [.verticalLine, .extra0, .doubled],
+
+    //2A55          ; TWO INTERSECTING LOGICAL AND
+    "⩕": [],
+
+    //2A56          ; TWO INTERSECTING LOGICAL OR
+    "⩖": [],
+
+    //2A57          ; SLOPING LARGE OR
+    "⩗": [],
+
+    //2A58          ; SLOPING LARGE AND
+    "⩘": [],
+
+    //2A59          ; LOGICAL OR OVERLAPPING LOGICAL AND
+    "⩙": [.verticalLine, .extra0, .ampersand, .extra0],
+
+    //2A5A          ; LOGICAL AND WITH MIDDLE STEM
+    "⩚": [.ampersand, .extra0, .verticalLine],
+
+    //2A5B          ; LOGICAL OR WITH MIDDLE STEM
+    "⩛": [.verticalLine, .extra0, .verticalLine],
+
+    //2A5C          ; LOGICAL AND WITH HORIZONTAL DASH
+    "⩜": [.ampersand, .extra0, .stroke],
+
+    //2A5D          ; LOGICAL OR WITH HORIZONTAL DASH
+    "⩝": [.verticalLine, .extra0, .stroke],
+
+    //2A5E          ; LOGICAL AND WITH DOUBLE OVERBAR
+    "⩞": [.ampersand, .extra0, .line, .doubled, .above],
+
+    //2A5F          ; LOGICAL AND WITH UNDERBAR
+    "⩟": [.ampersand, .extra0, .line, .below],
+
+    //2A60          ; LOGICAL AND WITH DOUBLE UNDERBAR
+    "⩠": [.ampersand, .extra0, .line, .doubled, .below],
+
+    //2A61          ; SMALL VEE WITH UNDERBAR
+    "⩡": [],
+
+    //2A62          ; LOGICAL OR WITH DOUBLE OVERBAR
+    "⩢": [.verticalLine, .extra0, .line, .doubled, .above],
+
+    //2A63          ; LOGICAL OR WITH DOUBLE UNDERBAR
+    "⩣": [.verticalLine, .extra0, .line, .doubled, .below],
+
+    //2A64          ; Z NOTATION DOMAIN ANTIRESTRICTION
+    "⩤": [],
+
+    //2A65          ; Z NOTATION RANGE ANTIRESTRICTION
+    "⩥": [],
+
+    //2A66          ; EQUALS SIGN WITH DOT BELOW
+    "⩦": [.equalsSign, .dot, .below],
+
+    //2A67          ; IDENTICAL WITH DOT ABOVE
+    "⩧": [.equalsSign, .doubled, .dot, .above],
+
+    //2A68          ; TRIPLE HORIZONTAL BAR WITH DOUBLE VERTICAL STROKE
+    "⩨": [],
+
+    //2A69          ; TRIPLE HORIZONTAL BAR WITH TRIPLE VERTICAL STROKE
+    "⩩": [],
+
+    //2A6A          ; TILDE OPERATOR WITH DOT ABOVE
+    "⩪": [.tilde, .dot, .above],
+
+    //2A6B          ; TILDE OPERATOR WITH RISING DOTS
+    "⩫": [.tilde, .dot, .belowLeft, .dot, .aboveRight],
+
+    //2A6C          ; SIMILAR MINUS SIMILAR
+    "⩬": [.tilde, .minusSign, .tilde],
+
+    //2A6D          ; CONGRUENT WITH DOT ABOVE
+    "⩭": [.tilde, .equalsSign, .doubled, .dot, .above],
+
+    //2A6E          ; EQUALS WITH ASTERISK
+    "⩮": [.equalsSign, .asterisk, .above],
+
+    //2A6F          ; ALMOST EQUAL TO WITH CIRCUMFLEX ACCENT
+    "⩯": [.tilde, .doubled, .circumflex, .above],
+
+    //2A70          ; APPROXIMATELY EQUAL OR EQUAL TO
+    "⩰": [.tilde, .doubled, .equalsSign],
+
+    //2A71          ; EQUALS SIGN ABOVE PLUS SIGN
+    "⩱": [.equalsSign, .plusSign],
+
+    //2A72          ; PLUS SIGN ABOVE EQUALS SIGN
+    "⩲": [.plusSign, .equalsSign],
+
+    //2A73          ; EQUALS SIGN ABOVE TILDE OPERATOR
+    "⩳": [.equalsSign, .tilde],
+
+    //2A74          ; DOUBLE COLON EQUAL
+    "⩴": [.colon, .colon, .equalsSign],
+
+    //2A75          ; TWO CONSECUTIVE EQUALS SIGNS
+    "⩵": [.equalsSign, .joiner, .equalsSign],
+
+    //2A76          ; THREE CONSECUTIVE EQUALS SIGNS
+    "⩶": [.equalsSign, .joiner, .equalsSign, .joiner, .equalsSign],
+
+    //2A77          ; EQUALS SIGN WITH TWO DOTS ABOVE AND TWO DOTS BELOW
+    "⩷": [.equalsSign, .diaeresis, .below, .diaeresis, .above],
+
+    //2A78          ; EQUIVALENT WITH FOUR DOTS ABOVE
+    "⩸": [.equalsSign, .doubled, .diaeresis, .doubled, .above],
+
+    //2A79          ; LESS-THAN WITH CIRCLE INSIDE
+    "⩹": [.ring, .lessThanSign],
+
+    //2A7A          ; GREATER-THAN WITH CIRCLE INSIDE
+    "⩺": [.ring, .greaterThanSign],
+
+    //2A7B          ; LESS-THAN WITH QUESTION MARK ABOVE
+    "⩻": [.lessThanSign, .questionMark, .above],
+
+    //2A7C          ; GREATER-THAN WITH QUESTION MARK ABOVE
+    "⩼": [.greaterThanSign, .questionMark, .above],
+
+    //2A7D          ; LESS-THAN OR SLANTED EQUAL TO
+    "⩽": [.lessThanSign, .equalsSign, .extra1],
+
+    //2A7E          ; GREATER-THAN OR SLANTED EQUAL TO
+    "⩾": [.greaterThanSign, .equalsSign, .extra1],
+
+    //2A7F          ; LESS-THAN OR SLANTED EQUAL TO WITH DOT INSIDE
+    "⩿": [.lessThanSign, .equalsSign, .dot],
+
+    //2A80          ; GREATER-THAN OR SLANTED EQUAL TO WITH DOT INSIDE
+    "⪀": [.greaterThanSign, .equalsSign, .dot],
+
+    //2A81          ; LESS-THAN OR SLANTED EQUAL TO WITH DOT ABOVE
+    "⪁": [.lessThanSign, .equalsSign, .dot, .above],
+
+    //2A82          ; GREATER-THAN OR SLANTED EQUAL TO WITH DOT ABOVE
+    "⪂": [.greaterThanSign, .equalsSign, .dot, .above],
+
+    //2A83          ; LESS-THAN OR SLANTED EQUAL TO WITH DOT ABOVE RIGHT
+    "⪃": [.lessThanSign, .equalsSign, .dot, .aboveRight],
+
+    //2A84          ; GREATER-THAN OR SLANTED EQUAL TO WITH DOT ABOVE LEFT
+    "⪄": [.greaterThanSign, .equalsSign, .dot, .aboveLeft],
+
+    //2A85          ; LESS-THAN OR APPROXIMATE
+    "⪅": [.lessThanSign, .tilde, .doubled],
+
+    //2A86          ; GREATER-THAN OR APPROXIMATE
+    "⪆": [.greaterThanSign, .tilde, .doubled],
+
+    //2A87          ; LESS-THAN AND SINGLE-LINE NOT EQUAL TO
+    "⪇": [.lessThanSign, .equalsSign, .not],
+
+    //2A88          ; GREATER-THAN AND SINGLE-LINE NOT EQUAL TO
+    "⪈": [.greaterThanSign, .equalsSign, .not],
+
+    //2A89          ; LESS-THAN AND NOT APPROXIMATE
+    "⪉": [.lessThanSign, .tilde, .doubled, .not],
+
+    //2A8A          ; GREATER-THAN AND NOT APPROXIMATE
+    "⪊": [.greaterThanSign, .tilde, .doubled, .not],
+
+    //2A8B          ; LESS-THAN ABOVE DOUBLE-LINE EQUAL ABOVE GREATER-THAN
+    "⪋": [.lessThanSign, .equalsSign, .doubled, .greaterThanSign],
+
+    //2A8C          ; GREATER-THAN ABOVE DOUBLE-LINE EQUAL ABOVE LESS-THAN
+    "⪌": [.greaterThanSign, .equalsSign, .doubled, .lessThanSign],
+
+    //2A8D          ; LESS-THAN ABOVE SIMILAR OR EQUAL
+    "⪍": [.lessThanSign, .tilde, .equalsSign],
+
+    //2A8E          ; GREATER-THAN ABOVE SIMILAR OR EQUAL
+    "⪎": [.greaterThanSign, .tilde, .equalsSign],
+
+    //2A8F          ; LESS-THAN ABOVE SIMILAR ABOVE GREATER-THAN
+    "⪏": [.lessThanSign, .tilde, .greaterThanSign],
+
+    //2A90          ; GREATER-THAN ABOVE SIMILAR ABOVE LESS-THAN
+    "⪐": [.greaterThanSign, .tilde, .lessThanSign],
+
+    //2A91          ; LESS-THAN ABOVE GREATER-THAN ABOVE DOUBLE-LINE EQUAL
+    "⪑": [.lessThanSign, .greaterThanSign, .equalsSign, .doubled],
+
+    //2A92          ; GREATER-THAN ABOVE LESS-THAN ABOVE DOUBLE-LINE EQUAL
+    "⪒": [.greaterThanSign, .lessThanSign, .equalsSign, .doubled],
+
+    //2A93          ; LESS-THAN ABOVE SLANTED EQUAL ABOVE GREATER-THAN ABOVE SLANTED EQUAL
+    "⪓": [.lessThanSign, .equalsSign, .extra1, .greaterThanSign, .equalsSign, .extra1],
+
+    //2A94          ; GREATER-THAN ABOVE SLANTED EQUAL ABOVE LESS-THAN ABOVE SLANTED EQUAL
+    "⪔": [.greaterThanSign, .equalsSign, .extra1, .lessThanSign, .equalsSign, .extra1],
+
+    //2A95          ; SLANTED EQUAL TO OR LESS-THAN
+    "⪕": [.equalsSign, .lessThanSign, .extra1],
+
+    //2A96          ; SLANTED EQUAL TO OR GREATER-THAN
+    "⪖": [.equalsSign, .greaterThanSign, .extra1],
+
+    //2A97          ; SLANTED EQUAL TO OR LESS-THAN WITH DOT INSIDE
+    "⪗": [.equalsSign, .lessThanSign, .extra1, .dot],
+
+    //2A98          ; SLANTED EQUAL TO OR GREATER-THAN WITH DOT INSIDE
+    "⪘": [.equalsSign, .greaterThanSign, .extra1, .dot],
+
+    //2A99          ; DOUBLE-LINE EQUAL TO OR LESS-THAN
+    "⪙": [.equalsSign, .doubled, .lessThanSign],
+
+    //2A9A          ; DOUBLE-LINE EQUAL TO OR GREATER-THAN
+    "⪚": [.equalsSign, .doubled, .greaterThanSign],
+
+    //2A9B          ; DOUBLE-LINE SLANTED EQUAL TO OR LESS-THAN
+    "⪛": [.equalsSign, .doubled, .lessThanSign, .extra1],
+
+    //2A9C          ; DOUBLE-LINE SLANTED EQUAL TO OR GREATER-THAN
+    "⪜": [.equalsSign, .doubled, .greaterThanSign, .extra1],
+
+    //2A9D          ; SIMILAR OR LESS-THAN
+    "⪝": [.tilde, .lessThanSign],
+
+    //2A9E          ; SIMILAR OR GREATER-THAN
+    "⪞": [.tilde, .greaterThanSign],
+
+    //2A9F          ; SIMILAR ABOVE LESS-THAN ABOVE EQUALS SIGN
+    "⪟": [.tilde, .lessThanSign, .equalsSign, .doubled],
+
+    //2AA0          ; SIMILAR ABOVE GREATER-THAN ABOVE EQUALS SIGN
+    "⪠": [.tilde, .greaterThanSign, .equalsSign, .doubled],
+
+    //2AA1          ; DOUBLE NESTED LESS-THAN
+    "⪡": [.lessThanSign, .doubled],
+
+    //2AA2          ; DOUBLE NESTED GREATER-THAN
+    "⪢": [.greaterThanSign, .doubled],
+
+    //2AA3          ; DOUBLE NESTED LESS-THAN WITH UNDERBAR
+    "⪣": [.lessThanSign, .lessThanSign, .line, .below],
+
+    //2AA4          ; GREATER-THAN OVERLAPPING LESS-THAN
+    "⪤": [.greaterThanSign, .lessThanSign],
+
+    //2AA5          ; GREATER-THAN BESIDE LESS-THAN
+    "⪥": [.greaterThanSign, .joiner, .lessThanSign],
+
+    //2AA6          ; LESS-THAN CLOSED BY CURVE
+    "⪦": [.lessThanSign, .closed],
+
+    //2AA7          ; GREATER-THAN CLOSED BY CURVE
+    "⪧": [.greaterThanSign, .closed],
+
+    //2AA8          ; LESS-THAN CLOSED BY CURVE ABOVE SLANTED EQUAL
+    "⪨": [.lessThanSign, .closed, .equalsSign, .extra1],
+
+    //2AA9          ; GREATER-THAN CLOSED BY CURVE ABOVE SLANTED EQUAL
+    "⪩": [.greaterThanSign, .closed, .equalsSign, .extra1],
+
+    //2AAA          ; SMALLER THAN
+    "⪪": [.lessThanSign, .stroke],
+
+    //2AAB          ; LARGER THAN
+    "⪫": [.greaterThanSign, .stroke],
+
+    //2AAC          ; SMALLER THAN OR EQUAL TO
+    "⪬": [.lessThanSign, .stroke, .equalsSign],
+
+    //2AAD          ; LARGER THAN OR EQUAL TO
+    "⪭": [.greaterThanSign, .stroke, .equalsSign],
+
+    //2AAE          ; EQUALS SIGN WITH BUMPY ABOVE
+    "⪮": [],
+
+    //2AAF          ; PRECEDES ABOVE SINGLE-LINE EQUALS SIGN
+    "⪯": [],
+
+    //2AB0          ; SUCCEEDS ABOVE SINGLE-LINE EQUALS SIGN
+    "⪰": [],
+
+    //2AB1          ; PRECEDES ABOVE SINGLE-LINE NOT EQUAL TO
+    "⪱": [],
+
+    //2AB2          ; SUCCEEDS ABOVE SINGLE-LINE NOT EQUAL TO
+    "⪲": [],
+
+    //2AB3          ; PRECEDES ABOVE EQUALS SIGN
+    "⪳": [],
+
+    //2AB4          ; SUCCEEDS ABOVE EQUALS SIGN
+    "⪴": [],
+
+    //2AB5          ; PRECEDES ABOVE NOT EQUAL TO
+    "⪵": [],
+
+    //2AB6          ; SUCCEEDS ABOVE NOT EQUAL TO
+    "⪶": [],
+
+    //2AB7          ; PRECEDES ABOVE ALMOST EQUAL TO
+    "⪷": [],
+
+    //2AB8          ; SUCCEEDS ABOVE ALMOST EQUAL TO
+    "⪸": [],
+
+    //2AB9          ; PRECEDES ABOVE NOT ALMOST EQUAL TO
+    "⪹": [],
+
+    //2ABA          ; SUCCEEDS ABOVE NOT ALMOST EQUAL TO
+    "⪺": [],
+
+    //2ABB          ; DOUBLE PRECEDES
+    "⪻": [],
+
+    //2ABC          ; DOUBLE SUCCEEDS
+    "⪼": [],
+
+    //2ABD          ; SUBSET WITH DOT
+    "⪽": [],
+
+    //2ABE          ; SUPERSET WITH DOT
+    "⪾": [],
+
+    //2ABF          ; SUBSET WITH PLUS SIGN BELOW
+    "⪿": [],
+
+    //2AC0          ; SUPERSET WITH PLUS SIGN BELOW
+    "⫀": [],
+
+    //2AC1          ; SUBSET WITH MULTIPLICATION SIGN BELOW
+    "⫁": [],
+
+    //2AC2          ; SUPERSET WITH MULTIPLICATION SIGN BELOW
+    "⫂": [],
+
+    //2AC3          ; SUBSET OF OR EQUAL TO WITH DOT ABOVE
+    "⫃": [],
+
+    //2AC4          ; SUPERSET OF OR EQUAL TO WITH DOT ABOVE
+    "⫄": [],
+
+    //2AC5          ; SUBSET OF ABOVE EQUALS SIGN
+    "⫅": [],
+
+    //2AC6          ; SUPERSET OF ABOVE EQUALS SIGN
+    "⫆": [],
+
+    //2AC7          ; SUBSET OF ABOVE TILDE OPERATOR
+    "⫇": [],
+
+    //2AC8          ; SUPERSET OF ABOVE TILDE OPERATOR
+    "⫈": [],
+
+    //2AC9          ; SUBSET OF ABOVE ALMOST EQUAL TO
+    "⫉": [],
+
+    //2ACA          ; SUPERSET OF ABOVE ALMOST EQUAL TO
+    "⫊": [],
+
+    //2ACB          ; SUBSET OF ABOVE NOT EQUAL TO
+    "⫋": [],
+
+    //2ACC          ; SUPERSET OF ABOVE NOT EQUAL TO
+    "⫌": [],
+
+    //2ACD          ; SQUARE LEFT OPEN BOX OPERATOR
+    "⫍": [],
+
+    //2ACE          ; SQUARE RIGHT OPEN BOX OPERATOR
+    "⫎": [],
+
+    //2ACF          ; CLOSED SUBSET
+    "⫏": [],
+
+    //2AD0          ; CLOSED SUPERSET
+    "⫐": [],
+
+    //2AD1          ; CLOSED SUBSET OR EQUAL TO
+    "⫑": [],
+
+    //2AD2          ; CLOSED SUPERSET OR EQUAL TO
+    "⫒": [],
+
+    //2AD3          ; SUBSET ABOVE SUPERSET
+    "⫓": [],
+
+    //2AD4          ; SUPERSET ABOVE SUBSET
+    "⫔": [],
+
+    //2AD5          ; SUBSET ABOVE SUBSET
+    "⫕": [],
+
+    //2AD6          ; SUPERSET ABOVE SUPERSET
+    "⫖": [],
+
+    //2AD7          ; SUPERSET BESIDE SUBSET
+    "⫗": [],
+
+    //2AD8          ; SUPERSET BESIDE AND JOINED BY DASH WITH SUBSET
+    "⫘": [],
+
+    //2AD9          ; ELEMENT OF OPENING DOWNWARDS
+    "⫙": [],
+
+    //2ADA          ; PITCHFORK WITH TEE TOP
+    "⫚": [],
+
+    //2ADB          ; TRANSVERSAL INTERSECTION
+    "⫛": [],
+
+    //2ADC          ; FORKING
+    "⫝̸": [],
+
+    //2ADD          ; NONFORKING
+    "⫝": [],
+
+    //2ADE          ; SHORT LEFT TACK
+    "⫞": [],
+
+    //2ADF          ; SHORT DOWN TACK
+    "⫟": [],
+
+    //2AE0          ; SHORT UP TACK
+    "⫠": [],
+
+    //2AE1          ; PERPENDICULAR WITH S
+    "⫡": [],
+
+    //2AE2          ; VERTICAL BAR TRIPLE RIGHT TURNSTILE
+    "⫢": [],
+
+    //2AE3          ; DOUBLE VERTICAL BAR LEFT TURNSTILE
+    "⫣": [],
+
+    //2AE4          ; VERTICAL BAR DOUBLE LEFT TURNSTILE
+    "⫤": [],
+
+    //2AE5          ; DOUBLE VERTICAL BAR DOUBLE LEFT TURNSTILE
+    "⫥": [],
+
+    //2AE6          ; LONG DASH FROM LEFT MEMBER OF DOUBLE VERTICAL
+    "⫦": [],
+
+    //2AE7          ; SHORT DOWN TACK WITH OVERBAR
+    "⫧": [],
+
+    //2AE8          ; SHORT UP TACK WITH UNDERBAR
+    "⫨": [],
+
+    //2AE9          ; SHORT UP TACK ABOVE SHORT DOWN TACK
+    "⫩": [],
+
+    //2AEA          ; DOUBLE DOWN TACK
+    "⫪": [],
+
+    //2AEB          ; DOUBLE UP TACK
+    "⫫": [],
+
+    //2AEC          ; DOUBLE STROKE NOT SIGN
+    "⫬": [.notSign, .doubled],
+
+    //2AED          ; REVERSED DOUBLE STROKE NOT SIGN
+    "⫭": [.notSign, .doubled, .reversed],
+
+    //2AEE          ; DOES NOT DIVIDE WITH REVERSED NEGATION SLASH
+    "⫮": [],
+
+    //2AEF          ; VERTICAL LINE WITH CIRCLE ABOVE
+    "⫯": [.verticalLine, .ring, .above],
+
+    //2AF0          ; VERTICAL LINE WITH CIRCLE BELOW
+    "⫰": [.verticalLine, .ring, .above],
+
+    //2AF1          ; DOWN TACK WITH CIRCLE BELOW
+    "⫱": [.tack, .down, .ring, .below],
+
+    //2AF2          ; PARALLEL WITH HORIZONTAL STROKE
+    "⫲": [],
+
+    //2AF3          ; PARALLEL WITH TILDE OPERATOR
+    "⫳": [],
+
+    //2AF4          ; TRIPLE VERTICAL BAR BINARY RELATION
+    "⫴": [],
+
+    //2AF5          ; TRIPLE VERTICAL BAR WITH HORIZONTAL STROKE
+    "⫵": [],
+
+    //2AF6          ; TRIPLE COLON OPERATOR
+    "⫶": [],
+
+    //2AF7          ; TRIPLE NESTED LESS-THAN
+    "⫷": [.lessThanSign, .doubled, .lessThanSign],
+
+    //2AF8          ; TRIPLE NESTED GREATER-THAN
+    "⫸": [.greaterThanSign, .doubled, .greaterThanSign],
+
+    //2AF9          ; DOUBLE-LINE SLANTED LESS-THAN OR EQUAL TO
+    "⫹": [.lessThanSign, .equalsSign, .doubled, .extra1],
+
+    //2AFA          ; DOUBLE-LINE SLANTED GREATER-THAN OR EQUAL TO
+    "⫺": [.greaterThanSign, .equalsSign, .doubled, .extra1],
+
+    //2AFB          ; TRIPLE SOLIDUS BINARY RELATION
+    "⫻": [],
+
+    //2AFC          ; LARGE TRIPLE VERTICAL BAR OPERATOR
+    "⫼": [],
+
+    //2AFD          ; DOUBLE SOLIDUS OPERATOR
+    "⫽": [],
+
+    //2AFE          ; WHITE VERTICAL BAR
+    "⫾": [],
+
+    //2AFF          ; N-ARY WHITE VERTICAL BAR
+    "⫿": [],
 
 ]

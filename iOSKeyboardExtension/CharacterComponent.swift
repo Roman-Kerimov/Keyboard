@@ -29,6 +29,8 @@ enum CharacterComponent {
     case multiplicationSign
     case divisionSign
     
+    case notSign
+    
     case capital, smallCapital
     case extra0, turned, reversed, inverted, ramsHorn, sideways, extra1, extra2
     case extraLeft
@@ -90,7 +92,7 @@ enum CharacterComponent {
     
     case above, aboveLeft, aboveRight
     case combining
-    case below
+    case below, belowLeft, belowRight
     
     case click
     case long, halfLong

@@ -4976,7 +4976,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "℥": [],
 
     //2126          ; OHM SIGN
-    "Ω": [],
+    //"Ω": [],
 
     //2127          ; INVERTED OHM SIGN
     "℧": [],

@@ -1657,7 +1657,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ɠ": [.g, .hook],
 
     //0261          ; LATIN SMALL LETTER SCRIPT G
-    "ɡ": [.g, .script],
+    "ɡ": [.g, .letterScript],
 
     //0262          ; LATIN LETTER SMALL CAPITAL G
     "ɢ": [.g, .smallCapital],
@@ -3190,7 +3190,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ᶡ": [.j, .stroke, .dot, .superscript],
 
     //1DA2          ; MODIFIER LETTER SMALL SCRIPT G
-    "ᶢ": [.g, .script, .superscript],
+    "ᶢ": [.g, .letterScript, .superscript],
 
     //1DA3          ; MODIFIER LETTER SMALL TURNED H
     "ᶣ": [.h, .turned, .superscript],
@@ -4766,5 +4766,248 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
 
     //20F0          ; COMBINING ASTERISK ABOVE
     "⃰": [.asterisk, .above],
+
+    
+    // MARK: - 2100..214F; Letterlike Symbols
+    
+    //2100          ; ACCOUNT OF
+    "℀": [],
+
+    //2101          ; ADDRESSED TO THE SUBJECT
+    "℁": [],
+
+    //2102          ; DOUBLE-STRUCK CAPITAL C
+    "ℂ": [.c, .capital, .doubleStruck],
+
+    //2103          ; DEGREE CELSIUS
+    "℃": [],
+
+    //2104          ; CENTRE LINE SYMBOL
+    "℄": [],
+
+    //2105          ; CARE OF
+    "℅": [],
+
+    //2106          ; CADA UNA
+    "℆": [],
+
+    //2107          ; EULER CONSTANT
+    "ℇ": [],
+
+    //2108          ; SCRUPLE
+    "℈": [],
+
+    //2109          ; DEGREE FAHRENHEIT
+    "℉": [],
+
+    //210A          ; SCRIPT SMALL G
+    "ℊ": [.g, .script],
+
+    //210B          ; SCRIPT CAPITAL H
+    "ℋ": [.h, .capital, .script],
+
+    //210C          ; BLACK-LETTER CAPITAL H
+    "ℌ": [.h, .capital, .fraktur],
+
+    //210D          ; DOUBLE-STRUCK CAPITAL H
+    "ℍ": [.h, .capital, .doubleStruck],
+
+    //210E          ; PLANCK CONSTANT
+    "ℎ": [],
+
+    //210F          ; PLANCK CONSTANT OVER TWO PI
+    "ℏ": [],
+
+    //2110          ; SCRIPT CAPITAL I
+    "ℐ": [.i, .capital, .script],
+
+    //2111          ; BLACK-LETTER CAPITAL I
+    "ℑ": [.i, .capital, .fraktur],
+
+    //2112          ; SCRIPT CAPITAL L
+    "ℒ": [.l, .capital, .script],
+
+    //2113          ; SCRIPT SMALL L
+    "ℓ": [.l, .script],
+
+    //2114          ; L B BAR SYMBOL
+    "℔": [.l, .b],
+
+    //2115          ; DOUBLE-STRUCK CAPITAL N
+    "ℕ": [.n, .capital, .doubleStruck],
+
+    //2116          ; NUMERO SIGN
+    "№": [.n, .capital, .numberSign],
+
+    //2117          ; SOUND RECORDING COPYRIGHT
+    "℗": [],
+
+    //2118          ; SCRIPT CAPITAL P
+    "℘": [.p, .capital, .script],
+
+    //2119          ; DOUBLE-STRUCK CAPITAL P
+    "ℙ": [.p, .capital, .doubleStruck],
+
+    //211A          ; DOUBLE-STRUCK CAPITAL Q
+    "ℚ": [.q, .capital, .doubleStruck],
+
+    //211B          ; SCRIPT CAPITAL R
+    "ℛ": [.r, .capital, .script],
+
+    //211C          ; BLACK-LETTER CAPITAL R
+    "ℜ": [.r, .capital, .fraktur],
+
+    //211D          ; DOUBLE-STRUCK CAPITAL R
+    "ℝ": [.r, .capital, .doubleStruck],
+
+    //211E          ; PRESCRIPTION TAKE
+    "℞": [],
+
+    //211F          ; RESPONSE
+    "℟": [],
+
+    //2120          ; SERVICE MARK
+    "℠": [],
+
+    //2121          ; TELEPHONE SIGN
+    "℡": [],
+
+    //2122          ; TRADE MARK SIGN
+    "™": [],
+
+    //2123          ; VERSICLE
+    "℣": [],
+
+    //2124          ; DOUBLE-STRUCK CAPITAL Z
+    "ℤ": [.z, .capital, .doubleStruck],
+
+    //2125          ; OUNCE SIGN
+    "℥": [],
+
+    //2126          ; OHM SIGN
+    "Ω": [],
+
+    //2127          ; INVERTED OHM SIGN
+    "℧": [],
+
+    //2128          ; BLACK-LETTER CAPITAL Z
+    "ℨ": [.z, .capital, .fraktur],
+
+    //2129          ; TURNED GREEK SMALL LETTER IOTA
+    "℩": [.i, .greek, .turned],
+
+    //212A          ; KELVIN SIGN
+    //"K": [],
+
+    //212B          ; ANGSTROM SIGN
+    //"Å": [],
+
+    //212C          ; SCRIPT CAPITAL B
+    "ℬ": [.b, .capital, .script],
+
+    //212D          ; BLACK-LETTER CAPITAL C
+    "ℭ": [.c, .capital, .fraktur],
+
+    //212E          ; ESTIMATED SYMBOL
+    "℮": [],
+
+    //212F          ; SCRIPT SMALL E
+    "ℯ": [.e, .script],
+
+    //2130          ; SCRIPT CAPITAL E
+    "ℰ": [.e, .capital, .script],
+
+    //2131          ; SCRIPT CAPITAL F
+    "ℱ": [.f, .capital, .script],
+
+    //2132          ; TURNED CAPITAL F
+    "Ⅎ": [.f, .capital, .turned],
+
+    //2133          ; SCRIPT CAPITAL M
+    "ℳ": [.m, .capital, .script],
+
+    //2134          ; SCRIPT SMALL O
+    "ℴ": [.o, .script],
+
+    //2135          ; ALEF SYMBOL
+    "ℵ": [],
+
+    //2136          ; BET SYMBOL
+    "ℶ": [],
+
+    //2137          ; GIMEL SYMBOL
+    "ℷ": [],
+
+    //2138          ; DALET SYMBOL
+    "ℸ": [],
+
+    //2139          ; INFORMATION SOURCE
+    "ℹ": [],
+
+    //213A          ; ROTATED CAPITAL Q
+    "℺": [.q, .capital, .sideways],
+
+    //213B          ; FACSIMILE SIGN
+    "℻": [],
+
+    //213C          ; DOUBLE-STRUCK SMALL PI
+    "ℼ": [.p, .greek, .doubleStruck],
+
+    //213D          ; DOUBLE-STRUCK SMALL GAMMA
+    "ℽ": [.g, .greek, .doubleStruck],
+
+    //213E          ; DOUBLE-STRUCK CAPITAL GAMMA
+    "ℾ": [.g, .capital, .greek, .doubleStruck],
+
+    //213F          ; DOUBLE-STRUCK CAPITAL PI
+    "ℿ": [.p, .capital, .greek, .doubleStruck],
+
+    //2140          ; DOUBLE-STRUCK N-ARY SUMMATION
+    "⅀": [.s, .capital, .greek, .doubleStruck],
+
+    //2141          ; TURNED SANS-SERIF CAPITAL G
+    "⅁": [.g, .capital, .sansSerif, .turned],
+
+    //2142          ; TURNED SANS-SERIF CAPITAL L
+    "⅂": [.l, .capital, .sansSerif, .turned],
+
+    //2143          ; REVERSED SANS-SERIF CAPITAL L
+    "⅃": [.l, .capital, .sansSerif, .reversed],
+
+    //2144          ; TURNED SANS-SERIF CAPITAL Y
+    "⅄": [.y, .capital, .sansSerif, .turned],
+
+    //2145          ; DOUBLE-STRUCK ITALIC CAPITAL D
+    "ⅅ": [.d, .capital, .doubleStruck, .italic],
+
+    //2146          ; DOUBLE-STRUCK ITALIC SMALL D
+    "ⅆ": [.d, .doubleStruck, .italic],
+
+    //2147          ; DOUBLE-STRUCK ITALIC SMALL E
+    "ⅇ": [.e, .doubleStruck, .italic],
+
+    //2148          ; DOUBLE-STRUCK ITALIC SMALL I
+    "ⅈ": [.i, .doubleStruck, .italic],
+
+    //2149          ; DOUBLE-STRUCK ITALIC SMALL J
+    "ⅉ": [.j, .doubleStruck, .italic],
+
+    //214A          ; PROPERTY LINE
+    "⅊": [],
+
+    //214B          ; TURNED AMPERSAND
+    "⅋": [.ampersand, .turned],
+
+    //214C          ; PER SIGN
+    "⅌": [],
+
+    //214D          ; AKTIESELSKAB
+    "⅍": [],
+
+    //214E          ; TURNED SMALL F
+    "ⅎ": [.f, .smallCapital, .turned],
+
+    //214F          ; SYMBOL FOR SAMARITAN SOURCE
+    "⅏": [],
 
 ]

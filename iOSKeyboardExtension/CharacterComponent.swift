@@ -50,9 +50,18 @@ enum CharacterComponent {
     case uTop
     case wTop
     
-    case script
+    case letterScript
     case insular
     case middleWelsh
+    
+    case greek
+    
+    case doubleStruck
+    case script
+    case fraktur
+    case sansSerif
+    
+    case italic
     
     case cedilla
     case ogonek

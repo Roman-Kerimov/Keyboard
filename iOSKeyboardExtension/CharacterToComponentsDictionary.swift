@@ -5101,4 +5101,124 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     //214F          ; SYMBOL FOR SAMARITAN SOURCE
     "⅏": [],
 
+    
+    // MARK: - 2150..218F; Number Forms
+    
+    //2150          ; VULGAR FRACTION ONE SEVENTH
+    "⅐": [.one, .divisionSlash, .seven],
+
+    //2151          ; VULGAR FRACTION ONE NINTH
+    "⅑": [.one, .divisionSlash, .nine],
+
+    //2152          ; VULGAR FRACTION ONE TENTH
+    "⅒": [.one, .divisionSlash, .one, .zero],
+
+    //2153          ; VULGAR FRACTION ONE THIRD
+    "⅓": [.one, .divisionSlash, .three],
+
+    //2154          ; VULGAR FRACTION TWO THIRDS
+    "⅔": [.two, .divisionSlash, .three],
+
+    //2155          ; VULGAR FRACTION ONE FIFTH
+    "⅕": [.one, .divisionSlash, .five],
+
+    //2156          ; VULGAR FRACTION TWO FIFTHS
+    "⅖": [.two, .divisionSlash, .five],
+
+    //2157          ; VULGAR FRACTION THREE FIFTHS
+    "⅗": [.three, .divisionSlash, .five],
+
+    //2158          ; VULGAR FRACTION FOUR FIFTHS
+    "⅘": [.four, .divisionSlash, .five],
+
+    //2159          ; VULGAR FRACTION ONE SIXTH
+    "⅙": [.one, .divisionSlash, .six],
+
+    //215A          ; VULGAR FRACTION FIVE SIXTHS
+    "⅚": [.five, .divisionSlash, .six],
+
+    //215B          ; VULGAR FRACTION ONE EIGHTH
+    "⅛": [.one, .divisionSlash, .eight],
+
+    //215C          ; VULGAR FRACTION THREE EIGHTHS
+    "⅜": [.three, .divisionSlash, .eight],
+
+    //215D          ; VULGAR FRACTION FIVE EIGHTHS
+    "⅝": [.five, .divisionSlash, .eight],
+
+    //215E          ; VULGAR FRACTION SEVEN EIGHTHS
+    "⅞": [.seven, .divisionSlash, .eight],
+
+    //215F          ; FRACTION NUMERATOR ONE
+    "⅟": [.one, .divisionSlash],
+
+    //2160          ; ROMAN NUMERAL ONE
+    //2161          ; ROMAN NUMERAL TWO
+    //2162          ; ROMAN NUMERAL THREE
+    //2163          ; ROMAN NUMERAL FOUR
+    //2164          ; ROMAN NUMERAL FIVE
+    //2165          ; ROMAN NUMERAL SIX
+    //2166          ; ROMAN NUMERAL SEVEN
+    //2167          ; ROMAN NUMERAL EIGHT
+    //2168          ; ROMAN NUMERAL NINE
+    //2169          ; ROMAN NUMERAL TEN
+    //216A          ; ROMAN NUMERAL ELEVEN
+    //216B          ; ROMAN NUMERAL TWELVE
+    //216C          ; ROMAN NUMERAL FIFTY
+    //216D          ; ROMAN NUMERAL ONE HUNDRED
+    //216E          ; ROMAN NUMERAL FIVE HUNDRED
+    //216F          ; ROMAN NUMERAL ONE THOUSAND
+    //2170          ; SMALL ROMAN NUMERAL ONE
+    //2171          ; SMALL ROMAN NUMERAL TWO
+    //2172          ; SMALL ROMAN NUMERAL THREE
+    //2173          ; SMALL ROMAN NUMERAL FOUR
+    //2174          ; SMALL ROMAN NUMERAL FIVE
+    //2175          ; SMALL ROMAN NUMERAL SIX
+    //2176          ; SMALL ROMAN NUMERAL SEVEN
+    //2177          ; SMALL ROMAN NUMERAL EIGHT
+    //2178          ; SMALL ROMAN NUMERAL NINE
+    //2179          ; SMALL ROMAN NUMERAL TEN
+    //217A          ; SMALL ROMAN NUMERAL ELEVEN
+    //217B          ; SMALL ROMAN NUMERAL TWELVE
+    //217C          ; SMALL ROMAN NUMERAL FIFTY
+    //217D          ; SMALL ROMAN NUMERAL ONE HUNDRED
+    //217E          ; SMALL ROMAN NUMERAL FIVE HUNDRED
+    //217F          ; SMALL ROMAN NUMERAL ONE THOUSAND
+    
+    //2180          ; ROMAN NUMERAL ONE THOUSAND C D
+    "ↀ": [],
+
+    //2181          ; ROMAN NUMERAL FIVE THOUSAND
+    "ↁ": [],
+
+    //2182          ; ROMAN NUMERAL TEN THOUSAND
+    "ↂ": [],
+
+    //2183          ; ROMAN NUMERAL REVERSED ONE HUNDRED
+    "Ↄ": [.c, .capital, .reversed],
+
+    //2184          ; LATIN SMALL LETTER REVERSED C
+    "ↄ": [.c, .reversed],
+
+    //2185          ; ROMAN NUMERAL SIX LATE FORM
+    "ↅ": [],
+
+    //2186          ; ROMAN NUMERAL FIFTY EARLY FORM
+    "ↆ": [],
+
+    //2187          ; ROMAN NUMERAL FIFTY THOUSAND
+    "ↇ": [],
+
+    //2188          ; ROMAN NUMERAL ONE HUNDRED THOUSAND
+    "ↈ": [],
+
+    //2189          ; VULGAR FRACTION ZERO THIRDS
+    "↉": [.zero, .divisionSlash, .three],
+
+    //218A          ; TURNED DIGIT TWO
+    "↊": [.two, .turned],
+
+    //218B          ; TURNED DIGIT THREE
+    "↋": [.three, .turned],
+
 ]

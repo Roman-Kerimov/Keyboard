@@ -5221,4 +5221,37 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     //218B          ; TURNED DIGIT THREE
     "↋": [.three, .turned],
 
+    
+    // MARK: - 2190..21FF; Arrows
+    
+    //2190          ; LEFTWARDS ARROW
+    "←": [.hyphen, .lessThanSign],
+
+    //2191          ; UPWARDS ARROW
+    "↑": [.verticalLine, .greaterThanSign],
+
+    //2192          ; RIGHTWARDS ARROW
+    "→": [.hyphen, .greaterThanSign],
+
+    //2193          ; DOWNWARDS ARROW
+    "↓": [.verticalLine, .lessThanSign],
+
+    //2194          ; LEFT RIGHT ARROW
+    "↔︎": [.hyphen, .lessThanSign, .greaterThanSign],
+
+    //2195          ; UP DOWN ARROW
+    "↕︎": [.verticalLine, .lessThanSign, .greaterThanSign],
+
+    //2196          ; NORTH WEST ARROW
+    "↖︎": [.solidus, .reversed, .lessThanSign],
+
+    //2197          ; NORTH EAST ARROW
+    "↗︎": [.solidus, .greaterThanSign],
+
+    //2198          ; SOUTH EAST ARROW
+    "↘︎": [.solidus, .reversed, .greaterThanSign],
+
+    //2199          ; SOUTH WEST ARROW
+    "↙︎": [.solidus, .lessThanSign],
+
 ]

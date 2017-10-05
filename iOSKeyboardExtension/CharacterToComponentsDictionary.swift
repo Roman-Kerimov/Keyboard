@@ -384,13 +384,13 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "»": [],
 
     //00BC          ; VULGAR FRACTION ONE QUARTER
-    "¼": [.one, .divisionSlash, .four],
+    "¼": [.one, .fractionSlash, .four],
 
     //00BD          ; VULGAR FRACTION ONE HALF
-    "½": [.one, .divisionSlash, .two],
+    "½": [.one, .fractionSlash, .two],
 
     //00BE          ; VULGAR FRACTION THREE QUARTERS
-    "¾": [.three, .divisionSlash, .four],
+    "¾": [.three, .fractionSlash, .four],
 
     //00BF          ; INVERTED QUESTION MARK
     "¿": [.questionMark, .turned],
@@ -4519,7 +4519,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "⁃": [],
 
     //2044          ; FRACTION SLASH
-    "⁄": [.divisionSlash],
+    "⁄": [.fractionSlash],
 
     //2045          ; LEFT SQUARE BRACKET WITH QUILL
     "⁅": [.squareBracket, .stroke],
@@ -5105,52 +5105,52 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     // MARK: - 2150..218F; Number Forms
     
     //2150          ; VULGAR FRACTION ONE SEVENTH
-    "⅐": [.one, .divisionSlash, .seven],
+    "⅐": [.one, .fractionSlash, .seven],
 
     //2151          ; VULGAR FRACTION ONE NINTH
-    "⅑": [.one, .divisionSlash, .nine],
+    "⅑": [.one, .fractionSlash, .nine],
 
     //2152          ; VULGAR FRACTION ONE TENTH
-    "⅒": [.one, .divisionSlash, .one, .zero],
+    "⅒": [.one, .fractionSlash, .one, .zero],
 
     //2153          ; VULGAR FRACTION ONE THIRD
-    "⅓": [.one, .divisionSlash, .three],
+    "⅓": [.one, .fractionSlash, .three],
 
     //2154          ; VULGAR FRACTION TWO THIRDS
-    "⅔": [.two, .divisionSlash, .three],
+    "⅔": [.two, .fractionSlash, .three],
 
     //2155          ; VULGAR FRACTION ONE FIFTH
-    "⅕": [.one, .divisionSlash, .five],
+    "⅕": [.one, .fractionSlash, .five],
 
     //2156          ; VULGAR FRACTION TWO FIFTHS
-    "⅖": [.two, .divisionSlash, .five],
+    "⅖": [.two, .fractionSlash, .five],
 
     //2157          ; VULGAR FRACTION THREE FIFTHS
-    "⅗": [.three, .divisionSlash, .five],
+    "⅗": [.three, .fractionSlash, .five],
 
     //2158          ; VULGAR FRACTION FOUR FIFTHS
-    "⅘": [.four, .divisionSlash, .five],
+    "⅘": [.four, .fractionSlash, .five],
 
     //2159          ; VULGAR FRACTION ONE SIXTH
-    "⅙": [.one, .divisionSlash, .six],
+    "⅙": [.one, .fractionSlash, .six],
 
     //215A          ; VULGAR FRACTION FIVE SIXTHS
-    "⅚": [.five, .divisionSlash, .six],
+    "⅚": [.five, .fractionSlash, .six],
 
     //215B          ; VULGAR FRACTION ONE EIGHTH
-    "⅛": [.one, .divisionSlash, .eight],
+    "⅛": [.one, .fractionSlash, .eight],
 
     //215C          ; VULGAR FRACTION THREE EIGHTHS
-    "⅜": [.three, .divisionSlash, .eight],
+    "⅜": [.three, .fractionSlash, .eight],
 
     //215D          ; VULGAR FRACTION FIVE EIGHTHS
-    "⅝": [.five, .divisionSlash, .eight],
+    "⅝": [.five, .fractionSlash, .eight],
 
     //215E          ; VULGAR FRACTION SEVEN EIGHTHS
-    "⅞": [.seven, .divisionSlash, .eight],
+    "⅞": [.seven, .fractionSlash, .eight],
 
     //215F          ; FRACTION NUMERATOR ONE
-    "⅟": [.one, .divisionSlash],
+    "⅟": [.one, .fractionSlash],
 
     //2160          ; ROMAN NUMERAL ONE
     //2161          ; ROMAN NUMERAL TWO
@@ -5213,7 +5213,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ↈ": [],
 
     //2189          ; VULGAR FRACTION ZERO THIRDS
-    "↉": [.zero, .divisionSlash, .three],
+    "↉": [.zero, .fractionSlash, .three],
 
     //218A          ; TURNED DIGIT TWO
     "↊": [.two, .turned],

@@ -1021,7 +1021,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ƍ": [.d, .y, .turned],
 
     //018E          ; LATIN CAPITAL LETTER REVERSED E
-    "Ǝ": [.e, .reversed, .capital],
+    "Ǝ": [.e, .turned, .capital],
 
     //018F          ; LATIN CAPITAL LETTER SCHWA
     "Ə": [.a, .h, .capital],
@@ -2942,7 +2942,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ᴱ": [.e, .capital, .superscript],
 
     //1D32          ; MODIFIER LETTER CAPITAL REVERSED E
-    "ᴲ": [.e, .capital, .reversed, .superscript],
+    "ᴲ": [.e, .capital, .turned, .superscript],
 
     //1D33          ; MODIFIER LETTER CAPITAL G
     "ᴳ": [.g, .capital, .superscript],

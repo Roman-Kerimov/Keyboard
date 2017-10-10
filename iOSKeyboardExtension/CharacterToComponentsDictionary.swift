@@ -2564,7 +2564,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "Φ": [.p, .h, .capital, .greek],
 
     //03A7          ; GREEK CAPITAL LETTER CHI
-    "Χ": [.c, .h, .capital, .greek],
+    "Χ": [.x, .h, .capital, .greek],
 
     //03A8          ; GREEK CAPITAL LETTER PSI
     "Ψ": [.p, .s, .capital, .greek],
@@ -2647,7 +2647,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "φ": [.p, .h, .greek],
 
     //03C7          ; GREEK SMALL LETTER CHI
-    "χ": [.c, .h, .greek],
+    "χ": [.x, .h, .greek],
 
     //03C8          ; GREEK SMALL LETTER PSI
     "ψ": [.p, .s, .greek],
@@ -3110,7 +3110,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ᵩ": [.f, .greek, .subscript],
 
     //1D6A          ; GREEK SUBSCRIPT SMALL LETTER CHI
-    "ᵪ": [.c, .h, .greek, .subscript],
+    "ᵪ": [.x, .h, .greek, .subscript],
 
     //1D6B          ; LATIN SMALL LETTER UE
     "ᵫ": [.u, .e],

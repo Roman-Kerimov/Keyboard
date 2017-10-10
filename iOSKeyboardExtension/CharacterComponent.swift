@@ -47,7 +47,8 @@ enum CharacterComponent {
     case open, closed
     case horn
     case curl, belt, crossedTail, loop
-    case tail
+    case tail, notch
+    case descender
     case dTop
     case sBottom
     case uTop
@@ -75,7 +76,7 @@ enum CharacterComponent {
     case breve
     case invertedBreve
     case caron
-    case ring
+    case ring, ringBottom
     case acute
     case grave
     case circumflex

@@ -6796,4 +6796,103 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     //2AFF          ; N-ARY WHITE VERTICAL BAR
     "⫿": [],
 
+    
+    // MARK: - 2C60..2C7F; Latin Extended-C
+    
+    //2C60          ; LATIN CAPITAL LETTER L WITH DOUBLE BAR
+    "Ⱡ": [.l, .capital, .stroke, .doubled],
+
+    //2C61          ; LATIN SMALL LETTER L WITH DOUBLE BAR
+    "ⱡ": [.l, .stroke, .doubled],
+
+    //2C62          ; LATIN CAPITAL LETTER L WITH MIDDLE TILDE
+    "Ɫ": [.l, .capital, .tilde],
+
+    //2C63          ; LATIN CAPITAL LETTER P WITH STROKE
+    "Ᵽ": [.p, .capital, .stroke],
+
+    //2C64          ; LATIN CAPITAL LETTER R WITH TAIL
+    "Ɽ": [.r, .capital, .retroflexHook],
+
+    //2C65          ; LATIN SMALL LETTER A WITH STROKE
+    "ⱥ": [.a, .diagonalStroke],
+
+    //2C66          ; LATIN SMALL LETTER T WITH DIAGONAL STROKE
+    "ⱦ": [.t, .diagonalStroke],
+
+    //2C67          ; LATIN CAPITAL LETTER H WITH DESCENDER
+    "Ⱨ": [.h, .capital, .descender],
+
+    //2C68          ; LATIN SMALL LETTER H WITH DESCENDER
+    "ⱨ": [.h, .descender],
+
+    //2C69          ; LATIN CAPITAL LETTER K WITH DESCENDER
+    "Ⱪ": [.k, .capital, .descender],
+
+    //2C6A          ; LATIN SMALL LETTER K WITH DESCENDER
+    "ⱪ": [.k, .descender],
+
+    //2C6B          ; LATIN CAPITAL LETTER Z WITH DESCENDER
+    "Ⱬ": [.z, .capital, .descender],
+
+    //2C6C          ; LATIN SMALL LETTER Z WITH DESCENDER
+    "ⱬ": [.z, .descender],
+
+    //2C6D          ; LATIN CAPITAL LETTER ALPHA
+    "Ɑ": [.a, .h, .capital],
+
+    //2C6E          ; LATIN CAPITAL LETTER M WITH HOOK
+    "Ɱ": [.m, .capital, .hook],
+
+    //2C6F          ; LATIN CAPITAL LETTER TURNED A
+    "Ɐ": [.a, .capital, .turned],
+
+    //2C70          ; LATIN CAPITAL LETTER TURNED ALPHA
+    "Ɒ": [.a, .h, .capital, .turned],
+
+    //2C71          ; LATIN SMALL LETTER V WITH RIGHT HOOK
+    "ⱱ": [.v, .hook],
+
+    //2C72          ; LATIN CAPITAL LETTER W WITH HOOK
+    "Ⱳ": [.w, .capital, .hook],
+
+    //2C73          ; LATIN SMALL LETTER W WITH HOOK
+    "ⱳ": [.w, .hook],
+
+    //2C74          ; LATIN SMALL LETTER V WITH CURL
+    "ⱴ": [.v, .curl],
+
+    //2C75          ; LATIN CAPITAL LETTER HALF H
+    "Ⱶ": [.h, .leftHalf],
+
+    //2C76          ; LATIN SMALL LETTER HALF H
+    "ⱶ": [.h, .leftHalf],
+
+    //2C77          ; LATIN SMALL LETTER TAILLESS PHI
+    "ⱷ": [.p, .h, .longLeg],
+
+    //2C78          ; LATIN SMALL LETTER E WITH NOTCH
+    "ⱸ": [.e, .notch],
+
+    //2C79          ; LATIN SMALL LETTER TURNED R WITH TAIL
+    "ⱹ": [.r, .hook, .turned],
+
+    //2C7A          ; LATIN SMALL LETTER O WITH LOW RING INSIDE
+    "ⱺ": [.o, .ringBottom],
+
+    //2C7B          ; LATIN LETTER SMALL CAPITAL TURNED E
+    "ⱻ": [.e, .smallCapital, .turned],
+
+    //2C7C          ; LATIN SUBSCRIPT SMALL LETTER J
+    "ⱼ": [.j, .subscript],
+
+    //2C7D          ; MODIFIER LETTER CAPITAL V
+    "ⱽ": [.v, .capital, .superscript],
+
+    //2C7E          ; LATIN CAPITAL LETTER S WITH SWASH TAIL
+    "Ȿ": [.s, .capital, .tail],
+
+    //2C7F          ; LATIN CAPITAL LETTER Z WITH SWASH TAIL
+    "Ɀ": [.z, .capital, .tail],
+
 ]

@@ -1018,7 +1018,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ƌ": [.d, .topbar],
 
     //018D          ; LATIN SMALL LETTER TURNED DELTA
-    "ƍ": [.d, .y, .turned],
+    "ƍ": [.d, .h, .extra1, .turned],
 
     //018E          ; LATIN CAPITAL LETTER REVERSED E
     "Ǝ": [.e, .turned, .capital],
@@ -1039,13 +1039,13 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "Ɠ": [.g, .hook, .capital],
 
     //0194          ; LATIN CAPITAL LETTER GAMMA
-    "Ɣ": [.g, .y, .capital],
+    "Ɣ": [.g, .h, .capital],
 
     //0195          ; LATIN SMALL LETTER HV
     "ƕ": [.h, .v],
 
     //0196          ; LATIN CAPITAL LETTER IOTA
-    "Ɩ": [.i, .y, .capital],
+    "Ɩ": [.i, .h, .capital],
 
     //0197          ; LATIN CAPITAL LETTER I WITH STROKE
     "Ɨ": [.i, .stroke],
@@ -1060,7 +1060,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ƚ": [.l, .stroke],
 
     //019B          ; LATIN SMALL LETTER LAMBDA WITH STROKE
-    "ƛ": [.l, .y, .diagonalStroke],
+    "ƛ": [.l, .h],
 
     //019C          ; LATIN CAPITAL LETTER TURNED M
     "Ɯ": [.m, .turned, .capital],
@@ -1126,7 +1126,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ư": [.u, .horn],
 
     //01B1          ; LATIN CAPITAL LETTER UPSILON
-    "Ʊ": [.u, .y, .capital],
+    "Ʊ": [.u, .h, .capital],
 
     //01B2          ; LATIN CAPITAL LETTER V WITH HOOK
     "Ʋ": [.v, .h, .capital],
@@ -1609,10 +1609,10 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ɐ": [.a, .turned],
 
     //0251          ; LATIN SMALL LETTER ALPHA
-    "ɑ": [.a, .y],
+    "ɑ": [.a, .h],
 
     //0252          ; LATIN SMALL LETTER TURNED ALPHA
-    "ɒ": [.a, .y, .turned],
+    "ɒ": [.a, .h, .turned],
 
     //0253          ; LATIN SMALL LETTER B WITH HOOK
     "ɓ": [.b, .hook],
@@ -1681,7 +1681,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ɨ": [.i, .stroke],
 
     //0269          ; LATIN SMALL LETTER IOTA
-    "ɩ": [.i, .y],
+    "ɩ": [.i, .h],
 
     //026A          ; LATIN LETTER SMALL CAPITAL I
     "ɪ": [.i, .smallCapital],
@@ -1723,7 +1723,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ɶ": [.o, .e, .smallCapital],
 
     //0277          ; LATIN SMALL LETTER CLOSED OMEGA
-    "ɷ": [.o, .y, .closed],
+    "ɷ": [.o, .o, .h, .closed],
 
     //0278          ; LATIN SMALL LETTER PHI
     "ɸ": [.p, .h],
@@ -1780,7 +1780,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ʉ": [.u, .stroke],
 
     //028A          ; LATIN SMALL LETTER UPSILON
-    "ʊ": [.u, .y],
+    "ʊ": [.u, .h],
 
     //028B          ; LATIN SMALL LETTER V WITH HOOK
     "ʋ": [.v, .h],
@@ -2041,7 +2041,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "˟": [.cross, .superscript],
 
     //02E0          ; MODIFIER LETTER SMALL GAMMA
-    "ˠ": [.g, .y, .superscript],
+    "ˠ": [.g, .h, .superscript],
 
     //02E1          ; MODIFIER LETTER SMALL L
     "ˡ": [.l, .superscript],
@@ -2999,7 +2999,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ᵄ": [.a, .turned, .superscript],
 
     //1D45          ; MODIFIER LETTER SMALL ALPHA
-    "ᵅ": [.a, .y, .superscript],
+    "ᵅ": [.a, .h, .superscript],
 
     //1D46          ; MODIFIER LETTER SMALL TURNED AE
     "ᵆ": [.a, .e, .turned, .superscript],
@@ -3071,19 +3071,19 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ᵜ": [.apostrophe, .h, .h, .superscript],
 
     //1D5D          ; MODIFIER LETTER SMALL BETA
-    "ᵝ": [.b, .y, .superscript],
+    "ᵝ": [.b, .h, .superscript],
 
     //1D5E          ; MODIFIER LETTER SMALL GREEK GAMMA
     "ᵞ": [.g, .greek, .superscript],
 
     //1D5F          ; MODIFIER LETTER SMALL DELTA
-    "ᵟ": [.d, .y, .superscript],
+    "ᵟ": [.d, .h, .extra1, .superscript],
 
     //1D60          ; MODIFIER LETTER SMALL GREEK PHI
     "ᵠ": [.f, .greek, .superscript],
 
     //1D61          ; MODIFIER LETTER SMALL CHI
-    "ᵡ": [.x, .y, .superscript],
+    "ᵡ": [.x, .h, .superscript],
 
     //1D62          ; LATIN SUBSCRIPT SMALL LETTER I
     "ᵢ": [.i, .subscript],
@@ -3164,7 +3164,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ᵻ": [.i, .smallCapital, .stroke],
 
     //1D7C          ; LATIN SMALL LETTER IOTA WITH STROKE
-    "ᵼ": [.i, .y, .stroke],
+    "ᵼ": [.i, .h, .stroke],
 
     //1D7D          ; LATIN SMALL LETTER P WITH STROKE
     "ᵽ": [.p, .stroke],
@@ -3173,7 +3173,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ᵾ": [.u, .smallCapital, .stroke],
 
     //1D7F          ; LATIN SMALL LETTER UPSILON WITH STROKE
-    "ᵿ": [.u, .y, .stroke],
+    "ᵿ": [.u, .h, .stroke],
 
     
     // MARK: - 1D80..1DBF; Phonetic Extensions Supplement
@@ -3227,7 +3227,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ᶏ": [.a, .retroflexHook],
 
     //1D90          ; LATIN SMALL LETTER ALPHA WITH RETROFLEX HOOK
-    "ᶐ": [.a, .y, .retroflexHook],
+    "ᶐ": [.a, .h, .retroflexHook],
 
     //1D91          ; LATIN SMALL LETTER D WITH HOOK AND TAIL
     "ᶑ": [.d, .retroflexHook, .hook],
@@ -3260,7 +3260,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ᶚ": [.z, .h, .retroflexHook],
 
     //1D9B          ; MODIFIER LETTER SMALL TURNED ALPHA
-    "ᶛ": [.a, .y, .turned, .superscript],
+    "ᶛ": [.a, .h, .turned, .superscript],
 
     //1D9C          ; MODIFIER LETTER SMALL C
     "ᶜ": [.c, .superscript],
@@ -3290,7 +3290,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ᶤ": [.i, .stroke, .superscript],
 
     //1DA5          ; MODIFIER LETTER SMALL IOTA
-    "ᶥ": [.i, .y, .superscript],
+    "ᶥ": [.i, .h, .superscript],
 
     //1DA6          ; MODIFIER LETTER SMALL CAPITAL I
     "ᶦ": [.i, .smallCapital, .superscript],
@@ -3344,7 +3344,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ᶶ": [.u, .stroke, .superscript],
 
     //1DB7          ; MODIFIER LETTER SMALL UPSILON
-    "ᶷ": [.u, .y, .superscript],
+    "ᶷ": [.u, .h, .superscript],
 
     //1DB8          ; MODIFIER LETTER SMALL CAPITAL U
     "ᶸ": [.u, .smallCapital, .superscript],
@@ -3368,7 +3368,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ᶾ": [.z, .h, .superscript],
 
     //1DBF          ; MODIFIER LETTER SMALL THETA
-    "ᶿ": [.t, .h, .y, .superscript],
+    "ᶿ": [.t, .h, .superscript],
 
     
     // MARK: - 1DC0..1DFF; Combining Diacritical Marks Supplement
@@ -3491,7 +3491,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ᷦ": [.z, .above],
 
     //1DE7          ; COMBINING LATIN SMALL LETTER ALPHA
-    "ᷧ": [.a, .y, .above],
+    "ᷧ": [.a, .h, .above],
 
     //1DE8          ; COMBINING LATIN SMALL LETTER B
     "ᷨ": [.b, .above],
@@ -4044,7 +4044,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ẞ": [.s, .s, .capital],
 
     //1E9F          ; LATIN SMALL LETTER DELTA
-    "ẟ": [.d, .h, .y],
+    "ẟ": [.d, .h, .extra1],
 
     //1EA0          ; LATIN CAPITAL LETTER A WITH DOT BELOW
     "Ạ": [.a, .capital, .dot, .below],

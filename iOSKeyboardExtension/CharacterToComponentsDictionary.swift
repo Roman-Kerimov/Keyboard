@@ -2540,7 +2540,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "Ν": [.n, .capital, .greek],
 
     //039E          ; GREEK CAPITAL LETTER XI
-    "Ξ": [.x, .capital, .greek],
+    "Ξ": [.k, .s, .capital, .greek],
 
     //039F          ; GREEK CAPITAL LETTER OMICRON
     "Ο": [.o, .capital, .greek],
@@ -2620,7 +2620,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ν": [.n, .greek],
 
     //03BE          ; GREEK SMALL LETTER XI
-    "ξ": [.x, .greek],
+    "ξ": [.k, .s, .greek],
 
     //03BF          ; GREEK SMALL LETTER OMICRON
     "ο": [.o, .greek],

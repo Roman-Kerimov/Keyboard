@@ -39,7 +39,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "(": [.parenthesis],
     
     //0029          ; RIGHT PARENTHESIS
-    ")": [.parenthesis, .turned],
+    ")": [.parenthesis, .reversed],
     
     //002A          ; ASTERISK
     "*": [.asterisk],
@@ -195,7 +195,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "\\": [.solidus, .reversed],
 
     //005D          ; RIGHT SQUARE BRACKET
-    "]": [.squareBracket, .turned],
+    "]": [.squareBracket, .reversed],
 
     //005E          ; CIRCUMFLEX ACCENT
     "^": [.caret],
@@ -291,7 +291,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "|": [.verticalLine],
 
     //007D          ; RIGHT CURLY BRACKET
-    "}": [.curlyBracket, .turned],
+    "}": [.curlyBracket, .reversed],
 
     //007E          ; TILDE
     "~": [.tilde],
@@ -369,7 +369,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "¶": [],
 
     //00B7          ; MIDDLE DOT
-    "·": [.dot],
+    "·": [.dot, .middle],
 
     //00B8          ; CEDILLA
     "¸": [.cedilla],
@@ -2116,16 +2116,16 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "˸": [.colon, .superscript],
 
     //02F9          ; MODIFIER LETTER BEGIN HIGH TONE
-    "˹": [.squareBracket, .topHalf],
+    "˹": [.beginHightTone],
 
     //02FA          ; MODIFIER LETTER END HIGH TONE
-    "˺": [.squareBracket, .turned, .topHalf],
+    "˺": [.endHightTone],
 
     //02FB          ; MODIFIER LETTER BEGIN LOW TONE
-    "˻": [.squareBracket, .bottomHalf],
+    "˻": [.beginLowTone],
 
     //02FC          ; MODIFIER LETTER END LOW TONE
-    "˼": [.squareBracket, .turned, .bottomHalf],
+    "˼": [.endLowTone],
 
     //02FD          ; MODIFIER LETTER SHELF
     "˽": [.shelf],
@@ -4498,7 +4498,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "‼": [.exclamationMark, .joiner, .exclamationMark],
 
     //203D          ; INTERROBANG
-    "‽": [.exclamationMark, .questionMark],
+    "‽": [.interrobang],
 
     //203E          ; OVERLINE
     "‾": [.line, .superscript],
@@ -4525,7 +4525,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "⁅": [.squareBracket, .stroke],
 
     //2046          ; RIGHT SQUARE BRACKET WITH QUILL
-    "⁆": [.squareBracket, .stroke, .turned],
+    "⁆": [.squareBracket, .stroke, .reversed],
 
     //2047          ; DOUBLE QUESTION MARK
     "⁇": [.questionMark, .joiner, .questionMark],
@@ -4667,7 +4667,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "⁽": [.parenthesis, .superscript],
 
     //207E          ; SUPERSCRIPT RIGHT PARENTHESIS
-    "⁾": [.parenthesis, .turned, .superscript],
+    "⁾": [.parenthesis, .reversed, .superscript],
 
     //207F          ; SUPERSCRIPT LATIN SMALL LETTER N
     "ⁿ": [.n, .superscript],
@@ -4715,7 +4715,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "₍": [.parenthesis, .subscript],
 
     //208E          ; SUBSCRIPT RIGHT PARENTHESIS
-    "₎": [.parenthesis, .turned, .subscript],
+    "₎": [.parenthesis, .reversed, .subscript],
 
     //2090          ; LATIN SUBSCRIPT SMALL LETTER A
     "ₐ": [.a, .subscript],
@@ -5582,7 +5582,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "≫": [.greaterThanSign, .greaterThanSign],
 
     //226C          ; BETWEEN
-    "≬": [.parenthesis, .parenthesis, .turned],
+    "≬": [.parenthesis, .parenthesis, .reversed],
 
     //226D          ; NOT EQUIVALENT TO
     "≭": [.breve, .invertedBreve, .not],
@@ -6894,5 +6894,230 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
 
     //2C7F          ; LATIN CAPITAL LETTER Z WITH SWASH TAIL
     "Ɀ": [.z, .capital, .tail],
+
+    
+    // MARK: - 2E00..2E7F; Supplemental Punctuation
+    
+    //2E00          ; RIGHT ANGLE SUBSTITUTION MARKER
+    "⸀": [],
+
+    //2E01          ; RIGHT ANGLE DOTTED SUBSTITUTION MARKER
+    "⸁": [],
+
+    //2E02          ; LEFT SUBSTITUTION BRACKET
+    "⸂": [],
+
+    //2E03          ; RIGHT SUBSTITUTION BRACKET
+    "⸃": [],
+
+    //2E04          ; LEFT DOTTED SUBSTITUTION BRACKET
+    "⸄": [],
+
+    //2E05          ; RIGHT DOTTED SUBSTITUTION BRACKET
+    "⸅": [],
+
+    //2E06          ; RAISED INTERPOLATION MARKER
+    "⸆": [],
+
+    //2E07          ; RAISED DOTTED INTERPOLATION MARKER
+    "⸇": [],
+
+    //2E08          ; DOTTED TRANSPOSITION MARKER
+    "⸈": [],
+
+    //2E09          ; LEFT TRANSPOSITION BRACKET
+    "⸉": [],
+
+    //2E0A          ; RIGHT TRANSPOSITION BRACKET
+    "⸊": [],
+
+    //2E0B          ; RAISED SQUARE
+    "⸋": [],
+
+    //2E0C          ; LEFT RAISED OMISSION BRACKET
+    "⸌": [],
+
+    //2E0D          ; RIGHT RAISED OMISSION BRACKET
+    "⸍": [],
+
+    //2E0E          ; EDITORIAL CORONIS
+    "⸎": [],
+
+    //2E0F          ; PARAGRAPHOS
+    "⸏": [],
+
+    //2E10          ; FORKED PARAGRAPHOS
+    "⸐": [],
+
+    //2E11          ; REVERSED FORKED PARAGRAPHOS
+    "⸑": [],
+
+    //2E12          ; HYPODIASTOLE
+    "⸒": [],
+
+    //2E13          ; DOTTED OBELOS
+    "⸓": [],
+
+    //2E14          ; DOWNWARDS ANCORA
+    "⸔": [],
+
+    //2E15          ; UPWARDS ANCORA
+    "⸕": [],
+
+    //2E16          ; DOTTED RIGHT-POINTING ANGLE
+    "⸖": [],
+
+    //2E17          ; DOUBLE OBLIQUE HYPHEN
+    "⸗": [],
+
+    //2E18          ; INVERTED INTERROBANG
+    "⸘": [.interrobang, .turned],
+
+    //2E19          ; PALM BRANCH
+    "⸙": [],
+
+    //2E1A          ; HYPHEN WITH DIAERESIS
+    "⸚": [.hyphen, .diaeresis, .above],
+
+    //2E1B          ; TILDE WITH RING ABOVE
+    "⸛": [.tilde, .ring, .above],
+
+    //2E1C          ; LEFT LOW PARAPHRASE BRACKET
+    "⸜": [],
+
+    //2E1D          ; RIGHT LOW PARAPHRASE BRACKET
+    "⸝": [],
+
+    //2E1E          ; TILDE WITH DOT ABOVE
+    "⸞": [.tilde, .dot, .above],
+
+    //2E1F          ; TILDE WITH DOT BELOW
+    "⸟": [.tilde, .dot, .above],
+
+    //2E20          ; LEFT VERTICAL BAR WITH QUILL
+    "⸠": [],
+
+    //2E21          ; RIGHT VERTICAL BAR WITH QUILL
+    "⸡": [],
+
+    //2E22          ; TOP LEFT HALF BRACKET
+    "⸢": [.squareBracket, .topHalf],
+
+    //2E23          ; TOP RIGHT HALF BRACKET
+    "⸣": [.squareBracket, .topHalf, .reversed],
+
+    //2E24          ; BOTTOM LEFT HALF BRACKET
+    "⸤": [.squareBracket, .bottomHalf],
+
+    //2E25          ; BOTTOM RIGHT HALF BRACKET
+    "⸥": [.squareBracket, .bottomHalf, .reversed],
+
+    //2E26          ; LEFT SIDEWAYS U BRACKET
+    "⸦": [],
+
+    //2E27          ; RIGHT SIDEWAYS U BRACKET
+    "⸧": [],
+
+    //2E28          ; LEFT DOUBLE PARENTHESIS
+    "⸨": [.parenthesis, .doubled],
+
+    //2E29          ; RIGHT DOUBLE PARENTHESIS
+    "⸩": [.parenthesis, .doubled, .reversed],
+
+    //2E2A          ; TWO DOTS OVER ONE DOT PUNCTUATION
+    "⸪": [],
+
+    //2E2B          ; ONE DOT OVER TWO DOTS PUNCTUATION
+    "⸫": [],
+
+    //2E2C          ; SQUARED FOUR DOT PUNCTUATION
+    "⸬": [],
+
+    //2E2D          ; FIVE DOT MARK
+    "⸭": [],
+
+    //2E2E          ; REVERSED QUESTION MARK
+    "⸮": [.questionMark, .reversed],
+
+    //2E2F          ; VERTICAL TILDE
+    "ⸯ": [.verticalTilde],
+
+    //2E30          ; RING POINT
+    "⸰": [],
+
+    //2E31          ; WORD SEPARATOR MIDDLE DOT
+    "⸱": [],
+
+    //2E32          ; TURNED COMMA
+    "⸲": [.comma, .turned],
+
+    //2E33          ; RAISED DOT
+    "⸳": [.dot, .raised],
+
+    //2E34          ; RAISED COMMA
+    "⸴": [.comma, .raised],
+
+    //2E35          ; TURNED SEMICOLON
+    "⸵": [.semicolon, .turned],
+
+    //2E36          ; DAGGER WITH LEFT GUARD
+    "⸶": [.asterisk, .extra1, .leftHalf],
+
+    //2E37          ; DAGGER WITH RIGHT GUARD
+    "⸷": [.asterisk, .extra1, .rightHalf],
+
+    //2E38          ; TURNED DAGGER
+    "⸸": [.asterisk, .extra1, .turned],
+
+    //2E39          ; TOP HALF SECTION SIGN
+    "⸹": [],
+
+    //2E3A          ; TWO-EM DASH
+    "⸺": [.hyphen, .m, .doubled],
+
+    //2E3B          ; THREE-EM DASH
+    "⸻": [.hyphen, .m, .doubled, .m],
+
+    //2E3C          ; STENOGRAPHIC FULL STOP
+    "⸼": [],
+
+    //2E3D          ; VERTICAL SIX DOTS
+    "⸽": [],
+
+    //2E3E          ; WIGGLY VERTICAL LINE
+    "⸾": [.verticalLine, .w],
+
+    //2E3F          ; CAPITULUM
+    "⸿": [],
+
+    //2E40          ; DOUBLE HYPHEN
+    "⹀": [.hyphen, .doubled],
+
+    //2E41          ; REVERSED COMMA
+    "⹁": [.comma, .reversed],
+
+    //2E42          ; DOUBLE LOW-REVERSED-9 QUOTATION MARK
+    "⹂": [.commaQuotationMark, .doubled, .reversed, .subscript],
+
+    //2E43          ; DASH WITH LEFT UPTURN
+    "⹃": [],
+
+    //2E44          ; DOUBLE SUSPENSION MARK
+    "⹄": [],
+
+    //2E45          ; INVERTED LOW KAVYKA
+    "⹅": [],
+
+    //2E46          ; INVERTED LOW KAVYKA WITH KAVYKA ABOVE
+    "⹆": [],
+
+    //2E47          ; LOW KAVYKA
+    "⹇": [],
+
+    //2E48          ; LOW KAVYKA WITH DOT
+    "⹈": [],
+
+    //2E49          ; DOUBLE STACKED COMMA
+    "⹉": [],
 
 ]

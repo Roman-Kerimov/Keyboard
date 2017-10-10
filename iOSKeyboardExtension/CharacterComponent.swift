@@ -31,11 +31,12 @@ enum CharacterComponent {
     
     case notSign
     case schwa
+    case interrobang
     
     case capital, smallCapital
     case extra0, turned, reversed, inverted, ramsHorn, sideways, extra1, extra2
     case extraLeft
-    case superscript, `subscript`
+    case superscript, `subscript`, middle, raised
     
     case stroke, shortStroke, longStroke, lightCentralizationStroke
     case diagonalStroke, shortDiagonalStroke, longDiagonalStroke
@@ -124,4 +125,7 @@ enum CharacterComponent {
     case midTone
     case lowTone
     case extraLowTone
+    
+    case beginHightTone, endHightTone
+    case beginLowTone, endLowTone
 }

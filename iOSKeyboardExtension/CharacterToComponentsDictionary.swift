@@ -7120,4 +7120,103 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     //2E49          ; DOUBLE STACKED COMMA
     "⹉": [],
 
+    
+    // MARK: - A700..A71F; Modifier Tone Letters
+    
+    //A700          ; MODIFIER LETTER CHINESE TONE YIN PING
+    "꜀": [],
+
+    //A701          ; MODIFIER LETTER CHINESE TONE YANG PING
+    "꜁": [],
+
+    //A702          ; MODIFIER LETTER CHINESE TONE YIN SHANG
+    "꜂": [],
+
+    //A703          ; MODIFIER LETTER CHINESE TONE YANG SHANG
+    "꜃": [],
+
+    //A704          ; MODIFIER LETTER CHINESE TONE YIN QU
+    "꜄": [],
+
+    //A705          ; MODIFIER LETTER CHINESE TONE YANG QU
+    "꜅": [],
+
+    //A706          ; MODIFIER LETTER CHINESE TONE YIN RU
+    "꜆": [],
+
+    //A707          ; MODIFIER LETTER CHINESE TONE YANG RU
+    "꜇": [],
+
+    //A708          ; MODIFIER LETTER EXTRA-HIGH DOTTED TONE BAR
+    "꜈": [.extraHightTone, .dot],
+
+    //A709          ; MODIFIER LETTER HIGH DOTTED TONE BAR
+    "꜉": [.hightTone, .dot],
+
+    //A70A          ; MODIFIER LETTER MID DOTTED TONE BAR
+    "꜊": [.midTone, .dot],
+
+    //A70B          ; MODIFIER LETTER LOW DOTTED TONE BAR
+    "꜋": [.lowTone, .dot],
+
+    //A70C          ; MODIFIER LETTER EXTRA-LOW DOTTED TONE BAR
+    "꜌": [.extraLowTone, .dot],
+
+    //A70D          ; MODIFIER LETTER EXTRA-HIGH DOTTED LEFT-STEM TONE BAR
+    "꜍": [.extraHightTone, .dot, .reversed],
+
+    //A70E          ; MODIFIER LETTER HIGH DOTTED LEFT-STEM TONE BAR
+    "꜎": [.hightTone, .dot, .reversed],
+
+    //A70F          ; MODIFIER LETTER MID DOTTED LEFT-STEM TONE BAR
+    "꜏": [.midTone, .dot, .reversed],
+
+    //A710          ; MODIFIER LETTER LOW DOTTED LEFT-STEM TONE BAR
+    "꜐": [.lowTone, .dot, .reversed],
+
+    //A711          ; MODIFIER LETTER EXTRA-LOW DOTTED LEFT-STEM TONE BAR
+    "꜑": [.extraLowTone, .dot, .reversed],
+
+    //A712          ; MODIFIER LETTER EXTRA-HIGH LEFT-STEM TONE BAR
+    "꜒": [.extraHightTone, .reversed],
+
+    //A713          ; MODIFIER LETTER HIGH LEFT-STEM TONE BAR
+    "꜓": [.hightTone, .reversed],
+
+    //A714          ; MODIFIER LETTER MID LEFT-STEM TONE BAR
+    "꜔": [.midTone, .reversed],
+
+    //A715          ; MODIFIER LETTER LOW LEFT-STEM TONE BAR
+    "꜕": [.lowTone, .reversed],
+
+    //A716          ; MODIFIER LETTER EXTRA-LOW LEFT-STEM TONE BAR
+    "꜖": [.extraLowTone, .reversed],
+
+    //A717          ; MODIFIER LETTER DOT VERTICAL BAR
+    "ꜗ": [],
+
+    //A718          ; MODIFIER LETTER DOT SLASH
+    "ꜘ": [],
+
+    //A719          ; MODIFIER LETTER DOT HORIZONTAL BAR
+    "ꜙ": [],
+
+    //A71A          ; MODIFIER LETTER LOWER RIGHT CORNER ANGLE
+    "ꜚ": [],
+
+    //A71B          ; MODIFIER LETTER RAISED UP ARROW
+    "ꜛ": [.verticalLine, .greaterThanSign, .superscript],
+
+    //A71C          ; MODIFIER LETTER RAISED DOWN ARROW
+    "ꜜ": [.verticalLine, .lessThanSign, .superscript],
+
+    //A71D          ; MODIFIER LETTER RAISED EXCLAMATION MARK
+    "ꜝ": [.exclamationMark, .superscript],
+
+    //A71E          ; MODIFIER LETTER RAISED INVERTED EXCLAMATION MARK
+    "ꜞ": [.exclamationMark, .turned, .superscript],
+
+    //A71F          ; MODIFIER LETTER LOW INVERTED EXCLAMATION MARK
+    "ꜟ": [.exclamationMark, .turned, .subscript],
+
 ]

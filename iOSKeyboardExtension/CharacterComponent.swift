@@ -30,6 +30,7 @@ enum CharacterComponent {
     case divisionSign
     
     case notSign
+    case schwa
     
     case capital, smallCapital
     case extra0, turned, reversed, inverted, ramsHorn, sideways, extra1, extra2

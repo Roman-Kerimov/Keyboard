@@ -1024,7 +1024,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "Ǝ": [.e, .turned, .capital],
 
     //018F          ; LATIN CAPITAL LETTER SCHWA
-    "Ə": [.a, .h, .capital],
+    "Ə": [.schwa, .capital],
 
     //0190          ; LATIN CAPITAL LETTER OPEN E
     "Ɛ": [.e, .open, .capital],
@@ -1633,10 +1633,10 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ɘ": [.e, .reversed],
 
     //0259          ; LATIN SMALL LETTER SCHWA
-    "ə": [.a, .h],
+    "ə": [.schwa],
 
     //025A          ; LATIN SMALL LETTER SCHWA WITH HOOK
-    "ɚ": [.a, .h, .rhoticHook],
+    "ɚ": [.schwa, .rhoticHook],
 
     //025B          ; LATIN SMALL LETTER OPEN E
     "ɛ": [.e, .open],
@@ -3014,7 +3014,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ᵉ": [.e, .superscript],
 
     //1D4A          ; MODIFIER LETTER SMALL SCHWA
-    "ᵊ": [.a, .h, .superscript],
+    "ᵊ": [.schwa, .superscript],
 
     //1D4B          ; MODIFIER LETTER SMALL OPEN E
     "ᵋ": [.e, .open, .superscript],
@@ -3242,7 +3242,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ᶔ": [.e, .open, .retroflexHook, .reversed],
 
     //1D95          ; LATIN SMALL LETTER SCHWA WITH RETROFLEX HOOK
-    "ᶕ": [.a, .h, .retroflexHook],
+    "ᶕ": [.schwa, .retroflexHook],
 
     //1D96          ; LATIN SMALL LETTER I WITH RETROFLEX HOOK
     "ᶖ": [.i, .retroflexHook],
@@ -3500,7 +3500,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ᷩ": [.b, .h, .above],
 
     //1DEA          ; COMBINING LATIN SMALL LETTER SCHWA
-    "ᷪ": [.a, .h, .above],
+    "ᷪ": [.schwa, .above],
 
     //1DEB          ; COMBINING LATIN SMALL LETTER F
     "ᷫ": [.f, .above],
@@ -4730,7 +4730,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ₓ": [.x, .subscript],
 
     //2094          ; LATIN SUBSCRIPT SMALL LETTER SCHWA
-    "ₔ": [.a, .h, .subscript],
+    "ₔ": [.schwa, .subscript],
 
     //2095          ; LATIN SUBSCRIPT SMALL LETTER H
     "ₕ": [.h, .subscript],

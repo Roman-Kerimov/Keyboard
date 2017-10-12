@@ -318,7 +318,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "¥": [],
 
     //00A6          ; BROKEN BAR
-    "¦": [],
+    "¦": [.verticalLine, .broken],
 
     //00A7          ; SECTION SIGN
     "§": [],
@@ -1810,13 +1810,13 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ʓ": [.z, .h, .curl],
 
     //0294          ; LATIN LETTER GLOTTAL STOP
-    "ʔ": [.apostrophe, .h],
+    "ʔ": [.glottalStop],
 
     //0295          ; LATIN LETTER PHARYNGEAL VOICED FRICATIVE
-    "ʕ": [.apostrophe, .h, .reversed],
+    "ʕ": [.glottalStop, .reversed],
 
     //0296          ; LATIN LETTER INVERTED GLOTTAL STOP
-    "ʖ": [.apostrophe, .h, .inverted],
+    "ʖ": [.glottalStop, .inverted],
 
     //0297          ; LATIN LETTER STRETCHED C
     "ʗ": [.c, .h],
@@ -1849,10 +1849,10 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ʠ": [.q, .hook],
 
     //02A1          ; LATIN LETTER GLOTTAL STOP WITH STROKE
-    "ʡ": [.apostrophe, .h, .stroke],
+    "ʡ": [.glottalStop, .stroke],
 
     //02A2          ; LATIN LETTER REVERSED GLOTTAL STOP WITH STROKE
-    "ʢ": [.apostrophe, .h, .stroke, .reversed],
+    "ʢ": [.glottalStop, .stroke, .reversed],
 
     //02A3          ; LATIN SMALL LETTER DZ DIGRAPH
     "ʣ": [.d, .z],
@@ -1945,10 +1945,10 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ʿ": [.ring, .leftHalf, .superscript],
 
     //02C0          ; MODIFIER LETTER GLOTTAL STOP
-    "ˀ": [.apostrophe, .h, .superscript],
+    "ˀ": [.glottalStop, .superscript],
 
     //02C1          ; MODIFIER LETTER REVERSED GLOTTAL STOP
-    "ˁ": [.apostrophe, .h, .reversed, .superscript],
+    "ˁ": [.glottalStop, .reversed, .superscript],
 
     //02C2          ; MODIFIER LETTER LEFT ARROWHEAD
     "˂": [.arrowhead, .left, .superscript],
@@ -2903,7 +2903,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ᴤ": [.h, .hook, .h],
 
     //1D25          ; LATIN LETTER AIN
-    "ᴥ": [.apostrophe, .h, .h],
+    "ᴥ": [.ain],
 
     //1D26          ; GREEK LETTER SMALL CAPITAL GAMMA
     "ᴦ": [.g, .greek, .smallCapital],
@@ -3068,7 +3068,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ᵛ": [.v, .superscript],
 
     //1D5C          ; MODIFIER LETTER SMALL AIN
-    "ᵜ": [.apostrophe, .h, .h, .superscript],
+    "ᵜ": [.ain, .superscript],
 
     //1D5D          ; MODIFIER LETTER SMALL BETA
     "ᵝ": [.b, .h, .superscript],
@@ -7218,5 +7218,488 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
 
     //A71F          ; MODIFIER LETTER LOW INVERTED EXCLAMATION MARK
     "ꜟ": [.exclamationMark, .turned, .subscript],
+
+    
+    // MARK: - A720..A7FF; Latin Extended-D
+    
+    //A720          ; MODIFIER LETTER STRESS AND HIGH TONE
+    "꜠": [],
+
+    //A721          ; MODIFIER LETTER STRESS AND LOW TONE
+    "꜡": [],
+
+    //A722          ; LATIN CAPITAL LETTER EGYPTOLOGICAL ALEF
+    "Ꜣ": [.egyptologialAlef, .capital],
+
+    //A723          ; LATIN SMALL LETTER EGYPTOLOGICAL ALEF
+    "ꜣ": [.egyptologialAlef],
+
+    //A724          ; LATIN CAPITAL LETTER EGYPTOLOGICAL AIN
+    "Ꜥ": [.egyptologicalAin, .capital],
+
+    //A725          ; LATIN SMALL LETTER EGYPTOLOGICAL AIN
+    "ꜥ": [.egyptologicalAin],
+
+    //A726          ; LATIN CAPITAL LETTER HENG
+    "Ꜧ": [.h, .g, .capital],
+
+    //A727          ; LATIN SMALL LETTER HENG
+    "ꜧ": [.h, .g],
+
+    //A728          ; LATIN CAPITAL LETTER TZ
+    "Ꜩ": [.t, .z, .capital],
+
+    //A729          ; LATIN SMALL LETTER TZ
+    "ꜩ": [.t, .z],
+
+    //A72A          ; LATIN CAPITAL LETTER TRESILLO
+    "Ꜫ": [.q, .capital, .comma, .superscript],
+
+    //A72B          ; LATIN SMALL LETTER TRESILLO
+    "ꜫ": [.q, .comma, .superscript],
+
+    //A72C          ; LATIN CAPITAL LETTER CUATRILLO
+    "Ꜭ": [.k, .capital, .comma, .superscript],
+
+    //A72D          ; LATIN SMALL LETTER CUATRILLO
+    "ꜭ": [.k, .comma, .superscript],
+
+    //A72E          ; LATIN CAPITAL LETTER CUATRILLO WITH COMMA
+    "Ꜯ": [.k, .capital, .comma, .superscript, .comma],
+
+    //A72F          ; LATIN SMALL LETTER CUATRILLO WITH COMMA
+    "ꜯ": [.k, .comma, .superscript, .comma],
+
+    //A730          ; LATIN LETTER SMALL CAPITAL F
+    "ꜰ": [.f, .smallCapital],
+
+    //A731          ; LATIN LETTER SMALL CAPITAL S
+    "ꜱ": [.s, .smallCapital],
+
+    //A732          ; LATIN CAPITAL LETTER AA
+    "Ꜳ": [.a, .a, .capital],
+
+    //A733          ; LATIN SMALL LETTER AA
+    "ꜳ": [.a, .a],
+
+    //A734          ; LATIN CAPITAL LETTER AO
+    "Ꜵ": [.a, .o, .capital],
+
+    //A735          ; LATIN SMALL LETTER AO
+    "ꜵ": [.a, .o],
+
+    //A736          ; LATIN CAPITAL LETTER AU
+    "Ꜷ": [.a, .u, .capital],
+
+    //A737          ; LATIN SMALL LETTER AU
+    "ꜷ": [.a, .u],
+
+    //A738          ; LATIN CAPITAL LETTER AV
+    "Ꜹ": [.a, .v, .capital],
+
+    //A739          ; LATIN SMALL LETTER AV
+    "ꜹ": [.a, .v],
+
+    //A73A          ; LATIN CAPITAL LETTER AV WITH HORIZONTAL BAR
+    "Ꜻ": [.a, .v, .capital, .stroke],
+
+    //A73B          ; LATIN SMALL LETTER AV WITH HORIZONTAL BAR
+    "ꜻ": [.a, .v, .stroke],
+
+    //A73C          ; LATIN CAPITAL LETTER AY
+    "Ꜽ": [.a, .y, .capital],
+
+    //A73D          ; LATIN SMALL LETTER AY
+    "ꜽ": [.a, .y],
+
+    //A73E          ; LATIN CAPITAL LETTER REVERSED C WITH DOT
+    "Ꜿ": [.c, .capital, .reversed, .dot],
+
+    //A73F          ; LATIN SMALL LETTER REVERSED C WITH DOT
+    "ꜿ": [.c, .reversed, .dot],
+
+    //A740          ; LATIN CAPITAL LETTER K WITH STROKE
+    "Ꝁ": [.k, .capital, .stroke],
+
+    //A741          ; LATIN SMALL LETTER K WITH STROKE
+    "ꝁ": [.k, .stroke],
+
+    //A742          ; LATIN CAPITAL LETTER K WITH DIAGONAL STROKE
+    "Ꝃ": [.k, .capital, .diagonalStroke],
+
+    //A743          ; LATIN SMALL LETTER K WITH DIAGONAL STROKE
+    "ꝃ": [.k, .diagonalStroke],
+
+    //A744          ; LATIN CAPITAL LETTER K WITH STROKE AND DIAGONAL STROKE
+    "Ꝅ": [.k, .capital, .stroke, .diagonalStroke],
+
+    //A745          ; LATIN SMALL LETTER K WITH STROKE AND DIAGONAL STROKE
+    "ꝅ": [.k, .stroke, .diagonalStroke],
+
+    //A746          ; LATIN CAPITAL LETTER BROKEN L
+    "Ꝇ": [.l, .capital, .broken],
+
+    //A747          ; LATIN SMALL LETTER BROKEN L
+    "ꝇ": [.l, .broken],
+
+    //A748          ; LATIN CAPITAL LETTER L WITH HIGH STROKE
+    "Ꝉ": [.l, .capital, .highStroke],
+
+    //A749          ; LATIN SMALL LETTER L WITH HIGH STROKE
+    "ꝉ": [.l, .highStroke],
+
+    //A74A          ; LATIN CAPITAL LETTER O WITH LONG STROKE OVERLAY
+    "Ꝋ": [.o, .capital, .longStroke],
+
+    //A74B          ; LATIN SMALL LETTER O WITH LONG STROKE OVERLAY
+    "ꝋ": [.o, .longStroke],
+
+    //A74C          ; LATIN CAPITAL LETTER O WITH LOOP
+    "Ꝍ": [.o, .capital, .loop],
+
+    //A74D          ; LATIN SMALL LETTER O WITH LOOP
+    "ꝍ": [.o, .loop],
+
+    //A74E          ; LATIN CAPITAL LETTER OO
+    "Ꝏ": [.o, .o, .capital],
+
+    //A74F          ; LATIN SMALL LETTER OO
+    "ꝏ": [.o, .o],
+
+    //A750          ; LATIN CAPITAL LETTER P WITH STROKE THROUGH DESCENDER
+    "Ꝑ": [.p, .capital, .lowStroke],
+
+    //A751          ; LATIN SMALL LETTER P WITH STROKE THROUGH DESCENDER
+    "ꝑ": [.p, .lowStroke],
+
+    //A752          ; LATIN CAPITAL LETTER P WITH FLOURISH
+    "Ꝓ": [.p, .capital, .flourish],
+
+    //A753          ; LATIN SMALL LETTER P WITH FLOURISH
+    "ꝓ": [.p, .flourish],
+
+    //A754          ; LATIN CAPITAL LETTER P WITH SQUIRREL TAIL
+    "Ꝕ": [.p, .capital, .tail],
+
+    //A755          ; LATIN SMALL LETTER P WITH SQUIRREL TAIL
+    "ꝕ": [.p, .tail],
+
+    //A756          ; LATIN CAPITAL LETTER Q WITH STROKE THROUGH DESCENDER
+    "Ꝗ": [.q, .capital, .stroke],
+
+    //A757          ; LATIN SMALL LETTER Q WITH STROKE THROUGH DESCENDER
+    "ꝗ": [.q, .stroke],
+
+    //A758          ; LATIN CAPITAL LETTER Q WITH DIAGONAL STROKE
+    "Ꝙ": [.q, .capital, .diagonalStroke],
+
+    //A759          ; LATIN SMALL LETTER Q WITH DIAGONAL STROKE
+    "ꝙ": [.q, .diagonalStroke],
+
+    //A75A          ; LATIN CAPITAL LETTER R ROTUNDA
+    "Ꝛ": [.r, .capital, .rightHalf],
+
+    //A75B          ; LATIN SMALL LETTER R ROTUNDA
+    "ꝛ": [.r, .rightHalf],
+
+    //A75C          ; LATIN CAPITAL LETTER RUM ROTUNDA
+    "Ꝝ": [.r, .capital, .rightHalf, .um],
+
+    //A75D          ; LATIN SMALL LETTER RUM ROTUNDA
+    "ꝝ": [.r, .rightHalf, .um],
+
+    //A75E          ; LATIN CAPITAL LETTER V WITH DIAGONAL STROKE
+    "Ꝟ": [.v, .capital, .diagonalStroke],
+
+    //A75F          ; LATIN SMALL LETTER V WITH DIAGONAL STROKE
+    "ꝟ": [.v, .diagonalStroke],
+
+    //A760          ; LATIN CAPITAL LETTER VY
+    "Ꝡ": [.v, .y, .capital],
+
+    //A761          ; LATIN SMALL LETTER VY
+    "ꝡ": [.v, .y],
+
+    //A762          ; LATIN CAPITAL LETTER VISIGOTHIC Z
+    "Ꝣ": [.z, .capital, .visigothic],
+
+    //A763          ; LATIN SMALL LETTER VISIGOTHIC Z
+    "ꝣ": [.z, .visigothic],
+
+    //A764          ; LATIN CAPITAL LETTER THORN WITH STROKE
+    "Ꝥ": [.t, .h, .capital, .stroke],
+
+    //A765          ; LATIN SMALL LETTER THORN WITH STROKE
+    "ꝥ": [.t, .h, .stroke],
+
+    //A766          ; LATIN CAPITAL LETTER THORN WITH STROKE THROUGH DESCENDER
+    "Ꝧ": [.t, .h, .capital, .lowStroke],
+
+    //A767          ; LATIN SMALL LETTER THORN WITH STROKE THROUGH DESCENDER
+    "ꝧ": [.t, .h, .lowStroke],
+
+    //A768          ; LATIN CAPITAL LETTER VEND
+    "Ꝩ": [.v, .capital, .vend],
+
+    //A769          ; LATIN SMALL LETTER VEND
+    "ꝩ": [.v, .vend],
+
+    //A76A          ; LATIN CAPITAL LETTER ET
+    "Ꝫ": [.e, .t, .capital],
+
+    //A76B          ; LATIN SMALL LETTER ET
+    "ꝫ": [.e, .t],
+
+    //A76C          ; LATIN CAPITAL LETTER IS
+    "Ꝭ": [.i, .s, .capital],
+
+    //A76D          ; LATIN SMALL LETTER IS
+    "ꝭ": [.i, .s],
+
+    //A76E          ; LATIN CAPITAL LETTER CON
+    "Ꝯ": [.u, .s, .capital],
+
+    //A76F          ; LATIN SMALL LETTER CON
+    "ꝯ": [.u, .s],
+
+    //A770          ; MODIFIER LETTER US
+    "ꝰ": [.u, .s, .superscript],
+
+    //A771          ; LATIN SMALL LETTER DUM
+    "ꝱ": [.d, .um],
+
+    //A772          ; LATIN SMALL LETTER LUM
+    "ꝲ": [.l, .um],
+
+    //A773          ; LATIN SMALL LETTER MUM
+    "ꝳ": [.m, .um],
+
+    //A774          ; LATIN SMALL LETTER NUM
+    "ꝴ": [.n, .um],
+
+    //A775          ; LATIN SMALL LETTER RUM
+    "ꝵ": [.r, .um],
+
+    //A776          ; LATIN LETTER SMALL CAPITAL RUM
+    "ꝶ": [.r, .smallCapital, .um],
+
+    //A777          ; LATIN SMALL LETTER TUM
+    "ꝷ": [.t, .um],
+
+    //A778          ; LATIN SMALL LETTER UM
+    "ꝸ": [.u, .m],
+
+    //A779          ; LATIN CAPITAL LETTER INSULAR D
+    "Ꝺ": [.d, .capital, .insular],
+
+    //A77A          ; LATIN SMALL LETTER INSULAR D
+    "ꝺ": [.d, .insular],
+
+    //A77B          ; LATIN CAPITAL LETTER INSULAR F
+    "Ꝼ": [.f, .capital, .insular],
+
+    //A77C          ; LATIN SMALL LETTER INSULAR F
+    "ꝼ": [.f, .insular],
+
+    //A77D          ; LATIN CAPITAL LETTER INSULAR G
+    "Ᵹ": [.g, .capital, .insular],
+
+    //A77E          ; LATIN CAPITAL LETTER TURNED INSULAR G
+    "Ꝿ": [.g, .capital, .insular, .turned],
+
+    //A77F          ; LATIN SMALL LETTER TURNED INSULAR G
+    "ꝿ": [.g, .insular, .turned],
+
+    //A780          ; LATIN CAPITAL LETTER TURNED L
+    "Ꞁ": [.l, .capital, .turned],
+
+    //A781          ; LATIN SMALL LETTER TURNED L
+    "ꞁ": [.l, .turned],
+
+    //A782          ; LATIN CAPITAL LETTER INSULAR R
+    "Ꞃ": [.r, .capital, .insular],
+
+    //A783          ; LATIN SMALL LETTER INSULAR R
+    "ꞃ": [.r, .insular],
+
+    //A784          ; LATIN CAPITAL LETTER INSULAR S
+    "Ꞅ": [.s, .capital, .insular],
+
+    //A785          ; LATIN SMALL LETTER INSULAR S
+    "ꞅ": [.s, .insular],
+
+    //A786          ; LATIN CAPITAL LETTER INSULAR T
+    "Ꞇ": [.t, .capital, .insular],
+
+    //A787          ; LATIN SMALL LETTER INSULAR T
+    "ꞇ": [.t, .insular],
+
+    //A788          ; MODIFIER LETTER LOW CIRCUMFLEX ACCENT
+    "ꞈ": [.circumflex, .subscript],
+
+    //A789          ; MODIFIER LETTER COLON
+    "꞉": [.modifierColon],
+
+    //A78A          ; MODIFIER LETTER SHORT EQUALS SIGN
+    "꞊": [.modifierEqualsSign],
+
+    //A78B          ; LATIN CAPITAL LETTER SALTILLO
+    "Ꞌ": [.saltillo, .capital],
+
+    //A78C          ; LATIN SMALL LETTER SALTILLO
+    "ꞌ": [.saltillo],
+
+    //A78D          ; LATIN CAPITAL LETTER TURNED H
+    "Ɥ": [.h, .capital, .turned],
+
+    //A78E          ; LATIN SMALL LETTER L WITH RETROFLEX HOOK AND BELT
+    "ꞎ": [.l, .retroflexHook, .belt],
+
+    //A78F          ; LATIN LETTER SINOLOGICAL DOT
+    "ꞏ": [.sinologicalDot],
+
+    //A790          ; LATIN CAPITAL LETTER N WITH DESCENDER
+    "Ꞑ": [.n, .capital, .descender],
+
+    //A791          ; LATIN SMALL LETTER N WITH DESCENDER
+    "ꞑ": [.n, .descender],
+
+    //A792          ; LATIN CAPITAL LETTER C WITH BAR
+    "Ꞓ": [.c, .capital, .stroke],
+
+    //A793          ; LATIN SMALL LETTER C WITH BAR
+    "ꞓ": [.c, .stroke],
+
+    //A794          ; LATIN SMALL LETTER C WITH PALATAL HOOK
+    "ꞔ": [.c, .palatalHook],
+
+    //A795          ; LATIN SMALL LETTER H WITH PALATAL HOOK
+    "ꞕ": [.h, .palatalHook],
+
+    //A796          ; LATIN CAPITAL LETTER B WITH FLOURISH
+    "Ꞗ": [.b, .capital, .flourish],
+
+    //A797          ; LATIN SMALL LETTER B WITH FLOURISH
+    "ꞗ": [.b, .flourish],
+
+    //A798          ; LATIN CAPITAL LETTER F WITH STROKE
+    "Ꞙ": [.f, .capital, .stroke],
+
+    //A799          ; LATIN SMALL LETTER F WITH STROKE
+    "ꞙ": [.f, .stroke],
+
+    //A79A          ; LATIN CAPITAL LETTER VOLAPUK AE
+    "Ꞛ": [.a, .e, .capital, .volapuk],
+
+    //A79B          ; LATIN SMALL LETTER VOLAPUK AE
+    "ꞛ": [.a, .e, .volapuk],
+
+    //A79C          ; LATIN CAPITAL LETTER VOLAPUK OE
+    "Ꞝ": [.o, .e, .capital, .volapuk],
+
+    //A79D          ; LATIN SMALL LETTER VOLAPUK OE
+    "ꞝ": [.o, .e, .volapuk],
+
+    //A79E          ; LATIN CAPITAL LETTER VOLAPUK UE
+    "Ꞟ": [.u, .e, .capital, .volapuk],
+
+    //A79F          ; LATIN SMALL LETTER VOLAPUK UE
+    "ꞟ": [.u, .e, .volapuk],
+
+    //A7A0          ; LATIN CAPITAL LETTER G WITH OBLIQUE STROKE
+    "Ꞡ": [.g, .capital, .obliqueStroke],
+
+    //A7A1          ; LATIN SMALL LETTER G WITH OBLIQUE STROKE
+    "ꞡ": [.g, .obliqueStroke],
+
+    //A7A2          ; LATIN CAPITAL LETTER K WITH OBLIQUE STROKE
+    "Ꞣ": [.k, .capital, .obliqueStroke],
+
+    //A7A3          ; LATIN SMALL LETTER K WITH OBLIQUE STROKE
+    "ꞣ": [.k, .obliqueStroke],
+
+    //A7A4          ; LATIN CAPITAL LETTER N WITH OBLIQUE STROKE
+    "Ꞥ": [.n, .capital, .obliqueStroke],
+
+    //A7A5          ; LATIN SMALL LETTER N WITH OBLIQUE STROKE
+    "ꞥ": [.n, .obliqueStroke],
+
+    //A7A6          ; LATIN CAPITAL LETTER R WITH OBLIQUE STROKE
+    "Ꞧ": [.r, .capital, .obliqueStroke],
+
+    //A7A7          ; LATIN SMALL LETTER R WITH OBLIQUE STROKE
+    "ꞧ": [.r, .obliqueStroke],
+
+    //A7A8          ; LATIN CAPITAL LETTER S WITH OBLIQUE STROKE
+    "Ꞩ": [.s, .capital, .obliqueStroke],
+
+    //A7A9          ; LATIN SMALL LETTER S WITH OBLIQUE STROKE
+    "ꞩ": [.s, .obliqueStroke],
+
+    //A7AA          ; LATIN CAPITAL LETTER H WITH HOOK
+    "Ɦ": [.h, .capital, .hook],
+
+    //A7AB          ; LATIN CAPITAL LETTER REVERSED OPEN E
+    "Ɜ": [.e, .capital, .open, .reversed],
+
+    //A7AC          ; LATIN CAPITAL LETTER SCRIPT G
+    "Ɡ": [.g, .capital, .script],
+
+    //A7AD          ; LATIN CAPITAL LETTER L WITH BELT
+    "Ɬ": [.l, .capital, .belt],
+
+    //A7AE          ; LATIN CAPITAL LETTER SMALL CAPITAL I
+    "Ɪ": [.i, .smallCapital, .capital],
+
+    //A7B0          ; LATIN CAPITAL LETTER TURNED K
+    "Ʞ": [.k, .capital, .turned],
+
+    //A7B1          ; LATIN CAPITAL LETTER TURNED T
+    "Ʇ": [.t, .capital, .turned],
+
+    //A7B2          ; LATIN CAPITAL LETTER J WITH CROSSED-TAIL
+    "Ʝ": [.j, .capital, .crossedTail],
+
+    //A7B3          ; LATIN CAPITAL LETTER CHI
+    "Ꭓ": [.x, .h, .capital],
+
+    //A7B4          ; LATIN CAPITAL LETTER BETA
+    "Ꞵ": [.b, .h, .capital],
+
+    //A7B5          ; LATIN SMALL LETTER BETA
+    "ꞵ": [.b, .h],
+
+    //A7B6          ; LATIN CAPITAL LETTER OMEGA
+    "Ꞷ": [.o, .o, .h, .capital],
+
+    //A7B7          ; LATIN SMALL LETTER OMEGA
+    "ꞷ": [.o, .o, .h],
+
+    //A7F7          ; LATIN EPIGRAPHIC LETTER SIDEWAYS I
+    "ꟷ": [.i, .capital, .sideways],
+
+    //A7F8          ; MODIFIER LETTER CAPITAL H WITH STROKE
+    "ꟸ": [.h, .capital, .stroke, .superscript],
+
+    //A7F9          ; MODIFIER LETTER SMALL LIGATURE OE
+    "ꟹ": [.o, .e, .superscript],
+
+    //A7FA          ; LATIN LETTER SMALL CAPITAL TURNED M
+    "ꟺ": [.m, .smallCapital, .turned],
+
+    //A7FB          ; LATIN EPIGRAPHIC LETTER REVERSED F
+    "ꟻ": [.f, .capital, .reversed],
+
+    //A7FC          ; LATIN EPIGRAPHIC LETTER REVERSED P
+    "ꟼ": [.p, .capital, .reversed],
+
+    //A7FD          ; LATIN EPIGRAPHIC LETTER INVERTED M
+    "ꟽ": [.m, .capital, .inverted],
+
+    //A7FE          ; LATIN EPIGRAPHIC LETTER I LONGA
+    "ꟾ": [.i, .capital, .longLeg],
+
+    //A7FF          ; LATIN EPIGRAPHIC LETTER ARCHAIC M
+    "ꟿ": [.m, .capital, .archaic],
 
 ]

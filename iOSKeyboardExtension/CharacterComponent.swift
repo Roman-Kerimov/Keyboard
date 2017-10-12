@@ -31,6 +31,8 @@ enum CharacterComponent {
     
     case notSign
     case schwa
+    case egyptologialAlef, egyptologicalAin
+    case glottalStop, ain, saltillo, sinologicalDot
     case interrobang
     
     case capital, smallCapital
@@ -38,18 +40,20 @@ enum CharacterComponent {
     case extraLeft
     case superscript, `subscript`, middle, raised
     
-    case stroke, shortStroke, longStroke, lightCentralizationStroke
+    case highStroke, topbar
+    case stroke, shortStroke, longStroke, lightCentralizationStroke, obliqueStroke
+    case lowStroke
     case diagonalStroke, shortDiagonalStroke, longDiagonalStroke
     case longLeg
     case L
     case hook, retroflexHook, palatalHook
-    case topbar
     case tone
     case open, closed
     case horn
     case curl, belt, crossedTail, loop
-    case tail, notch
+    case tail, notch, flourish
     case descender
+    case um
     case dTop
     case sBottom
     case uTop
@@ -59,6 +63,11 @@ enum CharacterComponent {
     case letterScript
     case insular
     case middleWelsh
+    case visigothic
+    case volapuk
+    case broken
+    case archaic
+    case vend
     
     case greek, final, symbol, lunate
     
@@ -102,8 +111,9 @@ enum CharacterComponent {
     case rhoticHook
     case modifierPlus
     case modifierMinus
-    case unaspirated
+    case unaspirated, modifierEqualsSign
     case modifierPrime
+    case modifierColon
     case shelf
     
     case tack, modifierTack

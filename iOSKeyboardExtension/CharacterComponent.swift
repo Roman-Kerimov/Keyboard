@@ -76,6 +76,8 @@ enum CharacterComponent {
     case fraktur
     case sansSerif
     
+    case blackletter, lenis, stirrup, withoutHandle, baseline, shortRightLeg, serif
+    
     case italic
     
     case cedilla

@@ -5489,7 +5489,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "≌": [.tilde, .equalsSign, .doubled, .reversed],
 
     //224D          ; EQUIVALENT TO
-    "≍": [.breve, .invertedBreve],
+    "≍": [.equalsSign, .breve],
 
     //224E          ; GEOMETRICALLY EQUIVALENT TO
     "≎": [],
@@ -5585,7 +5585,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "≬": [.parenthesis, .parenthesis, .reversed],
 
     //226D          ; NOT EQUIVALENT TO
-    "≭": [.breve, .invertedBreve, .not],
+    "≭": [.equalsSign, .breve, .not],
 
     //226E          ; NOT LESS-THAN
     "≮": [.lessThanSign, .not],
@@ -7701,5 +7701,170 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
 
     //A7FF          ; LATIN EPIGRAPHIC LETTER ARCHAIC M
     "ꟿ": [.m, .capital, .archaic],
+
+    
+    // MARK: - AB30..AB6F; Latin Extended-E
+    
+    //AB30          ; LATIN SMALL LETTER BARRED ALPHA
+    "ꬰ": [.a, .h, .stroke],
+
+    //AB31          ; LATIN SMALL LETTER A REVERSED-SCHWA
+    "ꬱ": [.a, .schwa],
+
+    //AB32          ; LATIN SMALL LETTER BLACKLETTER E
+    "ꬲ": [.e, .blackletter],
+
+    //AB33          ; LATIN SMALL LETTER BARRED E
+    "ꬳ": [.e, .stroke],
+
+    //AB34          ; LATIN SMALL LETTER E WITH FLOURISH
+    "ꬴ": [.e, .flourish],
+
+    //AB35          ; LATIN SMALL LETTER LENIS F
+    "ꬵ": [.f, .lenis],
+
+    //AB36          ; LATIN SMALL LETTER SCRIPT G WITH CROSSED-TAIL
+    "ꬶ": [.g, .crossedTail],
+
+    //AB37          ; LATIN SMALL LETTER L WITH INVERTED LAZY S
+    "ꬷ": [.l, .s],
+
+    //AB38          ; LATIN SMALL LETTER L WITH DOUBLE MIDDLE TILDE
+    "ꬸ": [.l, .tilde, .doubled],
+
+    //AB39          ; LATIN SMALL LETTER L WITH MIDDLE RING
+    "ꬹ": [.l, .ring],
+
+    //AB3A          ; LATIN SMALL LETTER M WITH CROSSED-TAIL
+    "ꬺ": [.m, .crossedTail],
+
+    //AB3B          ; LATIN SMALL LETTER N WITH CROSSED-TAIL
+    "ꬻ": [.n, .crossedTail],
+
+    //AB3C          ; LATIN SMALL LETTER ENG WITH CROSSED-TAIL
+    "ꬼ": [.n, .g, .crossedTail],
+
+    //AB3D          ; LATIN SMALL LETTER BLACKLETTER O
+    "ꬽ": [.o, .blackletter],
+
+    //AB3E          ; LATIN SMALL LETTER BLACKLETTER O WITH STROKE
+    "ꬾ": [.o, .blackletter, .diagonalStroke],
+
+    //AB3F          ; LATIN SMALL LETTER OPEN O WITH STROKE
+    "ꬿ": [.o, .open, .diagonalStroke],
+
+    //AB40          ; LATIN SMALL LETTER INVERTED OE
+    "ꭀ": [.o, .e, .inverted],
+
+    //AB41          ; LATIN SMALL LETTER TURNED OE WITH STROKE
+    "ꭁ": [.o, .e, .turned, .diagonalStroke],
+
+    //AB42          ; LATIN SMALL LETTER TURNED OE WITH HORIZONTAL STROKE
+    "ꭂ": [.o, .e, .turned, .stroke],
+
+    //AB43          ; LATIN SMALL LETTER TURNED O OPEN-O
+    "ꭃ": [.o, .open, .o],
+
+    //AB44          ; LATIN SMALL LETTER TURNED O OPEN-O WITH STROKE
+    "ꭄ": [.o, .open, .o, .diagonalStroke],
+
+    //AB45          ; LATIN SMALL LETTER STIRRUP R
+    "ꭅ": [.r, .stirrup],
+
+    //AB46          ; LATIN LETTER SMALL CAPITAL R WITH RIGHT LEG
+    "ꭆ": [.r, .smallCapital, .longLeg],
+
+    //AB47          ; LATIN SMALL LETTER R WITHOUT HANDLE
+    "ꭇ": [.r, .withoutHandle],
+
+    //AB48          ; LATIN SMALL LETTER DOUBLE R
+    "ꭈ": [.r, .r],
+
+    //AB49          ; LATIN SMALL LETTER R WITH CROSSED-TAIL
+    "ꭉ": [.r, .crossedTail],
+
+    //AB4A          ; LATIN SMALL LETTER DOUBLE R WITH CROSSED-TAIL
+    "ꭊ": [.r, .r, .crossedTail],
+
+    //AB4B          ; LATIN SMALL LETTER SCRIPT R
+    "ꭋ": [.r, .script],
+
+    //AB4C          ; LATIN SMALL LETTER SCRIPT R WITH RING
+    "ꭌ": [.r, .script, .ring],
+
+    //AB4D          ; LATIN SMALL LETTER BASELINE ESH
+    "ꭍ": [.s, .h, .baseline],
+
+    //AB4E          ; LATIN SMALL LETTER U WITH SHORT RIGHT LEG
+    "ꭎ": [.u, .shortRightLeg],
+
+    //AB4F          ; LATIN SMALL LETTER U BAR WITH SHORT RIGHT LEG
+    "ꭏ": [.u, .shortRightLeg, .stroke],
+
+    //AB50          ; LATIN SMALL LETTER UI
+    "ꭐ": [.u, .i],
+
+    //AB51          ; LATIN SMALL LETTER TURNED UI
+    "ꭑ": [.u, .i, .turned],
+
+    //AB52          ; LATIN SMALL LETTER U WITH LEFT HOOK
+    "ꭒ": [.u, .hook],
+
+    //AB53          ; LATIN SMALL LETTER CHI
+    "ꭓ": [.x, .h],
+
+    //AB54          ; LATIN SMALL LETTER CHI WITH LOW RIGHT RING
+    "ꭔ": [.x, .h, .ring],
+
+    //AB55          ; LATIN SMALL LETTER CHI WITH LOW LEFT SERIF
+    "ꭕ": [.x, .h, .serif],
+
+    //AB56          ; LATIN SMALL LETTER X WITH LOW RIGHT RING
+    "ꭖ": [.x, .ring],
+
+    //AB57          ; LATIN SMALL LETTER X WITH LONG LEFT LEG
+    "ꭗ": [.x, .longLeg],
+
+    //AB58          ; LATIN SMALL LETTER X WITH LONG LEFT LEG AND LOW RIGHT RING
+    "ꭘ": [.x, .longLeg, .ring],
+
+    //AB59          ; LATIN SMALL LETTER X WITH LONG LEFT LEG WITH SERIF
+    "ꭙ": [.x, .longLeg, .serif],
+
+    //AB5A          ; LATIN SMALL LETTER Y WITH SHORT RIGHT LEG
+    "ꭚ": [.y, .shortRightLeg],
+
+    //AB5B          ; MODIFIER BREVE WITH INVERTED BREVE
+    "꭛": [.breve, .invertedBreve],
+
+    //AB5C          ; MODIFIER LETTER SMALL HENG
+    "ꭜ": [.h, .g, .superscript],
+
+    //AB5D          ; MODIFIER LETTER SMALL L WITH INVERTED LAZY S
+    "ꭝ": [.l, .s, .superscript],
+
+    //AB5E          ; MODIFIER LETTER SMALL L WITH MIDDLE TILDE
+    "ꭞ": [.l, .tilde, .superscript],
+
+    //AB5F          ; MODIFIER LETTER SMALL U WITH LEFT HOOK
+    "ꭟ": [.u, .hook, .superscript],
+
+    //AB60          ; LATIN SMALL LETTER SAKHA YAT
+    "ꭠ": [.i, .a],
+
+    //AB61          ; LATIN SMALL LETTER IOTIFIED E
+    "ꭡ": [.i, .e],
+
+    //AB62          ; LATIN SMALL LETTER OPEN OE
+    "ꭢ": [.o, .open, .e],
+
+    //AB63          ; LATIN SMALL LETTER UO
+    "ꭣ": [.u, .o],
+
+    //AB64          ; LATIN SMALL LETTER INVERTED ALPHA
+    "ꭤ": [.a, .h, .inverted],
+
+    //AB65          ; GREEK LETTER SMALL CAPITAL OMEGA
+    "ꭥ": [.o, .o, .greek, .smallCapital],
 
 ]

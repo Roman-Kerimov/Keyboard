@@ -7891,4 +7891,55 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     //FB06          ; LATIN SMALL LIGATURE ST
     "ﬆ": [.s, .t],
 
+    
+    // MARK: - FE20..FE2F; Combining Half Marks
+    
+    //FE20          ; COMBINING LIGATURE LEFT HALF
+    "︠": [.invertedBreve, .double, .leftHalf, .above],
+
+    //FE21          ; COMBINING LIGATURE RIGHT HALF
+    "︡": [.invertedBreve, .double, .rightHalf, .above],
+
+    //FE22          ; COMBINING DOUBLE TILDE LEFT HALF
+    "︢": [.tilde, .double, .leftHalf, .above],
+
+    //FE23          ; COMBINING DOUBLE TILDE RIGHT HALF
+    "︣": [.tilde, .double, .rightHalf, .above],
+
+    //FE24          ; COMBINING MACRON LEFT HALF
+    "︤": [.macron, .double, .leftHalf, .above],
+
+    //FE25          ; COMBINING MACRON RIGHT HALF
+    "︥": [.macron, .double, .rightHalf, .above],
+
+    //FE26          ; COMBINING CONJOINING MACRON
+    "︦": [], //Coptic
+
+    //FE27          ; COMBINING LIGATURE LEFT HALF BELOW
+    "︧": [.breve, .double, .leftHalf, .below],
+
+    //FE28          ; COMBINING LIGATURE RIGHT HALF BELOW
+    "︨": [.breve, .double, .rightHalf, .below],
+
+    //FE29          ; COMBINING TILDE LEFT HALF BELOW
+    "︩": [.tilde, .double, .leftHalf, .below],
+
+    //FE2A          ; COMBINING TILDE RIGHT HALF BELOW
+    "︪": [.tilde, .double, .rightHalf, .below],
+
+    //FE2B          ; COMBINING MACRON LEFT HALF BELOW
+    "︫": [.macron, .double, .leftHalf, .below],
+
+    //FE2C          ; COMBINING MACRON RIGHT HALF BELOW
+    "︬": [.macron, .double, .rightHalf, .below],
+
+    //FE2D          ; COMBINING CONJOINING MACRON BELOW
+    "︭": [], //Coptic
+
+    //FE2E          ; COMBINING CYRILLIC TITLO LEFT HALF
+    "︮": [],
+
+    //FE2F          ; COMBINING CYRILLIC TITLO RIGHT HALF
+    "︯": [],
+
 ]

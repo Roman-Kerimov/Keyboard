@@ -7867,4 +7867,28 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     //AB65          ; GREEK LETTER SMALL CAPITAL OMEGA
     "ꭥ": [.o, .o, .greek, .smallCapital],
 
+    
+    // MARK: - FB00..FB4F; Alphabetic Presentation Forms
+    
+    //FB00          ; LATIN SMALL LIGATURE FF
+    "ﬀ": [.f, .f],
+
+    //FB01          ; LATIN SMALL LIGATURE FI
+    "ﬁ": [.f, .i],
+
+    //FB02          ; LATIN SMALL LIGATURE FL
+    "ﬂ": [.f, .l],
+
+    //FB03          ; LATIN SMALL LIGATURE FFI
+    "ﬃ": [.f, .f, .i],
+
+    //FB04          ; LATIN SMALL LIGATURE FFL
+    "ﬄ": [.f, .f, .l],
+
+    //FB05          ; LATIN SMALL LIGATURE LONG S T
+    "ﬅ": [.s, .l, .t],
+
+    //FB06          ; LATIN SMALL LIGATURE ST
+    "ﬆ": [.s, .t],
+
 ]

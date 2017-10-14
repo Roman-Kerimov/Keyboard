@@ -2558,7 +2558,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "Τ": [.t, .capital, .greek],
 
     //03A5          ; GREEK CAPITAL LETTER UPSILON
-    "Υ": [.y, .capital, .greek],
+    "Υ": [.u, .capital, .greek],
 
     //03A6          ; GREEK CAPITAL LETTER PHI
     "Φ": [.p, .h, .capital, .greek],
@@ -2641,7 +2641,7 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "τ": [.t, .greek],
 
     //03C5          ; GREEK SMALL LETTER UPSILON
-    "υ": [.y, .greek],
+    "υ": [.u, .greek],
 
     //03C6          ; GREEK SMALL LETTER PHI
     "φ": [.p, .h, .greek],
@@ -7941,5 +7941,2991 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
 
     //FE2F          ; COMBINING CYRILLIC TITLO RIGHT HALF
     "︯": [],
+
+    
+    // MARK: - 1D400..1D7FF; Mathematical Alphanumeric Symbols
+    
+    //1D400         ; MATHEMATICAL BOLD CAPITAL A
+    "𝐀": [.a, .capital, .bold],
+
+    //1D401         ; MATHEMATICAL BOLD CAPITAL B
+    "𝐁": [.b, .capital, .bold],
+
+    //1D402         ; MATHEMATICAL BOLD CAPITAL C
+    "𝐂": [.c, .capital, .bold],
+
+    //1D403         ; MATHEMATICAL BOLD CAPITAL D
+    "𝐃": [.d, .capital, .bold],
+
+    //1D404         ; MATHEMATICAL BOLD CAPITAL E
+    "𝐄": [.e, .capital, .bold],
+
+    //1D405         ; MATHEMATICAL BOLD CAPITAL F
+    "𝐅": [.f, .capital, .bold],
+
+    //1D406         ; MATHEMATICAL BOLD CAPITAL G
+    "𝐆": [.g, .capital, .bold],
+
+    //1D407         ; MATHEMATICAL BOLD CAPITAL H
+    "𝐇": [.h, .capital, .bold],
+
+    //1D408         ; MATHEMATICAL BOLD CAPITAL I
+    "𝐈": [.i, .capital, .bold],
+
+    //1D409         ; MATHEMATICAL BOLD CAPITAL J
+    "𝐉": [.j, .capital, .bold],
+
+    //1D40A         ; MATHEMATICAL BOLD CAPITAL K
+    "𝐊": [.k, .capital, .bold],
+
+    //1D40B         ; MATHEMATICAL BOLD CAPITAL L
+    "𝐋": [.l, .capital, .bold],
+
+    //1D40C         ; MATHEMATICAL BOLD CAPITAL M
+    "𝐌": [.m, .capital, .bold],
+
+    //1D40D         ; MATHEMATICAL BOLD CAPITAL N
+    "𝐍": [.n, .capital, .bold],
+
+    //1D40E         ; MATHEMATICAL BOLD CAPITAL O
+    "𝐎": [.o, .capital, .bold],
+
+    //1D40F         ; MATHEMATICAL BOLD CAPITAL P
+    "𝐏": [.p, .capital, .bold],
+
+    //1D410         ; MATHEMATICAL BOLD CAPITAL Q
+    "𝐐": [.q, .capital, .bold],
+
+    //1D411         ; MATHEMATICAL BOLD CAPITAL R
+    "𝐑": [.r, .capital, .bold],
+
+    //1D412         ; MATHEMATICAL BOLD CAPITAL S
+    "𝐒": [.s, .capital, .bold],
+
+    //1D413         ; MATHEMATICAL BOLD CAPITAL T
+    "𝐓": [.t, .capital, .bold],
+
+    //1D414         ; MATHEMATICAL BOLD CAPITAL U
+    "𝐔": [.u, .capital, .bold],
+
+    //1D415         ; MATHEMATICAL BOLD CAPITAL V
+    "𝐕": [.v, .capital, .bold],
+
+    //1D416         ; MATHEMATICAL BOLD CAPITAL W
+    "𝐖": [.w, .capital, .bold],
+
+    //1D417         ; MATHEMATICAL BOLD CAPITAL X
+    "𝐗": [.x, .capital, .bold],
+
+    //1D418         ; MATHEMATICAL BOLD CAPITAL Y
+    "𝐘": [.y, .capital, .bold],
+
+    //1D419         ; MATHEMATICAL BOLD CAPITAL Z
+    "𝐙": [.z, .capital, .bold],
+
+    //1D41A         ; MATHEMATICAL BOLD SMALL A
+    "𝐚": [.a, .bold],
+
+    //1D41B         ; MATHEMATICAL BOLD SMALL B
+    "𝐛": [.b, .bold],
+
+    //1D41C         ; MATHEMATICAL BOLD SMALL C
+    "𝐜": [.c, .bold],
+
+    //1D41D         ; MATHEMATICAL BOLD SMALL D
+    "𝐝": [.d, .bold],
+
+    //1D41E         ; MATHEMATICAL BOLD SMALL E
+    "𝐞": [.e, .bold],
+
+    //1D41F         ; MATHEMATICAL BOLD SMALL F
+    "𝐟": [.f, .bold],
+
+    //1D420         ; MATHEMATICAL BOLD SMALL G
+    "𝐠": [.g, .bold],
+
+    //1D421         ; MATHEMATICAL BOLD SMALL H
+    "𝐡": [.h, .bold],
+
+    //1D422         ; MATHEMATICAL BOLD SMALL I
+    "𝐢": [.i, .bold],
+
+    //1D423         ; MATHEMATICAL BOLD SMALL J
+    "𝐣": [.j, .bold],
+
+    //1D424         ; MATHEMATICAL BOLD SMALL K
+    "𝐤": [.k, .bold],
+
+    //1D425         ; MATHEMATICAL BOLD SMALL L
+    "𝐥": [.l, .bold],
+
+    //1D426         ; MATHEMATICAL BOLD SMALL M
+    "𝐦": [.m, .bold],
+
+    //1D427         ; MATHEMATICAL BOLD SMALL N
+    "𝐧": [.n, .bold],
+
+    //1D428         ; MATHEMATICAL BOLD SMALL O
+    "𝐨": [.o, .bold],
+
+    //1D429         ; MATHEMATICAL BOLD SMALL P
+    "𝐩": [.p, .bold],
+
+    //1D42A         ; MATHEMATICAL BOLD SMALL Q
+    "𝐪": [.q, .bold],
+
+    //1D42B         ; MATHEMATICAL BOLD SMALL R
+    "𝐫": [.r, .bold],
+
+    //1D42C         ; MATHEMATICAL BOLD SMALL S
+    "𝐬": [.s, .bold],
+
+    //1D42D         ; MATHEMATICAL BOLD SMALL T
+    "𝐭": [.t, .bold],
+
+    //1D42E         ; MATHEMATICAL BOLD SMALL U
+    "𝐮": [.u, .bold],
+
+    //1D42F         ; MATHEMATICAL BOLD SMALL V
+    "𝐯": [.v, .bold],
+
+    //1D430         ; MATHEMATICAL BOLD SMALL W
+    "𝐰": [.w, .bold],
+
+    //1D431         ; MATHEMATICAL BOLD SMALL X
+    "𝐱": [.x, .bold],
+
+    //1D432         ; MATHEMATICAL BOLD SMALL Y
+    "𝐲": [.y, .bold],
+
+    //1D433         ; MATHEMATICAL BOLD SMALL Z
+    "𝐳": [.z, .bold],
+
+    //1D434         ; MATHEMATICAL ITALIC CAPITAL A
+    "𝐴": [.a, .capital, .italic],
+
+    //1D435         ; MATHEMATICAL ITALIC CAPITAL B
+    "𝐵": [.b, .capital, .italic],
+
+    //1D436         ; MATHEMATICAL ITALIC CAPITAL C
+    "𝐶": [.c, .capital, .italic],
+
+    //1D437         ; MATHEMATICAL ITALIC CAPITAL D
+    "𝐷": [.d, .capital, .italic],
+
+    //1D438         ; MATHEMATICAL ITALIC CAPITAL E
+    "𝐸": [.e, .capital, .italic],
+
+    //1D439         ; MATHEMATICAL ITALIC CAPITAL F
+    "𝐹": [.f, .capital, .italic],
+
+    //1D43A         ; MATHEMATICAL ITALIC CAPITAL G
+    "𝐺": [.g, .capital, .italic],
+
+    //1D43B         ; MATHEMATICAL ITALIC CAPITAL H
+    "𝐻": [.h, .capital, .italic],
+
+    //1D43C         ; MATHEMATICAL ITALIC CAPITAL I
+    "𝐼": [.i, .capital, .italic],
+
+    //1D43D         ; MATHEMATICAL ITALIC CAPITAL J
+    "𝐽": [.j, .capital, .italic],
+
+    //1D43E         ; MATHEMATICAL ITALIC CAPITAL K
+    "𝐾": [.k, .capital, .italic],
+
+    //1D43F         ; MATHEMATICAL ITALIC CAPITAL L
+    "𝐿": [.l, .capital, .italic],
+
+    //1D440         ; MATHEMATICAL ITALIC CAPITAL M
+    "𝑀": [.m, .capital, .italic],
+
+    //1D441         ; MATHEMATICAL ITALIC CAPITAL N
+    "𝑁": [.n, .capital, .italic],
+
+    //1D442         ; MATHEMATICAL ITALIC CAPITAL O
+    "𝑂": [.o, .capital, .italic],
+
+    //1D443         ; MATHEMATICAL ITALIC CAPITAL P
+    "𝑃": [.p, .capital, .italic],
+
+    //1D444         ; MATHEMATICAL ITALIC CAPITAL Q
+    "𝑄": [.q, .capital, .italic],
+
+    //1D445         ; MATHEMATICAL ITALIC CAPITAL R
+    "𝑅": [.r, .capital, .italic],
+
+    //1D446         ; MATHEMATICAL ITALIC CAPITAL S
+    "𝑆": [.s, .capital, .italic],
+
+    //1D447         ; MATHEMATICAL ITALIC CAPITAL T
+    "𝑇": [.t, .capital, .italic],
+
+    //1D448         ; MATHEMATICAL ITALIC CAPITAL U
+    "𝑈": [.u, .capital, .italic],
+
+    //1D449         ; MATHEMATICAL ITALIC CAPITAL V
+    "𝑉": [.v, .capital, .italic],
+
+    //1D44A         ; MATHEMATICAL ITALIC CAPITAL W
+    "𝑊": [.w, .capital, .italic],
+
+    //1D44B         ; MATHEMATICAL ITALIC CAPITAL X
+    "𝑋": [.x, .capital, .italic],
+
+    //1D44C         ; MATHEMATICAL ITALIC CAPITAL Y
+    "𝑌": [.y, .capital, .italic],
+
+    //1D44D         ; MATHEMATICAL ITALIC CAPITAL Z
+    "𝑍": [.z, .capital, .italic],
+
+    //1D44E         ; MATHEMATICAL ITALIC SMALL A
+    "𝑎": [.a, .italic],
+
+    //1D44F         ; MATHEMATICAL ITALIC SMALL B
+    "𝑏": [.b, .italic],
+
+    //1D450         ; MATHEMATICAL ITALIC SMALL C
+    "𝑐": [.c, .italic],
+
+    //1D451         ; MATHEMATICAL ITALIC SMALL D
+    "𝑑": [.d, .italic],
+
+    //1D452         ; MATHEMATICAL ITALIC SMALL E
+    "𝑒": [.e, .italic],
+
+    //1D453         ; MATHEMATICAL ITALIC SMALL F
+    "𝑓": [.f, .italic],
+
+    //1D454         ; MATHEMATICAL ITALIC SMALL G
+    "𝑔": [.g, .italic],
+
+    //1D456         ; MATHEMATICAL ITALIC SMALL I
+    "𝑖": [.i, .italic],
+
+    //1D457         ; MATHEMATICAL ITALIC SMALL J
+    "𝑗": [.j, .italic],
+
+    //1D458         ; MATHEMATICAL ITALIC SMALL K
+    "𝑘": [.k, .italic],
+
+    //1D459         ; MATHEMATICAL ITALIC SMALL L
+    "𝑙": [.l, .italic],
+
+    //1D45A         ; MATHEMATICAL ITALIC SMALL M
+    "𝑚": [.m, .italic],
+
+    //1D45B         ; MATHEMATICAL ITALIC SMALL N
+    "𝑛": [.n, .italic],
+
+    //1D45C         ; MATHEMATICAL ITALIC SMALL O
+    "𝑜": [.o, .italic],
+
+    //1D45D         ; MATHEMATICAL ITALIC SMALL P
+    "𝑝": [.p, .italic],
+
+    //1D45E         ; MATHEMATICAL ITALIC SMALL Q
+    "𝑞": [.q, .italic],
+
+    //1D45F         ; MATHEMATICAL ITALIC SMALL R
+    "𝑟": [.r, .italic],
+
+    //1D460         ; MATHEMATICAL ITALIC SMALL S
+    "𝑠": [.s, .italic],
+
+    //1D461         ; MATHEMATICAL ITALIC SMALL T
+    "𝑡": [.t, .italic],
+
+    //1D462         ; MATHEMATICAL ITALIC SMALL U
+    "𝑢": [.u, .italic],
+
+    //1D463         ; MATHEMATICAL ITALIC SMALL V
+    "𝑣": [.v, .italic],
+
+    //1D464         ; MATHEMATICAL ITALIC SMALL W
+    "𝑤": [.w, .italic],
+
+    //1D465         ; MATHEMATICAL ITALIC SMALL X
+    "𝑥": [.x, .italic],
+
+    //1D466         ; MATHEMATICAL ITALIC SMALL Y
+    "𝑦": [.y, .italic],
+
+    //1D467         ; MATHEMATICAL ITALIC SMALL Z
+    "𝑧": [.z, .italic],
+
+    //1D468         ; MATHEMATICAL BOLD ITALIC CAPITAL A
+    "𝑨": [.a, .capital, .bold, .italic],
+
+    //1D469         ; MATHEMATICAL BOLD ITALIC CAPITAL B
+    "𝑩": [.b, .capital, .bold, .italic],
+
+    //1D46A         ; MATHEMATICAL BOLD ITALIC CAPITAL C
+    "𝑪": [.c, .capital, .bold, .italic],
+
+    //1D46B         ; MATHEMATICAL BOLD ITALIC CAPITAL D
+    "𝑫": [.d, .capital, .bold, .italic],
+
+    //1D46C         ; MATHEMATICAL BOLD ITALIC CAPITAL E
+    "𝑬": [.e, .capital, .bold, .italic],
+
+    //1D46D         ; MATHEMATICAL BOLD ITALIC CAPITAL F
+    "𝑭": [.f, .capital, .bold, .italic],
+
+    //1D46E         ; MATHEMATICAL BOLD ITALIC CAPITAL G
+    "𝑮": [.g, .capital, .bold, .italic],
+
+    //1D46F         ; MATHEMATICAL BOLD ITALIC CAPITAL H
+    "𝑯": [.h, .capital, .bold, .italic],
+
+    //1D470         ; MATHEMATICAL BOLD ITALIC CAPITAL I
+    "𝑰": [.i, .capital, .bold, .italic],
+
+    //1D471         ; MATHEMATICAL BOLD ITALIC CAPITAL J
+    "𝑱": [.j, .capital, .bold, .italic],
+
+    //1D472         ; MATHEMATICAL BOLD ITALIC CAPITAL K
+    "𝑲": [.k, .capital, .bold, .italic],
+
+    //1D473         ; MATHEMATICAL BOLD ITALIC CAPITAL L
+    "𝑳": [.l, .capital, .bold, .italic],
+
+    //1D474         ; MATHEMATICAL BOLD ITALIC CAPITAL M
+    "𝑴": [.m, .capital, .bold, .italic],
+
+    //1D475         ; MATHEMATICAL BOLD ITALIC CAPITAL N
+    "𝑵": [.n, .capital, .bold, .italic],
+
+    //1D476         ; MATHEMATICAL BOLD ITALIC CAPITAL O
+    "𝑶": [.o, .capital, .bold, .italic],
+
+    //1D477         ; MATHEMATICAL BOLD ITALIC CAPITAL P
+    "𝑷": [.p, .capital, .bold, .italic],
+
+    //1D478         ; MATHEMATICAL BOLD ITALIC CAPITAL Q
+    "𝑸": [.q, .capital, .bold, .italic],
+
+    //1D479         ; MATHEMATICAL BOLD ITALIC CAPITAL R
+    "𝑹": [.r, .capital, .bold, .italic],
+
+    //1D47A         ; MATHEMATICAL BOLD ITALIC CAPITAL S
+    "𝑺": [.s, .capital, .bold, .italic],
+
+    //1D47B         ; MATHEMATICAL BOLD ITALIC CAPITAL T
+    "𝑻": [.t, .capital, .bold, .italic],
+
+    //1D47C         ; MATHEMATICAL BOLD ITALIC CAPITAL U
+    "𝑼": [.u, .capital, .bold, .italic],
+
+    //1D47D         ; MATHEMATICAL BOLD ITALIC CAPITAL V
+    "𝑽": [.v, .capital, .bold, .italic],
+
+    //1D47E         ; MATHEMATICAL BOLD ITALIC CAPITAL W
+    "𝑾": [.w, .capital, .bold, .italic],
+
+    //1D47F         ; MATHEMATICAL BOLD ITALIC CAPITAL X
+    "𝑿": [.x, .capital, .bold, .italic],
+
+    //1D480         ; MATHEMATICAL BOLD ITALIC CAPITAL Y
+    "𝒀": [.y, .capital, .bold, .italic],
+
+    //1D481         ; MATHEMATICAL BOLD ITALIC CAPITAL Z
+    "𝒁": [.z, .capital, .bold, .italic],
+
+    //1D482         ; MATHEMATICAL BOLD ITALIC SMALL A
+    "𝒂": [.a, .bold, .italic],
+
+    //1D483         ; MATHEMATICAL BOLD ITALIC SMALL B
+    "𝒃": [.b, .bold, .italic],
+
+    //1D484         ; MATHEMATICAL BOLD ITALIC SMALL C
+    "𝒄": [.c, .bold, .italic],
+
+    //1D485         ; MATHEMATICAL BOLD ITALIC SMALL D
+    "𝒅": [.d, .bold, .italic],
+
+    //1D486         ; MATHEMATICAL BOLD ITALIC SMALL E
+    "𝒆": [.e, .bold, .italic],
+
+    //1D487         ; MATHEMATICAL BOLD ITALIC SMALL F
+    "𝒇": [.f, .bold, .italic],
+
+    //1D488         ; MATHEMATICAL BOLD ITALIC SMALL G
+    "𝒈": [.g, .bold, .italic],
+
+    //1D489         ; MATHEMATICAL BOLD ITALIC SMALL H
+    "𝒉": [.h, .bold, .italic],
+
+    //1D48A         ; MATHEMATICAL BOLD ITALIC SMALL I
+    "𝒊": [.i, .bold, .italic],
+
+    //1D48B         ; MATHEMATICAL BOLD ITALIC SMALL J
+    "𝒋": [.j, .bold, .bold, .italic],
+
+    //1D48C         ; MATHEMATICAL BOLD ITALIC SMALL K
+    "𝒌": [.k, .bold, .italic],
+
+    //1D48D         ; MATHEMATICAL BOLD ITALIC SMALL L
+    "𝒍": [.l, .bold, .italic],
+
+    //1D48E         ; MATHEMATICAL BOLD ITALIC SMALL M
+    "𝒎": [.m, .bold, .italic],
+
+    //1D48F         ; MATHEMATICAL BOLD ITALIC SMALL N
+    "𝒏": [.n, .bold, .italic],
+
+    //1D490         ; MATHEMATICAL BOLD ITALIC SMALL O
+    "𝒐": [.o, .bold, .italic],
+
+    //1D491         ; MATHEMATICAL BOLD ITALIC SMALL P
+    "𝒑": [.p, .bold, .italic],
+
+    //1D492         ; MATHEMATICAL BOLD ITALIC SMALL Q
+    "𝒒": [.q, .bold, .italic],
+
+    //1D493         ; MATHEMATICAL BOLD ITALIC SMALL R
+    "𝒓": [.r, .bold, .italic],
+
+    //1D494         ; MATHEMATICAL BOLD ITALIC SMALL S
+    "𝒔": [.s, .bold, .italic],
+
+    //1D495         ; MATHEMATICAL BOLD ITALIC SMALL T
+    "𝒕": [.t, .bold, .italic],
+
+    //1D496         ; MATHEMATICAL BOLD ITALIC SMALL U
+    "𝒖": [.u, .bold, .italic],
+
+    //1D497         ; MATHEMATICAL BOLD ITALIC SMALL V
+    "𝒗": [.v, .bold, .italic],
+
+    //1D498         ; MATHEMATICAL BOLD ITALIC SMALL W
+    "𝒘": [.w, .bold, .italic],
+
+    //1D499         ; MATHEMATICAL BOLD ITALIC SMALL X
+    "𝒙": [.x, .bold, .italic],
+
+    //1D49A         ; MATHEMATICAL BOLD ITALIC SMALL Y
+    "𝒚": [.y, .bold, .italic],
+
+    //1D49B         ; MATHEMATICAL BOLD ITALIC SMALL Z
+    "𝒛": [.z, .bold, .italic],
+
+    //1D49C         ; MATHEMATICAL SCRIPT CAPITAL A
+    "𝒜": [.a, .capital, .script],
+
+    //1D49E         ; MATHEMATICAL SCRIPT CAPITAL C
+    "𝒞": [.c, .capital, .script],
+
+    //1D49F         ; MATHEMATICAL SCRIPT CAPITAL D
+    "𝒟": [.d, .capital, .script],
+
+    //1D4A2         ; MATHEMATICAL SCRIPT CAPITAL G
+    "𝒢": [.g, .capital, .script],
+
+    //1D4A5         ; MATHEMATICAL SCRIPT CAPITAL J
+    "𝒥": [.j, .capital, .script],
+
+    //1D4A6         ; MATHEMATICAL SCRIPT CAPITAL K
+    "𝒦": [.k, .capital, .script],
+
+    //1D4A9         ; MATHEMATICAL SCRIPT CAPITAL N
+    "𝒩": [.n, .capital, .script],
+
+    //1D4AA         ; MATHEMATICAL SCRIPT CAPITAL O
+    "𝒪": [.o, .capital, .script],
+
+    //1D4AB         ; MATHEMATICAL SCRIPT CAPITAL P
+    "𝒫": [.p, .capital, .script],
+
+    //1D4AC         ; MATHEMATICAL SCRIPT CAPITAL Q
+    "𝒬": [.q, .capital, .script],
+
+    //1D4AE         ; MATHEMATICAL SCRIPT CAPITAL S
+    "𝒮": [.s, .capital, .script],
+
+    //1D4AF         ; MATHEMATICAL SCRIPT CAPITAL T
+    "𝒯": [.t, .capital, .script],
+
+    //1D4B0         ; MATHEMATICAL SCRIPT CAPITAL U
+    "𝒰": [.u, .capital, .script],
+
+    //1D4B1         ; MATHEMATICAL SCRIPT CAPITAL V
+    "𝒱": [.v, .capital, .script],
+
+    //1D4B2         ; MATHEMATICAL SCRIPT CAPITAL W
+    "𝒲": [.w, .capital, .script],
+
+    //1D4B3         ; MATHEMATICAL SCRIPT CAPITAL X
+    "𝒳": [.x, .capital, .script],
+
+    //1D4B4         ; MATHEMATICAL SCRIPT CAPITAL Y
+    "𝒴": [.y, .capital, .script],
+
+    //1D4B5         ; MATHEMATICAL SCRIPT CAPITAL Z
+    "𝒵": [.z, .capital, .script],
+
+    //1D4B6         ; MATHEMATICAL SCRIPT SMALL A
+    "𝒶": [.a, .script],
+
+    //1D4B7         ; MATHEMATICAL SCRIPT SMALL B
+    "𝒷": [.b, .script],
+
+    //1D4B8         ; MATHEMATICAL SCRIPT SMALL C
+    "𝒸": [.s, .script],
+
+    //1D4B9         ; MATHEMATICAL SCRIPT SMALL D
+    "𝒹": [.d, .script],
+
+    //1D4BB         ; MATHEMATICAL SCRIPT SMALL F
+    "𝒻": [.f, .script],
+
+    //1D4BD         ; MATHEMATICAL SCRIPT SMALL H
+    "𝒽": [.h, .script],
+
+    //1D4BE         ; MATHEMATICAL SCRIPT SMALL I
+    "𝒾": [.i, .script],
+
+    //1D4BF         ; MATHEMATICAL SCRIPT SMALL J
+    "𝒿": [.j, .script],
+
+    //1D4C0         ; MATHEMATICAL SCRIPT SMALL K
+    "𝓀": [.k, .script],
+
+    //1D4C1         ; MATHEMATICAL SCRIPT SMALL L
+    "𝓁": [.l, .script],
+
+    //1D4C2         ; MATHEMATICAL SCRIPT SMALL M
+    "𝓂": [.m, .script],
+
+    //1D4C3         ; MATHEMATICAL SCRIPT SMALL N
+    "𝓃": [.n, .script],
+
+    //1D4C5         ; MATHEMATICAL SCRIPT SMALL P
+    "𝓅": [.p, .script],
+
+    //1D4C6         ; MATHEMATICAL SCRIPT SMALL Q
+    "𝓆": [.q, .script],
+
+    //1D4C7         ; MATHEMATICAL SCRIPT SMALL R
+    "𝓇": [.r, .script],
+
+    //1D4C8         ; MATHEMATICAL SCRIPT SMALL S
+    "𝓈": [.s, .script],
+
+    //1D4C9         ; MATHEMATICAL SCRIPT SMALL T
+    "𝓉": [.t, .script],
+
+    //1D4CA         ; MATHEMATICAL SCRIPT SMALL U
+    "𝓊": [.u, .script],
+
+    //1D4CB         ; MATHEMATICAL SCRIPT SMALL V
+    "𝓋": [.v, .script],
+
+    //1D4CC         ; MATHEMATICAL SCRIPT SMALL W
+    "𝓌": [.w, .script],
+
+    //1D4CD         ; MATHEMATICAL SCRIPT SMALL X
+    "𝓍": [.x, .script],
+
+    //1D4CE         ; MATHEMATICAL SCRIPT SMALL Y
+    "𝓎": [.y, .script],
+
+    //1D4CF         ; MATHEMATICAL SCRIPT SMALL Z
+    "𝓏": [.z, .script],
+
+    //1D4D0         ; MATHEMATICAL BOLD SCRIPT CAPITAL A
+    "𝓐": [.a, .capital, .bold, .script],
+
+    //1D4D1         ; MATHEMATICAL BOLD SCRIPT CAPITAL B
+    "𝓑": [.b, .capital, .bold, .script],
+
+    //1D4D2         ; MATHEMATICAL BOLD SCRIPT CAPITAL C
+    "𝓒": [.c, .capital, .bold, .script],
+
+    //1D4D3         ; MATHEMATICAL BOLD SCRIPT CAPITAL D
+    "𝓓": [.d, .capital, .bold, .script],
+
+    //1D4D4         ; MATHEMATICAL BOLD SCRIPT CAPITAL E
+    "𝓔": [.e, .capital, .bold, .script],
+
+    //1D4D5         ; MATHEMATICAL BOLD SCRIPT CAPITAL F
+    "𝓕": [.f, .capital, .bold, .script],
+
+    //1D4D6         ; MATHEMATICAL BOLD SCRIPT CAPITAL G
+    "𝓖": [.g, .capital, .bold, .script],
+
+    //1D4D7         ; MATHEMATICAL BOLD SCRIPT CAPITAL H
+    "𝓗": [.h, .capital, .bold, .script],
+
+    //1D4D8         ; MATHEMATICAL BOLD SCRIPT CAPITAL I
+    "𝓘": [.i, .capital, .bold, .script],
+
+    //1D4D9         ; MATHEMATICAL BOLD SCRIPT CAPITAL J
+    "𝓙": [.f, .capital, .bold, .script],
+
+    //1D4DA         ; MATHEMATICAL BOLD SCRIPT CAPITAL K
+    "𝓚": [.k, .capital, .bold, .script],
+
+    //1D4DB         ; MATHEMATICAL BOLD SCRIPT CAPITAL L
+    "𝓛": [.l, .capital, .bold, .script],
+
+    //1D4DC         ; MATHEMATICAL BOLD SCRIPT CAPITAL M
+    "𝓜": [.m, .capital, .bold, .script],
+
+    //1D4DD         ; MATHEMATICAL BOLD SCRIPT CAPITAL N
+    "𝓝": [.n, .capital, .bold, .script],
+
+    //1D4DE         ; MATHEMATICAL BOLD SCRIPT CAPITAL O
+    "𝓞": [.o, .capital, .bold, .script],
+
+    //1D4DF         ; MATHEMATICAL BOLD SCRIPT CAPITAL P
+    "𝓟": [.p, .capital, .bold, .script],
+
+    //1D4E0         ; MATHEMATICAL BOLD SCRIPT CAPITAL Q
+    "𝓠": [.q, .capital, .bold, .script],
+
+    //1D4E1         ; MATHEMATICAL BOLD SCRIPT CAPITAL R
+    "𝓡": [.r, .capital, .bold, .script],
+
+    //1D4E2         ; MATHEMATICAL BOLD SCRIPT CAPITAL S
+    "𝓢": [.s, .capital, .bold, .script],
+
+    //1D4E3         ; MATHEMATICAL BOLD SCRIPT CAPITAL T
+    "𝓣": [.t, .capital, .bold, .script],
+
+    //1D4E4         ; MATHEMATICAL BOLD SCRIPT CAPITAL U
+    "𝓤": [.u, .capital, .bold, .script],
+
+    //1D4E5         ; MATHEMATICAL BOLD SCRIPT CAPITAL V
+    "𝓥": [.v, .capital, .bold, .script],
+
+    //1D4E6         ; MATHEMATICAL BOLD SCRIPT CAPITAL W
+    "𝓦": [.w, .capital, .bold, .script],
+
+    //1D4E7         ; MATHEMATICAL BOLD SCRIPT CAPITAL X
+    "𝓧": [.x, .capital, .bold, .script],
+
+    //1D4E8         ; MATHEMATICAL BOLD SCRIPT CAPITAL Y
+    "𝓨": [.y, .capital, .bold, .script],
+
+    //1D4E9         ; MATHEMATICAL BOLD SCRIPT CAPITAL Z
+    "𝓩": [.z, .capital, .bold, .script],
+
+    //1D4EA         ; MATHEMATICAL BOLD SCRIPT SMALL A
+    "𝓪": [.a, .bold, .script],
+
+    //1D4EB         ; MATHEMATICAL BOLD SCRIPT SMALL B
+    "𝓫": [.b, .bold, .script],
+
+    //1D4EC         ; MATHEMATICAL BOLD SCRIPT SMALL C
+    "𝓬": [.c, .bold, .script],
+
+    //1D4ED         ; MATHEMATICAL BOLD SCRIPT SMALL D
+    "𝓭": [.d, .bold, .script],
+
+    //1D4EE         ; MATHEMATICAL BOLD SCRIPT SMALL E
+    "𝓮": [.e, .bold, .script],
+
+    //1D4EF         ; MATHEMATICAL BOLD SCRIPT SMALL F
+    "𝓯": [.f, .bold, .script],
+
+    //1D4F0         ; MATHEMATICAL BOLD SCRIPT SMALL G
+    "𝓰": [.g, .bold, .script],
+
+    //1D4F1         ; MATHEMATICAL BOLD SCRIPT SMALL H
+    "𝓱": [.h, .bold, .script],
+
+    //1D4F2         ; MATHEMATICAL BOLD SCRIPT SMALL I
+    "𝓲": [.i, .bold, .script],
+
+    //1D4F3         ; MATHEMATICAL BOLD SCRIPT SMALL J
+    "𝓳": [.j, .bold, .script],
+
+    //1D4F4         ; MATHEMATICAL BOLD SCRIPT SMALL K
+    "𝓴": [.k, .bold, .script],
+
+    //1D4F5         ; MATHEMATICAL BOLD SCRIPT SMALL L
+    "𝓵": [.l, .bold, .script],
+
+    //1D4F6         ; MATHEMATICAL BOLD SCRIPT SMALL M
+    "𝓶": [.m, .bold, .script],
+
+    //1D4F7         ; MATHEMATICAL BOLD SCRIPT SMALL N
+    "𝓷": [.n, .bold, .script],
+
+    //1D4F8         ; MATHEMATICAL BOLD SCRIPT SMALL O
+    "𝓸": [.o, .bold, .script],
+
+    //1D4F9         ; MATHEMATICAL BOLD SCRIPT SMALL P
+    "𝓹": [.p, .bold, .script],
+
+    //1D4FA         ; MATHEMATICAL BOLD SCRIPT SMALL Q
+    "𝓺": [.q, .bold, .script],
+
+    //1D4FB         ; MATHEMATICAL BOLD SCRIPT SMALL R
+    "𝓻": [.r, .bold, .script],
+
+    //1D4FC         ; MATHEMATICAL BOLD SCRIPT SMALL S
+    "𝓼": [.s, .bold, .script],
+
+    //1D4FD         ; MATHEMATICAL BOLD SCRIPT SMALL T
+    "𝓽": [.t, .bold, .script],
+
+    //1D4FE         ; MATHEMATICAL BOLD SCRIPT SMALL U
+    "𝓾": [.u, .bold, .script],
+
+    //1D4FF         ; MATHEMATICAL BOLD SCRIPT SMALL V
+    "𝓿": [.v, .bold, .script],
+
+    //1D500         ; MATHEMATICAL BOLD SCRIPT SMALL W
+    "𝔀": [.w, .bold, .script],
+
+    //1D501         ; MATHEMATICAL BOLD SCRIPT SMALL X
+    "𝔁": [.x, .bold, .script],
+
+    //1D502         ; MATHEMATICAL BOLD SCRIPT SMALL Y
+    "𝔂": [.y, .bold, .script],
+
+    //1D503         ; MATHEMATICAL BOLD SCRIPT SMALL Z
+    "𝔃": [.z, .bold, .script],
+
+    //1D504         ; MATHEMATICAL FRAKTUR CAPITAL A
+    "𝔄": [.a, .capital, .fraktur],
+
+    //1D505         ; MATHEMATICAL FRAKTUR CAPITAL B
+    "𝔅": [.b, .capital, .fraktur],
+
+    //1D507         ; MATHEMATICAL FRAKTUR CAPITAL D
+    "𝔇": [.d, .capital, .fraktur],
+
+    //1D508         ; MATHEMATICAL FRAKTUR CAPITAL E
+    "𝔈": [.e, .capital, .fraktur],
+
+    //1D509         ; MATHEMATICAL FRAKTUR CAPITAL F
+    "𝔉": [.f, .capital, .fraktur],
+
+    //1D50A         ; MATHEMATICAL FRAKTUR CAPITAL G
+    "𝔊": [.g, .capital, .fraktur],
+
+    //1D50D         ; MATHEMATICAL FRAKTUR CAPITAL J
+    "𝔍": [.j, .capital, .fraktur],
+
+    //1D50E         ; MATHEMATICAL FRAKTUR CAPITAL K
+    "𝔎": [.k, .capital, .fraktur],
+
+    //1D50F         ; MATHEMATICAL FRAKTUR CAPITAL L
+    "𝔏": [.l, .capital, .fraktur],
+
+    //1D510         ; MATHEMATICAL FRAKTUR CAPITAL M
+    "𝔐": [.m, .capital, .fraktur],
+
+    //1D511         ; MATHEMATICAL FRAKTUR CAPITAL N
+    "𝔑": [.n, .capital, .fraktur],
+
+    //1D512         ; MATHEMATICAL FRAKTUR CAPITAL O
+    "𝔒": [.o, .capital, .fraktur],
+
+    //1D513         ; MATHEMATICAL FRAKTUR CAPITAL P
+    "𝔓": [.p, .capital, .fraktur],
+
+    //1D514         ; MATHEMATICAL FRAKTUR CAPITAL Q
+    "𝔔": [.q, .capital, .fraktur],
+
+    //1D516         ; MATHEMATICAL FRAKTUR CAPITAL S
+    "𝔖": [.s, .capital, .fraktur],
+
+    //1D517         ; MATHEMATICAL FRAKTUR CAPITAL T
+    "𝔗": [.t, .capital, .fraktur],
+
+    //1D518         ; MATHEMATICAL FRAKTUR CAPITAL U
+    "𝔘": [.u, .capital, .fraktur],
+
+    //1D519         ; MATHEMATICAL FRAKTUR CAPITAL V
+    "𝔙": [.v, .capital, .fraktur],
+
+    //1D51A         ; MATHEMATICAL FRAKTUR CAPITAL W
+    "𝔚": [.w, .capital, .fraktur],
+
+    //1D51B         ; MATHEMATICAL FRAKTUR CAPITAL X
+    "𝔛": [.x, .capital, .fraktur],
+
+    //1D51C         ; MATHEMATICAL FRAKTUR CAPITAL Y
+    "𝔜": [.y, .capital, .fraktur],
+
+    //1D51E         ; MATHEMATICAL FRAKTUR SMALL A
+    "𝔞": [.a, .fraktur],
+
+    //1D51F         ; MATHEMATICAL FRAKTUR SMALL B
+    "𝔟": [.b, .fraktur],
+
+    //1D520         ; MATHEMATICAL FRAKTUR SMALL C
+    "𝔠": [.c, .fraktur],
+
+    //1D521         ; MATHEMATICAL FRAKTUR SMALL D
+    "𝔡": [.d, .fraktur],
+
+    //1D522         ; MATHEMATICAL FRAKTUR SMALL E
+    "𝔢": [.e, .fraktur],
+
+    //1D523         ; MATHEMATICAL FRAKTUR SMALL F
+    "𝔣": [.f, .fraktur],
+
+    //1D524         ; MATHEMATICAL FRAKTUR SMALL G
+    "𝔤": [.g, .fraktur],
+
+    //1D525         ; MATHEMATICAL FRAKTUR SMALL H
+    "𝔥": [.h, .fraktur],
+
+    //1D526         ; MATHEMATICAL FRAKTUR SMALL I
+    "𝔦": [.i, .fraktur],
+
+    //1D527         ; MATHEMATICAL FRAKTUR SMALL J
+    "𝔧": [.j, .fraktur],
+
+    //1D528         ; MATHEMATICAL FRAKTUR SMALL K
+    "𝔨": [.k, .fraktur],
+
+    //1D529         ; MATHEMATICAL FRAKTUR SMALL L
+    "𝔩": [.l, .fraktur],
+
+    //1D52A         ; MATHEMATICAL FRAKTUR SMALL M
+    "𝔪": [.m, .fraktur],
+
+    //1D52B         ; MATHEMATICAL FRAKTUR SMALL N
+    "𝔫": [.n, .fraktur],
+
+    //1D52C         ; MATHEMATICAL FRAKTUR SMALL O
+    "𝔬": [.o, .fraktur],
+
+    //1D52D         ; MATHEMATICAL FRAKTUR SMALL P
+    "𝔭": [.p, .fraktur],
+
+    //1D52E         ; MATHEMATICAL FRAKTUR SMALL Q
+    "𝔮": [.q, .fraktur],
+
+    //1D52F         ; MATHEMATICAL FRAKTUR SMALL R
+    "𝔯": [.r, .fraktur],
+
+    //1D530         ; MATHEMATICAL FRAKTUR SMALL S
+    "𝔰": [.s, .fraktur],
+
+    //1D531         ; MATHEMATICAL FRAKTUR SMALL T
+    "𝔱": [.t, .fraktur],
+
+    //1D532         ; MATHEMATICAL FRAKTUR SMALL U
+    "𝔲": [.u, .fraktur],
+
+    //1D533         ; MATHEMATICAL FRAKTUR SMALL V
+    "𝔳": [.v, .fraktur],
+
+    //1D534         ; MATHEMATICAL FRAKTUR SMALL W
+    "𝔴": [.w, .fraktur],
+
+    //1D535         ; MATHEMATICAL FRAKTUR SMALL X
+    "𝔵": [.x, .fraktur],
+
+    //1D536         ; MATHEMATICAL FRAKTUR SMALL Y
+    "𝔶": [.y, .fraktur],
+
+    //1D537         ; MATHEMATICAL FRAKTUR SMALL Z
+    "𝔷": [.z, .fraktur],
+
+    //1D538         ; MATHEMATICAL DOUBLE-STRUCK CAPITAL A
+    "𝔸": [.a, .capital, .doubleStruck],
+
+    //1D539         ; MATHEMATICAL DOUBLE-STRUCK CAPITAL B
+    "𝔹": [.b, .capital, .doubleStruck],
+
+    //1D53B         ; MATHEMATICAL DOUBLE-STRUCK CAPITAL D
+    "𝔻": [.d, .capital, .doubleStruck],
+
+    //1D53C         ; MATHEMATICAL DOUBLE-STRUCK CAPITAL E
+    "𝔼": [.e, .capital, .doubleStruck],
+
+    //1D53D         ; MATHEMATICAL DOUBLE-STRUCK CAPITAL F
+    "𝔽": [.f, .capital, .doubleStruck],
+
+    //1D53E         ; MATHEMATICAL DOUBLE-STRUCK CAPITAL G
+    "𝔾": [.g, .capital, .doubleStruck],
+
+    //1D540         ; MATHEMATICAL DOUBLE-STRUCK CAPITAL I
+    "𝕀": [.i, .capital, .doubleStruck],
+
+    //1D541         ; MATHEMATICAL DOUBLE-STRUCK CAPITAL J
+    "𝕁": [.j, .capital, .doubleStruck],
+
+    //1D542         ; MATHEMATICAL DOUBLE-STRUCK CAPITAL K
+    "𝕂": [.k, .capital, .doubleStruck],
+
+    //1D543         ; MATHEMATICAL DOUBLE-STRUCK CAPITAL L
+    "𝕃": [.l, .capital, .doubleStruck],
+
+    //1D544         ; MATHEMATICAL DOUBLE-STRUCK CAPITAL M
+    "𝕄": [.m, .capital, .doubleStruck],
+
+    //1D546         ; MATHEMATICAL DOUBLE-STRUCK CAPITAL O
+    "𝕆": [.o, .capital, .doubleStruck],
+
+    //1D54A         ; MATHEMATICAL DOUBLE-STRUCK CAPITAL S
+    "𝕊": [.s, .capital, .doubleStruck],
+
+    //1D54B         ; MATHEMATICAL DOUBLE-STRUCK CAPITAL T
+    "𝕋": [.t, .capital, .doubleStruck],
+
+    //1D54C         ; MATHEMATICAL DOUBLE-STRUCK CAPITAL U
+    "𝕌": [.u, .capital, .doubleStruck],
+
+    //1D54D         ; MATHEMATICAL DOUBLE-STRUCK CAPITAL V
+    "𝕍": [.v, .capital, .doubleStruck],
+
+    //1D54E         ; MATHEMATICAL DOUBLE-STRUCK CAPITAL W
+    "𝕎": [.w, .capital, .doubleStruck],
+
+    //1D54F         ; MATHEMATICAL DOUBLE-STRUCK CAPITAL X
+    "𝕏": [.x, .capital, .doubleStruck],
+
+    //1D550         ; MATHEMATICAL DOUBLE-STRUCK CAPITAL Y
+    "𝕐": [.y, .capital, .doubleStruck],
+
+    //1D552         ; MATHEMATICAL DOUBLE-STRUCK SMALL A
+    "𝕒": [.a, .doubleStruck],
+
+    //1D553         ; MATHEMATICAL DOUBLE-STRUCK SMALL B
+    "𝕓": [.b, .doubleStruck],
+
+    //1D554         ; MATHEMATICAL DOUBLE-STRUCK SMALL C
+    "𝕔": [.c, .doubleStruck],
+
+    //1D555         ; MATHEMATICAL DOUBLE-STRUCK SMALL D
+    "𝕕": [.d, .doubleStruck],
+
+    //1D556         ; MATHEMATICAL DOUBLE-STRUCK SMALL E
+    "𝕖": [.e, .doubleStruck],
+
+    //1D557         ; MATHEMATICAL DOUBLE-STRUCK SMALL F
+    "𝕗": [.f, .doubleStruck],
+
+    //1D558         ; MATHEMATICAL DOUBLE-STRUCK SMALL G
+    "𝕘": [.g, .doubleStruck],
+
+    //1D559         ; MATHEMATICAL DOUBLE-STRUCK SMALL H
+    "𝕙": [.h, .doubleStruck],
+
+    //1D55A         ; MATHEMATICAL DOUBLE-STRUCK SMALL I
+    "𝕚": [.i, .doubleStruck],
+
+    //1D55B         ; MATHEMATICAL DOUBLE-STRUCK SMALL J
+    "𝕛": [.j, .doubleStruck],
+
+    //1D55C         ; MATHEMATICAL DOUBLE-STRUCK SMALL K
+    "𝕜": [.k, .doubleStruck],
+
+    //1D55D         ; MATHEMATICAL DOUBLE-STRUCK SMALL L
+    "𝕝": [.l, .doubleStruck],
+
+    //1D55E         ; MATHEMATICAL DOUBLE-STRUCK SMALL M
+    "𝕞": [.m, .doubleStruck],
+
+    //1D55F         ; MATHEMATICAL DOUBLE-STRUCK SMALL N
+    "𝕟": [.n, .doubleStruck],
+
+    //1D560         ; MATHEMATICAL DOUBLE-STRUCK SMALL O
+    "𝕠": [.o, .doubleStruck],
+
+    //1D561         ; MATHEMATICAL DOUBLE-STRUCK SMALL P
+    "𝕡": [.p, .doubleStruck],
+
+    //1D562         ; MATHEMATICAL DOUBLE-STRUCK SMALL Q
+    "𝕢": [.q, .doubleStruck],
+
+    //1D563         ; MATHEMATICAL DOUBLE-STRUCK SMALL R
+    "𝕣": [.r, .doubleStruck],
+
+    //1D564         ; MATHEMATICAL DOUBLE-STRUCK SMALL S
+    "𝕤": [.s, .doubleStruck],
+
+    //1D565         ; MATHEMATICAL DOUBLE-STRUCK SMALL T
+    "𝕥": [.t, .doubleStruck],
+
+    //1D566         ; MATHEMATICAL DOUBLE-STRUCK SMALL U
+    "𝕦": [.u, .doubleStruck],
+
+    //1D567         ; MATHEMATICAL DOUBLE-STRUCK SMALL V
+    "𝕧": [.v, .doubleStruck],
+
+    //1D568         ; MATHEMATICAL DOUBLE-STRUCK SMALL W
+    "𝕨": [.w, .doubleStruck],
+
+    //1D569         ; MATHEMATICAL DOUBLE-STRUCK SMALL X
+    "𝕩": [.x, .doubleStruck],
+
+    //1D56A         ; MATHEMATICAL DOUBLE-STRUCK SMALL Y
+    "𝕪": [.y, .doubleStruck],
+
+    //1D56B         ; MATHEMATICAL DOUBLE-STRUCK SMALL Z
+    "𝕫": [.z, .doubleStruck],
+
+    //1D56C         ; MATHEMATICAL BOLD FRAKTUR CAPITAL A
+    "𝕬": [.a, .capital, .bold, .fraktur],
+
+    //1D56D         ; MATHEMATICAL BOLD FRAKTUR CAPITAL B
+    "𝕭": [.b, .capital, .bold, .fraktur],
+
+    //1D56E         ; MATHEMATICAL BOLD FRAKTUR CAPITAL C
+    "𝕮": [.c, .capital, .bold, .fraktur],
+
+    //1D56F         ; MATHEMATICAL BOLD FRAKTUR CAPITAL D
+    "𝕯": [.d, .capital, .bold, .fraktur],
+
+    //1D570         ; MATHEMATICAL BOLD FRAKTUR CAPITAL E
+    "𝕰": [.e, .capital, .bold, .fraktur],
+
+    //1D571         ; MATHEMATICAL BOLD FRAKTUR CAPITAL F
+    "𝕱": [.f, .capital, .bold, .fraktur],
+
+    //1D572         ; MATHEMATICAL BOLD FRAKTUR CAPITAL G
+    "𝕲": [.g, .capital, .bold, .fraktur],
+
+    //1D573         ; MATHEMATICAL BOLD FRAKTUR CAPITAL H
+    "𝕳": [.h, .capital, .bold, .fraktur],
+
+    //1D574         ; MATHEMATICAL BOLD FRAKTUR CAPITAL I
+    "𝕴": [.i, .capital, .bold, .fraktur],
+
+    //1D575         ; MATHEMATICAL BOLD FRAKTUR CAPITAL J
+    "𝕵": [.j, .capital, .bold, .fraktur],
+
+    //1D576         ; MATHEMATICAL BOLD FRAKTUR CAPITAL K
+    "𝕶": [.k, .capital, .bold, .fraktur],
+
+    //1D577         ; MATHEMATICAL BOLD FRAKTUR CAPITAL L
+    "𝕷": [.l, .capital, .bold, .fraktur],
+
+    //1D578         ; MATHEMATICAL BOLD FRAKTUR CAPITAL M
+    "𝕸": [.m, .capital, .bold, .fraktur],
+
+    //1D579         ; MATHEMATICAL BOLD FRAKTUR CAPITAL N
+    "𝕹": [.n, .capital, .bold, .fraktur],
+
+    //1D57A         ; MATHEMATICAL BOLD FRAKTUR CAPITAL O
+    "𝕺": [.o, .capital, .bold, .fraktur],
+
+    //1D57B         ; MATHEMATICAL BOLD FRAKTUR CAPITAL P
+    "𝕻": [.p, .capital, .bold, .fraktur],
+
+    //1D57C         ; MATHEMATICAL BOLD FRAKTUR CAPITAL Q
+    "𝕼": [.q, .capital, .bold, .fraktur],
+
+    //1D57D         ; MATHEMATICAL BOLD FRAKTUR CAPITAL R
+    "𝕽": [.r, .capital, .bold, .fraktur],
+
+    //1D57E         ; MATHEMATICAL BOLD FRAKTUR CAPITAL S
+    "𝕾": [.s, .capital, .bold, .fraktur],
+
+    //1D57F         ; MATHEMATICAL BOLD FRAKTUR CAPITAL T
+    "𝕿": [.t, .capital, .bold, .fraktur],
+
+    //1D580         ; MATHEMATICAL BOLD FRAKTUR CAPITAL U
+    "𝖀": [.u, .capital, .bold, .fraktur],
+
+    //1D581         ; MATHEMATICAL BOLD FRAKTUR CAPITAL V
+    "𝖁": [.v, .capital, .bold, .fraktur],
+
+    //1D582         ; MATHEMATICAL BOLD FRAKTUR CAPITAL W
+    "𝖂": [.w, .capital, .bold, .fraktur],
+
+    //1D583         ; MATHEMATICAL BOLD FRAKTUR CAPITAL X
+    "𝖃": [.x, .capital, .bold, .fraktur],
+
+    //1D584         ; MATHEMATICAL BOLD FRAKTUR CAPITAL Y
+    "𝖄": [.y, .capital, .bold, .fraktur],
+
+    //1D585         ; MATHEMATICAL BOLD FRAKTUR CAPITAL Z
+    "𝖅": [.z, .capital, .bold, .fraktur],
+
+    //1D586         ; MATHEMATICAL BOLD FRAKTUR SMALL A
+    "𝖆": [.a, .bold, .fraktur],
+
+    //1D587         ; MATHEMATICAL BOLD FRAKTUR SMALL B
+    "𝖇": [.b, .bold, .fraktur],
+
+    //1D588         ; MATHEMATICAL BOLD FRAKTUR SMALL C
+    "𝖈": [.c, .bold, .fraktur],
+
+    //1D589         ; MATHEMATICAL BOLD FRAKTUR SMALL D
+    "𝖉": [.d, .bold, .fraktur],
+
+    //1D58A         ; MATHEMATICAL BOLD FRAKTUR SMALL E
+    "𝖊": [.e, .bold, .fraktur],
+
+    //1D58B         ; MATHEMATICAL BOLD FRAKTUR SMALL F
+    "𝖋": [.f, .bold, .fraktur],
+
+    //1D58C         ; MATHEMATICAL BOLD FRAKTUR SMALL G
+    "𝖌": [.g, .bold, .fraktur],
+
+    //1D58D         ; MATHEMATICAL BOLD FRAKTUR SMALL H
+    "𝖍": [.h, .bold, .fraktur],
+
+    //1D58E         ; MATHEMATICAL BOLD FRAKTUR SMALL I
+    "𝖎": [.i, .bold, .fraktur],
+
+    //1D58F         ; MATHEMATICAL BOLD FRAKTUR SMALL J
+    "𝖏": [.j, .bold, .fraktur],
+
+    //1D590         ; MATHEMATICAL BOLD FRAKTUR SMALL K
+    "𝖐": [.k, .bold, .fraktur],
+
+    //1D591         ; MATHEMATICAL BOLD FRAKTUR SMALL L
+    "𝖑": [.l, .bold, .fraktur],
+
+    //1D592         ; MATHEMATICAL BOLD FRAKTUR SMALL M
+    "𝖒": [.m, .bold, .fraktur],
+
+    //1D593         ; MATHEMATICAL BOLD FRAKTUR SMALL N
+    "𝖓": [.n, .bold, .fraktur],
+
+    //1D594         ; MATHEMATICAL BOLD FRAKTUR SMALL O
+    "𝖔": [.o, .bold, .fraktur],
+
+    //1D595         ; MATHEMATICAL BOLD FRAKTUR SMALL P
+    "𝖕": [.p, .bold, .fraktur],
+
+    //1D596         ; MATHEMATICAL BOLD FRAKTUR SMALL Q
+    "𝖖": [.q, .bold, .fraktur],
+
+    //1D597         ; MATHEMATICAL BOLD FRAKTUR SMALL R
+    "𝖗": [.r, .bold, .fraktur],
+
+    //1D598         ; MATHEMATICAL BOLD FRAKTUR SMALL S
+    "𝖘": [.s, .bold, .fraktur],
+
+    //1D599         ; MATHEMATICAL BOLD FRAKTUR SMALL T
+    "𝖙": [.t, .bold, .fraktur],
+
+    //1D59A         ; MATHEMATICAL BOLD FRAKTUR SMALL U
+    "𝖚": [.u, .bold, .fraktur],
+
+    //1D59B         ; MATHEMATICAL BOLD FRAKTUR SMALL V
+    "𝖛": [.v, .bold, .fraktur],
+
+    //1D59C         ; MATHEMATICAL BOLD FRAKTUR SMALL W
+    "𝖜": [.w, .bold, .fraktur],
+
+    //1D59D         ; MATHEMATICAL BOLD FRAKTUR SMALL X
+    "𝖝": [.x, .bold, .fraktur],
+
+    //1D59E         ; MATHEMATICAL BOLD FRAKTUR SMALL Y
+    "𝖞": [.y, .bold, .fraktur],
+
+    //1D59F         ; MATHEMATICAL BOLD FRAKTUR SMALL Z
+    "𝖟": [.z, .bold, .fraktur],
+
+    //1D5A0         ; MATHEMATICAL SANS-SERIF CAPITAL A
+    "𝖠": [.a, .capital, .sansSerif],
+
+    //1D5A1         ; MATHEMATICAL SANS-SERIF CAPITAL B
+    "𝖡": [.b, .capital, .sansSerif],
+
+    //1D5A2         ; MATHEMATICAL SANS-SERIF CAPITAL C
+    "𝖢": [.c, .capital, .sansSerif],
+
+    //1D5A3         ; MATHEMATICAL SANS-SERIF CAPITAL D
+    "𝖣": [.d, .capital, .sansSerif],
+
+    //1D5A4         ; MATHEMATICAL SANS-SERIF CAPITAL E
+    "𝖤": [.e, .capital, .sansSerif],
+
+    //1D5A5         ; MATHEMATICAL SANS-SERIF CAPITAL F
+    "𝖥": [.f, .capital, .sansSerif],
+
+    //1D5A6         ; MATHEMATICAL SANS-SERIF CAPITAL G
+    "𝖦": [.g, .capital, .sansSerif],
+
+    //1D5A7         ; MATHEMATICAL SANS-SERIF CAPITAL H
+    "𝖧": [.h, .capital, .sansSerif],
+
+    //1D5A8         ; MATHEMATICAL SANS-SERIF CAPITAL I
+    "𝖨": [.i, .capital, .sansSerif],
+
+    //1D5A9         ; MATHEMATICAL SANS-SERIF CAPITAL J
+    "𝖩": [.j, .capital, .sansSerif],
+
+    //1D5AA         ; MATHEMATICAL SANS-SERIF CAPITAL K
+    "𝖪": [.k, .capital, .sansSerif],
+
+    //1D5AB         ; MATHEMATICAL SANS-SERIF CAPITAL L
+    "𝖫": [.l, .capital, .sansSerif],
+
+    //1D5AC         ; MATHEMATICAL SANS-SERIF CAPITAL M
+    "𝖬": [.m, .capital, .sansSerif],
+
+    //1D5AD         ; MATHEMATICAL SANS-SERIF CAPITAL N
+    "𝖭": [.n, .capital, .sansSerif],
+
+    //1D5AE         ; MATHEMATICAL SANS-SERIF CAPITAL O
+    "𝖮": [.o, .capital, .sansSerif],
+
+    //1D5AF         ; MATHEMATICAL SANS-SERIF CAPITAL P
+    "𝖯": [.p, .capital, .sansSerif],
+
+    //1D5B0         ; MATHEMATICAL SANS-SERIF CAPITAL Q
+    "𝖰": [.q, .capital, .sansSerif],
+
+    //1D5B1         ; MATHEMATICAL SANS-SERIF CAPITAL R
+    "𝖱": [.r, .capital, .sansSerif],
+
+    //1D5B2         ; MATHEMATICAL SANS-SERIF CAPITAL S
+    "𝖲": [.s, .capital, .sansSerif],
+
+    //1D5B3         ; MATHEMATICAL SANS-SERIF CAPITAL T
+    "𝖳": [.t, .capital, .sansSerif],
+
+    //1D5B4         ; MATHEMATICAL SANS-SERIF CAPITAL U
+    "𝖴": [.u, .capital, .sansSerif],
+
+    //1D5B5         ; MATHEMATICAL SANS-SERIF CAPITAL V
+    "𝖵": [.v, .capital, .sansSerif],
+
+    //1D5B6         ; MATHEMATICAL SANS-SERIF CAPITAL W
+    "𝖶": [.w, .capital, .sansSerif],
+
+    //1D5B7         ; MATHEMATICAL SANS-SERIF CAPITAL X
+    "𝖷": [.x, .capital, .sansSerif],
+
+    //1D5B8         ; MATHEMATICAL SANS-SERIF CAPITAL Y
+    "𝖸": [.y, .capital, .sansSerif],
+
+    //1D5B9         ; MATHEMATICAL SANS-SERIF CAPITAL Z
+    "𝖹": [.z, .capital, .sansSerif],
+
+    //1D5BA         ; MATHEMATICAL SANS-SERIF SMALL A
+    "𝖺": [.a, .sansSerif],
+
+    //1D5BB         ; MATHEMATICAL SANS-SERIF SMALL B
+    "𝖻": [.b, .sansSerif],
+
+    //1D5BC         ; MATHEMATICAL SANS-SERIF SMALL C
+    "𝖼": [.c, .sansSerif],
+
+    //1D5BD         ; MATHEMATICAL SANS-SERIF SMALL D
+    "𝖽": [.d, .sansSerif],
+
+    //1D5BE         ; MATHEMATICAL SANS-SERIF SMALL E
+    "𝖾": [.e, .sansSerif],
+
+    //1D5BF         ; MATHEMATICAL SANS-SERIF SMALL F
+    "𝖿": [.f, .sansSerif],
+
+    //1D5C0         ; MATHEMATICAL SANS-SERIF SMALL G
+    "𝗀": [.g, .sansSerif],
+
+    //1D5C1         ; MATHEMATICAL SANS-SERIF SMALL H
+    "𝗁": [.h, .sansSerif],
+
+    //1D5C2         ; MATHEMATICAL SANS-SERIF SMALL I
+    "𝗂": [.i, .sansSerif],
+
+    //1D5C3         ; MATHEMATICAL SANS-SERIF SMALL J
+    "𝗃": [.j, .sansSerif],
+
+    //1D5C4         ; MATHEMATICAL SANS-SERIF SMALL K
+    "𝗄": [.k, .sansSerif],
+
+    //1D5C5         ; MATHEMATICAL SANS-SERIF SMALL L
+    "𝗅": [.l, .sansSerif],
+
+    //1D5C6         ; MATHEMATICAL SANS-SERIF SMALL M
+    "𝗆": [.m, .sansSerif],
+
+    //1D5C7         ; MATHEMATICAL SANS-SERIF SMALL N
+    "𝗇": [.n, .sansSerif],
+
+    //1D5C8         ; MATHEMATICAL SANS-SERIF SMALL O
+    "𝗈": [.o, .sansSerif],
+
+    //1D5C9         ; MATHEMATICAL SANS-SERIF SMALL P
+    "𝗉": [.p, .sansSerif],
+
+    //1D5CA         ; MATHEMATICAL SANS-SERIF SMALL Q
+    "𝗊": [.q, .sansSerif],
+
+    //1D5CB         ; MATHEMATICAL SANS-SERIF SMALL R
+    "𝗋": [.r, .sansSerif],
+
+    //1D5CC         ; MATHEMATICAL SANS-SERIF SMALL S
+    "𝗌": [.s, .sansSerif],
+
+    //1D5CD         ; MATHEMATICAL SANS-SERIF SMALL T
+    "𝗍": [.t, .sansSerif],
+
+    //1D5CE         ; MATHEMATICAL SANS-SERIF SMALL U
+    "𝗎": [.u, .sansSerif],
+
+    //1D5CF         ; MATHEMATICAL SANS-SERIF SMALL V
+    "𝗏": [.v, .sansSerif],
+
+    //1D5D0         ; MATHEMATICAL SANS-SERIF SMALL W
+    "𝗐": [.w, .sansSerif],
+
+    //1D5D1         ; MATHEMATICAL SANS-SERIF SMALL X
+    "𝗑": [.x, .sansSerif],
+
+    //1D5D2         ; MATHEMATICAL SANS-SERIF SMALL Y
+    "𝗒": [.y, .sansSerif],
+
+    //1D5D3         ; MATHEMATICAL SANS-SERIF SMALL Z
+    "𝗓": [.z, .sansSerif],
+
+    //1D5D4         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL A
+    "𝗔": [.a, .capital, .sansSerif, .bold],
+
+    //1D5D5         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL B
+    "𝗕": [.b, .capital, .sansSerif, .bold],
+
+    //1D5D6         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL C
+    "𝗖": [.c, .capital, .sansSerif, .bold],
+
+    //1D5D7         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL D
+    "𝗗": [.d, .capital, .sansSerif, .bold],
+
+    //1D5D8         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL E
+    "𝗘": [.e, .capital, .sansSerif, .bold],
+
+    //1D5D9         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL F
+    "𝗙": [.f, .capital, .sansSerif, .bold],
+
+    //1D5DA         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL G
+    "𝗚": [.g, .capital, .sansSerif, .bold],
+
+    //1D5DB         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL H
+    "𝗛": [.h, .capital, .sansSerif, .bold],
+
+    //1D5DC         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL I
+    "𝗜": [.i, .capital, .sansSerif, .bold],
+
+    //1D5DD         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL J
+    "𝗝": [.j, .capital, .sansSerif, .bold],
+
+    //1D5DE         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL K
+    "𝗞": [.k, .capital, .sansSerif, .bold],
+
+    //1D5DF         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL L
+    "𝗟": [.l, .capital, .sansSerif, .bold],
+
+    //1D5E0         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL M
+    "𝗠": [.m, .capital, .sansSerif, .bold],
+
+    //1D5E1         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL N
+    "𝗡": [.n, .capital, .sansSerif, .bold],
+
+    //1D5E2         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL O
+    "𝗢": [.o, .capital, .sansSerif, .bold],
+
+    //1D5E3         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL P
+    "𝗣": [.p, .capital, .sansSerif, .bold],
+
+    //1D5E4         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL Q
+    "𝗤": [.q, .capital, .sansSerif, .bold],
+
+    //1D5E5         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL R
+    "𝗥": [.r, .capital, .sansSerif, .bold],
+
+    //1D5E6         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL S
+    "𝗦": [.s, .capital, .sansSerif, .bold],
+
+    //1D5E7         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL T
+    "𝗧": [.t, .capital, .sansSerif, .bold],
+
+    //1D5E8         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL U
+    "𝗨": [.u, .capital, .sansSerif, .bold],
+
+    //1D5E9         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL V
+    "𝗩": [.v, .capital, .sansSerif, .bold],
+
+    //1D5EA         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL W
+    "𝗪": [.w, .capital, .sansSerif, .bold],
+
+    //1D5EB         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL X
+    "𝗫": [.x, .capital, .sansSerif, .bold],
+
+    //1D5EC         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL Y
+    "𝗬": [.y, .capital, .sansSerif, .bold],
+
+    //1D5ED         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL Z
+    "𝗭": [.z, .capital, .sansSerif, .bold],
+
+    //1D5EE         ; MATHEMATICAL SANS-SERIF BOLD SMALL A
+    "𝗮": [.a, .sansSerif, .bold],
+
+    //1D5EF         ; MATHEMATICAL SANS-SERIF BOLD SMALL B
+    "𝗯": [.b, .sansSerif, .bold],
+
+    //1D5F0         ; MATHEMATICAL SANS-SERIF BOLD SMALL C
+    "𝗰": [.c, .sansSerif, .bold],
+
+    //1D5F1         ; MATHEMATICAL SANS-SERIF BOLD SMALL D
+    "𝗱": [.d, .sansSerif, .bold],
+
+    //1D5F2         ; MATHEMATICAL SANS-SERIF BOLD SMALL E
+    "𝗲": [.e, .sansSerif, .bold],
+
+    //1D5F3         ; MATHEMATICAL SANS-SERIF BOLD SMALL F
+    "𝗳": [.f, .sansSerif, .bold],
+
+    //1D5F4         ; MATHEMATICAL SANS-SERIF BOLD SMALL G
+    "𝗴": [.g, .sansSerif, .bold],
+
+    //1D5F5         ; MATHEMATICAL SANS-SERIF BOLD SMALL H
+    "𝗵": [.h, .sansSerif, .bold],
+
+    //1D5F6         ; MATHEMATICAL SANS-SERIF BOLD SMALL I
+    "𝗶": [.i, .sansSerif, .bold],
+
+    //1D5F7         ; MATHEMATICAL SANS-SERIF BOLD SMALL J
+    "𝗷": [.j, .sansSerif, .bold],
+
+    //1D5F8         ; MATHEMATICAL SANS-SERIF BOLD SMALL K
+    "𝗸": [.k, .sansSerif, .bold],
+
+    //1D5F9         ; MATHEMATICAL SANS-SERIF BOLD SMALL L
+    "𝗹": [.l, .sansSerif, .bold],
+
+    //1D5FA         ; MATHEMATICAL SANS-SERIF BOLD SMALL M
+    "𝗺": [.m, .sansSerif, .bold],
+
+    //1D5FB         ; MATHEMATICAL SANS-SERIF BOLD SMALL N
+    "𝗻": [.n, .sansSerif, .bold],
+
+    //1D5FC         ; MATHEMATICAL SANS-SERIF BOLD SMALL O
+    "𝗼": [.o, .sansSerif, .bold],
+
+    //1D5FD         ; MATHEMATICAL SANS-SERIF BOLD SMALL P
+    "𝗽": [.p, .sansSerif, .bold],
+
+    //1D5FE         ; MATHEMATICAL SANS-SERIF BOLD SMALL Q
+    "𝗾": [.q, .sansSerif, .bold],
+
+    //1D5FF         ; MATHEMATICAL SANS-SERIF BOLD SMALL R
+    "𝗿": [.r, .sansSerif, .bold],
+
+    //1D600         ; MATHEMATICAL SANS-SERIF BOLD SMALL S
+    "𝘀": [.s, .sansSerif, .bold],
+
+    //1D601         ; MATHEMATICAL SANS-SERIF BOLD SMALL T
+    "𝘁": [.t, .sansSerif, .bold],
+
+    //1D602         ; MATHEMATICAL SANS-SERIF BOLD SMALL U
+    "𝘂": [.u, .sansSerif, .bold],
+
+    //1D603         ; MATHEMATICAL SANS-SERIF BOLD SMALL V
+    "𝘃": [.v, .sansSerif, .bold],
+
+    //1D604         ; MATHEMATICAL SANS-SERIF BOLD SMALL W
+    "𝘄": [.w, .sansSerif, .bold],
+
+    //1D605         ; MATHEMATICAL SANS-SERIF BOLD SMALL X
+    "𝘅": [.x, .sansSerif, .bold],
+
+    //1D606         ; MATHEMATICAL SANS-SERIF BOLD SMALL Y
+    "𝘆": [.y, .sansSerif, .bold],
+
+    //1D607         ; MATHEMATICAL SANS-SERIF BOLD SMALL Z
+    "𝘇": [.z, .sansSerif, .bold],
+
+    //1D608         ; MATHEMATICAL SANS-SERIF ITALIC CAPITAL A
+    "𝘈": [.a, .capital, .sansSerif, .italic],
+
+    //1D609         ; MATHEMATICAL SANS-SERIF ITALIC CAPITAL B
+    "𝘉": [.b, .capital, .sansSerif, .italic],
+
+    //1D60A         ; MATHEMATICAL SANS-SERIF ITALIC CAPITAL C
+    "𝘊": [.c, .capital, .sansSerif, .italic],
+
+    //1D60B         ; MATHEMATICAL SANS-SERIF ITALIC CAPITAL D
+    "𝘋": [.d, .capital, .sansSerif, .italic],
+
+    //1D60C         ; MATHEMATICAL SANS-SERIF ITALIC CAPITAL E
+    "𝘌": [.t, .capital, .sansSerif, .italic],
+
+    //1D60D         ; MATHEMATICAL SANS-SERIF ITALIC CAPITAL F
+    "𝘍": [.f, .capital, .sansSerif, .italic],
+
+    //1D60E         ; MATHEMATICAL SANS-SERIF ITALIC CAPITAL G
+    "𝘎": [.g, .capital, .sansSerif, .italic],
+
+    //1D60F         ; MATHEMATICAL SANS-SERIF ITALIC CAPITAL H
+    "𝘏": [.h, .capital, .sansSerif, .italic],
+
+    //1D610         ; MATHEMATICAL SANS-SERIF ITALIC CAPITAL I
+    "𝘐": [.i, .capital, .sansSerif, .italic],
+
+    //1D611         ; MATHEMATICAL SANS-SERIF ITALIC CAPITAL J
+    "𝘑": [.j, .capital, .sansSerif, .italic],
+
+    //1D612         ; MATHEMATICAL SANS-SERIF ITALIC CAPITAL K
+    "𝘒": [.k, .capital, .sansSerif, .italic],
+
+    //1D613         ; MATHEMATICAL SANS-SERIF ITALIC CAPITAL L
+    "𝘓": [.l, .capital, .sansSerif, .italic],
+
+    //1D614         ; MATHEMATICAL SANS-SERIF ITALIC CAPITAL M
+    "𝘔": [.m, .capital, .sansSerif, .italic],
+
+    //1D615         ; MATHEMATICAL SANS-SERIF ITALIC CAPITAL N
+    "𝘕": [.n, .capital, .sansSerif, .italic],
+
+    //1D616         ; MATHEMATICAL SANS-SERIF ITALIC CAPITAL O
+    "𝘖": [.o, .capital, .sansSerif, .italic],
+
+    //1D617         ; MATHEMATICAL SANS-SERIF ITALIC CAPITAL P
+    "𝘗": [.p, .capital, .sansSerif, .italic],
+
+    //1D618         ; MATHEMATICAL SANS-SERIF ITALIC CAPITAL Q
+    "𝘘": [.q, .capital, .sansSerif, .italic],
+
+    //1D619         ; MATHEMATICAL SANS-SERIF ITALIC CAPITAL R
+    "𝘙": [.r, .capital, .sansSerif, .italic],
+
+    //1D61A         ; MATHEMATICAL SANS-SERIF ITALIC CAPITAL S
+    "𝘚": [.s, .capital, .sansSerif, .italic],
+
+    //1D61B         ; MATHEMATICAL SANS-SERIF ITALIC CAPITAL T
+    "𝘛": [.t, .capital, .sansSerif, .italic],
+
+    //1D61C         ; MATHEMATICAL SANS-SERIF ITALIC CAPITAL U
+    "𝘜": [.u, .capital, .sansSerif, .italic],
+
+    //1D61D         ; MATHEMATICAL SANS-SERIF ITALIC CAPITAL V
+    "𝘝": [.v, .capital, .sansSerif, .italic],
+
+    //1D61E         ; MATHEMATICAL SANS-SERIF ITALIC CAPITAL W
+    "𝘞": [.w, .capital, .sansSerif, .italic],
+
+    //1D61F         ; MATHEMATICAL SANS-SERIF ITALIC CAPITAL X
+    "𝘟": [.x, .capital, .sansSerif, .italic],
+
+    //1D620         ; MATHEMATICAL SANS-SERIF ITALIC CAPITAL Y
+    "𝘠": [.y, .capital, .sansSerif, .italic],
+
+    //1D621         ; MATHEMATICAL SANS-SERIF ITALIC CAPITAL Z
+    "𝘡": [.z, .capital, .sansSerif, .italic],
+
+    //1D622         ; MATHEMATICAL SANS-SERIF ITALIC SMALL A
+    "𝘢": [.a, .sansSerif, .italic],
+
+    //1D623         ; MATHEMATICAL SANS-SERIF ITALIC SMALL B
+    "𝘣": [.b, .sansSerif, .italic],
+
+    //1D624         ; MATHEMATICAL SANS-SERIF ITALIC SMALL C
+    "𝘤": [.c, .sansSerif, .italic],
+
+    //1D625         ; MATHEMATICAL SANS-SERIF ITALIC SMALL D
+    "𝘥": [.d, .sansSerif, .italic],
+
+    //1D626         ; MATHEMATICAL SANS-SERIF ITALIC SMALL E
+    "𝘦": [.e, .sansSerif, .italic],
+
+    //1D627         ; MATHEMATICAL SANS-SERIF ITALIC SMALL F
+    "𝘧": [.f, .sansSerif, .italic],
+
+    //1D628         ; MATHEMATICAL SANS-SERIF ITALIC SMALL G
+    "𝘨": [.g, .sansSerif, .italic],
+
+    //1D629         ; MATHEMATICAL SANS-SERIF ITALIC SMALL H
+    "𝘩": [.h, .sansSerif, .italic],
+
+    //1D62A         ; MATHEMATICAL SANS-SERIF ITALIC SMALL I
+    "𝘪": [.i, .sansSerif, .italic],
+
+    //1D62B         ; MATHEMATICAL SANS-SERIF ITALIC SMALL J
+    "𝘫": [.j, .sansSerif, .italic],
+
+    //1D62C         ; MATHEMATICAL SANS-SERIF ITALIC SMALL K
+    "𝘬": [.k, .sansSerif, .italic],
+
+    //1D62D         ; MATHEMATICAL SANS-SERIF ITALIC SMALL L
+    "𝘭": [.l, .sansSerif, .italic],
+
+    //1D62E         ; MATHEMATICAL SANS-SERIF ITALIC SMALL M
+    "𝘮": [.m, .sansSerif, .italic],
+
+    //1D62F         ; MATHEMATICAL SANS-SERIF ITALIC SMALL N
+    "𝘯": [.n, .sansSerif, .italic],
+
+    //1D630         ; MATHEMATICAL SANS-SERIF ITALIC SMALL O
+    "𝘰": [.o, .sansSerif, .italic],
+
+    //1D631         ; MATHEMATICAL SANS-SERIF ITALIC SMALL P
+    "𝘱": [.p, .sansSerif, .italic],
+
+    //1D632         ; MATHEMATICAL SANS-SERIF ITALIC SMALL Q
+    "𝘲": [.q, .sansSerif, .italic],
+
+    //1D633         ; MATHEMATICAL SANS-SERIF ITALIC SMALL R
+    "𝘳": [.r, .sansSerif, .italic],
+
+    //1D634         ; MATHEMATICAL SANS-SERIF ITALIC SMALL S
+    "𝘴": [.s, .sansSerif, .italic],
+
+    //1D635         ; MATHEMATICAL SANS-SERIF ITALIC SMALL T
+    "𝘵": [.t, .sansSerif, .italic],
+
+    //1D636         ; MATHEMATICAL SANS-SERIF ITALIC SMALL U
+    "𝘶": [.u, .sansSerif, .italic],
+
+    //1D637         ; MATHEMATICAL SANS-SERIF ITALIC SMALL V
+    "𝘷": [.v, .sansSerif, .italic],
+
+    //1D638         ; MATHEMATICAL SANS-SERIF ITALIC SMALL W
+    "𝘸": [.w, .sansSerif, .italic],
+
+    //1D639         ; MATHEMATICAL SANS-SERIF ITALIC SMALL X
+    "𝘹": [.x, .sansSerif, .italic],
+
+    //1D63A         ; MATHEMATICAL SANS-SERIF ITALIC SMALL Y
+    "𝘺": [.y, .sansSerif, .italic],
+
+    //1D63B         ; MATHEMATICAL SANS-SERIF ITALIC SMALL Z
+    "𝘻": [.z, .sansSerif, .italic],
+
+    //1D63C         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL A
+    "𝘼": [.a, .capital, .sansSerif, .bold, .italic],
+
+    //1D63D         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL B
+    "𝘽": [.b, .capital, .sansSerif, .bold, .italic],
+
+    //1D63E         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL C
+    "𝘾": [.c, .capital, .sansSerif, .bold, .italic],
+
+    //1D63F         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL D
+    "𝘿": [.d, .capital, .sansSerif, .bold, .italic],
+
+    //1D640         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL E
+    "𝙀": [.e, .capital, .sansSerif, .bold, .italic],
+
+    //1D641         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL F
+    "𝙁": [.f, .capital, .sansSerif, .bold, .italic],
+
+    //1D642         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL G
+    "𝙂": [.g, .capital, .sansSerif, .bold, .italic],
+
+    //1D643         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL H
+    "𝙃": [.h, .capital, .sansSerif, .bold, .italic],
+
+    //1D644         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL I
+    "𝙄": [.i, .capital, .sansSerif, .bold, .italic],
+
+    //1D645         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL J
+    "𝙅": [.j, .capital, .sansSerif, .bold, .italic],
+
+    //1D646         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL K
+    "𝙆": [.k, .capital, .sansSerif, .bold, .italic],
+
+    //1D647         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL L
+    "𝙇": [.l, .capital, .sansSerif, .bold, .italic],
+
+    //1D648         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL M
+    "𝙈": [.m, .capital, .sansSerif, .bold, .italic],
+
+    //1D649         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL N
+    "𝙉": [.n, .capital, .sansSerif, .bold, .italic],
+
+    //1D64A         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL O
+    "𝙊": [.o, .capital, .sansSerif, .bold, .italic],
+
+    //1D64B         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL P
+    "𝙋": [.p, .capital, .sansSerif, .bold, .italic],
+
+    //1D64C         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL Q
+    "𝙌": [.q, .capital, .sansSerif, .bold, .italic],
+
+    //1D64D         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL R
+    "𝙍": [.r, .capital, .sansSerif, .bold, .italic],
+
+    //1D64E         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL S
+    "𝙎": [.s, .capital, .sansSerif, .bold, .italic],
+
+    //1D64F         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL T
+    "𝙏": [.t, .capital, .sansSerif, .bold, .italic],
+
+    //1D650         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL U
+    "𝙐": [.u, .capital, .sansSerif, .bold, .italic],
+
+    //1D651         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL V
+    "𝙑": [.v, .capital, .sansSerif, .bold, .italic],
+
+    //1D652         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL W
+    "𝙒": [.w, .capital, .sansSerif, .bold, .italic],
+
+    //1D653         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL X
+    "𝙓": [.x, .capital, .sansSerif, .bold, .italic],
+
+    //1D654         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL Y
+    "𝙔": [.y, .capital, .sansSerif, .bold, .italic],
+
+    //1D655         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL Z
+    "𝙕": [.z, .capital, .sansSerif, .bold, .italic],
+
+    //1D656         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL A
+    "𝙖": [.a, .sansSerif, .bold, .italic],
+
+    //1D657         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL B
+    "𝙗": [.b, .sansSerif, .bold, .italic],
+
+    //1D658         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL C
+    "𝙘": [.c, .sansSerif, .bold, .italic],
+
+    //1D659         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL D
+    "𝙙": [.d, .sansSerif, .bold, .italic],
+
+    //1D65A         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL E
+    "𝙚": [.e, .sansSerif, .bold, .italic],
+
+    //1D65B         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL F
+    "𝙛": [.f, .sansSerif, .bold, .italic],
+
+    //1D65C         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL G
+    "𝙜": [.g, .sansSerif, .bold, .italic],
+
+    //1D65D         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL H
+    "𝙝": [.h, .sansSerif, .bold, .italic],
+
+    //1D65E         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL I
+    "𝙞": [.i, .sansSerif, .bold, .italic],
+
+    //1D65F         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL J
+    "𝙟": [.j, .sansSerif, .bold, .italic],
+
+    //1D660         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL K
+    "𝙠": [.k, .sansSerif, .bold, .italic],
+
+    //1D661         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL L
+    "𝙡": [.l, .sansSerif, .bold, .italic],
+
+    //1D662         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL M
+    "𝙢": [.m, .sansSerif, .bold, .italic],
+
+    //1D663         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL N
+    "𝙣": [.n, .sansSerif, .bold, .italic],
+
+    //1D664         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL O
+    "𝙤": [.o, .sansSerif, .bold, .italic],
+
+    //1D665         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL P
+    "𝙥": [.p, .sansSerif, .bold, .italic],
+
+    //1D666         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL Q
+    "𝙦": [.q, .sansSerif, .bold, .italic],
+
+    //1D667         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL R
+    "𝙧": [.r, .sansSerif, .bold, .italic],
+
+    //1D668         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL S
+    "𝙨": [.s, .sansSerif, .bold, .italic],
+
+    //1D669         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL T
+    "𝙩": [.t, .sansSerif, .bold, .italic],
+
+    //1D66A         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL U
+    "𝙪": [.u, .sansSerif, .bold, .italic],
+
+    //1D66B         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL V
+    "𝙫": [.v, .sansSerif, .bold, .italic],
+
+    //1D66C         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL W
+    "𝙬": [.w, .sansSerif, .bold, .italic],
+
+    //1D66D         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL X
+    "𝙭": [.x, .sansSerif, .bold, .italic],
+
+    //1D66E         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL Y
+    "𝙮": [.y, .sansSerif, .bold, .italic],
+
+    //1D66F         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL Z
+    "𝙯": [.z, .sansSerif, .bold, .italic],
+
+    //1D670         ; MATHEMATICAL MONOSPACE CAPITAL A
+    "𝙰": [.a, .capital, .monospace],
+
+    //1D671         ; MATHEMATICAL MONOSPACE CAPITAL B
+    "𝙱": [.b, .capital, .monospace],
+
+    //1D672         ; MATHEMATICAL MONOSPACE CAPITAL C
+    "𝙲": [.c, .capital, .monospace],
+
+    //1D673         ; MATHEMATICAL MONOSPACE CAPITAL D
+    "𝙳": [.d, .capital, .monospace],
+
+    //1D674         ; MATHEMATICAL MONOSPACE CAPITAL E
+    "𝙴": [.e, .capital, .monospace],
+
+    //1D675         ; MATHEMATICAL MONOSPACE CAPITAL F
+    "𝙵": [.f, .capital, .monospace],
+
+    //1D676         ; MATHEMATICAL MONOSPACE CAPITAL G
+    "𝙶": [.g, .capital, .monospace],
+
+    //1D677         ; MATHEMATICAL MONOSPACE CAPITAL H
+    "𝙷": [.h, .capital, .monospace],
+
+    //1D678         ; MATHEMATICAL MONOSPACE CAPITAL I
+    "𝙸": [.i, .capital, .monospace],
+
+    //1D679         ; MATHEMATICAL MONOSPACE CAPITAL J
+    "𝙹": [.j, .capital, .monospace],
+
+    //1D67A         ; MATHEMATICAL MONOSPACE CAPITAL K
+    "𝙺": [.k, .capital, .monospace],
+
+    //1D67B         ; MATHEMATICAL MONOSPACE CAPITAL L
+    "𝙻": [.l, .capital, .monospace],
+
+    //1D67C         ; MATHEMATICAL MONOSPACE CAPITAL M
+    "𝙼": [.m, .capital, .monospace],
+
+    //1D67D         ; MATHEMATICAL MONOSPACE CAPITAL N
+    "𝙽": [.n, .capital, .monospace],
+
+    //1D67E         ; MATHEMATICAL MONOSPACE CAPITAL O
+    "𝙾": [.o, .capital, .monospace],
+
+    //1D67F         ; MATHEMATICAL MONOSPACE CAPITAL P
+    "𝙿": [.p, .capital, .monospace],
+
+    //1D680         ; MATHEMATICAL MONOSPACE CAPITAL Q
+    "𝚀": [.q, .capital, .monospace],
+
+    //1D681         ; MATHEMATICAL MONOSPACE CAPITAL R
+    "𝚁": [.r, .capital, .monospace],
+
+    //1D682         ; MATHEMATICAL MONOSPACE CAPITAL S
+    "𝚂": [.s, .capital, .monospace],
+
+    //1D683         ; MATHEMATICAL MONOSPACE CAPITAL T
+    "𝚃": [.t, .capital, .monospace],
+
+    //1D684         ; MATHEMATICAL MONOSPACE CAPITAL U
+    "𝚄": [.u, .capital, .monospace],
+
+    //1D685         ; MATHEMATICAL MONOSPACE CAPITAL V
+    "𝚅": [.v, .capital, .monospace],
+
+    //1D686         ; MATHEMATICAL MONOSPACE CAPITAL W
+    "𝚆": [.w, .capital, .monospace],
+
+    //1D687         ; MATHEMATICAL MONOSPACE CAPITAL X
+    "𝚇": [.x, .capital, .monospace],
+
+    //1D688         ; MATHEMATICAL MONOSPACE CAPITAL Y
+    "𝚈": [.y, .capital, .monospace],
+
+    //1D689         ; MATHEMATICAL MONOSPACE CAPITAL Z
+    "𝚉": [.z, .capital, .monospace],
+
+    //1D68A         ; MATHEMATICAL MONOSPACE SMALL A
+    "𝚊": [.a, .monospace],
+
+    //1D68B         ; MATHEMATICAL MONOSPACE SMALL B
+    "𝚋": [.b, .monospace],
+
+    //1D68C         ; MATHEMATICAL MONOSPACE SMALL C
+    "𝚌": [.c, .monospace],
+
+    //1D68D         ; MATHEMATICAL MONOSPACE SMALL D
+    "𝚍": [.d, .monospace],
+
+    //1D68E         ; MATHEMATICAL MONOSPACE SMALL E
+    "𝚎": [.e, .monospace],
+
+    //1D68F         ; MATHEMATICAL MONOSPACE SMALL F
+    "𝚏": [.f, .monospace],
+
+    //1D690         ; MATHEMATICAL MONOSPACE SMALL G
+    "𝚐": [.g, .monospace],
+
+    //1D691         ; MATHEMATICAL MONOSPACE SMALL H
+    "𝚑": [.h, .monospace],
+
+    //1D692         ; MATHEMATICAL MONOSPACE SMALL I
+    "𝚒": [.i, .monospace],
+
+    //1D693         ; MATHEMATICAL MONOSPACE SMALL J
+    "𝚓": [.j, .monospace],
+
+    //1D694         ; MATHEMATICAL MONOSPACE SMALL K
+    "𝚔": [.k, .monospace],
+
+    //1D695         ; MATHEMATICAL MONOSPACE SMALL L
+    "𝚕": [.l, .monospace],
+
+    //1D696         ; MATHEMATICAL MONOSPACE SMALL M
+    "𝚖": [.m, .monospace],
+
+    //1D697         ; MATHEMATICAL MONOSPACE SMALL N
+    "𝚗": [.n, .monospace],
+
+    //1D698         ; MATHEMATICAL MONOSPACE SMALL O
+    "𝚘": [.o, .monospace],
+
+    //1D699         ; MATHEMATICAL MONOSPACE SMALL P
+    "𝚙": [.p, .monospace],
+
+    //1D69A         ; MATHEMATICAL MONOSPACE SMALL Q
+    "𝚚": [.q, .monospace],
+
+    //1D69B         ; MATHEMATICAL MONOSPACE SMALL R
+    "𝚛": [.r, .monospace],
+
+    //1D69C         ; MATHEMATICAL MONOSPACE SMALL S
+    "𝚜": [.s, .monospace],
+
+    //1D69D         ; MATHEMATICAL MONOSPACE SMALL T
+    "𝚝": [.t, .monospace],
+
+    //1D69E         ; MATHEMATICAL MONOSPACE SMALL U
+    "𝚞": [.u, .monospace],
+
+    //1D69F         ; MATHEMATICAL MONOSPACE SMALL V
+    "𝚟": [.v, .monospace],
+
+    //1D6A0         ; MATHEMATICAL MONOSPACE SMALL W
+    "𝚠": [.w, .monospace],
+
+    //1D6A1         ; MATHEMATICAL MONOSPACE SMALL X
+    "𝚡": [.x, .monospace],
+
+    //1D6A2         ; MATHEMATICAL MONOSPACE SMALL Y
+    "𝚢": [.y, .monospace],
+
+    //1D6A3         ; MATHEMATICAL MONOSPACE SMALL Z
+    "𝚣": [.z, .monospace],
+
+    //1D6A4         ; MATHEMATICAL ITALIC SMALL DOTLESS I
+    "𝚤": [.i, .dot, .italic],
+
+    //1D6A5         ; MATHEMATICAL ITALIC SMALL DOTLESS J
+    "𝚥": [.j, .dot, .italic],
+
+    //1D6A8         ; MATHEMATICAL BOLD CAPITAL ALPHA
+    "𝚨": [.a, .capital, .greek, .bold],
+
+    //1D6A9         ; MATHEMATICAL BOLD CAPITAL BETA
+    "𝚩": [.b, .capital, .greek, .bold],
+
+    //1D6AA         ; MATHEMATICAL BOLD CAPITAL GAMMA
+    "𝚪": [.g, .capital, .greek, .bold],
+
+    //1D6AB         ; MATHEMATICAL BOLD CAPITAL DELTA
+    "𝚫": [.d, .capital, .greek, .bold],
+
+    //1D6AC         ; MATHEMATICAL BOLD CAPITAL EPSILON
+    "𝚬": [.e, .capital, .greek, .bold],
+
+    //1D6AD         ; MATHEMATICAL BOLD CAPITAL ZETA
+    "𝚭": [.z, .capital, .greek, .bold],
+
+    //1D6AE         ; MATHEMATICAL BOLD CAPITAL ETA
+    "𝚮": [.h, .capital, .greek, .bold],
+
+    //1D6AF         ; MATHEMATICAL BOLD CAPITAL THETA
+    "𝚯": [.t, .h, .capital, .greek, .bold],
+
+    //1D6B0         ; MATHEMATICAL BOLD CAPITAL IOTA
+    "𝚰": [.i, .capital, .greek, .bold],
+
+    //1D6B1         ; MATHEMATICAL BOLD CAPITAL KAPPA
+    "𝚱": [.k, .capital, .greek, .bold],
+
+    //1D6B2         ; MATHEMATICAL BOLD CAPITAL LAMDA
+    "𝚲": [.l, .capital, .greek, .bold],
+
+    //1D6B3         ; MATHEMATICAL BOLD CAPITAL MU
+    "𝚳": [.m, .capital, .greek, .bold],
+
+    //1D6B4         ; MATHEMATICAL BOLD CAPITAL NU
+    "𝚴": [.n, .capital, .greek, .bold],
+
+    //1D6B5         ; MATHEMATICAL BOLD CAPITAL XI
+    "𝚵": [.k, .s, .capital, .greek, .bold],
+
+    //1D6B6         ; MATHEMATICAL BOLD CAPITAL OMICRON
+    "𝚶": [.o, .capital, .greek, .bold],
+
+    //1D6B7         ; MATHEMATICAL BOLD CAPITAL PI
+    "𝚷": [.p, .capital, .greek, .bold],
+
+    //1D6B8         ; MATHEMATICAL BOLD CAPITAL RHO
+    "𝚸": [.r, .capital, .greek, .bold],
+
+    //1D6B9         ; MATHEMATICAL BOLD CAPITAL THETA SYMBOL
+    "𝚹": [.t, .h, .capital, .greek, .symbol, .bold],
+
+    //1D6BA         ; MATHEMATICAL BOLD CAPITAL SIGMA
+    "𝚺": [.s, .capital, .greek, .bold],
+
+    //1D6BB         ; MATHEMATICAL BOLD CAPITAL TAU
+    "𝚻": [.t, .capital, .greek, .bold],
+
+    //1D6BC         ; MATHEMATICAL BOLD CAPITAL UPSILON
+    "𝚼": [.u, .capital, .greek, .bold],
+
+    //1D6BD         ; MATHEMATICAL BOLD CAPITAL PHI
+    "𝚽": [.p, .h, .capital, .greek, .bold],
+
+    //1D6BE         ; MATHEMATICAL BOLD CAPITAL CHI
+    "𝚾": [.x, .capital, .greek, .bold],
+
+    //1D6BF         ; MATHEMATICAL BOLD CAPITAL PSI
+    "𝚿": [.p, .s, .capital, .greek, .bold],
+
+    //1D6C0         ; MATHEMATICAL BOLD CAPITAL OMEGA
+    "𝛀": [.o, .o, .capital, .greek, .bold],
+
+    //1D6C1         ; MATHEMATICAL BOLD NABLA
+    "𝛁": [.d, .capital, .greek, .bold, .turned],
+
+    //1D6C2         ; MATHEMATICAL BOLD SMALL ALPHA
+    "𝛂": [.a, .greek, .bold],
+
+    //1D6C3         ; MATHEMATICAL BOLD SMALL BETA
+    "𝛃": [.b, .greek, .bold],
+
+    //1D6C4         ; MATHEMATICAL BOLD SMALL GAMMA
+    "𝛄": [.g, .greek, .bold],
+
+    //1D6C5         ; MATHEMATICAL BOLD SMALL DELTA
+    "𝛅": [.d, .greek, .bold],
+
+    //1D6C6         ; MATHEMATICAL BOLD SMALL EPSILON
+    "𝛆": [.e, .greek, .bold],
+
+    //1D6C7         ; MATHEMATICAL BOLD SMALL ZETA
+    "𝛇": [.z, .greek, .bold],
+
+    //1D6C8         ; MATHEMATICAL BOLD SMALL ETA
+    "𝛈": [.h, .greek, .bold],
+
+    //1D6C9         ; MATHEMATICAL BOLD SMALL THETA
+    "𝛉": [.t, .h, .greek, .bold],
+
+    //1D6CA         ; MATHEMATICAL BOLD SMALL IOTA
+    "𝛊": [.i, .greek, .bold],
+
+    //1D6CB         ; MATHEMATICAL BOLD SMALL KAPPA
+    "𝛋": [.k, .greek, .bold],
+
+    //1D6CC         ; MATHEMATICAL BOLD SMALL LAMDA
+    "𝛌": [.l, .greek, .bold],
+
+    //1D6CD         ; MATHEMATICAL BOLD SMALL MU
+    "𝛍": [.m, .greek, .bold],
+
+    //1D6CE         ; MATHEMATICAL BOLD SMALL NU
+    "𝛎": [.n, .greek, .bold],
+
+    //1D6CF         ; MATHEMATICAL BOLD SMALL XI
+    "𝛏": [.k, .s, .greek, .bold],
+
+    //1D6D0         ; MATHEMATICAL BOLD SMALL OMICRON
+    "𝛐": [.o, .greek, .bold],
+
+    //1D6D1         ; MATHEMATICAL BOLD SMALL PI
+    "𝛑": [.p, .greek, .bold],
+
+    //1D6D2         ; MATHEMATICAL BOLD SMALL RHO
+    "𝛒": [.r, .greek, .bold],
+
+    //1D6D3         ; MATHEMATICAL BOLD SMALL FINAL SIGMA
+    "𝛓": [.s, .greek, .final, .bold],
+
+    //1D6D4         ; MATHEMATICAL BOLD SMALL SIGMA
+    "𝛔": [.s, .greek, .bold],
+
+    //1D6D5         ; MATHEMATICAL BOLD SMALL TAU
+    "𝛕": [.t, .greek, .bold],
+
+    //1D6D6         ; MATHEMATICAL BOLD SMALL UPSILON
+    "𝛖": [.u, .greek, .bold],
+
+    //1D6D7         ; MATHEMATICAL BOLD SMALL PHI
+    "𝛗": [.p, .h, .greek, .bold],
+
+    //1D6D8         ; MATHEMATICAL BOLD SMALL CHI
+    "𝛘": [.x, .greek, .bold],
+
+    //1D6D9         ; MATHEMATICAL BOLD SMALL PSI
+    "𝛙": [.p, .s, .greek, .bold],
+
+    //1D6DA         ; MATHEMATICAL BOLD SMALL OMEGA
+    "𝛚": [.o, .o, .greek, .bold],
+
+    //1D6DB         ; MATHEMATICAL BOLD PARTIAL DIFFERENTIAL
+    "𝛛": [.d, .greek, .symbol, .bold],
+
+    //1D6DC         ; MATHEMATICAL BOLD EPSILON SYMBOL
+    "𝛜": [.e, .greek, .symbol, .bold],
+
+    //1D6DD         ; MATHEMATICAL BOLD THETA SYMBOL
+    "𝛝": [.t, .h, .greek, .symbol, .bold],
+
+    //1D6DE         ; MATHEMATICAL BOLD KAPPA SYMBOL
+    "𝛞": [.k, .greek, .symbol, .bold],
+
+    //1D6DF         ; MATHEMATICAL BOLD PHI SYMBOL
+    "𝛟": [.p, .h, .greek, .symbol, .bold],
+
+    //1D6E0         ; MATHEMATICAL BOLD RHO SYMBOL
+    "𝛠": [.r, .greek, .symbol, .bold],
+
+    //1D6E1         ; MATHEMATICAL BOLD PI SYMBOL
+    "𝛡": [.p, .greek, .symbol, .bold],
+
+    //1D6E2         ; MATHEMATICAL ITALIC CAPITAL ALPHA
+    "𝛢": [.a, .capital, .greek, .italic],
+
+    //1D6E3         ; MATHEMATICAL ITALIC CAPITAL BETA
+    "𝛣": [.b, .capital, .greek, .italic],
+
+    //1D6E4         ; MATHEMATICAL ITALIC CAPITAL GAMMA
+    "𝛤": [.g, .capital, .greek, .italic],
+
+    //1D6E5         ; MATHEMATICAL ITALIC CAPITAL DELTA
+    "𝛥": [.d, .capital, .greek, .italic],
+
+    //1D6E6         ; MATHEMATICAL ITALIC CAPITAL EPSILON
+    "𝛦": [.e, .capital, .greek, .italic],
+
+    //1D6E7         ; MATHEMATICAL ITALIC CAPITAL ZETA
+    "𝛧": [.z, .capital, .greek, .italic],
+
+    //1D6E8         ; MATHEMATICAL ITALIC CAPITAL ETA
+    "𝛨": [.h, .capital, .greek, .italic],
+
+    //1D6E9         ; MATHEMATICAL ITALIC CAPITAL THETA
+    "𝛩": [.t, .h, .capital, .greek, .italic],
+
+    //1D6EA         ; MATHEMATICAL ITALIC CAPITAL IOTA
+    "𝛪": [.i, .capital, .greek, .italic],
+
+    //1D6EB         ; MATHEMATICAL ITALIC CAPITAL KAPPA
+    "𝛫": [.k, .capital, .greek, .italic],
+
+    //1D6EC         ; MATHEMATICAL ITALIC CAPITAL LAMDA
+    "𝛬": [.l, .capital, .greek, .italic],
+
+    //1D6ED         ; MATHEMATICAL ITALIC CAPITAL MU
+    "𝛭": [.m, .capital, .greek, .italic],
+
+    //1D6EE         ; MATHEMATICAL ITALIC CAPITAL NU
+    "𝛮": [.n, .capital, .greek, .italic],
+
+    //1D6EF         ; MATHEMATICAL ITALIC CAPITAL XI
+    "𝛯": [.k, .s, .capital, .greek, .italic],
+
+    //1D6F0         ; MATHEMATICAL ITALIC CAPITAL OMICRON
+    "𝛰": [.o, .capital, .greek, .italic],
+
+    //1D6F1         ; MATHEMATICAL ITALIC CAPITAL PI
+    "𝛱": [.p, .capital, .greek, .italic],
+
+    //1D6F2         ; MATHEMATICAL ITALIC CAPITAL RHO
+    "𝛲": [.r, .capital, .greek, .italic],
+
+    //1D6F3         ; MATHEMATICAL ITALIC CAPITAL THETA SYMBOL
+    "𝛳": [.t, .h, .capital, .greek, .symbol, .italic],
+
+    //1D6F4         ; MATHEMATICAL ITALIC CAPITAL SIGMA
+    "𝛴": [.s, .capital, .greek, .italic],
+
+    //1D6F5         ; MATHEMATICAL ITALIC CAPITAL TAU
+    "𝛵": [.t, .capital, .greek, .italic],
+
+    //1D6F6         ; MATHEMATICAL ITALIC CAPITAL UPSILON
+    "𝛶": [.u, .capital, .greek, .italic],
+
+    //1D6F7         ; MATHEMATICAL ITALIC CAPITAL PHI
+    "𝛷": [.p, .h, .capital, .greek, .italic],
+
+    //1D6F8         ; MATHEMATICAL ITALIC CAPITAL CHI
+    "𝛸": [.x, .capital, .greek, .italic],
+
+    //1D6F9         ; MATHEMATICAL ITALIC CAPITAL PSI
+    "𝛹": [.p, .s, .capital, .greek, .italic],
+
+    //1D6FA         ; MATHEMATICAL ITALIC CAPITAL OMEGA
+    "𝛺": [.o, .o, .capital, .greek, .italic],
+
+    //1D6FB         ; MATHEMATICAL ITALIC NABLA
+    "𝛻": [.d, .capital, .greek, .italic],
+
+    //1D6FC         ; MATHEMATICAL ITALIC SMALL ALPHA
+    "𝛼": [.a, .greek, .italic],
+
+    //1D6FD         ; MATHEMATICAL ITALIC SMALL BETA
+    "𝛽": [.b, .greek, .italic],
+
+    //1D6FE         ; MATHEMATICAL ITALIC SMALL GAMMA
+    "𝛾": [.g, .greek, .italic],
+
+    //1D6FF         ; MATHEMATICAL ITALIC SMALL DELTA
+    "𝛿": [.d, .greek, .italic],
+
+    //1D700         ; MATHEMATICAL ITALIC SMALL EPSILON
+    "𝜀": [.e, .greek, .italic],
+
+    //1D701         ; MATHEMATICAL ITALIC SMALL ZETA
+    "𝜁": [.z, .greek, .italic],
+
+    //1D702         ; MATHEMATICAL ITALIC SMALL ETA
+    "𝜂": [.h, .greek, .italic],
+
+    //1D703         ; MATHEMATICAL ITALIC SMALL THETA
+    "𝜃": [.t, .h, .greek, .italic],
+
+    //1D704         ; MATHEMATICAL ITALIC SMALL IOTA
+    "𝜄": [.i, .greek, .italic],
+
+    //1D705         ; MATHEMATICAL ITALIC SMALL KAPPA
+    "𝜅": [.k, .greek, .italic],
+
+    //1D706         ; MATHEMATICAL ITALIC SMALL LAMDA
+    "𝜆": [.l, .greek, .italic],
+
+    //1D707         ; MATHEMATICAL ITALIC SMALL MU
+    "𝜇": [.m, .greek, .italic],
+
+    //1D708         ; MATHEMATICAL ITALIC SMALL NU
+    "𝜈": [.n, .greek, .italic],
+
+    //1D709         ; MATHEMATICAL ITALIC SMALL XI
+    "𝜉": [.k, .s, .greek, .italic],
+
+    //1D70A         ; MATHEMATICAL ITALIC SMALL OMICRON
+    "𝜊": [.o, .greek, .italic],
+
+    //1D70B         ; MATHEMATICAL ITALIC SMALL PI
+    "𝜋": [.p, .greek, .italic],
+
+    //1D70C         ; MATHEMATICAL ITALIC SMALL RHO
+    "𝜌": [.r, .greek, .italic],
+
+    //1D70D         ; MATHEMATICAL ITALIC SMALL FINAL SIGMA
+    "𝜍": [.s, .greek, .final, .italic],
+
+    //1D70E         ; MATHEMATICAL ITALIC SMALL SIGMA
+    "𝜎": [.s, .greek, .italic],
+
+    //1D70F         ; MATHEMATICAL ITALIC SMALL TAU
+    "𝜏": [.t, .greek, .italic],
+
+    //1D710         ; MATHEMATICAL ITALIC SMALL UPSILON
+    "𝜐": [.u, .greek, .italic],
+
+    //1D711         ; MATHEMATICAL ITALIC SMALL PHI
+    "𝜑": [.p, .h, .greek, .italic],
+
+    //1D712         ; MATHEMATICAL ITALIC SMALL CHI
+    "𝜒": [.x, .greek, .italic],
+
+    //1D713         ; MATHEMATICAL ITALIC SMALL PSI
+    "𝜓": [.p, .s, .greek, .italic],
+
+    //1D714         ; MATHEMATICAL ITALIC SMALL OMEGA
+    "𝜔": [.o, .o, .greek, .italic],
+
+    //1D715         ; MATHEMATICAL ITALIC PARTIAL DIFFERENTIAL
+    "𝜕": [.d, .greek, .symbol, .italic],
+
+    //1D716         ; MATHEMATICAL ITALIC EPSILON SYMBOL
+    "𝜖": [.e, .greek, .symbol, .italic],
+
+    //1D717         ; MATHEMATICAL ITALIC THETA SYMBOL
+    "𝜗": [.t, .h, .greek, .symbol, .italic],
+
+    //1D718         ; MATHEMATICAL ITALIC KAPPA SYMBOL
+    "𝜘": [.k, .greek, .symbol, .italic],
+
+    //1D719         ; MATHEMATICAL ITALIC PHI SYMBOL
+    "𝜙": [.p, .h, .greek, .symbol, .italic],
+
+    //1D71A         ; MATHEMATICAL ITALIC RHO SYMBOL
+    "𝜚": [.r, .greek, .symbol, .italic],
+
+    //1D71B         ; MATHEMATICAL ITALIC PI SYMBOL
+    "𝜛": [.p, .greek, .symbol, .italic],
+
+    //1D71C         ; MATHEMATICAL BOLD ITALIC CAPITAL ALPHA
+    "𝜜": [.a, .capital, .greek, .bold, .italic],
+
+    //1D71D         ; MATHEMATICAL BOLD ITALIC CAPITAL BETA
+    "𝜝": [.b, .capital, .greek, .bold, .italic],
+
+    //1D71E         ; MATHEMATICAL BOLD ITALIC CAPITAL GAMMA
+    "𝜞": [.g, .capital, .greek, .bold, .italic],
+
+    //1D71F         ; MATHEMATICAL BOLD ITALIC CAPITAL DELTA
+    "𝜟": [.d, .capital, .greek, .bold, .italic],
+
+    //1D720         ; MATHEMATICAL BOLD ITALIC CAPITAL EPSILON
+    "𝜠": [.e, .capital, .greek, .bold, .italic],
+
+    //1D721         ; MATHEMATICAL BOLD ITALIC CAPITAL ZETA
+    "𝜡": [.z, .capital, .greek, .bold, .italic],
+
+    //1D722         ; MATHEMATICAL BOLD ITALIC CAPITAL ETA
+    "𝜢": [.h, .capital, .greek, .bold, .italic],
+
+    //1D723         ; MATHEMATICAL BOLD ITALIC CAPITAL THETA
+    "𝜣": [.t, .h, .capital, .greek, .bold, .italic],
+
+    //1D724         ; MATHEMATICAL BOLD ITALIC CAPITAL IOTA
+    "𝜤": [.i, .capital, .greek, .bold, .italic],
+
+    //1D725         ; MATHEMATICAL BOLD ITALIC CAPITAL KAPPA
+    "𝜥": [.k, .capital, .greek, .bold, .italic],
+
+    //1D726         ; MATHEMATICAL BOLD ITALIC CAPITAL LAMDA
+    "𝜦": [.l, .capital, .greek, .bold, .italic],
+
+    //1D727         ; MATHEMATICAL BOLD ITALIC CAPITAL MU
+    "𝜧": [.m, .capital, .greek, .bold, .italic],
+
+    //1D728         ; MATHEMATICAL BOLD ITALIC CAPITAL NU
+    "𝜨": [.n, .capital, .greek, .bold, .italic],
+
+    //1D729         ; MATHEMATICAL BOLD ITALIC CAPITAL XI
+    "𝜩": [.k, .s, .capital, .greek, .bold, .italic],
+
+    //1D72A         ; MATHEMATICAL BOLD ITALIC CAPITAL OMICRON
+    "𝜪": [.o, .capital, .greek, .bold, .italic],
+
+    //1D72B         ; MATHEMATICAL BOLD ITALIC CAPITAL PI
+    "𝜫": [.p, .capital, .greek, .bold, .italic],
+
+    //1D72C         ; MATHEMATICAL BOLD ITALIC CAPITAL RHO
+    "𝜬": [.r, .capital, .greek, .bold, .italic],
+
+    //1D72D         ; MATHEMATICAL BOLD ITALIC CAPITAL THETA SYMBOL
+    "𝜭": [.t, .h, .capital, .greek, .symbol, .bold, .italic],
+
+    //1D72E         ; MATHEMATICAL BOLD ITALIC CAPITAL SIGMA
+    "𝜮": [.s, .capital, .greek, .bold, .italic],
+
+    //1D72F         ; MATHEMATICAL BOLD ITALIC CAPITAL TAU
+    "𝜯": [.t, .capital, .greek, .bold, .italic],
+
+    //1D730         ; MATHEMATICAL BOLD ITALIC CAPITAL UPSILON
+    "𝜰": [.u, .capital, .greek, .bold, .italic],
+
+    //1D731         ; MATHEMATICAL BOLD ITALIC CAPITAL PHI
+    "𝜱": [.p, .h, .capital, .greek, .bold, .italic],
+
+    //1D732         ; MATHEMATICAL BOLD ITALIC CAPITAL CHI
+    "𝜲": [.x, .capital, .greek, .bold, .italic],
+
+    //1D733         ; MATHEMATICAL BOLD ITALIC CAPITAL PSI
+    "𝜳": [.p, .s, .capital, .greek, .bold, .italic],
+
+    //1D734         ; MATHEMATICAL BOLD ITALIC CAPITAL OMEGA
+    "𝜴": [.o, .o, .capital, .greek, .bold, .italic],
+
+    //1D735         ; MATHEMATICAL BOLD ITALIC NABLA
+    "𝜵": [.d, .capital, .greek, .bold, .italic, .turned],
+
+    //1D736         ; MATHEMATICAL BOLD ITALIC SMALL ALPHA
+    "𝜶": [.a, .greek, .bold, .italic],
+
+    //1D737         ; MATHEMATICAL BOLD ITALIC SMALL BETA
+    "𝜷": [.b, .greek, .bold, .italic],
+
+    //1D738         ; MATHEMATICAL BOLD ITALIC SMALL GAMMA
+    "𝜸": [.g, .greek, .bold, .italic],
+
+    //1D739         ; MATHEMATICAL BOLD ITALIC SMALL DELTA
+    "𝜹": [.d, .greek, .bold, .italic],
+
+    //1D73A         ; MATHEMATICAL BOLD ITALIC SMALL EPSILON
+    "𝜺": [.e, .greek, .bold, .italic],
+
+    //1D73B         ; MATHEMATICAL BOLD ITALIC SMALL ZETA
+    "𝜻": [.z, .greek, .bold, .italic],
+
+    //1D73C         ; MATHEMATICAL BOLD ITALIC SMALL ETA
+    "𝜼": [.h, .greek, .bold, .italic],
+
+    //1D73D         ; MATHEMATICAL BOLD ITALIC SMALL THETA
+    "𝜽": [.t, .h, .greek, .bold, .italic],
+
+    //1D73E         ; MATHEMATICAL BOLD ITALIC SMALL IOTA
+    "𝜾": [.i, .greek, .bold, .italic],
+
+    //1D73F         ; MATHEMATICAL BOLD ITALIC SMALL KAPPA
+    "𝜿": [.k, .greek, .bold, .italic],
+
+    //1D740         ; MATHEMATICAL BOLD ITALIC SMALL LAMDA
+    "𝝀": [.l, .greek, .bold, .italic],
+
+    //1D741         ; MATHEMATICAL BOLD ITALIC SMALL MU
+    "𝝁": [.m, .greek, .bold, .italic],
+
+    //1D742         ; MATHEMATICAL BOLD ITALIC SMALL NU
+    "𝝂": [.n, .greek, .bold, .italic],
+
+    //1D743         ; MATHEMATICAL BOLD ITALIC SMALL XI
+    "𝝃": [.k, .s, .greek, .bold, .italic],
+
+    //1D744         ; MATHEMATICAL BOLD ITALIC SMALL OMICRON
+    "𝝄": [.o, .greek, .bold, .italic],
+
+    //1D745         ; MATHEMATICAL BOLD ITALIC SMALL PI
+    "𝝅": [.p, .greek, .bold, .italic],
+
+    //1D746         ; MATHEMATICAL BOLD ITALIC SMALL RHO
+    "𝝆": [.r, .greek, .bold, .italic],
+
+    //1D747         ; MATHEMATICAL BOLD ITALIC SMALL FINAL SIGMA
+    "𝝇": [.s, .greek, .final, .bold, .italic],
+
+    //1D748         ; MATHEMATICAL BOLD ITALIC SMALL SIGMA
+    "𝝈": [.s, .greek, .bold, .italic],
+
+    //1D749         ; MATHEMATICAL BOLD ITALIC SMALL TAU
+    "𝝉": [.t, .greek, .bold, .italic],
+
+    //1D74A         ; MATHEMATICAL BOLD ITALIC SMALL UPSILON
+    "𝝊": [.u, .greek, .bold, .italic],
+
+    //1D74B         ; MATHEMATICAL BOLD ITALIC SMALL PHI
+    "𝝋": [.p, .h, .greek, .bold, .italic],
+
+    //1D74C         ; MATHEMATICAL BOLD ITALIC SMALL CHI
+    "𝝌": [.x, .greek, .bold, .italic],
+
+    //1D74D         ; MATHEMATICAL BOLD ITALIC SMALL PSI
+    "𝝍": [.p, .s, .greek, .bold, .italic],
+
+    //1D74E         ; MATHEMATICAL BOLD ITALIC SMALL OMEGA
+    "𝝎": [.o, .o, .greek, .bold, .italic],
+
+    //1D74F         ; MATHEMATICAL BOLD ITALIC PARTIAL DIFFERENTIAL
+    "𝝏": [.d, .greek, .symbol, .bold, .italic],
+
+    //1D750         ; MATHEMATICAL BOLD ITALIC EPSILON SYMBOL
+    "𝝐": [.e, .greek, .symbol, .bold, .italic],
+
+    //1D751         ; MATHEMATICAL BOLD ITALIC THETA SYMBOL
+    "𝝑": [.t, .h, .greek, .symbol, .bold, .italic],
+
+    //1D752         ; MATHEMATICAL BOLD ITALIC KAPPA SYMBOL
+    "𝝒": [.k, .greek, .symbol, .bold, .italic],
+
+    //1D753         ; MATHEMATICAL BOLD ITALIC PHI SYMBOL
+    "𝝓": [.p, .h, .greek, .symbol, .bold, .italic],
+
+    //1D754         ; MATHEMATICAL BOLD ITALIC RHO SYMBOL
+    "𝝔": [.r, .greek, .symbol, .bold, .italic],
+
+    //1D755         ; MATHEMATICAL BOLD ITALIC PI SYMBOL
+    "𝝕": [.p, .greek, .symbol, .bold, .italic],
+
+    //1D756         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL ALPHA
+    "𝝖": [.a, .capital, .greek, .sansSerif, .bold],
+    
+    //1D757         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL BETA
+    "𝝗": [.b, .capital, .greek, .sansSerif, .bold],
+    
+    //1D758         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL GAMMA
+    "𝝘": [.g, .capital, .greek, .sansSerif, .bold],
+
+    //1D759         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL DELTA
+    "𝝙": [.d, .capital, .greek, .sansSerif, .bold],
+
+    //1D75A         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL EPSILON
+    "𝝚": [.e, .capital, .greek, .sansSerif, .bold],
+
+    //1D75B         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL ZETA
+    "𝝛": [.z, .capital, .greek, .sansSerif, .bold],
+
+    //1D75C         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL ETA
+    "𝝜": [.h, .capital, .greek, .sansSerif, .bold],
+
+    //1D75D         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL THETA
+    "𝝝": [.t, .h, .capital, .greek, .sansSerif, .bold],
+
+    //1D75E         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL IOTA
+    "𝝞": [.i, .capital, .greek, .sansSerif, .bold],
+
+    //1D75F         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL KAPPA
+    "𝝟": [.k, .capital, .greek, .sansSerif, .bold],
+
+    //1D760         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL LAMDA
+    "𝝠": [.l, .capital, .greek, .sansSerif, .bold],
+
+    //1D761         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL MU
+    "𝝡": [.m, .capital, .greek, .sansSerif, .bold],
+
+    //1D762         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL NU
+    "𝝢": [.n, .capital, .greek, .sansSerif, .bold],
+
+    //1D763         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL XI
+    "𝝣": [.k, .s, .capital, .greek, .sansSerif, .bold],
+
+    //1D764         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL OMICRON
+    "𝝤": [.o, .capital, .greek, .sansSerif, .bold],
+
+    //1D765         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL PI
+    "𝝥": [.p, .capital, .greek, .sansSerif, .bold],
+
+    //1D766         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL RHO
+    "𝝦": [.r, .capital, .greek, .sansSerif, .bold],
+
+    //1D767         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL THETA SYMBOL
+    "𝝧": [.t, .h, .capital, .greek, .symbol, .sansSerif, .bold],
+
+    //1D768         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL SIGMA
+    "𝝨": [.s, .capital, .greek, .sansSerif, .bold],
+
+    //1D769         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL TAU
+    "𝝩": [.t, .capital, .greek, .sansSerif, .bold],
+
+    //1D76A         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL UPSILON
+    "𝝪": [.u, .capital, .greek, .sansSerif, .bold],
+
+    //1D76B         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL PHI
+    "𝝫": [.p, .h, .capital, .greek, .sansSerif, .bold],
+
+    //1D76C         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL CHI
+    "𝝬": [.x, .capital, .greek, .sansSerif, .bold],
+
+    //1D76D         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL PSI
+    "𝝭": [.p, .s, .capital, .greek, .sansSerif, .bold],
+
+    //1D76E         ; MATHEMATICAL SANS-SERIF BOLD CAPITAL OMEGA
+    "𝝮": [.o, .o, .capital, .greek, .sansSerif, .bold],
+
+    //1D76F         ; MATHEMATICAL SANS-SERIF BOLD NABLA
+    "𝝯": [.d, .capital, .greek, .sansSerif, .bold, .turned],
+
+    //1D770         ; MATHEMATICAL SANS-SERIF BOLD SMALL ALPHA
+    "𝝰": [.a, .greek, .sansSerif, .bold],
+
+    //1D771         ; MATHEMATICAL SANS-SERIF BOLD SMALL BETA
+    "𝝱": [.b, .greek, .sansSerif, .bold],
+
+    //1D772         ; MATHEMATICAL SANS-SERIF BOLD SMALL GAMMA
+    "𝝲": [.g, .greek, .sansSerif, .bold],
+
+    //1D773         ; MATHEMATICAL SANS-SERIF BOLD SMALL DELTA
+    "𝝳": [.d, .greek, .sansSerif, .bold],
+
+    //1D774         ; MATHEMATICAL SANS-SERIF BOLD SMALL EPSILON
+    "𝝴": [.e, .greek, .sansSerif, .bold],
+
+    //1D775         ; MATHEMATICAL SANS-SERIF BOLD SMALL ZETA
+    "𝝵": [.z, .greek, .sansSerif, .bold],
+
+    //1D776         ; MATHEMATICAL SANS-SERIF BOLD SMALL ETA
+    "𝝶": [.h, .greek, .sansSerif, .bold],
+
+    //1D777         ; MATHEMATICAL SANS-SERIF BOLD SMALL THETA
+    "𝝷": [.t, .h, .greek, .sansSerif, .bold],
+
+    //1D778         ; MATHEMATICAL SANS-SERIF BOLD SMALL IOTA
+    "𝝸": [.i, .greek, .sansSerif, .bold],
+
+    //1D779         ; MATHEMATICAL SANS-SERIF BOLD SMALL KAPPA
+    "𝝹": [.k, .greek, .sansSerif, .bold],
+
+    //1D77A         ; MATHEMATICAL SANS-SERIF BOLD SMALL LAMDA
+    "𝝺": [.l, .greek, .sansSerif, .bold],
+
+    //1D77B         ; MATHEMATICAL SANS-SERIF BOLD SMALL MU
+    "𝝻": [.m, .greek, .sansSerif, .bold],
+
+    //1D77C         ; MATHEMATICAL SANS-SERIF BOLD SMALL NU
+    "𝝼": [.n, .greek, .sansSerif, .bold],
+
+    //1D77D         ; MATHEMATICAL SANS-SERIF BOLD SMALL XI
+    "𝝽": [.k, .s, .greek, .sansSerif, .bold],
+
+    //1D77E         ; MATHEMATICAL SANS-SERIF BOLD SMALL OMICRON
+    "𝝾": [.o, .greek, .sansSerif, .bold],
+
+    //1D77F         ; MATHEMATICAL SANS-SERIF BOLD SMALL PI
+    "𝝿": [.p, .greek, .sansSerif, .bold],
+
+    //1D780         ; MATHEMATICAL SANS-SERIF BOLD SMALL RHO
+    "𝞀": [.r, .greek, .sansSerif, .bold],
+
+    //1D781         ; MATHEMATICAL SANS-SERIF BOLD SMALL FINAL SIGMA
+    "𝞁": [.s, .greek, .final, .sansSerif, .bold],
+
+    //1D782         ; MATHEMATICAL SANS-SERIF BOLD SMALL SIGMA
+    "𝞂": [.s, .greek, .sansSerif, .bold],
+
+    //1D783         ; MATHEMATICAL SANS-SERIF BOLD SMALL TAU
+    "𝞃": [.t, .greek, .sansSerif, .bold],
+
+    //1D784         ; MATHEMATICAL SANS-SERIF BOLD SMALL UPSILON
+    "𝞄": [.u, .greek, .sansSerif, .bold],
+
+    //1D785         ; MATHEMATICAL SANS-SERIF BOLD SMALL PHI
+    "𝞅": [.p, .h, .greek, .sansSerif, .bold],
+
+    //1D786         ; MATHEMATICAL SANS-SERIF BOLD SMALL CHI
+    "𝞆": [.x, .greek, .sansSerif, .bold],
+
+    //1D787         ; MATHEMATICAL SANS-SERIF BOLD SMALL PSI
+    "𝞇": [.p, .s, .greek, .sansSerif, .bold],
+
+    //1D788         ; MATHEMATICAL SANS-SERIF BOLD SMALL OMEGA
+    "𝞈": [.o, .o, .greek, .sansSerif, .bold],
+
+    //1D789         ; MATHEMATICAL SANS-SERIF BOLD PARTIAL DIFFERENTIAL
+    "𝞉": [.d, .greek, .symbol, .sansSerif, .bold],
+
+    //1D78A         ; MATHEMATICAL SANS-SERIF BOLD EPSILON SYMBOL
+    "𝞊": [.e, .greek, .symbol, .sansSerif, .bold],
+
+    //1D78B         ; MATHEMATICAL SANS-SERIF BOLD THETA SYMBOL
+    "𝞋": [.t, .h, .greek, .symbol, .sansSerif, .bold],
+
+    //1D78C         ; MATHEMATICAL SANS-SERIF BOLD KAPPA SYMBOL
+    "𝞌": [.k, .greek, .symbol, .sansSerif, .bold],
+
+    //1D78D         ; MATHEMATICAL SANS-SERIF BOLD PHI SYMBOL
+    "𝞍": [.p, .h, .greek, .symbol, .sansSerif, .bold],
+
+    //1D78E         ; MATHEMATICAL SANS-SERIF BOLD RHO SYMBOL
+    "𝞎": [.r, .greek, .symbol, .sansSerif, .bold],
+
+    //1D78F         ; MATHEMATICAL SANS-SERIF BOLD PI SYMBOL
+    "𝞏": [.p, .greek, .symbol, .sansSerif, .bold],
+
+    //1D790         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL ALPHA
+    "𝞐": [.a, .capital, .greek, .sansSerif, .bold, .italic],
+
+    //1D791         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL BETA
+    "𝞑": [.b, .capital, .greek, .sansSerif, .bold, .italic],
+
+    //1D792         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL GAMMA
+    "𝞒": [.g, .capital, .greek, .sansSerif, .bold, .italic],
+
+    //1D793         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL DELTA
+    "𝞓": [.d, .capital, .greek, .sansSerif, .bold, .italic],
+
+    //1D794         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL EPSILON
+    "𝞔": [.e, .capital, .greek, .sansSerif, .bold, .italic],
+
+    //1D795         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL ZETA
+    "𝞕": [.z, .capital, .greek, .sansSerif, .bold, .italic],
+
+    //1D796         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL ETA
+    "𝞖": [.h, .capital, .greek, .sansSerif, .bold, .italic],
+
+    //1D797         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL THETA
+    "𝞗": [.t, .h, .capital, .greek, .sansSerif, .bold, .italic],
+
+    //1D798         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL IOTA
+    "𝞘": [.i, .capital, .greek, .sansSerif, .bold, .italic],
+
+    //1D799         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL KAPPA
+    "𝞙": [.k, .capital, .greek, .sansSerif, .bold, .italic],
+
+    //1D79A         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL LAMDA
+    "𝞚": [.l, .capital, .greek, .sansSerif, .bold, .italic],
+
+    //1D79B         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL MU
+    "𝞛": [.m, .capital, .greek, .sansSerif, .bold, .italic],
+
+    //1D79C         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL NU
+    "𝞜": [.n, .capital, .greek, .sansSerif, .bold, .italic],
+
+    //1D79D         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL XI
+    "𝞝": [.k, .s, .capital, .greek, .sansSerif, .bold, .italic],
+
+    //1D79E         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL OMICRON
+    "𝞞": [.o, .capital, .greek, .sansSerif, .bold, .italic],
+
+    //1D79F         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL PI
+    "𝞟": [.p, .capital, .greek, .sansSerif, .bold, .italic],
+
+    //1D7A0         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL RHO
+    "𝞠": [.r, .capital, .greek, .sansSerif, .bold, .italic],
+
+    //1D7A1         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL THETA SYMBOL
+    "𝞡": [.t, .h, .capital, .greek, .symbol, .sansSerif, .bold, .italic],
+
+    //1D7A2         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL SIGMA
+    "𝞢": [.s, .capital, .greek, .sansSerif, .bold, .italic],
+
+    //1D7A3         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL TAU
+    "𝞣": [.t, .capital, .greek, .sansSerif, .bold, .italic],
+
+    //1D7A4         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL UPSILON
+    "𝞤": [.u, .capital, .greek, .sansSerif, .bold, .italic],
+
+    //1D7A5         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL PHI
+    "𝞥": [.p, .h, .capital, .greek, .sansSerif, .bold, .italic],
+
+    //1D7A6         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL CHI
+    "𝞦": [.x, .capital, .greek, .sansSerif, .bold, .italic],
+
+    //1D7A7         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL PSI
+    "𝞧": [.p, .s, .capital, .greek, .sansSerif, .bold, .italic],
+
+    //1D7A8         ; MATHEMATICAL SANS-SERIF BOLD ITALIC CAPITAL OMEGA
+    "𝞨": [.o, .o, .capital, .greek, .sansSerif, .bold, .italic],
+
+    //1D7A9         ; MATHEMATICAL SANS-SERIF BOLD ITALIC NABLA
+    "𝞩": [.d, .capital, .greek, .sansSerif, .bold, .italic, .turned],
+
+    //1D7AA         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL ALPHA
+    "𝞪": [.a, .greek, .sansSerif, .bold, .italic],
+
+    //1D7AB         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL BETA
+    "𝞫": [.b, .greek, .sansSerif, .bold, .italic],
+
+    //1D7AC         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL GAMMA
+    "𝞬": [.g, .greek, .sansSerif, .bold, .italic],
+
+    //1D7AD         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL DELTA
+    "𝞭": [.d, .greek, .sansSerif, .bold, .italic],
+
+    //1D7AE         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL EPSILON
+    "𝞮": [.e, .greek, .sansSerif, .bold, .italic],
+
+    //1D7AF         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL ZETA
+    "𝞯": [.z, .greek, .sansSerif, .bold, .italic],
+
+    //1D7B0         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL ETA
+    "𝞰": [.h, .greek, .sansSerif, .bold, .italic],
+
+    //1D7B1         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL THETA
+    "𝞱": [.t, .h, .greek, .sansSerif, .bold, .italic],
+
+    //1D7B2         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL IOTA
+    "𝞲": [.i, .greek, .sansSerif, .bold, .italic],
+
+    //1D7B3         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL KAPPA
+    "𝞳": [.k, .greek, .sansSerif, .bold, .italic],
+
+    //1D7B4         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL LAMDA
+    "𝞴": [.l, .greek, .sansSerif, .bold, .italic],
+
+    //1D7B5         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL MU
+    "𝞵": [.m, .greek, .sansSerif, .bold, .italic],
+
+    //1D7B6         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL NU
+    "𝞶": [.v, .greek, .sansSerif, .bold, .italic],
+
+    //1D7B7         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL XI
+    "𝞷": [.k, .s, .greek, .sansSerif, .bold, .italic],
+
+    //1D7B8         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL OMICRON
+    "𝞸": [.o, .greek, .sansSerif, .bold, .italic],
+
+    //1D7B9         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL PI
+    "𝞹": [.p, .greek, .sansSerif, .bold, .italic],
+
+    //1D7BA         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL RHO
+    "𝞺": [.r, .greek, .sansSerif, .bold, .italic],
+
+    //1D7BB         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL FINAL SIGMA
+    "𝞻": [.s, .greek, .final, .sansSerif, .bold, .italic],
+
+    //1D7BC         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL SIGMA
+    "𝞼": [.s, .greek, .sansSerif, .bold, .italic],
+
+    //1D7BD         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL TAU
+    "𝞽": [.t, .greek, .sansSerif, .bold, .italic],
+
+    //1D7BE         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL UPSILON
+    "𝞾": [.u, .greek, .sansSerif, .bold, .italic],
+
+    //1D7BF         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL PHI
+    "𝞿": [.p, .h, .greek, .sansSerif, .bold, .italic],
+
+    //1D7C0         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL CHI
+    "𝟀": [.x, .greek, .sansSerif, .bold, .italic],
+
+    //1D7C1         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL PSI
+    "𝟁": [.p, .s, .greek, .sansSerif, .bold, .italic],
+
+    //1D7C2         ; MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL OMEGA
+    "𝟂": [.o, .o, .greek, .sansSerif, .bold, .italic],
+
+    //1D7C3         ; MATHEMATICAL SANS-SERIF BOLD ITALIC PARTIAL DIFFERENTIAL
+    "𝟃": [.d, .greek, .symbol, .sansSerif, .bold, .italic],
+
+    //1D7C4         ; MATHEMATICAL SANS-SERIF BOLD ITALIC EPSILON SYMBOL
+    "𝟄": [.e, .greek, .symbol, .sansSerif, .bold, .italic],
+
+    //1D7C5         ; MATHEMATICAL SANS-SERIF BOLD ITALIC THETA SYMBOL
+    "𝟅": [.t, .h, .greek, .symbol, .sansSerif, .bold, .italic],
+
+    //1D7C6         ; MATHEMATICAL SANS-SERIF BOLD ITALIC KAPPA SYMBOL
+    "𝟆": [.k, .greek, .symbol, .sansSerif, .bold, .italic],
+
+    //1D7C7         ; MATHEMATICAL SANS-SERIF BOLD ITALIC PHI SYMBOL
+    "𝟇": [.p, .h, .greek, .symbol, .sansSerif, .bold, .italic],
+
+    //1D7C8         ; MATHEMATICAL SANS-SERIF BOLD ITALIC RHO SYMBOL
+    "𝟈": [.r, .greek, .symbol, .sansSerif, .bold, .italic],
+
+    //1D7C9         ; MATHEMATICAL SANS-SERIF BOLD ITALIC PI SYMBOL
+    "𝟉": [.p, .greek, .symbol, .sansSerif, .bold, .italic],
+
+    //1D7CA         ; MATHEMATICAL BOLD CAPITAL DIGAMMA
+    "𝟊": [.g, .g, .capital, .greek, .bold],
+
+    //1D7CB         ; MATHEMATICAL BOLD SMALL DIGAMMA
+    "𝟋": [.g, .g, .greek, .bold],
+    //1D7CE         ; MATHEMATICAL BOLD DIGIT ZERO
+    "𝟎": [.zero, .bold],
+    //1D7CF         ; MATHEMATICAL BOLD DIGIT ONE
+    "𝟏": [.one, .bold],
+    //1D7D0         ; MATHEMATICAL BOLD DIGIT TWO
+    "𝟐": [.two, .bold],
+    //1D7D1         ; MATHEMATICAL BOLD DIGIT THREE
+    "𝟑": [.three, .bold],
+    //1D7D2         ; MATHEMATICAL BOLD DIGIT FOUR
+    "𝟒": [.four, .bold],
+
+    //1D7D3         ; MATHEMATICAL BOLD DIGIT FIVE
+    "𝟓": [.five, .bold],
+
+    //1D7D4         ; MATHEMATICAL BOLD DIGIT SIX
+    "𝟔": [.six, .bold],
+
+    //1D7D5         ; MATHEMATICAL BOLD DIGIT SEVEN
+    "𝟕": [.seven, .bold],
+
+    //1D7D6         ; MATHEMATICAL BOLD DIGIT EIGHT
+    "𝟖": [.eight, .bold],
+
+    //1D7D7         ; MATHEMATICAL BOLD DIGIT NINE
+    "𝟗": [.nine, .bold],
+
+    //1D7D8         ; MATHEMATICAL DOUBLE-STRUCK DIGIT ZERO
+    "𝟘": [.zero, .doubleStruck],
+
+    //1D7D9         ; MATHEMATICAL DOUBLE-STRUCK DIGIT ONE
+    "𝟙": [.one, .doubleStruck],
+
+    //1D7DA         ; MATHEMATICAL DOUBLE-STRUCK DIGIT TWO
+    "𝟚": [.two, .doubleStruck],
+
+    //1D7DB         ; MATHEMATICAL DOUBLE-STRUCK DIGIT THREE
+    "𝟛": [.three, .doubleStruck],
+
+    //1D7DC         ; MATHEMATICAL DOUBLE-STRUCK DIGIT FOUR
+    "𝟜": [.four, .doubleStruck],
+
+    //1D7DD         ; MATHEMATICAL DOUBLE-STRUCK DIGIT FIVE
+    "𝟝": [.five, .doubleStruck],
+
+    //1D7DE         ; MATHEMATICAL DOUBLE-STRUCK DIGIT SIX
+    "𝟞": [.six, .doubleStruck],
+
+    //1D7DF         ; MATHEMATICAL DOUBLE-STRUCK DIGIT SEVEN
+    "𝟟": [.seven, .doubleStruck],
+
+    //1D7E0         ; MATHEMATICAL DOUBLE-STRUCK DIGIT EIGHT
+    "𝟠": [.eight, .doubleStruck],
+
+    //1D7E1         ; MATHEMATICAL DOUBLE-STRUCK DIGIT NINE
+    "𝟡": [.nine, .doubleStruck],
+
+    //1D7E2         ; MATHEMATICAL SANS-SERIF DIGIT ZERO
+    "𝟢": [.zero, .sansSerif],
+
+    //1D7E3         ; MATHEMATICAL SANS-SERIF DIGIT ONE
+    "𝟣": [.one, .sansSerif],
+
+    //1D7E4         ; MATHEMATICAL SANS-SERIF DIGIT TWO
+    "𝟤": [.two, .sansSerif],
+
+    //1D7E5         ; MATHEMATICAL SANS-SERIF DIGIT THREE
+    "𝟥": [.three, .sansSerif],
+
+    //1D7E6         ; MATHEMATICAL SANS-SERIF DIGIT FOUR
+    "𝟦": [.four, .sansSerif],
+
+    //1D7E7         ; MATHEMATICAL SANS-SERIF DIGIT FIVE
+    "𝟧": [.five, .sansSerif],
+
+    //1D7E8         ; MATHEMATICAL SANS-SERIF DIGIT SIX
+    "𝟨": [.six, .sansSerif],
+
+    //1D7E9         ; MATHEMATICAL SANS-SERIF DIGIT SEVEN
+    "𝟩": [.seven, .sansSerif],
+
+    //1D7EA         ; MATHEMATICAL SANS-SERIF DIGIT EIGHT
+    "𝟪": [.eight, .sansSerif],
+
+    //1D7EB         ; MATHEMATICAL SANS-SERIF DIGIT NINE
+    "𝟫": [.nine, .sansSerif],
+
+    //1D7EC         ; MATHEMATICAL SANS-SERIF BOLD DIGIT ZERO
+    "𝟬": [.zero, .sansSerif, .bold],
+
+    //1D7ED         ; MATHEMATICAL SANS-SERIF BOLD DIGIT ONE
+    "𝟭": [.one, .sansSerif, .bold],
+
+    //1D7EE         ; MATHEMATICAL SANS-SERIF BOLD DIGIT TWO
+    "𝟮": [.two, .sansSerif, .bold],
+
+    //1D7EF         ; MATHEMATICAL SANS-SERIF BOLD DIGIT THREE
+    "𝟯": [.three, .sansSerif, .bold],
+
+    //1D7F0         ; MATHEMATICAL SANS-SERIF BOLD DIGIT FOUR
+    "𝟰": [.four, .sansSerif, .bold],
+
+    //1D7F1         ; MATHEMATICAL SANS-SERIF BOLD DIGIT FIVE
+    "𝟱": [.five, .sansSerif, .bold],
+
+    //1D7F2         ; MATHEMATICAL SANS-SERIF BOLD DIGIT SIX
+    "𝟲": [.six, .sansSerif, .bold],
+
+    //1D7F3         ; MATHEMATICAL SANS-SERIF BOLD DIGIT SEVEN
+    "𝟳": [.seven, .sansSerif, .bold],
+
+    //1D7F4         ; MATHEMATICAL SANS-SERIF BOLD DIGIT EIGHT
+    "𝟴": [.eight, .sansSerif, .bold],
+
+    //1D7F5         ; MATHEMATICAL SANS-SERIF BOLD DIGIT NINE
+    "𝟵": [.nine, .sansSerif, .bold],
+
+    //1D7F6         ; MATHEMATICAL MONOSPACE DIGIT ZERO
+    "𝟶": [.zero, .monospace],
+
+    //1D7F7         ; MATHEMATICAL MONOSPACE DIGIT ONE
+    "𝟷": [.one, .monospace],
+
+    //1D7F8         ; MATHEMATICAL MONOSPACE DIGIT TWO
+    "𝟸": [.two, .monospace],
+
+    //1D7F9         ; MATHEMATICAL MONOSPACE DIGIT THREE
+    "𝟹": [.three, .monospace],
+
+    //1D7FA         ; MATHEMATICAL MONOSPACE DIGIT FOUR
+    "𝟺": [.four, .monospace],
+
+    //1D7FB         ; MATHEMATICAL MONOSPACE DIGIT FIVE
+    "𝟻": [.five, .monospace],
+
+    //1D7FC         ; MATHEMATICAL MONOSPACE DIGIT SIX
+    "𝟼": [.six, .monospace],
+
+    //1D7FD         ; MATHEMATICAL MONOSPACE DIGIT SEVEN
+    "𝟽": [.seven, .monospace],
+
+    //1D7FE         ; MATHEMATICAL MONOSPACE DIGIT EIGHT
+    "𝟾": [.eight, .monospace],
+
+    //1D7FF         ; MATHEMATICAL MONOSPACE DIGIT NINE
+    "𝟿": [.nine, .monospace],
 
 ]

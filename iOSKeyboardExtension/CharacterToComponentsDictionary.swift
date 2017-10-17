@@ -2056,10 +2056,10 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "ˤ": [],
 
     //02E5          ; MODIFIER LETTER EXTRA-HIGH TONE BAR
-    "˥": [.extraHightTone],
+    "˥": [.extraHighTone],
 
     //02E6          ; MODIFIER LETTER HIGH TONE BAR
-    "˦": [.hightTone],
+    "˦": [.highTone],
 
     //02E7          ; MODIFIER LETTER MID TONE BAR
     "˧": [.midTone],
@@ -2116,10 +2116,10 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "˸": [.colon, .superscript],
 
     //02F9          ; MODIFIER LETTER BEGIN HIGH TONE
-    "˹": [.beginHightTone],
+    "˹": [.beginHighTone],
 
     //02FA          ; MODIFIER LETTER END HIGH TONE
-    "˺": [.endHightTone],
+    "˺": [.endHighTone],
 
     //02FB          ; MODIFIER LETTER BEGIN LOW TONE
     "˻": [.beginLowTone],
@@ -7148,10 +7148,10 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "꜇": [],
 
     //A708          ; MODIFIER LETTER EXTRA-HIGH DOTTED TONE BAR
-    "꜈": [.extraHightTone, .dot],
+    "꜈": [.extraHighTone, .dot],
 
     //A709          ; MODIFIER LETTER HIGH DOTTED TONE BAR
-    "꜉": [.hightTone, .dot],
+    "꜉": [.highTone, .dot],
 
     //A70A          ; MODIFIER LETTER MID DOTTED TONE BAR
     "꜊": [.midTone, .dot],
@@ -7163,10 +7163,10 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "꜌": [.extraLowTone, .dot],
 
     //A70D          ; MODIFIER LETTER EXTRA-HIGH DOTTED LEFT-STEM TONE BAR
-    "꜍": [.extraHightTone, .dot, .reversed],
+    "꜍": [.extraHighTone, .dot, .reversed],
 
     //A70E          ; MODIFIER LETTER HIGH DOTTED LEFT-STEM TONE BAR
-    "꜎": [.hightTone, .dot, .reversed],
+    "꜎": [.highTone, .dot, .reversed],
 
     //A70F          ; MODIFIER LETTER MID DOTTED LEFT-STEM TONE BAR
     "꜏": [.midTone, .dot, .reversed],
@@ -7178,10 +7178,10 @@ let characterToComponentsDictionary: [String: [CharacterComponent]] = [
     "꜑": [.extraLowTone, .dot, .reversed],
 
     //A712          ; MODIFIER LETTER EXTRA-HIGH LEFT-STEM TONE BAR
-    "꜒": [.extraHightTone, .reversed],
+    "꜒": [.extraHighTone, .reversed],
 
     //A713          ; MODIFIER LETTER HIGH LEFT-STEM TONE BAR
-    "꜓": [.hightTone, .reversed],
+    "꜓": [.highTone, .reversed],
 
     //A714          ; MODIFIER LETTER MID LEFT-STEM TONE BAR
     "꜔": [.midTone, .reversed],

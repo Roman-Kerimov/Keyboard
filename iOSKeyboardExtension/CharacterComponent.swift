@@ -133,12 +133,12 @@ enum CharacterComponent {
     case rightHalf
     case bottomHalf
 
-    case extraHightTone
-    case hightTone
+    case extraHighTone
+    case highTone
     case midTone
     case lowTone
     case extraLowTone
     
-    case beginHightTone, endHightTone
+    case beginHighTone, endHighTone
     case beginLowTone, endLowTone
 }

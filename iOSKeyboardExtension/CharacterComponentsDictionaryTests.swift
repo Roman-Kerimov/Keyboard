@@ -23,4 +23,16 @@ class CharacterComponentsDictionaryTests: XCTestCase {
     func testDictionaryDoesNotContainDuplicateKeys() {
         XCTAssertNotNil(characterComponentsDictionary)
     }
+    
+    func testDictionaryDoesNotContainDuplicateValues() {
+        var dictionary: [String: Int] = .init()
+        for (character, characterComponents) in characterComponentsDictionary {
+            guard !characterComponents.isEmpty else {
+                continue
+            }
+            XCTAssertNil(dictionary[characterComponents.key], "Dictionary literal contains duplicate value for \"\(character)\"")
+            
+            dictionary[characterComponents.key] = 1
+        }
+    }
 }

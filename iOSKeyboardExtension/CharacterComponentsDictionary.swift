@@ -1048,7 +1048,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "Ɩ": [.i, .h, .capital],
 
     //0197          ; LATIN CAPITAL LETTER I WITH STROKE
-    "Ɨ": [.i, .stroke],
+    "Ɨ": [.i, .capital, .stroke],
 
     //0198          ; LATIN CAPITAL LETTER K WITH HOOK
     "Ƙ": [.k, .hook, .capital],
@@ -1954,7 +1954,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "˂": [.arrowhead, .left, .superscript],
 
     //02C3          ; MODIFIER LETTER RIGHT ARROWHEAD
-    "˃": [.arrowhead, .left, .superscript],
+    "˃": [.arrowhead, .right, .superscript],
 
     //02C4          ; MODIFIER LETTER UP ARROWHEAD
     "˄": [.arrowhead, .up, .superscript],
@@ -2089,7 +2089,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "˯": [.arrowhead, .down, .subscript],
 
     //02F0          ; MODIFIER LETTER LOW UP ARROWHEAD
-    "˰": [.arrowhead, .down, .subscript],
+    "˰": [.arrowhead, .up, .subscript],
 
     //02F1          ; MODIFIER LETTER LOW LEFT ARROWHEAD
     "˱": [.arrowhead, .left, .subscript],
@@ -3506,10 +3506,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ᷫ": [.f, .above],
 
     //1DEC          ; COMBINING LATIN SMALL LETTER L WITH DOUBLE MIDDLE TILDE
-    "ᷬ": [.l, .tilde, .doubled],
+    "ᷬ": [.l, .above, .tilde, .doubled],
 
     //1DED          ; COMBINING LATIN SMALL LETTER O WITH LIGHT CENTRALIZATION STROKE
-    "ᷭ": [.o, .lightCentralizationStroke],
+    "ᷭ": [.o, .above, .lightCentralizationStroke],
 
     //1DEE          ; COMBINING LATIN SMALL LETTER P
     "ᷮ": [.p, .above],
@@ -3518,7 +3518,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ᷯ": [.s, .h, .above],
 
     //1DF0          ; COMBINING LATIN SMALL LETTER U WITH LIGHT CENTRALIZATION STROKE
-    "ᷰ": [.u, .lightCentralizationStroke],
+    "ᷰ": [.u, .above, .lightCentralizationStroke],
 
     //1DF1          ; COMBINING LATIN SMALL LETTER W
     "ᷱ": [.w, .above],
@@ -3561,7 +3561,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "᷾": [.arrowhead, .left, .above],
 
     //1DFF          ; COMBINING RIGHT ARROWHEAD AND DOWN ARROWHEAD BELOW
-    "᷿": [.arrowhead, .right, .arrowhead, .up, .below],
+    "᷿": [.arrowhead, .right, .arrowhead, .down, .below],
 
     
     // MARK: - 1E00..1EFF; Latin Extended Additional
@@ -4011,10 +4011,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ẓ": [.z, .dot, .below],
 
     //1E94          ; LATIN CAPITAL LETTER Z WITH LINE BELOW
-    "Ẕ": [.z, .capital, .dot, .below],
+    "Ẕ": [.z, .capital, .macron, .below],
 
     //1E95          ; LATIN SMALL LETTER Z WITH LINE BELOW
-    "ẕ": [.z, .dot, .below],
+    "ẕ": [.z, .macron, .below],
 
     //1E96          ; LATIN SMALL LETTER H WITH LINE BELOW
     "ẖ": [.h, .macron, .below],
@@ -4119,10 +4119,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ặ": [.a, .dot, .below, .breve, .above],
 
     //1EB8          ; LATIN CAPITAL LETTER E WITH DOT BELOW
-    "Ẹ": [.e,  .capital, .dot, .above],
+    "Ẹ": [.e, .capital, .dot, .below],
 
     //1EB9          ; LATIN SMALL LETTER E WITH DOT BELOW
-    "ẹ": [.e, .dot, .above],
+    "ẹ": [.e, .dot, .below],
 
     //1EBA          ; LATIN CAPITAL LETTER E WITH HOOK ABOVE
     "Ẻ": [.e, .capital, .hook, .above],
@@ -4919,7 +4919,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ℒ": [.l, .capital, .script],
 
     //2113          ; SCRIPT SMALL L
-    "ℓ": [.l, .script],
+    "ℓ": [.l, .letterScript],
 
     //2114          ; L B BAR SYMBOL
     "℔": [.l, .b],
@@ -4934,7 +4934,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "℗": [],
 
     //2118          ; SCRIPT CAPITAL P
-    "℘": [.p, .capital, .script],
+    "℘": [.p, .capital, .letterScript],
 
     //2119          ; DOUBLE-STRUCK CAPITAL P
     "ℙ": [.p, .capital, .doubleStruck],
@@ -6347,7 +6347,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⩩": [],
 
     //2A6A          ; TILDE OPERATOR WITH DOT ABOVE
-    "⩪": [.tilde, .dot, .above],
+    "⩪": [.tildeOperator, .dot, .above],
 
     //2A6B          ; TILDE OPERATOR WITH RISING DOTS
     "⩫": [.tilde, .dot, .belowLeft, .dot, .aboveRight],
@@ -6365,7 +6365,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⩯": [.tilde, .doubled, .circumflex, .above],
 
     //2A70          ; APPROXIMATELY EQUAL OR EQUAL TO
-    "⩰": [.tilde, .doubled, .equalsSign],
+    "⩰": [.tilde, .doubled, .equalsSign, .doubled],
 
     //2A71          ; EQUALS SIGN ABOVE PLUS SIGN
     "⩱": [.equalsSign, .plusSign],
@@ -6521,7 +6521,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⪣": [.lessThanSign, .lessThanSign, .line, .below],
 
     //2AA4          ; GREATER-THAN OVERLAPPING LESS-THAN
-    "⪤": [.greaterThanSign, .lessThanSign],
+    "⪤": [.greaterThanSign, .lessThanSign, .extra1],
 
     //2AA5          ; GREATER-THAN BESIDE LESS-THAN
     "⪥": [.greaterThanSign, .joiner, .lessThanSign],
@@ -6749,7 +6749,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⫯": [.verticalLine, .ring, .above],
 
     //2AF0          ; VERTICAL LINE WITH CIRCLE BELOW
-    "⫰": [.verticalLine, .ring, .above],
+    "⫰": [.verticalLine, .ring, .below],
 
     //2AF1          ; DOWN TACK WITH CIRCLE BELOW
     "⫱": [.tack, .down, .ring, .below],
@@ -6863,7 +6863,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ⱴ": [.v, .curl],
 
     //2C75          ; LATIN CAPITAL LETTER HALF H
-    "Ⱶ": [.h, .leftHalf],
+    "Ⱶ": [.h, .capital, .leftHalf],
 
     //2C76          ; LATIN SMALL LETTER HALF H
     "ⱶ": [.h, .leftHalf],
@@ -6992,7 +6992,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⸞": [.tilde, .dot, .above],
 
     //2E1F          ; TILDE WITH DOT BELOW
-    "⸟": [.tilde, .dot, .above],
+    "⸟": [.tilde, .dot, .below],
 
     //2E20          ; LEFT VERTICAL BAR WITH QUILL
     "⸠": [],
@@ -7643,7 +7643,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "Ɜ": [.e, .capital, .open, .reversed],
 
     //A7AC          ; LATIN CAPITAL LETTER SCRIPT G
-    "Ɡ": [.g, .capital, .script],
+    "Ɡ": [.g, .capital, .letterScript],
 
     //A7AD          ; LATIN CAPITAL LETTER L WITH BELT
     "Ɬ": [.l, .capital, .belt],
@@ -7727,7 +7727,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ꬶ": [.g, .crossedTail],
 
     //AB37          ; LATIN SMALL LETTER L WITH INVERTED LAZY S
-    "ꬷ": [.l, .s],
+    "ꬷ": [.l, .lazyS],
 
     //AB38          ; LATIN SMALL LETTER L WITH DOUBLE MIDDLE TILDE
     "ꬸ": [.l, .tilde, .doubled],
@@ -7787,7 +7787,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ꭊ": [.r, .r, .crossedTail],
 
     //AB4B          ; LATIN SMALL LETTER SCRIPT R
-    "ꭋ": [.r, .script],
+    "ꭋ": [.r, .letterScript],
 
     //AB4C          ; LATIN SMALL LETTER SCRIPT R WITH RING
     "ꭌ": [.r, .script, .ring],
@@ -8471,7 +8471,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "𝒷": [.b, .script],
 
     //1D4B8         ; MATHEMATICAL SCRIPT SMALL C
-    "𝒸": [.s, .script],
+    "𝒸": [.c, .script],
 
     //1D4B9         ; MATHEMATICAL SCRIPT SMALL D
     "𝒹": [.d, .script],
@@ -8561,7 +8561,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "𝓘": [.i, .capital, .bold, .script],
 
     //1D4D9         ; MATHEMATICAL BOLD SCRIPT CAPITAL J
-    "𝓙": [.f, .capital, .bold, .script],
+    "𝓙": [.j, .capital, .bold, .script],
 
     //1D4DA         ; MATHEMATICAL BOLD SCRIPT CAPITAL K
     "𝓚": [.k, .capital, .bold, .script],
@@ -9446,7 +9446,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "𝘋": [.d, .capital, .sansSerif, .italic],
 
     //1D60C         ; MATHEMATICAL SANS-SERIF ITALIC CAPITAL E
-    "𝘌": [.t, .capital, .sansSerif, .italic],
+    "𝘌": [.e, .capital, .sansSerif, .italic],
 
     //1D60D         ; MATHEMATICAL SANS-SERIF ITALIC CAPITAL F
     "𝘍": [.f, .capital, .sansSerif, .italic],
@@ -10157,7 +10157,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "𝛺": [.o, .o, .capital, .greek, .italic],
 
     //1D6FB         ; MATHEMATICAL ITALIC NABLA
-    "𝛻": [.d, .capital, .greek, .italic],
+    "𝛻": [.d, .capital, .greek, .italic, .turned],
 
     //1D6FC         ; MATHEMATICAL ITALIC SMALL ALPHA
     "𝛼": [.a, .greek, .italic],

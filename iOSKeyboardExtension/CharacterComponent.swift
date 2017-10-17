@@ -18,6 +18,8 @@ enum CharacterComponent {
     
     case space, exclamationMark, quotationMark, numberSign, dollarSign, percentSign, ampersand, apostrophe, parenthesis, asterisk, plusSign, comma, hyphenMinus, fullStop, solidus, colon, semicolon, lessThanSign, equalsSign, greaterThanSign, questionMark, commercialAt, squareBracket, caret, lowLine, graveAccent, curlyBracket, verticalLine, tilde
     
+    case tildeOperator
+    
     case short
     
     case hyphen, quotation
@@ -59,6 +61,7 @@ enum CharacterComponent {
     case uTop
     case wTop
     case not
+    case lazyS
     
     case letterScript
     case insular
@@ -141,4 +144,10 @@ enum CharacterComponent {
     
     case beginHighTone, endHighTone
     case beginLowTone, endLowTone
+}
+
+extension Array where Element == CharacterComponent {
+    var key: String {
+        return self.map {$0.hashValue.description}.joined(separator: String.space)
+    }
 }

@@ -21,6 +21,6 @@ class CharacterToComponentsDictionaryTests: XCTestCase {
     }
     
     func testDictionaryDoesNotContainDuplicateKeys() {
-        XCTAssertNoThrow(characterToComponentsDictionary)
+        XCTAssertNotNil(characterToComponentsDictionary)
     }
 }

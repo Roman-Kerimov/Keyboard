@@ -1,5 +1,5 @@
 //
-//  CharacterToComponentsDictionaryTests.swift
+//  CharacterComponentsDictionaryTests.swift
 //  iOSKeyboardTests
 //
 //  Created by Roman Kerimov on 2017-09-25.
@@ -8,7 +8,7 @@
 import XCTest
 @testable import iOSKeyboard
 
-class CharacterToComponentsDictionaryTests: XCTestCase {
+class CharacterComponentsDictionaryTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -21,6 +21,6 @@ class CharacterToComponentsDictionaryTests: XCTestCase {
     }
     
     func testDictionaryDoesNotContainDuplicateKeys() {
-        XCTAssertNotNil(characterToComponentsDictionary)
+        XCTAssertNotNil(characterComponentsDictionary)
     }
 }

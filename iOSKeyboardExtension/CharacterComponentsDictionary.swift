@@ -1,5 +1,5 @@
 //
-//  CharacterToComponentsDictionary.swift
+//  CharacterComponentsDictionary.swift
 //  Keyboard
 //
 //  Created by Roman Kerimov on 2017-09-25.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-let characterToComponentsDictionary: [String: [CharacterComponent]] = [
+let characterComponentsDictionary: [String: [CharacterComponent]] = [
     
     // MARK: - 0000..007F; Basic Latin
     

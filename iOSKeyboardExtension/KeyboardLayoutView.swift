@@ -21,12 +21,12 @@ class KeyboardLayoutView: UIView {
     public var layout: KeyboardLayout = .qwerty {
         didSet {
             
-            for (rowIndex, labelsRow) in layout.labels.enumerated() {
-                for (columnIndex, label) in labelsRow.enumerated() {
+            for (rowIndex, row) in layout.rows.enumerated() {
+                for (columnIndex, label) in row.enumerated() {
                     
                     let keyView = keys[rowIndex][columnIndex]
                     keyView.mainLabel = label
-                    keyView.shiftDownLabel = KeyboardLayout.shiftDown.labels[rowIndex][columnIndex]
+                    keyView.shiftDownLabel = KeyboardLayout.shiftDown.rows[rowIndex][columnIndex]
                     keyView.shiftUpLabel = KeyboardLayout.shiftUpDictionary[label] ?? ""
                 }
             }

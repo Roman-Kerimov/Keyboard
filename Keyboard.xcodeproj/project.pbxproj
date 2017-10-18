@@ -89,6 +89,8 @@
 		969E83051EED842E009A1F2D /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969E83041EED842E009A1F2D /* UIView.swift */; };
 		969F15F51E549BD300C0DD7D /* ViewController<UIView>.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969F15F41E549BD300C0DD7D /* ViewController<UIView>.swift */; };
 		969F15F71E54EE3600C0DD7D /* LanguageTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969F15F61E54EE3600C0DD7D /* LanguageTableView.swift */; };
+		96B6B35B1F9764F400231AE6 /* Array<CharacterComponent>.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B6B35A1F9764F400231AE6 /* Array<CharacterComponent>.swift */; };
+		96B6B35C1F9764F400231AE6 /* Array<CharacterComponent>.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B6B35A1F9764F400231AE6 /* Array<CharacterComponent>.swift */; };
 		96BC5F561DEB961F002E0752 /* LabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BC5F551DEB961F002E0752 /* LabelView.swift */; };
 		96C49DC51EB7DF1F006F93ED /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C49DC41EB7DF1F006F93ED /* Character.swift */; };
 		96D2B8DD1E35538B006772A5 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D2B8DC1E35538B006772A5 /* Localization.swift */; };
@@ -178,6 +180,7 @@
 		969E83041EED842E009A1F2D /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		969F15F41E549BD300C0DD7D /* ViewController<UIView>.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController<UIView>.swift"; sourceTree = "<group>"; };
 		969F15F61E54EE3600C0DD7D /* LanguageTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageTableView.swift; sourceTree = "<group>"; };
+		96B6B35A1F9764F400231AE6 /* Array<CharacterComponent>.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array<CharacterComponent>.swift"; sourceTree = "<group>"; };
 		96BC5F551DEB961F002E0752 /* LabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelView.swift; sourceTree = "<group>"; };
 		96C49DC41EB7DF1F006F93ED /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		96D2B8DC1E35538B006772A5 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
@@ -263,6 +266,7 @@
 				96464A1F1F3AF4D2006F8F6B /* For Interface Builder */,
 				96530D661DD1C9A9004E8BAA /* KeyboardLayout.swift */,
 				9643FC4C1F78F8D5004DA2C0 /* CharacterComponent.swift */,
+				96B6B35A1F9764F400231AE6 /* Array<CharacterComponent>.swift */,
 				9643FC4F1F78F94B004DA2C0 /* CharacterComponentsDictionary.swift */,
 				965BFAD01F797BBB00B8F682 /* CharacterComponentsDictionaryTests.swift */,
 				964ED5471DF5765E006AD952 /* KeyboardColorScheme.swift */,
@@ -492,6 +496,7 @@
 				96533A811F12938D00B07CA3 /* UnicodeTable.swift in Sources */,
 				96533A921F1293A500B07CA3 /* Internationalization.swift in Sources */,
 				96533A8C1F1293A500B07CA3 /* UIImage.swift in Sources */,
+				96B6B35B1F9764F400231AE6 /* Array<CharacterComponent>.swift in Sources */,
 				96533A7F1F12938D00B07CA3 /* CharacterSequenceView.swift in Sources */,
 				96533A911F1293A500B07CA3 /* Locale.swift in Sources */,
 				96533A941F1293A500B07CA3 /* LocalizableStrings.swift in Sources */,
@@ -527,6 +532,7 @@
 			files = (
 				969E83051EED842E009A1F2D /* UIView.swift in Sources */,
 				967491B51EE16BDD00DC19E0 /* CharacterSet.swift in Sources */,
+				96B6B35C1F9764F400231AE6 /* Array<CharacterComponent>.swift in Sources */,
 				966194D31DE2FCEF007FCF02 /* KeyboardLayoutView.swift in Sources */,
 				963BA6641F3B1FD000BFE3A7 /* LegalTextView.swift in Sources */,
 				96D2B8DD1E35538B006772A5 /* Localization.swift in Sources */,

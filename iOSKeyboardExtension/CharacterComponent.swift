@@ -145,9 +145,3 @@ enum CharacterComponent {
     case beginHighTone, endHighTone
     case beginLowTone, endLowTone
 }
-
-extension Array where Element == CharacterComponent {
-    var key: String {
-        return self.map {$0.hashValue.description}.joined(separator: String.space)
-    }
-}

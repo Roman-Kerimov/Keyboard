@@ -269,30 +269,6 @@ class KeyboardViewController: UIInputViewController {
                 textDocumentProxy.deleteForward(sequenceOf: .init(charactersIn: .space))
             }
             
-        case .union:
-            var maxSuffixLength = KeyboardLayout.unionDictionary.keys.map { $0.count }.max()!
-            
-            Suffix: while maxSuffixLength > 0 {
-                guard textDocumentProxy.documentContextBeforeInput != nil else {
-                    return
-                }
-                
-                let combination = String(textDocumentProxy.documentContextBeforeInput!.suffix(maxSuffixLength))
-                
-                if let union = KeyboardLayout.unionDictionary[combination] {
-                    
-                    for _ in 1...combination.count {
-                        textDocumentProxy.deleteBackward()
-                    }
-                    
-                    textDocumentProxy.insertText(union)
-                    
-                    break Suffix
-                }
-                
-                maxSuffixLength -= 1
-            }
-            
         case .nextKeyboard:
             break
             

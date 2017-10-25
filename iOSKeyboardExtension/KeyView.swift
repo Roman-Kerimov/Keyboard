@@ -395,24 +395,27 @@ class KeyView: UIButton, ConfigurableView {
                     }
                     
                 case .down:
-                    mainLabelView.text = shiftDownLabelView.text?.first?.description
+                    if shiftDownLabelView.text?.isEmpty == false {
+                        mainLabelView.text = shiftDownLabelView.text?.first?.description
+                    }
                     
                 case .downRight:
                     if shiftDownLabelView.text!.count > 1 {
                         mainLabelView.text = shiftDownLabelView.text?.last?.description
                     }
-                    else {
-                        mainLabelView.text = ""
-                    }
                     
                 case .left:
-                    mainLabelView.text = shiftLeftLabelView.text
+                    if shiftLeftLabelView.text?.isEmpty == false {
+                        mainLabelView.text = shiftLeftLabelView.text
+                    }
                     
                 case .right:
-                    mainLabelView.text = shiftRightLabelView.text
+                    if shiftRightLabelView.text?.isEmpty == false {
+                        mainLabelView.text = shiftRightLabelView.text
+                    }
                     
                 case .downLeft, .upRight, .upLeft:
-                    mainLabelView.text = ""
+                    break
                 }
             }
             else {

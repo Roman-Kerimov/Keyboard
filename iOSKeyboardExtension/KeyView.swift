@@ -387,7 +387,7 @@ class KeyView: UIButton, ConfigurableView {
                 switch direction {
                     
                 case .up:
-                    if shiftUpLabelView.text != nil && shiftUpLabelView.text != "" {
+                    if shiftUpLabelView.text?.isEmpty == false {
                         mainLabelView.text = shiftUpLabelView.text
                     }
                     else if specialKey == nil {
@@ -399,7 +399,7 @@ class KeyView: UIButton, ConfigurableView {
                     
                 case .downRight:
                     if shiftDownLabelView.text!.count > 1 {
-                        mainLabelView.text = String(shiftDownLabelView.text!.last!)
+                        mainLabelView.text = shiftDownLabelView.text?.last?.description
                     }
                     else {
                         mainLabelView.text = ""

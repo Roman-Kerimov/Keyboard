@@ -395,7 +395,7 @@ class KeyView: UIButton, ConfigurableView {
                     }
                     
                 case .down:
-                    mainLabelView.text = String(shiftDownLabelView.text!.first!)
+                    mainLabelView.text = shiftDownLabelView.text?.first?.description
                     
                 case .downRight:
                     if shiftDownLabelView.text!.count > 1 {

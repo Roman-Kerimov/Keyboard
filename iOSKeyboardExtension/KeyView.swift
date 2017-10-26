@@ -394,25 +394,25 @@ class KeyView: UIButton, ConfigurableView {
                 switch direction {
                     
                 case .up:
-                    if shiftUpLabelView.text?.isEmpty == false {
+                    if mainLabelView.text == mainLabel && shiftUpLabelView.text?.isEmpty == false {
                         mainLabelView.text = shiftUpLabelView.text
                     }
                     else if specialKey == nil {
-                        mainLabelView.text = mainLabel.uppercased()
+                        mainLabelView.text = mainLabelView.text?.uppercased()
                     }
                     
                 case .down:
-                    if shiftDownLabelView.text?.isEmpty == false {
+                    if mainLabelView.text == mainLabel && shiftDownLabelView.text?.isEmpty == false {
                         mainLabelView.text = shiftDownLabelView.text?.first?.description
                     }
                     
                 case .left:
-                    if shiftLeftLabelView.text?.isEmpty == false {
+                    if mainLabelView.text == mainLabel && shiftLeftLabelView.text?.isEmpty == false {
                         mainLabelView.text = shiftLeftLabelView.text
                     }
                     
                 case .right:
-                    if shiftRightLabelView.text?.isEmpty == false {
+                    if mainLabelView.text == mainLabel && shiftRightLabelView.text?.isEmpty == false {
                         mainLabelView.text = shiftRightLabelView.text
                     }
                     else if shiftDownLabelView.text!.count > 1 && shiftDownLabelView.text?.hasPrefix(mainLabelView.text!) == true {

@@ -96,12 +96,11 @@ class KeyboardViewController: UIInputViewController {
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
         
-        coordinator.animate(alongsideTransition: nil) { (context) in
+        DispatchQueue.main.async {
             self.keyboardView.configure()
         }
-        
-        super.viewWillTransition(to: size, with: coordinator)
     }
     
     override func didReceiveMemoryWarning() {

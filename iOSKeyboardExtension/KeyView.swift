@@ -339,6 +339,18 @@ class KeyView: UIButton, ConfigurableView {
     private var gestureStartPoint: CGPoint!
     private var shiftDirections: [ShiftDirection] = .init()
     
+    private var characterComponents: [CharacterComponent] {
+        get {
+            return mainLabelView.text?.characterComponents ?? .init()
+        }
+        
+        set {
+            if newValue.character.isEmpty == false {
+                mainLabelView.text = newValue.character
+            }
+        }
+    }
+    
     @objc func longPressGestureAction(gesture: UIGestureRecognizer) {
         isHighlighted = true
         
@@ -397,8 +409,8 @@ class KeyView: UIButton, ConfigurableView {
                     if mainLabelView.text == mainLabel && shiftUpLabelView.text?.isEmpty == false {
                         mainLabelView.text = shiftUpLabelView.text
                     }
-                    else if specialKey == nil {
-                        mainLabelView.text = mainLabelView.text?.uppercased()
+                    else {
+                        characterComponents += [.capital]
                     }
                     
                 case .down:

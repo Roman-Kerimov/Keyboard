@@ -417,6 +417,9 @@ class KeyView: UIButton, ConfigurableView {
                     if mainLabelView.text == mainLabel && shiftDownLabelView.text?.isEmpty == false {
                         mainLabelView.text = shiftDownLabelView.text?.first?.description
                     }
+                    else if characterComponents.contains(.capital) {
+                        characterComponents = .init(characterComponents.split(separator: .capital, maxSplits: 1, omittingEmptySubsequences: false).joined(separator: [.smallCapital]))
+                    }
                     
                 case .left:
                     if mainLabelView.text == mainLabel && shiftLeftLabelView.text?.isEmpty == false {

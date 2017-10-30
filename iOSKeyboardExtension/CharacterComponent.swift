@@ -65,7 +65,7 @@ enum CharacterComponent {
     case sBottom
     case uTop
     case wTop
-    case not
+    case not, notLow
     case lazyS
     
     case letterScript

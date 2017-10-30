@@ -35,5 +35,7 @@ class Array_CharacterComponent_Tests: XCTestCase {
         XCTAssert(characterComponets.character == "A")
     }
 
-    
+    func testNormalizationOfCommutativeCharacterComponents() {
+        XCTAssertEqual([.r, .capital, .smallCapital].normalized, [.r, .smallCapital, .capital].normalized)
+    }
 }

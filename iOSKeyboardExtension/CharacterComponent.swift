@@ -8,6 +8,11 @@
 import Foundation
 
 enum CharacterComponent {
+    private static let commutative: Set<CharacterComponent> = .init([.capital, .smallCapital])
+    
+    public var isCommutative: Bool {
+        return CharacterComponent.commutative.contains(self)
+    }
     
     case joiner
     case fractionSlash

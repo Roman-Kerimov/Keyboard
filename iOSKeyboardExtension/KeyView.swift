@@ -434,7 +434,13 @@ class KeyView: UIButton, ConfigurableView {
                         mainLabelView.text = shiftDownLabelView.text?.last?.description
                     }
                     
-                case .downLeft, .downRight, .upLeft, .upRight:
+                case .upRight:
+                    characterComponents += [.superscript]
+                    
+                case .downRight:
+                    characterComponents += [.subscript]
+                    
+                case .downLeft, .upLeft:
                     break
                 }
             }

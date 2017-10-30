@@ -8,7 +8,7 @@
 import Foundation
 
 enum CharacterComponent {
-    private static let commutative: Set<CharacterComponent> = .init([.capital, .smallCapital])
+    private static let commutative: Set<CharacterComponent> = .init([.capital, .smallCapital, .superscript, .subscript])
     
     public var isCommutative: Bool {
         return CharacterComponent.commutative.contains(self)

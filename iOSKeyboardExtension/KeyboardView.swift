@@ -201,7 +201,7 @@ internal class KeyboardView: UIView {
     
     private var sizeInKeysForVerticalMode: CGSize {
         return CGSize(
-            width: CGFloat(KeyboardSettings.shared.layout.columnCount / 2) + 0.5 + horizontalIndentInKeys*2,
+            width: CGFloat(KeyboardSettings.shared.layout.columnCount / 2) + 0.2 + horizontalIndentInKeys*2,
             height: deleteRowHeightInKeys + CGFloat(KeyboardSettings.shared.layout.rowCount * 2) + spaceRowHeightInKeys
         )
     }

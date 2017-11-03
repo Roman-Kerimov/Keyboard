@@ -179,7 +179,7 @@ internal class KeyboardView: UIView {
         return deleteRowHeightInKeys
     }
     
-    private var unicodeCollectionWidthInKeys: CGFloat {
+    private var horizontalIndentInKeys: CGFloat {
         if layoutMode == .horizontal && isPrefferedVerticalMode {
             return 1
         }
@@ -201,14 +201,14 @@ internal class KeyboardView: UIView {
     
     private var sizeInKeysForVerticalMode: CGSize {
         return CGSize(
-            width: CGFloat(KeyboardSettings.shared.layout.columnCount / 2) + 0.5 + unicodeCollectionWidthInKeys,
+            width: CGFloat(KeyboardSettings.shared.layout.columnCount / 2) + 0.5 + horizontalIndentInKeys*2,
             height: deleteRowHeightInKeys + CGFloat(KeyboardSettings.shared.layout.rowCount * 2) + spaceRowHeightInKeys
         )
     }
     
     private var sizeInKeysForHorizontalMode: CGSize {
         return CGSize(
-            width: CGFloat(KeyboardSettings.shared.layout.columnCount) + unicodeCollectionWidthInKeys,
+            width: CGFloat(KeyboardSettings.shared.layout.columnCount) + horizontalIndentInKeys*2,
             height: deleteRowHeightInKeys + CGFloat(KeyboardSettings.shared.layout.rowCount) + spaceRowHeightInKeys
         )
     }
@@ -257,8 +257,8 @@ internal class KeyboardView: UIView {
         return spaceRowHeightInKeys * keySize.height
     }
 
-    private var unicodeCollectionWidth: CGFloat {
-        return unicodeCollectionWidthInKeys * keySize.width
+    private var horizontalIndent: CGFloat {
+        return horizontalIndentInKeys * keySize.width
     }
 
     private var size: CGSize {
@@ -353,7 +353,7 @@ internal class KeyboardView: UIView {
             size: .init(width: size.width, height: layoutHeight),
             halfKeyboardSize: halfKeyboardSize,
             keySize: keySize, keySpacing: keySpacing, labelFontSize: labelFontSize,
-            unicodeCollectionWidth: unicodeCollectionWidth
+            horizontalIndent: horizontalIndent
         )
         layoutView.frame.origin.y = deleteRowHeight
         

@@ -77,22 +77,22 @@ class KeyboardLayoutView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(size: CGSize, halfKeyboardSize: CGSize, keySize: CGSize, keySpacing: CGFloat, labelFontSize: CGFloat, unicodeCollectionWidth: CGFloat) {
+    func configure(size: CGSize, halfKeyboardSize: CGSize, keySize: CGSize, keySpacing: CGFloat, labelFontSize: CGFloat, horizontalIndent: CGFloat) {
         frame.size = size
         
         for (halfKeyboardIndex, halfKeyboard) in halfKeyboards.enumerated() {
             halfKeyboard.frame.size = halfKeyboardSize
             
             if halfKeyboardIndex == 0 {
-                halfKeyboard.frame.origin.x = unicodeCollectionWidth
+                halfKeyboard.frame.origin.x = horizontalIndent
             }
             else {
-                halfKeyboard.frame.origin.x = size.width - halfKeyboard.frame.width
+                halfKeyboard.frame.origin.x = size.width - halfKeyboard.frame.width - horizontalIndent
                 halfKeyboard.frame.origin.y = size.height - halfKeyboard.frame.height
             }
         }
         
-        unicodeCollectionView.size = .init(width: unicodeCollectionWidth, height: size.height)
+        unicodeCollectionView.size = .init(width: horizontalIndent, height: size.height)
         
         for (rowIndex, row) in keys.enumerated() {
             for (keyIndex, key) in row.enumerated() {

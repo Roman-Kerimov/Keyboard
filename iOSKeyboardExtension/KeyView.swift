@@ -417,7 +417,12 @@ class KeyView: UIButton, ConfigurableView {
                     if mainLabelView.text == mainLabel && shiftDownLabelView.text?.isEmpty == false {
                         mainLabelView.text = shiftDownLabelView.text?.first?.description
                     }
-                    else if characterComponents.contains(.capital) {
+                    else if characterComponents.extraArray.count > 1
+                        && characterComponents == characterComponents.extraArray[0] {
+                        
+                        characterComponents = characterComponents.extraArray[1]
+                    }
+                    else {
                         characterComponents = .init(characterComponents.split(separator: .capital, maxSplits: 1, omittingEmptySubsequences: false).joined(separator: [.smallCapital]))
                     }
                     
@@ -425,13 +430,18 @@ class KeyView: UIButton, ConfigurableView {
                     if mainLabelView.text == mainLabel && shiftLeftLabelView.text?.isEmpty == false {
                         mainLabelView.text = shiftLeftLabelView.text
                     }
+                    else if characterComponents.extraArray.count > 2
+                        && characterComponents == characterComponents.extraArray[1] {
+                        
+                        characterComponents = characterComponents.extraArray[2]
+                    }
                     
                 case .right:
                     if mainLabelView.text == mainLabel && shiftRightLabelView.text?.isEmpty == false {
                         mainLabelView.text = shiftRightLabelView.text
                     }
-                    else if shiftDownLabelView.text!.count > 1 && shiftDownLabelView.text?.hasPrefix(mainLabelView.text!) == true {
-                        mainLabelView.text = shiftDownLabelView.text?.last?.description
+                    else if characterComponents.extraArray.isEmpty == false {
+                        characterComponents = characterComponents.extraArray[0]
                     }
                     
                 case .upRight:

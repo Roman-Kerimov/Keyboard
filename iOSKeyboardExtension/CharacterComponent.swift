@@ -8,10 +8,16 @@
 import Foundation
 
 enum CharacterComponent {
-    private static let commutative: Set<CharacterComponent> = .init([.capital, .smallCapital, .superscript, .subscript])
+    private static let commutative: Set<CharacterComponent> = .init([.capital, .smallCapital, .superscript, .subscript] + extraComponents)
     
     public var isCommutative: Bool {
         return CharacterComponent.commutative.contains(self)
+    }
+    
+    internal static let extraComponents: [CharacterComponent] = [.extra0, .turned, .reversed, .inverted, .sideways, .extra1, .extra2]
+    
+    internal var isExtraComponent: Bool {
+        return CharacterComponent.extraComponents.contains(self)
     }
     
     case joiner

@@ -100,14 +100,6 @@ class KeyView: UIButton, ConfigurableView {
     
     private var backgroundView: UIView!
     
-    convenience init(key: SpecialKey) {
-        self.init(label: key.label)
-        
-        if key == .nextKeyboard || key == .dismissKeyboard {
-            //label.font =
-        }
-    }
-    
     private var returnKeyType: UIReturnKeyType? {
         if specialKey == .return {
             #if TARGET_INTERFACE_BUILDER
@@ -182,11 +174,10 @@ class KeyView: UIButton, ConfigurableView {
         }
     }
     
-    init(label: String = "", shiftDownLabel: String = "") {
+    init(key: SpecialKey? = nil) {
         super.init(frame: CGRect())
         
-        mainLabel = label
-        shiftUpLabelView.text = KeyboardLayout.shiftUpDictionary[label]
+        mainLabel = key?.label ?? .init()
         
         // It is for activation of touch events
         backgroundColor = .touchableClear

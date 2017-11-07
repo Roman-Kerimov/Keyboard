@@ -22,12 +22,15 @@ class KeyboardLayoutView: UIView {
         didSet {
             
             for (rowIndex, row) in layout.rows.enumerated() {
-                for (columnIndex, label) in row.enumerated() {
+                for (columnIndex, baseCharacterComponent) in row.enumerated() {
                     
                     let keyView = keys[rowIndex][columnIndex]
-                    keyView.mainLabel = label
-                    keyView.shiftDownLabel = KeyboardLayout.shiftDown.rows[rowIndex][columnIndex]
-                    keyView.shiftUpLabel = KeyboardLayout.shiftUpDictionary[label] ?? ""
+                    keyView.mainLabel = [baseCharacterComponent].character
+                    keyView.shiftDownLabel = [KeyboardLayout.shiftDown.rows[rowIndex][columnIndex]].character
+                    
+                    if let shiftUpCharacterComponent = KeyboardLayout.shiftUpDictionary[baseCharacterComponent] {
+                        keyView.shiftUpLabel = [shiftUpCharacterComponent].character
+                    }
                 }
             }
             

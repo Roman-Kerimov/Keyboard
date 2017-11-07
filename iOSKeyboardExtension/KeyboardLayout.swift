@@ -12,7 +12,7 @@ struct KeyboardLayout {
     
     let name: String
     
-    let rows: [[String]]
+    let rows: [[CharacterComponent]]
     
     var rowCount: Int {
         return rows.count
@@ -27,35 +27,35 @@ struct KeyboardLayout {
     static let qwerty = KeyboardLayout(
         name: "QWERTY",
         rows: [
-            [	"q",	"w",	"e",	"r",	"t",	"y",	"u",	"i",	"o",	"p",	],
-            [	"a",	"s",	"d",	"f",	"g",	"h",	"j",	"k",	"l",	"'",	],
-            [	"z",	"x",	"c",	"v",	"b",	"n",	"m",	",",	".",	"?",	]
-        ]	
+            [ .q, .w, .e, .r, .t, .y, .u, .i,     .o,        .p,            ],
+            [ .a, .s, .d, .f, .g, .h, .j, .k,     .l,        .apostrophe,   ],
+            [ .z, .x, .c, .v, .b, .n, .m, .comma, .fullStop, .questionMark, ]
+        ]
     )
     
-    static let shiftUpDictionary: [String: String] = [
-        ".": ":",
-        ",": ";",
-        "?": "!",
-        "'": "\"",
-        SpecialKey.space.label: "_"
+    static let shiftUpDictionary: [CharacterComponent: CharacterComponent] = [
+        .fullStop: .colon,
+        .comma: .semicolon,
+        .questionMark: .exclamationMark,
+        .apostrophe: .quotationMark,
+        .space: .lowLine
     ]
     
     static let shiftDown = KeyboardLayout(
         name: "ShiftDown",
         rows: [
-            [	"&",	"<",	">",	"|",	"{}",	"/",	"7",	"8",	"9",	"-",	],
-            [	"@",	"#",	"$",	"%",	"()",	"*",	"4",	"5",	"6",	"+",	],
-            [	"`",	"~",	"^",	"\\",	"[]",	"0",	"1",	"2",	"3",	"=",	]
-        ]	
+            [ .ampersand,    .lessThanSign, .greaterThanSign, .verticalLine, .curlyBracket,  .solidus,  .seven, .eight, .nine,  .hyphenMinus, ],
+            [ .commercialAt, .numberSign,   .dollarSign,      .percentSign,  .parenthesis,   .asterisk, .four,  .five,  .six,   .plusSign,    ],
+            [ .graveAccent,  .tilde,        .caret,           .solidus,      .squareBracket, .zero,     .one,   .two,   .three, .equalsSign,  ]
+        ]
     )
     
     static let dvorak = KeyboardLayout(
         name: "Dvorak",
         rows: [
-            [	"'",	",",	".",	"p",	"y",	"f",	"g",	"c",	"r",	"l",	],
-            [	"a",	"o",	"e",	"u",	"i",	"d",	"h",	"t",	"n",	"s",	],
-            [	"?",	"q",	"j",	"k",	"x",	"b",	"m",	"w",	"v",	"z",	]
-        ]	
+            [ .apostrophe,   .comma, .fullStop, .p, .y, .f, .g, .c, .r, .l, ],
+            [ .a,            .o,     .e,        .u, .i, .d, .h, .t, .n, .s, ],
+            [ .questionMark, .q,     .j,        .k, .x, .b, .m, .w, .v, .z, ]
+        ]
     )
 }

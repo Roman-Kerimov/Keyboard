@@ -431,7 +431,9 @@ class KeyView: UIButton, ConfigurableView {
                     if mainLabelView.text == mainLabel && shiftRightLabelView.text?.isEmpty == false {
                         mainLabelView.text = shiftRightLabelView.text
                     }
-                    else if characterComponents.extraArray.isEmpty == false {
+                    else if characterComponents.extraArray.isEmpty == false
+                        && characterComponents.extraArray.contains(where: {$0.normalized == characterComponents.normalized}) == false {
+                            
                         characterComponents = characterComponents.extraArray[0]
                     }
                     

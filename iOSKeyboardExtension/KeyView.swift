@@ -436,6 +436,11 @@ class KeyView: UIButton, ConfigurableView {
                             
                         characterComponents = characterComponents.extraArray[0]
                     }
+                    else if let extraRightComponent = KeyboardLayout.shiftRightDictionary[characterComponents.first!] {
+                        if characterComponents.count == 1 {
+                            characterComponents = [extraRightComponent]
+                        }
+                    }
                     
                 case .upRight:
                     characterComponents += [.superscript]

@@ -51,7 +51,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     ",": [.comma],
     
     //002D          ; HYPHEN-MINUS
-    "-": [.hyphenMinus],
+    "-": [.caret, .extra2],
     
     //002E          ; FULL STOP
     ".": [.fullStop],
@@ -204,7 +204,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "_": [.lowLine],
 
     //0060          ; GRAVE ACCENT
-    "`": [.graveAccent],
+    "`": [.caret, .extra1],
 
     //0061          ; LATIN SMALL LETTER A
     "a": [.a],
@@ -4459,10 +4459,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     " ": [.space, .m, .five, .nonBreaking],
 
     //2030          ; PER MILLE SIGN
-    "‰": [.percentSign, .extra1],
+    "‰": [.percentSign, .percentSign],
 
     //2031          ; PER TEN THOUSAND SIGN
-    "‱": [.percentSign, .extra2],
+    "‱": [.percentSign, .percentSign, .percentSign],
 
     //2032          ; PRIME
     "′": [],

@@ -28,7 +28,7 @@ struct KeyboardLayout {
         name: "QWERTY",
         rows: [
             [ .q, .w, .e, .r, .t, .y, .u, .i,     .o,        .p,            ],
-            [ .a, .s, .d, .f, .g, .h, .j, .k,     .l,        .apostrophe,   ],
+            [ .a, .s, .d, .f, .g, .h, .j, .k,     .l,        .hyphen,       ],
             [ .z, .x, .c, .v, .b, .n, .m, .comma, .fullStop, .questionMark, ],
         ]
     )
@@ -36,7 +36,7 @@ struct KeyboardLayout {
     static let dvorak = KeyboardLayout(
         name: "Dvorak",
         rows: [
-            [ .apostrophe,   .comma, .fullStop, .p, .y, .f, .g, .c, .r, .l, ],
+            [ .hyphen,       .comma, .fullStop, .p, .y, .f, .g, .c, .r, .l, ],
             [ .a,            .o,     .e,        .u, .i, .d, .h, .t, .n, .s, ],
             [ .questionMark, .q,     .j,        .k, .x, .b, .m, .w, .v, .z, ],
         ]
@@ -50,12 +50,14 @@ struct KeyboardLayout {
         .space: .lowLine,
     ]
     
+    static let shiftRightDictionary: [CharacterComponent: CharacterComponent] = [.lessThanSign: .greaterThanSign]
+    
     static let shiftDown = KeyboardLayout(
         name: "ShiftDown",
         rows: [
-            [ .ampersand,    .lessThanSign, .greaterThanSign, .verticalLine, .curlyBracket,  .solidus,  .seven, .eight, .nine,  .hyphenMinus, ],
-            [ .commercialAt, .numberSign,   .dollarSign,      .percentSign,  .parenthesis,   .asterisk, .four,  .five,  .six,   .plusSign,    ],
-            [ .graveAccent,  .tilde,        .caret,           .solidus,      .squareBracket, .zero,     .one,   .two,   .three, .equalsSign,  ],
+            [ .caret,        .tilde,       .asterisk,     .apostrophe,   .curlyBracket,  .divisionSign,       .seven, .eight, .nine,  .minusSign,  ],
+            [ .commercialAt, .numberSign,  .ampersand,    .verticalLine, .parenthesis,   .multiplicationSign, .four,  .five,  .six,   .plusSign,   ],
+            [ .dollarSign,   .percentSign, .lessThanSign, .solidus,      .squareBracket, .zero,               .one,   .two,   .three, .equalsSign, ],
         ]
     )
 }

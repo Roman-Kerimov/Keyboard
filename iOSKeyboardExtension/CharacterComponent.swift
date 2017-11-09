@@ -27,7 +27,7 @@ enum CharacterComponent {
     
     case zero, one, two, three, four, five, six, seven, eight, nine
     
-    case space, exclamationMark, quotationMark, numberSign, dollarSign, percentSign, ampersand, apostrophe, parenthesis, asterisk, plusSign, comma, hyphenMinus, fullStop, solidus, colon, semicolon, lessThanSign, equalsSign, greaterThanSign, questionMark, commercialAt, squareBracket, caret, lowLine, graveAccent, curlyBracket, verticalLine, tilde
+    case space, exclamationMark, quotationMark, numberSign, dollarSign, percentSign, ampersand, apostrophe, parenthesis, asterisk, plusSign, comma, fullStop, solidus, colon, semicolon, lessThanSign, equalsSign, greaterThanSign, questionMark, commercialAt, squareBracket, caret, lowLine, curlyBracket, verticalLine, tilde
     
     case tildeOperator
     

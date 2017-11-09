@@ -440,8 +440,8 @@ class KeyView: UIButton, ConfigurableView {
                             
                         characterComponents = characterComponents.extraArray[0]
                     }
-                    else if let extraRightComponent = KeyboardLayout.shiftRightDictionary[characterComponents.first!] {
-                        if characterComponents.count == 1 {
+                    else if characterComponents.count == 1 {
+                        if let extraRightComponent = KeyboardLayout.shiftRightDictionary[characterComponents.first!] {
                             characterComponents = [extraRightComponent]
                         }
                     }

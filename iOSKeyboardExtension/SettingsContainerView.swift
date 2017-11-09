@@ -63,6 +63,9 @@ class SettingsContainerView: UIStackView {
         
         navigationController.viewControllers = [settingsViewController]
         
+        settingsViewController.navigationController?.view.layer.borderWidth = 1/UIScreen.main.scale
+        settingsViewController.navigationController?.view.layer.borderColor = UIColor.lightGray.cgColor
+        
         
         titleLabel.font = .boldSystemFont(ofSize: UIFont.systemFontSize * 1.8)
         titleLabel.sizeToFit()

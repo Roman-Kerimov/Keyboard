@@ -22,7 +22,7 @@ struct KeyboardLayout {
         return rows.map { $0.count }.max()!
     }
     
-    static let list: [KeyboardLayout] = [.qwerty, .dvorak, .colemak]
+    static let list: [KeyboardLayout] = [.qwerty, .dvorak, .colemak, .azerty]
 
     static let qwerty = KeyboardLayout(
         name: "QWERTY",
@@ -48,6 +48,15 @@ struct KeyboardLayout {
             [ .q, .w, .f, .p, .g, .j, .l, .u,     .y,        .hyphen,       ],
             [ .a, .r, .s, .t, .d, .h, .n, .e,     .i,        .o,            ],
             [ .z, .x, .c, .v, .b, .k, .m, .comma, .fullStop, .questionMark, ],
+        ]
+    )
+    
+    static let azerty = KeyboardLayout(
+        name: "AZERTY",
+        rows: [
+            [ .a, .z, .e, .r, .t, .y, .u,     .i,        .o,            .p,      ],
+            [ .q, .s, .d, .f, .g, .h, .j,     .k,        .l,            .m,      ],
+            [ .w, .x, .c, .v, .b, .n, .comma, .fullStop, .questionMark, .hyphen, ],
         ]
     )
     

@@ -32,6 +32,9 @@ class KeyboardLayoutView: UIView {
                     if let shiftUpCharacterComponent = KeyboardLayout.shiftUpDictionary[baseCharacterComponent] {
                         keyView.shiftUpLabel = [shiftUpCharacterComponent].character
                     }
+                    else {
+                        keyView.shiftUpLabel = .init()
+                    }
                 }
             }
             

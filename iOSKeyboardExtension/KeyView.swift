@@ -114,7 +114,7 @@ class KeyView: UIButton, ConfigurableView {
     }
     
     private var isServiceKey: Bool {
-        return specialKey != nil && specialKey != .space && returnKeyType != .default
+        return specialKey != nil && specialKey != .space && specialKey != .tab && returnKeyType != .default
     }
     
     private var isSpecialReturnType: Bool {
@@ -249,7 +249,7 @@ class KeyView: UIButton, ConfigurableView {
         
         if let specialKey = self.specialKey {
             switch specialKey {
-            case .delete, .return:
+            case .delete, .return, .tab:
                 mainLabelView.font = mainLabelView.font.withSize(shiftLabelFont.pointSize)
                 
             case .settings:

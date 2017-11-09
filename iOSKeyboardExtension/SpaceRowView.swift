@@ -21,7 +21,8 @@ class SpaceRowView: RowView {
     let keys: [(proportion: CGFloat, view: KeyView)] = [
         (5, .init(key: .settings)),
         (5, .init(key: .nextKeyboard)),
-        (17,.init(key: .space)),
+        (6, .init(key: .tab)),
+        (12,.init(key: .space)),
         (8, .init(key: .return)),
         (5, .init(key: .dismissKeyboard)),
     ]
@@ -55,8 +56,12 @@ class SpaceRowView: RowView {
         
         var originX: CGFloat = 0
         for (proportion, keyView) in keys {
-            var keyWidth = size.width * proportion/allParts + freeSpace
-            freeSpace = 0
+            var keyWidth = size.width * proportion/allParts
+            
+            if keyView.specialKey == .space {
+                 keyWidth += freeSpace
+                freeSpace = 0
+            }
             
             if keyView.mainLabel == SpecialKey.nextKeyboard.label
                 && KeyboardViewController.shared.needsInputModeSwitchKey == false {

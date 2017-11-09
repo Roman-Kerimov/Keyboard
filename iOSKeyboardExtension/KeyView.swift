@@ -179,6 +179,10 @@ class KeyView: UIButton, ConfigurableView {
         
         mainLabel = key?.label ?? .init()
         
+        if key == .space {
+            shiftUpLabelView.text = [KeyboardLayout.shiftUpDictionary[CharacterComponent.space]!].character
+        }
+        
         // It is for activation of touch events
         backgroundColor = .touchableClear
         

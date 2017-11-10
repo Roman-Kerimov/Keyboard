@@ -239,9 +239,14 @@ class KeyView: UIButton, ConfigurableView {
         baseFontSize = labelFontSize
         self.spacing = spacing
         
-        mainLabelView.font = mainLabelView.font.withSize(baseFontSize)
+        if specialKey == nil {
+            mainLabelView.font = UIFont.init(name: "Symbola", size: baseFontSize)
+        }
+        else {
+            mainLabelView.font = UIFont.systemFont(ofSize: baseFontSize)
+        }
         
-        let shiftLabelFont = UIFont.systemFont(ofSize: labelFontSize/1.8)
+        let shiftLabelFont = mainLabelView.font.withSize(labelFontSize/1.8)
         shiftUpLabelView.font = shiftLabelFont
         shiftDownLabelView.font = shiftLabelFont
         shiftLeftLabelView.font = shiftLabelFont

@@ -279,11 +279,11 @@ class KeyboardViewController: UIInputViewController {
         case .return, .tab:
             
             if specialKey == .return {
-                textDocumentProxy.insertText("\n")
+                textDocumentProxy.insertText(.return)
             }
             
             if specialKey == .tab {
-                textDocumentProxy.insertText("\t")
+                textDocumentProxy.insertText(.tab)
             }
             
             if !KeyboardSettings.shared.allowMultipleSpaces && textDocumentProxy.characterAfterInput == .space {

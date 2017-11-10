@@ -29,7 +29,7 @@ extension UIApplication {
 class KeyboardViewController: UIInputViewController {
     static var shared: KeyboardViewController = .init()
     
-    private var isExtension: Bool {
+    internal var isExtension: Bool {
         return Bundle.main.executablePath?.contains(".appex/") == true
     }
     

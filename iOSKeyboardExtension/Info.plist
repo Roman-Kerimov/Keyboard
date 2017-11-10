@@ -41,6 +41,8 @@
 		<string>com.apple.keyboard-service</string>
 	</dict>
 	<key>UIAppFonts</key>
-	<array/>
+	<array>
+		<string>Symbola.ttf</string>
+	</array>
 </dict>
 </plist>

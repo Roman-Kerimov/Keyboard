@@ -29,4 +29,10 @@ IN NO EVENT SHALL THE COPYRIGHT HOLDER OR HOLDERS INCLUDED IN THIS NOTICE BE LIA
 
 Except as contained in this notice, the name of a copyright holder shall not be used in advertising or otherwise to promote the sale, use or other dealings in these Data Files or Software without prior written authorization of the copyright holder.
 
+
+Unicode Fonts for Ancient Scripts
+http://users.teilar.gr/~g1951d/
+
+In lieu of a licence; fonts and documents in this site are free for any use; George Douros
+
 """

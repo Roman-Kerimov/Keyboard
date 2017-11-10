@@ -35,18 +35,6 @@ class KeyboardSettings: NSObject {
         }
     }
     
-    private let allowMultipleSpacesKey = "Bf0SJQhe74RweCC2EbRvoOAFhW5qKKx"
-    var allowMultipleSpaces: Bool {
-        get {
-            return UserDefaults.standard.bool(forKey: allowMultipleSpacesKey)
-        }
-        
-        set {
-            UserDefaults.standard.set(newValue, forKey: allowMultipleSpacesKey)
-            UserDefaults.standard.synchronize()
-        }
-    }
-    
     private let layoutModeKey = "PPlmVhk2uT98JemxOJdtAS88aRi3qv9"
     var layoutMode: KeyboardLayoutMode {
         get {

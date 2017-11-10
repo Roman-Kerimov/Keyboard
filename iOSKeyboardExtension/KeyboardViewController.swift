@@ -223,10 +223,7 @@ class KeyboardViewController: UIInputViewController {
         switch specialKey {
             
         case .delete:
-            if KeyboardSettings.shared.allowMultipleSpaces == true {
-                textDocumentProxy.deleteBackward()
-            }
-            else if textDocumentProxy.characterBeforeInput == .space
+            if textDocumentProxy.characterBeforeInput == .space
                 && textDocumentProxy.characterAfterInput?.isSpaceReturnOrTab == false
                 && textDocumentProxy.characterAfterInput?.belongsTo(.punctuationCharacters) == false {
                 
@@ -245,8 +242,7 @@ class KeyboardViewController: UIInputViewController {
                 textDocumentProxy.deleteBackward()
             }
             
-            if KeyboardSettings.shared.allowMultipleSpaces == false
-                && textDocumentProxy.characterBeforeInput == .space
+            if textDocumentProxy.characterBeforeInput == .space
                 && textDocumentProxy.characterAfterInput == .space {
                 
                 cancelNextNormalization = true
@@ -286,7 +282,7 @@ class KeyboardViewController: UIInputViewController {
                 textDocumentProxy.insertText(.tab)
             }
             
-            if !KeyboardSettings.shared.allowMultipleSpaces && textDocumentProxy.characterAfterInput == .space {
+            if textDocumentProxy.characterAfterInput == .space {
                 textDocumentProxy.deleteForward(sequenceOf: .init(charactersIn: .space))
             }
             

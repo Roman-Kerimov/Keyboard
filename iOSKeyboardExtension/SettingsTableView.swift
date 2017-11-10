@@ -32,7 +32,7 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
     }
         
     internal enum Section {
-        case keyboardLayouts, boolSection, appLanguage, about
+        case keyboardLayouts, appLanguage, about
         
         static let list = values(of: Section.self)
     }
@@ -67,9 +67,6 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
         case .about:
             KeyboardViewController.shared.keyboardView.settingsContainerView.navigationController
                 .pushViewController(legalNoticesViewController, animated: true)
-            
-        default:
-            break
         }
         
         cell.isSelected = false
@@ -89,9 +86,6 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
             
         case .keyboardLayouts:
             return KeyboardLayout.list.count
-            
-        case .boolSection:
-            return BoolCell.list.count
             
         default:
             return 1
@@ -143,19 +137,6 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
                 cell.accessoryType = .none
             }
             
-        case .boolSection:
-            let cellSwitch = UISwitch()
-            
-            cell.accessoryView = cellSwitch
-            
-            cellSwitch.addTarget(self, action: #selector(switchDidChange(sender:)), for: .allEvents)
-            
-            switch BoolCell.list[indexPath.row] {
-            case .allowMultipleSpaces:
-                cell.textLabel?.text = MULTIPLE_SPACES.string
-                cellSwitch.isOn = KeyboardSettings.shared.allowMultipleSpaces
-            }
-            
         case .appLanguage:
             cell.textLabel?.text = LANGUAGE.string
             
@@ -177,13 +158,6 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
         }
         
         return cell
-    }
-    
-    @objc func switchDidChange(sender: UISwitch) {
-        switch BoolCell.list[indexPath(for: sender.superview as! UITableViewCell)!.row] {
-        case .allowMultipleSpaces:
-            KeyboardSettings.shared.allowMultipleSpaces = sender.isOn
-        }
     }
 
     /*

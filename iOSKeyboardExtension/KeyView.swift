@@ -204,7 +204,7 @@ class KeyView: UIButton, ConfigurableView {
             addSubview(shiftLeftLabelView)
             
             addSubview(shiftRightLabelView)
-            shiftRightLabelView.text = SpecialKey.tab.label
+            shiftRightLabelView.text = SpecialKey.insistSpace.label
         }
         else {
             shiftDownLabelView.text = shiftDownLabel
@@ -484,6 +484,7 @@ public enum SpecialKey: String {
     
     case delete = "delete"
     case space = " "
+    case insistSpace = "insist"
     case `return` = "return"
     case tab = "tab"
     case nextKeyboard = "NextKeyboard"

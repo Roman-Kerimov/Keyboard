@@ -195,6 +195,15 @@ class KeyboardViewController: UIInputViewController {
     
     var cancelNextNormalization = false
     
+    var shouldInsertSpace: Bool {
+        if textDocumentProxy.characterBeforeInput?.isSpaceReturnOrTab == false {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
     func keyAction(label: String) {
         
         guard let specialKey = SpecialKey(rawValue: label) else {
@@ -253,15 +262,18 @@ class KeyboardViewController: UIInputViewController {
             }
             
         case .space:
-            if KeyboardSettings.shared.allowMultipleSpaces {
-                textDocumentProxy.insertText(" ")
-            }
-            else if textDocumentProxy.characterAfterInput == .space {
+            if textDocumentProxy.characterAfterInput == .space {
                 cancelNextNormalization = true
                 textDocumentProxy.adjustTextPosition(byCharacterOffset: 1)
             }
-            else if textDocumentProxy.characterBeforeInput?.isSpaceReturnOrTab == false {
-                textDocumentProxy.insertText(" ")
+
+            if shouldInsertSpace {
+                textDocumentProxy.insertText(.space)
+            }
+            
+        case .insistSpace:
+            if !shouldInsertSpace {
+                textDocumentProxy.insertText(.space)
             }
             
         case .return, .tab:

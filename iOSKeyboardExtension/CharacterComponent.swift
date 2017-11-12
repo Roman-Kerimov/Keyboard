@@ -48,7 +48,7 @@ enum CharacterComponent {
     case interrobang
     
     case capital, smallCapital
-    case extra0, turned, reversed, inverted, ramsHorn, sideways, extra1, extra2
+    case extra0, turned, reversed, inverted, sideways, extra1, extra2
     case extraLeft
     case superscript, `subscript`, middle, raised
     

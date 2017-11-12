@@ -1666,7 +1666,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ɣ": [.g, .h],
 
     //0264          ; LATIN SMALL LETTER RAMS HORN
-    "ɤ": [.o, .ramsHorn],
+    "ɤ": [.g, .h, .smallCapital],
 
     //0265          ; LATIN SMALL LETTER TURNED H
     "ɥ": [.h, .turned],

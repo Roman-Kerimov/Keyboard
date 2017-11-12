@@ -15,6 +15,6 @@ extension String {
     static let reverseSolidus: String = Character.reverseSolidus.description
     
     var characterComponents: [CharacterComponent] {
-        return characterComponentsDictionary[self] ?? .init()
+        return characterComponentsDictionary[self]?.normalized ?? .init()
     }
 }

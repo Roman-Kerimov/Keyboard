@@ -28,8 +28,11 @@ extension Array where Element == CharacterComponent {
     var extraArray: [[CharacterComponent]] {
         let baseCharacterComponents = self.filter { $0.isExtraComponent == false }
         
-        return (CharacterComponent.extraComponents.map { baseCharacterComponents + [$0]}
-            + [baseCharacterComponents + [CharacterComponent.turned, CharacterComponent.sideways]])
-            .filter { $0.character.isEmpty == false}
+        var extraArray = CharacterComponent.extraComponents.map { baseCharacterComponents + [$0]}
+        
+        //For LATIN SMALL LETTER SIDEWAYS TURNED M
+        extraArray += [baseCharacterComponents + [.turned, .sideways]]
+        
+        return extraArray.filter { $0.character.isEmpty == false} .map { $0.normalized }
     }
 }

@@ -1465,10 +1465,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ȡ": [.d, .curl],
 
     //0222          ; LATIN CAPITAL LETTER OU
-    "Ȣ": [.o, .uTop, .capital],
+    "Ȣ": [.o, .u, .capital],
 
     //0223          ; LATIN SMALL LETTER OU
-    "ȣ": [.o, .uTop],
+    "ȣ": [.o, .u],
 
     //0224          ; LATIN CAPITAL LETTER Z WITH HOOK
     "Ȥ": [.z, .hook, .capital],
@@ -1882,10 +1882,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ʫ": [.l, .z],
 
     //02AC          ; LATIN LETTER BILABIAL PERCUSSIVE
-    "ʬ": [.w, .wTop],
+    "ʬ": [.w, .w],
 
     //02AD          ; LATIN LETTER BIDENTAL PERCUSSIVE
-    "ʭ": [.d, .dTop],
+    "ʭ": [.d, .d],
 
     //02AE          ; LATIN SMALL LETTER TURNED H WITH FISHHOOK
     "ʮ": [.h, .hook, .turned],
@@ -2855,7 +2855,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ᴔ": [.o, .e, .turned],
 
     //1D15          ; LATIN LETTER SMALL CAPITAL OU
-    "ᴕ": [.o, .uTop, .smallCapital],
+    "ᴕ": [.o, .u, .smallCapital],
 
     //1D16          ; LATIN SMALL LETTER TOP HALF O
     "ᴖ": [.o, .topHalf],
@@ -2975,7 +2975,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ᴼ": [.o, .capital, .superscript],
 
     //1D3D          ; MODIFIER LETTER CAPITAL OU
-    "ᴽ": [.o, .uTop, .capital, .superscript],
+    "ᴽ": [.o, .u, .capital, .superscript],
 
     //1D3E          ; MODIFIER LETTER CAPITAL P
     "ᴾ": [.p, .capital, .superscript],

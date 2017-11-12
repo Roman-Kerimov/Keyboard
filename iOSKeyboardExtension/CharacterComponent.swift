@@ -66,10 +66,7 @@ enum CharacterComponent {
     case tail, notch, flourish
     case descender
     case um
-    case dTop
     case sBottom
-    case uTop
-    case wTop
     case not, notLow
     case lazyS
     

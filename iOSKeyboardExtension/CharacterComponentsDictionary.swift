@@ -841,7 +841,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "Œ": [.o, .e, .capital],
     
     //0153          ; LATIN SMALL LIGATURE OE
-    "œ": [.e, .e],
+    "œ": [.o, .e],
 
     //0154          ; LATIN CAPITAL LETTER R WITH ACUTE
     "Ŕ": [.r, .acute, .above, .capital],

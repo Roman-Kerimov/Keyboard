@@ -42,4 +42,8 @@ extension Character {
         
         return outputString
     }
+    
+    var characterComponents: [CharacterComponent] {
+        return description.characterComponents
+    }
 }

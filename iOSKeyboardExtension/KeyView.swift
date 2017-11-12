@@ -304,12 +304,29 @@ class KeyView: UIButton, ConfigurableView {
         imageLabelView.center = backgroundView.center
     }
     
+    private var shouldDeletePreviousCharacter: Bool = false
+    
     private func input() {
         if specialKey == .return {
             KeyboardViewController.shared.keyAction(label: SpecialKey.return.label)
         }
         else {
-            KeyboardViewController.shared.keyAction(label: mainLabelView.text ?? "")
+            
+            if shouldDeletePreviousCharacter {
+                shouldDeletePreviousCharacter = false
+                
+                guard KeyboardViewController.shared.textDocumentProxy.characterBeforeInput?.description != mainLabelView.text else {
+                    return
+                }
+                
+                KeyboardViewController.shared.textDocumentProxy.deleteBackward()
+            }
+            
+            guard let mainLabel = mainLabelView.text else {
+                return
+            }
+            
+            KeyboardViewController.shared.keyAction(label: mainLabel)
         }
         
         KeyboardViewController.shared.updateDocumentContext()
@@ -434,6 +451,23 @@ class KeyView: UIButton, ConfigurableView {
                         && characterComponents == characterComponents.extraArray[1] {
                         
                         characterComponents = characterComponents.extraArray[2]
+                    }
+                    else if specialKey == nil {
+                        guard let previousCharacter = KeyboardViewController.shared.textDocumentProxy.characterBeforeInput else {
+                            mainLabelView.text = nil
+                            break
+                        }
+                        
+                        shouldDeletePreviousCharacter = true
+                        
+                        let combinedCharacter = (previousCharacter.characterComponents + characterComponents).character
+                        
+                        if previousCharacter.characterComponents.isEmpty || combinedCharacter.isEmpty  {
+                            mainLabelView.text = previousCharacter.description
+                        }
+                        else {
+                            characterComponents = combinedCharacter.characterComponents
+                        }
                     }
                     
                 case .right:

@@ -1024,7 +1024,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "Ǝ": [.e, .turned, .capital],
 
     //018F          ; LATIN CAPITAL LETTER SCHWA
-    "Ə": [.schwa, .capital],
+    "Ə": [.a, .extra1, .capital],
 
     //0190          ; LATIN CAPITAL LETTER OPEN E
     "Ɛ": [.e, .open, .capital],
@@ -1633,10 +1633,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ɘ": [.e, .reversed],
 
     //0259          ; LATIN SMALL LETTER SCHWA
-    "ə": [.schwa],
+    "ə": [.a, .extra1],
 
     //025A          ; LATIN SMALL LETTER SCHWA WITH HOOK
-    "ɚ": [.schwa, .rhoticHook],
+    "ɚ": [.a, .extra1, .rhoticHook],
 
     //025B          ; LATIN SMALL LETTER OPEN E
     "ɛ": [.e, .open],
@@ -3014,7 +3014,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ᵉ": [.e, .superscript],
 
     //1D4A          ; MODIFIER LETTER SMALL SCHWA
-    "ᵊ": [.schwa, .superscript],
+    "ᵊ": [.a, .extra1, .superscript],
 
     //1D4B          ; MODIFIER LETTER SMALL OPEN E
     "ᵋ": [.e, .open, .superscript],
@@ -3242,7 +3242,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ᶔ": [.e, .open, .retroflexHook, .reversed],
 
     //1D95          ; LATIN SMALL LETTER SCHWA WITH RETROFLEX HOOK
-    "ᶕ": [.schwa, .retroflexHook],
+    "ᶕ": [.a, .extra1, .retroflexHook],
 
     //1D96          ; LATIN SMALL LETTER I WITH RETROFLEX HOOK
     "ᶖ": [.i, .retroflexHook],
@@ -3500,7 +3500,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ᷩ": [.b, .h, .above],
 
     //1DEA          ; COMBINING LATIN SMALL LETTER SCHWA
-    "ᷪ": [.schwa, .above],
+    "ᷪ": [.a, .extra1, .above],
 
     //1DEB          ; COMBINING LATIN SMALL LETTER F
     "ᷫ": [.f, .above],
@@ -4730,7 +4730,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ₓ": [.x, .subscript],
 
     //2094          ; LATIN SUBSCRIPT SMALL LETTER SCHWA
-    "ₔ": [.schwa, .subscript],
+    "ₔ": [.a, .extra1, .subscript],
 
     //2095          ; LATIN SUBSCRIPT SMALL LETTER H
     "ₕ": [.h, .subscript],
@@ -7709,7 +7709,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ꬰ": [.a, .h, .stroke],
 
     //AB31          ; LATIN SMALL LETTER A REVERSED-SCHWA
-    "ꬱ": [.a, .schwa],
+    "ꬱ": [.a, .a, .extra1],
 
     //AB32          ; LATIN SMALL LETTER BLACKLETTER E
     "ꬲ": [.e, .blackletter],

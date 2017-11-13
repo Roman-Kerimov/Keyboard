@@ -141,7 +141,8 @@ class CharacterSequenceView: CharacterCollectionView {
                 }
                 
                 performCharacterSequenceUpdates {
-                    characters[activeIndexPath.item] = Character.init(activeCell.title.text!)
+                    characters.remove(at: activeIndexPath.item)
+                    characters.insert(contentsOf: activeCell.title.text!, at: activeIndexPath.item)
                 }
             }
             

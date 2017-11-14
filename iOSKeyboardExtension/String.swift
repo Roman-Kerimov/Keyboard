@@ -6,7 +6,7 @@
 //
 //
 
-import Foundation
+import UIKit
 
 extension String {
     static let space: String = Character.space.description
@@ -16,5 +16,9 @@ extension String {
     
     var characterComponents: [CharacterComponent] {
         return characterComponentsDictionary[self]?.normalized ?? .init()
+    }
+    
+    func size(withFont font: UIFont) -> CGSize {
+        return (self as NSString).size(withAttributes: [.font: font])
     }
 }

@@ -30,7 +30,7 @@ class CharacterCollectionView: UICollectionView, UICollectionViewDelegateFlowLay
         }
     }
     
-    internal let layout: UICollectionViewFlowLayout = .init()
+    internal let layout: CollectionViewFlowLayout = .init()
     let characterCellReuseIdentifier = "fWz2pPGnOBKbeARRwDdJswgBqDYSA6P"
     
     init() {

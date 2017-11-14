@@ -281,6 +281,12 @@ class CharacterSequenceView: CharacterCollectionView {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
+        var characters = self.characters
+        
+        if activeIndexPath != nil && layout.targetIndexPath != nil {
+            characters.insert(characters.remove(at: activeIndexPath!.item), at: layout.targetIndexPath!.item)
+        }
+        
         let label: UILabel = .init()
         label.text = characters[indexPath.item].description
         label.font = characterFont

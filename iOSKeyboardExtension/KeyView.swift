@@ -428,6 +428,12 @@ class KeyView: UIButton, ConfigurableView {
                     }
                     else {
                         characterComponents += [.capital]
+                        
+                        if characterComponents.count == 1 {
+                            if let shiftUpCharacterComponent = KeyboardLayout.shiftUpDictionary[characterComponents.first!] {
+                                characterComponents = [shiftUpCharacterComponent]
+                            }
+                        }
                     }
                     
                 case .down:

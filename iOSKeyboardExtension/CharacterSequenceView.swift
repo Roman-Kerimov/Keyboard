@@ -283,7 +283,7 @@ class CharacterSequenceView: CharacterCollectionView {
         
         var characters = self.characters
         
-        if activeIndexPath != nil && layout.targetIndexPath != nil {
+        if activeIndexPath != nil && activeIndexPath!.item < characters.count && layout.targetIndexPath != nil && layout.targetIndexPath!.item < characters.count {
             characters.insert(characters.remove(at: activeIndexPath!.item), at: layout.targetIndexPath!.item)
         }
         

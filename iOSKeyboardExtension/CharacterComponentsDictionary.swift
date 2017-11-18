@@ -2849,7 +2849,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ᴒ": [.o, .open, .sideways],
 
     //1D13          ; LATIN SMALL LETTER SIDEWAYS O WITH STROKE
-    "ᴓ": [.o, .stroke, .sideways],
+    "ᴓ": [.o, .diagonalStroke, .sideways],
 
     //1D14          ; LATIN SMALL LETTER TURNED OE
     "ᴔ": [.o, .e, .turned],

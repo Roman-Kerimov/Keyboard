@@ -8,7 +8,7 @@
 import Foundation
 
 enum CharacterComponent {
-    private static let commutative: Set<CharacterComponent> = .init([.capital, .smallCapital, .superscript, .subscript] + extraComponents)
+    private static let commutative: Set<CharacterComponent> = .init([.capital, .smallCapital, .superscript, .subscript] + extraComponents + letterToModifierComponentDictionary.values)
     
     public var isCommutative: Bool {
         return CharacterComponent.commutative.contains(self)
@@ -69,6 +69,36 @@ enum CharacterComponent {
     case sBottom
     case not, notLow
     case lazyS
+    
+    internal static let letterToModifierComponentDictionary: [CharacterComponent: CharacterComponent] = [
+        //.highStroke
+        //.topbar
+        .hyphen: .stroke,
+        //.shortStroke
+        //.longStroke
+        //.lightCentralizationStroke
+        //.obliqueStroke
+        //.lowStroke
+        .solidus: .diagonalStroke,
+        .l: .longLeg,
+        .f: .hook,
+        .t: .retroflexHook,
+        .j: .palatalHook,
+        //.tone
+        .h: .open,
+        .o: .closed,
+        //.horn
+        .c: .curl,
+        .b: .belt,
+        //.crossedTail, .loop
+        .v: .tail, //.notch
+        //.flourish: ,
+        .q: .descender,
+        //.um
+        //.sBottom
+        //.not, .notLow
+        //.lazyS
+    ]
     
     case letterScript
     case insular

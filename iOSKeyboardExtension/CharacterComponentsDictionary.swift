@@ -4838,7 +4838,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⃩": [],
 
     //20EA          ; COMBINING LEFTWARDS ARROW OVERLAY
-    "⃪": [.stroke, .lessThanSign],
+    "⃪": [.stroke, .lessThanSign, .combining],
 
     //20EB          ; COMBINING LONG DOUBLE SOLIDUS OVERLAY
     "⃫": [.solidus, .doubled, .combining],

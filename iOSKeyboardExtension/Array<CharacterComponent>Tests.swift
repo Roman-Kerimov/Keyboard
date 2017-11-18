@@ -45,4 +45,8 @@ class Array_CharacterComponent_Tests: XCTestCase {
         XCTAssertEqual((characterComponets + [.reversed]).normalized, characterComponets.extraArray[1])
         XCTAssertEqual((characterComponets + [.inverted]).normalized, characterComponets.extraArray[2])
     }
+    
+    func testHumanReadabilityKeys() {
+        XCTAssert([.a, .capital].key == ".a, .capital")
+    }
 }

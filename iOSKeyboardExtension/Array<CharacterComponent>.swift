@@ -14,7 +14,7 @@ extension Array where Element == CharacterComponent {
     )
     
     var key: String {
-        return self.normalized.map {$0.hashValue.description} .joined(separator: .space)
+        return normalized.map {.fullStop + .init(describing: $0)} .joined(separator: .comma + .space)
     }
     
     var character: String {

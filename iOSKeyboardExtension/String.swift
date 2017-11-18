@@ -13,6 +13,8 @@ extension String {
     static let `return`: String = Character.return.description
     static let tab: String = Character.tab.description
     static let reverseSolidus: String = Character.reverseSolidus.description
+    static let comma: String = Character.comma.description
+    static let fullStop: String = Character.fullStop.description
     
     var characterComponents: [CharacterComponent] {
         return characterComponentsDictionary[self]?.normalized ?? .init()

@@ -466,10 +466,10 @@ class KeyView: UIButton, ConfigurableView {
                         
                         shouldDeletePreviousCharacter = true
                         
-                        let combiningComponents: [CharacterComponent] = characterComponents.map { CharacterComponent.letterToModifierComponentDictionary[$0] ?? $0}
+                        let modifierComponents: [CharacterComponent] = characterComponents.map { CharacterComponent.letterToModifierComponentDictionary[$0] ?? $0}
                         
                         let ligatureCharacter = (previousCharacter.characterComponents + characterComponents).character
-                        let combinedCharacter = (previousCharacter.characterComponents + combiningComponents).character
+                        let combinedCharacter = (previousCharacter.characterComponents + modifierComponents).character
                         
                         if previousCharacter.characterComponents.isEmpty || (combinedCharacter.isEmpty && ligatureCharacter.isEmpty) {
                             mainLabelView.text = previousCharacter.description

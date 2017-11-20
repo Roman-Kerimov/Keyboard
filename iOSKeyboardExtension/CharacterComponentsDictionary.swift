@@ -3158,7 +3158,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ᵹ": [.g, .insular],
 
     //1D7A          ; LATIN SMALL LETTER TH WITH STRIKETHROUGH
-    "ᵺ": [.t, .joiner, .extraH, .stroke],
+    "ᵺ": [.t, .h],
 
     //1D7B          ; LATIN SMALL CAPITAL LETTER I WITH STROKE
     "ᵻ": [.i, .smallCapital, .stroke],

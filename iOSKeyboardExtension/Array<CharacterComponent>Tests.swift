@@ -37,6 +37,10 @@ class Array_CharacterComponent_Tests: XCTestCase {
 
     func testNormalizationOfCommutativeCharacterComponents() {
         XCTAssertEqual([.r, .capital, .smallCapital].normalized, [.r, .smallCapital, .capital].normalized)
+        
+        XCTAssertNotEqual([.o, .open, .o].normalized, [.o, .o, .open].normalized)
+        XCTAssertEqual([.a, .turned, .capital, .a, .extra2, .extra1].normalized, [.a, .capital, .turned, .a, .extra1, .extra2])
+        XCTAssertEqual([.stroke, .lessThanSign].normalized, [.stroke, .lessThanSign])
     }
     
     func testExtraArrow() {

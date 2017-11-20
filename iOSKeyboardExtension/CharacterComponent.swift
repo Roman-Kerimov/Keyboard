@@ -60,7 +60,8 @@ enum CharacterComponent {
     case L
     case hook, retroflexHook, palatalHook
     case tone
-    case open, closed
+    case extraH
+    case closed
     case horn
     case curl, belt, crossedTail, loop
     case tail, notch, flourish
@@ -85,7 +86,7 @@ enum CharacterComponent {
         .t: .retroflexHook,
         .j: .palatalHook,
         //.tone
-        .h: .open,
+        .h: .extraH,
         .o: .closed,
         //.horn
         .c: .curl,

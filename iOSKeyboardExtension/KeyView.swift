@@ -399,6 +399,7 @@ class KeyView: UIButton, ConfigurableView {
             mainLabelView.text = mainLabel
             updateLocalizedStrings()
             isHighlighted = false
+            Array<CharacterComponent>.extraArrayExtension = .init()
             
         default:
             
@@ -470,6 +471,10 @@ class KeyView: UIButton, ConfigurableView {
                         
                         let ligatureCharacter = (previousCharacter.characterComponents + characterComponents).character
                         let combinedCharacter = (previousCharacter.characterComponents + modifierComponents).character
+                        
+                        if ligatureCharacter.isEmpty == false && combinedCharacter.isEmpty == false {
+                            Array<CharacterComponent>.extraArrayExtension = [ligatureCharacter.characterComponents]
+                        }
                         
                         if previousCharacter.characterComponents.isEmpty || (combinedCharacter.isEmpty && ligatureCharacter.isEmpty) {
                             mainLabelView.text = previousCharacter.description

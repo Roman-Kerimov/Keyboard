@@ -25,10 +25,11 @@ extension Array where Element == CharacterComponent {
         return self.filter {!$0.isCommutative} + (self.filter {$0.isCommutative} .sorted {$0.hashValue < $1.hashValue})
     }
     
+    static var extraArrayExtension: [[CharacterComponent]] = .init()
     var extraArray: [[CharacterComponent]] {
         let baseCharacterComponents = self.filter { $0.isExtraComponent == false }
         
-        var extraArray = CharacterComponent.extraComponents.map { baseCharacterComponents + [$0]}
+        var extraArray = Array<CharacterComponent>.extraArrayExtension + CharacterComponent.extraComponents.map { baseCharacterComponents + [$0]}
         
         //For LATIN SMALL LETTER SIDEWAYS TURNED M
         extraArray += [baseCharacterComponents + [.turned, .sideways]]

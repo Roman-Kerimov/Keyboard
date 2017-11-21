@@ -57,7 +57,6 @@ enum CharacterComponent {
     case lowStroke
     case diagonalStroke, shortDiagonalStroke, longDiagonalStroke
     case longLeg
-    case L
     case hook, retroflexHook, palatalHook
     case tone
     case extraH

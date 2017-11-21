@@ -1183,31 +1183,31 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ǃ": [.t, .click],
 
     //01C4          ; LATIN CAPITAL LETTER DZ WITH CARON
-    "Ǆ": [.d, .capital, .joiner, .z, .caron, .above, .capital],
+    "Ǆ": [.d, .capital, .z, .caron, .above, .capital],
 
     //01C5          ; LATIN CAPITAL LETTER D WITH SMALL LETTER Z WITH CARON
-    "ǅ": [.d, .capital, .joiner, .z, .caron, .above],
+    "ǅ": [.d, .capital, .z, .caron, .above],
     
     //01C6          ; LATIN SMALL LETTER DZ WITH CARON
-    "ǆ": [.d, .joiner, .z, .caron, .above],
+    "ǆ": [.d, .z, .caron, .above],
 
     //01C7          ; LATIN CAPITAL LETTER LJ
-    "Ǉ": [.l, .capital, .joiner, .j, .capital],
+    "Ǉ": [.l, .capital, .j, .capital],
 
     //01C8          ; LATIN CAPITAL LETTER L WITH SMALL LETTER J
-    "ǈ": [.l, .capital, .joiner, .j],
+    "ǈ": [.l, .capital, .j],
 
     //01C9          ; LATIN SMALL LETTER LJ
-    "ǉ": [.l, .joiner, .j],
+    "ǉ": [.l, .j],
 
     //01CA          ; LATIN CAPITAL LETTER NJ
-    "Ǌ": [.n, .capital, .joiner, .j, .capital],
+    "Ǌ": [.n, .capital, .j, .capital],
 
     //01CB          ; LATIN CAPITAL LETTER N WITH SMALL LETTER J
-    "ǋ": [.n, .capital, .joiner, .j],
+    "ǋ": [.n, .capital, .j],
 
     //01CC          ; LATIN SMALL LETTER NJ
-    "ǌ": [.n, .joiner, .j],
+    "ǌ": [.n, .j],
 
     //01CD          ; LATIN CAPITAL LETTER A WITH CARON
     "Ǎ": [.a, .caron, .above, .capital],
@@ -1318,13 +1318,13 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ǰ": [.j, .caron, .above],
 
     //01F1          ; LATIN CAPITAL LETTER DZ
-    "Ǳ": [.d, .capital, .joiner, .z, .capital],
+    "Ǳ": [.d, .capital, .z, .capital],
 
     //01F2          ; LATIN CAPITAL LETTER D WITH SMALL LETTER Z
-    "ǲ": [.d, .capital, .joiner, .z],
+    "ǲ": [.d, .capital, .z],
 
     //01F3          ; LATIN SMALL LETTER DZ
-    "ǳ": [.d, .joiner, .z],
+    "ǳ": [.d, .z],
 
     //01F4          ; LATIN CAPITAL LETTER G WITH ACUTE
     "Ǵ": [.g, .acute, .above, .capital],
@@ -1855,13 +1855,13 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ʢ": [.glottalStop, .stroke, .reversed],
 
     //02A3          ; LATIN SMALL LETTER DZ DIGRAPH
-    "ʣ": [.d, .z],
+    "ʣ": [.d, .zDigraph],
 
     //02A4          ; LATIN SMALL LETTER DEZH DIGRAPH
-    "ʤ": [.d, .z, .extraH],
+    "ʤ": [.d, .zDigraph, .extraH],
 
     //02A5          ; LATIN SMALL LETTER DZ DIGRAPH WITH CURL
-    "ʥ": [.d, .z, .curl],
+    "ʥ": [.d, .zDigraph, .curl],
 
     //02A6          ; LATIN SMALL LETTER TS DIGRAPH
     "ʦ": [.t, .s],
@@ -4495,7 +4495,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "※": [],
 
     //203C          ; DOUBLE EXCLAMATION MARK
-    "‼": [.exclamationMark, .joiner, .exclamationMark],
+    "‼": [.exclamationMark, .exclamationMark],
 
     //203D          ; INTERROBANG
     "‽": [.interrobang],
@@ -4528,13 +4528,13 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⁆": [.squareBracket, .stroke, .reversed],
 
     //2047          ; DOUBLE QUESTION MARK
-    "⁇": [.questionMark, .joiner, .questionMark],
+    "⁇": [.questionMark, .questionMark],
 
     //2048          ; QUESTION EXCLAMATION MARK
-    "⁈": [.questionMark, .joiner, .exclamationMark],
+    "⁈": [.questionMark, .exclamationMark],
 
     //2049          ; EXCLAMATION QUESTION MARK
-    "⁉": [.exclamationMark, .joiner, .questionMark],
+    "⁉": [.exclamationMark, .questionMark],
 
     //204A          ; TIRONIAN SIGN ET
     "⁊": [],
@@ -6380,10 +6380,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⩴": [.colon, .colon, .equalsSign],
 
     //2A75          ; TWO CONSECUTIVE EQUALS SIGNS
-    "⩵": [.equalsSign, .joiner, .equalsSign],
+    "⩵": [.equalsSign, .equalsSign, .extra0],
 
     //2A76          ; THREE CONSECUTIVE EQUALS SIGNS
-    "⩶": [.equalsSign, .joiner, .equalsSign, .joiner, .equalsSign],
+    "⩶": [.equalsSign, .equalsSign, .extra0, .equalsSign],
 
     //2A77          ; EQUALS SIGN WITH TWO DOTS ABOVE AND TWO DOTS BELOW
     "⩷": [.equalsSign, .diaeresis, .below, .diaeresis, .above],
@@ -6524,7 +6524,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⪤": [.greaterThanSign, .lessThanSign, .extra1],
 
     //2AA5          ; GREATER-THAN BESIDE LESS-THAN
-    "⪥": [.greaterThanSign, .joiner, .lessThanSign],
+    "⪥": [.greaterThanSign, .lessThanSign, .extra0],
 
     //2AA6          ; LESS-THAN CLOSED BY CURVE
     "⪦": [.lessThanSign, .closed],

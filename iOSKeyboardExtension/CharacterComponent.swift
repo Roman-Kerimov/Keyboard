@@ -20,7 +20,6 @@ enum CharacterComponent {
         return CharacterComponent.extraComponents.contains(self)
     }
     
-    case joiner
     case fractionSlash
     
     case a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z
@@ -69,6 +68,7 @@ enum CharacterComponent {
     case sBottom
     case not, notLow
     case lazyS
+    case zDigraph
     
     internal static let letterToModifierComponentDictionary: [CharacterComponent: CharacterComponent] = [
         //.highStroke
@@ -98,6 +98,7 @@ enum CharacterComponent {
         //.sBottom
         //.not, .notLow
         //.lazyS
+        .z: .zDigraph
     ]
     
     case letterScript

@@ -22,25 +22,7 @@ extension Array where Element == CharacterComponent {
     }
     
     var normalized: [CharacterComponent] {
-        return (self as NSArray).sortedArray(options: .stable) {
-            let left = $0 as! CharacterComponent
-            let right = $1 as! CharacterComponent
-            
-            guard left.isCommutative && right.isCommutative else {
-                return .orderedSame
-            }
-            
-            if left.hashValue < right.hashValue {
-                return .orderedAscending
-            }
-            else if left.hashValue > right.hashValue {
-                return .orderedDescending
-            }
-            else {
-                return .orderedSame
-            }
-            
-        } as! [CharacterComponent]
+        return self.filter {!$0.isCommutative} + (self.filter {$0.isCommutative} .sorted {$0.hashValue < $1.hashValue})
     }
     
     static var extraArrayExtension: [[CharacterComponent]] = .init()

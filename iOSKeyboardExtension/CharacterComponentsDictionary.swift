@@ -5096,7 +5096,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⅍": [],
 
     //214E          ; TURNED SMALL F
-    "ⅎ": [.f, .smallCapital, .turned],
+    "ⅎ": [.f, .turned],
 
     //214F          ; SYMBOL FOR SAMARITAN SOURCE
     "⅏": [],

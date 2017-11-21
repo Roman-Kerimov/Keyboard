@@ -472,7 +472,7 @@ class KeyView: UIButton, ConfigurableView {
                         let ligatureCharacter = (previousCharacter.characterComponents + characterComponents).character
                         let combinedCharacter = (previousCharacter.characterComponents + modifierComponents).character
                         
-                        if ligatureCharacter.isEmpty == false && combinedCharacter.isEmpty == false {
+                        if ligatureCharacter != combinedCharacter && ligatureCharacter.isEmpty == false && combinedCharacter.isEmpty == false {
                             Array<CharacterComponent>.extraArrayExtension = [ligatureCharacter.characterComponents]
                         }
                         

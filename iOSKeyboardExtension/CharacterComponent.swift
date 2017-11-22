@@ -92,7 +92,7 @@ enum CharacterComponent {
         .b: .belt,
         //.crossedTail, .loop
         .v: .tail, //.notch
-        //.flourish: ,
+        //.flourish
         .q: .descender,
         //.um
         //.sBottom

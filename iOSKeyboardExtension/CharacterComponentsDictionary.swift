@@ -4329,10 +4329,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ỽ": [.v, .middleWelsh],
 
     //1EFE          ; LATIN CAPITAL LETTER Y WITH LOOP
-    "Ỿ": [.y, .loop, .capital],
+    "Ỿ": [.y, .curl, .capital],
 
     //1EFF          ; LATIN SMALL LETTER Y WITH LOOP
-    "ỿ": [.y, .loop],
+    "ỿ": [.y, .curl],
 
     
     // MARK: - 2000..206F; General Punctuation
@@ -7355,10 +7355,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ꝋ": [.o, .longStroke],
 
     //A74C          ; LATIN CAPITAL LETTER O WITH LOOP
-    "Ꝍ": [.o, .capital, .loop],
+    "Ꝍ": [.o, .capital, .curl],
 
     //A74D          ; LATIN SMALL LETTER O WITH LOOP
-    "ꝍ": [.o, .loop],
+    "ꝍ": [.o, .curl],
 
     //A74E          ; LATIN CAPITAL LETTER OO
     "Ꝏ": [.o, .o, .capital],

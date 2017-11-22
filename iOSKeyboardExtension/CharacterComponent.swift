@@ -61,7 +61,7 @@ enum CharacterComponent {
     case extraH
     case closed
     case horn
-    case curl, belt, crossedTail, loop
+    case curl, belt, crossedTail
     case tail, notch, flourish
     case descender
     case um
@@ -90,7 +90,7 @@ enum CharacterComponent {
         //.horn
         .c: .curl,
         .b: .belt,
-        //.crossedTail, .loop
+        //.crossedTail
         .v: .tail, //.notch
         //.flourish
         .q: .descender,

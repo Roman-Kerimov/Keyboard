@@ -31,6 +31,8 @@ extension Array where Element == CharacterComponent {
         
         var extraArray = Array<CharacterComponent>.extraArrayExtension + CharacterComponent.extraComponents.map { baseCharacterComponents + [$0]}
         
+        extraArray += [baseCharacterComponents + [.extra1, .turned]]
+        
         //For LATIN SMALL LETTER SIDEWAYS TURNED M
         extraArray += [baseCharacterComponents + [.turned, .sideways]]
         

@@ -1522,7 +1522,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ȴ": [.l, .curl],
 
     //0235          ; LATIN SMALL LETTER N WITH CURL
-    "ȵ": [.n, .curl],
+    "ȵ": [.n, .curl, .extra0],
 
     //0236          ; LATIN SMALL LETTER T WITH CURL
     "ȶ": [.t, .curl],
@@ -1837,7 +1837,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ʜ": [.h, .smallCapital],
 
     //029D          ; LATIN SMALL LETTER J WITH CROSSED-TAIL
-    "ʝ": [.j, .crossedTail],
+    "ʝ": [.j, .curl],
 
     //029E          ; LATIN SMALL LETTER TURNED K
     "ʞ": [.k, .turned],
@@ -3299,7 +3299,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ᶧ": [.i, .smallCapital, .stroke, .superscript],
 
     //1DA8          ; MODIFIER LETTER SMALL J WITH CROSSED-TAIL
-    "ᶨ": [.j, .crossedTail, .superscript],
+    "ᶨ": [.j, .curl, .superscript],
 
     //1DA9          ; MODIFIER LETTER SMALL L WITH RETROFLEX HOOK
     "ᶩ": [.l, .retroflexHook, .superscript],
@@ -7658,7 +7658,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "Ʇ": [.t, .capital, .turned],
 
     //A7B2          ; LATIN CAPITAL LETTER J WITH CROSSED-TAIL
-    "Ʝ": [.j, .capital, .crossedTail],
+    "Ʝ": [.j, .capital, .curl],
 
     //A7B3          ; LATIN CAPITAL LETTER CHI
     "Ꭓ": [.x, .extraH, .capital],
@@ -7724,7 +7724,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ꬵ": [.f, .lenis],
 
     //AB36          ; LATIN SMALL LETTER SCRIPT G WITH CROSSED-TAIL
-    "ꬶ": [.g, .crossedTail],
+    "ꬶ": [.g, .curl],
 
     //AB37          ; LATIN SMALL LETTER L WITH INVERTED LAZY S
     "ꬷ": [.l, .lazyS],
@@ -7736,13 +7736,13 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ꬹ": [.l, .ring],
 
     //AB3A          ; LATIN SMALL LETTER M WITH CROSSED-TAIL
-    "ꬺ": [.m, .crossedTail],
+    "ꬺ": [.m, .curl],
 
     //AB3B          ; LATIN SMALL LETTER N WITH CROSSED-TAIL
-    "ꬻ": [.n, .crossedTail],
+    "ꬻ": [.n, .curl],
 
     //AB3C          ; LATIN SMALL LETTER ENG WITH CROSSED-TAIL
-    "ꬼ": [.n, .g, .crossedTail],
+    "ꬼ": [.n, .g, .curl],
 
     //AB3D          ; LATIN SMALL LETTER BLACKLETTER O
     "ꬽ": [.o, .blackletter],
@@ -7781,10 +7781,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ꭈ": [.r, .r],
 
     //AB49          ; LATIN SMALL LETTER R WITH CROSSED-TAIL
-    "ꭉ": [.r, .crossedTail],
+    "ꭉ": [.r, .curl],
 
     //AB4A          ; LATIN SMALL LETTER DOUBLE R WITH CROSSED-TAIL
-    "ꭊ": [.r, .r, .crossedTail],
+    "ꭊ": [.r, .r, .curl],
 
     //AB4B          ; LATIN SMALL LETTER SCRIPT R
     "ꭋ": [.r, .letterScript],

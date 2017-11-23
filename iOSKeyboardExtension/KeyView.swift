@@ -353,7 +353,12 @@ class KeyView: UIButton, ConfigurableView {
     }
     
     private var longPressGestureRecognizer: UILongPressGestureRecognizer!
+    
     private var gestureStartPoint: CGPoint!
+    private var startPointSpeed: CGFloat = 0
+    private var previousTime: TimeInterval = 0
+    private var previousDistance: CGFloat = 0
+    
     private var shiftDirections: [ShiftDirection] = .init()
     
     private var characterComponents: [CharacterComponent] {
@@ -382,6 +387,10 @@ class KeyView: UIButton, ConfigurableView {
             isHighlighted = true
             
             gestureStartPoint = gesture.location(in: self)
+            startPointSpeed = 0
+            
+            previousTime = Date.timeIntervalSinceReferenceDate
+            previousDistance = 0
             
             if specialKey == .delete {
                 startAutorepeat()
@@ -415,8 +424,15 @@ class KeyView: UIButton, ConfigurableView {
             let threshold = bounds.size.height / 2
             let direction = ShiftDirection.init(rawValue: (atan2(-offsetPoint.y, offsetPoint.x) / .pi * 4).rounded() / 4) ?? .left
             
-            if shiftDirections.last == direction {
+            let currentTime = Date.timeIntervalSinceReferenceDate
+            let speed = (distance - previousDistance) / .init(currentTime - previousTime)
+            previousTime = currentTime
+            previousDistance = distance
+            
+            if shiftDirections.last == direction  || startPointSpeed > 300 {
                 gestureStartPoint = gesture.location(in: self)
+                previousDistance = 0
+                startPointSpeed = speed
             }
             else if distance > threshold {
                 shiftDirections.append(direction)

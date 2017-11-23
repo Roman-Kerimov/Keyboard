@@ -3080,7 +3080,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ᵟ": [.d, .extraH, .extra1, .superscript],
 
     //1D60          ; MODIFIER LETTER SMALL GREEK PHI
-    "ᵠ": [.f, .greek, .superscript],
+    "ᵠ": [.p, .greek, .superscript],
 
     //1D61          ; MODIFIER LETTER SMALL CHI
     "ᵡ": [.x, .extraH, .superscript],
@@ -3107,7 +3107,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ᵨ": [.r, .greek, .subscript],
 
     //1D69          ; GREEK SUBSCRIPT SMALL LETTER PHI
-    "ᵩ": [.f, .greek, .subscript],
+    "ᵩ": [.p, .greek, .subscript],
 
     //1D6A          ; GREEK SUBSCRIPT SMALL LETTER CHI
     "ᵪ": [.x, .extraH, .greek, .subscript],

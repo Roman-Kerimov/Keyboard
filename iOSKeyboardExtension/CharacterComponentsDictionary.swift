@@ -2296,7 +2296,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "̳": [.line, .doubled, .below],
 
     //0334          ; COMBINING TILDE OVERLAY
-    "̴": [.tilde, .combining],
+    "̴": [.tildeOverlay, .combining],
 
     //0335          ; COMBINING SHORT STROKE OVERLAY
     "̵": [.shortStroke],

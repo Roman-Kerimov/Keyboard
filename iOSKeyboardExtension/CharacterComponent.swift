@@ -8,7 +8,7 @@
 import Foundation
 
 enum CharacterComponent {
-    private static let commutative: Set<CharacterComponent> = .init([.capital, .smallCapital, .superscript, .subscript] + extraComponents + letterToModifierComponentDictionary.values.filter {$0 != .extraH})
+    private static let commutative: Set<CharacterComponent> = .init([.capital, .smallCapital, .superscript, .subscript] + extraComponents + letterToMixingComponentDictionary.values.filter {$0 != .extraH && $0 != .tilde})
     
     public var isCommutative: Bool {
         return CharacterComponent.commutative.contains(self)
@@ -52,15 +52,14 @@ enum CharacterComponent {
     case superscript, `subscript`, middle, raised
     
     case highStroke, topbar
-    case stroke, shortStroke, longStroke, lightCentralizationStroke, obliqueStroke
+    case stroke, lightCentralizationStroke, obliqueStroke
     case lowStroke
-    case diagonalStroke, shortDiagonalStroke, longDiagonalStroke
+    case diagonalStroke
     case longLeg
     case hook, retroflexHook, palatalHook
     case tone
     case extraH
     case closed
-    case horn
     case curl, belt
     case tail, notch, flourish
     case descender
@@ -70,24 +69,20 @@ enum CharacterComponent {
     case lazyS
     case zDigraph
     
-    internal static let letterToModifierComponentDictionary: [CharacterComponent: CharacterComponent] = [
+    internal static let letterToMixingComponentDictionary: [CharacterComponent: CharacterComponent] = [
         //.highStroke
         //.topbar
-        .hyphen: .stroke,
-        //.shortStroke
-        //.longStroke
+        .hyphen: .stroke, //.diagonalStroke
         //.lightCentralizationStroke
         //.obliqueStroke
         //.lowStroke
-        .solidus: .diagonalStroke,
         .l: .longLeg,
         .f: .hook,
         .t: .retroflexHook,
         .j: .palatalHook,
         //.tone
         .h: .extraH,
-        .o: .closed,
-        //.horn
+        .o: .closed, //.ring, .ringBottom
         .c: .curl,
         .b: .belt,
         .v: .tail, //.notch
@@ -97,7 +92,11 @@ enum CharacterComponent {
         //.sBottom
         //.not, .notLow
         //.lazyS
-        .z: .zDigraph
+        .z: .zDigraph,
+        .n: .tilde,
+        
+        // block tilde diacritic from tilde
+        .tilde: .space,
     ]
     
     case letterScript
@@ -121,6 +120,7 @@ enum CharacterComponent {
     
     case bold, italic
     
+    case horn
     case cedilla
     case ogonek
     case diaeresis
@@ -141,6 +141,35 @@ enum CharacterComponent {
     case verticalTilde
     case zigzag
     case snake
+    case shortStroke, longStroke
+    case shortDiagonalStroke, longDiagonalStroke
+    case tildeOverlay
+    
+    internal static let letterToCombiningComponentDictionary: [CharacterComponent: CharacterComponent] = [
+        // .horn
+        .e: .diaeresis, // .ogonek
+        .fullStop: .dot,
+        .hyphen: .macron, // .line
+        .u: .breve, // .invertedBreve
+        .v: .caron,
+        .o: .ring,
+        .a: .acute,
+        .g: .grave,
+        .l: .verticalLine,
+        .h: .circumflex,
+        .x: .cross,
+        .d: .bridge, // .invertedBridge
+        .q: .square,
+        .n: .tilde,
+        .s: .cedilla, // .snake .verticalTilde
+        .z: .zigzag,
+        .f: .hook,
+        .j: .palatalHook,
+        .t: .retroflexHook,
+        .lowLine: .shortStroke, // .longStroke
+        .solidus: .shortDiagonalStroke, // .longDiagonalStroke
+        .tilde: .tildeOverlay,
+    ]
     
     case doubled
     case double

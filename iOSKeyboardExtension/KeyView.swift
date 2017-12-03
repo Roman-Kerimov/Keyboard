@@ -476,29 +476,44 @@ class KeyView: UIButton, ConfigurableView {
                         characterComponents = characterComponents.extraArray[2]
                     }
                     else if specialKey == nil {
-                        guard let previousCharacter = KeyboardViewController.shared.textDocumentProxy.characterBeforeInput else {
-                            mainLabelView.text = nil
-                            break
-                        }
-                        
-                        shouldDeletePreviousCharacter = true
-                        
-                        let modifierComponents: [CharacterComponent] = characterComponents.map { CharacterComponent.letterToModifierComponentDictionary[$0] ?? $0}
-                        
-                        let ligatureCharacter = (previousCharacter.characterComponents + characterComponents).character
-                        let combinedCharacter = (previousCharacter.characterComponents + modifierComponents).character
-                        
-                        if ligatureCharacter != combinedCharacter && ligatureCharacter.isEmpty == false && combinedCharacter.isEmpty == false {
-                            Array<CharacterComponent>.extraArrayExtension = [ligatureCharacter.characterComponents]
-                        }
-                        
-                        if previousCharacter.characterComponents.isEmpty || (combinedCharacter.isEmpty && ligatureCharacter.isEmpty) {
-                            mainLabelView.text = previousCharacter.description
-                        }
-                        else {
-                            characterComponents = ligatureCharacter.characterComponents
-                            characterComponents = combinedCharacter.characterComponents
-                        }
+                        fallthrough
+                    }
+                    
+                case .upLeft, .downLeft:
+                    
+                    guard let previousCharacter = KeyboardViewController.shared.textDocumentProxy.characterBeforeInput else {
+                        mainLabelView.text = nil
+                        break
+                    }
+                    
+                    shouldDeletePreviousCharacter = true
+                    
+                    let mixingComponents = characterComponents.map {CharacterComponent.letterToMixingComponentDictionary[$0] ?? $0}
+                    let combiningComponents = characterComponents.map {CharacterComponent.letterToCombiningComponentDictionary[$0] ?? $0}
+                    
+                    let combiningSuffix: [CharacterComponent] = [direction == .left ? .combining : (direction == .upLeft ? .above : .below)]
+                    
+                    var combiningCharacter: String = (characterComponents + combiningSuffix).character
+                    combiningCharacter = (combiningComponents + combiningSuffix).character
+                    
+                    guard combiningCharacter.isEmpty else {
+                        mainLabelView.text = (previousCharacter.description + combiningCharacter).precomposedStringWithCanonicalMapping
+                        break
+                    }
+                    
+                    let ligatureCharacter = (previousCharacter.characterComponents + characterComponents).character
+                    let combinedCharacter = (previousCharacter.characterComponents + mixingComponents).character
+                    
+                    if ligatureCharacter != combinedCharacter && ligatureCharacter.isEmpty == false && combinedCharacter.isEmpty == false {
+                        Array<CharacterComponent>.extraArrayExtension = [ligatureCharacter.characterComponents]
+                    }
+                    
+                    if previousCharacter.characterComponents.isEmpty || (combinedCharacter.isEmpty && ligatureCharacter.isEmpty) {
+                        mainLabelView.text = previousCharacter.description
+                    }
+                    else {
+                        characterComponents = ligatureCharacter.characterComponents
+                        characterComponents = combinedCharacter.characterComponents
                     }
                     
                 case .right:
@@ -521,9 +536,6 @@ class KeyView: UIButton, ConfigurableView {
                     
                 case .downRight:
                     characterComponents += [.subscript]
-                    
-                case .downLeft, .upLeft:
-                    break
                 }
             }
         }

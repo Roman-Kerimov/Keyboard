@@ -2257,7 +2257,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "̦": [.comma, .below],
 
     //0327          ; COMBINING CEDILLA
-    "̧": [.cedilla, .combining],
+    "̧": [.cedilla, .below],
 
     //0328          ; COMBINING OGONEK
     "̨": [.ogonek, .below],

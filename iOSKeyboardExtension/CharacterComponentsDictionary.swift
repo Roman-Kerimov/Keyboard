@@ -1030,10 +1030,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "Ɛ": [.e, .extraH, .capital],
 
     //0191          ; LATIN CAPITAL LETTER F WITH HOOK
-    "Ƒ": [.f, .hook, .capital],
+    "Ƒ": [.f, .extraH, .capital],
 
     //0192          ; LATIN SMALL LETTER F WITH HOOK
-    "ƒ": [.f, .hook],
+    "ƒ": [.f, .extraH],
 
     //0193          ; LATIN CAPITAL LETTER G WITH HOOK
     "Ɠ": [.g, .hook, .capital],

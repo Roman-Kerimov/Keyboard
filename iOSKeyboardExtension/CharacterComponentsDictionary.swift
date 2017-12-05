@@ -4766,10 +4766,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⃑": [.macron, .above, .greaterThanSign, .topHalf],
 
     //20D2          ; COMBINING LONG VERTICAL LINE OVERLAY
-    "⃒": [.verticalLine, .combining],
+    "⃒": [.verticalLineOverlay, .combining],
 
     //20D3          ; COMBINING SHORT VERTICAL LINE OVERLAY
-    "⃓": [.verticalLine, .combining, .short],
+    "⃓": [.verticalLineOverlay, .combining, .short],
 
     //20D4          ; COMBINING ANTICLOCKWISE ARROW ABOVE
     "⃔": [.breve, .above, .lessThanSign],

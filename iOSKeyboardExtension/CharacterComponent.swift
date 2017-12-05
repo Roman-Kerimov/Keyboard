@@ -145,6 +145,7 @@ enum CharacterComponent {
     case shortDiagonalStroke, longDiagonalStroke
     case tildeOverlay
     case ringOverlay
+    case verticalLineOverlay
     
     internal static let letterToCombiningComponentDictionary: [CharacterComponent: CharacterComponent] = [
         // .horn
@@ -172,6 +173,7 @@ enum CharacterComponent {
         .solidus: .shortDiagonalStroke, // .longDiagonalStroke
         .tilde: .tildeOverlay,
         // .ringOverlay
+        .verticalLine: .verticalLineOverlay
     ]
     
     case doubled

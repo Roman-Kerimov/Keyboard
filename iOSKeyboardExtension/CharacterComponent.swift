@@ -147,7 +147,8 @@ enum CharacterComponent {
     
     internal static let letterToCombiningComponentDictionary: [CharacterComponent: CharacterComponent] = [
         // .horn
-        .e: .diaeresis, // .ogonek
+        .e: .diaeresis,
+        .c: .ogonek,
         .fullStop: .dot,
         .hyphen: .macron, // .line
         .u: .breve, // .invertedBreve

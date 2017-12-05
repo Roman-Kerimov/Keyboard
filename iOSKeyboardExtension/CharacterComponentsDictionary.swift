@@ -2406,7 +2406,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "͙": [.asterisk, .below],
 
     //035A          ; COMBINING DOUBLE RING BELOW
-    "͚": [.ring, .double, .below],
+    "͚": [.zero, .extra1, .below],
 
     //035B          ; COMBINING ZIGZAG ABOVE
     "͛": [.zigzag, .above],
@@ -2750,7 +2750,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "᪱": [.diaeresis, .ring, .above],
 
     //1AB2          ; COMBINING INFINITY
-    "᪲": [.ring, .doubled, .above],
+    "᪲": [.zero, .extra1, .above],
 
     //1AB3          ; COMBINING DOWNWARDS ARROW
     "᪳": [.verticalLine, .above, .lessThanSign],

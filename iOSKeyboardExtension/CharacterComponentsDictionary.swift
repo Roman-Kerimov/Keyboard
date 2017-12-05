@@ -4784,13 +4784,13 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⃗": [.macron, .above, .greaterThanSign],
 
     //20D8          ; COMBINING RING OVERLAY
-    "⃘": [.ring, .combining],
+    "⃘": [.ringOverlay, .combining],
 
     //20D9          ; COMBINING CLOCKWISE RING OVERLAY
-    "⃙": [.ring, .combining, .greaterThanSign],
+    "⃙": [.ringOverlay, .combining, .greaterThanSign],
 
     //20DA          ; COMBINING ANTICLOCKWISE RING OVERLAY
-    "⃚": [.ring, .combining, .lessThanSign],
+    "⃚": [.ringOverlay, .combining, .lessThanSign],
 
     //20DB          ; COMBINING THREE DOTS ABOVE
     "⃛": [],

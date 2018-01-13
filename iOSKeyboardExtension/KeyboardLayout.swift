@@ -12,7 +12,7 @@ struct KeyboardLayout {
     
     let name: String
     
-    let rows: [[CharacterComponent]]
+    let rows: [[Key]]
     
     var rowCount: Int {
         return rows.count
@@ -23,6 +23,37 @@ struct KeyboardLayout {
     }
     
     static let list: [KeyboardLayout] = [.qwerty, .dvorak, .colemak, .azerty, .qwertz]
+    
+    init(name: String, rows: [[CharacterComponent]]) {
+        self.name = name
+        
+        let shiftDownRows: [[CharacterComponent]] = [
+            [ .caret,        .tilde,       .asterisk,     .apostrophe,   .curlyBracket,  .divisionSign,       .seven, .eight, .nine,  .minusSign,  ],
+            [ .commercialAt, .numberSign,  .ampersand,    .verticalLine, .parenthesis,   .multiplicationSign, .four,  .five,  .six,   .plusSign,   ],
+            [ .dollarSign,   .percentSign, .lessThanSign, .solidus,      .squareBracket, .zero,               .one,   .two,   .three, .equalsSign, ],
+        ]
+        
+        var keyRows: [[Key]] = []
+        for (row, shiftDownRow) in zip(rows, shiftDownRows) {
+            var keyRow: [Key] = []
+            for (label, shiftDownLabel) in zip(row, shiftDownRow) {
+                let shiftUpLabel: String
+                
+                if let shiftUpComponent = KeyboardLayout.shiftUpDictionary[label] {
+                    shiftUpLabel = [shiftUpComponent].character
+                }
+                else {
+                    shiftUpLabel = .init()
+                }
+                
+                keyRow.append(Key.init(label: [label].character, shiftDownLabel: [shiftDownLabel].character, shiftUpLabel: shiftUpLabel))
+            }
+            
+            keyRows.append(keyRow)
+        }
+        
+        self.rows = keyRows
+    }
 
     static let qwerty = KeyboardLayout(
         name: "QWERTY",
@@ -78,13 +109,4 @@ struct KeyboardLayout {
     ]
     
     static let shiftRightDictionary: [CharacterComponent: CharacterComponent] = [.lessThanSign: .greaterThanSign]
-    
-    static let shiftDown = KeyboardLayout(
-        name: "ShiftDown",
-        rows: [
-            [ .caret,        .tilde,       .asterisk,     .apostrophe,   .curlyBracket,  .divisionSign,       .seven, .eight, .nine,  .minusSign,  ],
-            [ .commercialAt, .numberSign,  .ampersand,    .verticalLine, .parenthesis,   .multiplicationSign, .four,  .five,  .six,   .plusSign,   ],
-            [ .dollarSign,   .percentSign, .lessThanSign, .solidus,      .squareBracket, .zero,               .one,   .two,   .three, .equalsSign, ],
-        ]
-    )
 }

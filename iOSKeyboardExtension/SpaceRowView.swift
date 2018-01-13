@@ -28,11 +28,11 @@ class SpaceRowView: RowView {
     ]
     
     internal var nextKeyboardKey: KeyView {
-        return keys.filter {$0.view.specialKey == .nextKeyboard} .first!.view
+        return keys.filter {$0.view.key == .nextKeyboard} .first!.view
     }
     
     internal var returnKey: KeyView {
-        return keys.filter {$0.view.specialKey == .return} .first!.view
+        return keys.filter {$0.view.key == .return} .first!.view
     }
     
     internal override init() {
@@ -58,12 +58,12 @@ class SpaceRowView: RowView {
         for (proportion, keyView) in keys {
             var keyWidth = size.width * proportion/allParts
             
-            if keyView.specialKey == .space {
+            if keyView.key == .space {
                  keyWidth += freeSpace
                 freeSpace = 0
             }
             
-            if keyView.mainLabel == SpecialKey.nextKeyboard.label
+            if keyView.key == .nextKeyboard
                 && KeyboardViewController.shared.needsInputModeSwitchKey == false {
                 
                 freeSpace = keyWidth

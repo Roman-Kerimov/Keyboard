@@ -20,7 +20,7 @@ class KeyView: UIButton, ConfigurableView {
         switch returnKeyType {
             
         case .default:
-            mainLabelView.text = SpecialKey.return.label
+            mainLabelView.text = Key.return.label
         case .go:
             mainLabelView.text = GO.string
         case .join:
@@ -68,26 +68,22 @@ class KeyView: UIButton, ConfigurableView {
         }
     }
     
-    public var mainLabel: String = "" {
+    public var key: Key {
         didSet {
-            mainLabelView.text = mainLabel
+            setLabels()
         }
     }
     
-    public var shiftDownLabel: String = "" {
-        didSet {
-            shiftDownLabelView.text = shiftDownLabel
-        }
-    }
-    
-    public var shiftUpLabel: String = "" {
-        didSet {
-            shiftUpLabelView.text = shiftUpLabel
-        }
+    private func setLabels() {
+        mainLabelView.text = key.label
+        shiftDownLabelView.text = key.shiftDownLabel
+        shiftUpLabelView.text = key.shiftUpLabel
+        shiftRightLabelView.text = key.shiftRightLabel
+        shiftLeftLabelView.text = key.shiftLeftLabel
     }
     
     private var labelFileName: String {
-        return "Labels_\(mainLabel)"
+        return "Labels_\(key.label)"
     }
     
     private let mainLabelView: LabelView = .init()
@@ -101,7 +97,7 @@ class KeyView: UIButton, ConfigurableView {
     private var backgroundView: UIView!
     
     private var returnKeyType: UIReturnKeyType? {
-        if specialKey == .return {
+        if key == .return {
             #if TARGET_INTERFACE_BUILDER
                 return .default
             #else
@@ -114,11 +110,11 @@ class KeyView: UIButton, ConfigurableView {
     }
     
     private var isServiceKey: Bool {
-        return specialKey != nil && specialKey != .space && specialKey != .tab && returnKeyType != .default
+        return key.label.count > 1 && key != .space && key != .tab && returnKeyType != .default
     }
     
     private var isSpecialReturnType: Bool {
-        return specialKey == .return
+        return key == .return
             && returnKeyType != .default
             && returnKeyType != .next
             && returnKeyType != .continue
@@ -174,17 +170,14 @@ class KeyView: UIButton, ConfigurableView {
         }
     }
     
-    init(key: SpecialKey? = nil) {
+    init(key: Key) {
+        self.key = key
         super.init(frame: CGRect())
-        
-        mainLabel = key?.label ?? .init()
-        
-        if key == .space {
-            shiftUpLabelView.text = [KeyboardLayout.shiftUpDictionary[CharacterComponent.space]!].character
-        }
         
         // It is for activation of touch events
         backgroundColor = .touchableClear
+        
+        setLabels()
         
         backgroundView = UIView()
         backgroundView.isUserInteractionEnabled = false
@@ -192,23 +185,12 @@ class KeyView: UIButton, ConfigurableView {
         addSubview(backgroundView)
         
         addSubview(mainLabelView)
-        mainLabelView.text = mainLabel
         mainLabelView.numberOfLines = 2
         
         addSubview(shiftUpLabelView)
         addSubview(shiftDownLabelView)
-        
-        if specialKey == .space {
-            shiftDownLabelView.text = SpecialKey.space.label
-            
-            addSubview(shiftLeftLabelView)
-            
-            addSubview(shiftRightLabelView)
-            shiftRightLabelView.text = SpecialKey.insistSpace.label
-        }
-        else {
-            shiftDownLabelView.text = shiftDownLabel
-        }
+        addSubview(shiftLeftLabelView)
+        addSubview(shiftRightLabelView)
         
         addSubview(imageLabelView)
         
@@ -239,7 +221,7 @@ class KeyView: UIButton, ConfigurableView {
         baseFontSize = labelFontSize
         self.spacing = spacing
         
-        if specialKey == nil {
+        if key.label.count == 1 {
             mainLabelView.font = UIFont.init(name: "Symbola", size: baseFontSize)
         }
         else {
@@ -252,21 +234,19 @@ class KeyView: UIButton, ConfigurableView {
         shiftLeftLabelView.font = shiftLabelFont
         shiftRightLabelView.font = shiftLabelFont
         
-        if let specialKey = self.specialKey {
-            switch specialKey {
-            case .delete, .return, .tab:
-                mainLabelView.font = mainLabelView.font.withSize(shiftLabelFont.pointSize)
-                
-            case .settings:
-                mainLabelView.font = mainLabelView.font.withSize(shiftLabelFont.pointSize * 2.5)
-                
-            default:
-                break
-            }
+        switch key {
+        case .delete, .return, .tab:
+            mainLabelView.font = mainLabelView.font.withSize(shiftLabelFont.pointSize)
             
-            if imageLabelView.image != nil {
-                imageLabelView.image = UIImage.init(fromPDF: labelFileName, withExtension: .ai, withScale: labelFontSize/24, for: self)?.withRenderingMode(.alwaysTemplate)
-            }
+        case .settings:
+            mainLabelView.font = mainLabelView.font.withSize(shiftLabelFont.pointSize * 2.5)
+            
+        default:
+            break
+        }
+        
+        if imageLabelView.image != nil {
+            imageLabelView.image = UIImage.init(fromPDF: labelFileName, withExtension: .ai, withScale: labelFontSize/24, for: self)?.withRenderingMode(.alwaysTemplate)
         }
         
         backgroundView.layer.cornerRadius = spacing
@@ -285,7 +265,7 @@ class KeyView: UIButton, ConfigurableView {
         shiftUpLabelView.center.y = verticalShiftLabelIndent
         shiftDownLabelView.center.y = frame.height - verticalShiftLabelIndent
 
-        if specialKey == .space {
+        if key == .space {
             shiftUpLabelView.center.x = backgroundView.center.x
             shiftDownLabelView.center.x = backgroundView.center.x
         }
@@ -307,8 +287,8 @@ class KeyView: UIButton, ConfigurableView {
     private var shouldDeletePreviousCharacter: Bool = false
     
     private func input() {
-        if specialKey == .return {
-            KeyboardViewController.shared.keyAction(label: SpecialKey.return.label)
+        if key == .return {
+            KeyboardViewController.shared.keyAction(label: key.label)
         }
         else {
             
@@ -392,20 +372,20 @@ class KeyView: UIButton, ConfigurableView {
             previousTime = Date.timeIntervalSinceReferenceDate
             previousDistance = 0
             
-            if specialKey == .delete {
+            if key == .delete {
                 startAutorepeat()
             }
             
         case .ended:
             
-            if specialKey == .delete {
+            if key == .delete {
                 stopAutorepeat()
             }
             else {
                 input()
             }
             
-            mainLabelView.text = mainLabel
+            mainLabelView.text = key.label
             updateLocalizedStrings()
             isHighlighted = false
             Array<CharacterComponent>.extraArrayExtension = .init()
@@ -440,7 +420,7 @@ class KeyView: UIButton, ConfigurableView {
                 switch direction {
                     
                 case .up:
-                    if mainLabelView.text == mainLabel && shiftUpLabelView.text?.isEmpty == false {
+                    if mainLabelView.text == key.label && shiftUpLabelView.text?.isEmpty == false {
                         mainLabelView.text = shiftUpLabelView.text
                     }
                     else {
@@ -454,7 +434,7 @@ class KeyView: UIButton, ConfigurableView {
                     }
                     
                 case .down:
-                    if mainLabelView.text == mainLabel && shiftDownLabelView.text?.isEmpty == false {
+                    if mainLabelView.text == key.label && shiftDownLabelView.text?.isEmpty == false {
                         mainLabelView.text = shiftDownLabelView.text?.first?.description
                     }
                     else if characterComponents.extraArray.count > 1
@@ -467,7 +447,7 @@ class KeyView: UIButton, ConfigurableView {
                     }
                     
                 case .left:
-                    if mainLabelView.text == mainLabel && shiftLeftLabelView.text?.isEmpty == false {
+                    if mainLabelView.text == key.label && shiftLeftLabelView.text?.isEmpty == false {
                         mainLabelView.text = shiftLeftLabelView.text
                     }
                     else if characterComponents.extraArray.count > 2
@@ -475,7 +455,7 @@ class KeyView: UIButton, ConfigurableView {
                         
                         characterComponents = characterComponents.extraArray[2]
                     }
-                    else if specialKey == nil {
+                    else if key.label.count == 1 {
                         fallthrough
                     }
                     
@@ -517,7 +497,7 @@ class KeyView: UIButton, ConfigurableView {
                     }
                     
                 case .right:
-                    if mainLabelView.text == mainLabel && shiftRightLabelView.text?.isEmpty == false {
+                    if mainLabelView.text == key.label && shiftRightLabelView.text?.isEmpty == false {
                         mainLabelView.text = shiftRightLabelView.text
                     }
                     else if characterComponents.extraArray.isEmpty == false
@@ -543,10 +523,6 @@ class KeyView: UIButton, ConfigurableView {
         mainLabelView.center = backgroundView.center
     }
     
-    var specialKey: SpecialKey? {
-        return SpecialKey(rawValue: mainLabel)
-    }
-    
     private enum ShiftDirection: CGFloat {
         case downLeft = -0.75
         case down = -0.5
@@ -557,21 +533,4 @@ class KeyView: UIButton, ConfigurableView {
         case upLeft = 0.75
         case left = 1
     }
-}
-
-public enum SpecialKey: String {
-    var label: String {
-        return rawValue
-    }
-    
-    case delete = "delete"
-    case space = " "
-    case insistSpace = "insist"
-    case `return` = "return"
-    case tab = "tab"
-    case nextKeyboard = "NextKeyboard"
-    case dismissKeyboard = "HideKeyboard"
-    case settings = "Settings"
-    case horizontalMode = "▄▄"
-    case verticalMode = "▝█▖"
 }

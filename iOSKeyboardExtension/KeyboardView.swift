@@ -132,7 +132,7 @@ internal class KeyboardView: UIView {
     private var keys: [KeyView] {
         var keyViews: [KeyView] = []
         
-        for row in layoutView.keys {
+        for row in layoutView.keyViews {
             keyViews += row
         }
         

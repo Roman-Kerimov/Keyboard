@@ -20,28 +20,11 @@ class KeyboardLayoutView: UIView {
     
     public var layout: KeyboardLayout = .qwerty {
         didSet {
-            
-            for (rowIndex, row) in layout.rows.enumerated() {
-                for (columnIndex, baseCharacterComponent) in row.enumerated() {
-                    
-                    let keyView = keys[rowIndex][columnIndex]
-                    keyView.mainLabel = [baseCharacterComponent].character
-                    let shiftDownCharacterComponents = [KeyboardLayout.shiftDown.rows[rowIndex][columnIndex]]
-                    keyView.shiftDownLabel = shiftDownCharacterComponents.character + shiftDownCharacterComponents.extraArray.filter {$0.contains(.extra0) || $0.contains(.extra1) || $0.contains(.extra2)} .map {$0.character} .joined()
-                    
-                    if let shiftUpCharacterComponent = KeyboardLayout.shiftUpDictionary[baseCharacterComponent] {
-                        keyView.shiftUpLabel = [shiftUpCharacterComponent].character
-                    }
-                    else {
-                        keyView.shiftUpLabel = .init()
-                    }
-                }
-            }
-            
+            setKeys()
         }
     }
     
-    var keys: [[KeyView]] = Array.init(repeating: Array.init(repeating: .init(), count: 10), count: 3)
+    var keyViews: [[KeyView]] = []
     
     var halfKeyboards: [UIView] = .init()
     internal let unicodeCollectionView: UnicodeCollectionView = .init()
@@ -59,29 +42,41 @@ class KeyboardLayoutView: UIView {
         
         addSubview(unicodeCollectionView)
         
-        for rowIndex in 0...2 {
-            for columnIndex in 0...9 {
-                
-                let halfKeyboardIndex: Int
-                
-                if columnIndex < layout.columnCount/2 {
-                    halfKeyboardIndex = 0
-                }
-                else {
-                    halfKeyboardIndex = 1
-                }
-                
-                let keyView = KeyView.init()
-                
-                halfKeyboards[halfKeyboardIndex].addSubview(keyView)
-                
-                keys[rowIndex][columnIndex] = keyView
-            }
-        }
+        setKeys()
     }
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setKeys() {
+        for (rowIndex, row) in layout.rows.enumerated() {
+            for (columnIndex, key) in row.enumerated() {
+                
+                if rowIndex == keyViews.count {
+                    keyViews.append([])
+                }
+                
+                if columnIndex == keyViews[rowIndex].count {
+                    let keyView = KeyView.init(key: key)
+                    keyViews[rowIndex].append(keyView)
+                    
+                    let halfKeyboardIndex: Int
+                    
+                    if columnIndex < layout.columnCount/2 {
+                        halfKeyboardIndex = 0
+                    }
+                    else {
+                        halfKeyboardIndex = 1
+                    }
+                    
+                    halfKeyboards[halfKeyboardIndex].addSubview(keyView)
+                }
+                else {
+                    keyViews[rowIndex][columnIndex].key = key
+                }
+            }
+        }
     }
     
     func configure(size: CGSize, halfKeyboardSize: CGSize, keySize: CGSize, keySpacing: CGFloat, labelFontSize: CGFloat, horizontalIndent: CGFloat) {
@@ -101,7 +96,7 @@ class KeyboardLayoutView: UIView {
         
         unicodeCollectionView.size = .init(width: horizontalIndent, height: size.height)
         
-        for (rowIndex, row) in keys.enumerated() {
+        for (rowIndex, row) in keyViews.enumerated() {
             for (keyIndex, key) in row.enumerated() {
                 
                 let halfKeyboardIndex: Int

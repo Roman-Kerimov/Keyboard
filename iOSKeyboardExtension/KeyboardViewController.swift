@@ -210,23 +210,9 @@ class KeyboardViewController: UIInputViewController {
     
     func keyAction(label: String) {
         
-        guard let specialKey = SpecialKey(rawValue: label) else {
+        switch label {
             
-            if textDocumentProxy.characterBeforeInput?.isSpaceReturnOrTab != false
-                && textDocumentProxy.characterAfterInput?.isSpaceReturnOrTab == false
-                && textDocumentProxy.characterAfterInput?.belongsTo(.punctuationCharacters) == false {
-                
-                textDocumentProxy.insertText(.space)
-                textDocumentProxy.adjustTextPosition(byCharacterOffset: -1)
-            }
-            
-            textDocumentProxy.insertText(label)
-            return
-        }
-        
-        switch specialKey {
-            
-        case .delete:
+        case Key.delete.label:
             if textDocumentProxy.characterBeforeInput == .space
                 && textDocumentProxy.characterAfterInput?.isSpaceReturnOrTab == false
                 && textDocumentProxy.characterAfterInput?.belongsTo(.punctuationCharacters) == false {
@@ -261,7 +247,7 @@ class KeyboardViewController: UIInputViewController {
                 textDocumentProxy.adjustTextPosition(byCharacterOffset: -1)
             }
             
-        case .space:
+        case Key.space.label:
             if textDocumentProxy.characterAfterInput == .space {
                 cancelNextNormalization = true
                 textDocumentProxy.adjustTextPosition(byCharacterOffset: 1)
@@ -271,18 +257,18 @@ class KeyboardViewController: UIInputViewController {
                 textDocumentProxy.insertText(.space)
             }
             
-        case .insistSpace:
+        case Key.space.shiftRightLabel:
             if !shouldInsertSpace {
                 textDocumentProxy.insertText(.space)
             }
             
-        case .return, .tab:
+        case Key.return.label, Key.tab.label:
             
-            if specialKey == .return {
+            if label == Key.return.label {
                 textDocumentProxy.insertText(.return)
             }
             
-            if specialKey == .tab {
+            if label == Key.tab.label {
                 textDocumentProxy.insertText(.tab)
             }
             
@@ -290,22 +276,33 @@ class KeyboardViewController: UIInputViewController {
                 textDocumentProxy.deleteForward(sequenceOf: .init(charactersIn: .space))
             }
             
-        case .nextKeyboard:
+        case Key.nextKeyboard.label:
             break
             
-        case .dismissKeyboard:
+        case Key.dismissKeyboard.label:
             dismissKeyboard()
             
-        case .settings:
+        case Key.settings.label:
             keyboardView.showSettings()
             
-        case .horizontalMode:
+        case Key.horizontalMode.label:
             KeyboardSettings.shared.layoutMode = .horizontal
             keyboardView.configure()
             
-        case .verticalMode:
+        case Key.verticalMode.label:
             KeyboardSettings.shared.layoutMode = .vertical
             keyboardView.configure()
+            
+        default:
+            if textDocumentProxy.characterBeforeInput?.isSpaceReturnOrTab != false
+                && textDocumentProxy.characterAfterInput?.isSpaceReturnOrTab == false
+                && textDocumentProxy.characterAfterInput?.belongsTo(.punctuationCharacters) == false {
+                
+                textDocumentProxy.insertText(.space)
+                textDocumentProxy.adjustTextPosition(byCharacterOffset: -1)
+            }
+            
+            textDocumentProxy.insertText(label)
         }
     }
 }

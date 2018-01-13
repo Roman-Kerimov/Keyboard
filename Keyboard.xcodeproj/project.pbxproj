@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		960F6E931EC9ED0400EFC7B7 /* CharacterCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960F6E921EC9ED0400EFC7B7 /* CharacterCollectionView.swift */; };
 		960F6E951EC9F7E600EFC7B7 /* UnicodeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960F6E941EC9F7E600EFC7B7 /* UnicodeCollectionView.swift */; };
+		961D74912009003900BBC5FB /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961D74902009003900BBC5FB /* Key.swift */; };
+		961D74922009003900BBC5FB /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961D74902009003900BBC5FB /* Key.swift */; };
 		961FC32E1F3ADD9B00ADB15D /* LegalNoticesTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961FC32D1F3ADD9B00ADB15D /* LegalNoticesTextView.swift */; };
 		961FC32F1F3ADD9B00ADB15D /* LegalNoticesTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961FC32D1F3ADD9B00ADB15D /* LegalNoticesTextView.swift */; };
 		961FC3311F3AE14B00ADB15D /* LegalNoticesText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961FC3301F3AE14B00ADB15D /* LegalNoticesText.swift */; };
@@ -140,6 +142,7 @@
 /* Begin PBXFileReference section */
 		960F6E921EC9ED0400EFC7B7 /* CharacterCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterCollectionView.swift; sourceTree = "<group>"; };
 		960F6E941EC9F7E600EFC7B7 /* UnicodeCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnicodeCollectionView.swift; sourceTree = "<group>"; };
+		961D74902009003900BBC5FB /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		961FC32D1F3ADD9B00ADB15D /* LegalNoticesTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalNoticesTextView.swift; sourceTree = "<group>"; };
 		961FC3301F3AE14B00ADB15D /* LegalNoticesText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalNoticesText.swift; sourceTree = "<group>"; };
 		9633A3C71E5DFA3C00DFA503 /* RowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RowView.swift; sourceTree = "<group>"; };
@@ -273,6 +276,7 @@
 				964FE8221D1CA9D400D41EA7 /* Keyboard.storyboard */,
 				96464A1F1F3AF4D2006F8F6B /* For Interface Builder */,
 				96530D661DD1C9A9004E8BAA /* KeyboardLayout.swift */,
+				961D74902009003900BBC5FB /* Key.swift */,
 				9643FC4C1F78F8D5004DA2C0 /* CharacterComponent.swift */,
 				96B6B35A1F9764F400231AE6 /* Array<CharacterComponent>.swift */,
 				96B6B35D1F97660E00231AE6 /* Array<CharacterComponent>Tests.swift */,
@@ -532,6 +536,7 @@
 				96533A7D1F12938D00B07CA3 /* KeyboardLayoutView.swift in Sources */,
 				96533A7A1F12938D00B07CA3 /* SettingsContainerView.swift in Sources */,
 				96533A821F12938D00B07CA3 /* CharacterCollectionView.swift in Sources */,
+				961D74912009003900BBC5FB /* Key.swift in Sources */,
 				969221E51F3BA91A005E5913 /* SettingsContainerView_LanguageTableView.swift in Sources */,
 				96533A7C1F12938D00B07CA3 /* LanguageTableView.swift in Sources */,
 				96533A761F12938D00B07CA3 /* KeyboardLayout.swift in Sources */,
@@ -569,6 +574,7 @@
 				961FC32F1F3ADD9B00ADB15D /* LegalNoticesTextView.swift in Sources */,
 				9654DF7A1D4E1D0900DDB0EF /* SpaceRowView.swift in Sources */,
 				9643FC4E1F78F8D5004DA2C0 /* CharacterComponent.swift in Sources */,
+				961D74922009003900BBC5FB /* Key.swift in Sources */,
 				96848DA11EE0B64F0009869A /* UnicodeTable.swift in Sources */,
 				9633A3C81E5DFA3C00DFA503 /* RowView.swift in Sources */,
 				9633A3CA1E5DFE8D00DFA503 /* DeleteRowView.swift in Sources */,

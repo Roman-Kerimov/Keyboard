@@ -461,6 +461,10 @@ class KeyView: UIButton, ConfigurableView {
                     
                 case .upLeft, .downLeft:
                     
+                    guard key.label.count == 1 else {
+                        break
+                    }
+                    
                     guard let previousCharacter = KeyboardViewController.shared.textDocumentProxy.characterBeforeInput else {
                         mainLabelView.text = nil
                         break

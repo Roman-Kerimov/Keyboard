@@ -209,6 +209,24 @@ class KeyView: UIButton, ConfigurableView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    override func didMoveToSuperview() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardStateDidChange), name: .KeyboardStateDidChange, object: nil)
+    }
+    
+    @objc func keyboardStateDidChange() {
+        guard let key = Keyboard.default.currentKeys.first else {
+            return
+        }
+        
+        if key == self.key {
+            mainLabelView.text = Keyboard.default.character
+        }
+    }
+    
     private var baseFontSize: CGFloat = 0
     private var spacing: CGFloat = 0
     
@@ -284,54 +302,6 @@ class KeyView: UIButton, ConfigurableView {
         imageLabelView.center = backgroundView.center
     }
     
-    private var shouldDeletePreviousCharacter: Bool = false
-    
-    private func input() {
-        if key == .return {
-            KeyboardViewController.shared.keyAction(label: key.label)
-        }
-        else {
-            
-            if shouldDeletePreviousCharacter {
-                shouldDeletePreviousCharacter = false
-                
-                guard KeyboardViewController.shared.textDocumentProxy.characterBeforeInput?.description != mainLabelView.text else {
-                    return
-                }
-                
-                KeyboardViewController.shared.textDocumentProxy.deleteBackward()
-            }
-            
-            guard let mainLabel = mainLabelView.text else {
-                return
-            }
-            
-            KeyboardViewController.shared.keyAction(label: mainLabel)
-        }
-        
-        KeyboardViewController.shared.updateDocumentContext()
-    }
-    
-    private var autorepeatStartTimer: Timer?
-    private var repeatTimer: Timer?
-    
-    private func startAutorepeat() {
-        input()
-        
-        autorepeatStartTimer = .scheduledTimer(withTimeInterval: 0.5, repeats: false) {_ in
-            self.repeatTimer = .scheduledTimer(withTimeInterval: 0.1, repeats: true) {_ in
-                DispatchQueue.main.async {
-                    self.input()
-                }
-            }
-        }
-    }
-    
-    private func stopAutorepeat() {
-        autorepeatStartTimer?.invalidate()
-        repeatTimer?.invalidate()
-    }
-    
     private var longPressGestureRecognizer: UILongPressGestureRecognizer!
     
     private var gestureStartPoint: CGPoint!
@@ -339,19 +309,7 @@ class KeyView: UIButton, ConfigurableView {
     private var previousTime: TimeInterval = 0
     private var previousDistance: CGFloat = 0
     
-    private var shiftDirections: [ShiftDirection] = .init()
-    
-    private var characterComponents: [CharacterComponent] {
-        get {
-            return mainLabelView.text?.characterComponents ?? .init()
-        }
-        
-        set {
-            if newValue.character.isEmpty == false {
-                mainLabelView.text = newValue.character
-            }
-        }
-    }
+    private var shiftDirections: [CGFloat] = .init()
     
     @objc func longPressGestureAction(gesture: UIGestureRecognizer) {
         isHighlighted = true
@@ -372,18 +330,11 @@ class KeyView: UIButton, ConfigurableView {
             previousTime = Date.timeIntervalSinceReferenceDate
             previousDistance = 0
             
-            if key == .delete {
-                startAutorepeat()
-            }
+            Keyboard.default.down(key: key)
             
         case .ended:
             
-            if key == .delete {
-                stopAutorepeat()
-            }
-            else {
-                input()
-            }
+            Keyboard.default.up(key: key)
             
             mainLabelView.text = key.label
             updateLocalizedStrings()
@@ -402,7 +353,7 @@ class KeyView: UIButton, ConfigurableView {
             
             let distance = hypot(offsetPoint.x, offsetPoint.y)
             let threshold = bounds.size.height / 2
-            let direction = ShiftDirection.init(rawValue: (atan2(-offsetPoint.y, offsetPoint.x) / .pi * 4).rounded() / 4) ?? .left
+            let direction = (atan2(-offsetPoint.y, offsetPoint.x) / .pi * 4).rounded() / 4
             
             let currentTime = Date.timeIntervalSinceReferenceDate
             let speed = (distance - previousDistance) / .init(currentTime - previousTime)
@@ -417,124 +368,31 @@ class KeyView: UIButton, ConfigurableView {
             else if distance > threshold {
                 shiftDirections.append(direction)
                 
+                let shiftDirection: Keyboard.ShiftDirection
+                
                 switch direction {
-                    
-                case .up:
-                    if mainLabelView.text == key.label && shiftUpLabelView.text?.isEmpty == false {
-                        mainLabelView.text = shiftUpLabelView.text
-                    }
-                    else {
-                        characterComponents += [.capital]
-                        
-                        if characterComponents.count == 1 {
-                            if let shiftUpCharacterComponent = KeyboardLayout.shiftUpDictionary[characterComponents.first!] {
-                                characterComponents = [shiftUpCharacterComponent]
-                            }
-                        }
-                    }
-                    
-                case .down:
-                    if mainLabelView.text == key.label && shiftDownLabelView.text?.isEmpty == false {
-                        mainLabelView.text = shiftDownLabelView.text?.first?.description
-                    }
-                    else if characterComponents.extraArray.count > 1
-                        && characterComponents == characterComponents.extraArray[0] {
-                        
-                        characterComponents = characterComponents.extraArray[1]
-                    }
-                    else {
-                        characterComponents = .init(characterComponents.split(separator: .capital, maxSplits: 1, omittingEmptySubsequences: false).joined(separator: [.smallCapital]))
-                    }
-                    
-                case .left:
-                    if mainLabelView.text == key.label && shiftLeftLabelView.text?.isEmpty == false {
-                        mainLabelView.text = shiftLeftLabelView.text
-                    }
-                    else if characterComponents.extraArray.count > 2
-                        && characterComponents == characterComponents.extraArray[1] {
-                        
-                        characterComponents = characterComponents.extraArray[2]
-                    }
-                    else if key.label.count == 1 {
-                        fallthrough
-                    }
-                    
-                case .upLeft, .downLeft:
-                    
-                    guard key.label.count == 1 else {
-                        break
-                    }
-                    
-                    guard let previousCharacter = KeyboardViewController.shared.textDocumentProxy.characterBeforeInput else {
-                        mainLabelView.text = nil
-                        break
-                    }
-                    
-                    shouldDeletePreviousCharacter = true
-                    
-                    let mixingComponents = characterComponents.map {CharacterComponent.letterToMixingComponentDictionary[$0] ?? $0}
-                    let combiningComponents = characterComponents.map {CharacterComponent.letterToCombiningComponentDictionary[$0] ?? $0}
-                    
-                    let combiningSuffix: [CharacterComponent] = [direction == .left ? .combining : (direction == .upLeft ? .above : .below)]
-                    
-                    var combiningCharacter: String = (characterComponents + combiningSuffix).character
-                    combiningCharacter = (combiningComponents + combiningSuffix).character
-                    
-                    guard combiningCharacter.isEmpty else {
-                        mainLabelView.text = (previousCharacter.description + combiningCharacter).precomposedStringWithCanonicalMapping
-                        break
-                    }
-                    
-                    let ligatureCharacter = (previousCharacter.characterComponents + characterComponents).character
-                    let combinedCharacter = (previousCharacter.characterComponents + mixingComponents).character
-                    
-                    if ligatureCharacter != combinedCharacter && ligatureCharacter.isEmpty == false && combinedCharacter.isEmpty == false {
-                        Array<CharacterComponent>.extraArrayExtension = [ligatureCharacter.characterComponents]
-                    }
-                    
-                    if previousCharacter.characterComponents.isEmpty || (combinedCharacter.isEmpty && ligatureCharacter.isEmpty) {
-                        mainLabelView.text = previousCharacter.description
-                    }
-                    else {
-                        characterComponents = ligatureCharacter.characterComponents
-                        characterComponents = combinedCharacter.characterComponents
-                    }
-                    
-                case .right:
-                    if mainLabelView.text == key.label && shiftRightLabelView.text?.isEmpty == false {
-                        mainLabelView.text = shiftRightLabelView.text
-                    }
-                    else if characterComponents.extraArray.isEmpty == false
-                        && characterComponents.extraArray.contains(where: {$0.normalized == characterComponents.normalized}) == false {
-                            
-                        characterComponents = characterComponents.extraArray[0]
-                    }
-                    else if characterComponents.count == 1 {
-                        if let extraRightComponent = KeyboardLayout.shiftRightDictionary[characterComponents.first!] {
-                            characterComponents = [extraRightComponent]
-                        }
-                    }
-                    
-                case .upRight:
-                    characterComponents += [.superscript]
-                    
-                case .downRight:
-                    characterComponents += [.subscript]
+                case -0.75:
+                    shiftDirection = .downLeft
+                case -0.5:
+                    shiftDirection = .down
+                case -0.25:
+                    shiftDirection = .downRight
+                case 0:
+                    shiftDirection = .right
+                case 0.25:
+                    shiftDirection = .upRight
+                case 0.5:
+                    shiftDirection = .up
+                case 0.75:
+                    shiftDirection = .upLeft
+                default:
+                    shiftDirection = .left
                 }
+                
+                Keyboard.default.shift(direction: shiftDirection)
             }
         }
         
         mainLabelView.center = backgroundView.center
-    }
-    
-    private enum ShiftDirection: CGFloat {
-        case downLeft = -0.75
-        case down = -0.5
-        case downRight = -0.25
-        case right = 0
-        case upRight = 0.25
-        case up = 0.5
-        case upLeft = 0.75
-        case left = 1
     }
 }

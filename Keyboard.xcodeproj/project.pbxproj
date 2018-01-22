@@ -99,6 +99,8 @@
 		96BC5F561DEB961F002E0752 /* LabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BC5F551DEB961F002E0752 /* LabelView.swift */; };
 		96C49DC51EB7DF1F006F93ED /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C49DC41EB7DF1F006F93ED /* Character.swift */; };
 		96D2B8DD1E35538B006772A5 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D2B8DC1E35538B006772A5 /* Localization.swift */; };
+		96D68E40200DF01200F6E3E8 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D68E3F200DF01200F6E3E8 /* Keyboard.swift */; };
+		96D68E41200DF01200F6E3E8 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D68E3F200DF01200F6E3E8 /* Keyboard.swift */; };
 		96EA39D71EAFDDDE00F3D804 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EA39D61EAFDDDE00F3D804 /* UIImage.swift */; };
 		96EA39E21EB0EEDE00F3D804 /* Labels_HideKeyboard.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96EA39DF1EB0EEDD00F3D804 /* Labels_HideKeyboard.ai */; };
 		96EA39E31EB0EEDE00F3D804 /* Labels_NextKeyboard.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96EA39E01EB0EEDD00F3D804 /* Labels_NextKeyboard.ai */; };
@@ -194,6 +196,7 @@
 		96BC5F551DEB961F002E0752 /* LabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelView.swift; sourceTree = "<group>"; };
 		96C49DC41EB7DF1F006F93ED /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		96D2B8DC1E35538B006772A5 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		96D68E3F200DF01200F6E3E8 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		96EA39D61EAFDDDE00F3D804 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		96EA39DF1EB0EEDD00F3D804 /* Labels_HideKeyboard.ai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Labels_HideKeyboard.ai; sourceTree = "<group>"; };
 		96EA39E01EB0EEDD00F3D804 /* Labels_NextKeyboard.ai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Labels_NextKeyboard.ai; sourceTree = "<group>"; };
@@ -275,6 +278,7 @@
 			children = (
 				964FE8221D1CA9D400D41EA7 /* Keyboard.storyboard */,
 				96464A1F1F3AF4D2006F8F6B /* For Interface Builder */,
+				96D68E3F200DF01200F6E3E8 /* Keyboard.swift */,
 				96530D661DD1C9A9004E8BAA /* KeyboardLayout.swift */,
 				961D74902009003900BBC5FB /* Key.swift */,
 				9643FC4C1F78F8D5004DA2C0 /* CharacterComponent.swift */,
@@ -513,6 +517,7 @@
 				96533A8E1F1293A500B07CA3 /* String.swift in Sources */,
 				96533A811F12938D00B07CA3 /* UnicodeTable.swift in Sources */,
 				96533A921F1293A500B07CA3 /* Internationalization.swift in Sources */,
+				96D68E40200DF01200F6E3E8 /* Keyboard.swift in Sources */,
 				96533A8C1F1293A500B07CA3 /* UIImage.swift in Sources */,
 				96B6B35B1F9764F400231AE6 /* Array<CharacterComponent>.swift in Sources */,
 				96533A7F1F12938D00B07CA3 /* CharacterSequenceView.swift in Sources */,
@@ -565,6 +570,7 @@
 				961FC3321F3AE14B00ADB15D /* LegalNoticesText.swift in Sources */,
 				965D15C91D32AE3B0098FA57 /* KeyView.swift in Sources */,
 				965D15C11D3146BB0098FA57 /* KeyboardView.swift in Sources */,
+				96D68E41200DF01200F6E3E8 /* Keyboard.swift in Sources */,
 				96F716B91F0438B6004A77C7 /* Locale.swift in Sources */,
 				969F15F71E54EE3600C0DD7D /* LanguageTableView.swift in Sources */,
 				9694E23B1E29D1BC00ED3A85 /* LocalizableStrings.swift in Sources */,

@@ -46,7 +46,9 @@ struct KeyboardLayout {
                     shiftUpLabel = .init()
                 }
                 
-                keyRow.append(Key.init(label: [label].character, shiftDownLabel: [shiftDownCharacterComponent].character, shiftUpLabel: shiftUpLabel))
+                let shiftDownLabel = [shiftDownCharacterComponent].character + [shiftDownCharacterComponent].extraArray.filter {$0.contains(.extra0) || $0.contains(.extra1) || $0.contains(.extra2)} .map {$0.character} .joined()
+                
+                keyRow.append(Key.init(label: [label].character, shiftDownLabel: shiftDownLabel, shiftUpLabel: shiftUpLabel))
             }
             
             keyRows.append(keyRow)

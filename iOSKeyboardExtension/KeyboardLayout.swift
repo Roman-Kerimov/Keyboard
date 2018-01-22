@@ -36,7 +36,7 @@ struct KeyboardLayout {
         var keyRows: [[Key]] = []
         for (row, shiftDownRow) in zip(rows, shiftDownRows) {
             var keyRow: [Key] = []
-            for (label, shiftDownLabel) in zip(row, shiftDownRow) {
+            for (label, shiftDownCharacterComponent) in zip(row, shiftDownRow) {
                 let shiftUpLabel: String
                 
                 if let shiftUpComponent = KeyboardLayout.shiftUpDictionary[label] {
@@ -46,7 +46,7 @@ struct KeyboardLayout {
                     shiftUpLabel = .init()
                 }
                 
-                keyRow.append(Key.init(label: [label].character, shiftDownLabel: [shiftDownLabel].character, shiftUpLabel: shiftUpLabel))
+                keyRow.append(Key.init(label: [label].character, shiftDownLabel: [shiftDownCharacterComponent].character, shiftUpLabel: shiftUpLabel))
             }
             
             keyRows.append(keyRow)

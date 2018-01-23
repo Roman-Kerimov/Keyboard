@@ -231,21 +231,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		96464A1F1F3AF4D2006F8F6B /* For Interface Builder */ = {
-			isa = PBXGroup;
-			children = (
-				969221E41F3BA91A005E5913 /* SettingsContainerView_LanguageTableView.swift */,
-				96464A1C1F3AF2A5006F8F6B /* SettingsContainerView_LegalNoticesView.swift */,
-			);
-			name = "For Interface Builder";
-			sourceTree = "<group>";
-		};
 		964AB9261D1B63C0004C827C = {
 			isa = PBXGroup;
 			children = (
+				96BAEF0C2016D0FD003B32C0 /* Keyboard */,
 				964AB9331D1B6490004C827C /* iOSKeyboard */,
-				964AB9681D1B6535004C827C /* iOSKeyboardExtension */,
 				965BFAC71F7979FA00B8F682 /* iOSKeyboardTests */,
+				964AB9681D1B6535004C827C /* iOSKeyboardExtension */,
 				964AB9321D1B6490004C827C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -276,8 +268,29 @@
 		964AB9681D1B6535004C827C /* iOSKeyboardExtension */ = {
 			isa = PBXGroup;
 			children = (
+				964AB96B1D1B6535004C827C /* Info.plist */,
+			);
+			path = iOSKeyboardExtension;
+			sourceTree = "<group>";
+		};
+		965BFAC71F7979FA00B8F682 /* iOSKeyboardTests */ = {
+			isa = PBXGroup;
+			children = (
+				965BFAC81F7979FA00B8F682 /* iOSKeyboardTests.swift */,
+				96B6B35D1F97660E00231AE6 /* Array<CharacterComponent>Tests.swift */,
+				965BFAD01F797BBB00B8F682 /* CharacterComponentsDictionaryTests.swift */,
+				965BFACA1F7979FA00B8F682 /* Info.plist */,
+			);
+			path = iOSKeyboardTests;
+			sourceTree = "<group>";
+		};
+		96BAEF0C2016D0FD003B32C0 /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
 				964FE8221D1CA9D400D41EA7 /* Keyboard.storyboard */,
-				96464A1F1F3AF4D2006F8F6B /* For Interface Builder */,
+				96EA39E11EB0EEDD00F3D804 /* Labels.ai */,
+				969221E41F3BA91A005E5913 /* SettingsContainerView_LanguageTableView.swift */,
+				96464A1C1F3AF2A5006F8F6B /* SettingsContainerView_LegalNoticesView.swift */,
 				96D68E3F200DF01200F6E3E8 /* Keyboard.swift */,
 				96530D661DD1C9A9004E8BAA /* KeyboardLayout.swift */,
 				961D74902009003900BBC5FB /* Key.swift */,
@@ -308,31 +321,6 @@
 				9685BCFE1E06815700702C84 /* KeyboardSettings.swift */,
 				969F15F41E549BD300C0DD7D /* ViewController<UIView>.swift */,
 				969E83021EED830C009A1F2D /* ConfigurableViewProtocol.swift */,
-				96848D9D1EE05EE10009869A /* Extensions */,
-				9694E23C1E29D72800ED3A85 /* Internationalization.swift */,
-				96D2B8DC1E35538B006772A5 /* Localization.swift */,
-				9694E23A1E29D1BC00ED3A85 /* LocalizableStrings.swift */,
-				964AB96B1D1B6535004C827C /* Info.plist */,
-				96EA39DC1EB0867100F3D804 /* Labels */,
-				9679AF9E1FB55A000099F53B /* Symbola.ttf */,
-			);
-			path = iOSKeyboardExtension;
-			sourceTree = "<group>";
-		};
-		965BFAC71F7979FA00B8F682 /* iOSKeyboardTests */ = {
-			isa = PBXGroup;
-			children = (
-				965BFAC81F7979FA00B8F682 /* iOSKeyboardTests.swift */,
-				96B6B35D1F97660E00231AE6 /* Array<CharacterComponent>Tests.swift */,
-				965BFAD01F797BBB00B8F682 /* CharacterComponentsDictionaryTests.swift */,
-				965BFACA1F7979FA00B8F682 /* Info.plist */,
-			);
-			path = iOSKeyboardTests;
-			sourceTree = "<group>";
-		};
-		96848D9D1EE05EE10009869A /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
 				96C49DC41EB7DF1F006F93ED /* Character.swift */,
 				967491B41EE16BDD00DC19E0 /* CharacterSet.swift */,
 				96848D9E1EE05F080009869A /* String.swift */,
@@ -340,19 +328,15 @@
 				968694C01EA0F3D100E6C9D0 /* UIColor.swift */,
 				969E83041EED842E009A1F2D /* UIView.swift */,
 				96EA39D61EAFDDDE00F3D804 /* UIImage.swift */,
-			);
-			name = Extensions;
-			sourceTree = "<group>";
-		};
-		96EA39DC1EB0867100F3D804 /* Labels */ = {
-			isa = PBXGroup;
-			children = (
-				96EA39E11EB0EEDD00F3D804 /* Labels.ai */,
+				9694E23C1E29D72800ED3A85 /* Internationalization.swift */,
+				96D2B8DC1E35538B006772A5 /* Localization.swift */,
+				9694E23A1E29D1BC00ED3A85 /* LocalizableStrings.swift */,
 				96EA39E01EB0EEDD00F3D804 /* Labels_NextKeyboard.ai */,
 				96EA39DF1EB0EEDD00F3D804 /* Labels_HideKeyboard.ai */,
 				96767C241EB11E28004D847C /* Labels_Settings.ai */,
+				9679AF9E1FB55A000099F53B /* Symbola.ttf */,
 			);
-			name = Labels;
+			path = Keyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

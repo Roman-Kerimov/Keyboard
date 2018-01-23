@@ -10,7 +10,7 @@ import UIKit
 
 class Keyboard: NSObject {
     
-    static let shared: Keyboard = .init()
+    static let `default`: Keyboard = .init()
     
     internal func down(key: Key) {
         if key == .delete {

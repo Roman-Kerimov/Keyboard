@@ -92,11 +92,11 @@ internal class KeyboardView: UIView {
     #else
         private var layoutMode: Keyboard.KeyboardLayoutMode {
             get {
-                return Keyboard.shared.layoutMode
+                return Keyboard.default.layoutMode
             }
             
             set {
-                Keyboard.shared.layoutMode = newValue
+                Keyboard.default.layoutMode = newValue
             }
         }
     
@@ -201,15 +201,15 @@ internal class KeyboardView: UIView {
     
     private var sizeInKeysForVerticalMode: CGSize {
         return CGSize(
-            width: CGFloat(Keyboard.shared.layout.columnCount / 2) + 0.2 + horizontalIndentInKeys*2,
-            height: deleteRowHeightInKeys + CGFloat(Keyboard.shared.layout.rowCount * 2) + spaceRowHeightInKeys
+            width: CGFloat(Keyboard.default.layout.columnCount / 2) + 0.2 + horizontalIndentInKeys*2,
+            height: deleteRowHeightInKeys + CGFloat(Keyboard.default.layout.rowCount * 2) + spaceRowHeightInKeys
         )
     }
     
     private var sizeInKeysForHorizontalMode: CGSize {
         return CGSize(
-            width: CGFloat(Keyboard.shared.layout.columnCount) + horizontalIndentInKeys*2,
-            height: deleteRowHeightInKeys + CGFloat(Keyboard.shared.layout.rowCount) + spaceRowHeightInKeys
+            width: CGFloat(Keyboard.default.layout.columnCount) + horizontalIndentInKeys*2,
+            height: deleteRowHeightInKeys + CGFloat(Keyboard.default.layout.rowCount) + spaceRowHeightInKeys
         )
     }
     
@@ -240,8 +240,8 @@ internal class KeyboardView: UIView {
     
     private var halfKeyboardSize: CGSize {
         return CGSize(
-            width: keySize.width * CGFloat(Keyboard.shared.layout.columnCount / 2),
-            height: keySize.height * CGFloat(Keyboard.shared.layout.rowCount)
+            width: keySize.width * CGFloat(Keyboard.default.layout.columnCount / 2),
+            height: keySize.height * CGFloat(Keyboard.default.layout.rowCount)
         )
     }
     
@@ -388,13 +388,13 @@ internal class KeyboardView: UIView {
     
     public var layout: KeyboardLayout {
         set {
-            Keyboard.shared.layout = newValue
+            Keyboard.default.layout = newValue
             layoutView.layout = newValue
             configure()
         }
         
         get {
-            return Keyboard.shared.layout
+            return Keyboard.default.layout
         }
     }
     
@@ -407,7 +407,7 @@ internal class KeyboardView: UIView {
         backgroundView.addSubview(spaceRowView)
         backgroundView.addSubview(layoutView)
         
-        layoutView.layout = Keyboard.shared.layout
+        layoutView.layout = Keyboard.default.layout
     }
     
     required internal init?(coder aDecoder: NSCoder) {

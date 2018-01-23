@@ -286,11 +286,11 @@ class KeyboardViewController: UIInputViewController {
             keyboardView.showSettings()
             
         case Key.horizontalMode.label:
-            Keyboard.shared.layoutMode = .horizontal
+            Keyboard.default.layoutMode = .horizontal
             keyboardView.configure()
             
         case Key.verticalMode.label:
-            Keyboard.shared.layoutMode = .vertical
+            Keyboard.default.layoutMode = .vertical
             keyboardView.configure()
             
         default:

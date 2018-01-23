@@ -13,15 +13,16 @@ class Keyboard: NSObject {
     static let `default`: Keyboard = .init()
     
     internal func down(key: Key) {
-        if key == .delete {
-            startAutorepeat()
-        }
         
         if currentKeys.isEmpty {
             character = key.label
         }
         
         currentKeys.append(key)
+        
+        if key == .delete {
+            startAutorepeat()
+        }
     }
     
     internal func up(key: Key) {

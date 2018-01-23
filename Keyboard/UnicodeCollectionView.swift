@@ -2,7 +2,7 @@
 //  UnicodeCollectionView.swift
 //  Keyboard
 //
-//  Created by Roman Kerimov on 15.05.17.
+//  Created by Roman Kerimov on 2017-05-15.
 //
 //
 

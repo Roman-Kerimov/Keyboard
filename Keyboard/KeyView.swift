@@ -2,7 +2,7 @@
 //  KeyView.swift
 //  Keyboard
 //
-//  Created by Roman Kerimov on 10.07.16.
+//  Created by Roman Kerimov on 2016-07-10.
 //
 //
 

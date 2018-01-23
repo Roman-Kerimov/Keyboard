@@ -1,8 +1,8 @@
 //
 //  SettingsContainerView.swift
-//  iOSKeyboard
+//  Keyboard
 //
-//  Created by Roman Kerimov on 14.02.17.
+//  Created by Roman Kerimov on 2017-02-14.
 //
 //
 

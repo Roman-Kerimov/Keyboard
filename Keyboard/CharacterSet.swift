@@ -2,7 +2,7 @@
 //  CharacterSet.swift
 //  Keyboard
 //
-//  Created by Roman Kerimov on 02/06/2017.
+//  Created by Roman Kerimov on 2017-06-02.
 //
 //
 

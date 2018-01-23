@@ -2,7 +2,7 @@
 //  String.swift
 //  Keyboard
 //
-//  Created by Roman Kerimov on 01.06.17.
+//  Created by Roman Kerimov on 2017-06-01.
 //
 //
 

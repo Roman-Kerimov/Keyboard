@@ -2,7 +2,7 @@
 //  UIColor.swift
 //  Keyboard
 //
-//  Created by Roman Kerimov on 14.04.17.
+//  Created by Roman Kerimov on 2017-04-14.
 //
 //
 

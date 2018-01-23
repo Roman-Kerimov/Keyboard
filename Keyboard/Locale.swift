@@ -2,7 +2,7 @@
 //  Locale.swift
 //  Keyboard
 //
-//  Created by Roman Kerimov on 28/06/2017.
+//  Created by Roman Kerimov on 2017-06-28.
 //
 
 import Foundation

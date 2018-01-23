@@ -2,7 +2,7 @@
 //  CharacterCollectionViewCell.swift
 //  Keyboard
 //
-//  Created by Roman Kerimov on 12.04.17.
+//  Created by Roman Kerimov on 2017-04-12.
 //
 //
 

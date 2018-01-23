@@ -1,8 +1,8 @@
 //
 //  KeyboardViewController.swift
-//  iOSKeyboardExtension
+//  Keyboard
 //
-//  Created by Roman Kerimov on 23.06.16.
+//  Created by Roman Kerimov on 2016-06-23.
 //
 //
 

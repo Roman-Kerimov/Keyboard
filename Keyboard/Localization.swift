@@ -1,8 +1,8 @@
 //
 //  Localization.swift
-//  iOSKeyboard
+//  Keyboard
 //
-//  Created by Roman Kerimov on 22.01.17.
+//  Created by Roman Kerimov on 2017-01-22.
 //
 //
 

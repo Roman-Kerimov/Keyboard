@@ -1,8 +1,8 @@
 //
 //  KeyboardColorScheme.swift
-//  iOSKeyboard
+//  Keyboard
 //
-//  Created by Roman Kerimov on 05.12.16.
+//  Created by Roman Kerimov on 2016-12-05.
 //
 //
 

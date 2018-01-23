@@ -1,8 +1,8 @@
 //
 //  ConfigurableViewProtocol.swift
-//  iOSKeyboardExtension
+//  Keyboard
 //
-//  Created by Roman Kerimov on 11/06/2017.
+//  Created by Roman Kerimov on 2017-06-11.
 //
 
 import Foundation

@@ -1,8 +1,8 @@
 //
 //  ViewController<UIView>.swift
-//  iOSKeyboard
+//  Keyboard
 //
-//  Created by Roman Kerimov on 07.02.17.
+//  Created by Roman Kerimov on 2017-02-07.
 //
 //
 

@@ -1,8 +1,8 @@
 //
 //  LanguageTableView.swift
-//  iOSKeyboard
+//  Keyboard
 //
-//  Created by Roman Kerimov on 15.02.17.
+//  Created by Roman Kerimov on 2017-02-15.
 //
 //
 

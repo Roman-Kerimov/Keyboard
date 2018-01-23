@@ -1,8 +1,8 @@
 //
 //  SettingsViewController.swift
-//  iOSKeyboard
+//  Keyboard
 //
-//  Created by Roman Kerimov on 12.01.17.
+//  Created by Roman Kerimov on 2017-01-12.
 //
 //
 

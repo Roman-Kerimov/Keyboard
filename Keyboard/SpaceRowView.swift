@@ -2,7 +2,7 @@
 //  SpaceRowView.swift
 //  Keyboard
 //
-//  Created by Roman Kerimov on 31.07.16.
+//  Created by Roman Kerimov on 2016-07-31.
 //
 //
 

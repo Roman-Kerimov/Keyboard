@@ -1,8 +1,8 @@
 //
 //  KeyboardLayout.swift
-//  iOSKeyboard
+//  Keyboard
 //
-//  Created by Roman Kerimov on 08.11.16.
+//  Created by Roman Kerimov on 2016-11-08.
 //
 //
 

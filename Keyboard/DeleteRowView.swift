@@ -2,7 +2,7 @@
 //  DeleteRowView.swift
 //  Keyboard
 //
-//  Created by Roman Kerimov on 22.02.17.
+//  Created by Roman Kerimov on 2017-02-22.
 //
 //
 

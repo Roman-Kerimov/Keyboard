@@ -1,5 +1,5 @@
 //
-//  KeyboardSettings.swift
+//  Keyboard.swift
 //  Keyboard
 //
 //  Created by Roman Kerimov on 2016-12-18.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class KeyboardSettings: NSObject {
+class Keyboard: NSObject {
     
-    static let shared: KeyboardSettings = .init()
+    static let shared: Keyboard = .init()
     
     internal func down(key: Key) {
         if key == .delete {

@@ -78,7 +78,7 @@ class SettingsContainerView: UIStackView {
         let layoutModeSegmentedControlItems = [Key.horizontalMode.label, Key.verticalMode.label]
         let layoutModeSegmentedControl: UISegmentedControl = .init(items: layoutModeSegmentedControlItems)
 
-        switch KeyboardSettings.shared.layoutMode {
+        switch Keyboard.shared.layoutMode {
         case .horizontal:
             layoutModeSegmentedControl.selectedSegmentIndex = layoutModeSegmentedControlItems.index(of: Key.horizontalMode.label)!
 

@@ -92,7 +92,7 @@ class UnicodeCollectionView: CharacterCollectionView {
         let character = characters[indexPath.item]
         
         
-        var frequentlyUsedCharacters = KeyboardSettings.shared.frequentlyUsedCharacters
+        var frequentlyUsedCharacters = Keyboard.shared.frequentlyUsedCharacters
         
         if let index = frequentlyUsedCharacters.index(of: character) {
             frequentlyUsedCharacters.remove(at: index)
@@ -100,7 +100,7 @@ class UnicodeCollectionView: CharacterCollectionView {
         
         frequentlyUsedCharacters = [character] + frequentlyUsedCharacters
         
-        KeyboardSettings.shared.frequentlyUsedCharacters = .init( frequentlyUsedCharacters.suffix(100) )
+        Keyboard.shared.frequentlyUsedCharacters = .init( frequentlyUsedCharacters.suffix(100) )
         
         
         KeyboardViewController.shared.keyAction(label: character.description)

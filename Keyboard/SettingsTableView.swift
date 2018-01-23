@@ -135,7 +135,7 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
             
             cell.textLabel?.text = layout.name
             
-            if layout.name == KeyboardSettings.shared.layout.name {
+            if layout.name == Keyboard.shared.layout.name {
                 cell.accessoryType = .checkmark
             }
             else {

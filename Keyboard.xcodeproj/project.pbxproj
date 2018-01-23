@@ -51,7 +51,7 @@
 		96533A851F12938D00B07CA3 /* RowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9633A3C71E5DFA3C00DFA503 /* RowView.swift */; };
 		96533A861F12938D00B07CA3 /* KeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965D15C81D32AE3B0098FA57 /* KeyView.swift */; };
 		96533A871F12938D00B07CA3 /* LabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BC5F551DEB961F002E0752 /* LabelView.swift */; };
-		96533A881F12938D00B07CA3 /* KeyboardSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9685BCFE1E06815700702C84 /* KeyboardSettings.swift */; };
+		96533A881F12938D00B07CA3 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9685BCFE1E06815700702C84 /* Keyboard.swift */; };
 		96533A891F12938D00B07CA3 /* ViewController<UIView>.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969F15F41E549BD300C0DD7D /* ViewController<UIView>.swift */; };
 		96533A8A1F12938D00B07CA3 /* ConfigurableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969E83021EED830C009A1F2D /* ConfigurableViewProtocol.swift */; };
 		96533A8B1F1293A500B07CA3 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968694C01EA0F3D100E6C9D0 /* UIColor.swift */; };
@@ -83,7 +83,7 @@
 		9679AFA01FB55A000099F53B /* Symbola.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9679AF9E1FB55A000099F53B /* Symbola.ttf */; };
 		96848D9F1EE05F080009869A /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96848D9E1EE05F080009869A /* String.swift */; };
 		96848DA11EE0B64F0009869A /* UnicodeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96848DA01EE0B64F0009869A /* UnicodeTable.swift */; };
-		9685BCFF1E06815700702C84 /* KeyboardSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9685BCFE1E06815700702C84 /* KeyboardSettings.swift */; };
+		9685BCFF1E06815700702C84 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9685BCFE1E06815700702C84 /* Keyboard.swift */; };
 		968694C11EA0F3D100E6C9D0 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968694C01EA0F3D100E6C9D0 /* UIColor.swift */; };
 		969221E51F3BA91A005E5913 /* SettingsContainerView_LanguageTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969221E41F3BA91A005E5913 /* SettingsContainerView_LanguageTableView.swift */; };
 		969221E61F3BA91A005E5913 /* SettingsContainerView_LanguageTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969221E41F3BA91A005E5913 /* SettingsContainerView_LanguageTableView.swift */; };
@@ -180,7 +180,7 @@
 		9679AF9E1FB55A000099F53B /* Symbola.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Symbola.ttf; sourceTree = "<group>"; };
 		96848D9E1EE05F080009869A /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		96848DA01EE0B64F0009869A /* UnicodeTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnicodeTable.swift; sourceTree = "<group>"; };
-		9685BCFE1E06815700702C84 /* KeyboardSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardSettings.swift; sourceTree = "<group>"; };
+		9685BCFE1E06815700702C84 /* Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		968694C01EA0F3D100E6C9D0 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		969221E41F3BA91A005E5913 /* SettingsContainerView_LanguageTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContainerView_LanguageTableView.swift; sourceTree = "<group>"; };
 		9694E23A1E29D1BC00ED3A85 /* LocalizableStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizableStrings.swift; sourceTree = "<group>"; };
@@ -288,7 +288,7 @@
 				96EA39E11EB0EEDD00F3D804 /* Labels.ai */,
 				969221E41F3BA91A005E5913 /* SettingsContainerView_LanguageTableView.swift */,
 				96464A1C1F3AF2A5006F8F6B /* SettingsContainerView_LegalNoticesView.swift */,
-				9685BCFE1E06815700702C84 /* KeyboardSettings.swift */,
+				9685BCFE1E06815700702C84 /* Keyboard.swift */,
 				96530D661DD1C9A9004E8BAA /* KeyboardLayout.swift */,
 				961D74902009003900BBC5FB /* Key.swift */,
 				9643FC4C1F78F8D5004DA2C0 /* CharacterComponent.swift */,
@@ -525,7 +525,7 @@
 				96533A7C1F12938D00B07CA3 /* LanguageTableView.swift in Sources */,
 				96533A761F12938D00B07CA3 /* KeyboardLayout.swift in Sources */,
 				964AB93D1D1B6490004C827C /* iOSKeyboard.xcdatamodeld in Sources */,
-				96533A881F12938D00B07CA3 /* KeyboardSettings.swift in Sources */,
+				96533A881F12938D00B07CA3 /* Keyboard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -569,7 +569,7 @@
 				96530D671DD1C9A9004E8BAA /* KeyboardLayout.swift in Sources */,
 				968694C11EA0F3D100E6C9D0 /* UIColor.swift in Sources */,
 				96C49DC51EB7DF1F006F93ED /* Character.swift in Sources */,
-				9685BCFF1E06815700702C84 /* KeyboardSettings.swift in Sources */,
+				9685BCFF1E06815700702C84 /* Keyboard.swift in Sources */,
 				9643FC511F78F94B004DA2C0 /* CharacterComponentsDictionary.swift in Sources */,
 				969221E61F3BA91A005E5913 /* SettingsContainerView_LanguageTableView.swift in Sources */,
 				96848D9F1EE05F080009869A /* String.swift in Sources */,

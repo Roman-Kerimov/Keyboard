@@ -29,11 +29,11 @@ class UnicodeTable: NSObject {
                 return
             }
             
-            frequentlyUsedCharacters = KeyboardSettings.shared.frequentlyUsedCharacters
+            frequentlyUsedCharacters = Keyboard.shared.frequentlyUsedCharacters
         }
     }
     
-    internal var frequentlyUsedCharacters: [Character] = KeyboardSettings.shared.frequentlyUsedCharacters
+    internal var frequentlyUsedCharacters: [Character] = Keyboard.shared.frequentlyUsedCharacters
     
     public func searchScalars(byName text: String, for characterCollectionView: CharacterCollectionView) {
         if let searchUnicodeScalarsOperation = backgroudOperationQueue.operations.last as? SearchUnicodeScalars {

@@ -283,9 +283,7 @@
 				961D74902009003900BBC5FB /* Key.swift */,
 				9643FC4C1F78F8D5004DA2C0 /* CharacterComponent.swift */,
 				96B6B35A1F9764F400231AE6 /* Array<CharacterComponent>.swift */,
-				96B6B35D1F97660E00231AE6 /* Array<CharacterComponent>Tests.swift */,
 				9643FC4F1F78F94B004DA2C0 /* CharacterComponentsDictionary.swift */,
-				965BFAD01F797BBB00B8F682 /* CharacterComponentsDictionaryTests.swift */,
 				964ED5471DF5765E006AD952 /* KeyboardColorScheme.swift */,
 				964AB9691D1B6535004C827C /* KeyboardViewController.swift */,
 				965D15C01D3146BB0098FA57 /* KeyboardView.swift */,
@@ -325,6 +323,8 @@
 			isa = PBXGroup;
 			children = (
 				965BFAC81F7979FA00B8F682 /* iOSKeyboardTests.swift */,
+				96B6B35D1F97660E00231AE6 /* Array<CharacterComponent>Tests.swift */,
+				965BFAD01F797BBB00B8F682 /* CharacterComponentsDictionaryTests.swift */,
 				965BFACA1F7979FA00B8F682 /* Info.plist */,
 			);
 			path = iOSKeyboardTests;

@@ -218,12 +218,12 @@ class KeyView: UIButton, ConfigurableView {
     }
     
     @objc func keyboardStateDidChange() {
-        guard let key = Keyboard.default.currentKeys.first else {
+        guard let key = KeyboardSettings.shared.currentKeys.first else {
             return
         }
         
         if key == self.key {
-            mainLabelView.text = Keyboard.default.character
+            mainLabelView.text = KeyboardSettings.shared.character
         }
     }
     
@@ -330,11 +330,11 @@ class KeyView: UIButton, ConfigurableView {
             previousTime = Date.timeIntervalSinceReferenceDate
             previousDistance = 0
             
-            Keyboard.default.down(key: key)
+            KeyboardSettings.shared.down(key: key)
             
         case .ended:
             
-            Keyboard.default.up(key: key)
+            KeyboardSettings.shared.up(key: key)
             
             mainLabelView.text = key.label
             updateLocalizedStrings()
@@ -368,7 +368,7 @@ class KeyView: UIButton, ConfigurableView {
             else if distance > threshold {
                 shiftDirections.append(direction)
                 
-                let shiftDirection: Keyboard.ShiftDirection
+                let shiftDirection: KeyboardSettings.ShiftDirection
                 
                 switch direction {
                 case -0.75:
@@ -389,7 +389,7 @@ class KeyView: UIButton, ConfigurableView {
                     shiftDirection = .left
                 }
                 
-                Keyboard.default.shift(direction: shiftDirection)
+                KeyboardSettings.shared.shift(direction: shiftDirection)
             }
         }
         

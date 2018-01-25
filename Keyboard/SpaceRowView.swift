@@ -18,22 +18,23 @@ class SpaceRowView: RowView {
     }
     */
     
-    let keys: [(proportion: CGFloat, view: KeyView)] = [
-        (5, .init(key: .settings)),
-        (5, .init(key: .nextKeyboard)),
-        (6, .init(key: .tab)),
-        (12,.init(key: .space)),
-        (8, .init(key: .return)),
-        (5, .init(key: .dismissKeyboard)),
-    ]
-    
-    internal var nextKeyboardKey: KeyView {
-        return keys.filter {$0.view.key == .nextKeyboard} .first!.view
+    var keys: [(proportion: CGFloat, view: KeyView)] {
+        return [
+            (5, settingsKey),
+            (5, nextKeyboardKey),
+            (6, tabKey),
+            (12, spaceKey),
+            (8, returnKey),
+            (5, dismissKeyboardKey),
+        ]
     }
     
-    internal var returnKey: KeyView {
-        return keys.filter {$0.view.key == .return} .first!.view
-    }
+    internal let settingsKey: KeyView = .init(key: .settings)
+    internal let nextKeyboardKey: KeyView = .init(key: .nextKeyboard)
+    internal let tabKey: KeyView = .init(key: .tab)
+    internal let spaceKey: KeyView = .init(key: .space)
+    internal let returnKey: KeyView = .init(key: .return)
+    internal let dismissKeyboardKey: KeyView = .init(key: .dismissKeyboard)
     
     internal override init() {
         super.init()

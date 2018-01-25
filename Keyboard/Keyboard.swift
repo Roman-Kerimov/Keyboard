@@ -61,27 +61,18 @@ class Keyboard: NSObject {
     private var shouldDeletePreviousCharacter: Bool = false
     
     private func input() {
-        guard let key = currentKeys.first else {
-            return
-        }
         
-        if key == .return {
-            KeyboardViewController.shared.keyAction(label: key.label)
-        }
-        else {
+        if shouldDeletePreviousCharacter {
+            shouldDeletePreviousCharacter = false
             
-            if shouldDeletePreviousCharacter {
-                shouldDeletePreviousCharacter = false
-                
-                guard KeyboardViewController.shared.textDocumentProxy.characterBeforeInput?.description != character else {
-                    return
-                }
-                
-                KeyboardViewController.shared.textDocumentProxy.deleteBackward()
+            guard KeyboardViewController.shared.textDocumentProxy.characterBeforeInput?.description != character else {
+                return
             }
             
-            KeyboardViewController.shared.keyAction(label: character)
+            KeyboardViewController.shared.textDocumentProxy.deleteBackward()
         }
+        
+        KeyboardViewController.shared.keyAction(label: character)
         
         KeyboardViewController.shared.updateDocumentContext()
     }

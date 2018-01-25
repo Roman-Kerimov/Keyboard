@@ -22,6 +22,9 @@ class SettingsContainerView: UIStackView {
         settingsViewController.updateLocalizedStrings()
     }
     
+    private let horizontalModeLabel = "▄▄"
+    private let verticalModeLabel = "▝█▖"
+    
     let shadeColor = UIColor.black.withAlphaComponent(0.3)
     
     let backButton = UIButton()
@@ -74,16 +77,15 @@ class SettingsContainerView: UIStackView {
         settingsViewController.navigationItem.leftBarButtonItem = titleItem
         settingsViewController.navigationItem.titleView = .init()
         
-        
-        let layoutModeSegmentedControlItems = [Key.horizontalMode.label, Key.verticalMode.label]
+        let layoutModeSegmentedControlItems = [horizontalModeLabel, verticalModeLabel]
         let layoutModeSegmentedControl: UISegmentedControl = .init(items: layoutModeSegmentedControlItems)
 
         switch Keyboard.default.layoutMode {
         case .horizontal:
-            layoutModeSegmentedControl.selectedSegmentIndex = layoutModeSegmentedControlItems.index(of: Key.horizontalMode.label)!
+            layoutModeSegmentedControl.selectedSegmentIndex = layoutModeSegmentedControlItems.index(of: horizontalModeLabel)!
 
         case .vertical:
-            layoutModeSegmentedControl.selectedSegmentIndex = layoutModeSegmentedControlItems.index(of: Key.verticalMode.label)!
+            layoutModeSegmentedControl.selectedSegmentIndex = layoutModeSegmentedControlItems.index(of: verticalModeLabel)!
 
         case .default:
             layoutModeSegmentedControl.selectedSegmentIndex = 0
@@ -103,6 +105,17 @@ class SettingsContainerView: UIStackView {
         let selectedSegmentIndex = layoutModeSegmentedControl.selectedSegmentIndex
         let selectedSegmentTitle = layoutModeSegmentedControl.titleForSegment(at: selectedSegmentIndex)!
         
-        KeyboardViewController.shared.keyAction(label: selectedSegmentTitle)
+        switch selectedSegmentTitle {
+        case horizontalModeLabel:
+            Keyboard.default.layoutMode = .horizontal
+            
+        case verticalModeLabel:
+            Keyboard.default.layoutMode = .vertical
+            
+        default:
+            break
+        }
+        
+        KeyboardViewController.shared.keyboardView.configure()
     }
 }

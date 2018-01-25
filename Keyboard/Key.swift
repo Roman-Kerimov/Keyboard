@@ -35,6 +35,4 @@ class Key: NSObject {
     static let nextKeyboard: Key = .init(label:"NextKeyboard")
     static let dismissKeyboard: Key = .init(label:"HideKeyboard")
     static let settings: Key = .init(label:"Settings")
-    static let horizontalMode: Key = .init(label:"▄▄")
-    static let verticalMode: Key = .init(label:"▝█▖")
 }

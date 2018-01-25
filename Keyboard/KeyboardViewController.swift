@@ -285,14 +285,6 @@ class KeyboardViewController: UIInputViewController {
         case Key.settings.label:
             keyboardView.showSettings()
             
-        case Key.horizontalMode.label:
-            Keyboard.default.layoutMode = .horizontal
-            keyboardView.configure()
-            
-        case Key.verticalMode.label:
-            Keyboard.default.layoutMode = .vertical
-            keyboardView.configure()
-            
         default:
             if textDocumentProxy.characterBeforeInput?.isSpaceReturnOrTab != false
                 && textDocumentProxy.characterAfterInput?.isSpaceReturnOrTab == false

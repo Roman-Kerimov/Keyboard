@@ -223,7 +223,7 @@ class KeyView: UIButton, ConfigurableView {
         }
         
         if key == self.key {
-            mainLabelView.text = Keyboard.default.character
+            mainLabelView.text = Keyboard.default.currentLabel
         }
     }
     

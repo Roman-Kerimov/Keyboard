@@ -15,7 +15,7 @@ class Keyboard: NSObject {
     internal func down(key: Key) {
         
         if currentKeys.isEmpty {
-            character = key.label
+            currentLabel = key.label
         }
         
         currentKeys.append(key)
@@ -65,14 +65,14 @@ class Keyboard: NSObject {
         if shouldDeletePreviousCharacter {
             shouldDeletePreviousCharacter = false
             
-            guard KeyboardViewController.shared.textDocumentProxy.characterBeforeInput?.description != character else {
+            guard KeyboardViewController.shared.textDocumentProxy.characterBeforeInput?.description != currentLabel else {
                 return
             }
             
             KeyboardViewController.shared.textDocumentProxy.deleteBackward()
         }
         
-        KeyboardViewController.shared.keyAction(label: character)
+        KeyboardViewController.shared.keyAction(label: currentLabel)
         
         KeyboardViewController.shared.updateDocumentContext()
     }
@@ -81,17 +81,17 @@ class Keyboard: NSObject {
     
     private var characterComponents: [CharacterComponent] {
         get {
-            return character.characterComponents
+            return currentLabel.characterComponents
         }
         
         set {
             if newValue.character.isEmpty == false {
-                character = newValue.character
+                currentLabel = newValue.character
             }
         }
     }
     
-    internal var character: String = .init() {
+    internal var currentLabel: String = .init() {
         didSet {
             NotificationCenter.default.post(name: .KeyboardStateDidChange, object: nil)
         }
@@ -105,8 +105,8 @@ class Keyboard: NSObject {
         switch direction {
             
         case .up:
-            if character == key.label && key.shiftUpLabel.isEmpty == false {
-                character = key.shiftUpLabel
+            if currentLabel == key.label && key.shiftUpLabel.isEmpty == false {
+                currentLabel = key.shiftUpLabel
             }
             else {
                 characterComponents += [.capital]
@@ -119,8 +119,8 @@ class Keyboard: NSObject {
             }
             
         case .down:
-            if character == key.label && key.shiftDownLabel.isEmpty == false {
-                character = key.shiftDownLabel.first?.description ?? .init()
+            if currentLabel == key.label && key.shiftDownLabel.isEmpty == false {
+                currentLabel = key.shiftDownLabel.first?.description ?? .init()
             }
             else if characterComponents.extraArray.count > 1
                 && characterComponents == characterComponents.extraArray[0] {
@@ -132,8 +132,8 @@ class Keyboard: NSObject {
             }
             
         case .left:
-            if character == key.label && key.shiftLeftLabel.isEmpty == false {
-                character = key.shiftLeftLabel
+            if currentLabel == key.label && key.shiftLeftLabel.isEmpty == false {
+                currentLabel = key.shiftLeftLabel
             }
             else if characterComponents.extraArray.count > 2
                 && characterComponents == characterComponents.extraArray[1] {
@@ -151,7 +151,7 @@ class Keyboard: NSObject {
             }
             
             guard let previousCharacter = KeyboardViewController.shared.textDocumentProxy.characterBeforeInput else {
-                character = .init()
+                currentLabel = .init()
                 break
             }
             
@@ -166,7 +166,7 @@ class Keyboard: NSObject {
             combiningCharacter = (combiningComponents + combiningSuffix).character
             
             guard combiningCharacter.isEmpty else {
-                character = (previousCharacter.description + combiningCharacter).precomposedStringWithCanonicalMapping
+                currentLabel = (previousCharacter.description + combiningCharacter).precomposedStringWithCanonicalMapping
                 break
             }
             
@@ -178,7 +178,7 @@ class Keyboard: NSObject {
             }
             
             if previousCharacter.characterComponents.isEmpty || (combinedCharacter.isEmpty && ligatureCharacter.isEmpty) {
-                character = previousCharacter.description
+                currentLabel = previousCharacter.description
             }
             else {
                 characterComponents = ligatureCharacter.characterComponents
@@ -186,8 +186,8 @@ class Keyboard: NSObject {
             }
             
         case .right:
-            if character == key.label && key.shiftRightLabel.isEmpty == false {
-                character = key.shiftRightLabel
+            if currentLabel == key.label && key.shiftRightLabel.isEmpty == false {
+                currentLabel = key.shiftRightLabel
             }
             else if characterComponents.extraArray.isEmpty == false
                 && characterComponents.extraArray.contains(where: {$0.normalized == characterComponents.normalized}) == false {

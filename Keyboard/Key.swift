@@ -5,7 +5,7 @@
 //  Created by Roman Kerimov on 2018-01-12.
 //
 
-import UIKit
+import Foundation
 
 class Key: NSObject {
     let label: String

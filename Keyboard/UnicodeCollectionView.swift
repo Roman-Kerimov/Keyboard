@@ -86,7 +86,7 @@ class UnicodeCollectionView: CharacterCollectionView {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         for _ in textForSearch {
-            KeyboardViewController.shared.keyAction(label: Key.delete.label)
+            Keyboard.default.delegate?.delete()
         }
         
         let character = characters[indexPath.item]
@@ -102,8 +102,7 @@ class UnicodeCollectionView: CharacterCollectionView {
         
         Keyboard.default.frequentlyUsedCharacters = .init( frequentlyUsedCharacters.suffix(100) )
         
-        
-        KeyboardViewController.shared.keyAction(label: character.description)
+        Keyboard.default.delegate?.insert(text: character.description)
         KeyboardViewController.shared.updateDocumentContext()
     }
     

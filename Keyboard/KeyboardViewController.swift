@@ -26,14 +26,14 @@ extension UIApplication {
     }
 }
 
-class KeyboardViewController: UIInputViewController {
+class KeyboardViewController: UIInputViewController, KeyboardDelegate {
     static var shared: KeyboardViewController = .init()
     
     internal var isExtension: Bool {
         return Bundle.main.executablePath?.contains(".appex/") == true
     }
     
-    internal func updateDocumentContext() {
+    @objc internal func updateDocumentContext() {
         keyboardView.documentContext = textDocumentProxy.documentContext
         
         if textDocumentProxy.enablesReturnKeyAutomatically == true {
@@ -59,10 +59,12 @@ class KeyboardViewController: UIInputViewController {
         // Perform custom UI setup here
         Localization.initialize()
         KeyboardViewController.shared = self
+        Keyboard.default.delegate = self
         
         keyboardView.frame = UIScreen.main.bounds
         
         keyboardView.nextKeyboardKey.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
+        keyboardView.dismissKeyboardKey.addTarget(self, action: #selector(dismissKeyboard), for: .allTouchEvents)
         
         // Hack for working of the keyboard height constraint
         let hiddenView: UILabel = .init()
@@ -89,6 +91,8 @@ class KeyboardViewController: UIInputViewController {
         }
         
         isAppeared = true
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateDocumentContext), name: .DocumentContextDidChange, object: nil)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -97,6 +101,8 @@ class KeyboardViewController: UIInputViewController {
         previousDocumentContext = .init()
         
         isAppeared = false
+        
+        NotificationCenter.default.removeObserver(self)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -208,119 +214,99 @@ class KeyboardViewController: UIInputViewController {
         }
     }
     
-    func keyAction(label: String) {
+    func delete() {
+        if textDocumentProxy.characterBeforeInput == .space
+            && textDocumentProxy.characterAfterInput?.isSpaceReturnOrTab == false
+            && textDocumentProxy.characterAfterInput?.belongsTo(.punctuationCharacters) == false {
+            
+            cancelNextNormalization = true
+            textDocumentProxy.adjustTextPosition(byCharacterOffset: -1)
+        }
+        else {
+            textDocumentProxy.deleteBackward()
+        }
         
-        switch label {
+        if textDocumentProxy.characterBeforeInput != .space
+            && textDocumentProxy.characterBeforeInput?.isSpaceReturnOrTab != false
+            && textDocumentProxy.characterAfterInput == .space {
             
-        case Key.delete.label:
-            if textDocumentProxy.characterBeforeInput == .space
-                && textDocumentProxy.characterAfterInput?.isSpaceReturnOrTab == false
-                && textDocumentProxy.characterAfterInput?.belongsTo(.punctuationCharacters) == false {
-                
-                cancelNextNormalization = true
-                textDocumentProxy.adjustTextPosition(byCharacterOffset: -1)
-            }
-            else {
-                textDocumentProxy.deleteBackward()
-            }
+            textDocumentProxy.adjustTextPosition(byCharacterOffset: 1)
+            textDocumentProxy.deleteBackward()
+        }
+        
+        if textDocumentProxy.characterBeforeInput == .space
+            && textDocumentProxy.characterAfterInput == .space {
             
-            if textDocumentProxy.characterBeforeInput != .space
-                && textDocumentProxy.characterBeforeInput?.isSpaceReturnOrTab != false
-                && textDocumentProxy.characterAfterInput == .space {
-                
-                textDocumentProxy.adjustTextPosition(byCharacterOffset: 1)
-                textDocumentProxy.deleteBackward()
-            }
+            cancelNextNormalization = true
+            textDocumentProxy.adjustTextPosition(byCharacterOffset: 1)
+            textDocumentProxy.deleteBackward()
+        }
+        
+        if textDocumentProxy.characterBeforeInput?.isSpaceReturnOrTab == false
+            && textDocumentProxy.characterAfterInput?.isSpaceReturnOrTab == false {
             
-            if textDocumentProxy.characterBeforeInput == .space
-                && textDocumentProxy.characterAfterInput == .space {
-                
-                cancelNextNormalization = true
-                textDocumentProxy.adjustTextPosition(byCharacterOffset: 1)
-                textDocumentProxy.deleteBackward()
-            }
-            
-            if textDocumentProxy.characterBeforeInput?.isSpaceReturnOrTab == false
-                && textDocumentProxy.characterAfterInput?.isSpaceReturnOrTab == false {
-                
-                textDocumentProxy.insertText(.space)
-                textDocumentProxy.adjustTextPosition(byCharacterOffset: -1)
-            }
-            
-        case Key.space.label:
-            if textDocumentProxy.characterAfterInput == .space {
-                cancelNextNormalization = true
-                textDocumentProxy.adjustTextPosition(byCharacterOffset: 1)
-            }
-
-            if shouldInsertSpace {
-                textDocumentProxy.insertText(.space)
-            }
-            
-        case Key.space.shiftRightLabel:
-            if !shouldInsertSpace {
-                textDocumentProxy.insertText(.space)
-            }
-            
-        case Key.return.label, Key.tab.label:
-            
-            if label == Key.return.label {
-                textDocumentProxy.insertText(.return)
-            }
-            
-            if label == Key.tab.label {
-                textDocumentProxy.insertText(.tab)
-            }
-            
-            if textDocumentProxy.characterAfterInput == .space {
-                textDocumentProxy.deleteForward(sequenceOf: .init(charactersIn: .space))
-            }
-            
-        case Key.nextKeyboard.label:
-            break
-            
-        case Key.dismissKeyboard.label:
-            dismissKeyboard()
-            
-        case Key.settings.label:
-            keyboardView.showSettings()
-            
-        default:
-            if textDocumentProxy.characterBeforeInput?.isSpaceReturnOrTab != false
-                && textDocumentProxy.characterAfterInput?.isSpaceReturnOrTab == false
-                && textDocumentProxy.characterAfterInput?.belongsTo(.punctuationCharacters) == false {
-                
-                textDocumentProxy.insertText(.space)
-                textDocumentProxy.adjustTextPosition(byCharacterOffset: -1)
-            }
-            
-            textDocumentProxy.insertText(label)
+            textDocumentProxy.insertText(.space)
+            textDocumentProxy.adjustTextPosition(byCharacterOffset: -1)
         }
     }
-}
-
-struct DocumentContext: Equatable {
-    let beforeInput: String?
-    let afterInput: String?
     
-    static func ==(left: DocumentContext, right: DocumentContext) -> Bool {
-        return left.beforeInput == right.beforeInput && left.afterInput == right.afterInput
+    func space() {
+        if textDocumentProxy.characterAfterInput == .space {
+            cancelNextNormalization = true
+            textDocumentProxy.adjustTextPosition(byCharacterOffset: 1)
+        }
+        
+        if shouldInsertSpace {
+            textDocumentProxy.insertText(.space)
+        }
     }
     
-    init() {
-        beforeInput = nil
-        afterInput = nil
+    func spaceInsist() {
+        if !shouldInsertSpace {
+            textDocumentProxy.insertText(.space)
+        }
     }
     
-    init(beforeInput: String?, afterInput: String?) {
-        self.beforeInput = beforeInput
-        self.afterInput = afterInput
+    func `return`() {
+        textDocumentProxy.insertText(.return)
+        
+        if textDocumentProxy.characterAfterInput == .space {
+            textDocumentProxy.deleteForward(sequenceOf: .init(charactersIn: .space))
+        }
+    }
+    
+    func tab() {
+        textDocumentProxy.insertText(.tab)
+        
+        if textDocumentProxy.characterAfterInput == .space {
+            textDocumentProxy.deleteForward(sequenceOf: .init(charactersIn: .space))
+        }
+    }
+    
+    func settings() {
+        keyboardView.showSettings()
+    }
+    
+    func insert(text: String) {
+        if textDocumentProxy.characterBeforeInput?.isSpaceReturnOrTab != false
+            && textDocumentProxy.characterAfterInput?.isSpaceReturnOrTab == false
+            && textDocumentProxy.characterAfterInput?.belongsTo(.punctuationCharacters) == false {
+            
+            textDocumentProxy.insertText(.space)
+            textDocumentProxy.adjustTextPosition(byCharacterOffset: -1)
+        }
+        
+        textDocumentProxy.insertText(text)
+    }
+    
+    var documentContext: DocumentContext {
+        return textDocumentProxy.documentContext
     }
 }
 
 extension UITextDocumentProxy {
     var documentContext: DocumentContext {
-        return .init(beforeInput: documentContextBeforeInput, afterInput: documentContextAfterInput)
+        return .init(beforeInput: documentContextBeforeInput ?? .init(), afterInput: documentContextAfterInput ?? .init())
     }
     
     var stringBeforeInput: String? {

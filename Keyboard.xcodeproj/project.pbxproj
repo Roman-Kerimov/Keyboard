@@ -85,6 +85,10 @@
 		96848DA11EE0B64F0009869A /* UnicodeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96848DA01EE0B64F0009869A /* UnicodeTable.swift */; };
 		9685BCFF1E06815700702C84 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9685BCFE1E06815700702C84 /* Keyboard.swift */; };
 		968694C11EA0F3D100E6C9D0 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968694C01EA0F3D100E6C9D0 /* UIColor.swift */; };
+		96883127201FB35B0071908B /* KeyboardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96883126201FB35B0071908B /* KeyboardDelegate.swift */; };
+		96883128201FB35B0071908B /* KeyboardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96883126201FB35B0071908B /* KeyboardDelegate.swift */; };
+		9688312A202008040071908B /* DocumentContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96883129202008030071908B /* DocumentContext.swift */; };
+		9688312B202008040071908B /* DocumentContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96883129202008030071908B /* DocumentContext.swift */; };
 		969221E51F3BA91A005E5913 /* SettingsContainerView_LanguageTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969221E41F3BA91A005E5913 /* SettingsContainerView_LanguageTableView.swift */; };
 		969221E61F3BA91A005E5913 /* SettingsContainerView_LanguageTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969221E41F3BA91A005E5913 /* SettingsContainerView_LanguageTableView.swift */; };
 		9694E23B1E29D1BC00ED3A85 /* LocalizableStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9694E23A1E29D1BC00ED3A85 /* LocalizableStrings.swift */; };
@@ -182,6 +186,8 @@
 		96848DA01EE0B64F0009869A /* UnicodeTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnicodeTable.swift; sourceTree = "<group>"; };
 		9685BCFE1E06815700702C84 /* Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		968694C01EA0F3D100E6C9D0 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		96883126201FB35B0071908B /* KeyboardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDelegate.swift; sourceTree = "<group>"; };
+		96883129202008030071908B /* DocumentContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentContext.swift; sourceTree = "<group>"; };
 		969221E41F3BA91A005E5913 /* SettingsContainerView_LanguageTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContainerView_LanguageTableView.swift; sourceTree = "<group>"; };
 		9694E23A1E29D1BC00ED3A85 /* LocalizableStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizableStrings.swift; sourceTree = "<group>"; };
 		9694E23C1E29D72800ED3A85 /* Internationalization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Internationalization.swift; sourceTree = "<group>"; };
@@ -289,6 +295,8 @@
 				969221E41F3BA91A005E5913 /* SettingsContainerView_LanguageTableView.swift */,
 				96464A1C1F3AF2A5006F8F6B /* SettingsContainerView_LegalNoticesView.swift */,
 				9685BCFE1E06815700702C84 /* Keyboard.swift */,
+				96883126201FB35B0071908B /* KeyboardDelegate.swift */,
+				96883129202008030071908B /* DocumentContext.swift */,
 				96530D661DD1C9A9004E8BAA /* KeyboardLayout.swift */,
 				961D74902009003900BBC5FB /* Key.swift */,
 				9643FC4C1F78F8D5004DA2C0 /* CharacterComponent.swift */,
@@ -485,6 +493,7 @@
 			files = (
 				96F7FBE91FBB299400F7146C /* CollectionViewFlowLayout.swift in Sources */,
 				9643FC4D1F78F8D5004DA2C0 /* CharacterComponent.swift in Sources */,
+				9688312A202008040071908B /* DocumentContext.swift in Sources */,
 				96533A901F1293A500B07CA3 /* UIView.swift in Sources */,
 				96533A891F12938D00B07CA3 /* ViewController<UIView>.swift in Sources */,
 				965A22161F3B2D6D000430E6 /* SettingsContainerView_LegalNoticesView.swift in Sources */,
@@ -504,6 +513,7 @@
 				96533A941F1293A500B07CA3 /* LocalizableStrings.swift in Sources */,
 				96533A831F12938D00B07CA3 /* CharacterCollectionViewCell.swift in Sources */,
 				96533A8D1F1293A500B07CA3 /* Character.swift in Sources */,
+				96883127201FB35B0071908B /* KeyboardDelegate.swift in Sources */,
 				96533A7E1F12938D00B07CA3 /* DeleteRowView.swift in Sources */,
 				9643FC501F78F94B004DA2C0 /* CharacterComponentsDictionary.swift in Sources */,
 				96533A801F12938D00B07CA3 /* UnicodeCollectionView.swift in Sources */,
@@ -538,6 +548,7 @@
 				96B6B35C1F9764F400231AE6 /* Array<CharacterComponent>.swift in Sources */,
 				966194D31DE2FCEF007FCF02 /* KeyboardLayoutView.swift in Sources */,
 				963BA6641F3B1FD000BFE3A7 /* LegalTextView.swift in Sources */,
+				96883128201FB35B0071908B /* KeyboardDelegate.swift in Sources */,
 				96D2B8DD1E35538B006772A5 /* Localization.swift in Sources */,
 				960F6E951EC9F7E600EFC7B7 /* UnicodeCollectionView.swift in Sources */,
 				96EA39D71EAFDDDE00F3D804 /* UIImage.swift in Sources */,
@@ -557,6 +568,7 @@
 				964ED5481DF5765E006AD952 /* KeyboardColorScheme.swift in Sources */,
 				961FC32F1F3ADD9B00ADB15D /* LegalNoticesTextView.swift in Sources */,
 				9654DF7A1D4E1D0900DDB0EF /* SpaceRowView.swift in Sources */,
+				9688312B202008040071908B /* DocumentContext.swift in Sources */,
 				9643FC4E1F78F8D5004DA2C0 /* CharacterComponent.swift in Sources */,
 				961D74922009003900BBC5FB /* Key.swift in Sources */,
 				96848DA11EE0B64F0009869A /* UnicodeTable.swift in Sources */,
@@ -793,7 +805,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Vnj5sWxe2rI2VKE6oD4eKqaGdBABwSD;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
@@ -898,7 +909,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
@@ -983,7 +993,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = RomanKerimov.iOSKeyboardTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

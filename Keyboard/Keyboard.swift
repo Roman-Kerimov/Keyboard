@@ -11,6 +11,7 @@ import UIKit
 class Keyboard: NSObject {
     
     static let `default`: Keyboard = .init()
+    var delegate: KeyboardDelegate?
     
     internal func down(key: Key) {
         
@@ -61,20 +62,50 @@ class Keyboard: NSObject {
     private var shouldDeletePreviousCharacter: Bool = false
     
     private func input() {
+        guard let currentKey = currentKeys.first else {
+            return
+        }
         
         if shouldDeletePreviousCharacter {
             shouldDeletePreviousCharacter = false
             
-            guard KeyboardViewController.shared.textDocumentProxy.characterBeforeInput?.description != currentLabel else {
+            guard delegate?.documentContext.beforeInput.last?.description != currentLabel else {
                 return
             }
             
-            KeyboardViewController.shared.textDocumentProxy.deleteBackward()
+            Keyboard.default.delegate?.delete()
         }
         
-        KeyboardViewController.shared.keyAction(label: currentLabel)
+        switch currentKey {
+            
+        case .delete:
+            delegate?.delete()
+            
+        case .space:
+            if currentLabel == Key.space.label {
+                delegate?.space()
+            }
+            else {
+                delegate?.spaceInsist()
+            }
+            
+        case .return:
+            delegate?.return()
+            
+        case .tab:
+            delegate?.tab()
+            
+        case .settings:
+            delegate?.settings()
+            
+        case .nextKeyboard, .dismissKeyboard:
+            break
+            
+        default:
+            delegate?.insert(text: currentLabel)
+        }
         
-        KeyboardViewController.shared.updateDocumentContext()
+        NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
     }
     
     internal var currentKeys: [Key] = []
@@ -150,7 +181,7 @@ class Keyboard: NSObject {
                 break
             }
             
-            guard let previousCharacter = KeyboardViewController.shared.textDocumentProxy.characterBeforeInput else {
+            guard let previousCharacter = delegate?.documentContext.beforeInput.last else {
                 currentLabel = .init()
                 break
             }
@@ -270,4 +301,5 @@ class Keyboard: NSObject {
 
 extension NSNotification.Name {
     static let KeyboardStateDidChange: NSNotification.Name = .init("gw93Wf66S7t3GARlTiRirWIBvd4QiSM")
+    static let DocumentContextDidChange: NSNotification.Name = .init("oDap18soqXQONnkeMJsCZSGmkexar2g")
 }

@@ -176,7 +176,7 @@ class CharacterSequenceView: CharacterCollectionView {
             
             performBatchUpdates({
                 if activeCharacter == .space && activeIndexPath?.item == characters.count - 1 {
-                    KeyboardViewController.shared.keyAction(label: Key.delete.label)
+                    Keyboard.default.delegate?.delete()
                 }
                 else {
                     performCharacterSequenceUpdates {
@@ -231,7 +231,7 @@ class CharacterSequenceView: CharacterCollectionView {
                 enableAtimations()
                 
                 if shouldDeleteSpace {
-                    KeyboardViewController.shared.keyAction(label: Key.delete.label)
+                    Keyboard.default.delegate?.delete()
                 }
                 
                 KeyboardViewController.shared.updateDocumentContext()

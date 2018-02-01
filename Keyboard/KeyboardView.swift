@@ -91,7 +91,7 @@ internal class KeyboardView: UIView {
 
     #if TARGET_INTERFACE_BUILDER
     
-        private var layoutMode: KeyboardSettings.KeyboardLayoutMode = .default
+        private var layoutMode: Keyboard.KeyboardLayoutMode = .default
     
     #else
         private var layoutMode: Keyboard.KeyboardLayoutMode {

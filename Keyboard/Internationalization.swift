@@ -22,9 +22,7 @@ extension Language {
         set {
             UserDefaults.standard.set(newValue.rawValue, forKey: currentKey)
             
-            for viewController in loadedViewControllers {
-                viewController.updateLocalizedStrings()
-            }
+            NotificationCenter.default.post(name: .LocalizationDidChange, object: nil)
         }
     }
     #endif
@@ -91,39 +89,21 @@ internal func values<Enum: Hashable>(of: Enum.Type) -> [Enum] {
     return values
 }
 
-private var loadedViewControllers: [UIViewController] = []
-
-extension UIViewController {
-    
-    @objc func proxy_viewDidLoad() {
-        loadedViewControllers.append(self)
-    }
-    
-    @objc func proxy_viewWillAppear(_ animated: Bool) {
-        updateLocalizedStrings()
-    }
-    
-    @objc func proxy_viewWillDisappear(_ animated: Bool) {
-        if self == KeyboardViewController.shared {
-            loadedViewControllers.removeAll()
-        }
-    }
-    
-    func updateLocalizedStrings() {
-        view.updateLocalizedStrings()
-    }
-}
-
 extension UIView {
     
     @objc func proxy_didMoveToWindow() {
         updateLocalizedStrings()
+        NotificationCenter.default.addObserver(self, selector: #selector(updateLocalizedStrings), name: .LocalizationDidChange, object: nil)
+    }
+    
+    @objc func proxy_willMove(toWindow newWindow: UIWindow?) {
+        if newWindow == nil {
+            NotificationCenter.default.removeObserver(self)
+        }
     }
     
     @objc func updateLocalizedStrings() {
-        for view in subviews {
-            view.updateLocalizedStrings()
-        }
+        
     }
     
     open override func prepareForInterfaceBuilder() {
@@ -142,11 +122,8 @@ struct Localization {
             return
         }
         
-        swapMethods(UIViewController.self, #selector(UIViewController.viewDidLoad), #selector(UIViewController.proxy_viewDidLoad) )
-        swapMethods(UIViewController.self, #selector(UIViewController.viewWillAppear(_:)), #selector(UIViewController.proxy_viewWillAppear(_:)) )
-        swapMethods(UIViewController.self, #selector(UIViewController.viewWillDisappear(_:)), #selector(UIViewController.proxy_viewWillDisappear(_:)) )
-        
         swapMethods(UIView.self, #selector(UIView.didMoveToWindow), #selector(UIView.proxy_didMoveToWindow))
+        swapMethods(UIView.self, #selector(UIView.willMove(toWindow:)), #selector(UIView.proxy_willMove(toWindow:)))
         
         swapped = true
     }
@@ -165,4 +142,8 @@ struct Localization {
             method_exchangeImplementations(originalMethod, newMethod)
         }
     }
+}
+
+extension NSNotification.Name {
+    static let LocalizationDidChange: NSNotification.Name = .init("eGuHC6YhIb9XAe2gDBjQPM8PHuojH5A")
 }

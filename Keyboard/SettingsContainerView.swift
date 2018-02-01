@@ -18,8 +18,6 @@ class SettingsContainerView: UIStackView {
         
         settingsViewController.title = SETTINGS.string
         titleLabel.text = SETTINGS.string
-        
-        settingsViewController.updateLocalizedStrings()
     }
     
     private let horizontalModeLabel = "▄▄"

@@ -58,6 +58,7 @@ class SettingsContainerView: UIStackView {
         
         addArrangedSubview(backButton)
         addArrangedSubview(navigationController.view)
+        updateLocalizedStrings()
         
         widthConstraint = navigationController.view.widthAnchor.constraint(equalToConstant: 280)
         widthConstraint.isActive = true
@@ -93,6 +94,12 @@ class SettingsContainerView: UIStackView {
         
         let layoutModeItem: UIBarButtonItem = .init(customView: layoutModeSegmentedControl)
         settingsViewController.navigationItem.rightBarButtonItem = layoutModeItem
+        
+        NotificationCenter.default.addLocaleObserver(self)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     required init(coder: NSCoder) {

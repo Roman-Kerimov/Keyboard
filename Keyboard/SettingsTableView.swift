@@ -30,6 +30,12 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
             contentInset = .init(top: -20, left: 0, bottom: 0, right: 0)
             scrollIndicatorInsets = contentInset
         }
+        
+        NotificationCenter.default.addLocaleObserver(self)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     required internal init?(coder aDecoder: NSCoder) {

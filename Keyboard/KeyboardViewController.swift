@@ -57,7 +57,7 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
         super.viewDidLoad()
         
         // Perform custom UI setup here
-        Localization.initialize()
+        
         KeyboardViewController.shared = self
         Keyboard.default.delegate = self
         

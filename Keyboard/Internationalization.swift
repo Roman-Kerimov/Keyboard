@@ -6,7 +6,7 @@
 //
 //
 
-import UIKit
+import Foundation
 
 extension Language {
     #if TARGET_INTERFACE_BUILDER
@@ -89,58 +89,18 @@ internal func values<Enum: Hashable>(of: Enum.Type) -> [Enum] {
     return values
 }
 
-extension UIView {
-    
-    @objc func proxy_didMoveToWindow() {
-        updateLocalizedStrings()
-        NotificationCenter.default.addObserver(self, selector: #selector(updateLocalizedStrings), name: .LocalizationDidChange, object: nil)
-    }
-    
-    @objc func proxy_willMove(toWindow newWindow: UIWindow?) {
-        if newWindow == nil {
-            NotificationCenter.default.removeObserver(self)
-        }
-    }
+extension NSObject {
     
     @objc func updateLocalizedStrings() {
         
     }
-    
-    open override func prepareForInterfaceBuilder() {
-        super.prepareForInterfaceBuilder()
-        
-        updateLocalizedStrings()
-    }
 }
 
-struct Localization {
-    private static var swapped: Bool = false
-    
-    static func initialize() {
+extension NotificationCenter {
+    func addLocaleObserver(_ observer: NSObject) {
+        addObserver(observer, selector: #selector(observer.updateLocalizedStrings), name: .LocalizationDidChange, object: nil)
         
-        if swapped {
-            return
-        }
-        
-        swapMethods(UIView.self, #selector(UIView.didMoveToWindow), #selector(UIView.proxy_didMoveToWindow))
-        swapMethods(UIView.self, #selector(UIView.willMove(toWindow:)), #selector(UIView.proxy_willMove(toWindow:)))
-        
-        swapped = true
-    }
-    
-    private static func swapMethods(_ anyClass: AnyClass, _ originalSelector: Selector, _ newSelector: Selector) {
-        
-        let originalMethod = class_getInstanceMethod(anyClass, originalSelector)!
-        let newMethod = class_getInstanceMethod(anyClass, newSelector)!
-        
-        let didAddMethod = class_addMethod(anyClass, originalSelector, method_getImplementation(newMethod), method_getTypeEncoding(newMethod))
-        
-        if didAddMethod {
-            class_replaceMethod(anyClass, newSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod))
-        }
-        else {
-            method_exchangeImplementations(originalMethod, newMethod)
-        }
+        updateLocalizedStrings()
     }
 }
 

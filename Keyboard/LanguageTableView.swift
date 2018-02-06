@@ -20,6 +20,12 @@ class LanguageTableView: UITableView, UITableViewDelegate, UITableViewDataSource
         
         delegate = self
         dataSource = self
+    
+        NotificationCenter.default.addLocaleObserver(self)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     required internal init?(coder aDecoder: NSCoder) {

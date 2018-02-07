@@ -194,7 +194,7 @@ class KeyView: UIButton, ConfigurableView {
         
         addSubview(imageLabelView)
         
-        if let imageLabel: UIImage = UIImage.init(fromPDF: labelFileName, withExtension: .ai, withScale: 1, for: self) {
+        if let imageLabel: UIImage = UIImage.init(fromPDF: labelFileName, withExtension: .ai, withScale: 1) {
             imageLabelView.image = imageLabel
             mainLabelView.isHidden = true
         }
@@ -266,7 +266,7 @@ class KeyView: UIButton, ConfigurableView {
         }
         
         if imageLabelView.image != nil {
-            imageLabelView.image = UIImage.init(fromPDF: labelFileName, withExtension: .ai, withScale: labelFontSize/24, for: self)?.withRenderingMode(.alwaysTemplate)
+            imageLabelView.image = UIImage.init(fromPDF: labelFileName, withExtension: .ai, withScale: labelFontSize/24)?.withRenderingMode(.alwaysTemplate)
         }
         
         backgroundView.layer.cornerRadius = spacing

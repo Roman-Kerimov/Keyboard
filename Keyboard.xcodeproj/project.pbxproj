@@ -15,6 +15,8 @@
 		961FC32F1F3ADD9B00ADB15D /* LegalNoticesTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961FC32D1F3ADD9B00ADB15D /* LegalNoticesTextView.swift */; };
 		961FC3311F3AE14B00ADB15D /* LegalNoticesText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961FC3301F3AE14B00ADB15D /* LegalNoticesText.swift */; };
 		961FC3321F3AE14B00ADB15D /* LegalNoticesText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961FC3301F3AE14B00ADB15D /* LegalNoticesText.swift */; };
+		9620E748202B9EB1003FB02E /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9620E747202B9EB1003FB02E /* Bundle.swift */; };
+		9620E749202B9EB1003FB02E /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9620E747202B9EB1003FB02E /* Bundle.swift */; };
 		9633A3C81E5DFA3C00DFA503 /* RowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9633A3C71E5DFA3C00DFA503 /* RowView.swift */; };
 		9633A3CA1E5DFE8D00DFA503 /* DeleteRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9633A3C91E5DFE8D00DFA503 /* DeleteRowView.swift */; };
 		963BA6631F3B1FD000BFE3A7 /* LegalTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963BA6621F3B1FD000BFE3A7 /* LegalTextView.swift */; };
@@ -161,6 +163,7 @@
 		961D74902009003900BBC5FB /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		961FC32D1F3ADD9B00ADB15D /* LegalNoticesTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalNoticesTextView.swift; sourceTree = "<group>"; };
 		961FC3301F3AE14B00ADB15D /* LegalNoticesText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalNoticesText.swift; sourceTree = "<group>"; };
+		9620E747202B9EB1003FB02E /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		9633A3C71E5DFA3C00DFA503 /* RowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RowView.swift; sourceTree = "<group>"; };
 		9633A3C91E5DFE8D00DFA503 /* DeleteRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteRowView.swift; sourceTree = "<group>"; };
 		963BA6621F3B1FD000BFE3A7 /* LegalTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalTextView.swift; sourceTree = "<group>"; };
@@ -369,6 +372,7 @@
 				967491B41EE16BDD00DC19E0 /* CharacterSet.swift */,
 				96848D9E1EE05F080009869A /* String.swift */,
 				96F716B81F0438B6004A77C7 /* Locale.swift */,
+				9620E747202B9EB1003FB02E /* Bundle.swift */,
 				968694C01EA0F3D100E6C9D0 /* UIColor.swift */,
 				969E83041EED842E009A1F2D /* UIView.swift */,
 				96EA39D61EAFDDDE00F3D804 /* UIImage.swift */,
@@ -652,6 +656,7 @@
 				96533A861F12938D00B07CA3 /* KeyView.swift in Sources */,
 				96533A931F1293A500B07CA3 /* Localization.swift in Sources */,
 				96533A771F12938D00B07CA3 /* KeyboardColorScheme.swift in Sources */,
+				9620E748202B9EB1003FB02E /* Bundle.swift in Sources */,
 				96533A8B1F1293A500B07CA3 /* UIColor.swift in Sources */,
 				96533A7D1F12938D00B07CA3 /* KeyboardLayoutView.swift in Sources */,
 				96533A7A1F12938D00B07CA3 /* SettingsContainerView.swift in Sources */,
@@ -710,6 +715,7 @@
 				9685BCFF1E06815700702C84 /* Keyboard.swift in Sources */,
 				9643FC511F78F94B004DA2C0 /* CharacterComponentsDictionary.swift in Sources */,
 				969221E61F3BA91A005E5913 /* SettingsContainerView_LanguageTableView.swift in Sources */,
+				9620E749202B9EB1003FB02E /* Bundle.swift in Sources */,
 				96848D9F1EE05F080009869A /* String.swift in Sources */,
 				9694E23D1E29D72800ED3A85 /* Internationalization.swift in Sources */,
 			);

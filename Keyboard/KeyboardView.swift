@@ -331,7 +331,7 @@ internal class KeyboardView: UIView {
         }
         
         #if !TARGET_INTERFACE_BUILDER
-            if !Bundle.main.bundlePath.hasSuffix(".appex") {
+            if !Bundle.main.isExtension {
                 frame = UIScreen.main.bounds
                 frame.size.height = size.height
             }

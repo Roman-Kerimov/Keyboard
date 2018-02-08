@@ -26,7 +26,7 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
         delegate = self
         dataSource = self
         
-        if KeyboardViewController.shared.isExtension {
+        if Bundle.main.isExtension {
             contentInset = .init(top: -20, left: 0, bottom: 0, right: 0)
             scrollIndicatorInsets = contentInset
         }

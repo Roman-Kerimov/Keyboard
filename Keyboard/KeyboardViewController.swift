@@ -97,8 +97,6 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
         previousDocumentContext = .init()
         
         isAppeared = false
-        
-        NotificationCenter.default.removeObserver(self)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

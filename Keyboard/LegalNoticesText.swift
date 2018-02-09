@@ -34,5 +34,4 @@ Unicode Fonts for Ancient Scripts
 http://users.teilar.gr/~g1951d/
 
 In lieu of a licence; fonts and documents in this site are free for any use; George Douros
-
 """

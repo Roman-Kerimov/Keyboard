@@ -67,12 +67,10 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
             KeyboardViewController.shared.keyboardView.layout = KeyboardLayout.list[indexPath.row]
             
         case .appLanguage:
-            KeyboardViewController.shared.keyboardView.settingsContainerView.navigationController
-                .pushViewController(languageTableViewController, animated: true)
+            controller?.navigationController?.pushViewController(languageTableViewController, animated: true)
             
         case .about:
-            KeyboardViewController.shared.keyboardView.settingsContainerView.navigationController
-                .pushViewController(legalNoticesViewController, animated: true)
+            controller?.navigationController?.pushViewController(legalNoticesViewController, animated: true)
         }
         
         cell.isSelected = false

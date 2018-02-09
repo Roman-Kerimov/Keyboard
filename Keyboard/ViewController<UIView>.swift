@@ -20,6 +20,7 @@ class ViewController<View: UIView>: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        view.updateLocalizedStrings()
     }
 
     override func didReceiveMemoryWarning() {

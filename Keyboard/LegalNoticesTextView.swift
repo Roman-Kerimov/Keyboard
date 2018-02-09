@@ -9,8 +9,16 @@ import UIKit
 
 class LegalNoticesTextView: LegalTextView {
     
+    override func updateLocalizedStrings() {
+        super.updateLocalizedStrings()
+        
+        controller?.title = LEGAL_NOTICES.string
+    }
+    
     init() {
         super.init(text: legalNoticesText)
+        
+        NotificationCenter.default.addLocaleObserver(self)
     }
     
     required init?(coder aDecoder: NSCoder) {

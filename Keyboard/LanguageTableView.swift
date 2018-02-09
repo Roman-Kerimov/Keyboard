@@ -13,6 +13,8 @@ class LanguageTableView: UITableView, UITableViewDelegate, UITableViewDataSource
     override func updateLocalizedStrings() {
         preferredLanguages = Language.preferredList
         reloadData()
+        
+        controller?.title = LANGUAGE.string
     }
 
     internal init() {

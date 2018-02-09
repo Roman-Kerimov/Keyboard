@@ -16,7 +16,6 @@ class SettingsContainerView: UIStackView {
     override func updateLocalizedStrings() {
         super.updateLocalizedStrings()
         
-        settingsViewController.title = SETTINGS.string
         titleLabel.text = SETTINGS.string
     }
     

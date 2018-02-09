@@ -16,8 +16,7 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
         
         reloadData()
         
-        languageTableViewController.title = LANGUAGE.string
-        legalNoticesViewController.title = LEGAL_NOTICES.string
+        controller?.title = SETTINGS.string
     }
     
     internal init() {

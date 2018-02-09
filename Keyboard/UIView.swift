@@ -15,4 +15,8 @@ extension UIView {
         
         return [superview] + superview.parentViews
     }
+    
+    var controller: UIViewController? {
+        return next as? UIViewController
+    }
 }

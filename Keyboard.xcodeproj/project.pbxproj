@@ -276,7 +276,7 @@
 		964AB9261D1B63C0004C827C = {
 			isa = PBXGroup;
 			children = (
-				96BAEF0C2016D0FD003B32C0 /* Keyboard */,
+				96BAEF0C2016D0FD003B32C0 /* TouchKeyboard */,
 				964AB9331D1B6490004C827C /* iOSKeyboard */,
 				965BFAC71F7979FA00B8F682 /* iOSKeyboardTests */,
 				964AB9681D1B6535004C827C /* iOSKeyboardExtension */,
@@ -330,7 +330,7 @@
 			path = iOSKeyboardTests;
 			sourceTree = "<group>";
 		};
-		96BAEF0C2016D0FD003B32C0 /* Keyboard */ = {
+		96BAEF0C2016D0FD003B32C0 /* TouchKeyboard */ = {
 			isa = PBXGroup;
 			children = (
 				964FE8221D1CA9D400D41EA7 /* Keyboard.storyboard */,
@@ -384,7 +384,7 @@
 				96767C241EB11E28004D847C /* Labels_Settings.ai */,
 				9679AF9E1FB55A000099F53B /* Symbola.ttf */,
 			);
-			path = Keyboard;
+			path = TouchKeyboard;
 			sourceTree = "<group>";
 		};
 		96E354E82020DDBC00668374 /* macOSKeyboard */ = {

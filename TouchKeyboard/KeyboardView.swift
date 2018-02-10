@@ -412,35 +412,35 @@ internal class KeyboardView: UIView {
         backgroundView.addSubview(layoutView)
         
         layoutView.layout = Keyboard.default.layout
+        
+        settingsContainerView.backButton.addTarget(self, action: #selector(hideSettings), for: .allTouchEvents)
     }
     
     required internal init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    internal var settingsContainerView: SettingsContainerView!
+    internal var settingsContainerView: SettingsContainerView = .init()
     
     private var settingsRightConstraint: NSLayoutConstraint!
     
     private let settingsAnimateDuration = 0.3
     
     @objc internal func showSettings() {
-        if settingsContainerView == nil {
-            settingsContainerView = SettingsContainerView.init()
-            settingsContainerView.backButton.addTarget(self, action: #selector(hideSettings), for: .allTouchEvents)
-        }
         
         controller?.addChildViewController(settingsContainerView.navigationController)
         addSubview(settingsContainerView)
         
         settingsRightConstraint = settingsContainerView.rightAnchor.constraint(equalTo: rightAnchor, constant: settingsContainerView.widthConstraint.constant)
         
-        NSLayoutConstraint.activate([
-            settingsContainerView.topAnchor.constraint(equalTo: topAnchor),
-            settingsContainerView.leftAnchor.constraint(equalTo: leftAnchor),
-            settingsRightConstraint,
-            settingsContainerView.bottomAnchor.constraint(equalTo: bottomAnchor)
-            ])
+        NSLayoutConstraint.activate(
+            [
+                settingsContainerView.topAnchor.constraint(equalTo: topAnchor),
+                settingsContainerView.leftAnchor.constraint(equalTo: leftAnchor),
+                settingsRightConstraint,
+                settingsContainerView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            ]
+        )
         
         layoutIfNeeded()
         

@@ -4,4 +4,7 @@
    <FileRef
       location = "group:Keyboard.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:../UIKit/UIKit.xcodeproj">
+   </FileRef>
 </Workspace>

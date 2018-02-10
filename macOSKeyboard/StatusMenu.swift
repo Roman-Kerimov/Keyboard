@@ -15,6 +15,8 @@ class StatusMenu: NSMenu {
         super.init(title: .init())
         statusItem.title = "Kd"
         statusItem.menu = self
+        
+        addItem(QuitMenuItem.init())
     }
     
     required init(coder decoder: NSCoder) {

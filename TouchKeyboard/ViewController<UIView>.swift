@@ -21,17 +21,6 @@ class ViewController<View: UIView>: UIViewController {
 
         // Do any additional setup after loading the view.
         view.updateLocalizedStrings()
-        
-        guard Bundle.main.isExtension else {
-            return
-        }
-        
-        if let scrollView = view as? UIScrollView {
-            if let statusBarHeight = navigationController?.view.readableContentGuide.layoutFrame.origin.y {
-                scrollView.contentInset.top = -statusBarHeight
-                scrollView.scrollIndicatorInsets.top = -statusBarHeight
-            }
-        }
     }
 
     override func didReceiveMemoryWarning() {

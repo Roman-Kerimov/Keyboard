@@ -430,6 +430,7 @@ internal class KeyboardView: UIView {
             settingsContainerView.backButton.addTarget(self, action: #selector(hideSettings), for: .allTouchEvents)
         }
         
+        controller?.addChildViewController(settingsContainerView.navigationController)
         addSubview(settingsContainerView)
         
         settingsRightConstraint = settingsContainerView.rightAnchor.constraint(equalTo: rightAnchor, constant: settingsContainerView.widthConstraint.constant)
@@ -464,6 +465,7 @@ internal class KeyboardView: UIView {
         
         Timer.scheduledTimer(withTimeInterval: settingsAnimateDuration, repeats: false) { (timer) in
             self.settingsContainerView.removeFromSuperview()
+            self.settingsContainerView.navigationController.removeFromParentViewController()
         }
     }
 }

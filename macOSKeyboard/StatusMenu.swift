@@ -16,7 +16,9 @@ class StatusMenu: NSMenu {
         statusItem.title = "Kd"
         statusItem.menu = self
         
+        addItem(.separator())
         addItem(LegalNoticesMenuItem.init())
+        addItem(VersionMenuItem.init())
         addItem(.separator())
         addItem(QuitMenuItem.init())
     }

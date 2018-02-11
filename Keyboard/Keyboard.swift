@@ -13,6 +13,12 @@ class Keyboard: NSObject {
     static let `default`: Keyboard = .init()
     var delegate: KeyboardDelegate?
     
+    var version: String {
+        let versionNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+        let buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
+        return "\(VERSION.string): \(versionNumber) (\(buildNumber))"
+    }
+    
     internal func down(key: Key) {
         
         if currentKeys.isEmpty {

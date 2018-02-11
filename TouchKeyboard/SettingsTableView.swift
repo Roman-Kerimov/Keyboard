@@ -109,10 +109,7 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
         switch Section.list[section] {
             
         case .about:
-            let bundle: Bundle = .init(for: type(of: self))
-            let versionNumber = bundle.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
-            let buildNumber = bundle.object(forInfoDictionaryKey: "CFBundleVersion") as! String
-            return "\(VERSION.string): \(versionNumber) (\(buildNumber))"
+            return Keyboard.default.version
             
         default:
             return nil

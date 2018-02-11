@@ -390,18 +390,6 @@ internal class KeyboardView: UIView {
     private let layoutView: KeyboardLayoutView = .init()
     private let spaceRowView: SpaceRowView = .init()
     
-    public var layout: KeyboardLayout {
-        set {
-            Keyboard.default.layout = newValue
-            layoutView.layout = newValue
-            configure()
-        }
-        
-        get {
-            return Keyboard.default.layout
-        }
-    }
-    
     override private init(frame: CGRect = .zero) {
         super.init(frame: frame)
         
@@ -414,10 +402,16 @@ internal class KeyboardView: UIView {
         layoutView.layout = Keyboard.default.layout
         
         settingsContainerView.backButton.addTarget(self, action: #selector(hideSettings), for: .allTouchEvents)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(setLayout), name: .LayoutDidChange, object: nil)
     }
     
     required internal init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc private func setLayout() {
+        layoutView.layout = Keyboard.default.layout
     }
     
     internal var settingsContainerView: SettingsContainerView = .init()

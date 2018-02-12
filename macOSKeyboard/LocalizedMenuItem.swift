@@ -23,7 +23,5 @@ class LocalizedMenuItem: NSMenuItem {
         super.init(coder: decoder)
     }
     
-    @objc func menuItemAction() {
-    
-    }
+    @objc func menuItemAction() {}
 }

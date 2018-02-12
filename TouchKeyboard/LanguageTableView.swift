@@ -78,12 +78,10 @@ class LanguageTableView: UITableView, UITableViewDelegate, UITableViewDataSource
             language = Language.list[indexPath.row]
         }
         
-        let locale = Locale(identifier: language.rawValue)
-        
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
         
-        cell.textLabel?.text = locale.localizedString(forIdentifier: language.rawValue)
-        cell.detailTextLabel?.text = Locale(identifier: Language.current.rawValue).localizedString(forIdentifier: language.rawValue)
+        cell.textLabel?.text = language.selfName
+        cell.detailTextLabel?.text = language.localizedName
         
         if language == Language.current {
             cell.accessoryType = .checkmark

@@ -55,6 +55,14 @@ extension Language {
         }
         return Stored.list
     }
+    
+    var selfName: String {
+        return Locale(identifier: rawValue).localizedString(forIdentifier: rawValue) ?? .init()
+    }
+    
+    var localizedName: String {
+        return Locale(identifier: Language.current.rawValue).localizedString(forIdentifier: rawValue) ?? .init()
+    }
 }
 
 internal func values<Enum: Hashable>(of: Enum.Type) -> [Enum] {

@@ -16,6 +16,9 @@ class StatusMenu: NSMenu {
         statusItem.title = "Kd"
         statusItem.menu = self
         
+        for layout in KeyboardLayout.list {
+            addItem(LayoutMenuItem.init(layout: layout))
+        }
         addItem(.separator())
         addItem(LegalNoticesMenuItem.init())
         addItem(VersionMenuItem.init())

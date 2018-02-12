@@ -1,12 +1,17 @@
 //
 //  Array<CharacterComponent>Tests.swift
-//  iOSKeyboardTests
+//  KeyboardTests
 //
 //  Created by Roman Kerimov on 2017-10-18.
 //
 
 import XCTest
+
+#if os(iOS)
 @testable import iOSKeyboard
+#elseif os(macOS)
+@testable import macOSKeyboard
+#endif
 
 class Array_CharacterComponent_Tests: XCTestCase {
     

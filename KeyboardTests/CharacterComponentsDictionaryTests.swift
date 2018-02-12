@@ -1,12 +1,17 @@
 //
 //  CharacterComponentsDictionaryTests.swift
-//  iOSKeyboardTests
+//  KeyboardTests
 //
 //  Created by Roman Kerimov on 2017-09-25.
 //
 
 import XCTest
+
+#if os(iOS)
 @testable import iOSKeyboard
+#elseif os(macOS)
+@testable import macOSKeyboard
+#endif
 
 class CharacterComponentsDictionaryTests: XCTestCase {
     

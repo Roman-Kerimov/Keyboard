@@ -113,6 +113,8 @@
 		96B6B35B1F9764F400231AE6 /* Array<CharacterComponent>.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B6B35A1F9764F400231AE6 /* Array<CharacterComponent>.swift */; };
 		96B6B35C1F9764F400231AE6 /* Array<CharacterComponent>.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B6B35A1F9764F400231AE6 /* Array<CharacterComponent>.swift */; };
 		96B6B35E1F97660E00231AE6 /* Array<CharacterComponent>Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B6B35D1F97660E00231AE6 /* Array<CharacterComponent>Tests.swift */; };
+		96B6BC4A2031ADB6002509E4 /* Array<CharacterComponent>Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B6B35D1F97660E00231AE6 /* Array<CharacterComponent>Tests.swift */; };
+		96B6BC4B2031ADBC002509E4 /* CharacterComponentsDictionaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965BFAD01F797BBB00B8F682 /* CharacterComponentsDictionaryTests.swift */; };
 		96BC5F561DEB961F002E0752 /* LabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BC5F551DEB961F002E0752 /* LabelView.swift */; };
 		96C49DC51EB7DF1F006F93ED /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C49DC41EB7DF1F006F93ED /* Character.swift */; };
 		96D2B8DD1E35538B006772A5 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D2B8DC1E35538B006772A5 /* Localization.swift */; };
@@ -378,6 +380,7 @@
 			isa = PBXGroup;
 			children = (
 				9697F880202FA868001EC50A /* Keyboard */,
+				96B6BC492031AD4C002509E4 /* KeyboardTests */,
 				96BAEF0C2016D0FD003B32C0 /* TouchKeyboard */,
 				964AB9331D1B6490004C827C /* iOSKeyboard */,
 				965BFAC71F7979FA00B8F682 /* iOSKeyboardTests */,
@@ -426,8 +429,6 @@
 			isa = PBXGroup;
 			children = (
 				965BFAC81F7979FA00B8F682 /* iOSKeyboardTests.swift */,
-				96B6B35D1F97660E00231AE6 /* Array<CharacterComponent>Tests.swift */,
-				965BFAD01F797BBB00B8F682 /* CharacterComponentsDictionaryTests.swift */,
 				965BFACA1F7979FA00B8F682 /* Info.plist */,
 			);
 			path = iOSKeyboardTests;
@@ -458,6 +459,15 @@
 				9679AF9E1FB55A000099F53B /* Symbola.ttf */,
 			);
 			path = Keyboard;
+			sourceTree = "<group>";
+		};
+		96B6BC492031AD4C002509E4 /* KeyboardTests */ = {
+			isa = PBXGroup;
+			children = (
+				96B6B35D1F97660E00231AE6 /* Array<CharacterComponent>Tests.swift */,
+				965BFAD01F797BBB00B8F682 /* CharacterComponentsDictionaryTests.swift */,
+			);
+			path = KeyboardTests;
 			sourceTree = "<group>";
 		};
 		96BAEF0C2016D0FD003B32C0 /* TouchKeyboard */ = {
@@ -968,7 +978,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96B6BC4B2031ADBC002509E4 /* CharacterComponentsDictionaryTests.swift in Sources */,
 				96E354FD2020DDBD00668374 /* macOSKeyboardTests.swift in Sources */,
+				96B6BC4A2031ADB6002509E4 /* Array<CharacterComponent>Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -67,7 +67,6 @@
 		96533A911F1293A500B07CA3 /* Locale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F716B81F0438B6004A77C7 /* Locale.swift */; };
 		96533A921F1293A500B07CA3 /* Internationalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9694E23C1E29D72800ED3A85 /* Internationalization.swift */; };
 		96533A931F1293A500B07CA3 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D2B8DC1E35538B006772A5 /* Localization.swift */; };
-		96533A941F1293A500B07CA3 /* LocalizableStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9694E23A1E29D1BC00ED3A85 /* LocalizableStrings.swift */; };
 		96533A951F1293B000B07CA3 /* Labels_NextKeyboard.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96EA39E01EB0EEDD00F3D804 /* Labels_NextKeyboard.ai */; };
 		96533A961F1293B000B07CA3 /* Labels_HideKeyboard.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96EA39DF1EB0EEDD00F3D804 /* Labels_HideKeyboard.ai */; };
 		96533A971F1293B000B07CA3 /* Labels_Settings.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96767C241EB11E28004D847C /* Labels_Settings.ai */; };
@@ -96,11 +95,12 @@
 		9688312B202008040071908B /* DocumentContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96883129202008030071908B /* DocumentContext.swift */; };
 		969221E51F3BA91A005E5913 /* SettingsContainerView_LanguageTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969221E41F3BA91A005E5913 /* SettingsContainerView_LanguageTableView.swift */; };
 		969221E61F3BA91A005E5913 /* SettingsContainerView_LanguageTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969221E41F3BA91A005E5913 /* SettingsContainerView_LanguageTableView.swift */; };
-		9694E23B1E29D1BC00ED3A85 /* LocalizableStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9694E23A1E29D1BC00ED3A85 /* LocalizableStrings.swift */; };
 		9694E23D1E29D72800ED3A85 /* Internationalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9694E23C1E29D72800ED3A85 /* Internationalization.swift */; };
+		9696CBC12031800B007CC94B /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9696CBC02031800B007CC94B /* Template.swift */; };
+		9696CBC22031800B007CC94B /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9696CBC02031800B007CC94B /* Template.swift */; };
+		9696CBC32031800B007CC94B /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9696CBC02031800B007CC94B /* Template.swift */; };
 		9697F881202FA88C001EC50A /* Internationalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9694E23C1E29D72800ED3A85 /* Internationalization.swift */; };
 		9697F882202FA8A1001EC50A /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D2B8DC1E35538B006772A5 /* Localization.swift */; };
-		9697F883202FA8A1001EC50A /* LocalizableStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9694E23A1E29D1BC00ED3A85 /* LocalizableStrings.swift */; };
 		969E83031EED830C009A1F2D /* ConfigurableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969E83021EED830C009A1F2D /* ConfigurableViewProtocol.swift */; };
 		969E83051EED842E009A1F2D /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969E83041EED842E009A1F2D /* UIView.swift */; };
 		969F15F51E549BD300C0DD7D /* ViewController<UIView>.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969F15F41E549BD300C0DD7D /* ViewController<UIView>.swift */; };
@@ -122,6 +122,54 @@
 		96DB1A7C202FB84F00B96D3C /* LegalTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963BA6621F3B1FD000BFE3A7 /* LegalTextView.swift */; };
 		96DB1A7D202FB87C00B96D3C /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969E83041EED842E009A1F2D /* UIView.swift */; };
 		96DB1A84202FBD1700B96D3C /* ViewController<UIView>.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969F15F41E549BD300C0DD7D /* ViewController<UIView>.swift */; };
+		96E033E6203153100039E653 /* SETTINGS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E033E5203153100039E653 /* SETTINGS.swift */; };
+		96E033E7203153100039E653 /* SETTINGS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E033E5203153100039E653 /* SETTINGS.swift */; };
+		96E033E8203153100039E653 /* SETTINGS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E033E5203153100039E653 /* SETTINGS.swift */; };
+		96E033EA2031540A0039E653 /* KEYBOARD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E033E92031540A0039E653 /* KEYBOARD.swift */; };
+		96E033EB2031540A0039E653 /* KEYBOARD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E033E92031540A0039E653 /* KEYBOARD.swift */; };
+		96E033EC2031540A0039E653 /* KEYBOARD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E033E92031540A0039E653 /* KEYBOARD.swift */; };
+		96E033EE203154660039E653 /* LANGUAGE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E033ED203154660039E653 /* LANGUAGE.swift */; };
+		96E033EF203154660039E653 /* LANGUAGE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E033ED203154660039E653 /* LANGUAGE.swift */; };
+		96E033F0203154660039E653 /* LANGUAGE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E033ED203154660039E653 /* LANGUAGE.swift */; };
+		96E033F22031549C0039E653 /* ABOUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E033F12031549C0039E653 /* ABOUT.swift */; };
+		96E033F32031549C0039E653 /* ABOUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E033F12031549C0039E653 /* ABOUT.swift */; };
+		96E033F42031549C0039E653 /* ABOUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E033F12031549C0039E653 /* ABOUT.swift */; };
+		96E033F6203154FC0039E653 /* LEGAL_NOTICES.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E033F5203154FC0039E653 /* LEGAL_NOTICES.swift */; };
+		96E033F7203154FC0039E653 /* LEGAL_NOTICES.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E033F5203154FC0039E653 /* LEGAL_NOTICES.swift */; };
+		96E033F8203154FC0039E653 /* LEGAL_NOTICES.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E033F5203154FC0039E653 /* LEGAL_NOTICES.swift */; };
+		96E033FA203155A80039E653 /* VERSION.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E033F9203155A80039E653 /* VERSION.swift */; };
+		96E033FB203155A80039E653 /* VERSION.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E033F9203155A80039E653 /* VERSION.swift */; };
+		96E033FC203155A80039E653 /* VERSION.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E033F9203155A80039E653 /* VERSION.swift */; };
+		96E033FE2031560E0039E653 /* GO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E033FD2031560E0039E653 /* GO.swift */; };
+		96E033FF2031560E0039E653 /* GO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E033FD2031560E0039E653 /* GO.swift */; };
+		96E034002031560E0039E653 /* GO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E033FD2031560E0039E653 /* GO.swift */; };
+		96E034022031562B0039E653 /* JOIN.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E034012031562B0039E653 /* JOIN.swift */; };
+		96E034032031562B0039E653 /* JOIN.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E034012031562B0039E653 /* JOIN.swift */; };
+		96E034042031562B0039E653 /* JOIN.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E034012031562B0039E653 /* JOIN.swift */; };
+		96E03406203156660039E653 /* NEXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E03405203156660039E653 /* NEXT.swift */; };
+		96E03407203156660039E653 /* NEXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E03405203156660039E653 /* NEXT.swift */; };
+		96E03408203156660039E653 /* NEXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E03405203156660039E653 /* NEXT.swift */; };
+		96E0340A2031567A0039E653 /* ROUTE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E034092031567A0039E653 /* ROUTE.swift */; };
+		96E0340B2031567A0039E653 /* ROUTE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E034092031567A0039E653 /* ROUTE.swift */; };
+		96E0340C2031567A0039E653 /* ROUTE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E034092031567A0039E653 /* ROUTE.swift */; };
+		96E0340E203157030039E653 /* SEARCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E0340D203157030039E653 /* SEARCH.swift */; };
+		96E0340F203157030039E653 /* SEARCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E0340D203157030039E653 /* SEARCH.swift */; };
+		96E03410203157030039E653 /* SEARCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E0340D203157030039E653 /* SEARCH.swift */; };
+		96E03412203162BF0039E653 /* SEND.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E03411203162BF0039E653 /* SEND.swift */; };
+		96E03413203162BF0039E653 /* SEND.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E03411203162BF0039E653 /* SEND.swift */; };
+		96E03414203162BF0039E653 /* SEND.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E03411203162BF0039E653 /* SEND.swift */; };
+		96E03416203162F30039E653 /* DONE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E03415203162F30039E653 /* DONE.swift */; };
+		96E03417203162F30039E653 /* DONE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E03415203162F30039E653 /* DONE.swift */; };
+		96E03418203162F30039E653 /* DONE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E03415203162F30039E653 /* DONE.swift */; };
+		96E0341A203179C50039E653 /* EMERGENCY_CALL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E03419203179C50039E653 /* EMERGENCY_CALL.swift */; };
+		96E0341B203179C50039E653 /* EMERGENCY_CALL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E03419203179C50039E653 /* EMERGENCY_CALL.swift */; };
+		96E0341C203179C50039E653 /* EMERGENCY_CALL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E03419203179C50039E653 /* EMERGENCY_CALL.swift */; };
+		96E0341E203179F00039E653 /* CONTINUE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E0341D203179F00039E653 /* CONTINUE.swift */; };
+		96E0341F203179F00039E653 /* CONTINUE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E0341D203179F00039E653 /* CONTINUE.swift */; };
+		96E03420203179F00039E653 /* CONTINUE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E0341D203179F00039E653 /* CONTINUE.swift */; };
+		96E0342220317A330039E653 /* QUIT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E0342120317A330039E653 /* QUIT.swift */; };
+		96E0342320317A330039E653 /* QUIT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E0342120317A330039E653 /* QUIT.swift */; };
+		96E0342420317A330039E653 /* QUIT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E0342120317A330039E653 /* QUIT.swift */; };
 		96E354EA2020DDBC00668374 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E354E92020DDBC00668374 /* AppDelegate.swift */; };
 		96E354EE2020DDBC00668374 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96E354ED2020DDBC00668374 /* Assets.xcassets */; };
 		96E354FD2020DDBD00668374 /* macOSKeyboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E354FC2020DDBD00668374 /* macOSKeyboardTests.swift */; };
@@ -235,8 +283,8 @@
 		96883126201FB35B0071908B /* KeyboardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDelegate.swift; sourceTree = "<group>"; };
 		96883129202008030071908B /* DocumentContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentContext.swift; sourceTree = "<group>"; };
 		969221E41F3BA91A005E5913 /* SettingsContainerView_LanguageTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContainerView_LanguageTableView.swift; sourceTree = "<group>"; };
-		9694E23A1E29D1BC00ED3A85 /* LocalizableStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizableStrings.swift; sourceTree = "<group>"; };
 		9694E23C1E29D72800ED3A85 /* Internationalization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Internationalization.swift; sourceTree = "<group>"; };
+		9696CBC02031800B007CC94B /* Template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
 		969E83021EED830C009A1F2D /* ConfigurableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableViewProtocol.swift; sourceTree = "<group>"; };
 		969E83041EED842E009A1F2D /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		969F15F41E549BD300C0DD7D /* ViewController<UIView>.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController<UIView>.swift"; sourceTree = "<group>"; };
@@ -252,6 +300,22 @@
 		96C49DC41EB7DF1F006F93ED /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		96D2B8DC1E35538B006772A5 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		96DB1A78202FB80300B96D3C /* UIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		96E033E5203153100039E653 /* SETTINGS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SETTINGS.swift; sourceTree = "<group>"; };
+		96E033E92031540A0039E653 /* KEYBOARD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KEYBOARD.swift; sourceTree = "<group>"; };
+		96E033ED203154660039E653 /* LANGUAGE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LANGUAGE.swift; sourceTree = "<group>"; };
+		96E033F12031549C0039E653 /* ABOUT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABOUT.swift; sourceTree = "<group>"; };
+		96E033F5203154FC0039E653 /* LEGAL_NOTICES.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEGAL_NOTICES.swift; sourceTree = "<group>"; };
+		96E033F9203155A80039E653 /* VERSION.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VERSION.swift; sourceTree = "<group>"; };
+		96E033FD2031560E0039E653 /* GO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GO.swift; sourceTree = "<group>"; };
+		96E034012031562B0039E653 /* JOIN.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JOIN.swift; sourceTree = "<group>"; };
+		96E03405203156660039E653 /* NEXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NEXT.swift; sourceTree = "<group>"; };
+		96E034092031567A0039E653 /* ROUTE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ROUTE.swift; sourceTree = "<group>"; };
+		96E0340D203157030039E653 /* SEARCH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEARCH.swift; sourceTree = "<group>"; };
+		96E03411203162BF0039E653 /* SEND.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEND.swift; sourceTree = "<group>"; };
+		96E03415203162F30039E653 /* DONE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DONE.swift; sourceTree = "<group>"; };
+		96E03419203179C50039E653 /* EMERGENCY_CALL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMERGENCY_CALL.swift; sourceTree = "<group>"; };
+		96E0341D203179F00039E653 /* CONTINUE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CONTINUE.swift; sourceTree = "<group>"; };
+		96E0342120317A330039E653 /* QUIT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QUIT.swift; sourceTree = "<group>"; };
 		96E354E72020DDBC00668374 /* macOSKeyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = macOSKeyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96E354E92020DDBC00668374 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96E354ED2020DDBC00668374 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -374,7 +438,7 @@
 			children = (
 				9694E23C1E29D72800ED3A85 /* Internationalization.swift */,
 				96D2B8DC1E35538B006772A5 /* Localization.swift */,
-				9694E23A1E29D1BC00ED3A85 /* LocalizableStrings.swift */,
+				96E033E4203151300039E653 /* LocalizedStrings */,
 				9685BCFE1E06815700702C84 /* Keyboard.swift */,
 				96883126201FB35B0071908B /* KeyboardDelegate.swift */,
 				96883129202008030071908B /* DocumentContext.swift */,
@@ -439,6 +503,30 @@
 				96DB1A78202FB80300B96D3C /* UIKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		96E033E4203151300039E653 /* LocalizedStrings */ = {
+			isa = PBXGroup;
+			children = (
+				9696CBC02031800B007CC94B /* Template.swift */,
+				96E033E5203153100039E653 /* SETTINGS.swift */,
+				96E033E92031540A0039E653 /* KEYBOARD.swift */,
+				96E033ED203154660039E653 /* LANGUAGE.swift */,
+				96E033F12031549C0039E653 /* ABOUT.swift */,
+				96E033F5203154FC0039E653 /* LEGAL_NOTICES.swift */,
+				96E033F9203155A80039E653 /* VERSION.swift */,
+				96E0342120317A330039E653 /* QUIT.swift */,
+				96E033FD2031560E0039E653 /* GO.swift */,
+				96E034012031562B0039E653 /* JOIN.swift */,
+				96E03405203156660039E653 /* NEXT.swift */,
+				96E034092031567A0039E653 /* ROUTE.swift */,
+				96E0340D203157030039E653 /* SEARCH.swift */,
+				96E03411203162BF0039E653 /* SEND.swift */,
+				96E03415203162F30039E653 /* DONE.swift */,
+				96E03419203179C50039E653 /* EMERGENCY_CALL.swift */,
+				96E0341D203179F00039E653 /* CONTINUE.swift */,
+			);
+			path = LocalizedStrings;
 			sourceTree = "<group>";
 		};
 		96E354E82020DDBC00668374 /* macOSKeyboard */ = {
@@ -687,30 +775,41 @@
 				9688312A202008040071908B /* DocumentContext.swift in Sources */,
 				96533A901F1293A500B07CA3 /* UIView.swift in Sources */,
 				96533A891F12938D00B07CA3 /* ViewController<UIView>.swift in Sources */,
+				96E0341A203179C50039E653 /* EMERGENCY_CALL.swift in Sources */,
 				965A22161F3B2D6D000430E6 /* SettingsContainerView_LegalNoticesView.swift in Sources */,
 				96533A781F12938D00B07CA3 /* KeyboardViewController.swift in Sources */,
 				96533A871F12938D00B07CA3 /* LabelView.swift in Sources */,
 				96533A791F12938D00B07CA3 /* KeyboardView.swift in Sources */,
 				964AB9351D1B6490004C827C /* AppDelegate.swift in Sources */,
+				96E033EA2031540A0039E653 /* KEYBOARD.swift in Sources */,
+				9696CBC12031800B007CC94B /* Template.swift in Sources */,
 				96533A841F12938D00B07CA3 /* SpaceRowView.swift in Sources */,
 				96533A8A1F12938D00B07CA3 /* ConfigurableViewProtocol.swift in Sources */,
 				96533A8E1F1293A500B07CA3 /* String.swift in Sources */,
 				96533A811F12938D00B07CA3 /* UnicodeTable.swift in Sources */,
 				96533A921F1293A500B07CA3 /* Internationalization.swift in Sources */,
+				96E0340E203157030039E653 /* SEARCH.swift in Sources */,
+				96E03412203162BF0039E653 /* SEND.swift in Sources */,
+				96E033E6203153100039E653 /* SETTINGS.swift in Sources */,
 				96533A8C1F1293A500B07CA3 /* UIImage.swift in Sources */,
 				96B6B35B1F9764F400231AE6 /* Array<CharacterComponent>.swift in Sources */,
+				96E033FE2031560E0039E653 /* GO.swift in Sources */,
 				96533A7F1F12938D00B07CA3 /* CharacterSequenceView.swift in Sources */,
 				96533A911F1293A500B07CA3 /* Locale.swift in Sources */,
-				96533A941F1293A500B07CA3 /* LocalizableStrings.swift in Sources */,
 				96533A831F12938D00B07CA3 /* CharacterCollectionViewCell.swift in Sources */,
+				96E03416203162F30039E653 /* DONE.swift in Sources */,
 				96533A8D1F1293A500B07CA3 /* Character.swift in Sources */,
 				96883127201FB35B0071908B /* KeyboardDelegate.swift in Sources */,
+				96E0342220317A330039E653 /* QUIT.swift in Sources */,
+				96E0341E203179F00039E653 /* CONTINUE.swift in Sources */,
 				96533A7E1F12938D00B07CA3 /* DeleteRowView.swift in Sources */,
 				9643FC501F78F94B004DA2C0 /* CharacterComponentsDictionary.swift in Sources */,
 				96533A801F12938D00B07CA3 /* UnicodeCollectionView.swift in Sources */,
+				96E0340A2031567A0039E653 /* ROUTE.swift in Sources */,
 				96533A851F12938D00B07CA3 /* RowView.swift in Sources */,
 				96533A7B1F12938D00B07CA3 /* SettingsTableView.swift in Sources */,
 				961FC3311F3AE14B00ADB15D /* LegalNoticesText.swift in Sources */,
+				96E033F22031549C0039E653 /* ABOUT.swift in Sources */,
 				96533A8F1F1293A500B07CA3 /* CharacterSet.swift in Sources */,
 				963BA6631F3B1FD000BFE3A7 /* LegalTextView.swift in Sources */,
 				961FC32E1F3ADD9B00ADB15D /* LegalNoticesTextView.swift in Sources */,
@@ -721,11 +820,16 @@
 				96533A8B1F1293A500B07CA3 /* UIColor.swift in Sources */,
 				96533A7D1F12938D00B07CA3 /* KeyboardLayoutView.swift in Sources */,
 				96533A7A1F12938D00B07CA3 /* SettingsContainerView.swift in Sources */,
+				96E033FA203155A80039E653 /* VERSION.swift in Sources */,
+				96E03406203156660039E653 /* NEXT.swift in Sources */,
+				96E033F6203154FC0039E653 /* LEGAL_NOTICES.swift in Sources */,
 				96533A821F12938D00B07CA3 /* CharacterCollectionView.swift in Sources */,
 				961D74912009003900BBC5FB /* Key.swift in Sources */,
 				969221E51F3BA91A005E5913 /* SettingsContainerView_LanguageTableView.swift in Sources */,
+				96E033EE203154660039E653 /* LANGUAGE.swift in Sources */,
 				96533A7C1F12938D00B07CA3 /* LanguageTableView.swift in Sources */,
 				96533A761F12938D00B07CA3 /* KeyboardLayout.swift in Sources */,
+				96E034022031562B0039E653 /* JOIN.swift in Sources */,
 				964AB93D1D1B6490004C827C /* iOSKeyboard.xcdatamodeld in Sources */,
 				96533A881F12938D00B07CA3 /* Keyboard.swift in Sources */,
 			);
@@ -746,27 +850,38 @@
 				96EA39D71EAFDDDE00F3D804 /* UIImage.swift in Sources */,
 				9665F3761E9D847300850F97 /* CharacterSequenceView.swift in Sources */,
 				964AB96A1D1B6535004C827C /* KeyboardViewController.swift in Sources */,
+				96E0341F203179F00039E653 /* CONTINUE.swift in Sources */,
+				96E0342320317A330039E653 /* QUIT.swift in Sources */,
 				96BC5F561DEB961F002E0752 /* LabelView.swift in Sources */,
 				9665F3781E9D921500850F97 /* CharacterCollectionViewCell.swift in Sources */,
 				964ECA7E1E536FE8008E8757 /* SettingsContainerView.swift in Sources */,
 				961FC3321F3AE14B00ADB15D /* LegalNoticesText.swift in Sources */,
 				965D15C91D32AE3B0098FA57 /* KeyView.swift in Sources */,
+				96E0340F203157030039E653 /* SEARCH.swift in Sources */,
 				965D15C11D3146BB0098FA57 /* KeyboardView.swift in Sources */,
+				96E033F32031549C0039E653 /* ABOUT.swift in Sources */,
 				96F716B91F0438B6004A77C7 /* Locale.swift in Sources */,
 				969F15F71E54EE3600C0DD7D /* LanguageTableView.swift in Sources */,
-				9694E23B1E29D1BC00ED3A85 /* LocalizableStrings.swift in Sources */,
 				969F15F51E549BD300C0DD7D /* ViewController<UIView>.swift in Sources */,
 				965A22151F3B2D6C000430E6 /* SettingsContainerView_LegalNoticesView.swift in Sources */,
+				96E033EB2031540A0039E653 /* KEYBOARD.swift in Sources */,
 				964ED5481DF5765E006AD952 /* KeyboardColorScheme.swift in Sources */,
+				96E0340B2031567A0039E653 /* ROUTE.swift in Sources */,
 				961FC32F1F3ADD9B00ADB15D /* LegalNoticesTextView.swift in Sources */,
+				96E03407203156660039E653 /* NEXT.swift in Sources */,
 				9654DF7A1D4E1D0900DDB0EF /* SpaceRowView.swift in Sources */,
 				9688312B202008040071908B /* DocumentContext.swift in Sources */,
+				96E03413203162BF0039E653 /* SEND.swift in Sources */,
 				9643FC4E1F78F8D5004DA2C0 /* CharacterComponent.swift in Sources */,
 				961D74922009003900BBC5FB /* Key.swift in Sources */,
 				96848DA11EE0B64F0009869A /* UnicodeTable.swift in Sources */,
+				96E033F7203154FC0039E653 /* LEGAL_NOTICES.swift in Sources */,
+				9696CBC22031800B007CC94B /* Template.swift in Sources */,
 				9633A3C81E5DFA3C00DFA503 /* RowView.swift in Sources */,
 				9633A3CA1E5DFE8D00DFA503 /* DeleteRowView.swift in Sources */,
 				969E83031EED830C009A1F2D /* ConfigurableViewProtocol.swift in Sources */,
+				96E0341B203179C50039E653 /* EMERGENCY_CALL.swift in Sources */,
+				96E033FF2031560E0039E653 /* GO.swift in Sources */,
 				96F8D1D11E26FAE0000D1DFC /* SettingsTableView.swift in Sources */,
 				96F7FBEA1FBB299400F7146C /* CollectionViewFlowLayout.swift in Sources */,
 				960F6E931EC9ED0400EFC7B7 /* CharacterCollectionView.swift in Sources */,
@@ -776,9 +891,14 @@
 				9685BCFF1E06815700702C84 /* Keyboard.swift in Sources */,
 				9643FC511F78F94B004DA2C0 /* CharacterComponentsDictionary.swift in Sources */,
 				969221E61F3BA91A005E5913 /* SettingsContainerView_LanguageTableView.swift in Sources */,
+				96E03417203162F30039E653 /* DONE.swift in Sources */,
 				9620E749202B9EB1003FB02E /* Bundle.swift in Sources */,
+				96E033E7203153100039E653 /* SETTINGS.swift in Sources */,
 				96848D9F1EE05F080009869A /* String.swift in Sources */,
 				9694E23D1E29D72800ED3A85 /* Internationalization.swift in Sources */,
+				96E034032031562B0039E653 /* JOIN.swift in Sources */,
+				96E033FB203155A80039E653 /* VERSION.swift in Sources */,
+				96E033EF203154660039E653 /* LANGUAGE.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -797,30 +917,46 @@
 			buildActionMask = 2147483647;
 			files = (
 				96F28C1B2030205C0023313C /* KeyboardLayout.swift in Sources */,
+				96E03418203162F30039E653 /* DONE.swift in Sources */,
+				96E03414203162BF0039E653 /* SEND.swift in Sources */,
 				96DB1A84202FBD1700B96D3C /* ViewController<UIView>.swift in Sources */,
 				96F28C1A2030205C0023313C /* DocumentContext.swift in Sources */,
+				9696CBC32031800B007CC94B /* Template.swift in Sources */,
+				96E033FC203155A80039E653 /* VERSION.swift in Sources */,
 				96AED33120312AE600498A7E /* InterfaceLanguageMenuItem.swift in Sources */,
 				96AED33320312BA500498A7E /* LanguageMenuItem.swift in Sources */,
 				963DE0B0202F00B60040A448 /* main.swift in Sources */,
-				9697F883202FA8A1001EC50A /* LocalizableStrings.swift in Sources */,
+				96E034042031562B0039E653 /* JOIN.swift in Sources */,
 				9697F882202FA8A1001EC50A /* Localization.swift in Sources */,
+				96E0341C203179C50039E653 /* EMERGENCY_CALL.swift in Sources */,
 				96F28C21203021760023313C /* String.swift in Sources */,
 				96DB1A7B202FB84F00B96D3C /* LegalNoticesTextView.swift in Sources */,
 				96DB1A7D202FB87C00B96D3C /* UIView.swift in Sources */,
 				963DE0B2202F012B0040A448 /* StatusMenu.swift in Sources */,
+				96E033E8203153100039E653 /* SETTINGS.swift in Sources */,
+				96E033F0203154660039E653 /* LANGUAGE.swift in Sources */,
 				96F28C182030205C0023313C /* Keyboard.swift in Sources */,
 				96E354EA2020DDBC00668374 /* AppDelegate.swift in Sources */,
+				96E03408203156660039E653 /* NEXT.swift in Sources */,
 				96F28C2420302AC00023313C /* VersionMenuItem.swift in Sources */,
 				96F28C20203021090023313C /* Character.swift in Sources */,
+				96E03410203157030039E653 /* SEARCH.swift in Sources */,
 				96F28C22203021A50023313C /* Bundle.swift in Sources */,
 				96AFEBA9202FAB830099F70B /* LocalizedMenuItem.swift in Sources */,
+				96E0342420317A330039E653 /* QUIT.swift in Sources */,
 				96AFEBA7202FA9080099F70B /* QuitMenuItem.swift in Sources */,
 				96DB1A7A202FB84F00B96D3C /* LegalNoticesText.swift in Sources */,
+				96E033EC2031540A0039E653 /* KEYBOARD.swift in Sources */,
 				966EB96D202FC0D3007718F2 /* LegalNoticesMenuItem.swift in Sources */,
 				96F28C1C2030205C0023313C /* Key.swift in Sources */,
+				96E033F8203154FC0039E653 /* LEGAL_NOTICES.swift in Sources */,
 				96F28C192030205C0023313C /* KeyboardDelegate.swift in Sources */,
+				96E03420203179F00039E653 /* CONTINUE.swift in Sources */,
+				96E033F42031549C0039E653 /* ABOUT.swift in Sources */,
+				96E034002031560E0039E653 /* GO.swift in Sources */,
 				96DB1A7C202FB84F00B96D3C /* LegalTextView.swift in Sources */,
 				9697F881202FA88C001EC50A /* Internationalization.swift in Sources */,
+				96E0340C2031567A0039E653 /* ROUTE.swift in Sources */,
 				96F28C1D2030205C0023313C /* CharacterComponent.swift in Sources */,
 				96F28C1E2030205C0023313C /* Array<CharacterComponent>.swift in Sources */,
 				96F28C1F2030205C0023313C /* CharacterComponentsDictionary.swift in Sources */,

@@ -5,7 +5,7 @@
 //  Created by Roman Kerimov on 2018-02-12.
 //
 
-struct EMERGENCY_CALL: LocalizableString {
+struct EMERGENCY_CALL: LocalizedString {
     static var az:        String {return ""}
     static var az_Cyrl:   String {return ""}
     static var ca:        String {return ""}

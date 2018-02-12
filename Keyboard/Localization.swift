@@ -39,7 +39,7 @@ enum Language: String {
     case vi = "vi"
 }
 
-protocol LocalizableString {
+protocol LocalizedString {
     //static var az: String {get}
     //static var az_Cyrl: String {get}
     static var ca: String {get}
@@ -72,7 +72,7 @@ protocol LocalizableString {
     static var vi: String {get}
 }
 
-extension LocalizableString {
+extension LocalizedString {
     static var string: String {
         switch Language.current {
             

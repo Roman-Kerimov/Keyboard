@@ -5,7 +5,7 @@
 //  Created by Roman Kerimov on 2018-02-12.
 //
 
-struct STRING_NAME: LocalizableString {
+struct STRING_NAME: LocalizedString {
     static var az:        String {return ""}
     static var az_Cyrl:   String {return ""}
     static var ca:        String {return ""}

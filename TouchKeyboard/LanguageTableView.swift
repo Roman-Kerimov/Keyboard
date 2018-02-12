@@ -82,10 +82,7 @@ class LanguageTableView: UITableView, UITableViewDelegate, UITableViewDataSource
         
         cell.textLabel?.text = language.selfName
         cell.detailTextLabel?.text = language.localizedName
-        
-        if language == Language.current {
-            cell.accessoryType = .checkmark
-        }
+        cell.accessoryType = language == Language.current ? .checkmark : .none
         
         return cell
     }

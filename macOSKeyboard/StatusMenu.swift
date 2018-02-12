@@ -20,6 +20,8 @@ class StatusMenu: NSMenu {
             addItem(LayoutMenuItem.init(layout: layout))
         }
         addItem(.separator())
+        addItem(InterfaceLanguageMenuItem.init())
+        addItem(.separator())
         addItem(LegalNoticesMenuItem.init())
         addItem(VersionMenuItem.init())
         addItem(.separator())

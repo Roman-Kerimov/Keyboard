@@ -126,18 +126,13 @@ class Keyboard: NSObject {
             delegate?.delete()
             
         case .space:
-            if currentLabel == Key.space.label {
-                delegate?.space()
-            }
-            else {
-                delegate?.spaceInsist()
-            }
+            delegate?.insert(text: .space)
             
         case .return:
-            delegate?.return()
+            delegate?.insert(text: .return)
             
         case .tab:
-            delegate?.tab()
+            delegate?.insert(text: .tab)
             
         case .settings:
             delegate?.settings()

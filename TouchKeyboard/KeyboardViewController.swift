@@ -199,82 +199,8 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
     
     var cancelNextNormalization = false
     
-    var shouldInsertSpace: Bool {
-        if textDocumentProxy.characterBeforeInput?.isSpaceReturnOrTab == false {
-            return true
-        }
-        else {
-            return false
-        }
-    }
-    
     func delete() {
-        if textDocumentProxy.characterBeforeInput == .space
-            && textDocumentProxy.characterAfterInput?.isSpaceReturnOrTab == false
-            && textDocumentProxy.characterAfterInput?.belongsTo(.punctuationCharacters) == false {
-            
-            cancelNextNormalization = true
-            textDocumentProxy.adjustTextPosition(byCharacterOffset: -1)
-        }
-        else {
-            textDocumentProxy.deleteBackward()
-        }
-        
-        if textDocumentProxy.characterBeforeInput != .space
-            && textDocumentProxy.characterBeforeInput?.isSpaceReturnOrTab != false
-            && textDocumentProxy.characterAfterInput == .space {
-            
-            textDocumentProxy.adjustTextPosition(byCharacterOffset: 1)
-            textDocumentProxy.deleteBackward()
-        }
-        
-        if textDocumentProxy.characterBeforeInput == .space
-            && textDocumentProxy.characterAfterInput == .space {
-            
-            cancelNextNormalization = true
-            textDocumentProxy.adjustTextPosition(byCharacterOffset: 1)
-            textDocumentProxy.deleteBackward()
-        }
-        
-        if textDocumentProxy.characterBeforeInput?.isSpaceReturnOrTab == false
-            && textDocumentProxy.characterAfterInput?.isSpaceReturnOrTab == false {
-            
-            textDocumentProxy.insertText(.space)
-            textDocumentProxy.adjustTextPosition(byCharacterOffset: -1)
-        }
-    }
-    
-    func space() {
-        if textDocumentProxy.characterAfterInput == .space {
-            cancelNextNormalization = true
-            textDocumentProxy.adjustTextPosition(byCharacterOffset: 1)
-        }
-        
-        if shouldInsertSpace {
-            textDocumentProxy.insertText(.space)
-        }
-    }
-    
-    func spaceInsist() {
-        if !shouldInsertSpace {
-            textDocumentProxy.insertText(.space)
-        }
-    }
-    
-    func `return`() {
-        textDocumentProxy.insertText(.return)
-        
-        if textDocumentProxy.characterAfterInput == .space {
-            textDocumentProxy.deleteForward(sequenceOf: .init(charactersIn: .space))
-        }
-    }
-    
-    func tab() {
-        textDocumentProxy.insertText(.tab)
-        
-        if textDocumentProxy.characterAfterInput == .space {
-            textDocumentProxy.deleteForward(sequenceOf: .init(charactersIn: .space))
-        }
+        textDocumentProxy.deleteBackward()
     }
     
     func settings() {

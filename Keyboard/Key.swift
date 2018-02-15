@@ -29,7 +29,7 @@ class Key: NSObject {
     }
     
     static let delete: Key = .init(label:"delete")
-    static let space: Key = .init(label: " ", shiftUpLabel: "_", shiftRightLabel: "insist")
+    static let space: Key = .init(label: " ", shiftUpLabel: "_")
     static let `return`: Key = .init(label:"return")
     static let tab: Key = .init(label:"tab")
     static let nextKeyboard: Key = .init(label:"NextKeyboard")

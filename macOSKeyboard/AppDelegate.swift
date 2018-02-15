@@ -104,22 +104,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
         AXUIElement.focused.selectedText = .init()
     }
     
-    func space() {
-        insert(text: .space)
-    }
-    
-    func spaceInsist() {
-        space()
-    }
-    
-    func `return`() {
-        insert(text: .return)
-    }
-    
-    func tab() {
-        insert(text: .tab)
-    }
-    
     func settings() {}
     
     func insert(text: String) {

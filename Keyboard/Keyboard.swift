@@ -19,13 +19,56 @@ class Keyboard: NSObject {
         return "\(VERSION.string) \(versionNumber) (\(buildNumber))"
     }
     
+    internal var shiftFlag: Bool = false {
+        didSet {
+            if shiftFlag == false {
+                currentKeys = []
+                Array<CharacterComponent>.extraArrayExtension = .init()
+            }
+        }
+    }
+    
     internal func down(key: Key) {
         
-        if currentKeys.isEmpty {
+        if !shiftFlag {
             currentLabel = key.label
+            currentKeys.append(key)
+            input()
         }
-        
-        currentKeys.append(key)
+        else {
+            let layout = Keyboard.default.layout
+            switch key {
+                
+            case layout.rows[0][1], layout.rows[0][6]:
+                shift(direction: .upLeft)
+                
+            case layout.rows[0][2], layout.rows[0][7]:
+                shift(direction: .up)
+                
+            case layout.rows[0][3], layout.rows[0][8]:
+                shift(direction: .upRight)
+                
+                
+            case layout.rows[1][1], layout.rows[1][6]:
+                shift(direction: .left)
+                
+            case layout.rows[1][3], layout.rows[1][8]:
+                shift(direction: .right)
+                
+                
+            case layout.rows[2][1], layout.rows[2][6]:
+                shift(direction: .downLeft)
+                
+            case layout.rows[2][2], layout.rows[2][7]:
+                shift(direction: .down)
+                
+            case layout.rows[2][3], layout.rows[2][8]:
+                shift(direction: .downRight)
+                
+            default:
+                break
+            }
+        }
         
         if key == .delete {
             startAutorepeat()
@@ -36,11 +79,12 @@ class Keyboard: NSObject {
         if key == .delete {
             stopAutorepeat()
         }
-        else {
-            input()
+        
+        guard let keyIndex = currentKeys.index(of: key) else {
+            return
         }
         
-        if let keyIndex = currentKeys.index(of: key) {
+        if !shiftFlag {
             currentKeys.remove(at: keyIndex)
         }
     }
@@ -49,8 +93,6 @@ class Keyboard: NSObject {
     private var repeatTimer: Timer?
     
     private func startAutorepeat() {
-        input()
-        
         autorepeatStartTimer = .scheduledTimer(withTimeInterval: 0.5, repeats: false) {_ in
             self.repeatTimer = .scheduledTimer(withTimeInterval: 0.1, repeats: true) {_ in
                 DispatchQueue.main.async {
@@ -75,11 +117,7 @@ class Keyboard: NSObject {
         if shouldDeletePreviousCharacter {
             shouldDeletePreviousCharacter = false
             
-            guard delegate?.documentContext.beforeInput.last?.description != currentLabel else {
-                return
-            }
-            
-            Keyboard.default.delegate?.delete()
+            delegate?.delete()
         }
         
         switch currentKey {
@@ -187,7 +225,7 @@ class Keyboard: NSObject {
                 break
             }
             
-            guard let previousCharacter = delegate?.documentContext.beforeInput.last else {
+            guard let previousCharacter = delegate?.documentContext.beforeInput.dropLast().last else {
                 currentLabel = .init()
                 break
             }
@@ -215,7 +253,8 @@ class Keyboard: NSObject {
             }
             
             if previousCharacter.characterComponents.isEmpty || (combinedCharacter.isEmpty && ligatureCharacter.isEmpty) {
-                currentLabel = previousCharacter.description
+                currentLabel = .init()
+                shouldDeletePreviousCharacter = false
             }
             else {
                 characterComponents = ligatureCharacter.characterComponents
@@ -242,6 +281,13 @@ class Keyboard: NSObject {
             
         case .downRight:
             characterComponents += [.subscript]
+        }
+        
+        delegate?.delete()
+        input()
+        
+        if currentLabel.isEmpty {
+            shiftFlag = false
         }
     }
     

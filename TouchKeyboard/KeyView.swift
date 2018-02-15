@@ -337,7 +337,6 @@ class KeyView: UIButton, ConfigurableView {
             mainLabelView.text = key.label
             updateLocalizedStrings()
             isHighlighted = false
-            Array<CharacterComponent>.extraArrayExtension = .init()
             
         default:
             

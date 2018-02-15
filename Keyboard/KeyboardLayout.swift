@@ -14,6 +14,14 @@ struct KeyboardLayout {
     
     let rows: [[Key]]
     
+    func key(code: Int64) -> Key? {
+        return keycodeToKeyDictionary[code]
+    }
+    
+    private var keycodeToKeyDictionary: [Int64: Key] = [
+        49: .space,
+    ]
+    
     var rowCount: Int {
         return rows.count
     }
@@ -33,10 +41,16 @@ struct KeyboardLayout {
             [ .dollarSign,   .percentSign, .lessThanSign, .solidus,      .squareBracket, .zero,               .one,   .two,   .three, .equalsSign, ],
         ]
         
+        let keycodeRows: [[Int64]] = [
+            [ 12, 13, 14, 15, 17, 16, 32, 34, 31, 35, ],
+            [  0,  1,  2,  3,  5,  4, 38, 40, 37, 41, ],
+            [  6,  7,  8,  9, 11, 45, 46, 43, 47, 44, ],
+        ]
+        
         var keyRows: [[Key]] = []
-        for (row, shiftDownRow) in zip(rows, shiftDownRows) {
+        for ((row, shiftDownRow), keycodeRow) in zip(zip(rows, shiftDownRows), keycodeRows) {
             var keyRow: [Key] = []
-            for (label, shiftDownCharacterComponent) in zip(row, shiftDownRow) {
+            for ((label, shiftDownCharacterComponent), keycode) in zip(zip(row, shiftDownRow), keycodeRow) {
                 let shiftUpLabel: String
                 
                 if let shiftUpComponent = KeyboardLayout.shiftUpDictionary[label] {
@@ -48,7 +62,9 @@ struct KeyboardLayout {
                 
                 let shiftDownLabel = [shiftDownCharacterComponent].character + [shiftDownCharacterComponent].extraArray.filter {$0.contains(.extra0) || $0.contains(.extra1) || $0.contains(.extra2)} .map {$0.character} .joined()
                 
-                keyRow.append(Key.init(label: [label].character, shiftDownLabel: shiftDownLabel, shiftUpLabel: shiftUpLabel))
+                let key: Key = Key.init(label: [label].character, shiftDownLabel: shiftDownLabel, shiftUpLabel: shiftUpLabel)
+                keyRow.append(key)
+                keycodeToKeyDictionary[keycode] = key
             }
             
             keyRows.append(keyRow)

@@ -125,9 +125,6 @@ class Keyboard: NSObject {
         case .delete:
             delegate?.delete()
             
-        case .space:
-            delegate?.insert(text: .space)
-            
         case .return:
             delegate?.insert(text: .return)
             

@@ -29,6 +29,7 @@ class Keyboard: NSObject {
     }
     
     internal var shiftUpFlag: Bool = false
+    internal var shiftDownFlag: Bool = false
     
     internal func down(key: Key) {
         
@@ -120,6 +121,10 @@ class Keyboard: NSObject {
             shiftUp(key: currentKey)
         }
         
+        if shiftDownFlag {
+            shiftDown(key: currentKey)
+        }
+        
         if shouldDeletePreviousCharacter {
             shouldDeletePreviousCharacter = false
             
@@ -185,6 +190,20 @@ class Keyboard: NSObject {
         }
     }
     
+    private func shiftDown(key: Key) {
+        if currentLabel == key.label && key.shiftDownLabel.isEmpty == false {
+            currentLabel = key.shiftDownLabel.first?.description ?? .init()
+        }
+        else if characterComponents.extraArray.count > 1
+            && characterComponents == characterComponents.extraArray[0] {
+            
+            characterComponents = characterComponents.extraArray[1]
+        }
+        else {
+            characterComponents = .init(characterComponents.split(separator: .capital, maxSplits: 1, omittingEmptySubsequences: false).joined(separator: [.smallCapital]))
+        }
+    }
+    
     internal func shift(direction: ShiftDirection) {
         guard let key = currentKeys.first else {
             return
@@ -196,17 +215,7 @@ class Keyboard: NSObject {
             shiftUp(key: key)
             
         case .down:
-            if currentLabel == key.label && key.shiftDownLabel.isEmpty == false {
-                currentLabel = key.shiftDownLabel.first?.description ?? .init()
-            }
-            else if characterComponents.extraArray.count > 1
-                && characterComponents == characterComponents.extraArray[0] {
-                
-                characterComponents = characterComponents.extraArray[1]
-            }
-            else {
-                characterComponents = .init(characterComponents.split(separator: .capital, maxSplits: 1, omittingEmptySubsequences: false).joined(separator: [.smallCapital]))
-            }
+            shiftDown(key: key)
             
         case .left:
             if currentLabel == key.label && key.shiftLeftLabel.isEmpty == false {

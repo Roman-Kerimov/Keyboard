@@ -49,6 +49,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
                 }
                 
                 Keyboard.default.shiftUpFlag = event.flags.contains(.maskShift)
+                Keyboard.default.shiftDownFlag = event.flags.contains(.maskAlternate)
                 
                 let commandKeycodes: [Int64] = [54, 55]
                 

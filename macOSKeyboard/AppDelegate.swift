@@ -48,6 +48,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
                     return nil
                 }
                 
+                Keyboard.default.shiftUpFlag = event.flags.contains(.maskShift)
+                
                 let commandKeycodes: [Int64] = [54, 55]
                 
                 if Keyboard.default.currentKeys.isEmpty == false && eventType == .flagsChanged && commandKeycodes.contains(keycode) {

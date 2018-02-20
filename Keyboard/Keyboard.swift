@@ -28,6 +28,8 @@ class Keyboard: NSObject {
         }
     }
     
+    internal var shiftUpFlag: Bool = false
+    
     internal func down(key: Key) {
         
         if !shiftFlag {
@@ -114,6 +116,10 @@ class Keyboard: NSObject {
             return
         }
         
+        if shiftUpFlag {
+            shiftUp(key: currentKey)
+        }
+        
         if shouldDeletePreviousCharacter {
             shouldDeletePreviousCharacter = false
             
@@ -164,6 +170,21 @@ class Keyboard: NSObject {
         }
     }
     
+    private func shiftUp(key: Key) {
+        if currentLabel == key.label && key.shiftUpLabel.isEmpty == false {
+            currentLabel = key.shiftUpLabel
+        }
+        else {
+            characterComponents += [.capital]
+            
+            if characterComponents.count == 1 {
+                if let shiftUpCharacterComponent = KeyboardLayout.shiftUpDictionary[characterComponents.first!] {
+                    characterComponents = [shiftUpCharacterComponent]
+                }
+            }
+        }
+    }
+    
     internal func shift(direction: ShiftDirection) {
         guard let key = currentKeys.first else {
             return
@@ -172,18 +193,7 @@ class Keyboard: NSObject {
         switch direction {
             
         case .up:
-            if currentLabel == key.label && key.shiftUpLabel.isEmpty == false {
-                currentLabel = key.shiftUpLabel
-            }
-            else {
-                characterComponents += [.capital]
-                
-                if characterComponents.count == 1 {
-                    if let shiftUpCharacterComponent = KeyboardLayout.shiftUpDictionary[characterComponents.first!] {
-                        characterComponents = [shiftUpCharacterComponent]
-                    }
-                }
-            }
+            shiftUp(key: key)
             
         case .down:
             if currentLabel == key.label && key.shiftDownLabel.isEmpty == false {

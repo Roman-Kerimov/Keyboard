@@ -17,4 +17,15 @@ extension CGEvent {
             self.setIntegerValueField(.keyboardEventKeycode, value: .init(newValue))
         }
     }
+    
+    var character: String {
+        get {
+            var actualStringLength: Int = 0
+            var unicodeString: [UniChar] = []
+            
+            self.keyboardGetUnicodeString(maxStringLength: 10, actualStringLength: &actualStringLength, unicodeString: &unicodeString)
+            
+            return .init(utf16CodeUnits: unicodeString, count: actualStringLength)
+        }
+    }
 }

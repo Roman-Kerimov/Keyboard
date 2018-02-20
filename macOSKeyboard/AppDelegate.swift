@@ -46,6 +46,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
                     return nil
                 }
                 
+                guard event.character.applyingTransform(.toLatin, reverse: false) == event.character else {
+                    return Unmanaged.passRetained(event)
+                }
+                
                 Keyboard.default.shiftUpFlag = event.flags.contains(.maskShift)
                 Keyboard.default.shiftDownFlag = event.flags.contains(.maskAlternate)
                 

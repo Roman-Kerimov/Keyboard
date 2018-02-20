@@ -21,31 +21,31 @@ extension AXUIElement {
     var text: String {
         get {
             var textValue: CFTypeRef?
-            AXUIElementCopyAttributeValue(.focused, kAXValueAttribute as CFString, &textValue)
+            AXUIElementCopyAttributeValue(self, kAXValueAttribute as CFString, &textValue)
             return textValue as! String
         }
         
         set {
-            AXUIElementSetAttributeValue(.focused, kAXValueAttribute as CFString, newValue as CFTypeRef)
+            AXUIElementSetAttributeValue(self, kAXValueAttribute as CFString, newValue as CFTypeRef)
         }
     }
     
     var selectedText: String {
         get {
             var selectedTextValue: CFTypeRef?
-            AXUIElementCopyAttributeValue(.focused, kAXSelectedTextAttribute as CFString, &selectedTextValue)
+            AXUIElementCopyAttributeValue(self, kAXSelectedTextAttribute as CFString, &selectedTextValue)
             return selectedTextValue as! String
         }
         
         set {
-            AXUIElementSetAttributeValue(.focused, kAXSelectedTextAttribute as CFString, newValue as CFTypeRef)
+            AXUIElementSetAttributeValue(self, kAXSelectedTextAttribute as CFString, newValue as CFTypeRef)
         }
     }
     
     var selectedTextRange: NSRange {
         get {
             var selectedTextRangeAttribute: CFTypeRef?
-            AXUIElementCopyAttributeValue(.focused, kAXSelectedTextRangeAttribute as CFString, &selectedTextRangeAttribute)
+            AXUIElementCopyAttributeValue(self, kAXSelectedTextRangeAttribute as CFString, &selectedTextRangeAttribute)
             
             var selectedTextRange: NSRange = .init()
             AXValueGetValue(selectedTextRangeAttribute as! AXValue, .cfRange, &selectedTextRange)
@@ -55,7 +55,7 @@ extension AXUIElement {
         
         set {
             var range = newValue
-            AXUIElementSetAttributeValue(.focused, kAXSelectedTextRangeAttribute as CFString, AXValueCreate(.cfRange, &range) as CFTypeRef)
+            AXUIElementSetAttributeValue(self, kAXSelectedTextRangeAttribute as CFString, AXValueCreate(.cfRange, &range) as CFTypeRef)
         }
     }
 }

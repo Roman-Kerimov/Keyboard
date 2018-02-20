@@ -106,6 +106,7 @@
 		969E83051EED842E009A1F2D /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969E83041EED842E009A1F2D /* UIView.swift */; };
 		969F15F51E549BD300C0DD7D /* ViewController<UIView>.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969F15F41E549BD300C0DD7D /* ViewController<UIView>.swift */; };
 		969F15F71E54EE3600C0DD7D /* LanguageTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969F15F61E54EE3600C0DD7D /* LanguageTableView.swift */; };
+		96AC6CA3203C23B200555164 /* CGEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AC6CA2203C23B200555164 /* CGEvent.swift */; };
 		96AED32F203120DE00498A7E /* LayoutMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AED32E203120DE00498A7E /* LayoutMenuItem.swift */; };
 		96AED33120312AE600498A7E /* InterfaceLanguageMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AED33020312AE600498A7E /* InterfaceLanguageMenuItem.swift */; };
 		96AED33320312BA500498A7E /* LanguageMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AED33220312BA500498A7E /* LanguageMenuItem.swift */; };
@@ -293,6 +294,7 @@
 		969E83041EED842E009A1F2D /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		969F15F41E549BD300C0DD7D /* ViewController<UIView>.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController<UIView>.swift"; sourceTree = "<group>"; };
 		969F15F61E54EE3600C0DD7D /* LanguageTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageTableView.swift; sourceTree = "<group>"; };
+		96AC6CA2203C23B200555164 /* CGEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGEvent.swift; sourceTree = "<group>"; };
 		96AED32E203120DE00498A7E /* LayoutMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutMenuItem.swift; sourceTree = "<group>"; };
 		96AED33020312AE600498A7E /* InterfaceLanguageMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceLanguageMenuItem.swift; sourceTree = "<group>"; };
 		96AED33220312BA500498A7E /* LanguageMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageMenuItem.swift; sourceTree = "<group>"; };
@@ -547,6 +549,7 @@
 				963DE0AF202F00B60040A448 /* main.swift */,
 				96E354E92020DDBC00668374 /* AppDelegate.swift */,
 				9673CAD7203282490030E2CA /* AXUIElement.swift */,
+				96AC6CA2203C23B200555164 /* CGEvent.swift */,
 				963DE0B1202F012B0040A448 /* StatusMenu.swift */,
 				96AED32E203120DE00498A7E /* LayoutMenuItem.swift */,
 				96AED33020312AE600498A7E /* InterfaceLanguageMenuItem.swift */,
@@ -938,6 +941,7 @@
 				96E03418203162F30039E653 /* DONE.swift in Sources */,
 				96E03414203162BF0039E653 /* SEND.swift in Sources */,
 				96DB1A84202FBD1700B96D3C /* ViewController<UIView>.swift in Sources */,
+				96AC6CA3203C23B200555164 /* CGEvent.swift in Sources */,
 				96F28C1A2030205C0023313C /* DocumentContext.swift in Sources */,
 				9696CBC32031800B007CC94B /* Template.swift in Sources */,
 				96E033FC203155A80039E653 /* VERSION.swift in Sources */,

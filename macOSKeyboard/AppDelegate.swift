@@ -23,19 +23,17 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
             options: .defaultTap,
             eventsOfInterest: eventMask,
             callback: { (eventTapProxy, eventType, event, nil) -> Unmanaged<CGEvent>? in
-
-                let keycode = event.getIntegerValueField(.keyboardEventKeycode)
                 
                 let isAutorepeatEvent: Bool = event.getIntegerValueField(.keyboardEventAutorepeat) == 0 ? false : true
                 
-                let returnKeycode: Int64 = 36
-                let deleteKeycode: Int64 = 51
-                let leftArrowKeycode: Int64 = 123
-                let rightArrowKeycode: Int64 = 124
-                let downArrowKeycode: Int64 = 125
-                let upArrowKeycode: Int64 = 126
+                let returnKeycode: CGKeyCode = 36
+                let deleteKeycode: CGKeyCode = 51
+                let leftArrowKeycode: CGKeyCode = 123
+                let rightArrowKeycode: CGKeyCode = 124
+                let downArrowKeycode: CGKeyCode = 125
+                let upArrowKeycode: CGKeyCode = 126
                 
-                let autorepeatKeycodes: [Int64] = [
+                let autorepeatKeycodes: [CGKeyCode] = [
                     returnKeycode,
                     deleteKeycode,
                     leftArrowKeycode,
@@ -44,21 +42,21 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
                     upArrowKeycode
                 ]
                 
-                guard !isAutorepeatEvent || autorepeatKeycodes.contains(keycode)  else {
+                guard !isAutorepeatEvent || autorepeatKeycodes.contains(event.keycode)  else {
                     return nil
                 }
                 
                 Keyboard.default.shiftUpFlag = event.flags.contains(.maskShift)
                 Keyboard.default.shiftDownFlag = event.flags.contains(.maskAlternate)
                 
-                let commandKeycodes: [Int64] = [54, 55]
+                let commandKeycodes: [CGKeyCode] = [54, 55]
                 
-                if Keyboard.default.currentKeys.isEmpty == false && eventType == .flagsChanged && commandKeycodes.contains(keycode) {
+                if Keyboard.default.currentKeys.isEmpty == false && eventType == .flagsChanged && commandKeycodes.contains(event.keycode) {
                     Keyboard.default.shiftFlag = event.flags.contains(.maskCommand)
                     return nil
                 }
                 
-                if commandKeycodes.contains(keycode) && Keyboard.default.shiftFlag {
+                if commandKeycodes.contains(event.keycode) && Keyboard.default.shiftFlag {
                     Keyboard.default.shiftFlag = event.flags.contains(.maskCommand)
                 }
                 
@@ -66,7 +64,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
                     return Unmanaged.passRetained(event)
                 }
                 
-                guard let key = Keyboard.default.layout.key(code: keycode) else {
+                guard let key = Keyboard.default.layout.key(code: event.keycode) else {
                     if Keyboard.default.shiftFlag {
                         return nil
                     }

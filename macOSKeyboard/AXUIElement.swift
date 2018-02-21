@@ -18,44 +18,60 @@ extension AXUIElement {
         return focusedUIElement as! AXUIElement
     }
     
+    private func get(attribute: AXAttribute) -> String {
+        var value: CFTypeRef?
+        AXUIElementCopyAttributeValue(self, kAXValueAttribute as CFString, &value)
+        return value as! String
+    }
+    
+    private func set(attribute: AXAttribute, value: String) {
+        AXUIElementSetAttributeValue(self, attribute.cfString, value as CFTypeRef)
+    }
+    
+    private func get(attribute: AXAttribute) -> NSRange {
+        
+        var value: CFTypeRef?
+        AXUIElementCopyAttributeValue(self, kAXSelectedTextRangeAttribute as CFString, &value)
+
+        var rangeValue: NSRange = .init()
+        AXValueGetValue(value as! AXValue, .cfRange, &rangeValue)
+
+        return rangeValue
+    }
+    
+    private func set(attribute: AXAttribute, value: NSRange) {
+        var rangeValue = value
+        AXUIElementSetAttributeValue(self, attribute.cfString, AXValueCreate(.cfRange, &rangeValue) as CFTypeRef)
+    }
+    
+
     var text: String {
         get {
-            var textValue: CFTypeRef?
-            AXUIElementCopyAttributeValue(self, kAXValueAttribute as CFString, &textValue)
-            return textValue as! String
+            return get(attribute: .value)
         }
         
         set {
-            AXUIElementSetAttributeValue(self, kAXValueAttribute as CFString, newValue as CFTypeRef)
+            set(attribute: .value, value: newValue)
         }
     }
     
     var selectedText: String {
         get {
-            var selectedTextValue: CFTypeRef?
-            AXUIElementCopyAttributeValue(self, kAXSelectedTextAttribute as CFString, &selectedTextValue)
-            return selectedTextValue as! String
+            return get(attribute: .selectedText)
         }
         
         set {
-            AXUIElementSetAttributeValue(self, kAXSelectedTextAttribute as CFString, newValue as CFTypeRef)
+            set(attribute: .selectedText, value: newValue)
         }
     }
     
     var selectedTextRange: NSRange {
         get {
-            var selectedTextRangeAttribute: CFTypeRef?
-            AXUIElementCopyAttributeValue(self, kAXSelectedTextRangeAttribute as CFString, &selectedTextRangeAttribute)
-            
-            var selectedTextRange: NSRange = .init()
-            AXValueGetValue(selectedTextRangeAttribute as! AXValue, .cfRange, &selectedTextRange)
-            
-            return selectedTextRange
+            return get(attribute: .selectedTextRange)
         }
         
         set {
-            var range = newValue
-            AXUIElementSetAttributeValue(self, kAXSelectedTextRangeAttribute as CFString, AXValueCreate(.cfRange, &range) as CFTypeRef)
+            set(attribute: .selectedTextRange, value: newValue)
         }
     }
 }

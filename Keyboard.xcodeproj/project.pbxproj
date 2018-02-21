@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		960F6E931EC9ED0400EFC7B7 /* CharacterCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960F6E921EC9ED0400EFC7B7 /* CharacterCollectionView.swift */; };
 		960F6E951EC9F7E600EFC7B7 /* UnicodeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960F6E941EC9F7E600EFC7B7 /* UnicodeCollectionView.swift */; };
+		960FEFEE203D37590099E449 /* AXAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960FEFED203D37590099E449 /* AXAttribute.swift */; };
 		961D74912009003900BBC5FB /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961D74902009003900BBC5FB /* Key.swift */; };
 		961D74922009003900BBC5FB /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961D74902009003900BBC5FB /* Key.swift */; };
 		961FC32E1F3ADD9B00ADB15D /* LegalNoticesTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961FC32D1F3ADD9B00ADB15D /* LegalNoticesTextView.swift */; };
@@ -240,6 +241,7 @@
 /* Begin PBXFileReference section */
 		960F6E921EC9ED0400EFC7B7 /* CharacterCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterCollectionView.swift; sourceTree = "<group>"; };
 		960F6E941EC9F7E600EFC7B7 /* UnicodeCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnicodeCollectionView.swift; sourceTree = "<group>"; };
+		960FEFED203D37590099E449 /* AXAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AXAttribute.swift; sourceTree = "<group>"; };
 		961D74902009003900BBC5FB /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		961FC32D1F3ADD9B00ADB15D /* LegalNoticesTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalNoticesTextView.swift; sourceTree = "<group>"; };
 		961FC3301F3AE14B00ADB15D /* LegalNoticesText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalNoticesText.swift; sourceTree = "<group>"; };
@@ -549,6 +551,7 @@
 				963DE0AF202F00B60040A448 /* main.swift */,
 				96E354E92020DDBC00668374 /* AppDelegate.swift */,
 				9673CAD7203282490030E2CA /* AXUIElement.swift */,
+				960FEFED203D37590099E449 /* AXAttribute.swift */,
 				96AC6CA2203C23B200555164 /* CGEvent.swift */,
 				963DE0B1202F012B0040A448 /* StatusMenu.swift */,
 				96AED32E203120DE00498A7E /* LayoutMenuItem.swift */,
@@ -978,6 +981,7 @@
 				96E033F42031549C0039E653 /* ABOUT.swift in Sources */,
 				96E034002031560E0039E653 /* GO.swift in Sources */,
 				96DB1A7C202FB84F00B96D3C /* LegalTextView.swift in Sources */,
+				960FEFEE203D37590099E449 /* AXAttribute.swift in Sources */,
 				9697F881202FA88C001EC50A /* Internationalization.swift in Sources */,
 				96E0340C2031567A0039E653 /* ROUTE.swift in Sources */,
 				96F28C1D2030205C0023313C /* CharacterComponent.swift in Sources */,

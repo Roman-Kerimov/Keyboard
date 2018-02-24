@@ -26,20 +26,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
                 
                 let isAutorepeatEvent: Bool = event.getIntegerValueField(.keyboardEventAutorepeat) == 0 ? false : true
                 
-                let returnKeycode: CGKeyCode = 36
-                let deleteKeycode: CGKeyCode = 51
-                let leftArrowKeycode: CGKeyCode = 123
-                let rightArrowKeycode: CGKeyCode = 124
-                let downArrowKeycode: CGKeyCode = 125
-                let upArrowKeycode: CGKeyCode = 126
-                
                 let autorepeatKeycodes: [CGKeyCode] = [
-                    returnKeycode,
-                    deleteKeycode,
-                    leftArrowKeycode,
-                    rightArrowKeycode,
-                    downArrowKeycode,
-                    upArrowKeycode
+                    .return,
+                    .delete,
+                    .leftArrow,
+                    .rightArrow,
+                    .downArrow,
+                    .upArrow,
                 ]
                 
                 guard !isAutorepeatEvent || autorepeatKeycodes.contains(event.keycode)  else {
@@ -53,7 +46,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
                 Keyboard.default.shiftUpFlag = event.flags.contains(.maskShift)
                 Keyboard.default.shiftDownFlag = event.flags.contains(.maskAlternate)
                 
-                let commandKeycodes: [CGKeyCode] = [54, 55]
+                let commandKeycodes: [CGKeyCode] = [.leftCommand, .rightCommand]
                 
                 if Keyboard.default.currentKeys.isEmpty == false && eventType == .flagsChanged && commandKeycodes.contains(event.keycode) {
                     Keyboard.default.shiftFlag = event.flags.contains(.maskCommand)

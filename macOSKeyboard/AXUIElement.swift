@@ -44,6 +44,15 @@ extension AXUIElement {
         AXUIElementSetAttributeValue(self, attribute.cfString, AXValueCreate(.cfRange, &rangeValue) as CFTypeRef)
     }
     
+    
+    func hasSettable(attribute: AXAttribute) -> Bool {
+        
+        var isSettable: DarwinBoolean = .init(false)
+        AXUIElementIsAttributeSettable(self, attribute.cfString, &isSettable)
+        
+        return isSettable.boolValue
+    }
+    
 
     var text: String {
         get {

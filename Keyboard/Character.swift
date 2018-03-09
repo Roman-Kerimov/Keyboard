@@ -17,6 +17,7 @@ extension Character {
     static let reverseSolidus: Character = "\\"
     static let comma: Character = ","
     static let fullStop: Character = "."
+    static let v: Character = "v"
     
     func belongsTo(_ characterSet: CharacterSet) -> Bool {
         return characterSet.contains(self.unicodeScalars.first!)

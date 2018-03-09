@@ -24,6 +24,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
             eventsOfInterest: eventMask,
             callback: { (eventTapProxy, eventType, event, nil) -> Unmanaged<CGEvent>? in
                 
+                if let archivedPasteboardItems = AppDelegate.archivedPasteboardItems {
+                    if event.type == .keyUp && Keyboard.default.currentKeys.count == 1 {
+                        NSPasteboard.general.restore(archivedItems: archivedPasteboardItems)
+                        AppDelegate.archivedPasteboardItems = nil
+                    }
+                }
+                
                 let isAutorepeatEvent: Bool = event.getIntegerValueField(.keyboardEventAutorepeat) == 0 ? false : true
                 
                 let autorepeatKeycodes: [CGKeyCode] = [
@@ -93,19 +100,59 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
         // Insert code here to tear down your application
     }
     
+    private func tap(label: String, flags: CGEventFlags = .init()) {
+        guard let keycode: CGKeyCode = .from(label: label, flags: .maskCommand) else {
+            return
+        }
+        
+        tap(keycode: keycode, flags: flags)
+    }
+    
+    private func tap(keycode: CGKeyCode, flags: CGEventFlags = .init()) {
+        let source = CGEventSource.init(stateID: .combinedSessionState)
+        let keyDown = CGEvent.init(keyboardEventSource: source, virtualKey: keycode, keyDown: true)
+        keyDown?.flags = flags
+        keyDown?.post(tap: .cgAnnotatedSessionEventTap)
+        
+        let keyUp = CGEvent.init(keyboardEventSource: source, virtualKey: keycode, keyDown: false)
+        keyUp?.post(tap: .cgAnnotatedSessionEventTap)
+    }
+    
+    static var archivedPasteboardItems: [NSPasteboardItem]? = nil
+    
     
     // MARK: - KeyboardDelegate
 
     func delete() {
-        let location: Int = AXUIElement.focused.selectedTextRange.location
-        AXUIElement.focused.selectedTextRange = .init(location: location - 1, length: 1)
-        AXUIElement.focused.selectedText = .init()
+        
+        if AXUIElement.focused.hasSettable(attribute: .selectedText) && AXUIElement.focused.hasSettable(attribute: .selectedTextRange) {
+            let location: Int = AXUIElement.focused.selectedTextRange.location
+            AXUIElement.focused.selectedTextRange = .init(location: location - 1, length: 1)
+            AXUIElement.focused.selectedText = .init()
+        }
+        else {
+            tap(keycode: .delete)
+        }
     }
     
     func settings() {}
     
     func insert(text: String) {
-        AXUIElement.focused.selectedText = text
+        
+        if AXUIElement.focused.hasSettable(attribute: .selectedText) {
+            AXUIElement.focused.selectedText = text
+        }
+        else {
+            
+            if AppDelegate.archivedPasteboardItems == nil {
+                AppDelegate.archivedPasteboardItems = NSPasteboard.general.archivedItems
+            }
+            
+            NSPasteboard.general.declareTypes([.string], owner: nil)
+            NSPasteboard.general.setString(text, forType: .string)
+
+            tap(label: .v, flags: .maskCommand)
+        }
     }
     
     var documentContext: DocumentContext {

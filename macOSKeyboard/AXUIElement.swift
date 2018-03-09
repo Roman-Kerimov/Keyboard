@@ -50,7 +50,16 @@ extension AXUIElement {
         var isSettable: DarwinBoolean = .init(false)
         AXUIElementIsAttributeSettable(self, attribute.cfString, &isSettable)
         
-        return isSettable.boolValue
+        return isSettable.boolValue && attributeNames.filter {$0.hasSuffix("Ancestor")} .isEmpty
+    }
+    
+    private var attributeNames: [String] {
+        
+        var attributeNamesCFArray: CFArray?
+        
+        AXUIElementCopyAttributeNames(.focused, &attributeNamesCFArray)
+        
+        return attributeNamesCFArray as! [String]
     }
     
 

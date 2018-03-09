@@ -139,6 +139,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
     
     func insert(text: String) {
         
+        for flags: CGEventFlags in [[], [.maskShift], [.maskAlternate], [.maskShift, .maskAlternate]] {
+            if let keycode: CGKeyCode = .from(label: text, flags: flags) {
+                tap(keycode: keycode, flags: flags)
+                return
+            }
+        }
+        
         if AXUIElement.focused.hasSettable(attribute: .selectedText) {
             AXUIElement.focused.selectedText = text
         }

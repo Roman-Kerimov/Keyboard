@@ -18,20 +18,26 @@ extension CGKeyCode {
     static let upArrow: CGKeyCode = 126
     
     static func from(label: String, flags: CGEventFlags) -> CGKeyCode? {
-        if layout[flags] == nil {
-            layout[flags] = .init()
+        let currentKeyboard = TISCopyCurrentKeyboardLayoutInputSource().takeRetainedValue()
+        let inputSourceIDPointer = TISGetInputSourceProperty(currentKeyboard, kTISPropertyInputSourceID)
+        let inputSourceID = Unmanaged<CFString>.fromOpaque(inputSourceIDPointer!).takeUnretainedValue() as String
+        
+        if layouts[inputSourceID] == nil {
+            layouts[inputSourceID] = .init()
         }
         
-        if layout[flags]!.isEmpty != false || layout[flags]![label]?.label(flags: flags) != label {
+        if layouts[inputSourceID]![flags] == nil {
+            layouts[inputSourceID]![flags] = .init()
+            
             for keycode: CGKeyCode in 0..<256 {
-                layout[flags]![keycode.label(flags: flags)] = keycode
+                layouts[inputSourceID]![flags]![keycode.label(flags: flags)] = keycode
             }
         }
         
-        return layout[flags]![label]
+        return layouts[inputSourceID]![flags]![label]
     }
     
-    private static var layout: [CGEventFlags: [String: CGKeyCode]] = .init()
+    private static var layouts: [String: [CGEventFlags: [String: CGKeyCode]]] = .init()
     
     func label(flags: CGEventFlags) -> String {
         let currentKeyboard = TISCopyCurrentKeyboardLayoutInputSource().takeRetainedValue()

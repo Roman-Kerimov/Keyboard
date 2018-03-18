@@ -18,9 +18,8 @@ extension CGKeyCode {
     static let upArrow: CGKeyCode = 126
     
     static func from(label: String, flags: CGEventFlags) -> CGKeyCode? {
-        let currentKeyboard = TISCopyCurrentKeyboardLayoutInputSource().takeRetainedValue()
-        let inputSourceIDPointer = TISGetInputSourceProperty(currentKeyboard, kTISPropertyInputSourceID)
-        let inputSourceID = Unmanaged<CFString>.fromOpaque(inputSourceIDPointer!).takeUnretainedValue() as String
+        
+        let inputSourceID = TISInputSource.currentKeyboardLayout.id
         
         if layouts[inputSourceID] == nil {
             layouts[inputSourceID] = .init()
@@ -40,10 +39,6 @@ extension CGKeyCode {
     private static var layouts: [String: [CGEventFlags: [String: CGKeyCode]]] = .init()
     
     func label(flags: CGEventFlags) -> String {
-        let currentKeyboard = TISCopyCurrentKeyboardLayoutInputSource().takeRetainedValue()
-        let layoutPointer = TISGetInputSourceProperty(currentKeyboard, kTISPropertyUnicodeKeyLayoutData)
-        let layoutData = Unmanaged<CFData>.fromOpaque(layoutPointer!).takeUnretainedValue() as Data
-        
         let virtualKeyCode: UInt16 = self
         let keyAction: UInt16 = .init(kUCKeyActionDown)
         
@@ -73,7 +68,7 @@ extension CGKeyCode {
         var actualStringLength: Int = 0
         var unicodeString: [UniChar] = .init(repeating: 0, count: maxStringLength)
         
-        let _ = layoutData.withUnsafeBytes { keyLayoutPointer in
+        let _ = TISInputSource.currentKeyboardLayout.unicodeKeyLayoutData.withUnsafeBytes { keyLayoutPointer in
             UCKeyTranslate(keyLayoutPointer, virtualKeyCode, keyAction, modifierKeyState, keyboardType, keyTranslateOptions, &deadKeyState, maxStringLength, &actualStringLength, &unicodeString)
         }
         

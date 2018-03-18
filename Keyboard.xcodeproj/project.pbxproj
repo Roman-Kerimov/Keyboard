@@ -130,6 +130,7 @@
 		96DB1A7C202FB84F00B96D3C /* LegalTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963BA6621F3B1FD000BFE3A7 /* LegalTextView.swift */; };
 		96DB1A7D202FB87C00B96D3C /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969E83041EED842E009A1F2D /* UIView.swift */; };
 		96DB1A84202FBD1700B96D3C /* ViewController<UIView>.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969F15F41E549BD300C0DD7D /* ViewController<UIView>.swift */; };
+		96DBC14B205EBD8700910E7A /* TISInputSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DBC14A205EBD8700910E7A /* TISInputSource.swift */; };
 		96E033E6203153100039E653 /* SETTINGS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E033E5203153100039E653 /* SETTINGS.swift */; };
 		96E033E7203153100039E653 /* SETTINGS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E033E5203153100039E653 /* SETTINGS.swift */; };
 		96E033E8203153100039E653 /* SETTINGS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E033E5203153100039E653 /* SETTINGS.swift */; };
@@ -314,6 +315,7 @@
 		96C49DC41EB7DF1F006F93ED /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		96D2B8DC1E35538B006772A5 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		96DB1A78202FB80300B96D3C /* UIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		96DBC14A205EBD8700910E7A /* TISInputSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TISInputSource.swift; sourceTree = "<group>"; };
 		96E033E5203153100039E653 /* SETTINGS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SETTINGS.swift; sourceTree = "<group>"; };
 		96E033E92031540A0039E653 /* KEYBOARD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KEYBOARD.swift; sourceTree = "<group>"; };
 		96E033ED203154660039E653 /* LANGUAGE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LANGUAGE.swift; sourceTree = "<group>"; };
@@ -560,6 +562,7 @@
 				960FEFED203D37590099E449 /* AXAttribute.swift */,
 				96AC6CA2203C23B200555164 /* CGEvent.swift */,
 				9665B9692041D773001AB462 /* CGKeyCode.swift */,
+				96DBC14A205EBD8700910E7A /* TISInputSource.swift */,
 				96C1EC2D205131EC00AC27CB /* CGEventFlags.swift */,
 				96ACD587205261EE007CFDCF /* NSPasteboard.swift */,
 				963DE0B1202F012B0040A448 /* StatusMenu.swift */,
@@ -985,6 +988,7 @@
 				96E033EC2031540A0039E653 /* KEYBOARD.swift in Sources */,
 				966EB96D202FC0D3007718F2 /* LegalNoticesMenuItem.swift in Sources */,
 				96C1EC2E205131EC00AC27CB /* CGEventFlags.swift in Sources */,
+				96DBC14B205EBD8700910E7A /* TISInputSource.swift in Sources */,
 				96F28C1C2030205C0023313C /* Key.swift in Sources */,
 				9673CAD8203282490030E2CA /* AXUIElement.swift in Sources */,
 				96E033F8203154FC0039E653 /* LEGAL_NOTICES.swift in Sources */,

@@ -46,6 +46,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
                     return nil
                 }
                 
+                guard AppDelegate.skipTapCount == 0 else {
+                    AppDelegate.skipTapCount -= 1
+                    return Unmanaged.passRetained(event)
+                }
+                
                 guard event.character.applyingTransform(.toLatin, reverse: false) == event.character else {
                     return Unmanaged.passRetained(event)
                 }
@@ -108,14 +113,17 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
         tap(keycode: keycode, flags: flags)
     }
     
+    static var skipTapCount: Int = 0
     private func tap(keycode: CGKeyCode, flags: CGEventFlags = .init()) {
-        let source = CGEventSource.init(stateID: .combinedSessionState)
+        AppDelegate.skipTapCount += 2
+        
+        let source = CGEventSource.init(stateID: .hidSystemState)
         let keyDown = CGEvent.init(keyboardEventSource: source, virtualKey: keycode, keyDown: true)
         keyDown?.flags = flags
-        keyDown?.post(tap: .cgAnnotatedSessionEventTap)
+        keyDown?.post(tap: .cghidEventTap)
         
         let keyUp = CGEvent.init(keyboardEventSource: source, virtualKey: keycode, keyDown: false)
-        keyUp?.post(tap: .cgAnnotatedSessionEventTap)
+        keyUp?.post(tap: .cghidEventTap)
     }
     
     static var archivedPasteboardItems: [NSPasteboardItem]? = nil

@@ -6,6 +6,7 @@
 //
 
 import Cocoa
+import Carbon
 
 class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
 
@@ -51,7 +52,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
                     return Unmanaged.passRetained(event)
                 }
                 
-                guard event.character.applyingTransform(.toLatin, reverse: false) == event.character else {
+                guard TISInputSource.currentKeyboardLayout.isASCIICapable else {
                     return Unmanaged.passRetained(event)
                 }
                 

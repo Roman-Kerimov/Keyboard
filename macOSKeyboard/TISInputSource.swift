@@ -17,6 +17,11 @@ extension TISInputSource {
         return Unmanaged<CFString>.fromOpaque(propertyPointer!).takeUnretainedValue() as String
     }
     
+    private func get(property: CFString) -> Bool {
+        let propertyPointer = TISGetInputSourceProperty(self, property)
+        return Unmanaged<CFBoolean>.fromOpaque(propertyPointer!).takeUnretainedValue() as! Bool
+    }
+    
     private func get(property: CFString) -> Data {
         let propertyPointer = TISGetInputSourceProperty(self, property)
         return Unmanaged<CFData>.fromOpaque(propertyPointer!).takeUnretainedValue() as Data
@@ -24,6 +29,10 @@ extension TISInputSource {
     
     var id: String {
         return get(property: kTISPropertyInputSourceID)
+    }
+    
+    var isASCIICapable: Bool {
+        return get(property: kTISPropertyInputSourceIsASCIICapable)
     }
     
     var unicodeKeyLayoutData: Data {

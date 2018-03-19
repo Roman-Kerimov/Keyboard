@@ -34,7 +34,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
                 
                 let isAutorepeatEvent: Bool = event.getIntegerValueField(.keyboardEventAutorepeat) == 0 ? false : true
                 
-                let autorepeatKeycodes: [CGKeyCode] = [
+                let autorepeatKeycodes: [Keycode] = [
                     .return,
                     .delete,
                     .leftArrow,
@@ -59,7 +59,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
                 Keyboard.default.shiftUpFlag = event.flags.contains(.maskShift)
                 Keyboard.default.shiftDownFlag = event.flags.contains(.maskAlternate)
                 
-                let commandKeycodes: [CGKeyCode] = [.leftCommand, .rightCommand]
+                let commandKeycodes: [Keycode] = [.leftCommand, .rightCommand]
                 
                 if Keyboard.default.currentKeys.isEmpty == false && eventType == .flagsChanged && commandKeycodes.contains(event.keycode) {
                     Keyboard.default.shiftFlag = event.flags.contains(.maskCommand)
@@ -107,7 +107,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
     }
     
     private func tap(label: String, flags: CGEventFlags = .init()) {
-        guard let keycode: CGKeyCode = .from(label: label, flags: .maskCommand) else {
+        guard let keycode: Keycode = .from(label: label, flags: .maskCommand) else {
             return
         }
         
@@ -115,7 +115,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
     }
     
     static var skipTapCount: Int = 0
-    private func tap(keycode: CGKeyCode, flags: CGEventFlags = .init()) {
+    private func tap(keycode: Keycode, flags: CGEventFlags = .init()) {
         AppDelegate.skipTapCount += 2
         
         let source = CGEventSource.init(stateID: .hidSystemState)
@@ -149,7 +149,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
     func insert(text: String) {
         
         for flags: CGEventFlags in [[], [.maskShift], [.maskAlternate], [.maskShift, .maskAlternate]] {
-            if let keycode: CGKeyCode = .from(label: text, flags: flags) {
+            if let keycode: Keycode = .from(label: text, flags: flags) {
                 tap(keycode: keycode, flags: flags)
                 return
             }

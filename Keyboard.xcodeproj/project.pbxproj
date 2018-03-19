@@ -28,6 +28,9 @@
 		9643FC4E1F78F8D5004DA2C0 /* CharacterComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9643FC4C1F78F8D5004DA2C0 /* CharacterComponent.swift */; };
 		9643FC501F78F94B004DA2C0 /* CharacterComponentsDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9643FC4F1F78F94B004DA2C0 /* CharacterComponentsDictionary.swift */; };
 		9643FC511F78F94B004DA2C0 /* CharacterComponentsDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9643FC4F1F78F94B004DA2C0 /* CharacterComponentsDictionary.swift */; };
+		96498A3F205F4A7D002B1071 /* Keycode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96498A3E205F4A7D002B1071 /* Keycode.swift */; };
+		96498A40205F4A7D002B1071 /* Keycode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96498A3E205F4A7D002B1071 /* Keycode.swift */; };
+		96498A41205F4A7D002B1071 /* Keycode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96498A3E205F4A7D002B1071 /* Keycode.swift */; };
 		964AB9351D1B6490004C827C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964AB9341D1B6490004C827C /* AppDelegate.swift */; };
 		964AB93A1D1B6490004C827C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 964AB9381D1B6490004C827C /* Main.storyboard */; };
 		964AB93D1D1B6490004C827C /* iOSKeyboard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 964AB93B1D1B6490004C827C /* iOSKeyboard.xcdatamodeld */; };
@@ -258,6 +261,7 @@
 		9643FC4C1F78F8D5004DA2C0 /* CharacterComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterComponent.swift; sourceTree = "<group>"; };
 		9643FC4F1F78F94B004DA2C0 /* CharacterComponentsDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterComponentsDictionary.swift; sourceTree = "<group>"; };
 		96464A1C1F3AF2A5006F8F6B /* SettingsContainerView_LegalNoticesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContainerView_LegalNoticesView.swift; sourceTree = "<group>"; };
+		96498A3E205F4A7D002B1071 /* Keycode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keycode.swift; sourceTree = "<group>"; };
 		964AB9311D1B6490004C827C /* iOSKeyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSKeyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		964AB9341D1B6490004C827C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		964AB9391D1B6490004C827C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -458,6 +462,7 @@
 				96883126201FB35B0071908B /* KeyboardDelegate.swift */,
 				96883129202008030071908B /* DocumentContext.swift */,
 				96530D661DD1C9A9004E8BAA /* KeyboardLayout.swift */,
+				96498A3E205F4A7D002B1071 /* Keycode.swift */,
 				961D74902009003900BBC5FB /* Key.swift */,
 				9643FC4C1F78F8D5004DA2C0 /* CharacterComponent.swift */,
 				96B6B35A1F9764F400231AE6 /* Array<CharacterComponent>.swift */,
@@ -837,6 +842,7 @@
 				96533A8D1F1293A500B07CA3 /* Character.swift in Sources */,
 				96883127201FB35B0071908B /* KeyboardDelegate.swift in Sources */,
 				96E0342220317A330039E653 /* QUIT.swift in Sources */,
+				96498A3F205F4A7D002B1071 /* Keycode.swift in Sources */,
 				96E0341E203179F00039E653 /* CONTINUE.swift in Sources */,
 				96533A7E1F12938D00B07CA3 /* DeleteRowView.swift in Sources */,
 				9643FC501F78F94B004DA2C0 /* CharacterComponentsDictionary.swift in Sources */,
@@ -907,6 +913,7 @@
 				96E03407203156660039E653 /* NEXT.swift in Sources */,
 				9654DF7A1D4E1D0900DDB0EF /* SpaceRowView.swift in Sources */,
 				9688312B202008040071908B /* DocumentContext.swift in Sources */,
+				96498A40205F4A7D002B1071 /* Keycode.swift in Sources */,
 				96E03413203162BF0039E653 /* SEND.swift in Sources */,
 				9643FC4E1F78F8D5004DA2C0 /* CharacterComponent.swift in Sources */,
 				961D74922009003900BBC5FB /* Key.swift in Sources */,
@@ -972,6 +979,7 @@
 				96DB1A7D202FB87C00B96D3C /* UIView.swift in Sources */,
 				963DE0B2202F012B0040A448 /* StatusMenu.swift in Sources */,
 				96E033E8203153100039E653 /* SETTINGS.swift in Sources */,
+				96498A41205F4A7D002B1071 /* Keycode.swift in Sources */,
 				96E033F0203154660039E653 /* LANGUAGE.swift in Sources */,
 				96F28C182030205C0023313C /* Keyboard.swift in Sources */,
 				96E354EA2020DDBC00668374 /* AppDelegate.swift in Sources */,

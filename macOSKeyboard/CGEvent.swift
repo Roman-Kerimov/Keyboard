@@ -8,7 +8,7 @@
 import Foundation
 
 extension CGEvent {
-    var keycode: CGKeyCode {
+    var keycode: Keycode {
         get {
             return .init(self.getIntegerValueField(.keyboardEventKeycode))
         }

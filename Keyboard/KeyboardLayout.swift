@@ -14,12 +14,12 @@ struct KeyboardLayout {
     
     let rows: [[Key]]
     
-    func key(code: UInt16) -> Key? {
+    func key(code: Keycode) -> Key? {
         return keycodeToKeyDictionary[code]
     }
     
-    private var keycodeToKeyDictionary: [UInt16: Key] = [
-        49: .space,
+    private var keycodeToKeyDictionary: [Keycode: Key] = [
+        .space: .space,
     ]
     
     var rowCount: Int {
@@ -41,10 +41,10 @@ struct KeyboardLayout {
             [ .dollarSign,   .percentSign, .lessThanSign, .solidus,      .squareBracket, .zero,               .one,   .two,   .three, .equalsSign, ],
         ]
         
-        let keycodeRows: [[UInt16]] = [
-            [ 12, 13, 14, 15, 17, 16, 32, 34, 31, 35, ],
-            [  0,  1,  2,  3,  5,  4, 38, 40, 37, 41, ],
-            [  6,  7,  8,  9, 11, 45, 46, 43, 47, 44, ],
+        let keycodeRows: [[Keycode]] = [
+            [ .q, .w, .e, .r, .t, .y, .u, .i,     .o,        .p,         ],
+            [ .a, .s, .d, .f, .g, .h, .j, .k,     .l,        .semicolon, ],
+            [ .z, .x, .c, .v, .b, .n, .m, .comma, .fullStop, .solidus,   ],
         ]
         
         var keyRows: [[Key]] = []

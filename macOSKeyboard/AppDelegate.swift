@@ -56,6 +56,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
                     return Unmanaged.passRetained(event)
                 }
                 
+                let disabledKeys: [Keycode] = [.grave, .one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .zero, .hyphenMinus, .equal, .leftSquareBracket, .rightSquareBracket, .reverseSolidus, .apostrophe]
+                
+                guard !disabledKeys.contains(event.keycode) else {
+                    return nil
+                }
+                
                 Keyboard.default.shiftUpFlag = event.flags.contains(.maskShift)
                 Keyboard.default.shiftDownFlag = event.flags.contains(.maskAlternate)
                 

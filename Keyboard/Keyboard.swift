@@ -28,8 +28,32 @@ class Keyboard: NSObject {
         }
     }
     
-    internal var shiftUpFlag: Bool = false
-    internal var shiftDownFlag: Bool = false
+    internal var shiftUpFlag: Bool = false {
+        didSet {
+            setFlag(direction: .up, value: shiftUpFlag, oldValue: oldValue)
+        }
+    }
+    
+    internal var shiftDownFlag: Bool = false {
+        didSet {
+            setFlag(direction: .down, value: shiftDownFlag, oldValue: oldValue)
+        }
+    }
+    
+    private var shiftFlagDirections: [ShiftDirection] = []
+    
+    private func setFlag(direction: ShiftDirection, value: Bool, oldValue: Bool) {
+        guard value != oldValue else {
+            return
+        }
+        
+        if value {
+            shiftFlagDirections.append(direction)
+        }
+        else if shiftUpFlag == shiftDownFlag {
+            shiftFlagDirections = []
+        }
+    }
     
     internal func down(key: Key) {
         
@@ -124,12 +148,8 @@ class Keyboard: NSObject {
             return
         }
         
-        if shiftUpFlag {
-            shift(direction: .up)
-        }
-        
-        if shiftDownFlag {
-            shift(direction: .down)
+        for shiftFlagDirection in shiftFlagDirections {
+            shift(direction: shiftFlagDirection)
         }
         
         if shouldDeletePreviousCharacter {

@@ -25,13 +25,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
             eventsOfInterest: eventMask,
             callback: { (eventTapProxy, eventType, event, nil) -> Unmanaged<CGEvent>? in
                 
-                if let archivedPasteboardItems = AppDelegate.archivedPasteboardItems {
-                    if event.type == .keyUp && Keyboard.default.currentKeys.count == 1 {
-                        NSPasteboard.general.restore(archivedItems: archivedPasteboardItems)
-                        AppDelegate.archivedPasteboardItems = nil
-                    }
-                }
-                
                 let isAutorepeatEvent: Bool = event.getIntegerValueField(.keyboardEventAutorepeat) == 0 ? false : true
                 
                 let autorepeatKeycodes: [Keycode] = [
@@ -50,6 +43,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
                 guard AppDelegate.skipTapCount == 0 else {
                     AppDelegate.skipTapCount -= 1
                     return Unmanaged.passRetained(event)
+                }
+                
+                if let archivedPasteboardItems = AppDelegate.archivedPasteboardItems {
+                    if event.type == .keyUp && Keyboard.default.currentKeys.count == 1 {
+                        NSPasteboard.general.restore(archivedItems: archivedPasteboardItems)
+                        AppDelegate.archivedPasteboardItems = nil
+                    }
                 }
                 
                 guard TISInputSource.currentKeyboardLayout.isASCIICapable else {

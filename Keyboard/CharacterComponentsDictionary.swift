@@ -4608,13 +4608,13 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     //2061          ; FUNCTION APPLICATION
     
     //2062          ; INVISIBLE TIMES
-    "⁢": [.multiplicationSign, .extraLeft],
+    "⁢": [],
 
     //2063          ; INVISIBLE SEPARATOR
-    "⁣": [.comma, .extraLeft],
+    "⁣": [],
 
     //2064          ; INVISIBLE PLUS
-    "⁤": [.plusSign, .extraLeft],
+    "⁤": [],
 
     //2066          ; LEFT-TO-RIGHT ISOLATE
     //2067          ; RIGHT-TO-LEFT ISOLATE

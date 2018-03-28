@@ -333,7 +333,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ª": [],
 
     //00AB          ; LEFT-POINTING DOUBLE ANGLE QUOTATION MARK
-    "«": [],
+    "«": [.quotationMark, .extraLeft],
 
     //00AC          ; NOT SIGN
     "¬": [.notSign],
@@ -381,7 +381,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "º": [],
 
     //00BB          ; RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK
-    "»": [],
+    "»": [.quotationMark, .extraRight],
 
     //00BC          ; VULGAR FRACTION ONE QUARTER
     "¼": [.one, .fractionSlash, .four],
@@ -4400,28 +4400,28 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "‗": [.lowLine, .doubled],
 
     //2018          ; LEFT SINGLE QUOTATION MARK
-    "‘": [.commaQuotationMark, .turned, .superscript],
+    "‘": [.apostrophe, .extraUpLeft],
 
     //2019          ; RIGHT SINGLE QUOTATION MARK
-    "’": [.commaQuotationMark, .superscript],
+    "’": [.apostrophe, .extraUpRight],
 
     //201A          ; SINGLE LOW-9 QUOTATION MARK
-    "‚": [.commaQuotationMark, .subscript],
+    "‚": [.apostrophe, .extraDownLeft],
 
     //201B          ; SINGLE HIGH-REVERSED-9 QUOTATION MARK
-    "‛": [.commaQuotationMark, .reversed, .superscript],
+    "‛": [.apostrophe, .extraUpRight, .reversed],
 
     //201C          ; LEFT DOUBLE QUOTATION MARK
-    "“": [.commaQuotationMark, .doubled, .turned, .superscript],
+    "“": [.quotationMark, .extraUpLeft],
 
     //201D          ; RIGHT DOUBLE QUOTATION MARK
-    "”": [.commaQuotationMark, .doubled, .superscript],
+    "”": [.quotationMark, .extraUpRight],
 
     //201E          ; DOUBLE LOW-9 QUOTATION MARK
-    "„": [.commaQuotationMark, .doubled, .subscript],
+    "„": [.quotationMark, .extraDownLeft],
 
     //201F          ; DOUBLE HIGH-REVERSED-9 QUOTATION MARK
-    "‟": [.commaQuotationMark, .doubled, .reversed, .superscript],
+    "‟": [.quotationMark, .extraUpRight, .reversed],
 
     //2020          ; DAGGER
     "†": [.asterisk, .extra1],
@@ -4486,10 +4486,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "‸": [.caret, .subscript],
 
     //2039          ; SINGLE LEFT-POINTING ANGLE QUOTATION MARK
-    "‹": [.angleQuotationMark],
+    "‹": [.apostrophe, .extraLeft],
 
     //203A          ; SINGLE RIGHT-POINTING ANGLE QUOTATION MARK
-    "›": [.angleQuotationMark, .turned],
+    "›": [.apostrophe, .extraRight],
 
     //203B          ; REFERENCE MARK
     "※": [],
@@ -7097,7 +7097,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⹁": [.comma, .reversed],
 
     //2E42          ; DOUBLE LOW-REVERSED-9 QUOTATION MARK
-    "⹂": [.commaQuotationMark, .doubled, .reversed, .subscript],
+    "⹂": [.quotationMark, .extraDownLeft, .reversed],
 
     //2E43          ; DASH WITH LEFT UPTURN
     "⹃": [],

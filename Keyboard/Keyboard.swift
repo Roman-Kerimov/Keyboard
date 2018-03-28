@@ -266,6 +266,27 @@ class Keyboard: NSObject {
                 break
             }
             
+            let extraCharacterComponents: [CharacterComponent]
+            
+            switch direction {
+            case .upLeft:
+                extraCharacterComponents = characterComponents + [.extraUpLeft]
+                
+            case .left:
+                extraCharacterComponents = characterComponents + [.extraLeft]
+                
+            case .downLeft:
+                extraCharacterComponents = characterComponents + [.extraDownLeft]
+                
+            default:
+                extraCharacterComponents = []
+            }
+            
+            guard extraCharacterComponents.character.isEmpty else {
+                characterComponents = extraCharacterComponents
+                break
+            }
+            
             guard let previousCharacter = delegate?.documentContext.beforeInput.dropLast().last else {
                 currentLabel = .init()
                 break
@@ -317,11 +338,15 @@ class Keyboard: NSObject {
                 }
             }
             
+            characterComponents += [.extraRight]
+            
         case .upRight:
             characterComponents += [.superscript]
+            characterComponents += [.extraUpRight]
             
         case .downRight:
             characterComponents += [.subscript]
+            characterComponents += [.extraDownRight]
         }
         
         delegate?.delete()

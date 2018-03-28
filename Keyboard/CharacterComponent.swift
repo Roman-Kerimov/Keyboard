@@ -35,8 +35,6 @@ enum CharacterComponent {
     case hyphen, quotation
     case nonBreaking
     
-    case commaQuotationMark, angleQuotationMark
-    
     case minusSign
     case multiplicationSign
     case divisionSign
@@ -48,7 +46,7 @@ enum CharacterComponent {
     
     case capital, smallCapital
     case extra0, turned, reversed, inverted, sideways, extra1, extra2
-    case extraLeft
+    case extraLeft, extraUpLeft, extraDownLeft, extraRight, extraUpRight, extraDownRight
     case superscript, `subscript`, middle, raised
     
     case highStroke, topbar

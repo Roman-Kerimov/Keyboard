@@ -23,7 +23,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
             place: .headInsertEventTap,
             options: .defaultTap,
             eventsOfInterest: eventMask,
-            callback: { (eventTapProxy, eventType, event, nil) -> Unmanaged<CGEvent>? in
+            callback: { (eventTapProxy, _, event, nil) -> Unmanaged<CGEvent>? in
                 
                 let isAutorepeatEvent: Bool = event.getIntegerValueField(.keyboardEventAutorepeat) == 0 ? false : true
                 
@@ -67,7 +67,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
                 
                 let commandKeycodes: [Keycode] = [.leftCommand, .rightCommand]
                 
-                if Keyboard.default.currentKeys.isEmpty == false && eventType == .flagsChanged && commandKeycodes.contains(event.keycode) {
+                if Keyboard.default.currentKeys.isEmpty == false && event.type == .flagsChanged && commandKeycodes.contains(event.keycode) {
                     Keyboard.default.shiftFlag = event.flags.contains(.maskCommand)
                     return nil
                 }
@@ -87,7 +87,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
                     return Unmanaged.passRetained(event)
                 }
                 
-                switch eventType {
+                switch event.type {
                 case .keyDown:
                     Keyboard.default.down(key: key)
                     

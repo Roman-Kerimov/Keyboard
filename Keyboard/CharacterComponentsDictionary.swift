@@ -336,7 +336,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "«": [.quotationMark, .extraLeft],
 
     //00AC          ; NOT SIGN
-    "¬": [.notSign],
+    "¬": [.tilde, .extra0],
 
     //00AD          ; SOFT HYPHEN
     "­": [],
@@ -6737,10 +6737,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⫫": [],
 
     //2AEC          ; DOUBLE STROKE NOT SIGN
-    "⫬": [.notSign, .doubled],
+    "⫬": [.tilde, .extra0, .doubled],
 
     //2AED          ; REVERSED DOUBLE STROKE NOT SIGN
-    "⫭": [.notSign, .doubled, .reversed],
+    "⫭": [.tilde, .extra0, .doubled, .reversed],
 
     //2AEE          ; DOES NOT DIVIDE WITH REVERSED NEGATION SLASH
     "⫮": [],

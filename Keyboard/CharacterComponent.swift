@@ -39,7 +39,6 @@ enum CharacterComponent {
     case multiplicationSign
     case divisionSign
     
-    case notSign
     case egyptologialAlef, egyptologicalAin
     case glottalStop, ain, saltillo, sinologicalDot
     case interrobang

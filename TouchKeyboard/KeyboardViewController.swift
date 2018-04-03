@@ -138,13 +138,13 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
     }
     
     override var needsInputModeSwitchKey: Bool {
-        guard Bundle.main.isExtension else {
-            return false
-        }
-        
         #if TARGET_INTERFACE_BUILDER
             return true
         #else
+            guard Bundle.main.isExtension else {
+                return false
+            }
+        
             if #available(iOS 11.0, *) {
                 return super.needsInputModeSwitchKey
             }

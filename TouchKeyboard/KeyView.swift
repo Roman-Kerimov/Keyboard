@@ -110,7 +110,7 @@ class KeyView: UIButton, ConfigurableView {
     }
     
     private var isServiceKey: Bool {
-        return key.label.count > 1 && key != .space && key != .tab && returnKeyType != .default
+        return key.label.count > 1 && key != .space && returnKeyType != .default
     }
     
     private var isSpecialReturnType: Bool {
@@ -240,14 +240,14 @@ class KeyView: UIButton, ConfigurableView {
         let characterLabelFont = UIFont.init(name: "Symbola", size: baseFontSize)
         let nameLabelFont = UIFont.systemFont(ofSize: labelFontSize/1.8)
         
-        mainLabelView.font = [.return, .tab, .delete].contains(key) ? nameLabelFont : characterLabelFont
+        mainLabelView.font = [.space, .return, .delete].contains(key) ? nameLabelFont : characterLabelFont
         
         let characterShiftLabelFont = characterLabelFont?.withSize(nameLabelFont.pointSize)
         
         shiftUpLabelView.font = characterShiftLabelFont
         shiftDownLabelView.font = characterShiftLabelFont
         shiftLeftLabelView.font = characterShiftLabelFont
-        shiftRightLabelView.font = characterShiftLabelFont
+        shiftRightLabelView.font = nameLabelFont
         
         if imageLabelView.image != nil {
             imageLabelView.image = UIImage.init(fromPDF: labelFileName, withExtension: .ai, withScale: labelFontSize/24)?.withRenderingMode(.alwaysTemplate)

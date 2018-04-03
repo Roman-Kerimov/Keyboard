@@ -237,29 +237,17 @@ class KeyView: UIButton, ConfigurableView {
         baseFontSize = labelFontSize
         self.spacing = spacing
         
-        if key.label.count == 1 {
-            mainLabelView.font = UIFont.init(name: "Symbola", size: baseFontSize)
-        }
-        else {
-            mainLabelView.font = UIFont.systemFont(ofSize: baseFontSize)
-        }
+        let characterLabelFont = UIFont.init(name: "Symbola", size: baseFontSize)
+        let nameLabelFont = UIFont.systemFont(ofSize: labelFontSize/1.8)
         
-        let shiftLabelFont = mainLabelView.font.withSize(labelFontSize/1.8)
-        shiftUpLabelView.font = shiftLabelFont
-        shiftDownLabelView.font = shiftLabelFont
-        shiftLeftLabelView.font = shiftLabelFont
-        shiftRightLabelView.font = shiftLabelFont
+        mainLabelView.font = key.label.count == 1 ? characterLabelFont : nameLabelFont
         
-        switch key {
-        case .delete, .return, .tab:
-            mainLabelView.font = mainLabelView.font.withSize(shiftLabelFont.pointSize)
-            
-        case .settings:
-            mainLabelView.font = mainLabelView.font.withSize(shiftLabelFont.pointSize * 2.5)
-            
-        default:
-            break
-        }
+        let characterShiftLabelFont = characterLabelFont?.withSize(nameLabelFont.pointSize)
+        
+        shiftUpLabelView.font = characterShiftLabelFont
+        shiftDownLabelView.font = characterShiftLabelFont
+        shiftLeftLabelView.font = characterShiftLabelFont
+        shiftRightLabelView.font = characterShiftLabelFont
         
         if imageLabelView.image != nil {
             imageLabelView.image = UIImage.init(fromPDF: labelFileName, withExtension: .ai, withScale: labelFontSize/24)?.withRenderingMode(.alwaysTemplate)

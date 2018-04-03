@@ -58,7 +58,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
                 
                 let disabledKeys: [Keycode] = [.grave, .one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .zero, .hyphenMinus, .equal, .leftSquareBracket, .rightSquareBracket, .reverseSolidus, .apostrophe]
                 
-                guard !disabledKeys.contains(event.keycode) else {
+                guard !disabledKeys.contains(event.keycode) || event.flags.contains(.maskCommand) else {
                     return nil
                 }
                 

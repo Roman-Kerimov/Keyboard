@@ -15,6 +15,7 @@ extension String {
     static let reverseSolidus: String = Character.reverseSolidus.description
     static let comma: String = Character.comma.description
     static let fullStop: String = Character.fullStop.description
+    static let lowLine: String = Character.lowLine.description
     static let v: String = Character.v.description
     
     var characterComponents: [CharacterComponent] {

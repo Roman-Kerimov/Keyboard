@@ -166,12 +166,6 @@ class Keyboard: NSObject {
         case .delete:
             delegate?.delete()
             
-        case .return:
-            delegate?.insert(text: .return)
-            
-        case .tab:
-            delegate?.insert(text: .tab)
-            
         case .settings:
             delegate?.settings()
             

@@ -19,8 +19,21 @@ class LabelView: UILabel {
     */
     
     override var text: String? {
-        didSet {
-            super.text = text
+        get {
+            return super.text
+        }
+        
+        set {
+            switch newValue ?? .init() {
+            case .return:
+                super.text = "return"
+                
+            case .tab:
+                super.text = "tab"
+                
+            default:
+                super.text = newValue
+            }
             
             frame.size = intrinsicContentSize
             

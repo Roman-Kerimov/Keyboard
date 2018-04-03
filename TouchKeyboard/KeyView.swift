@@ -240,7 +240,7 @@ class KeyView: UIButton, ConfigurableView {
         let characterLabelFont = UIFont.init(name: "Symbola", size: baseFontSize)
         let nameLabelFont = UIFont.systemFont(ofSize: labelFontSize/1.8)
         
-        mainLabelView.font = key.label.count == 1 ? characterLabelFont : nameLabelFont
+        mainLabelView.font = [.return, .tab, .delete].contains(key) ? nameLabelFont : characterLabelFont
         
         let characterShiftLabelFont = characterLabelFont?.withSize(nameLabelFont.pointSize)
         

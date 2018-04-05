@@ -20,6 +20,7 @@ struct KeyboardLayout {
     
     private var keycodeToKeyDictionary: [Keycode: Key] = [
         .space: .space,
+        .enter: .enter,
     ]
     
     var rowCount: Int {

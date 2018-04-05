@@ -11,6 +11,8 @@ import Carbon
 class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
 
     let statusMenu: StatusMenu = .init()
+    
+    private static var preEnterDocumentContext: DocumentContext?
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
@@ -28,7 +30,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
                 let isAutorepeatEvent: Bool = event.getIntegerValueField(.keyboardEventAutorepeat) == 0 ? false : true
                 
                 let autorepeatKeycodes: [Keycode] = [
-                    .return,
                     .delete,
                     .leftArrow,
                     .rightArrow,
@@ -43,6 +44,21 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
                 guard AppDelegate.skipTapCount == 0 else {
                     AppDelegate.skipTapCount -= 1
                     return Unmanaged.passRetained(event)
+                }
+                
+                if event.keycode == .enter && event.type == .keyDown {
+                    AppDelegate.preEnterDocumentContext = AppDelegate.documentContext
+                }
+
+                if event.keycode == .enter && event.type == .keyUp {
+                    let preEnterContext: String = AppDelegate.preEnterDocumentContext?.beforeInput ?? .init()
+                    let postEnterContext: String = AppDelegate.documentContext.beforeInput
+
+                    if postEnterContext.hasPrefix(preEnterContext) {
+                        if postEnterContext.replacingOccurrences(of: preEnterContext, with: String.init()).isEmpty == false {
+                            AppDelegate.tap(keycode: .z, flags: .maskCommand)
+                        }
+                    }
                 }
                 
                 if let archivedPasteboardItems = AppDelegate.archivedPasteboardItems {
@@ -122,6 +138,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
     
     static var skipTapCount: Int = 0
     private func tap(keycode: Keycode, flags: CGEventFlags = .init()) {
+        AppDelegate.tap(keycode: keycode, flags: flags)
+    }
+    
+    private static func tap(keycode: Keycode, flags: CGEventFlags = .init()) {
         AppDelegate.skipTapCount += 2
         
         let source = CGEventSource.init(stateID: .hidSystemState)
@@ -148,6 +168,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
         else {
             tap(keycode: .delete)
         }
+    }
+    
+    func enter() {
+        tap(keycode: .enter)
     }
     
     func settings() {}
@@ -178,6 +202,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
     }
     
     var documentContext: DocumentContext {
+        return AppDelegate.documentContext
+    }
+    
+    static var documentContext: DocumentContext {
         let text = AXUIElement.focused.text
         let selectedTextRange = AXUIElement.focused.selectedTextRange
         

@@ -17,6 +17,7 @@ extension String {
     static let fullStop: String = Character.fullStop.description
     static let lowLine: String = Character.lowLine.description
     static let v: String = Character.v.description
+    static let z: String = Character.z.description
     
     var characterComponents: [CharacterComponent] {
         return characterComponentsDictionary[self]?.normalized ?? .init()

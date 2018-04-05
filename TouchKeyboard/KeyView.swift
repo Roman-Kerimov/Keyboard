@@ -13,6 +13,10 @@ class KeyView: UIButton, ConfigurableView {
     override func updateLocalizedStrings() {
         super.updateLocalizedStrings()
         
+        guard key == .enter else {
+            return
+        }
+        
         guard let returnKeyType = returnKeyType else {
             return
         }
@@ -20,7 +24,7 @@ class KeyView: UIButton, ConfigurableView {
         switch returnKeyType {
             
         case .default:
-            mainLabelView.text = Key.return.label
+            mainLabelView.text = Key.enter.label
         case .go:
             mainLabelView.text = GO.string
         case .join:
@@ -97,24 +101,19 @@ class KeyView: UIButton, ConfigurableView {
     private var backgroundView: UIView!
     
     private var returnKeyType: UIReturnKeyType? {
-        if key == .return {
-            #if TARGET_INTERFACE_BUILDER
-                return .default
-            #else
-                return KeyboardViewController.shared.textDocumentProxy.returnKeyType
-            #endif
-        }
-        else {
-            return nil
-        }
+        #if TARGET_INTERFACE_BUILDER
+            return .default
+        #else
+            return KeyboardViewController.shared.textDocumentProxy.returnKeyType
+        #endif
     }
     
     private var isServiceKey: Bool {
-        return key.label.count > 1 && key != .space && returnKeyType != .default
+        return key.label.count > 1 && key != .space
     }
     
     private var isSpecialReturnType: Bool {
-        return key == .return
+        return key == .enter
             && returnKeyType != .default
             && returnKeyType != .next
             && returnKeyType != .continue
@@ -240,13 +239,13 @@ class KeyView: UIButton, ConfigurableView {
         let characterLabelFont = UIFont.init(name: "Symbola", size: baseFontSize)
         let nameLabelFont = UIFont.systemFont(ofSize: labelFontSize/1.8)
         
-        mainLabelView.font = [.space, .return, .delete].contains(key) ? nameLabelFont : characterLabelFont
+        mainLabelView.font = [.space, .enter, .delete].contains(key) ? nameLabelFont : characterLabelFont
         
         let characterShiftLabelFont = characterLabelFont?.withSize(nameLabelFont.pointSize)
         
         shiftUpLabelView.font = characterShiftLabelFont
         shiftDownLabelView.font = characterShiftLabelFont
-        shiftLeftLabelView.font = characterShiftLabelFont
+        shiftLeftLabelView.font = nameLabelFont
         shiftRightLabelView.font = nameLabelFont
         
         if imageLabelView.image != nil {
@@ -269,7 +268,7 @@ class KeyView: UIButton, ConfigurableView {
         shiftUpLabelView.center.y = verticalShiftLabelIndent
         shiftDownLabelView.center.y = frame.height - verticalShiftLabelIndent
 
-        if key == .space {
+        if [.space, .spaceWithoutReturn].contains(key) {
             shiftUpLabelView.center.x = backgroundView.center.x
             shiftDownLabelView.center.x = backgroundView.center.x
         }

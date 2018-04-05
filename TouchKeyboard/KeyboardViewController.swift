@@ -32,8 +32,13 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
     @objc internal func updateDocumentContext() {
         keyboardView.documentContext = textDocumentProxy.documentContext
         
+        keyboardView.spaceKey.key = textDocumentProxy.returnKeyType == .default ? .space : .spaceWithoutReturn
+        
         if textDocumentProxy.enablesReturnKeyAutomatically == true {
-            keyboardView.returnKey.isEnabled = textDocumentProxy.hasText
+            keyboardView.enterKey.isEnabled = textDocumentProxy.hasText && textDocumentProxy.returnKeyType != .default
+        }
+        else {
+            keyboardView.enterKey.isEnabled = textDocumentProxy.returnKeyType != .default
         }
     }
     
@@ -201,6 +206,10 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
     
     func delete() {
         textDocumentProxy.deleteBackward()
+    }
+    
+    func enter() {
+        insert(text: .return)
     }
     
     func settings() {

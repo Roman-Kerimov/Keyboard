@@ -77,8 +77,12 @@ internal class KeyboardView: UIView {
         return deleteRowView.deleteKey
     }
     
-    internal var returnKey: KeyView {
-        return spaceRowView.returnKey
+    internal var enterKey: KeyView {
+        return spaceRowView.enterKey
+    }
+    
+    internal var spaceKey: KeyView {
+        return spaceRowView.spaceKey
     }
 
     /*
@@ -286,6 +290,8 @@ internal class KeyboardView: UIView {
         if darkColorScheme {
             colorScheme = .dark
         }
+        
+        enterKey.isEnabled = false
     }
     
     private var isPrefferedVerticalMode: Bool {

@@ -166,6 +166,9 @@ class Keyboard: NSObject {
         case .delete:
             delegate?.delete()
             
+        case .enter:
+            delegate?.enter()
+            
         case .settings:
             delegate?.settings()
             

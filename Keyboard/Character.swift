@@ -19,6 +19,7 @@ extension Character {
     static let fullStop: Character = "."
     static let lowLine: Character = "_"
     static let v: Character = "v"
+    static let z: Character = "z"
     
     func belongsTo(_ characterSet: CharacterSet) -> Bool {
         return characterSet.contains(self.unicodeScalars.first!)

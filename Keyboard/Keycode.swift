@@ -66,7 +66,7 @@ extension Keycode {
     static let l: Keycode = 37
     static let semicolon: Keycode = 41
     static let apostrophe: Keycode = 39
-    static let `return`: Keycode = 36
+    static let enter: Keycode = 36
     
     static let leftShift: Keycode = 56
     static let z: Keycode = 6

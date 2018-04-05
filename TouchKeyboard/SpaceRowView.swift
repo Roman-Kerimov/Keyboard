@@ -23,7 +23,7 @@ class SpaceRowView: RowView {
             (5, settingsKey),
             (5, nextKeyboardKey),
             (17, spaceKey),
-            (8, returnKey),
+            (8, enterKey),
             (5, dismissKeyboardKey),
         ]
     }
@@ -31,7 +31,7 @@ class SpaceRowView: RowView {
     internal let settingsKey: KeyView = .init(key: .settings)
     internal let nextKeyboardKey: KeyView = .init(key: .nextKeyboard)
     internal let spaceKey: KeyView = .init(key: .space)
-    internal let returnKey: KeyView = .init(key: .return)
+    internal let enterKey: KeyView = .init(key: .enter)
     internal let dismissKeyboardKey: KeyView = .init(key: .dismissKeyboard)
     
     internal override init() {

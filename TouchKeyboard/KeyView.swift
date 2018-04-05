@@ -74,12 +74,21 @@ class KeyView: UIButton, ConfigurableView {
     
     public var key: Key {
         didSet {
-            setLabels()
+            if mainLabelView.text == oldValue.label {
+                setLabels()
+            }
+            else {
+                setShiftLabels()
+            }
         }
     }
     
     private func setLabels() {
         mainLabelView.text = key.label
+        setShiftLabels()
+    }
+    
+    private func setShiftLabels() {
         shiftDownLabelView.text = key.shiftDownLabel
         shiftUpLabelView.text = key.shiftUpLabel
         shiftRightLabelView.text = key.shiftRightLabel

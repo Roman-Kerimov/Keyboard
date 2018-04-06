@@ -13,6 +13,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
     let statusMenu: StatusMenu = .init()
     
     private static var preEnterDocumentContext: DocumentContext?
+    private static var keycodeToKeyDictionary: [Keycode: Key] = .init()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
@@ -105,7 +106,18 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
                     key = layoutKey
                 }
                 else {
-                    key = !Keyboard.default.shiftFlag && event.keycode != .space ? .init(label: event.character) : Keyboard.default.layout.key(code: event.keycode) ?? .init()
+                    switch event.type {
+                    case .keyDown:
+                        key = !Keyboard.default.shiftFlag && event.keycode != .space ? .init(label: event.character) : Keyboard.default.layout.key(code: event.keycode) ?? .init()
+                        
+                        AppDelegate.keycodeToKeyDictionary[event.keycode] = key
+                        
+                    case .keyUp:
+                        key = AppDelegate.keycodeToKeyDictionary[event.keycode] ?? .init()
+                        
+                    default:
+                        return Unmanaged.passRetained(event)
+                    }
                 }
                 
                 switch event.type {

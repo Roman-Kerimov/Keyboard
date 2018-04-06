@@ -14,7 +14,7 @@ class Key: NSObject {
     let shiftRightLabel: String
     let shiftLeftLabel: String
     
-    init(label: String,
+    init(label: String = .init(),
          shiftDownLabel: String = .init(),
          shiftUpLabel: String = .init(),
          shiftRightLabel: String = .init(),

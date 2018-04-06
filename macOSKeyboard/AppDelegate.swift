@@ -68,19 +68,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
                     }
                 }
                 
-                guard TISInputSource.currentKeyboardLayout.isASCIICapable else {
-                    return Unmanaged.passRetained(event)
-                }
-                
-                let disabledKeys: [Keycode] = [.grave, .one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .zero, .hyphenMinus, .equal, .leftSquareBracket, .rightSquareBracket, .reverseSolidus, .apostrophe]
-                
-                guard !disabledKeys.contains(event.keycode) || event.flags.contains(.maskCommand) else {
-                    return nil
-                }
-                
-                Keyboard.default.shiftUpFlag = event.flags.contains(.maskShift)
-                Keyboard.default.shiftDownFlag = event.flags.contains(.maskAlternate)
-                
                 let commandKeycodes: [Keycode] = [.leftCommand, .rightCommand]
                 
                 if Keyboard.default.currentKeys.isEmpty == false && event.type == .flagsChanged && commandKeycodes.contains(event.keycode) {
@@ -96,11 +83,29 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
                     return Unmanaged.passRetained(event)
                 }
                 
-                guard let key = Keyboard.default.layout.key(code: event.keycode) else {
-                    if Keyboard.default.shiftFlag {
+                let key: Key
+                
+                if TISInputSource.currentKeyboardLayout.isASCIICapable {
+                    let disabledKeys: [Keycode] = [.grave, .one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .zero, .hyphenMinus, .equal, .leftSquareBracket, .rightSquareBracket, .reverseSolidus, .apostrophe]
+                    
+                    if disabledKeys.contains(event.keycode) {
                         return nil
                     }
-                    return Unmanaged.passRetained(event)
+                    
+                    Keyboard.default.shiftUpFlag = event.flags.contains(.maskShift)
+                    Keyboard.default.shiftDownFlag = event.flags.contains(.maskAlternate)
+                    
+                    guard let layoutKey = Keyboard.default.layout.key(code: event.keycode) else {
+                        if Keyboard.default.shiftFlag {
+                            return nil
+                        }
+                        return Unmanaged.passRetained(event)
+                    }
+                    
+                    key = layoutKey
+                }
+                else {
+                    key = !Keyboard.default.shiftFlag && event.keycode != .space ? .init(label: event.character) : Keyboard.default.layout.key(code: event.keycode) ?? .init()
                 }
                 
                 switch event.type {

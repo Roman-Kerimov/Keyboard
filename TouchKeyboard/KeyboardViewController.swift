@@ -217,14 +217,6 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
     }
     
     func insert(text: String) {
-        if textDocumentProxy.characterBeforeInput?.isSpaceReturnOrTab != false
-            && textDocumentProxy.characterAfterInput?.isSpaceReturnOrTab == false
-            && textDocumentProxy.characterAfterInput?.belongsTo(.punctuationCharacters) == false {
-            
-            textDocumentProxy.insertText(.space)
-            textDocumentProxy.adjustTextPosition(byCharacterOffset: -1)
-        }
-        
         textDocumentProxy.insertText(text)
     }
     

@@ -56,7 +56,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
                     let postEnterContext: String = AppDelegate.documentContext.beforeInput
 
                     if postEnterContext.hasPrefix(preEnterContext) {
-                        if postEnterContext.replacingOccurrences(of: preEnterContext, with: String.init()).isEmpty == false {
+                        if postEnterContext.dropFirst(preEnterContext.count).isEmpty == false {
                             AppDelegate.tap(keycode: .z, flags: .maskCommand)
                         }
                     }

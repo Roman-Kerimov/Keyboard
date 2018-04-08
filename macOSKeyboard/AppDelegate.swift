@@ -68,7 +68,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
                 }
                 
                 if let archivedPasteboardItems = AppDelegate.archivedPasteboardItems {
-                    if event.type == .keyUp && Keyboard.default.currentKeys.count == 1 {
+                    if event.type == .keyUp && Keyboard.default.currentKey != nil {
                         NSPasteboard.general.restore(archivedItems: archivedPasteboardItems)
                         AppDelegate.archivedPasteboardItems = nil
                     }
@@ -76,7 +76,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
                 
                 let commandKeycodes: [Keycode] = [.leftCommand, .rightCommand]
                 
-                if Keyboard.default.currentKeys.isEmpty == false && event.type == .flagsChanged && commandKeycodes.contains(event.keycode) {
+                if Keyboard.default.currentKey != nil && event.type == .flagsChanged && commandKeycodes.contains(event.keycode) {
                     Keyboard.default.shiftFlag = event.flags.contains(.maskCommand)
                     return nil
                 }

@@ -22,7 +22,7 @@ class Keyboard: NSObject {
     internal var shiftFlag: Bool = false {
         didSet {
             if shiftFlag == false {
-                currentKeys = []
+                currentKey = nil
                 Array<CharacterComponent>.extraArrayExtension = .init()
             }
         }
@@ -59,7 +59,7 @@ class Keyboard: NSObject {
         
         if !shiftFlag {
             currentLabel = key.label
-            currentKeys.append(key)
+            currentKey = key
             input()
         }
         else {
@@ -107,12 +107,8 @@ class Keyboard: NSObject {
             stopAutorepeat()
         }
         
-        guard let keyIndex = currentKeys.index(of: key) else {
-            return
-        }
-        
-        if !shiftFlag {
-            currentKeys.remove(at: keyIndex)
+        if !shiftFlag && currentKey == key {
+            currentKey = nil
         }
     }
     
@@ -137,7 +133,7 @@ class Keyboard: NSObject {
     private var shouldDeletePreviousCharacter: Bool = false
     
     private func input() {
-        guard let currentKey = currentKeys.first else {
+        guard let currentKey = currentKey else {
             return
         }
         
@@ -182,7 +178,7 @@ class Keyboard: NSObject {
         NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
     }
     
-    internal var currentKeys: [Key] = []
+    internal var currentKey: Key? = nil
     
     private var characterComponents: [CharacterComponent] {
         get {
@@ -232,7 +228,7 @@ class Keyboard: NSObject {
     }
     
     internal func shift(direction: ShiftDirection) {
-        guard let key = currentKeys.first else {
+        guard let key = currentKey else {
             return
         }
         

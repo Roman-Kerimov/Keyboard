@@ -224,7 +224,7 @@ class KeyView: UIButton, ConfigurableView {
     }
     
     @objc func keyboardStateDidChange() {
-        guard let key = Keyboard.default.currentKeys.first else {
+        guard let key = Keyboard.default.currentKey else {
             return
         }
         

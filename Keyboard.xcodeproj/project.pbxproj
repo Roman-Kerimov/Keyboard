@@ -88,6 +88,7 @@
 		966EB96D202FC0D3007718F2 /* LegalNoticesMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966EB96C202FC0D3007718F2 /* LegalNoticesMenuItem.swift */; };
 		9673CAD8203282490030E2CA /* AXUIElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9673CAD7203282490030E2CA /* AXUIElement.swift */; };
 		967491B51EE16BDD00DC19E0 /* CharacterSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967491B41EE16BDD00DC19E0 /* CharacterSet.swift */; };
+		967502542089E1D300FD6CED /* LaunchAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967502532089E1D300FD6CED /* LaunchAgent.swift */; };
 		96767C251EB11E28004D847C /* Labels_Settings.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96767C241EB11E28004D847C /* Labels_Settings.ai */; };
 		9679AF9F1FB55A000099F53B /* Symbola.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9679AF9E1FB55A000099F53B /* Symbola.ttf */; };
 		9679AFA01FB55A000099F53B /* Symbola.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9679AF9E1FB55A000099F53B /* Symbola.ttf */; };
@@ -302,6 +303,7 @@
 		966EB96C202FC0D3007718F2 /* LegalNoticesMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalNoticesMenuItem.swift; sourceTree = "<group>"; };
 		9673CAD7203282490030E2CA /* AXUIElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AXUIElement.swift; sourceTree = "<group>"; };
 		967491B41EE16BDD00DC19E0 /* CharacterSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterSet.swift; sourceTree = "<group>"; };
+		967502532089E1D300FD6CED /* LaunchAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAgent.swift; sourceTree = "<group>"; };
 		96767C241EB11E28004D847C /* Labels_Settings.ai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Labels_Settings.ai; sourceTree = "<group>"; };
 		9679AF9E1FB55A000099F53B /* Symbola.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Symbola.ttf; sourceTree = "<group>"; };
 		96848D9E1EE05F080009869A /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -575,6 +577,7 @@
 			children = (
 				963DE0AF202F00B60040A448 /* main.swift */,
 				96E354E92020DDBC00668374 /* AppDelegate.swift */,
+				967502532089E1D300FD6CED /* LaunchAgent.swift */,
 				9673CAD7203282490030E2CA /* AXUIElement.swift */,
 				960FEFED203D37590099E449 /* AXAttribute.swift */,
 				96AC6CA2203C23B200555164 /* CGEvent.swift */,
@@ -671,6 +674,7 @@
 				96E354E42020DDBC00668374 /* Frameworks */,
 				96E354E52020DDBC00668374 /* Resources */,
 				96E46DF02086A21B00D49583 /* Embed Frameworks */,
+				96F2FB02208A6DA8001AB286 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -818,6 +822,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		96F2FB02208A6DA8001AB286 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "killall macOSKeyboard || true";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		964AB92D1D1B6490004C827C /* Sources */ = {
@@ -982,6 +1002,7 @@
 				96ACD588205261EE007CFDCF /* NSPasteboard.swift in Sources */,
 				96E033FC203155A80039E653 /* VERSION.swift in Sources */,
 				96AED33120312AE600498A7E /* InterfaceLanguageMenuItem.swift in Sources */,
+				967502542089E1D300FD6CED /* LaunchAgent.swift in Sources */,
 				96AED33320312BA500498A7E /* LanguageMenuItem.swift in Sources */,
 				963DE0B0202F00B60040A448 /* main.swift in Sources */,
 				96E034042031562B0039E653 /* JOIN.swift in Sources */,

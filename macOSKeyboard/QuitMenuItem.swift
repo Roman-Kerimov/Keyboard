@@ -16,6 +16,7 @@ class QuitMenuItem: LocalizedMenuItem {
     }
     
     override func menuItemAction() {
+        LaunchAgent.unload()
         NSApplication.shared.terminate(self)
     }
 }

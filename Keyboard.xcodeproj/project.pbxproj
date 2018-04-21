@@ -835,7 +835,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "killall macOSKeyboard || true";
+			shellScript = "killall Keyboard || true";
 		};
 /* End PBXShellScriptBuildPhase section */
 

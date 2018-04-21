@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "96E354E62020DDBC00668374"
-               BuildableName = "macOSKeyboard.app"
+               BuildableName = "Keyboard.app"
                BlueprintName = "macOSKeyboard"
                ReferencedContainer = "container:Keyboard.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "96E354F72020DDBD00668374"
-               BuildableName = "macOSKeyboardTests.xctest"
+               BuildableName = "KeyboardTests.xctest"
                BlueprintName = "macOSKeyboardTests"
                ReferencedContainer = "container:Keyboard.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "96E354E62020DDBC00668374"
-            BuildableName = "macOSKeyboard.app"
+            BuildableName = "Keyboard.app"
             BlueprintName = "macOSKeyboard"
             ReferencedContainer = "container:Keyboard.xcodeproj">
          </BuildableReference>
@@ -66,7 +66,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "96E354E62020DDBC00668374"
-            BuildableName = "macOSKeyboard.app"
+            BuildableName = "Keyboard.app"
             BlueprintName = "macOSKeyboard"
             ReferencedContainer = "container:Keyboard.xcodeproj">
          </BuildableReference>
@@ -85,7 +85,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "96E354E62020DDBC00668374"
-            BuildableName = "macOSKeyboard.app"
+            BuildableName = "Keyboard.app"
             BlueprintName = "macOSKeyboard"
             ReferencedContainer = "container:Keyboard.xcodeproj">
          </BuildableReference>

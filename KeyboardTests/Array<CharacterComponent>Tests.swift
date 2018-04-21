@@ -6,12 +6,7 @@
 //
 
 import XCTest
-
-#if os(iOS)
-@testable import iOSKeyboard
-#elseif os(macOS)
-@testable import macOSKeyboard
-#endif
+@testable import Keyboard
 
 class Array_CharacterComponent_Tests: XCTestCase {
     

@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>iOSKeyboard</string>
+	<string>$(PROJECT_NAME)</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -35,10 +35,10 @@
 			<key>RequestsOpenAccess</key>
 			<false/>
 		</dict>
-		<key>NSExtensionPrincipalClass</key>
-		<string>$(PRODUCT_MODULE_NAME).KeyboardViewController</string>
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.keyboard-service</string>
+		<key>NSExtensionPrincipalClass</key>
+		<string>$(PRODUCT_MODULE_NAME).KeyboardViewController</string>
 	</dict>
 	<key>UIAppFonts</key>
 	<array>

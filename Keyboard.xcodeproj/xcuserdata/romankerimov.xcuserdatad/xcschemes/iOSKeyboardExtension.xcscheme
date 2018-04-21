@@ -16,7 +16,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "964AB9661D1B6535004C827C"
-               BuildableName = "iOSKeyboardExtension.appex"
+               BuildableName = "Keyboard.appex"
                BlueprintName = "iOSKeyboardExtension"
                ReferencedContainer = "container:Keyboard.xcodeproj">
             </BuildableReference>
@@ -30,7 +30,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "964AB9301D1B6490004C827C"
-               BuildableName = "iOSKeyboard.app"
+               BuildableName = "Keyboard.app"
                BlueprintName = "iOSKeyboard"
                ReferencedContainer = "container:Keyboard.xcodeproj">
             </BuildableReference>
@@ -48,7 +48,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "964AB9661D1B6535004C827C"
-            BuildableName = "iOSKeyboardExtension.appex"
+            BuildableName = "Keyboard.appex"
             BlueprintName = "iOSKeyboardExtension"
             ReferencedContainer = "container:Keyboard.xcodeproj">
          </BuildableReference>
@@ -76,7 +76,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "964AB9301D1B6490004C827C"
-            BuildableName = "iOSKeyboard.app"
+            BuildableName = "Keyboard.app"
             BlueprintName = "iOSKeyboard"
             ReferencedContainer = "container:Keyboard.xcodeproj">
          </BuildableReference>
@@ -96,7 +96,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "964AB9301D1B6490004C827C"
-            BuildableName = "iOSKeyboard.app"
+            BuildableName = "Keyboard.app"
             BlueprintName = "iOSKeyboard"
             ReferencedContainer = "container:Keyboard.xcodeproj">
          </BuildableReference>

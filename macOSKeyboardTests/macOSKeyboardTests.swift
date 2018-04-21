@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import macOSKeyboard
+@testable import Keyboard
 
 class macOSKeyboardTests: XCTestCase {
     

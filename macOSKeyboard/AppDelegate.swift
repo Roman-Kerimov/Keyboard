@@ -9,6 +9,8 @@ import Cocoa
 import Carbon
 
 class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
+    
+    private let isProcessTrusted: Bool = AXIsProcessTrusted()
 
     let statusMenu: StatusMenu = .init()
     
@@ -16,6 +18,16 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
     private static var keycodeToKeyDictionary: [Keycode: Key] = .init()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        
+        Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true) { (timer) in
+            if self.isProcessTrusted != AXIsProcessTrusted() {
+                let keyboard: Process = .init()
+                keyboard.launchPath = Bundle.main.executablePath!
+                keyboard.launch()
+                LaunchAgent.unload()
+                NSApp.terminate(self)
+            }
+        }
         
         Keyboard.default.delegate = self
         

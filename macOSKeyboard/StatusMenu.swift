@@ -13,8 +13,8 @@ class StatusMenu: NSMenu {
     
     init() {
         super.init(title: .init())
-        statusItem.title = "Kd"
-        let title: NSMutableAttributedString = .init(string: statusItem.title!)
+        
+        let title: NSMutableAttributedString = .init(string: "Kd")
         title.addAttribute(.font, value: UIFont.boldMenuFont)
         
         if !AXIsProcessTrusted() {

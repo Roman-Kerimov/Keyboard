@@ -41,7 +41,6 @@
 		96498A41205F4A7D002B1071 /* Keycode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96498A3E205F4A7D002B1071 /* Keycode.swift */; };
 		964AB9351D1B6490004C827C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964AB9341D1B6490004C827C /* AppDelegate.swift */; };
 		964AB93A1D1B6490004C827C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 964AB9381D1B6490004C827C /* Main.storyboard */; };
-		964AB93D1D1B6490004C827C /* iOSKeyboard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 964AB93B1D1B6490004C827C /* iOSKeyboard.xcdatamodeld */; };
 		964AB93F1D1B6490004C827C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 964AB93E1D1B6490004C827C /* Assets.xcassets */; };
 		964AB9421D1B6490004C827C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 964AB9401D1B6490004C827C /* LaunchScreen.storyboard */; };
 		964AB96A1D1B6535004C827C /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964AB9691D1B6535004C827C /* KeyboardViewController.swift */; };
@@ -290,7 +289,6 @@
 		964AB9311D1B6490004C827C /* Keyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Keyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		964AB9341D1B6490004C827C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		964AB9391D1B6490004C827C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		964AB93C1D1B6490004C827C /* iOSKeyboard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iOSKeyboard.xcdatamodel; sourceTree = "<group>"; };
 		964AB93E1D1B6490004C827C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		964AB9411D1B6490004C827C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		964AB9431D1B6490004C827C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -456,7 +454,6 @@
 				964AB93E1D1B6490004C827C /* Assets.xcassets */,
 				964AB9401D1B6490004C827C /* LaunchScreen.storyboard */,
 				964AB9431D1B6490004C827C /* Info.plist */,
-				964AB93B1D1B6490004C827C /* iOSKeyboard.xcdatamodeld */,
 			);
 			path = iOSKeyboard;
 			sourceTree = "<group>";
@@ -923,7 +920,6 @@
 				96533A7C1F12938D00B07CA3 /* LanguageTableView.swift in Sources */,
 				96533A761F12938D00B07CA3 /* KeyboardLayout.swift in Sources */,
 				96E034022031562B0039E653 /* JOIN.swift in Sources */,
-				964AB93D1D1B6490004C827C /* iOSKeyboard.xcdatamodeld in Sources */,
 				96533A881F12938D00B07CA3 /* Keyboard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1762,19 +1758,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		964AB93B1D1B6490004C827C /* iOSKeyboard.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				964AB93C1D1B6490004C827C /* iOSKeyboard.xcdatamodel */,
-			);
-			currentVersion = 964AB93C1D1B6490004C827C /* iOSKeyboard.xcdatamodel */;
-			path = iOSKeyboard.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 964AB9271D1B63C0004C827C /* Project object */;
 }

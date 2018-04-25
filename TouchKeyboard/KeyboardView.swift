@@ -233,7 +233,7 @@ internal class KeyboardView: UIView {
     }
     
     private var labelFontSize: CGFloat {
-        return max(keySize.width, minimalScreenSize.width / sizeInKeysForVerticalMode.width) * 6/15
+        return min(spaceRowHeight * 0.5, 36)
     }
     
     private var halfKeyboardSize: CGSize {

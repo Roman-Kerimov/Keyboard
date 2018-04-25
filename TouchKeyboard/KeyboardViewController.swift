@@ -143,23 +143,23 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
     }
     
     override var needsInputModeSwitchKey: Bool {
-        #if TARGET_INTERFACE_BUILDER
+        if Bundle.main.isInterfaceBuilder {
             return true
-        #else
-            guard Bundle.main.isExtension else {
-                return false
-            }
+        }
         
-            if #available(iOS 11.0, *) {
-                return super.needsInputModeSwitchKey
-            }
-            else if let installedKeyboards = UserDefaults.standard.object(forKey: "AppleKeyboards") as? [String] {
-                return installedKeyboards.count > 1
-            }
-            else {
-                return true
-            }
-        #endif
+        guard Bundle.main.isExtension else {
+            return false
+        }
+    
+        if #available(iOS 11.0, *) {
+            return super.needsInputModeSwitchKey
+        }
+        else if let installedKeyboards = UserDefaults.standard.object(forKey: "AppleKeyboards") as? [String] {
+            return installedKeyboards.count > 1
+        }
+        else {
+            return true
+        }
     }
     
     private var previousDocumentContext: DocumentContext = .init()

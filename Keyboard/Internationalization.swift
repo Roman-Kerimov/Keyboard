@@ -11,7 +11,6 @@ import Foundation
 extension Language {
     #if TARGET_INTERFACE_BUILDER
     static var current: Language = .en
-    
     #else
     private static let currentKey = "rrvfFT9eUMTqwVCEW4cbDo3c4TJsa1O"
     static var current: Language {
@@ -28,12 +27,7 @@ extension Language {
     #endif
     
     static var preferredList: [Language] {
-        let languageCodes: [String]
-        #if TARGET_INTERFACE_BUILDER
-            languageCodes = .init()
-        #else
-            languageCodes = UserDefaults.standard.array(forKey: "AppleLanguages") as! [String]
-        #endif
+        let languageCodes: [String] = Bundle.main.isInterfaceBuilder ? .init() : UserDefaults.standard.array(forKey: "AppleLanguages") as! [String]
 
         var languages: [Language] = []
         

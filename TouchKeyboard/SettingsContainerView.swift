@@ -49,9 +49,7 @@ class SettingsContainerView: UIStackView {
         axis = .horizontal
         distribution = .fill
         
-        #if !TARGET_INTERFACE_BUILDER
-            translatesAutoresizingMaskIntoConstraints = false
-        #endif
+        translatesAutoresizingMaskIntoConstraints = Bundle.main.isInterfaceBuilder
         
         backButton.translatesAutoresizingMaskIntoConstraints = false
         

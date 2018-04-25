@@ -110,11 +110,7 @@ class KeyView: UIButton, ConfigurableView {
     private var backgroundView: UIView!
     
     private var returnKeyType: UIReturnKeyType? {
-        #if TARGET_INTERFACE_BUILDER
-            return .default
-        #else
-            return KeyboardViewController.shared.textDocumentProxy.returnKeyType
-        #endif
+        return Bundle.main.isInterfaceBuilder ? .default : KeyboardViewController.shared.textDocumentProxy.returnKeyType
     }
     
     private var isServiceKey: Bool {

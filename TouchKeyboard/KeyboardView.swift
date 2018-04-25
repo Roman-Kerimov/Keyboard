@@ -94,20 +94,17 @@ internal class KeyboardView: UIView {
     */
 
     #if TARGET_INTERFACE_BUILDER
-    
-        private var layoutMode: Keyboard.KeyboardLayoutMode = .default
-    
+    private var layoutMode: Keyboard.KeyboardLayoutMode = .default
     #else
-        private var layoutMode: Keyboard.KeyboardLayoutMode {
-            get {
-                return Keyboard.default.layoutMode
-            }
-            
-            set {
-                Keyboard.default.layoutMode = newValue
-            }
+    private var layoutMode: Keyboard.KeyboardLayoutMode {
+        get {
+            return Keyboard.default.layoutMode
         }
-    
+        
+        set {
+            Keyboard.default.layoutMode = newValue
+        }
+    }
     #endif
 
     internal var colorScheme: KeyboardColorScheme = .default {
@@ -124,9 +121,9 @@ internal class KeyboardView: UIView {
         characterSequenceView.colorScheme = colorScheme
         layoutView.unicodeCollectionView.colorScheme = colorScheme
         
-        #if TARGET_INTERFACE_BUILDER
+        if Bundle.main.isInterfaceBuilder {
             backgroundView.backgroundColor = colorScheme.fakeBackroundColorForInterfaceBuilder
-        #endif
+        }
     }
     
     private var characterSequenceView: CharacterSequenceView {
@@ -151,11 +148,7 @@ internal class KeyboardView: UIView {
     }
     
     private var scaleFactor: CGFloat {
-        #if TARGET_INTERFACE_BUILDER
-            return 1
-        #else
-            return bounds.width / UIScreen.main.bounds.width
-        #endif
+        return Bundle.main.isInterfaceBuilder ? 1 : bounds.width / UIScreen.main.bounds.width
     }
     
     private var minimalScreenSize: CGSize {
@@ -163,12 +156,7 @@ internal class KeyboardView: UIView {
     }
     
     private var  screenSize: CGSize {
-        #if TARGET_INTERFACE_BUILDER
-            return bounds.size
-        #else
-            let nativeSize = UIScreen.main.bounds.size
-            return CGSize(width: nativeSize.width * scaleFactor, height: nativeSize.height * scaleFactor)
-        #endif
+        return Bundle.main.isInterfaceBuilder ? bounds.size : UIScreen.main.bounds.size.applying(.init(scale: scaleFactor))
     }
     
     private var coefficientOfIncreaseForMainButtons: CGFloat {
@@ -306,19 +294,17 @@ internal class KeyboardView: UIView {
             heightConstraint?.isActive = true
         }
         
-        #if !TARGET_INTERFACE_BUILDER
-            if !Bundle.main.isExtension {
-                frame = UIScreen.main.bounds
-                frame.size.height = size.height
-            }
-        #endif
+        if !Bundle.main.isInterfaceBuilder && !Bundle.main.isExtension {
+            frame = UIScreen.main.bounds
+            frame.size.height = size.height
+        }
         
-        backgroundView.frame.size = .init(width: bounds.width, height: size.height)
-        
-        #if TARGET_INTERFACE_BUILDER
-            backgroundView.frame.origin = .init(x: 0, y: bounds.height - size.height)
-        #endif
-        
+        backgroundView.frame = .init(
+            x: 0,
+            y: Bundle.main.isInterfaceBuilder ? bounds.height - size.height : 0,
+            width: bounds.width,
+            height:  size.height
+        )
         
         let keySize = self.keySize
         let keySpacing = deleteRowHeight * 0.1

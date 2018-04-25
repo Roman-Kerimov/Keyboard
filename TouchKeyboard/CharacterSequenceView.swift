@@ -30,9 +30,9 @@ class CharacterSequenceView: CharacterCollectionView {
         addGestureRecognizer(longPressGestureRecognizer)
         longPressGestureRecognizer.minimumPressDuration = 0
         
-        #if TARGET_INTERFACE_BUILDER
+        if Bundle.main.isInterfaceBuilder {
             characters = .init("keyboard😀")
-        #endif
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

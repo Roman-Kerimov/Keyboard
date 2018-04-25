@@ -172,12 +172,7 @@ internal class KeyboardView: UIView {
     }
     
     private var coefficientOfIncreaseForMainButtons: CGFloat {
-        if layoutMode == .horizontal && isPrefferedVerticalMode {
-            return 1.2
-        }
-        else {
-            return 1
-        }
+        return layoutMode == .horizontal && isPrefferedVerticalMode ? 1.2 : 1
     }
     
     private var deleteRowHeightInKeys: CGFloat {
@@ -188,12 +183,7 @@ internal class KeyboardView: UIView {
     }
     
     private var horizontalIndentInKeys: CGFloat {
-        if layoutMode == .horizontal && isPrefferedVerticalMode {
-            return 1
-        }
-        else {
-            return 0.5
-        }
+        return layoutMode == .horizontal && isPrefferedVerticalMode ? 1 : 0.5
     }
     
     private let maxKeyboardHeightRatio: CGFloat = 0.59
@@ -285,11 +275,7 @@ internal class KeyboardView: UIView {
         
         configure()
         
-        colorScheme = .default
-        
-        if darkColorScheme {
-            colorScheme = .dark
-        }
+        colorScheme = darkColorScheme ? .dark : .default
         
         enterKey.isEnabled = false
     }
@@ -301,31 +287,15 @@ internal class KeyboardView: UIView {
     internal func configure() {
         
         if layoutMode == .default {
-            if isPrefferedVerticalMode {
-                layoutMode = .vertical
-            }
-            else {
-                layoutMode = .horizontal
-            }
+            layoutMode = isPrefferedVerticalMode ? .vertical : .horizontal
         }
         
         if alternateLayoutMode {
-            if layoutMode == .vertical {
-                layoutMode = .horizontal
-            }
-            else {
-                layoutMode = .vertical
-            }
+            layoutMode = layoutMode == .vertical ? .horizontal : .vertical
         }
         
         let isHorizontalMode = layoutMode == .horizontal || screenSize.height < self.minimalScreenSize.height
-        
-        if isHorizontalMode {
-            sizeInKeys = sizeInKeysForHorizontalMode
-        }
-        else {
-            sizeInKeys = sizeInKeysForVerticalMode
-        }
+        sizeInKeys = isHorizontalMode ? sizeInKeysForHorizontalMode : sizeInKeysForVerticalMode
         
         if heightConstraint != nil {
             heightConstraint?.constant = size.height
@@ -355,7 +325,8 @@ internal class KeyboardView: UIView {
         let labelFontSize: CGFloat = self.labelFontSize
         
         deleteRowView.configure(
-            size: .init(width: size.width, height: deleteRowHeight), keySpacing: keySpacing, labelFontSize: labelFontSize
+            size: .init(width: size.width, height: deleteRowHeight),
+            keySpacing: keySpacing, labelFontSize: labelFontSize
         )
         deleteRowView.frame.origin.y = 0
         
@@ -368,7 +339,8 @@ internal class KeyboardView: UIView {
         layoutView.frame.origin.y = deleteRowHeight
         
         spaceRowView.configure(
-            size: .init(width: size.width, height: spaceRowHeight), keySpacing: keySpacing, labelFontSize: labelFontSize
+            size: .init(width: size.width, height: spaceRowHeight),
+            keySpacing: keySpacing, labelFontSize: labelFontSize
         )
         spaceRowView.frame.origin.y = deleteRowHeight + layoutHeight
         

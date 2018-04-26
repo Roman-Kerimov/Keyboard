@@ -41,8 +41,6 @@
 		<string>$(PRODUCT_MODULE_NAME).KeyboardViewController</string>
 	</dict>
 	<key>UIAppFonts</key>
-	<array>
-		<string>Symbola.ttf</string>
-	</array>
+	<array/>
 </dict>
 </plist>

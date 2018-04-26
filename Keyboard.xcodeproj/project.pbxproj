@@ -100,8 +100,6 @@
 		967491B51EE16BDD00DC19E0 /* CharacterSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967491B41EE16BDD00DC19E0 /* CharacterSet.swift */; };
 		967502542089E1D300FD6CED /* LaunchAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967502532089E1D300FD6CED /* LaunchAgent.swift */; };
 		96767C251EB11E28004D847C /* Labels_Settings.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96767C241EB11E28004D847C /* Labels_Settings.ai */; };
-		9679AF9F1FB55A000099F53B /* Symbola.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9679AF9E1FB55A000099F53B /* Symbola.ttf */; };
-		9679AFA01FB55A000099F53B /* Symbola.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9679AF9E1FB55A000099F53B /* Symbola.ttf */; };
 		96848D9F1EE05F080009869A /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96848D9E1EE05F080009869A /* String.swift */; };
 		96848DA11EE0B64F0009869A /* UnicodeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96848DA01EE0B64F0009869A /* UnicodeTable.swift */; };
 		9685BCFF1E06815700702C84 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9685BCFE1E06815700702C84 /* Keyboard.swift */; };
@@ -200,7 +198,6 @@
 		96EA39D71EAFDDDE00F3D804 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EA39D61EAFDDDE00F3D804 /* UIImage.swift */; };
 		96EA39E21EB0EEDE00F3D804 /* Labels_HideKeyboard.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96EA39DF1EB0EEDD00F3D804 /* Labels_HideKeyboard.ai */; };
 		96EA39E31EB0EEDE00F3D804 /* Labels_NextKeyboard.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96EA39E01EB0EEDD00F3D804 /* Labels_NextKeyboard.ai */; };
-		96F28C172030205C0023313C /* Symbola.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9679AF9E1FB55A000099F53B /* Symbola.ttf */; };
 		96F28C182030205C0023313C /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9685BCFE1E06815700702C84 /* Keyboard.swift */; };
 		96F28C192030205C0023313C /* KeyboardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96883126201FB35B0071908B /* KeyboardDelegate.swift */; };
 		96F28C1A2030205C0023313C /* DocumentContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96883129202008030071908B /* DocumentContext.swift */; };
@@ -319,7 +316,6 @@
 		967491B41EE16BDD00DC19E0 /* CharacterSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterSet.swift; sourceTree = "<group>"; };
 		967502532089E1D300FD6CED /* LaunchAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAgent.swift; sourceTree = "<group>"; };
 		96767C241EB11E28004D847C /* Labels_Settings.ai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Labels_Settings.ai; sourceTree = "<group>"; };
-		9679AF9E1FB55A000099F53B /* Symbola.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Symbola.ttf; sourceTree = "<group>"; };
 		96848D9E1EE05F080009869A /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		96848DA01EE0B64F0009869A /* UnicodeTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnicodeTable.swift; sourceTree = "<group>"; };
 		9685BCFE1E06815700702C84 /* Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
@@ -504,7 +500,6 @@
 				961FC32D1F3ADD9B00ADB15D /* LegalNoticesTextView.swift */,
 				961FC3301F3AE14B00ADB15D /* LegalNoticesText.swift */,
 				963BA6621F3B1FD000BFE3A7 /* LegalTextView.swift */,
-				9679AF9E1FB55A000099F53B /* Symbola.ttf */,
 			);
 			path = Keyboard;
 			sourceTree = "<group>";
@@ -797,7 +792,6 @@
 			files = (
 				96533A951F1293B000B07CA3 /* Labels_NextKeyboard.ai in Resources */,
 				964AB9421D1B6490004C827C /* LaunchScreen.storyboard in Resources */,
-				9679AF9F1FB55A000099F53B /* Symbola.ttf in Resources */,
 				96533A961F1293B000B07CA3 /* Labels_HideKeyboard.ai in Resources */,
 				964AB93F1D1B6490004C827C /* Assets.xcassets in Resources */,
 				964AB93A1D1B6490004C827C /* Main.storyboard in Resources */,
@@ -811,7 +805,6 @@
 			files = (
 				96767C251EB11E28004D847C /* Labels_Settings.ai in Resources */,
 				96EA39E31EB0EEDE00F3D804 /* Labels_NextKeyboard.ai in Resources */,
-				9679AFA01FB55A000099F53B /* Symbola.ttf in Resources */,
 				96EA39E21EB0EEDE00F3D804 /* Labels_HideKeyboard.ai in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -827,7 +820,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96F28C172030205C0023313C /* Symbola.ttf in Resources */,
 				96E354EE2020DDBC00668374 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

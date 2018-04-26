@@ -28,7 +28,7 @@ struct KeyboardColorScheme {
         keyColor: .white,
         serviceKeyColor: #colorLiteral(red: 0.418971857, green: 0.4386817824, blue: 0.4612155331, alpha: 0.2007917366),
         labelColor: .black,
-        shiftLabelColor: .darkGray,
+        shiftLabelColor: UIColor.black.withAlphaComponent(0.4),
         settingsLabelColor: .lightGray,
         
         unicodeNameTextColor: .white,
@@ -41,7 +41,7 @@ struct KeyboardColorScheme {
         keyColor: UIColor.white.withAlphaComponent(0.3),
         serviceKeyColor: UIColor.white.withAlphaComponent(0.15),
         labelColor: .white,
-        shiftLabelColor: #colorLiteral(red: 0.8789479733, green: 0.8789479733, blue: 0.8789479733, alpha: 1),
+        shiftLabelColor: UIColor.white.withAlphaComponent(0.5),
         settingsLabelColor: .lightGray,
         
         unicodeNameTextColor: .black,

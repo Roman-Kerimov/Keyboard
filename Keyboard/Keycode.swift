@@ -83,11 +83,11 @@ extension Keycode {
     
     static let fn: Keycode = 63
     static let leftControl: Keycode = 59
-    static let leftoption: Keycode = 58
+    static let leftOption: Keycode = 58
     static let leftCommand: Keycode = 55
     static let space: Keycode = 49
     static let rightCommand: Keycode = 54
-    static let rightoption: Keycode = 61
+    static let rightOption: Keycode = 61
     
     static let upArrow: Keycode = 126
     static let leftArrow: Keycode = 123

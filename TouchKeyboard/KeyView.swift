@@ -299,7 +299,7 @@ class KeyView: UIButton, ConfigurableView {
     private var previousTime: TimeInterval = 0
     private var previousDistance: CGFloat = 0
     
-    private var shiftDirections: [CGFloat] = .init()
+    private var shiftDirections: [Keyboard.ShiftDirection] = .init()
     
     @objc func longPressGestureAction(gesture: UIGestureRecognizer) {
         isHighlighted = true
@@ -349,35 +349,34 @@ class KeyView: UIButton, ConfigurableView {
             previousTime = currentTime
             previousDistance = distance
             
-            if shiftDirections.last == direction  || startPointSpeed > 300 {
+            let shiftDirection: Keyboard.ShiftDirection
+            
+            switch direction {
+            case -0.75:
+                shiftDirection = .downLeft
+            case -0.5:
+                shiftDirection = .down
+            case -0.25:
+                shiftDirection = .downRight
+            case 0:
+                shiftDirection = .right
+            case 0.25:
+                shiftDirection = .upRight
+            case 0.5:
+                shiftDirection = .up
+            case 0.75:
+                shiftDirection = .upLeft
+            default:
+                shiftDirection = .left
+            }
+            
+            if shiftDirections.last == shiftDirection  || startPointSpeed > 300 {
                 gestureStartPoint = gesture.location(in: self)
                 previousDistance = 0
                 startPointSpeed = speed
             }
             else if distance > threshold {
-                shiftDirections.append(direction)
-                
-                let shiftDirection: Keyboard.ShiftDirection
-                
-                switch direction {
-                case -0.75:
-                    shiftDirection = .downLeft
-                case -0.5:
-                    shiftDirection = .down
-                case -0.25:
-                    shiftDirection = .downRight
-                case 0:
-                    shiftDirection = .right
-                case 0.25:
-                    shiftDirection = .upRight
-                case 0.5:
-                    shiftDirection = .up
-                case 0.75:
-                    shiftDirection = .upLeft
-                default:
-                    shiftDirection = .left
-                }
-                
+                shiftDirections.append(shiftDirection)
                 Keyboard.default.shift(direction: shiftDirection)
             }
         }

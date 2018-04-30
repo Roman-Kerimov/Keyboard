@@ -195,7 +195,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
     func delete() {
         
         if AXUIElement.focused.hasSettable(attribute: .selectedText) && AXUIElement.focused.hasSettable(attribute: .selectedTextRange) {
-            let location: Int = AXUIElement.focused.selectedTextRange.location
+            let location: Int = AXUIElement.focused.selectedTextRange!.location
             AXUIElement.focused.selectedTextRange = .init(location: location - 1, length: 1)
             AXUIElement.focused.selectedText = .init()
         }
@@ -240,8 +240,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
     }
     
     static var documentContext: DocumentContext {
-        let text = AXUIElement.focused.text
-        let selectedTextRange = AXUIElement.focused.selectedTextRange
+        let text = AXUIElement.focused.text ?? .init()
+        let selectedTextRange = AXUIElement.focused.selectedTextRange ?? .init()
         
         return .init(
             beforeInput: .init(text.prefix(upTo: .init(encodedOffset: selectedTextRange.lowerBound))),

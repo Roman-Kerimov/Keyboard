@@ -92,6 +92,8 @@
 		9665B96A2041D773001AB462 /* CGKeyCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665B9692041D773001AB462 /* CGKeyCode.swift */; };
 		9665F3761E9D847300850F97 /* CharacterSequenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665F3751E9D847300850F97 /* CharacterSequenceView.swift */; };
 		9665F3781E9D921500850F97 /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665F3771E9D921500850F97 /* CharacterCollectionViewCell.swift */; };
+		966C19F0209775D8000EF1B5 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96443FC3208CB34D002FFA6B /* UIFont.swift */; };
+		966C19F1209775D8000EF1B5 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96443FC3208CB34D002FFA6B /* UIFont.swift */; };
 		966CB25420911C99005C7B5B /* CGAffineTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966CB25320911C99005C7B5B /* CGAffineTransform.swift */; };
 		966CB25520911C99005C7B5B /* CGAffineTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966CB25320911C99005C7B5B /* CGAffineTransform.swift */; };
 		966CB25620911C99005C7B5B /* CGAffineTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966CB25320911C99005C7B5B /* CGAffineTransform.swift */; };
@@ -500,6 +502,7 @@
 				961FC32D1F3ADD9B00ADB15D /* LegalNoticesTextView.swift */,
 				961FC3301F3AE14B00ADB15D /* LegalNoticesText.swift */,
 				963BA6621F3B1FD000BFE3A7 /* LegalTextView.swift */,
+				96443FC3208CB34D002FFA6B /* UIFont.swift */,
 			);
 			path = Keyboard;
 			sourceTree = "<group>";
@@ -605,7 +608,6 @@
 				96F28C2320302AC00023313C /* VersionMenuItem.swift */,
 				96AFEBA6202FA9080099F70B /* QuitMenuItem.swift */,
 				96AFEBA8202FAB830099F70B /* LocalizedMenuItem.swift */,
-				96443FC3208CB34D002FFA6B /* UIFont.swift */,
 				96E354ED2020DDBC00668374 /* Assets.xcassets */,
 				96E354F22020DDBD00668374 /* Info.plist */,
 				96E354F32020DDBD00668374 /* macOSKeyboard.entitlements */,
@@ -904,6 +906,7 @@
 				96533A931F1293A500B07CA3 /* Localization.swift in Sources */,
 				96533A771F12938D00B07CA3 /* KeyboardColorScheme.swift in Sources */,
 				9620E748202B9EB1003FB02E /* Bundle.swift in Sources */,
+				966C19F0209775D8000EF1B5 /* UIFont.swift in Sources */,
 				96533A8B1F1293A500B07CA3 /* UIColor.swift in Sources */,
 				96533A7D1F12938D00B07CA3 /* KeyboardLayoutView.swift in Sources */,
 				96533A7A1F12938D00B07CA3 /* SettingsContainerView.swift in Sources */,
@@ -974,6 +977,7 @@
 				96E033FF2031560E0039E653 /* GO.swift in Sources */,
 				96443FC1208C9D12002FFA6B /* NSMutableAttributedString.swift in Sources */,
 				96F8D1D11E26FAE0000D1DFC /* SettingsTableView.swift in Sources */,
+				966C19F1209775D8000EF1B5 /* UIFont.swift in Sources */,
 				96F7FBEA1FBB299400F7146C /* CollectionViewFlowLayout.swift in Sources */,
 				960F6E931EC9ED0400EFC7B7 /* CharacterCollectionView.swift in Sources */,
 				96530D671DD1C9A9004E8BAA /* KeyboardLayout.swift in Sources */,

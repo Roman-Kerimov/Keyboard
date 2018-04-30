@@ -241,7 +241,7 @@ class KeyView: UIButton, ConfigurableView {
         baseFontSize = labelFontSize
         self.spacing = spacing
         
-        let characterLabelFont = UIFont.init(name: "STIXGeneral", size: baseFontSize)!
+        let characterLabelFont: UIFont = .characterFont(ofSize: baseFontSize)
         let nameLabelFont = UIFont.systemFont(ofSize: labelFontSize/1.8)
         
         mainLabelView.font = [.space, .enter, .delete].contains(key) ? nameLabelFont : characterLabelFont

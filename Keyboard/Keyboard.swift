@@ -19,10 +19,13 @@ class Keyboard: NSObject {
         return "\(VERSION.string) \(versionNumber) (\(buildNumber))"
     }
     
+    private var shiftDirections: [ShiftDirection] = .init()
+    
     internal var shiftFlag: Bool = false {
         didSet {
             if shiftFlag == false {
                 currentKey = nil
+                shiftDirections = .init()
                 Array<CharacterComponent>.extraArrayExtension = .init()
             }
         }
@@ -64,36 +67,46 @@ class Keyboard: NSObject {
         }
         else {
             let layout = Keyboard.default.layout
+            let direction: ShiftDirection
+            
             switch key {
                 
             case layout.rows[0][1], layout.rows[0][6]:
-                shift(direction: .upLeft)
+                direction = .upLeft
                 
             case layout.rows[0][2], layout.rows[0][7]:
-                shift(direction: .up)
+                direction = .up
                 
             case layout.rows[0][3], layout.rows[0][8]:
-                shift(direction: .upRight)
+                direction = .upRight
                 
                 
             case layout.rows[1][1], layout.rows[1][6]:
-                shift(direction: .left)
+                direction = .left
                 
             case layout.rows[1][3], layout.rows[1][8]:
-                shift(direction: .right)
+                direction = .right
                 
                 
             case layout.rows[2][1], layout.rows[2][6]:
-                shift(direction: .downLeft)
+                direction = .downLeft
                 
             case layout.rows[2][2], layout.rows[2][7]:
-                shift(direction: .down)
+                direction = .down
                 
             case layout.rows[2][3], layout.rows[2][8]:
-                shift(direction: .downRight)
+                direction = .downRight
                 
             default:
-                break
+                return
+            }
+            
+            if shiftDirections.last == direction {
+                input()
+            }
+            else {
+                shift(direction: direction)
+                shiftDirections.append(direction)
             }
         }
         

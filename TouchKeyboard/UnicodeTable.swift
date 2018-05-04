@@ -22,10 +22,10 @@ class UnicodeTable: NSObject {
         backgroudOperationQueue.addOperation( LoadUnicodeNameIndex() )
     }
 
-    internal var textForSerch: String = .init() {
+    internal var textForSearch: String = .init() {
         didSet {
             
-            if oldValue == "" && textForSerch == "" {
+            if oldValue == "" && textForSearch == "" {
                 return
             }
             
@@ -40,7 +40,7 @@ class UnicodeTable: NSObject {
             searchUnicodeScalarsOperation.cancel()
         }
         
-        textForSerch = text.uppercased()
+        textForSearch = text.uppercased()
         
         backgroudOperationQueue.addOperation( SearchUnicodeScalars.init(for: characterCollectionView) )
     }
@@ -127,7 +127,7 @@ private class SearchUnicodeScalars: Operation {
     }
     
     override func main() {
-        let text = UnicodeTable.default.textForSerch
+        let text = UnicodeTable.default.textForSearch
         
         guard !isCancelled else {
             return

@@ -65,7 +65,7 @@ class CharacterCollectionView: UICollectionView, UICollectionViewDelegateFlowLay
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: characterCellReuseIdentifier, for: indexPath) as! CharacterCollectionViewCell
         
-        var character = characters[indexPath.row]
+        var character = characters[indexPath.item]
         
         if character.unicodeScalars.count == 1
             && character.description.applyingTransform(.toUnicodeName, reverse: false)?.contains("COMBINING") == true {

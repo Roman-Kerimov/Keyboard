@@ -21,7 +21,16 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         title.adjustsFontSizeToFitWidth = true
         title.textAlignment = .center
         
+        title.translatesAutoresizingMaskIntoConstraints = false
+        title.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        title.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
+        title.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        
         addSubview(unicodeName)
+        
+        unicodeName.translatesAutoresizingMaskIntoConstraints = false
+        unicodeName.leftAnchor.constraint(equalTo: rightAnchor).isActive = true
+        unicodeName.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         
         backgroundColor = .touchableClear
     }
@@ -32,15 +41,5 @@ class CharacterCollectionViewCell: UICollectionViewCell {
     
     private var maxUnicodeNameViewWidth: CGFloat {
         return UIScreen.main.bounds.width - frame.width
-    }
-    
-    func configure() {
-        title.frame.size = frame.size
-        unicodeName.frame.origin.x = frame.width
-        unicodeName.frame.origin.y = (frame.height - unicodeName.frame.height) / 2
-        
-        if unicodeName.frame.size.width > maxUnicodeNameViewWidth {
-            unicodeName.frame.size.width = maxUnicodeNameViewWidth
-        }
     }
 }

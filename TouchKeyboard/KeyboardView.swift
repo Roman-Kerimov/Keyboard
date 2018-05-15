@@ -51,17 +51,6 @@ internal class KeyboardView: UIView {
             }
             
             characterSequenceView.characters = characterSequence
-            
-            var textForSearch: String =
-                documentContextBeforeInput
-                    .components(separatedBy: .whitespacesAndNewlines).last?
-                    .components(separatedBy: CharacterSet.printableASCII.inverted).last ?? .init()
-            
-            if textForSearch.contains(.reverseSolidus) {
-                textForSearch = .reverseSolidus + ( textForSearch.components(separatedBy: String.reverseSolidus).last ?? .init() )
-            }
-            
-            unicodeCollectionView.search(byName: textForSearch)
         }
     }
     

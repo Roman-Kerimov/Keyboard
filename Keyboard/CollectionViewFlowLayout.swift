@@ -8,7 +8,7 @@
 import UIKit
 
 class CollectionViewFlowLayout: UICollectionViewFlowLayout {
-    
+    #if !os(macOS)
     var targetIndexPath: IndexPath?
 
     override func invalidationContext(forInteractivelyMovingItems targetIndexPaths: [IndexPath], withTargetPosition targetPosition: CGPoint, previousIndexPaths: [IndexPath], previousPosition: CGPoint) -> UICollectionViewLayoutInvalidationContext {
@@ -19,4 +19,5 @@ class CollectionViewFlowLayout: UICollectionViewFlowLayout {
         
         return context
     }
+    #endif
 }

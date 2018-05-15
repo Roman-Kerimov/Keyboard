@@ -16,8 +16,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
     
     private static var preEnterDocumentContext: DocumentContext?
     private static var keycodeToKeyDictionary: [Keycode: Key] = .init()
+    
+    let unicodeSearchWindow = UnicodeSearchWindow.init()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+          
+        NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
         
         Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true) { (timer) in
             if self.isProcessTrusted != AXIsProcessTrusted() {
@@ -31,7 +35,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
         
         Keyboard.default.delegate = self
         
-        let eventMask: CGEventMask = 1 << CGEventType.keyDown.rawValue | 1 << CGEventType.keyUp.rawValue | 1 << CGEventType.flagsChanged.rawValue
+        let eventMask: CGEventMask = 1 << CGEventType.keyDown.rawValue | 1 << CGEventType.keyUp.rawValue | 1 << CGEventType.flagsChanged.rawValue | 1 << CGEventType.leftMouseUp.rawValue
 
         let keyEvent = CGEvent.tapCreate(
             tap: .cgSessionEventTap,
@@ -39,6 +43,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
             options: .defaultTap,
             eventsOfInterest: eventMask,
             callback: { (eventTapProxy, _, event, nil) -> Unmanaged<CGEvent>? in
+                
+                if event.type == .leftMouseUp {
+                    NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
+                    return Unmanaged.passRetained(event)
+                }
                 
                 let isAutorepeatEvent: Bool = event.getIntegerValueField(.keyboardEventAutorepeat) == 0 ? false : true
                 
@@ -52,6 +61,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
                 
                 guard !isAutorepeatEvent || autorepeatKeycodes.contains(event.keycode)  else {
                     return nil
+                }
+                
+                if event.type == .keyUp {
+                    NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
                 }
                 
                 guard AppDelegate.skipTapCount == 0 else {

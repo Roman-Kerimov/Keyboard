@@ -186,7 +186,7 @@ class CharacterSequenceView: CharacterCollectionView {
                 }
             }, completion: { _ in
                 enableAtimations()
-                KeyboardViewController.shared.updateDocumentContext()
+                NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
             })
             
             deleteKey.isHighlighted = false
@@ -234,7 +234,7 @@ class CharacterSequenceView: CharacterCollectionView {
                     Keyboard.default.delegate?.delete()
                 }
                 
-                KeyboardViewController.shared.updateDocumentContext()
+                NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
             })
             
             return
@@ -252,7 +252,6 @@ class CharacterSequenceView: CharacterCollectionView {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! CharacterCollectionViewCell
-        cell.configure()
             
         cell.title.font = characterFont
         cell.backgroundColor = colorScheme.labelColor.withAlphaComponent(0.05)

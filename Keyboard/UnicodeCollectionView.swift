@@ -33,6 +33,8 @@ class UnicodeCollectionView: CharacterCollectionView {
         layout.minimumLineSpacing = 0
         clipsToBounds = false
         
+        NotificationCenter.default.addObserver(self, selector: #selector(search), name: .DocumentContextDidChange, object: nil)
+        
         if Bundle.main.isInterfaceBuilder {
             characters = .init("⌨🎹😀😇ǶÆ")
             
@@ -79,11 +81,15 @@ class UnicodeCollectionView: CharacterCollectionView {
         
         cell.unicodeName.isHidden = isHiddenUnicodeNames
         
-        cell.configure()
+        #if os(macOS)
+        cell.toolTip = cell.unicodeName.text
+        #endif
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        deselectItem(at: indexPath, animated: false)
         
         for _ in textForSearch {
             Keyboard.default.delegate?.delete()
@@ -103,22 +109,35 @@ class UnicodeCollectionView: CharacterCollectionView {
         Keyboard.default.frequentlyUsedCharacters = .init( frequentlyUsedCharacters.suffix(100) )
         
         Keyboard.default.delegate?.insert(text: character.description)
-        KeyboardViewController.shared.updateDocumentContext()
+        NotificationCenter.default.post(.init(name: .DocumentContextDidChange))
     }
     
     private var textForSearch: String = .init()
     
-    public func search(byName text: String) {
-        textForSearch = text
+    @objc private func search() {
+        var textForSearch =
+            Keyboard.default.delegate?.documentContext.beforeInput
+                .components(separatedBy: .whitespacesAndNewlines).last?
+                .components(separatedBy: CharacterSet.printableASCII.inverted).last ?? .init()
         
-        UnicodeTable.default.searchScalars(byName: text.replacingOccurrences(of: String.reverseSolidus, with: ""), for: self)
+        if textForSearch.contains(.reverseSolidus) {
+            textForSearch = .reverseSolidus + ( textForSearch.components(separatedBy: String.reverseSolidus).last ?? .init() )
+        }
+        
+        guard textForSearch.isEmpty || self.textForSearch != textForSearch else {
+            return
+        }
+        
+        self.textForSearch = textForSearch
+        
+        UnicodeTable.default.searchScalars(byName: textForSearch.replacingOccurrences(of: String.reverseSolidus, with: ""), for: self)
     }
     
     override func reloadData() {
         super.reloadData()
         
         if numberOfItems(inSection: 0) > 0 {
-            self.scrollToItem(at: .init(row: 0, section: 0), at: .top, animated: false)
+            self.scrollToItem(at: .init(item: 0, section: 0), at: .top, animated: false)
         }
     }
     

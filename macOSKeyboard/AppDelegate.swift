@@ -256,6 +256,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
         let text = AXUIElement.focused.text ?? .init()
         let selectedTextRange = AXUIElement.focused.selectedTextRange ?? .init()
         
+        guard selectedTextRange.upperBound <= text.count else {
+            return .init(beforeInput: text, afterInput: .init())
+        }
+        
         return .init(
             beforeInput: .init(text.prefix(upTo: .init(encodedOffset: selectedTextRange.lowerBound))),
             afterInput: .init(text.suffix(from: .init(encodedOffset: selectedTextRange.upperBound)))

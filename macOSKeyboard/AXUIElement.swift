@@ -61,7 +61,7 @@ extension AXUIElement {
         
         var attributeNamesCFArray: CFArray?
         
-        AXUIElementCopyAttributeNames(.focused, &attributeNamesCFArray)
+        AXUIElementCopyAttributeNames(self, &attributeNamesCFArray)
         
         return attributeNamesCFArray as! [String]
     }

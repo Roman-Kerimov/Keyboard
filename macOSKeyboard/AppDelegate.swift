@@ -207,10 +207,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
 
     func delete() {
         
-        if AXUIElement.focused.hasSettable(attribute: .selectedText) && AXUIElement.focused.hasSettable(attribute: .selectedTextRange) {
-            let location: Int = AXUIElement.focused.selectedTextRange!.location
-            AXUIElement.focused.selectedTextRange = .init(location: location - 1, length: 1)
-            AXUIElement.focused.selectedText = .init()
+        if AXUIElement.focused?.hasSettable(attribute: .selectedText) == true && AXUIElement.focused?.hasSettable(attribute: .selectedTextRange) == true {
+            let location: Int = AXUIElement.focused!.selectedTextRange!.location
+            AXUIElement.focused?.selectedTextRange = .init(location: location - 1, length: 1)
+            AXUIElement.focused?.selectedText = .init()
         }
         else {
             tap(keycode: .delete)
@@ -232,8 +232,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
             }
         }
         
-        if AXUIElement.focused.hasSettable(attribute: .selectedText) {
-            AXUIElement.focused.selectedText = text
+        if AXUIElement.focused?.hasSettable(attribute: .selectedText) == true {
+            AXUIElement.focused?.selectedText = text
         }
         else {
             
@@ -253,8 +253,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
     }
     
     static var documentContext: DocumentContext {
-        let text = AXUIElement.focused.text ?? .init()
-        let selectedTextRange = AXUIElement.focused.selectedTextRange ?? .init()
+        let text = AXUIElement.focused?.text ?? .init()
+        let selectedTextRange = AXUIElement.focused?.selectedTextRange ?? .init()
         
         guard selectedTextRange.upperBound <= text.count else {
             return .init(beforeInput: text, afterInput: .init())

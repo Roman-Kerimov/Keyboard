@@ -10,12 +10,12 @@ import Foundation
 extension AXUIElement {
     static let systemWide = AXUIElementCreateSystemWide()
     
-    static var focused: AXUIElement {
+    static var focused: AXUIElement? {
         
         var focusedUIElement: CFTypeRef?
         AXUIElementCopyAttributeValue(.systemWide, kAXFocusedUIElementAttribute as CFString, &focusedUIElement)
 
-        return focusedUIElement as! AXUIElement
+        return focusedUIElement as! AXUIElement?
     }
     
     private func get(attribute: AXAttribute) -> String? {

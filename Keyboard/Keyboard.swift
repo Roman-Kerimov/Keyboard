@@ -293,7 +293,7 @@ class Keyboard: NSObject {
                 break
             }
             
-            guard let previousCharacter = delegate?.documentContext.beforeInput.dropLast().last else {
+            guard let previousCharacter = delegate?.documentContext.beforeInput?.dropLast().last else {
                 currentLabel = .init()
                 break
             }

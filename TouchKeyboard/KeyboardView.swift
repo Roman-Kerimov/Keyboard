@@ -16,7 +16,7 @@ internal class KeyboardView: UIView {
     
     internal var documentContext: DocumentContext = .init() {
         didSet {
-            let documentContextBeforeInput: String = documentContext.beforeInput
+            let documentContextBeforeInput: String = documentContext.beforeInput ?? .init()
             
             var characterSequence: [Character] = .init()
             var spaceCount = 0

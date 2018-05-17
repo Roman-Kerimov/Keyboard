@@ -14,6 +14,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
 
     let statusMenu: StatusMenu = .init()
     
+    private var previousDocumentContext: DocumentContext = .init()
     private static var preEnterDocumentContext: DocumentContext?
     private static var keycodeToKeyDictionary: [Keycode: Key] = .init()
     
@@ -31,11 +32,17 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
                 LaunchAgent.unload()
                 NSApp.terminate(self)
             }
+            
+            if self.previousDocumentContext != self.documentContext {
+                self.previousDocumentContext = self.documentContext
+                
+                NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
+            }
         }
         
         Keyboard.default.delegate = self
         
-        let eventMask: CGEventMask = 1 << CGEventType.keyDown.rawValue | 1 << CGEventType.keyUp.rawValue | 1 << CGEventType.flagsChanged.rawValue | 1 << CGEventType.leftMouseUp.rawValue
+        let eventMask: CGEventMask = 1 << CGEventType.keyDown.rawValue | 1 << CGEventType.keyUp.rawValue | 1 << CGEventType.flagsChanged.rawValue
 
         let keyEvent = CGEvent.tapCreate(
             tap: .cgSessionEventTap,
@@ -43,11 +50,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
             options: .defaultTap,
             eventsOfInterest: eventMask,
             callback: { (eventTapProxy, _, event, nil) -> Unmanaged<CGEvent>? in
-                
-                if event.type == .leftMouseUp {
-                    NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
-                    return Unmanaged.passRetained(event)
-                }
                 
                 let isAutorepeatEvent: Bool = event.getIntegerValueField(.keyboardEventAutorepeat) == 0 ? false : true
                 
@@ -63,10 +65,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
                     return nil
                 }
                 
-                if event.type == .keyUp {
-                    NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
-                }
-                
                 guard AppDelegate.skipTapCount == 0 else {
                     AppDelegate.skipTapCount -= 1
                     return Unmanaged.passRetained(event)
@@ -78,7 +76,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
 
                 if event.keycode == .enter && event.type == .keyUp {
                     let preEnterContext: String = AppDelegate.preEnterDocumentContext?.beforeInput ?? .init()
-                    let postEnterContext: String = AppDelegate.documentContext.beforeInput
+                    let postEnterContext: String = AppDelegate.documentContext.beforeInput ?? .init()
 
                     if postEnterContext.hasPrefix(preEnterContext) {
                         let enteredString = postEnterContext.dropFirst(preEnterContext.count)
@@ -253,8 +251,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
     }
     
     static var documentContext: DocumentContext {
-        let text = AXUIElement.focused?.text ?? .init()
-        let selectedTextRange = AXUIElement.focused?.selectedTextRange ?? .init()
+        guard let text = AXUIElement.focused?.text else {
+            return .init()
+        }
+        
+        guard let selectedTextRange = AXUIElement.focused?.selectedTextRange else {
+            return .init()
+        }
         
         guard selectedTextRange.upperBound <= text.count else {
             return .init(beforeInput: text, afterInput: .init())

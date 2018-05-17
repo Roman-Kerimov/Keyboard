@@ -116,7 +116,7 @@ class UnicodeCollectionView: CharacterCollectionView {
     
     @objc private func search() {
         var textForSearch =
-            Keyboard.default.delegate?.documentContext.beforeInput
+            Keyboard.default.delegate?.documentContext.beforeInput?
                 .components(separatedBy: .whitespacesAndNewlines).last?
                 .components(separatedBy: CharacterSet.printableASCII.inverted).last ?? .init()
         

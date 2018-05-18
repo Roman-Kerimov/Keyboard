@@ -37,6 +37,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
                 self.previousDocumentContext = self.documentContext
                 
                 NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
+                
+                self.unicodeSearchWindow.setIsVisible(self.previousDocumentContext != .init())
             }
         }
         

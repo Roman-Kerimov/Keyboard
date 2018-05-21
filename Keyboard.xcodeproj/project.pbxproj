@@ -121,6 +121,9 @@
 		9688312B202008040071908B /* DocumentContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96883129202008030071908B /* DocumentContext.swift */; };
 		969221E51F3BA91A005E5913 /* SettingsContainerView_LanguageTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969221E41F3BA91A005E5913 /* SettingsContainerView_LanguageTableView.swift */; };
 		969221E61F3BA91A005E5913 /* SettingsContainerView_LanguageTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969221E41F3BA91A005E5913 /* SettingsContainerView_LanguageTableView.swift */; };
+		969450C020B3215100DD7EF3 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969450BF20B3215100DD7EF3 /* URL.swift */; };
+		969450C120B3215100DD7EF3 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969450BF20B3215100DD7EF3 /* URL.swift */; };
+		969450C220B3215100DD7EF3 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969450BF20B3215100DD7EF3 /* URL.swift */; };
 		9694E23D1E29D72800ED3A85 /* Internationalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9694E23C1E29D72800ED3A85 /* Internationalization.swift */; };
 		9696CBC12031800B007CC94B /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9696CBC02031800B007CC94B /* Template.swift */; };
 		9696CBC22031800B007CC94B /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9696CBC02031800B007CC94B /* Template.swift */; };
@@ -409,6 +412,7 @@
 		96883126201FB35B0071908B /* KeyboardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDelegate.swift; sourceTree = "<group>"; };
 		96883129202008030071908B /* DocumentContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentContext.swift; sourceTree = "<group>"; };
 		969221E41F3BA91A005E5913 /* SettingsContainerView_LanguageTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContainerView_LanguageTableView.swift; sourceTree = "<group>"; };
+		969450BF20B3215100DD7EF3 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		9694E23C1E29D72800ED3A85 /* Internationalization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Internationalization.swift; sourceTree = "<group>"; };
 		9696CBC02031800B007CC94B /* Template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
 		969E83021EED830C009A1F2D /* ConfigurableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableViewProtocol.swift; sourceTree = "<group>"; };
@@ -687,6 +691,7 @@
 				96848DA01EE0B64F0009869A /* UnicodeTable.swift */,
 				9608928120B00137007AA01E /* LoadUnicodeNameIndex.swift */,
 				9608928520B001AD007AA01E /* SearchUnicodeScalars.swift */,
+				969450BF20B3215100DD7EF3 /* URL.swift */,
 				96F716B81F0438B6004A77C7 /* Locale.swift */,
 				967491B41EE16BDD00DC19E0 /* CharacterSet.swift */,
 			);
@@ -1088,6 +1093,7 @@
 				96533A8B1F1293A500B07CA3 /* UIColor.swift in Sources */,
 				96533A7D1F12938D00B07CA3 /* KeyboardLayoutView.swift in Sources */,
 				96533A7A1F12938D00B07CA3 /* SettingsContainerView.swift in Sources */,
+				969450C020B3215100DD7EF3 /* URL.swift in Sources */,
 				96E033FA203155A80039E653 /* VERSION.swift in Sources */,
 				96443FC0208C9D12002FFA6B /* NSMutableAttributedString.swift in Sources */,
 				96E03406203156660039E653 /* NEXT.swift in Sources */,
@@ -1114,6 +1120,7 @@
 				966194D31DE2FCEF007FCF02 /* KeyboardLayoutView.swift in Sources */,
 				963BA6641F3B1FD000BFE3A7 /* LegalTextView.swift in Sources */,
 				96883128201FB35B0071908B /* KeyboardDelegate.swift in Sources */,
+				969450C120B3215100DD7EF3 /* URL.swift in Sources */,
 				96D2B8DD1E35538B006772A5 /* Localization.swift in Sources */,
 				960F6E951EC9F7E600EFC7B7 /* UnicodeCollectionView.swift in Sources */,
 				96EA39D71EAFDDDE00F3D804 /* UIImage.swift in Sources */,
@@ -1254,6 +1261,7 @@
 				9608928820B001AD007AA01E /* SearchUnicodeScalars.swift in Sources */,
 				96E034002031560E0039E653 /* GO.swift in Sources */,
 				9608928420B00137007AA01E /* LoadUnicodeNameIndex.swift in Sources */,
+				969450C220B3215100DD7EF3 /* URL.swift in Sources */,
 				96DB1A7C202FB84F00B96D3C /* LegalTextView.swift in Sources */,
 				960FEFEE203D37590099E449 /* AXAttribute.swift in Sources */,
 				9697F881202FA88C001EC50A /* Internationalization.swift in Sources */,

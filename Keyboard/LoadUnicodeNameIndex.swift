@@ -15,9 +15,7 @@ class LoadUnicodeNameIndex: Operation {
             return
         }
         
-        let unicodeNameIndexKey = "Ao7ozOMvHyuaIKDX06B90pz9nmMe8yX"
-        let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let unicodeNameIndexURL = documentDirectoryURL.appendingPathComponent(unicodeNameIndexKey)
+        let unicodeNameIndexURL = URL.applicationSupport.appendingPathComponent("Ao7ozOMvHyuaIKDX06B90pz9nmMe8yX")
         
         var wordDictionary: [String: String] = .init()
         

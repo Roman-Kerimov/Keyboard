@@ -86,9 +86,9 @@ struct KeyboardLayout {
     static let dvorak = KeyboardLayout(
         name: "Dvorak",
         rows: [
-            [ .hyphen,       .comma, .fullStop, .p, .y, .f, .g, .c, .r, .l, ],
+            [ .questionMark, .comma, .fullStop, .p, .y, .f, .g, .c, .r, .l, ],
             [ .a,            .o,     .e,        .u, .i, .d, .h, .t, .n, .s, ],
-            [ .questionMark, .q,     .j,        .k, .x, .b, .m, .w, .v, .z, ],
+            [ .hyphen,       .q,     .j,        .k, .x, .b, .m, .w, .v, .z, ],
         ]
     )
     

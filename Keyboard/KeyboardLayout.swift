@@ -124,7 +124,7 @@ struct KeyboardLayout {
         .comma: .semicolon,
         .questionMark: .exclamationMark,
         .apostrophe: .quotationMark,
-        .space: .lowLine,
+        .hyphen: .lowLine,
     ]
     
     static let shiftRightDictionary: [CharacterComponent: CharacterComponent] = [.lessThanSign: .greaterThanSign]

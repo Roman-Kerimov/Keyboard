@@ -68,7 +68,7 @@ class CharacterCollectionView: UICollectionView, UICollectionViewDelegateFlowLay
         var character = characters[indexPath.item]
         
         if character.unicodeScalars.count == 1
-            && character.description.applyingTransform(.toUnicodeName, reverse: false)?.contains("COMBINING") == true {
+            && character.unicodeName.contains("COMBINING") == true {
             
             character = .init("◌" + character.description)
         }

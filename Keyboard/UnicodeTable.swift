@@ -19,7 +19,7 @@ class UnicodeTable: NSObject {
     private override init() {
         super.init()
         
-        backgroudOperationQueue.addOperation( LoadUnicodeNames.init() )
+        backgroudOperationQueue.addOperation( LoadUnicodeDataFiles.init() )
     }
 
     internal var textForSearch: String = .init() {

@@ -1,5 +1,5 @@
 //
-//  LoadUnicodeNames.swift
+//  LoadUnicodeDataFiles.swift
 //  Keyboard
 //
 //  Created by Roman Kerimov on 2018-05-19.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class LoadUnicodeNames: Operation {
+class LoadUnicodeDataFiles: Operation {
     
     override func main() {
         
@@ -28,7 +28,7 @@ class LoadUnicodeNames: Operation {
             for (index, string) in derivedNameStrings.enumerated() {
                 
                 let progress: Float = .init(index + 1) / .init(derivedNameStrings.count)
-                NotificationCenter.default.post(name: .UnicodeNameProgressDidChange, object: progress)
+                NotificationCenter.default.post(name: .UnicodeDataFilesLoadingProgressDidChange, object: progress)
                 
                 let elements = string.split(separator: .semicolon).map {$0.trimmingCharacters(in: .whitespaces)}
                 
@@ -50,5 +50,5 @@ class LoadUnicodeNames: Operation {
 }
 
 extension NSNotification.Name {
-    static let UnicodeNameProgressDidChange: NSNotification.Name = .init("yyYaw81H3txGoDVoLuMIcxI9qcD2ZIb")
+    static let UnicodeDataFilesLoadingProgressDidChange: NSNotification.Name = .init("yyYaw81H3txGoDVoLuMIcxI9qcD2ZIb")
 }

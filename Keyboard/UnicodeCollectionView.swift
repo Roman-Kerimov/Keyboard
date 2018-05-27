@@ -34,7 +34,7 @@ class UnicodeCollectionView: CharacterCollectionView {
         backgroundView = progressView
         progressView.isHidden = true
         
-        NotificationCenter.default.addObserver(forName: .UnicodeNameProgressDidChange, object: nil, queue: nil) { (notification) in
+        NotificationCenter.default.addObserver(forName: .UnicodeDataFilesLoadingProgressDidChange, object: nil, queue: nil) { (notification) in
             DispatchQueue.main.async {
                 let progress = notification.object as! Float
                 progressView.isHidden = progress == 1

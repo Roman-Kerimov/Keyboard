@@ -12,14 +12,14 @@ class UnicodeTable: NSObject {
     
     public static let `default`: UnicodeTable = .init()
     
-    internal var unicodeNameIndex: [(word: String, stringWithUnicodeScalars: String)] = .init()
+    internal var codePointNames: [UInt32: String] = .init()
     
     private let backgroudOperationQueue: OperationQueue = .init()
     
     private override init() {
         super.init()
         
-        backgroudOperationQueue.addOperation( LoadUnicodeNameIndex() )
+        backgroudOperationQueue.addOperation( LoadUnicodeNames.init() )
     }
 
     internal var textForSearch: String = .init() {

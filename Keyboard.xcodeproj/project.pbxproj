@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9608928220B00137007AA01E /* LoadUnicodeNameIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9608928120B00137007AA01E /* LoadUnicodeNameIndex.swift */; };
-		9608928320B00137007AA01E /* LoadUnicodeNameIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9608928120B00137007AA01E /* LoadUnicodeNameIndex.swift */; };
-		9608928420B00137007AA01E /* LoadUnicodeNameIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9608928120B00137007AA01E /* LoadUnicodeNameIndex.swift */; };
+		9608928220B00137007AA01E /* LoadUnicodeNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9608928120B00137007AA01E /* LoadUnicodeNames.swift */; };
+		9608928320B00137007AA01E /* LoadUnicodeNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9608928120B00137007AA01E /* LoadUnicodeNames.swift */; };
+		9608928420B00137007AA01E /* LoadUnicodeNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9608928120B00137007AA01E /* LoadUnicodeNames.swift */; };
 		9608928620B001AD007AA01E /* SearchUnicodeScalars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9608928520B001AD007AA01E /* SearchUnicodeScalars.swift */; };
 		9608928720B001AD007AA01E /* SearchUnicodeScalars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9608928520B001AD007AA01E /* SearchUnicodeScalars.swift */; };
 		9608928820B001AD007AA01E /* SearchUnicodeScalars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9608928520B001AD007AA01E /* SearchUnicodeScalars.swift */; };
@@ -56,6 +56,9 @@
 		964AB96E1D1B6535004C827C /* Keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 964AB9671D1B6535004C827C /* Keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		964ECA7E1E536FE8008E8757 /* SettingsContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964ECA7D1E536FE8008E8757 /* SettingsContainerView.swift */; };
 		964ED5481DF5765E006AD952 /* KeyboardColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964ED5471DF5765E006AD952 /* KeyboardColorScheme.swift */; };
+		965050E020BAB056001BAA91 /* DerivedName.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9608926620AF4F98007AA01E /* DerivedName.txt */; };
+		965050E120BAB057001BAA91 /* DerivedName.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9608926620AF4F98007AA01E /* DerivedName.txt */; };
+		965050E220BAB058001BAA91 /* DerivedName.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9608926620AF4F98007AA01E /* DerivedName.txt */; };
 		96530D671DD1C9A9004E8BAA /* KeyboardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96530D661DD1C9A9004E8BAA /* KeyboardLayout.swift */; };
 		96533A761F12938D00B07CA3 /* KeyboardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96530D661DD1C9A9004E8BAA /* KeyboardLayout.swift */; };
 		96533A771F12938D00B07CA3 /* KeyboardColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964ED5471DF5765E006AD952 /* KeyboardColorScheme.swift */; };
@@ -353,7 +356,7 @@
 		9608927620AF4F98007AA01E /* GraphemeBreakProperty.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = GraphemeBreakProperty.txt; sourceTree = "<group>"; };
 		9608927720AF4F98007AA01E /* SentenceBreakProperty.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = SentenceBreakProperty.txt; sourceTree = "<group>"; };
 		9608927820AF4F98007AA01E /* WordBreakTest.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = WordBreakTest.txt; sourceTree = "<group>"; };
-		9608928120B00137007AA01E /* LoadUnicodeNameIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadUnicodeNameIndex.swift; sourceTree = "<group>"; };
+		9608928120B00137007AA01E /* LoadUnicodeNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadUnicodeNames.swift; sourceTree = "<group>"; };
 		9608928520B001AD007AA01E /* SearchUnicodeScalars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUnicodeScalars.swift; sourceTree = "<group>"; };
 		960F6E921EC9ED0400EFC7B7 /* CharacterCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterCollectionView.swift; sourceTree = "<group>"; };
 		960F6E941EC9F7E600EFC7B7 /* UnicodeCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnicodeCollectionView.swift; sourceTree = "<group>"; };
@@ -689,7 +692,7 @@
 				969E83021EED830C009A1F2D /* ConfigurableViewProtocol.swift */,
 				960F6E941EC9F7E600EFC7B7 /* UnicodeCollectionView.swift */,
 				96848DA01EE0B64F0009869A /* UnicodeTable.swift */,
-				9608928120B00137007AA01E /* LoadUnicodeNameIndex.swift */,
+				9608928120B00137007AA01E /* LoadUnicodeNames.swift */,
 				9608928520B001AD007AA01E /* SearchUnicodeScalars.swift */,
 				969450BF20B3215100DD7EF3 /* URL.swift */,
 				96F716B81F0438B6004A77C7 /* Locale.swift */,
@@ -974,6 +977,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				96533A951F1293B000B07CA3 /* Labels_NextKeyboard.ai in Resources */,
+				965050E220BAB058001BAA91 /* DerivedName.txt in Resources */,
 				964AB9421D1B6490004C827C /* LaunchScreen.storyboard in Resources */,
 				96533A961F1293B000B07CA3 /* Labels_HideKeyboard.ai in Resources */,
 				964AB93F1D1B6490004C827C /* Assets.xcassets in Resources */,
@@ -987,6 +991,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				96767C251EB11E28004D847C /* Labels_Settings.ai in Resources */,
+				965050E120BAB057001BAA91 /* DerivedName.txt in Resources */,
 				96EA39E31EB0EEDE00F3D804 /* Labels_NextKeyboard.ai in Resources */,
 				96EA39E21EB0EEDE00F3D804 /* Labels_HideKeyboard.ai in Resources */,
 			);
@@ -1004,6 +1009,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				96E354EE2020DDBC00668374 /* Assets.xcassets in Resources */,
+				965050E020BAB056001BAA91 /* DerivedName.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1057,7 +1063,7 @@
 				96533A921F1293A500B07CA3 /* Internationalization.swift in Sources */,
 				96E0340E203157030039E653 /* SEARCH.swift in Sources */,
 				96E03412203162BF0039E653 /* SEND.swift in Sources */,
-				9608928220B00137007AA01E /* LoadUnicodeNameIndex.swift in Sources */,
+				9608928220B00137007AA01E /* LoadUnicodeNames.swift in Sources */,
 				96E033E6203153100039E653 /* SETTINGS.swift in Sources */,
 				96533A8C1F1293A500B07CA3 /* UIImage.swift in Sources */,
 				966CB25420911C99005C7B5B /* CGAffineTransform.swift in Sources */,
@@ -1170,7 +1176,7 @@
 				968694C11EA0F3D100E6C9D0 /* UIColor.swift in Sources */,
 				96C49DC51EB7DF1F006F93ED /* Character.swift in Sources */,
 				9685BCFF1E06815700702C84 /* Keyboard.swift in Sources */,
-				9608928320B00137007AA01E /* LoadUnicodeNameIndex.swift in Sources */,
+				9608928320B00137007AA01E /* LoadUnicodeNames.swift in Sources */,
 				9643FC511F78F94B004DA2C0 /* CharacterComponentsDictionary.swift in Sources */,
 				969221E61F3BA91A005E5913 /* SettingsContainerView_LanguageTableView.swift in Sources */,
 				96E03417203162F30039E653 /* DONE.swift in Sources */,
@@ -1260,7 +1266,7 @@
 				96EBF290209C6AF600AE00E7 /* CollectionViewFlowLayout.swift in Sources */,
 				9608928820B001AD007AA01E /* SearchUnicodeScalars.swift in Sources */,
 				96E034002031560E0039E653 /* GO.swift in Sources */,
-				9608928420B00137007AA01E /* LoadUnicodeNameIndex.swift in Sources */,
+				9608928420B00137007AA01E /* LoadUnicodeNames.swift in Sources */,
 				969450C220B3215100DD7EF3 /* URL.swift in Sources */,
 				96DB1A7C202FB84F00B96D3C /* LegalTextView.swift in Sources */,
 				960FEFEE203D37590099E449 /* AXAttribute.swift in Sources */,

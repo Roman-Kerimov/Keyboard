@@ -41,44 +41,6 @@ class SearchUnicodeScalars: Operation {
             return .init(flag)
         }
         
-        func findCharacters(whereWord: (String) -> Bool) -> [Character] {
-            var output = UnicodeTable.default.unicodeNameIndex
-                .filter { whereWord($0.word) }
-                .map {$0.stringWithUnicodeScalars}
-                .joined()
-                .unicodeScalars.map {Character.init($0)}
-            
-            output += Locale.regionCodes.filter {
-                let regionName = Locale.init(identifier: "en").localizedString(forRegionCode: $0)!.uppercased()
-                return foundCharacters.first ?? .space != flag(fromRegionCode: $0)
-                    && (regionName.hasPrefix(text) || regionName.contains(.space + text) || regionName.contains("-" + text))
-                }.map {
-                    flag(fromRegionCode: $0)
-            }
-            
-            output.sort {
-                guard !isCancelled else {
-                    return true
-                }
-                
-                for characterSet in sortOrder {
-                    if $0.belongsTo(characterSet) && $1.belongsTo(characterSet) {
-                        return $0 < $1
-                    }
-                    else if $0.belongsTo(characterSet) && !$1.belongsTo(characterSet) {
-                        return true
-                    }
-                    else if !$0.belongsTo(characterSet) && $1.belongsTo(characterSet) {
-                        return false
-                    }
-                }
-                
-                return $0 < $1
-            }
-            
-            return output
-        }
-        
         func updateUnicodeCollectionView() {
             if characterCollectionView.characters != foundCharacters {
                 OperationQueue.main.addOperation {
@@ -105,17 +67,29 @@ class SearchUnicodeScalars: Operation {
                 }
             }
             
-            foundCharacters += findCharacters(whereWord: {$0.hasPrefix(text) } )
-        }
-        
-        guard !isCancelled else {
-            return
-        }
-        
-        updateUnicodeCollectionView()
-        
-        if text != "" {
-            foundCharacters += findCharacters(whereWord: { !$0.hasPrefix(text) && $0.contains(text) } )
+            foundCharacters += UnicodeTable.default.codePointNames
+                .filter { $0.value.contains(text) }
+                .map {Character.init(Unicode.Scalar.init($0.key)!)}
+                .sorted {
+                    
+                guard !isCancelled else {
+                    return true
+                }
+                
+                for characterSet in sortOrder {
+                    if $0.belongsTo(characterSet) && $1.belongsTo(characterSet) {
+                        return $0 < $1
+                    }
+                    else if $0.belongsTo(characterSet) && !$1.belongsTo(characterSet) {
+                        return true
+                    }
+                    else if !$0.belongsTo(characterSet) && $1.belongsTo(characterSet) {
+                        return false
+                    }
+                }
+                
+                return $0 < $1
+            }
         }
         
         guard !isCancelled else {

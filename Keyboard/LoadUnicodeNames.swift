@@ -25,7 +25,10 @@ class LoadUnicodeNames: Operation {
             let derivedNameURL = Bundle.main.url(forResource: "DerivedName", withExtension: "txt")!
             let derivedNameStrings = (try! String.init(contentsOf: derivedNameURL)).split(separator: .return)
             
-            for string in derivedNameStrings {
+            for (index, string) in derivedNameStrings.enumerated() {
+                
+                let progress: Float = .init(index + 1) / .init(derivedNameStrings.count)
+                NotificationCenter.default.post(name: .UnicodeNameProgressDidChange, object: progress)
                 
                 let elements = string.split(separator: .semicolon).map {$0.trimmingCharacters(in: .whitespaces)}
                 
@@ -44,4 +47,8 @@ class LoadUnicodeNames: Operation {
             NSKeyedArchiver.archiveRootObject(UnicodeTable.default.codePointNames, toFile: codePointNamesURL.path)
         }
     }
+}
+
+extension NSNotification.Name {
+    static let UnicodeNameProgressDidChange: NSNotification.Name = .init("yyYaw81H3txGoDVoLuMIcxI9qcD2ZIb")
 }

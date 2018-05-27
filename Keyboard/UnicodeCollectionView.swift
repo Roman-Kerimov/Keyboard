@@ -30,6 +30,18 @@ class UnicodeCollectionView: CharacterCollectionView {
     internal override init() {
         super.init()
         
+        let progressView: UIProgressView = .init()
+        backgroundView = progressView
+        progressView.isHidden = true
+        
+        NotificationCenter.default.addObserver(forName: .UnicodeNameProgressDidChange, object: nil, queue: nil) { (notification) in
+            DispatchQueue.main.async {
+                let progress = notification.object as! Float
+                progressView.isHidden = progress == 1
+                progressView.setProgress(progress, animated: true)
+            }
+        }
+        
         layout.minimumLineSpacing = 0
         clipsToBounds = false
         

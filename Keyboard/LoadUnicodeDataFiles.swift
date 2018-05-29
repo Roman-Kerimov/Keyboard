@@ -42,8 +42,17 @@ class LoadUnicodeDataFiles: Operation {
     }
     
     private func parse<Type>(dataFile: UnicodeDataFile, processedStringCount: inout Int, output: inout Type, parse: (String, inout Type) -> Void) {
+        
+        func updateProgress() {
+            let progress: Float = .init(processedStringCount) / .init(UnicodeDataFile.totalStringCount)
+            NotificationCenter.default.post(name: .UnicodeDataFilesLoadingProgressDidChange, object: progress)
+        }
+        
         if let outputObject = NSKeyedUnarchiver.unarchiveObject(withFile: dataFile.cacheURL.path) as? Type {
             output = outputObject
+            
+            processedStringCount += dataFile.strings.count
+            updateProgress()
         }
         else {
             for string in dataFile.strings {
@@ -51,8 +60,7 @@ class LoadUnicodeDataFiles: Operation {
                 parse(string, &output)
                 
                 processedStringCount += 1
-                let progress: Float = .init(processedStringCount) / .init(UnicodeDataFile.totalStringCount)
-                NotificationCenter.default.post(name: .UnicodeDataFilesLoadingProgressDidChange, object: progress)
+                updateProgress()
             }
             
             NSKeyedArchiver.archiveRootObject(output, toFile: dataFile.cacheURL.path)

@@ -134,6 +134,9 @@
 		9697C3DF20BB4EBB00FE3007 /* EnumCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9697C3DE20BB4EBB00FE3007 /* EnumCases.swift */; };
 		9697C3E020BB4EBB00FE3007 /* EnumCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9697C3DE20BB4EBB00FE3007 /* EnumCases.swift */; };
 		9697C3E120BB4EBB00FE3007 /* EnumCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9697C3DE20BB4EBB00FE3007 /* EnumCases.swift */; };
+		9697C3E320BB514900FE3007 /* UnicodeDataFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9697C3E220BB514900FE3007 /* UnicodeDataFile.swift */; };
+		9697C3E420BB514900FE3007 /* UnicodeDataFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9697C3E220BB514900FE3007 /* UnicodeDataFile.swift */; };
+		9697C3E520BB514900FE3007 /* UnicodeDataFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9697C3E220BB514900FE3007 /* UnicodeDataFile.swift */; };
 		9697F881202FA88C001EC50A /* Internationalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9694E23C1E29D72800ED3A85 /* Internationalization.swift */; };
 		9697F882202FA8A1001EC50A /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D2B8DC1E35538B006772A5 /* Localization.swift */; };
 		969E83031EED830C009A1F2D /* ConfigurableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969E83021EED830C009A1F2D /* ConfigurableViewProtocol.swift */; };
@@ -428,6 +431,7 @@
 		9697C3DC20BB180300FE3007 /* ReadMe.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
 		9697C3DD20BB180300FE3007 /* emoji-sequences.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "emoji-sequences.txt"; sourceTree = "<group>"; };
 		9697C3DE20BB4EBB00FE3007 /* EnumCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumCases.swift; sourceTree = "<group>"; };
+		9697C3E220BB514900FE3007 /* UnicodeDataFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnicodeDataFile.swift; sourceTree = "<group>"; };
 		969E83021EED830C009A1F2D /* ConfigurableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableViewProtocol.swift; sourceTree = "<group>"; };
 		969E83041EED842E009A1F2D /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		969F15F41E549BD300C0DD7D /* ViewController<UIView>.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController<UIView>.swift"; sourceTree = "<group>"; };
@@ -716,6 +720,7 @@
 				969E83021EED830C009A1F2D /* ConfigurableViewProtocol.swift */,
 				960F6E941EC9F7E600EFC7B7 /* UnicodeCollectionView.swift */,
 				96848DA01EE0B64F0009869A /* UnicodeTable.swift */,
+				9697C3E220BB514900FE3007 /* UnicodeDataFile.swift */,
 				9608928120B00137007AA01E /* LoadUnicodeDataFiles.swift */,
 				9608928520B001AD007AA01E /* SearchUnicodeScalars.swift */,
 				969450BF20B3215100DD7EF3 /* URL.swift */,
@@ -1138,6 +1143,7 @@
 				96533A761F12938D00B07CA3 /* KeyboardLayout.swift in Sources */,
 				96E034022031562B0039E653 /* JOIN.swift in Sources */,
 				96533A881F12938D00B07CA3 /* Keyboard.swift in Sources */,
+				9697C3E320BB514900FE3007 /* UnicodeDataFile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1168,6 +1174,7 @@
 				965D15C91D32AE3B0098FA57 /* KeyView.swift in Sources */,
 				9608928720B001AD007AA01E /* SearchUnicodeScalars.swift in Sources */,
 				96E0340F203157030039E653 /* SEARCH.swift in Sources */,
+				9697C3E420BB514900FE3007 /* UnicodeDataFile.swift in Sources */,
 				965D15C11D3146BB0098FA57 /* KeyboardView.swift in Sources */,
 				96200BEA208CDC8D002930D6 /* ENABLE_KEYBOARD.swift in Sources */,
 				96E033F32031549C0039E653 /* ABOUT.swift in Sources */,
@@ -1240,6 +1247,7 @@
 				96AC6CA3203C23B200555164 /* CGEvent.swift in Sources */,
 				96F28C1A2030205C0023313C /* DocumentContext.swift in Sources */,
 				9696CBC32031800B007CC94B /* Template.swift in Sources */,
+				9697C3E520BB514900FE3007 /* UnicodeDataFile.swift in Sources */,
 				96EBF29D209C7C8B00AE00E7 /* UIColor.swift in Sources */,
 				96ACD588205261EE007CFDCF /* NSPasteboard.swift in Sources */,
 				96E033FC203155A80039E653 /* VERSION.swift in Sources */,

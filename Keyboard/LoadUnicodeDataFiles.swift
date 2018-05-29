@@ -11,40 +11,51 @@ class LoadUnicodeDataFiles: Operation {
     
     override func main() {
         
-        guard !isCancelled else {
-            return
-        }
+        var processedStringCount = 0
         
-        let codePointNamesURL = URL.applicationSupport.appendingPathComponent("fM0jFaTnIpTeLJoQ7IF3z3l6tNCPrPG")
-        
-        if let codePointNames = NSKeyedUnarchiver.unarchiveObject(withFile: codePointNamesURL.path) as? [UInt32: String] {
-            UnicodeTable.default.codePointNames = codePointNames
-        }
-        else {
+        for dataFile in UnicodeDataFile.cases {
             
-            let derivedNameURL = Bundle.main.url(forResource: "DerivedName", withExtension: "txt")!
-            let derivedNameStrings = (try! String.init(contentsOf: derivedNameURL)).split(separator: .return)
-            
-            for (index, string) in derivedNameStrings.enumerated() {
-                
-                let progress: Float = .init(index + 1) / .init(derivedNameStrings.count)
-                NotificationCenter.default.post(name: .UnicodeDataFilesLoadingProgressDidChange, object: progress)
-                
-                let elements = string.split(separator: .semicolon).map {$0.trimmingCharacters(in: .whitespaces)}
-                
-                guard elements.count == 2 else {
-                    continue
-                }
-                
-                var codePoint: UInt32 = 0
-                guard Scanner.init(string: elements.first!).scanHexInt32(&codePoint) else {
-                    continue
-                }
-                
-                UnicodeTable.default.codePointNames[codePoint] = elements.last!
+            guard !isCancelled else {
+                return
             }
             
-            NSKeyedArchiver.archiveRootObject(UnicodeTable.default.codePointNames, toFile: codePointNamesURL.path)
+            switch dataFile {
+                
+            case .derivedName:
+                parse(dataFile: dataFile, processedStringCount: &processedStringCount, output: &UnicodeTable.default.codePointNames) { (string, codePointNames) in
+                    
+                    let elements = string.split(separator: .semicolon).map {$0.trimmingCharacters(in: .whitespaces)}
+                    
+                    guard elements.count == 2 else {
+                        return
+                    }
+                    
+                    var codePoint: UInt32 = 0
+                    guard Scanner.init(string: elements.first!).scanHexInt32(&codePoint) else {
+                        return
+                    }
+                    
+                    codePointNames[codePoint] = elements.last!
+                }
+            }
+        }
+    }
+    
+    private func parse<Type>(dataFile: UnicodeDataFile, processedStringCount: inout Int, output: inout Type, parse: (String, inout Type) -> Void) {
+        if let outputObject = NSKeyedUnarchiver.unarchiveObject(withFile: dataFile.cacheURL.path) as? Type {
+            output = outputObject
+        }
+        else {
+            for string in dataFile.strings {
+               
+                parse(string, &output)
+                
+                processedStringCount += 1
+                let progress: Float = .init(processedStringCount) / .init(UnicodeDataFile.totalStringCount)
+                NotificationCenter.default.post(name: .UnicodeDataFilesLoadingProgressDidChange, object: progress)
+            }
+            
+            NSKeyedArchiver.archiveRootObject(output, toFile: dataFile.cacheURL.path)
         }
     }
 }

@@ -8,6 +8,7 @@
 import Foundation
 
 class LoadUnicodeDataFiles: Operation {
+    let columnSeparator: String = ";"
     
     override func main() {
         
@@ -24,7 +25,7 @@ class LoadUnicodeDataFiles: Operation {
             case .derivedName:
                 parse(dataFile: dataFile, processedStringCount: &processedStringCount, output: &UnicodeTable.default.codePointNames) { (string, codePointNames) in
                     
-                    let elements = string.split(separator: .semicolon).map {$0.trimmingCharacters(in: .whitespaces)}
+                    let elements = string.components(separatedBy: columnSeparator).map {$0.trimmingCharacters(in: .whitespaces)}
                     
                     guard elements.count == 2 else {
                         return

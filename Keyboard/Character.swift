@@ -17,7 +17,6 @@ extension Character {
     static let reverseSolidus: Character = "\\"
     static let comma: Character = ","
     static let fullStop: Character = "."
-    static let semicolon: Character = ";"
     static let lowLine: Character = "_"
     static let v: Character = "v"
     static let z: Character = "z"

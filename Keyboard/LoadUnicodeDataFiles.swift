@@ -25,18 +25,18 @@ class LoadUnicodeDataFiles: Operation {
             case .derivedName:
                 parse(dataFile: dataFile, processedStringCount: &processedStringCount, output: &UnicodeTable.default.codePointNames) { (string, codePointNames) in
                     
-                    let elements = string.components(separatedBy: columnSeparator).map {$0.trimmingCharacters(in: .whitespaces)}
+                    let components = string.components(separatedBy: columnSeparator).map {$0.trimmingCharacters(in: .whitespaces)}
                     
-                    guard elements.count == 2 else {
+                    guard components.count == 2 else {
                         return
                     }
                     
                     var codePoint: UInt32 = 0
-                    guard Scanner.init(string: elements.first!).scanHexInt32(&codePoint) else {
+                    guard Scanner.init(string: components.first!).scanHexInt32(&codePoint) else {
                         return
                     }
                     
-                    codePointNames[codePoint] = elements.last!
+                    codePointNames[codePoint] = components.last!
                 }
             }
         }

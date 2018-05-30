@@ -26,4 +26,15 @@ extension String {
     func size(withFont font: UIFont) -> CGSize {
         return (self as NSString).size(withAttributes: [.font: font])
     }
+    
+    var hexToUInt32: UInt32? {
+        var output: UInt32 = 0
+        
+        if Scanner.init(string: self).scanHexInt32(&output) {
+            return output
+        }
+        else {
+            return nil
+        }
+    }
 }

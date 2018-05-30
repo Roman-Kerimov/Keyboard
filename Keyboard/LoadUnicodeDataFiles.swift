@@ -31,8 +31,7 @@ class LoadUnicodeDataFiles: Operation {
                         return
                     }
                     
-                    var codePoint: UInt32 = 0
-                    guard Scanner.init(string: components.first!).scanHexInt32(&codePoint) else {
+                    guard let codePoint = components.first?.hexToUInt32 else {
                         return
                     }
                     

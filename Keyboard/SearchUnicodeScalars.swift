@@ -46,35 +46,36 @@ class SearchUnicodeScalars: Operation {
             }
         }
         
-        if text == "" {
+        guard !text.isEmpty else {
             foundCharacters = UnicodeTable.default.frequentlyUsedCharacters
+            updateUnicodeCollectionView()
+            return
         }
-        else {
+        
+        if text.count == 2 && Locale.regionCodes.contains(text) {
+            foundCharacters.append(flag(fromRegionCode: text))
             
-            if text.count == 2 && Locale.regionCodes.contains(text) {
-                foundCharacters.append(flag(fromRegionCode: text))
-                
-                for localeIdentifier in (Locale.availableIdentifiers.filter { $0.hasSuffix(text) } + ["en_\(text)"]) {
-                    if let currencySymbol = Locale.init(identifier: localeIdentifier).currencySymbol {
-                        if currencySymbol.count == 1 {
-                            foundCharacters.append(.init(currencySymbol))
-                            break
-                        }
+            for localeIdentifier in (Locale.availableIdentifiers.filter { $0.hasSuffix(text) } + ["en_\(text)"]) {
+                if let currencySymbol = Locale.init(identifier: localeIdentifier).currencySymbol {
+                    if currencySymbol.count == 1 {
+                        foundCharacters.append(.init(currencySymbol))
+                        break
                     }
                 }
             }
-            
-            foundCharacters += UnicodeTable.default.sequenceItems
-                .values
-                .filter {$0.isFullyQualified && $0.name.localizedCaseInsensitiveContains(text) && $0.codePoints.count == 1}
-                .sorted()
-                .map {Character.init($0.codePoints)}
-            
-            foundCharacters += UnicodeTable.default.codePointNames
-                .filter { $0.value.contains(text) && !CharacterSet.emoji.contains(Unicode.Scalar.init($0.key)!)}
-                .map {Character.init(Unicode.Scalar.init($0.key)!)}
-                .sorted {
-                    
+        }
+        
+        foundCharacters += UnicodeTable.default.sequenceItems
+            .values
+            .filter {$0.isFullyQualified && $0.name.localizedCaseInsensitiveContains(text) && $0.codePoints.count == 1}
+            .sorted()
+            .map {Character.init($0.codePoints)}
+        
+        foundCharacters += UnicodeTable.default.codePointNames
+            .filter { $0.value.contains(text) && !CharacterSet.emoji.contains(Unicode.Scalar.init($0.key)!)}
+            .map {Character.init(Unicode.Scalar.init($0.key)!)}
+            .sorted {
+                
                 guard !isCancelled else {
                     return true
                 }
@@ -92,7 +93,6 @@ class SearchUnicodeScalars: Operation {
                 }
                 
                 return $0 < $1
-            }
         }
         
         guard !isCancelled else {

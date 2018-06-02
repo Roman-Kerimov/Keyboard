@@ -9,6 +9,7 @@ import Foundation
 
 class LoadUnicodeDataFiles: Operation {
     let columnSeparator: String = ";"
+    let commentMarker: String = "#"
     
     override func main() {
         
@@ -37,6 +38,21 @@ class LoadUnicodeDataFiles: Operation {
                     
                     codePointNames[codePoint] = components.last!
                 }
+                
+            case .emojiTest:
+                parse(dataFile: dataFile, processedStringCount: &processedStringCount, output: &UnicodeTable.default.sequenceItems) { (string, sequenceItems) in
+                    
+                    let components = string.components(separatedBy: CharacterSet.init(charactersIn: columnSeparator + commentMarker)).map {$0.trimmingCharacters(in: .whitespaces)}
+                    
+                    let unicodeScalars = components[0].components(separatedBy: .whitespaces).map {$0.hexToUnicodeScalar!}
+                    let sequence: String = unicodeScalars.map {$0.description} .reduce(.init(), +)
+                    let isFullyQualified: Bool = components[1] == "fully-qualified"
+                    let name: String = components[2].drop {$0 != .space} .description.trimmingCharacters(in: .whitespaces)
+                    
+                    sequenceItems[sequence] = UnicodeItem.init(codePoints: sequence, name: name, isFullyQualified: isFullyQualified)
+                }
+                
+                CharacterSet.emoji = CharacterSet.init(charactersIn: UnicodeTable.default.sequenceItems.keys.filter {$0.unicodeScalars.count == 1} .joined())
             }
         }
     }
@@ -56,8 +72,10 @@ class LoadUnicodeDataFiles: Operation {
         }
         else {
             for string in dataFile.strings {
-               
-                parse(string, &output)
+                
+                if string.isEmpty == false && string.hasPrefix(commentMarker) == false {
+                    parse(string, &output)
+                }
                 
                 processedStringCount += 1
                 updateProgress()

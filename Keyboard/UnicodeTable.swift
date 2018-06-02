@@ -13,6 +13,7 @@ class UnicodeTable: NSObject {
     public static let `default`: UnicodeTable = .init()
     
     internal var codePointNames: [UInt32: String] = .init()
+    internal var sequenceItems: [String: UnicodeItem] = .init()
     
     private let backgroudOperationQueue: OperationQueue = .init()
     

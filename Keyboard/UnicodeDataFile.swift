@@ -9,6 +9,7 @@ import Foundation
 
 enum UnicodeDataFile: String, EnumCases {
     case derivedName = "DerivedName"
+    case emojiTest = "emoji-test"
     
     var name: String {
         return rawValue

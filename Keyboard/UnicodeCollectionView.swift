@@ -67,22 +67,14 @@ class UnicodeCollectionView: CharacterCollectionView {
         
         cell.unicodeName.text = characters[indexPath.item].unicodeName
         
-        let REGIONAL_INDICATOR_LETTER_ = "REGIONAL INDICATOR SYMBOL LETTER "
-        
-        if cell.unicodeName.text!.contains(REGIONAL_INDICATOR_LETTER_)
-            && cell.unicodeName.text!.contains(unicodeNameSeparator) {
+        if cell.title.text?.first?.belongsTo(.regionalIndicatorSymbols) == true
+            && cell.title.text?.unicodeScalars.count == 2 {
             
-            let regionCode = cell.unicodeName.text!
-                .replacingOccurrences(of: unicodeNameSeparator + REGIONAL_INDICATOR_LETTER_, with: "")
-                .replacingOccurrences(of: REGIONAL_INDICATOR_LETTER_, with: "")
+            let regionCode = cell.title.text!.unicodeScalars.map {Unicode.Scalar.init($0.value - 0x1F1A5)!.description} .joined()
             
             let unicodeLabelSeparator = " | "
             
-            cell.unicodeName.text! = regionCode
-            
-            if let regionName = Locale.init(identifier: "en").localizedString(forRegionCode: regionCode)?.uppercased() {
-                cell.unicodeName.text! += unicodeLabelSeparator + regionName
-            }
+            cell.unicodeName.text = regionCode + unicodeLabelSeparator + cell.unicodeName.text!
         }
         
         cell.unicodeName.textColor = colorScheme.unicodeNameTextColor

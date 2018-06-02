@@ -37,4 +37,13 @@ extension String {
             return nil
         }
     }
+    
+    var hexToUnicodeScalar: Unicode.Scalar? {
+        
+        guard let codePoint = hexToUInt32 else {
+            return nil
+        }
+        
+        return Unicode.Scalar.init(codePoint)
+    }
 }

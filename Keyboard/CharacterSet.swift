@@ -14,12 +14,7 @@ extension CharacterSet {
         charactersIn: ClosedRange.init(uncheckedBounds: (lower: " ", upper: "~"))
     )
     
-    static let emoji: CharacterSet = UIFont.init(name: "Apple Color Emoji", size: 1)?.fontDescriptor.object(forKey: .characterSet) as! CharacterSet
+    static var emoji: CharacterSet = .init()
     
-    static let emoticons = CharacterSet.init(charactersIn: ClosedRange.init(uncheckedBounds: (lower: "😀", upper: "😷")))
-        .union(.init(charactersIn: ClosedRange.init(uncheckedBounds: (lower: "🙁", upper: "🙄"))))
-        .union(.init(charactersIn: ClosedRange.init(uncheckedBounds: (lower: "🤐", upper: "🤕"))))
-        .union(.init(charactersIn: ClosedRange.init(uncheckedBounds: (lower: "🤠", upper: "🤥"))))
-        .union(.init(charactersIn: "🤗🤧"))
-    
+    static let regionalIndicatorSymbols: CharacterSet = .init(charactersIn: "🇦"..."🇿")
 }

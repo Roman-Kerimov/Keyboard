@@ -9,12 +9,7 @@
 import UIKit
 
 extension CharacterSet {
-    
-    static let printableASCII: CharacterSet = .init(
-        charactersIn: ClosedRange.init(uncheckedBounds: (lower: " ", upper: "~"))
-    )
-    
+    static let printableASCII: CharacterSet = .init(charactersIn: " "..."~")
     static var emoji: CharacterSet = .init()
-    
     static let regionalIndicatorSymbols: CharacterSet = .init(charactersIn: "🇦"..."🇿")
 }

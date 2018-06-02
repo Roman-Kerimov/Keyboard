@@ -74,7 +74,9 @@ class LoadUnicodeDataFiles: Operation {
             for string in dataFile.strings {
                 
                 if string.isEmpty == false && string.hasPrefix(commentMarker) == false {
-                    parse(string, &output)
+                    autoreleasepool {
+                        parse(string, &output)
+                    }
                 }
                 
                 processedStringCount += 1

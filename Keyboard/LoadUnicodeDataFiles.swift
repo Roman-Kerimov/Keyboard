@@ -42,7 +42,7 @@ class LoadUnicodeDataFiles: Operation {
             case .emojiTest:
                 parse(dataFile: dataFile, processedStringCount: &processedStringCount, output: &UnicodeTable.default.sequenceItems) { (string, sequenceItems) in
                     
-                    let components = string.components(separatedBy: CharacterSet.init(charactersIn: columnSeparator + commentMarker)).map {$0.trimmingCharacters(in: .whitespaces)}
+                    let components = string.components(separatedBy: columnSeparator).flatMap {$0.components(separatedBy: commentMarker + .space)}.map {$0.trimmingCharacters(in: .whitespaces)}
                     
                     let unicodeScalars = components[0].components(separatedBy: .whitespaces).map {$0.hexToUnicodeScalar!}
                     let sequence: String = unicodeScalars.map {$0.description} .reduce(.init(), +)

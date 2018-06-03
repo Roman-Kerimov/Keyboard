@@ -10,8 +10,6 @@ import Foundation
 class SearchUnicodeScalars: Operation {
     let characterCollectionView: CharacterCollectionView
     
-    let sortOrder: [CharacterSet] = []
-    
     init(for characterCollectionView: CharacterCollectionView) {
         self.characterCollectionView = characterCollectionView
     }
@@ -74,26 +72,7 @@ class SearchUnicodeScalars: Operation {
         foundCharacters += UnicodeTable.default.codePointNames
             .filter { $0.value.contains(text) && !CharacterSet.emoji.contains(Unicode.Scalar.init($0.key)!)}
             .map {Character.init(Unicode.Scalar.init($0.key)!)}
-            .sorted {
-                
-                guard !isCancelled else {
-                    return true
-                }
-                
-                for characterSet in sortOrder {
-                    if $0.belongsTo(characterSet) && $1.belongsTo(characterSet) {
-                        return $0 < $1
-                    }
-                    else if $0.belongsTo(characterSet) && !$1.belongsTo(characterSet) {
-                        return true
-                    }
-                    else if !$0.belongsTo(characterSet) && $1.belongsTo(characterSet) {
-                        return false
-                    }
-                }
-                
-                return $0 < $1
-        }
+            .sorted()
         
         guard !isCancelled else {
             return

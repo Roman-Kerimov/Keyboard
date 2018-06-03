@@ -20,7 +20,7 @@ extension AXUIElement {
     
     private func get(attribute: AXAttribute) -> String? {
         var value: CFTypeRef?
-        AXUIElementCopyAttributeValue(self, kAXValueAttribute as CFString, &value)
+        AXUIElementCopyAttributeValue(self, attribute.cfString, &value)
         return value as? String
     }
     
@@ -31,7 +31,7 @@ extension AXUIElement {
     private func get(attribute: AXAttribute) -> NSRange? {
         
         var value: CFTypeRef?
-        AXUIElementCopyAttributeValue(self, kAXSelectedTextRangeAttribute as CFString, &value)
+        AXUIElementCopyAttributeValue(self, attribute.cfString, &value)
         
         if value == nil {
             return nil

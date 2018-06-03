@@ -86,6 +86,19 @@ class SearchUnicodeScalars: Operation {
                 return true
             }
             
+            for regularExpression in ["\\b\(text)\\b", "\\b\(text)"].map({try! NSRegularExpression.init(pattern: $0, options: .caseInsensitive)}) {
+                
+                let leftBool = left.unicodeName.contains(regularExpression)
+                let rightBool = right.unicodeName.contains(regularExpression)
+                if  leftBool && !rightBool {
+                    return true
+                }
+                
+                if !leftBool && rightBool {
+                    return false
+                }
+            }
+            
             let leftItem = UnicodeTable.default.sequenceItems[left.description]
             let rightItem = UnicodeTable.default.sequenceItems[right.description]
             

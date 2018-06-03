@@ -46,4 +46,8 @@ extension String {
         
         return Unicode.Scalar.init(codePoint)
     }
+    
+    func contains(_ regularExpression: NSRegularExpression) -> Bool {
+        return regularExpression.numberOfMatches(in: self, options: [], range: .init(location: 0, length: count)) != 0
+    }
 }

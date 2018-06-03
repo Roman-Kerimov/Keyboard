@@ -63,16 +63,32 @@ class SearchUnicodeScalars: Operation {
             }
         }
         
-        foundCharacters += UnicodeTable.default.sequenceItems
+        let foundSequenceCharacters = UnicodeTable.default.sequenceItems
             .values
             .filter {$0.isFullyQualified && $0.name.localizedCaseInsensitiveContains(text) && $0.codePoints.count == 1}
-            .sorted()
             .map {Character.init($0.codePoints)}
         
-        foundCharacters += UnicodeTable.default.codePointNames
+        let foundCodePointCharacters = UnicodeTable.default.codePointNames
             .filter { $0.value.contains(text) && !CharacterSet.emoji.contains(Unicode.Scalar.init($0.key)!)}
             .map {Character.init(Unicode.Scalar.init($0.key)!)}
-            .sorted()
+        
+        foundCharacters += (foundCodePointCharacters + foundSequenceCharacters).sorted { (left, right) -> Bool in
+            
+            let leftItem = UnicodeTable.default.sequenceItems[left.description]
+            let rightItem = UnicodeTable.default.sequenceItems[right.description]
+            
+            if let leftItem = leftItem, let rightItem = rightItem {
+                return leftItem < rightItem
+            }
+            else if let _ = leftItem {
+                return true
+            }
+            else if let _ = rightItem {
+                return false
+            }
+            
+            return left < right
+        }
         
         guard !isCancelled else {
             return

@@ -96,4 +96,8 @@ extension AXUIElement {
             set(attribute: .selectedTextRange, value: newValue ?? .init())
         }
     }
+    
+    var role: String? {
+        return get(attribute: .role)
+    }
 }

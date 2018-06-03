@@ -253,6 +253,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
     }
     
     static var documentContext: DocumentContext {
+        
+        if [kAXScrollAreaRole, kAXWindowRole].contains(AXUIElement.focused?.role ?? .init()) {
+            return .init(beforeInput: .init(), afterInput: .init())
+        }
+        
         guard let text = AXUIElement.focused?.text else {
             return .init()
         }

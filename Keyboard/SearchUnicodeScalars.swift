@@ -86,7 +86,8 @@ class SearchUnicodeScalars: Operation {
                 return true
             }
             
-            for regularExpression in ["\\b\(text)\\b", "\\b\(text)"].map({try! NSRegularExpression.init(pattern: $0, options: .caseInsensitive)}) {
+            let escapedPattern = NSRegularExpression.escapedPattern(for: text)
+            for regularExpression in ["\\b\(escapedPattern)\\b", "\\b\(escapedPattern)"].map({try! NSRegularExpression.init(pattern: $0, options: .caseInsensitive)}) {
                 
                 let leftBool = left.unicodeName.contains(regularExpression)
                 let rightBool = right.unicodeName.contains(regularExpression)

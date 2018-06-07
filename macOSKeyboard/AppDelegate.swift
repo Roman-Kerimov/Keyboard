@@ -44,7 +44,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
         
         Keyboard.default.delegate = self
         
-        let eventMask: CGEventMask = 1 << CGEventType.keyDown.rawValue | 1 << CGEventType.keyUp.rawValue | 1 << CGEventType.flagsChanged.rawValue
+        let eventMask: CGEventMask = 1 << CGEventType.keyDown.rawValue | 1 << CGEventType.keyUp.rawValue | 1 << CGEventType.flagsChanged.rawValue | 1 << CGEventType.leftMouseDown.rawValue | 1 << CGEventType.rightMouseDown.rawValue
 
         let keyEvent = CGEvent.tapCreate(
             tap: .cgSessionEventTap,
@@ -52,6 +52,47 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
             options: .defaultTap,
             eventsOfInterest: eventMask,
             callback: { (eventTapProxy, _, event, nil) -> Unmanaged<CGEvent>? in
+                
+                if [.leftMouseDown, .rightMouseDown].contains(event.type) {
+                    AppDelegate.nonAccessibilityDocumentContext.reset()
+                    return Unmanaged.passRetained(event)
+                }
+                
+                if event.type == .keyDown {
+                    if event.flags.contains(.maskCommand) {
+                        AppDelegate.nonAccessibilityDocumentContext.reset()
+                    }
+                    else {
+                        switch event.keycode {
+                            
+                        case .delete:
+                            AppDelegate.nonAccessibilityDocumentContext.deleteBackward()
+                            
+                        case .init(kVK_ForwardDelete):
+                            AppDelegate.nonAccessibilityDocumentContext.deleteForward()
+                            
+                        case .leftArrow:
+                            if event.flags.contains(.maskAlternate) {
+                                fallthrough
+                            }
+                            
+                            AppDelegate.nonAccessibilityDocumentContext.moveBackward()
+                            
+                        case .rightArrow:
+                            if event.flags.contains(.maskAlternate) {
+                                fallthrough
+                            }
+                            
+                            AppDelegate.nonAccessibilityDocumentContext.moveForward()
+                            
+                        case .upArrow, .downArrow:
+                            AppDelegate.nonAccessibilityDocumentContext.reset()
+                            
+                        default:
+                            break
+                        }
+                    }
+                }
                 
                 let isAutorepeatEvent: Bool = event.getIntegerValueField(.keyboardEventAutorepeat) == 0 ? false : true
                 
@@ -224,6 +265,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
     func settings() {}
     
     func insert(text: String) {
+        AppDelegate.nonAccessibilityDocumentContext.beforeInput.append(text)
         
         for flags: CGEventFlags in [[], [.maskShift], [.maskAlternate], [.maskShift, .maskAlternate]] {
             if let keycode: Keycode = .from(label: text, flags: flags) {
@@ -248,6 +290,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
         }
     }
     
+    static var nonAccessibilityDocumentContext: NonAccessibilityDocumentContext = .init()
+    
     var documentContext: DocumentContext {
         return AppDelegate.documentContext
     }
@@ -255,7 +299,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
     static var documentContext: DocumentContext {
         
         if [kAXScrollAreaRole, kAXWindowRole].contains(AXUIElement.focused?.role ?? .init()) {
-            return .init(beforeInput: .init(), afterInput: .init())
+            return .init(beforeInput: nonAccessibilityDocumentContext.beforeInput, afterInput: nonAccessibilityDocumentContext.afterInput)
         }
         
         guard let text = AXUIElement.focused?.text else {

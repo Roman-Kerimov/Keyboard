@@ -24,6 +24,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
           
         NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
         
+        unicodeSearchWindow.setIsVisible(isProcessTrusted)
+        
         Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true) { (timer) in
             if self.isProcessTrusted != AXIsProcessTrusted() {
                 let keyboard: Process = .init()

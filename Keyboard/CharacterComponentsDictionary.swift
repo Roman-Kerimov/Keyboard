@@ -4427,7 +4427,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "†": [.asterisk, .extra1],
 
     //2021          ; DOUBLE DAGGER
-    "‡": [.asterisk, .extra2],
+    "‡": [.asterisk, .extra1, .doubled],
 
     //2022          ; BULLET
     "•": [],

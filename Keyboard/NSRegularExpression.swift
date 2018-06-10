@@ -15,4 +15,8 @@ extension NSRegularExpression {
     static func containsWord(withPrefix prefix: String) -> NSRegularExpression {
         return try! .init(pattern: "\\b\(NSRegularExpression.escapedPattern(for: prefix))", options: .caseInsensitive)
     }
+    
+    static func contains(_ text: String) -> NSRegularExpression {
+        return try! .init(pattern: NSRegularExpression.escapedPattern(for: text), options: .caseInsensitive)
+    }
 }

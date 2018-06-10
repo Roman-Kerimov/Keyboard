@@ -44,28 +44,40 @@ class SearchUnicodeScalars: Operation {
             }
         }
         
-        guard !text.isEmpty else {
+        let searchRegularExpression: NSRegularExpression
+        
+        switch text.count {
+        case 0:
             foundCharacters = UnicodeTable.default.frequentlyUsedCharacters
             updateUnicodeCollectionView()
             return
-        }
-        
-        if text.count == 2 && Locale.regionCodes.contains(text) {
-            foundCharacters.append(flag(fromRegionCode: text))
             
-            for localeIdentifier in (Locale.availableIdentifiers.filter { $0.hasSuffix(text) } + ["en_\(text)"]) {
-                if let currencySymbol = Locale.init(identifier: localeIdentifier).currencySymbol {
-                    if currencySymbol.count == 1 {
-                        foundCharacters.append(.init(currencySymbol))
-                        break
+        case 1:
+            searchRegularExpression = .contains(word: text)
+            
+        case 2:
+            searchRegularExpression = .contains(word: text)
+            
+            if Locale.regionCodes.contains(text) {
+                foundCharacters.append(flag(fromRegionCode: text))
+                
+                for localeIdentifier in (Locale.availableIdentifiers.filter { $0.hasSuffix(text) } + ["en_\(text)"]) {
+                    if let currencySymbol = Locale.init(identifier: localeIdentifier).currencySymbol {
+                        if currencySymbol.count == 1 {
+                            foundCharacters.append(.init(currencySymbol))
+                            break
+                        }
                     }
                 }
             }
+            
+        default:
+            searchRegularExpression = .contains(text)
         }
         
         let foundSequenceCharacters = UnicodeTable.default.sequenceItems
             .values
-            .filter {!isCancelled && $0.isFullyQualified && $0.name.localizedCaseInsensitiveContains(text) && $0.codePoints.count == 1}
+            .filter {!isCancelled && $0.isFullyQualified && $0.name.contains(searchRegularExpression) && $0.codePoints.count == 1}
             .map {Character.init($0.codePoints)}
         
         guard !isCancelled else {
@@ -73,7 +85,7 @@ class SearchUnicodeScalars: Operation {
         }
         
         let foundCodePointCharacters = UnicodeTable.default.codePointNames
-            .filter {!isCancelled && $0.value.contains(text) && !CharacterSet.emoji.contains(Unicode.Scalar.init($0.key)!)}
+            .filter {!isCancelled && $0.value.contains(searchRegularExpression) && !CharacterSet.emoji.contains(Unicode.Scalar.init($0.key)!)}
             .map {Character.init(Unicode.Scalar.init($0.key)!)}
         
         guard !isCancelled else {

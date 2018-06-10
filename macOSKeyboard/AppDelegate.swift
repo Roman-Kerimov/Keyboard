@@ -46,7 +46,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
         
         let eventMask: CGEventMask = 1 << CGEventType.keyDown.rawValue | 1 << CGEventType.keyUp.rawValue | 1 << CGEventType.flagsChanged.rawValue | 1 << CGEventType.leftMouseDown.rawValue | 1 << CGEventType.rightMouseDown.rawValue
 
-        let keyEvent = CGEvent.tapCreate(
+        let eventTap = CGEvent.tapCreate(
             tap: .cghidEventTap,
             place: .headInsertEventTap,
             options: .defaultTap,
@@ -207,9 +207,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
             userInfo: nil
         )
 
-        let runLoopSource = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, keyEvent, 0)
+        let runLoopSource = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, eventTap, 0)
         CFRunLoopAddSource(CFRunLoopGetCurrent(), runLoopSource, .commonModes)
-        CGEvent.tapEnable(tap: keyEvent!, enable: true)
+        CGEvent.tapEnable(tap: eventTap!, enable: true)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

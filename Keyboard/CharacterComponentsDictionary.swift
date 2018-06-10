@@ -4928,7 +4928,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ℕ": [.n, .capital, .doubleStruck],
 
     //2116          ; NUMERO SIGN
-    "№": [.n, .capital, .numberSign],
+    "№": [.numberSign, .extra0],
 
     //2117          ; SOUND RECORDING COPYRIGHT
     "℗": [],

@@ -141,9 +141,9 @@
 		9696CBC12031800B007CC94B /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9696CBC02031800B007CC94B /* Template.swift */; };
 		9696CBC22031800B007CC94B /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9696CBC02031800B007CC94B /* Template.swift */; };
 		9696CBC32031800B007CC94B /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9696CBC02031800B007CC94B /* Template.swift */; };
-		9697C3DF20BB4EBB00FE3007 /* EnumCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9697C3DE20BB4EBB00FE3007 /* EnumCases.swift */; };
-		9697C3E020BB4EBB00FE3007 /* EnumCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9697C3DE20BB4EBB00FE3007 /* EnumCases.swift */; };
-		9697C3E120BB4EBB00FE3007 /* EnumCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9697C3DE20BB4EBB00FE3007 /* EnumCases.swift */; };
+		9697C3DF20BB4EBB00FE3007 /* CaseIterable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9697C3DE20BB4EBB00FE3007 /* CaseIterable.swift */; };
+		9697C3E020BB4EBB00FE3007 /* CaseIterable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9697C3DE20BB4EBB00FE3007 /* CaseIterable.swift */; };
+		9697C3E120BB4EBB00FE3007 /* CaseIterable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9697C3DE20BB4EBB00FE3007 /* CaseIterable.swift */; };
 		9697C3E320BB514900FE3007 /* UnicodeDataFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9697C3E220BB514900FE3007 /* UnicodeDataFile.swift */; };
 		9697C3E420BB514900FE3007 /* UnicodeDataFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9697C3E220BB514900FE3007 /* UnicodeDataFile.swift */; };
 		9697C3E520BB514900FE3007 /* UnicodeDataFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9697C3E220BB514900FE3007 /* UnicodeDataFile.swift */; };
@@ -445,7 +445,7 @@
 		9697C3DB20BB180300FE3007 /* emoji-zwj-sequences.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "emoji-zwj-sequences.txt"; sourceTree = "<group>"; };
 		9697C3DC20BB180300FE3007 /* ReadMe.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
 		9697C3DD20BB180300FE3007 /* emoji-sequences.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "emoji-sequences.txt"; sourceTree = "<group>"; };
-		9697C3DE20BB4EBB00FE3007 /* EnumCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumCases.swift; sourceTree = "<group>"; };
+		9697C3DE20BB4EBB00FE3007 /* CaseIterable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseIterable.swift; sourceTree = "<group>"; };
 		9697C3E220BB514900FE3007 /* UnicodeDataFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnicodeDataFile.swift; sourceTree = "<group>"; };
 		969E83021EED830C009A1F2D /* ConfigurableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableViewProtocol.swift; sourceTree = "<group>"; };
 		969E83041EED842E009A1F2D /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
@@ -745,7 +745,7 @@
 				969450BF20B3215100DD7EF3 /* URL.swift */,
 				96F716B81F0438B6004A77C7 /* Locale.swift */,
 				967491B41EE16BDD00DC19E0 /* CharacterSet.swift */,
-				9697C3DE20BB4EBB00FE3007 /* EnumCases.swift */,
+				9697C3DE20BB4EBB00FE3007 /* CaseIterable.swift */,
 			);
 			path = Keyboard;
 			sourceTree = "<group>";
@@ -1114,7 +1114,7 @@
 				96533A841F12938D00B07CA3 /* SpaceRowView.swift in Sources */,
 				96533A8A1F12938D00B07CA3 /* ConfigurableViewProtocol.swift in Sources */,
 				96533A8E1F1293A500B07CA3 /* String.swift in Sources */,
-				9697C3DF20BB4EBB00FE3007 /* EnumCases.swift in Sources */,
+				9697C3DF20BB4EBB00FE3007 /* CaseIterable.swift in Sources */,
 				96533A811F12938D00B07CA3 /* UnicodeTable.swift in Sources */,
 				96533A921F1293A500B07CA3 /* Internationalization.swift in Sources */,
 				96E0340E203157030039E653 /* SEARCH.swift in Sources */,
@@ -1190,7 +1190,7 @@
 				96EA39D71EAFDDDE00F3D804 /* UIImage.swift in Sources */,
 				9665F3761E9D847300850F97 /* CharacterSequenceView.swift in Sources */,
 				964AB96A1D1B6535004C827C /* KeyboardViewController.swift in Sources */,
-				9697C3E020BB4EBB00FE3007 /* EnumCases.swift in Sources */,
+				9697C3E020BB4EBB00FE3007 /* CaseIterable.swift in Sources */,
 				96E0341F203179F00039E653 /* CONTINUE.swift in Sources */,
 				96E0342320317A330039E653 /* QUIT.swift in Sources */,
 				96BC5F561DEB961F002E0752 /* LabelView.swift in Sources */,
@@ -1283,7 +1283,7 @@
 				967502542089E1D300FD6CED /* LaunchAgent.swift in Sources */,
 				96AED33320312BA500498A7E /* LanguageMenuItem.swift in Sources */,
 				963DE0B0202F00B60040A448 /* main.swift in Sources */,
-				9697C3E120BB4EBB00FE3007 /* EnumCases.swift in Sources */,
+				9697C3E120BB4EBB00FE3007 /* CaseIterable.swift in Sources */,
 				96146512209C671B00001815 /* CharacterCollectionView.swift in Sources */,
 				96E034042031562B0039E653 /* JOIN.swift in Sources */,
 				96EBF2AA209D158D00AE00E7 /* CharacterSet.swift in Sources */,

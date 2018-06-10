@@ -15,7 +15,7 @@ class LoadUnicodeDataFiles: Operation {
         
         var processedStringCount = 0
         
-        for dataFile in UnicodeDataFile.cases {
+        for dataFile in UnicodeDataFile.allCases {
             
             guard !isCancelled else {
                 return

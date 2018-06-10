@@ -1,15 +1,15 @@
 //
-//  EnumCases.swift
+//  CaseIterable.swift
 //  Keyboard
 //
 //  Created by Roman Kerimov on 2018-05-27.
 //
 
-protocol EnumCases: Hashable {}
+protocol CaseIterable: Hashable {}
 
-extension EnumCases {
+extension CaseIterable {
     
-    static var cases: [Self] {
+    static var allCases: [Self] {
         var iterateEnum: AnyIterator<Self> {
             var index = 0
             

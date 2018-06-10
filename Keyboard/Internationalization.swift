@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Language: EnumCases {
+extension Language: CaseIterable {
     #if TARGET_INTERFACE_BUILDER
     static var current: Language = .en
     #else

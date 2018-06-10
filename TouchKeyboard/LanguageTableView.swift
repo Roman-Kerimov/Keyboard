@@ -30,34 +30,34 @@ class LanguageTableView: UITableView, UITableViewDelegate, UITableViewDataSource
         fatalError("init(coder:) has not been implemented")
     }
     
-    private enum Section: EnumCases {
+    private enum Section: CaseIterable {
         case preferredLanguages, allLanguages
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch Section.cases[indexPath.section] {
+        switch Section.allCases[indexPath.section] {
             
         case .preferredLanguages:
             Language.current = preferredLanguages[indexPath.row]
 
         case .allLanguages:
-            Language.current = Language.cases[indexPath.row]
+            Language.current = Language.allCases[indexPath.row]
         }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return Section.cases.count
+        return Section.allCases.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        switch Section.cases[section] {
+        switch Section.allCases[section] {
             
         case .preferredLanguages:
             return preferredLanguages.count
             
         case .allLanguages:
-            return Language.cases.count
+            return Language.allCases.count
         }
     }
     
@@ -67,13 +67,13 @@ class LanguageTableView: UITableView, UITableViewDelegate, UITableViewDataSource
         
         let language: Language
         
-        switch Section.cases[indexPath.section] {
+        switch Section.allCases[indexPath.section] {
             
         case .preferredLanguages:
             language = preferredLanguages[indexPath.row]
             
         case .allLanguages:
-            language = Language.cases[indexPath.row]
+            language = Language.allCases[indexPath.row]
         }
         
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)

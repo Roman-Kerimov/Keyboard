@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum UnicodeDataFile: String, EnumCases {
+enum UnicodeDataFile: String, CaseIterable {
     case derivedName = "DerivedName"
     case emojiTest = "emoji-test"
     
@@ -27,5 +27,5 @@ enum UnicodeDataFile: String, EnumCases {
         return URL.applicationSupport.appendingPathComponent(name)
     }
     
-    static let totalStringCount = cases.map {$0.strings.count}.reduce(0, +)
+    static let totalStringCount = allCases.map {$0.strings.count}.reduce(0, +)
 }

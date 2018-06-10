@@ -174,6 +174,8 @@ enum CharacterComponent {
     ]
     
     case doubled
+    case tripled
+    
     case double
     
     case above, aboveLeft, aboveRight

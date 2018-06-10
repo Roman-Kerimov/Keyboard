@@ -431,6 +431,7 @@
 		969221E41F3BA91A005E5913 /* SettingsContainerView_LanguageTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContainerView_LanguageTableView.swift; sourceTree = "<group>"; };
 		969450BF20B3215100DD7EF3 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		9694E23C1E29D72800ED3A85 /* Internationalization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Internationalization.swift; sourceTree = "<group>"; };
+		96958CFE20CCA5BA008F4C0A /* EquivalentUnifiedIdeograph.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = EquivalentUnifiedIdeograph.txt; sourceTree = "<group>"; };
 		9696CBC02031800B007CC94B /* Template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
 		9697C3D820BB180300FE3007 /* emoji-test.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "emoji-test.txt"; sourceTree = "<group>"; };
 		9697C3D920BB180300FE3007 /* emoji-data.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "emoji-data.txt"; sourceTree = "<group>"; };
@@ -553,6 +554,7 @@
 				9608924420AF4F98007AA01E /* DerivedNormalizationProps.txt */,
 				9608925F20AF4F98007AA01E /* EastAsianWidth.txt */,
 				9608923B20AF4F98007AA01E /* EmojiSources.txt */,
+				96958CFE20CCA5BA008F4C0A /* EquivalentUnifiedIdeograph.txt */,
 				9608926020AF4F98007AA01E /* extracted */,
 				9608924720AF4F98007AA01E /* HangulSyllableType.txt */,
 				9608924B20AF4F98007AA01E /* Index.txt */,

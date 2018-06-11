@@ -11,7 +11,7 @@ class UnicodeSearchWindow: NSWindow {
     init() {
         super.init(
             contentRect: .init(origin: .zero, size: .init(width: 30, height: 250)),
-            styleMask: .titled,
+            styleMask: [.titled, .fullSizeContentView],
             backing: .buffered,
             defer: true
         )
@@ -19,11 +19,17 @@ class UnicodeSearchWindow: NSWindow {
         level = .floating
         collectionBehavior = .canJoinAllSpaces
         allowsToolTipsWhenApplicationIsInactive = true
+        titlebarAppearsTransparent = true
+        isMovable = false
         
         let unicodeCollectionView = UnicodeCollectionView.init()
         unicodeCollectionView.size = frame.size
         contentView = unicodeCollectionView
         
         makeKeyAndOrderFront(self)
+    }
+    
+    override var canBecomeKey: Bool {
+        return false
     }
 }

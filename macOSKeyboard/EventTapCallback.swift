@@ -112,6 +112,8 @@ func eventTapCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent,
         return Unmanaged.passRetained(event)
     }
     
+    Keyboard.default.shiftDownFlag = event.flags.contains(.maskAlternate)
+    
     let key: Key
     
     if TISInputSource.currentKeyboardLayout.isASCIICapable {
@@ -122,7 +124,6 @@ func eventTapCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent,
         }
         
         Keyboard.default.shiftUpFlag = event.flags.contains(.maskShift)
-        Keyboard.default.shiftDownFlag = event.flags.contains(.maskAlternate)
         
         guard let layoutKey = Keyboard.default.layout.key(code: event.keycode) else {
             if Keyboard.default.shiftFlag {
@@ -136,7 +137,8 @@ func eventTapCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent,
     else {
         switch event.type {
         case .keyDown:
-            key = !Keyboard.default.shiftFlag && event.keycode != .space ? .init(label: event.character) : Keyboard.default.layout.key(code: event.keycode) ?? .init()
+            let layoutKey = Keyboard.default.layout.key(code: event.keycode) ?? .init()
+            key = !Keyboard.default.shiftFlag && event.keycode != .space ? .init(label: event.character, shiftDownLabel: layoutKey.shiftDownLabel) : layoutKey
             
             AppDelegate.keycodeToKeyDictionary[event.keycode] = key
             

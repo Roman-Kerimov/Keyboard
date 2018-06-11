@@ -18,6 +18,7 @@ class UnicodeSearchWindow: NSWindow {
         
         level = .floating
         collectionBehavior = .canJoinAllSpaces
+        allowsToolTipsWhenApplicationIsInactive = true
         
         let unicodeCollectionView = UnicodeCollectionView.init()
         unicodeCollectionView.size = frame.size

@@ -45,6 +45,7 @@ class UnicodeCollectionView: CharacterCollectionView {
         layout.minimumLineSpacing = 0
         clipsToBounds = false
         
+        NotificationCenter.default.addObserver(self, selector: #selector(search), name: .UnicodeDataFilesDidLoad, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(search), name: .DocumentContextDidChange, object: nil)
         
         if Bundle.main.isInterfaceBuilder {
@@ -133,16 +134,12 @@ class UnicodeCollectionView: CharacterCollectionView {
             textForSearch = .reverseSolidus + ( textForSearch.components(separatedBy: String.reverseSolidus).last ?? .init() )
         }
         
-        guard textForSearch.isEmpty || self.textForSearch != textForSearch else {
-            return
-        }
-        
         self.textForSearch = textForSearch
         
         UnicodeTable.default.searchScalars(byName: textForSearch.replacingOccurrences(of: String.reverseSolidus, with: ""), for: self)
     }
     
-    override func reloadData() {
+    @objc override func reloadData() {
         super.reloadData()
         
         if numberOfItems(inSection: 0) > 0 {

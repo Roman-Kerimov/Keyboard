@@ -37,10 +37,8 @@ class SearchUnicodeScalars: Operation {
         }
         
         func updateUnicodeCollectionView() {
-            if characterCollectionView.characters != foundCharacters {
-                OperationQueue.main.addOperation {
-                    self.characterCollectionView.characters = foundCharacters
-                }
+            DispatchQueue.main.async {
+                self.characterCollectionView.characters = foundCharacters
             }
         }
         

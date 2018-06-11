@@ -55,6 +55,8 @@ class LoadUnicodeDataFiles: Operation {
                 CharacterSet.emoji = CharacterSet.init(charactersIn: UnicodeTable.default.sequenceItems.keys.filter {$0.unicodeScalars.count == 1} .joined())
             }
         }
+        
+        NotificationCenter.default.post(name: .UnicodeDataFilesDidLoad, object: nil)
     }
     
     private func parse<Type>(dataFile: UnicodeDataFile, processedStringCount: inout Int, output: inout Type, parse: (String, inout Type) -> Void) {
@@ -90,4 +92,6 @@ class LoadUnicodeDataFiles: Operation {
 
 extension NSNotification.Name {
     static let UnicodeDataFilesLoadingProgressDidChange: NSNotification.Name = .init("yyYaw81H3txGoDVoLuMIcxI9qcD2ZIb")
+    
+    static let UnicodeDataFilesDidLoad: NSNotification.Name = .init("KEKbzAcMuOVK4Tn46LFP3loanqNMAB9")
 }

@@ -112,6 +112,7 @@ func eventTapCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent,
         return Unmanaged.passRetained(event)
     }
     
+    Keyboard.default.shiftUpFlag = event.flags.contains(.maskShift)
     Keyboard.default.shiftDownFlag = event.flags.contains(.maskAlternate)
     
     let key: Key
@@ -122,8 +123,6 @@ func eventTapCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent,
         if disabledKeys.contains(event.keycode) {
             return nil
         }
-        
-        Keyboard.default.shiftUpFlag = event.flags.contains(.maskShift)
         
         guard let layoutKey = Keyboard.default.layout.key(code: event.keycode) else {
             if Keyboard.default.shiftFlag {
@@ -138,7 +137,7 @@ func eventTapCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent,
         switch event.type {
         case .keyDown:
             let layoutKey = Keyboard.default.layout.key(code: event.keycode) ?? .init()
-            key = !Keyboard.default.shiftFlag && event.keycode != .space ? .init(label: event.character, shiftDownLabel: layoutKey.shiftDownLabel) : layoutKey
+            key = !Keyboard.default.shiftFlag && event.keycode != .space ? .init(label: event.character, shiftDownLabel: layoutKey.shiftDownLabel, shiftUpLabel: event.character) : layoutKey
             
             AppDelegate.keycodeToKeyDictionary[event.keycode] = key
             

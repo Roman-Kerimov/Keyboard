@@ -14,8 +14,12 @@ extension AXUIElement {
         
         var focusedUIElement: CFTypeRef?
         AXUIElementCopyAttributeValue(.systemWide, kAXFocusedUIElementAttribute as CFString, &focusedUIElement)
-
-        return focusedUIElement as! AXUIElement?
+        
+        if let focusedUIElement = focusedUIElement {
+            return (focusedUIElement as! AXUIElement)
+        }
+        
+        return nil
     }
     
     private func get(attribute: AXAttribute) -> String? {

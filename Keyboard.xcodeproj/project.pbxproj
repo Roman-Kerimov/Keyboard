@@ -105,6 +105,10 @@
 		9654DF7A1D4E1D0900DDB0EF /* SpaceRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9654DF791D4E1D0900DDB0EF /* SpaceRowView.swift */; };
 		965A22151F3B2D6C000430E6 /* SettingsContainerView_LegalNoticesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96464A1C1F3AF2A5006F8F6B /* SettingsContainerView_LegalNoticesView.swift */; };
 		965A22161F3B2D6D000430E6 /* SettingsContainerView_LegalNoticesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96464A1C1F3AF2A5006F8F6B /* SettingsContainerView_LegalNoticesView.swift */; };
+		965A8B3E20D2EDF800E0260E /* VisibilityMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965A8B3D20D2EDF800E0260E /* VisibilityMenuItem.swift */; };
+		965A8B4220D315A000E0260E /* HIDE_FOR_APPLICATION.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965A8B3F20D315A000E0260E /* HIDE_FOR_APPLICATION.swift */; };
+		965A8B4620D317C100E0260E /* SHOW_FOR_APPLICATION.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965A8B4320D317C100E0260E /* SHOW_FOR_APPLICATION.swift */; };
+		965A8B4820D3268F00E0260E /* NSWorkspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965A8B4720D3268F00E0260E /* NSWorkspace.swift */; };
 		965BFAC91F7979FA00B8F682 /* iOSKeyboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965BFAC81F7979FA00B8F682 /* iOSKeyboardTests.swift */; };
 		965BFAD11F797BBB00B8F682 /* CharacterComponentsDictionaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965BFAD01F797BBB00B8F682 /* CharacterComponentsDictionaryTests.swift */; };
 		965D15C11D3146BB0098FA57 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965D15C01D3146BB0098FA57 /* KeyboardView.swift */; };
@@ -411,6 +415,10 @@
 		964FE8221D1CA9D400D41EA7 /* Keyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Keyboard.storyboard; sourceTree = "<group>"; };
 		96530D661DD1C9A9004E8BAA /* KeyboardLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardLayout.swift; sourceTree = "<group>"; };
 		9654DF791D4E1D0900DDB0EF /* SpaceRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceRowView.swift; sourceTree = "<group>"; };
+		965A8B3D20D2EDF800E0260E /* VisibilityMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisibilityMenuItem.swift; sourceTree = "<group>"; };
+		965A8B3F20D315A000E0260E /* HIDE_FOR_APPLICATION.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HIDE_FOR_APPLICATION.swift; sourceTree = "<group>"; };
+		965A8B4320D317C100E0260E /* SHOW_FOR_APPLICATION.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHOW_FOR_APPLICATION.swift; sourceTree = "<group>"; };
+		965A8B4720D3268F00E0260E /* NSWorkspace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSWorkspace.swift; sourceTree = "<group>"; };
 		965BFAC61F7979FA00B8F682 /* KeyboardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyboardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		965BFAC81F7979FA00B8F682 /* iOSKeyboardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSKeyboardTests.swift; sourceTree = "<group>"; };
 		965BFACA1F7979FA00B8F682 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -801,6 +809,8 @@
 				96E033E92031540A0039E653 /* KEYBOARD.swift */,
 				96200BE8208CDC8D002930D6 /* ENABLE_KEYBOARD.swift */,
 				96E033ED203154660039E653 /* LANGUAGE.swift */,
+				965A8B3F20D315A000E0260E /* HIDE_FOR_APPLICATION.swift */,
+				965A8B4320D317C100E0260E /* SHOW_FOR_APPLICATION.swift */,
 				96E033F12031549C0039E653 /* ABOUT.swift */,
 				96E033F5203154FC0039E653 /* LEGAL_NOTICES.swift */,
 				96E033F9203155A80039E653 /* VERSION.swift */,
@@ -834,11 +844,13 @@
 				96DBC14A205EBD8700910E7A /* TISInputSource.swift */,
 				96C1EC2D205131EC00AC27CB /* CGEventFlags.swift */,
 				96ACD587205261EE007CFDCF /* NSPasteboard.swift */,
+				965A8B4720D3268F00E0260E /* NSWorkspace.swift */,
 				963DE0B1202F012B0040A448 /* StatusMenu.swift */,
 				96443FBB208BE94D002FFA6B /* AccessibilityMenuItem.swift */,
 				96AED32E203120DE00498A7E /* LayoutMenuItem.swift */,
 				96AED33020312AE600498A7E /* InterfaceLanguageMenuItem.swift */,
 				96AED33220312BA500498A7E /* LanguageMenuItem.swift */,
+				965A8B3D20D2EDF800E0260E /* VisibilityMenuItem.swift */,
 				966EB96C202FC0D3007718F2 /* LegalNoticesMenuItem.swift */,
 				96F28C2320302AC00023313C /* VersionMenuItem.swift */,
 				96AFEBA6202FA9080099F70B /* QuitMenuItem.swift */,
@@ -1275,6 +1287,7 @@
 				96AC6CA3203C23B200555164 /* CGEvent.swift in Sources */,
 				96F28C1A2030205C0023313C /* DocumentContext.swift in Sources */,
 				9696CBC32031800B007CC94B /* Template.swift in Sources */,
+				965A8B4620D317C100E0260E /* SHOW_FOR_APPLICATION.swift in Sources */,
 				9697C3E520BB514900FE3007 /* UnicodeDataFile.swift in Sources */,
 				96EBF29D209C7C8B00AE00E7 /* UIColor.swift in Sources */,
 				96ACD588205261EE007CFDCF /* NSPasteboard.swift in Sources */,
@@ -1295,6 +1308,7 @@
 				96F28C21203021760023313C /* String.swift in Sources */,
 				96436BA320C1DA2D0065ED03 /* UnicodeItem.swift in Sources */,
 				96DB1A7B202FB84F00B96D3C /* LegalNoticesTextView.swift in Sources */,
+				965A8B3E20D2EDF800E0260E /* VisibilityMenuItem.swift in Sources */,
 				96DB1A7D202FB87C00B96D3C /* UIView.swift in Sources */,
 				963DE0B2202F012B0040A448 /* StatusMenu.swift in Sources */,
 				96E033E8203153100039E653 /* SETTINGS.swift in Sources */,
@@ -1304,6 +1318,7 @@
 				96E354EA2020DDBC00668374 /* AppDelegate.swift in Sources */,
 				96E03408203156660039E653 /* NEXT.swift in Sources */,
 				96443FBC208BE94D002FFA6B /* AccessibilityMenuItem.swift in Sources */,
+				965A8B4820D3268F00E0260E /* NSWorkspace.swift in Sources */,
 				96F28C2420302AC00023313C /* VersionMenuItem.swift in Sources */,
 				96443FC4208CB34D002FFA6B /* UIFont.swift in Sources */,
 				96F28C20203021090023313C /* Character.swift in Sources */,
@@ -1339,6 +1354,7 @@
 				960FEFEE203D37590099E449 /* AXAttribute.swift in Sources */,
 				9697F881202FA88C001EC50A /* Internationalization.swift in Sources */,
 				96E0340C2031567A0039E653 /* ROUTE.swift in Sources */,
+				965A8B4220D315A000E0260E /* HIDE_FOR_APPLICATION.swift in Sources */,
 				96EBF2A2209C843700AE00E7 /* ConfigurableViewProtocol.swift in Sources */,
 				96F28C1D2030205C0023313C /* CharacterComponent.swift in Sources */,
 				96EBF2A9209CEBD900AE00E7 /* Locale.swift in Sources */,

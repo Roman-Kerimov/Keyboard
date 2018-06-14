@@ -42,6 +42,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
                 
                 self.unicodeSearchWindow.setIsVisible(self.previousDocumentContext != .init())
             }
+            
+            self.statusMenu.visibilityMenuItem.isHidden = !AppDelegate.isUserDefaultsVisibility
+            self.statusMenu.visibilityMenuItem.updateLocalizedStrings()
         }
         
         Keyboard.default.delegate = self
@@ -141,7 +144,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
     
     static var documentContext: DocumentContext {
         
-        if [kAXScrollAreaRole, kAXWindowRole].contains(AXUIElement.focused?.role ?? .init()) {
+        if isUserDefaultsVisibility && isUserDefaultsVisibleKeyboard {
             return .init(beforeInput: nonAccessibilityDocumentContext.beforeInput, afterInput: nonAccessibilityDocumentContext.afterInput)
         }
         
@@ -161,6 +164,34 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
             beforeInput: .init(text.prefix(upTo: .init(encodedOffset: selectedTextRange.lowerBound))),
             afterInput: .init(text.suffix(from: .init(encodedOffset: selectedTextRange.upperBound)))
         )
+    }
+    
+    static var isUserDefaultsVisibility: Bool {
+        return [kAXScrollAreaRole, kAXWindowRole].contains(AXUIElement.focused?.role ?? .init())
+    }
+    
+    static let isUserDefaultsVisibleKeyboardKey = "BbqMJTrDcbJy3FJTI2fXo6TEHLoAU37"
+    
+    static var isUserDefaultsVisibleKeyboard: Bool {
+        get {
+            guard let bundleID = NSWorkspace.shared.frontmostApplication?.bundleIdentifier else {
+                return true
+            }
+            
+            return UserDefaults.standard.dictionary(forKey: bundleID)?[isUserDefaultsVisibleKeyboardKey] as? Bool ?? true
+        }
+        
+        set {
+            guard let bundleID = NSWorkspace.shared.frontmostApplication?.bundleIdentifier else {
+                return
+            }
+            
+            var bundleDictionary = UserDefaults.standard.dictionary(forKey: bundleID) ?? .init()
+            bundleDictionary[isUserDefaultsVisibleKeyboardKey] = newValue as Any
+            
+            UserDefaults.standard.set(bundleDictionary, forKey: bundleID)
+            UserDefaults.standard.synchronize()
+        }
     }
 }
 

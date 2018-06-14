@@ -11,6 +11,8 @@ class StatusMenu: NSMenu {
     
     var statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
     
+    let visibilityMenuItem: VisibilityMenuItem = .init()
+    
     init() {
         super.init(title: .init())
         
@@ -35,6 +37,8 @@ class StatusMenu: NSMenu {
         }
         addItem(.separator())
         addItem(InterfaceLanguageMenuItem.init())
+        addItem(.separator())
+        addItem(visibilityMenuItem)
         addItem(.separator())
         addItem(LegalNoticesMenuItem.init())
         addItem(VersionMenuItem.init())

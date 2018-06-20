@@ -6,7 +6,7 @@
 //
 //
 
-enum Language: String {
+enum Language: String, CaseIterable {
     //case az = "az"
     //case az_Cyrl = "az-Cyrl"
     case ca = "ca"

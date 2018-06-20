@@ -310,7 +310,7 @@ internal class KeyboardView: UIView {
     
     @objc internal func showSettings() {
         
-        controller?.addChildViewController(settingsContainerView.navigationController)
+        controller?.addChild(settingsContainerView.navigationController)
         addSubview(settingsContainerView)
         
         settingsRightConstraint = settingsContainerView.rightAnchor.constraint(equalTo: rightAnchor, constant: settingsContainerView.widthConstraint.constant)
@@ -347,7 +347,7 @@ internal class KeyboardView: UIView {
         
         Timer.scheduledTimer(withTimeInterval: settingsAnimateDuration, repeats: false) { (timer) in
             self.settingsContainerView.removeFromSuperview()
-            self.settingsContainerView.navigationController.removeFromParentViewController()
+            self.settingsContainerView.navigationController.removeFromParent()
         }
     }
 }

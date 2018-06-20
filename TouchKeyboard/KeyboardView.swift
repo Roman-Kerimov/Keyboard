@@ -250,8 +250,6 @@ internal class KeyboardView: UIView {
     override internal func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         
-        configure()
-        
         colorScheme = darkColorScheme ? .dark : .default
         
         enterKey.isEnabled = false
@@ -261,7 +259,7 @@ internal class KeyboardView: UIView {
         return bounds.width < self.minimalScreenSize.height
     }
     
-    internal func configure() {
+    override func layoutSubviews() {
         
         if layoutMode == .default {
             layoutMode = isPrefferedVerticalMode ? .vertical : .horizontal

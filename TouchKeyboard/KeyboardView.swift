@@ -259,6 +259,30 @@ internal class KeyboardView: UIView {
         return bounds.width < self.minimalScreenSize.height
     }
     
+    private let deleteRowView: DeleteRowView = .init()
+    private let layoutView: KeyboardLayoutView = .init()
+    private let spaceRowView: SpaceRowView = .init()
+    
+    override private init(frame: CGRect = .zero) {
+        super.init(frame: frame)
+        
+        addSubview(backgroundView)
+        
+        backgroundView.addSubview(deleteRowView)
+        backgroundView.addSubview(spaceRowView)
+        backgroundView.addSubview(layoutView)
+        
+        layoutView.layout = Keyboard.default.layout
+        
+        settingsContainerView.backButton.addTarget(self, action: #selector(hideSettings), for: .allTouchEvents)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(setLayout), name: .LayoutDidChange, object: nil)
+    }
+    
+    required internal init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func layoutSubviews() {
         
         if layoutMode == .default {
@@ -335,30 +359,6 @@ internal class KeyboardView: UIView {
             height: deleteRowHeight
         )
         deleteRowView.characterSequence.reloadData()
-    }
-    
-    private let deleteRowView: DeleteRowView = .init()
-    private let layoutView: KeyboardLayoutView = .init()
-    private let spaceRowView: SpaceRowView = .init()
-    
-    override private init(frame: CGRect = .zero) {
-        super.init(frame: frame)
-        
-        addSubview(backgroundView)
-        
-        backgroundView.addSubview(deleteRowView)
-        backgroundView.addSubview(spaceRowView)
-        backgroundView.addSubview(layoutView)
-        
-        layoutView.layout = Keyboard.default.layout
-        
-        settingsContainerView.backButton.addTarget(self, action: #selector(hideSettings), for: .allTouchEvents)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(setLayout), name: .LayoutDidChange, object: nil)
-    }
-    
-    required internal init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     @objc private func setLayout() {

@@ -79,9 +79,6 @@ class KeyboardLayoutView: UIView {
         }
     }
     
-    var keySize: CGSize = .zero
-    var keySpacing: CGFloat = 0
-    var labelFontSize: CGFloat = 1
     var horizontalIndent: CGFloat = 0
     
     override func layoutSubviews() {
@@ -89,8 +86,8 @@ class KeyboardLayoutView: UIView {
         for (halfKeyboardIndex, halfKeyboard) in halfKeyboards.enumerated() {
             
             halfKeyboard.frame.size = .init(
-                width: keySize.width * .init(Keyboard.default.layout.columnCount / 2),
-                height: keySize.height * .init(Keyboard.default.layout.rowCount)
+                width: KeyView.size.width * .init(Keyboard.default.layout.columnCount / 2),
+                height: KeyView.size.height * .init(Keyboard.default.layout.rowCount)
             )
             
             if halfKeyboardIndex == 0 {
@@ -116,9 +113,13 @@ class KeyboardLayoutView: UIView {
                     halfKeyboardIndex = 1
                 }
                 
-                key.frame.origin.x = keySize.width * .init(keyIndex - row.count/2 * halfKeyboardIndex)
-                key.frame.origin.y = keySize.height * .init(rowIndex)
-                key.configure(size: keySize, spacing: keySpacing, labelFontSize: labelFontSize)
+                key.frame = .init(
+                    origin: .init(
+                        x: KeyView.size.width * .init(keyIndex - row.count/2 * halfKeyboardIndex),
+                        y: KeyView.size.height * .init(rowIndex)
+                    ),
+                    size: KeyView.size
+                )
             }
         }
     }

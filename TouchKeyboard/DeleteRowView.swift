@@ -8,13 +8,13 @@
 
 import UIKit
 
-class DeleteRowView: RowView {
+class DeleteRowView: UIView {
     
     let deleteKey = KeyView(key: .delete)
     internal let characterSequence: CharacterSequenceView = .init()
     
-    internal override init() {
-        super.init()
+    init() {
+        super.init(frame: .zero)
         
         addSubview(characterSequence)
         addSubview(deleteKey)
@@ -24,13 +24,11 @@ class DeleteRowView: RowView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func configure(size: CGSize, keySpacing: CGFloat, labelFontSize: CGFloat) {
-        super.configure(size: size, keySpacing: keySpacing, labelFontSize: labelFontSize)
+    override func layoutSubviews() {
         
-        deleteKey.configure(size: .init(width: size.width / 5, height: size.height), spacing: keySpacing, labelFontSize: labelFontSize)
-        deleteKey.frame.origin.x = size.width - deleteKey.frame.width
+        deleteKey.frame = .init(origin: .init(x: frame.width - deleteKey.frame.width, y: 0), size: .init(width: frame.width / 5, height: frame.height))
         
         characterSequence.contentInset = .init(top: 0, left: 0, bottom: 0, right: deleteKey.frame.width)
-        characterSequence.frame.size = .init(width: frame.width, height: size.height)
+        characterSequence.frame.size = .init(width: frame.width, height: frame.height)
     }
 }

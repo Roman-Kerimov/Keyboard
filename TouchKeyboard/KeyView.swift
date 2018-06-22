@@ -8,7 +8,11 @@
 
 import UIKit
 
-class KeyView: UIButton, ConfigurableView {
+class KeyView: UIButton {
+    
+    static var size: CGSize = .zero
+    static var spacing: CGFloat = 0
+    static var labelFontSize: CGFloat = 1
     
     override func updateLocalizedStrings() {
         super.updateLocalizedStrings()
@@ -229,20 +233,10 @@ class KeyView: UIButton, ConfigurableView {
         }
     }
     
-    private var baseFontSize: CGFloat = 0
-    private var spacing: CGFloat = 0
-    
-    public func configure() {
-        configure(size: frame.size, spacing: spacing, labelFontSize: baseFontSize)
-    }
-    
-    public func configure(size: CGSize, spacing: CGFloat, labelFontSize: CGFloat) {
-        frame.size = size
-        baseFontSize = labelFontSize
-        self.spacing = spacing
+    override func layoutSubviews() {
         
-        let characterLabelFont: UIFont = .characterFont(ofSize: baseFontSize)
-        let nameLabelFont: UIFont = .systemFont(ofSize: labelFontSize/1.8)
+        let characterLabelFont: UIFont = .characterFont(ofSize: KeyView.labelFontSize)
+        let nameLabelFont: UIFont = .systemFont(ofSize: KeyView.labelFontSize/1.8)
         
         mainLabelView.font = [.space, .enter, .delete].contains(key) ? nameLabelFont : characterLabelFont
         
@@ -254,20 +248,20 @@ class KeyView: UIButton, ConfigurableView {
         shiftRightLabelView.font = nameLabelFont
         
         if imageLabelView.image != nil {
-            imageLabelView.image = UIImage.init(fromPDF: labelFileName, withExtension: .ai, withScale: labelFontSize/24)?.withRenderingMode(.alwaysTemplate)
+            imageLabelView.image = UIImage.init(fromPDF: labelFileName, withExtension: .ai, withScale: KeyView.labelFontSize/24)?.withRenderingMode(.alwaysTemplate)
         }
         
-        backgroundView.layer.cornerRadius = spacing
+        backgroundView.layer.cornerRadius = KeyView.spacing
         
-        let keyEdgeInset = spacing / 2
+        let keyEdgeInset = KeyView.spacing / 2
         
         backgroundView.frame = frame.insetBy(dx: keyEdgeInset, dy: keyEdgeInset)
         backgroundView.frame.origin = .init(x: keyEdgeInset, y: keyEdgeInset)
         
-        let verticalShiftLabelIndent = spacing * 2.2
-        let horizontalShiftLabelIndent = spacing * 1.0
+        let verticalShiftLabelIndent = KeyView.spacing * 2.2
+        let horizontalShiftLabelIndent = KeyView.spacing * 1.0
         
-        mainLabelView.frame.size.width = size.width - spacing * 2
+        mainLabelView.frame.size.width = frame.width - KeyView.spacing * 2
         mainLabelView.center = backgroundView.center
         
         shiftUpLabelView.center.y = verticalShiftLabelIndent

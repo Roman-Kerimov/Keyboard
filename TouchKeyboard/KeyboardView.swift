@@ -266,29 +266,18 @@ internal class KeyboardView: UIView {
         let deleteRowHeight: CGFloat = deleteRowHeightInKeys * keySize.height
         let spaceRowHeight: CGFloat = spaceRowHeightInKeys * keySize.height
         
-        let keySpacing = deleteRowHeight * 0.1
-        let labelFontSize: CGFloat = min(spaceRowHeight * 0.5, 36)
+        KeyView.size = keySize
+        KeyView.spacing = deleteRowHeight * 0.1
+        KeyView.labelFontSize = min(spaceRowHeight * 0.5, 36)
         
-        deleteRowView.configure(
-            size: .init(width: keyboardSize.width, height: deleteRowHeight),
-            keySpacing: keySpacing, labelFontSize: labelFontSize
-        )
-        deleteRowView.frame.origin.y = 0
+        deleteRowView.frame = .init(origin: .zero, size: .init(width: keyboardSize.width, height: deleteRowHeight))
         
         let layoutHeight: CGFloat = backgroundView.bounds.height - deleteRowHeight - spaceRowHeight
         
         layoutView.frame = .init(x: 0, y: deleteRowHeight, width: keyboardSize.width, height: layoutHeight)
-        layoutView.keySize = keySize
-        layoutView.keySpacing = keySpacing
-        layoutView.labelFontSize = labelFontSize
         layoutView.horizontalIndent = horizontalIndentInKeys * keySize.width
         
-        spaceRowView.configure(
-            size: .init(width: keyboardSize.width, height: spaceRowHeight),
-            keySpacing: keySpacing, labelFontSize: labelFontSize
-        )
-        spaceRowView.frame.origin.y = deleteRowHeight + layoutHeight
-        
+        spaceRowView.frame = .init(x: 0, y: deleteRowHeight + layoutHeight, width: keyboardSize.width, height: spaceRowHeight)
         
         if isHorizontalMode {
             deleteRowView.center.x = backgroundView.bounds.midX

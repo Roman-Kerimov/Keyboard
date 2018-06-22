@@ -113,5 +113,7 @@ class SettingsContainerView: UIStackView {
         default:
             break
         }
+        
+        KeyboardViewController.shared.keyboardView.setNeedsLayout()
     }
 }

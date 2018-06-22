@@ -277,16 +277,11 @@ internal class KeyboardView: UIView {
         
         let layoutHeight: CGFloat = backgroundView.bounds.height - deleteRowHeight - spaceRowHeight
         
-        layoutView.configure(
-            size: .init(width: keyboardSize.width, height: layoutHeight),
-            halfKeyboardSize: .init(
-                width: keySize.width * CGFloat(Keyboard.default.layout.columnCount / 2),
-                height: keySize.height * CGFloat(Keyboard.default.layout.rowCount)
-            ),
-            keySize: keySize, keySpacing: keySpacing, labelFontSize: labelFontSize,
-            horizontalIndent: horizontalIndentInKeys * keySize.width
-        )
-        layoutView.frame.origin.y = deleteRowHeight
+        layoutView.frame = .init(x: 0, y: deleteRowHeight, width: keyboardSize.width, height: layoutHeight)
+        layoutView.keySize = keySize
+        layoutView.keySpacing = keySpacing
+        layoutView.labelFontSize = labelFontSize
+        layoutView.horizontalIndent = horizontalIndentInKeys * keySize.width
         
         spaceRowView.configure(
             size: .init(width: keyboardSize.width, height: spaceRowHeight),

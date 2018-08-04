@@ -149,6 +149,8 @@ internal class KeyboardView: UIView {
     override internal func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         
+        state = .appeared
+        
         colorScheme = darkColorScheme ? .dark : .default
         
         enterKey.isEnabled = false

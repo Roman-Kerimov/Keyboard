@@ -14,7 +14,11 @@ internal class KeyboardView: UIView {
     @IBInspectable internal var darkColorScheme: Bool = false
     @IBInspectable internal var alternateLayoutMode: Bool = false
     
-    var isDisappeared: Bool = true
+    enum State {
+        case disappeared, disappearing, appearing, appeared
+    }
+    
+    var state: State = .disappeared
     
     internal var documentContext: DocumentContext = .init() {
         didSet {
@@ -176,7 +180,7 @@ internal class KeyboardView: UIView {
     
     override func layoutSubviews() {
         
-        if isDisappeared {
+        guard state != .disappeared else {
             return
         }
         

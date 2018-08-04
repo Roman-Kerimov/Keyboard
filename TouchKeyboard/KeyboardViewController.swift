@@ -81,16 +81,20 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        keyboardView.isDisappeared = false
+        keyboardView.state = .appearing
         keyboardView.setNeedsLayout()
     }
-    
-    var isAppeared: Bool = false
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        isAppeared = true
+        keyboardView.state = .appeared
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        keyboardView.state = .disappearing
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -98,8 +102,7 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
         
         previousDocumentContext = .init()
         
-        isAppeared = false
-        keyboardView.isDisappeared = true
+        keyboardView.state = .disappeared
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -126,7 +129,7 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
     override func textDidChange(_ textInput: UITextInput?) {
         // The app has just changed the document's contents, the document context has been updated.
         
-        if !isAppeared {
+        if keyboardView.state != .appeared {
             if textDocumentProxy.keyboardAppearance == .dark {
                 keyboardView.colorScheme = .dark
             } else {

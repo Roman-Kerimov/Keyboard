@@ -78,6 +78,13 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
         hiddenView.isHidden = true
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        keyboardView.isDisappeared = false
+        keyboardView.setNeedsLayout()
+    }
+    
     var isAppeared: Bool = false
     
     override func viewDidAppear(_ animated: Bool) {
@@ -92,6 +99,7 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
         previousDocumentContext = .init()
         
         isAppeared = false
+        keyboardView.isDisappeared = true
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

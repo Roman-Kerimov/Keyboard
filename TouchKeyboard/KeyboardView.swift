@@ -14,6 +14,8 @@ internal class KeyboardView: UIView {
     @IBInspectable internal var darkColorScheme: Bool = false
     @IBInspectable internal var alternateLayoutMode: Bool = false
     
+    var isDisappeared: Bool = true
+    
     internal var documentContext: DocumentContext = .init() {
         didSet {
             let documentContextBeforeInput: String = documentContext.beforeInput ?? .init()
@@ -173,6 +175,10 @@ internal class KeyboardView: UIView {
     }
     
     override func layoutSubviews() {
+        
+        if isDisappeared {
+            return
+        }
         
         let scaleFactor: CGFloat = Bundle.main.isInterfaceBuilder ? 1 : bounds.width / UIScreen.main.bounds.width
         

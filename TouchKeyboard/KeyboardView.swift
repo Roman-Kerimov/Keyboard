@@ -11,6 +11,7 @@ import UIKit
 @IBDesignable
 internal class KeyboardView: UIView {
     
+    @IBInspectable internal var text: String = .init()
     @IBInspectable internal var darkColorScheme: Bool = false
     @IBInspectable internal var alternateLayoutMode: Bool = false
     
@@ -57,6 +58,8 @@ internal class KeyboardView: UIView {
             }
             
             characterSequenceView.characters = characterSequence
+            
+            unicodeCollectionView.documentContextBeforeInput = documentContextBeforeInput
         }
     }
     
@@ -154,6 +157,12 @@ internal class KeyboardView: UIView {
         colorScheme = darkColorScheme ? .dark : .default
         
         enterKey.isEnabled = false
+        
+        LoadUnicodeDataFiles.init().start()
+        documentContext = .init(beforeInput: text, afterInput: nil)
+        NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
+        
+        SearchUnicodeScalars.init(for: unicodeCollectionView).start()
     }
     
     private let deleteRowView: DeleteRowView = .init()

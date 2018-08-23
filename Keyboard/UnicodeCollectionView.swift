@@ -72,8 +72,8 @@ class UnicodeCollectionView: CharacterCollectionView {
             cell.unicodeName.text = regionCode + unicodeLabelSeparator + cell.unicodeName.text!
         }
         
-        cell.unicodeName.textColor = colorScheme.unicodeNameTextColor
-        cell.unicodeName.backgroundColor = colorScheme.unicodeNameBackgroundColor
+        cell.unicodeName.textColor = .unemphasizedSelectedTextColor
+        cell.unicodeName.backgroundColor = .unemphasizedSelectedTextBackgroundColor
         cell.unicodeName.font = .boldSystemFont(ofSize: characterFontSize/2)
         
         cell.unicodeName.frame.size.width += cell.unicodeName.font.pointSize/2

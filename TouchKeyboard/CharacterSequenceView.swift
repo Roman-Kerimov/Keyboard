@@ -254,7 +254,7 @@ class CharacterSequenceView: CharacterCollectionView {
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! CharacterCollectionViewCell
             
         cell.title.font = characterFont
-        cell.backgroundColor = colorScheme.labelColor.withAlphaComponent(0.05)
+        cell.backgroundColor = UIColor.labelColor.withAlphaComponent(0.05)
         cell.layer.cornerRadius = layout.itemSize.width * 0.3
         
         return cell

@@ -55,26 +55,6 @@ class KeyView: UIButton {
         
         removeGestureRecognizer(longPressGestureRecognizer)
     }
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-    
-    var colorScheme: KeyboardColorScheme = .default {
-        didSet {
-            shiftUpLabelView.textColor = colorScheme.shiftLabelColor
-            shiftDownLabelView.textColor = colorScheme.shiftLabelColor
-            shiftLeftLabelView.textColor = colorScheme.shiftLabelColor
-            shiftRightLabelView.textColor = colorScheme.shiftLabelColor
-            
-            updateLocalizedStrings()
-            isHighlighted = false
-        }
-    }
     
     public var key: Key {
         didSet {
@@ -128,52 +108,10 @@ class KeyView: UIButton {
             && returnKeyType != .continue
     }
     
-    override internal var isHighlighted: Bool {
-        didSet {
-            super.isHighlighted = isHighlighted
-            
-            backgroundView.backgroundColor = colorScheme.serviceKeyColor
-            mainLabelView.textColor = colorScheme.labelColor
-            imageLabelView.tintColor = colorScheme.labelColor
-            
-            if isHighlighted != isServiceKey {
-                
-                if isSpecialReturnType {
-                    backgroundView.backgroundColor = tintColor
-                    mainLabelView.textColor = colorScheme.specialReturnLabelColor
-                    imageLabelView.tintColor = colorScheme.specialReturnLabelColor
-                }
-                
-                shiftUpLabelView.isHidden = true
-                shiftDownLabelView.isHidden = true
-                shiftLeftLabelView.isHidden = true
-                shiftRightLabelView.isHidden = true
-            }
-            else {
-                
-                if !isSpecialReturnType {
-                    backgroundView.backgroundColor = colorScheme.keyColor
-                }
-                
-                mainLabelView.textColor = colorScheme.labelColor
-                imageLabelView.tintColor = colorScheme.labelColor
-                shiftUpLabelView.isHidden = false
-                shiftDownLabelView.isHidden = false
-                shiftLeftLabelView.isHidden = false
-                shiftRightLabelView.isHidden = false
-            }
-        }
-    }
-    
     override var isEnabled: Bool {
         didSet {
             if isEnabled {
                 isHighlighted = false
-            }
-            else {
-                backgroundView.backgroundColor = colorScheme.serviceKeyColor
-                mainLabelView.textColor = colorScheme.disabledKeyLabelColor
-                imageLabelView.tintColor = colorScheme.disabledKeyLabelColor
             }
         }
     }
@@ -213,6 +151,8 @@ class KeyView: UIButton {
         longPressGestureRecognizer.minimumPressDuration = 0
     
         NotificationCenter.default.addLocaleObserver(self)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(setNeedsLayout), name: .KeyboardAppearanceDidChange, object: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -234,6 +174,26 @@ class KeyView: UIButton {
     }
     
     override func layoutSubviews() {
+        
+        shiftUpLabelView.textColor = .secondaryLabelColor
+        shiftDownLabelView.textColor = .secondaryLabelColor
+        shiftLeftLabelView.textColor = .secondaryLabelColor
+        shiftRightLabelView.textColor = .secondaryLabelColor
+        
+        updateLocalizedStrings()
+        
+        backgroundView.backgroundColor = !isEnabled ? .quaternaryLabelColor : isHighlighted != isServiceKey && isSpecialReturnType ? .controlAccentColor : isHighlighted == isServiceKey && !isSpecialReturnType ? .controlColor : .quaternaryLabelColor
+        
+        mainLabelView.textColor = !isEnabled ? .disabledControlTextColor : isHighlighted != isServiceKey && isSpecialReturnType ? .alternateSelectedControlTextColor : .labelColor
+        
+        imageLabelView.tintColor = mainLabelView.textColor
+        
+        let isHiddenShiftLabelView: Bool = isHighlighted != isServiceKey
+        shiftUpLabelView.isHidden = isHiddenShiftLabelView
+        shiftDownLabelView.isHidden = isHiddenShiftLabelView
+        shiftLeftLabelView.isHidden = isHiddenShiftLabelView
+        shiftRightLabelView.isHidden = isHiddenShiftLabelView
+        
         
         let characterLabelFont: UIFont = .characterFont(ofSize: KeyView.labelFontSize)
         let nameLabelFont: UIFont = .systemFont(ofSize: KeyView.labelFontSize/1.8)

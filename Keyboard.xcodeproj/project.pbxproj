@@ -34,6 +34,8 @@
 		962D7CC920CD75320047B8B9 /* NSRegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962D7CC720CD75320047B8B9 /* NSRegularExpression.swift */; };
 		962D7CCA20CD75320047B8B9 /* NSRegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962D7CC720CD75320047B8B9 /* NSRegularExpression.swift */; };
 		9633A3CA1E5DFE8D00DFA503 /* DeleteRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9633A3C91E5DFE8D00DFA503 /* DeleteRowView.swift */; };
+		9637C6F120F2440200078395 /* UIKeyboardAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637C6F020F2440200078395 /* UIKeyboardAppearance.swift */; };
+		9637C6F220F2440200078395 /* UIKeyboardAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637C6F020F2440200078395 /* UIKeyboardAppearance.swift */; };
 		963BA6631F3B1FD000BFE3A7 /* LegalTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963BA6621F3B1FD000BFE3A7 /* LegalTextView.swift */; };
 		963BA6641F3B1FD000BFE3A7 /* LegalTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963BA6621F3B1FD000BFE3A7 /* LegalTextView.swift */; };
 		963DE0B0202F00B60040A448 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963DE0AF202F00B60040A448 /* main.swift */; };
@@ -63,13 +65,11 @@
 		964AB96A1D1B6535004C827C /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964AB9691D1B6535004C827C /* KeyboardViewController.swift */; };
 		964AB96E1D1B6535004C827C /* KeyboardExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 964AB9671D1B6535004C827C /* KeyboardExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		964ECA7E1E536FE8008E8757 /* SettingsContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964ECA7D1E536FE8008E8757 /* SettingsContainerView.swift */; };
-		964ED5481DF5765E006AD952 /* KeyboardColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964ED5471DF5765E006AD952 /* KeyboardColorScheme.swift */; };
 		965050E020BAB056001BAA91 /* DerivedName.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9608926620AF4F98007AA01E /* DerivedName.txt */; };
 		965050E120BAB057001BAA91 /* DerivedName.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9608926620AF4F98007AA01E /* DerivedName.txt */; };
 		965050E220BAB058001BAA91 /* DerivedName.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9608926620AF4F98007AA01E /* DerivedName.txt */; };
 		96530D671DD1C9A9004E8BAA /* KeyboardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96530D661DD1C9A9004E8BAA /* KeyboardLayout.swift */; };
 		96533A761F12938D00B07CA3 /* KeyboardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96530D661DD1C9A9004E8BAA /* KeyboardLayout.swift */; };
-		96533A771F12938D00B07CA3 /* KeyboardColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964ED5471DF5765E006AD952 /* KeyboardColorScheme.swift */; };
 		96533A781F12938D00B07CA3 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964AB9691D1B6535004C827C /* KeyboardViewController.swift */; };
 		96533A791F12938D00B07CA3 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965D15C01D3146BB0098FA57 /* KeyboardView.swift */; };
 		96533A7A1F12938D00B07CA3 /* SettingsContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964ECA7D1E536FE8008E8757 /* SettingsContainerView.swift */; };
@@ -232,7 +232,6 @@
 		96EA39D71EAFDDDE00F3D804 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EA39D61EAFDDDE00F3D804 /* UIImage.swift */; };
 		96EA39E21EB0EEDE00F3D804 /* Labels_HideKeyboard.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96EA39DF1EB0EEDD00F3D804 /* Labels_HideKeyboard.ai */; };
 		96EA39E31EB0EEDE00F3D804 /* Labels_NextKeyboard.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96EA39E01EB0EEDD00F3D804 /* Labels_NextKeyboard.ai */; };
-		96EBF28F209C6ACE00AE00E7 /* KeyboardColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964ED5471DF5765E006AD952 /* KeyboardColorScheme.swift */; };
 		96EBF290209C6AF600AE00E7 /* CollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F7FBE81FBB299400F7146C /* CollectionViewFlowLayout.swift */; };
 		96EBF29D209C7C8B00AE00E7 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968694C01EA0F3D100E6C9D0 /* UIColor.swift */; };
 		96EBF2A7209CE86900AE00E7 /* UnicodeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960F6E941EC9F7E600EFC7B7 /* UnicodeCollectionView.swift */; };
@@ -383,6 +382,7 @@
 		9620E747202B9EB1003FB02E /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		962D7CC720CD75320047B8B9 /* NSRegularExpression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSRegularExpression.swift; sourceTree = "<group>"; };
 		9633A3C91E5DFE8D00DFA503 /* DeleteRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteRowView.swift; sourceTree = "<group>"; };
+		9637C6F020F2440200078395 /* UIKeyboardAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKeyboardAppearance.swift; sourceTree = "<group>"; };
 		963BA6621F3B1FD000BFE3A7 /* LegalTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalTextView.swift; sourceTree = "<group>"; };
 		963DE0AF202F00B60040A448 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		963DE0B1202F012B0040A448 /* StatusMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenu.swift; sourceTree = "<group>"; };
@@ -404,7 +404,6 @@
 		964AB9691D1B6535004C827C /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		964AB96B1D1B6535004C827C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		964ECA7D1E536FE8008E8757 /* SettingsContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsContainerView.swift; sourceTree = "<group>"; };
-		964ED5471DF5765E006AD952 /* KeyboardColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardColorScheme.swift; sourceTree = "<group>"; };
 		964FE8221D1CA9D400D41EA7 /* Keyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Keyboard.storyboard; sourceTree = "<group>"; };
 		96530D661DD1C9A9004E8BAA /* KeyboardLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardLayout.swift; sourceTree = "<group>"; };
 		9654DF791D4E1D0900DDB0EF /* SpaceRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceRowView.swift; sourceTree = "<group>"; };
@@ -712,7 +711,6 @@
 				96883126201FB35B0071908B /* KeyboardDelegate.swift */,
 				96883129202008030071908B /* DocumentContext.swift */,
 				96530D661DD1C9A9004E8BAA /* KeyboardLayout.swift */,
-				964ED5471DF5765E006AD952 /* KeyboardColorScheme.swift */,
 				96498A3E205F4A7D002B1071 /* Keycode.swift */,
 				961D74902009003900BBC5FB /* Key.swift */,
 				9643FC4C1F78F8D5004DA2C0 /* CharacterComponent.swift */,
@@ -776,6 +774,7 @@
 				9654DF791D4E1D0900DDB0EF /* SpaceRowView.swift */,
 				965D15C81D32AE3B0098FA57 /* KeyView.swift */,
 				96EA39D61EAFDDDE00F3D804 /* UIImage.swift */,
+				9637C6F020F2440200078395 /* UIKeyboardAppearance.swift */,
 				96EA39E01EB0EEDD00F3D804 /* Labels_NextKeyboard.ai */,
 				96EA39DF1EB0EEDD00F3D804 /* Labels_HideKeyboard.ai */,
 				96767C241EB11E28004D847C /* Labels_Settings.ai */,
@@ -1149,7 +1148,6 @@
 				961FC32E1F3ADD9B00ADB15D /* LegalNoticesTextView.swift in Sources */,
 				96533A861F12938D00B07CA3 /* KeyView.swift in Sources */,
 				96533A931F1293A500B07CA3 /* Localization.swift in Sources */,
-				96533A771F12938D00B07CA3 /* KeyboardColorScheme.swift in Sources */,
 				9620E748202B9EB1003FB02E /* Bundle.swift in Sources */,
 				966C19F0209775D8000EF1B5 /* UIFont.swift in Sources */,
 				96533A8B1F1293A500B07CA3 /* UIColor.swift in Sources */,
@@ -1158,6 +1156,7 @@
 				969450C020B3215100DD7EF3 /* URL.swift in Sources */,
 				96E033FA203155A80039E653 /* VERSION.swift in Sources */,
 				96443FC0208C9D12002FFA6B /* NSMutableAttributedString.swift in Sources */,
+				9637C6F120F2440200078395 /* UIKeyboardAppearance.swift in Sources */,
 				96E03406203156660039E653 /* NEXT.swift in Sources */,
 				96E033F6203154FC0039E653 /* LEGAL_NOTICES.swift in Sources */,
 				96533A821F12938D00B07CA3 /* CharacterCollectionView.swift in Sources */,
@@ -1207,9 +1206,9 @@
 				969F15F51E549BD300C0DD7D /* ViewController<UIView>.swift in Sources */,
 				965A22151F3B2D6C000430E6 /* SettingsContainerView_LegalNoticesView.swift in Sources */,
 				96E033EB2031540A0039E653 /* KEYBOARD.swift in Sources */,
-				964ED5481DF5765E006AD952 /* KeyboardColorScheme.swift in Sources */,
 				96E0340B2031567A0039E653 /* ROUTE.swift in Sources */,
 				961FC32F1F3ADD9B00ADB15D /* LegalNoticesTextView.swift in Sources */,
+				9637C6F220F2440200078395 /* UIKeyboardAppearance.swift in Sources */,
 				96E03407203156660039E653 /* NEXT.swift in Sources */,
 				9654DF7A1D4E1D0900DDB0EF /* SpaceRowView.swift in Sources */,
 				9688312B202008040071908B /* DocumentContext.swift in Sources */,
@@ -1317,7 +1316,6 @@
 				96E033EC2031540A0039E653 /* KEYBOARD.swift in Sources */,
 				966EB96D202FC0D3007718F2 /* LegalNoticesMenuItem.swift in Sources */,
 				96C1EC2E205131EC00AC27CB /* CGEventFlags.swift in Sources */,
-				96EBF28F209C6ACE00AE00E7 /* KeyboardColorScheme.swift in Sources */,
 				96DBC14B205EBD8700910E7A /* TISInputSource.swift in Sources */,
 				966CB25620911C99005C7B5B /* CGAffineTransform.swift in Sources */,
 				96F28C1C2030205C0023313C /* Key.swift in Sources */,
@@ -1830,7 +1828,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = rY3kmwWHhX4cbk131AvOtLb99XoAEQ1;
 				PRODUCT_NAME = "$(PROJECT_NAME)";
@@ -1873,7 +1871,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = rY3kmwWHhX4cbk131AvOtLb99XoAEQ1;
 				PRODUCT_NAME = "$(PROJECT_NAME)";

@@ -24,12 +24,6 @@ class CharacterCollectionView: UICollectionView, UICollectionViewDelegateFlowLay
         }
     }
     
-    var colorScheme: KeyboardColorScheme = .default {
-        didSet {
-            reloadData()
-        }
-    }
-    
     internal let layout: CollectionViewFlowLayout = .init()
     let characterCellReuseIdentifier = "fWz2pPGnOBKbeARRwDdJswgBqDYSA6P"
     
@@ -74,7 +68,7 @@ class CharacterCollectionView: UICollectionView, UICollectionViewDelegateFlowLay
         }
         
         cell.title.text = character.description
-        cell.title.textColor = colorScheme.labelColor
+        cell.title.textColor = .labelColor
         
         return cell
     }

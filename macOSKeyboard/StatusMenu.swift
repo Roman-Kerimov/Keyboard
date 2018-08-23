@@ -18,13 +18,13 @@ class StatusMenu: NSMenu {
         
         let title: NSMutableAttributedString = .init(string: "Kd")
         title.addAttribute(.font, value: UIFont.boldMenuFont)
-        title.addAttribute(.foregroundColor, value: UIColor.textColor)
+        title.addAttribute(.foregroundColor, value: UIColor.controlTextColor)
         
         if !AXIsProcessTrusted() {
             title.addAttribute(.foregroundColor, value: UIColor.disabledControlTextColor)
         }
         
-        statusItem.attributedTitle = title
+        statusItem.button?.attributedTitle = title
         statusItem.menu = self
         
         if !AXIsProcessTrusted() {

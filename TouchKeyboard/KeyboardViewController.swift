@@ -130,11 +130,8 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
         // The app has just changed the document's contents, the document context has been updated.
         
         if keyboardView.state != .appeared {
-            if textDocumentProxy.keyboardAppearance == .dark {
-                keyboardView.colorScheme = .dark
-            } else {
-                keyboardView.colorScheme = .default
-            }
+            UIKeyboardAppearance.current = self.textDocumentProxy.keyboardAppearance ?? .default
+            NotificationCenter.default.post(name: .KeyboardAppearanceDidChange, object: nil)
         }
         
         normalizeTextPosition()
@@ -283,4 +280,8 @@ extension UITextDocumentProxy {
             self.adjustTextPosition(byCharacterOffset: self.characterSequenceStringAfterInput(of: characterSet).utf16.count)
         }
     }
+}
+
+extension NSNotification.Name {
+    static let KeyboardAppearanceDidChange: NSNotification.Name = .init("2KqZjiSSeYYkZs8K9DyZo32kPMYWRng")
 }

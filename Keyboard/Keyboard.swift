@@ -13,6 +13,10 @@ class Keyboard: NSObject {
     static let `default`: Keyboard = .init()
     var delegate: KeyboardDelegate?
     
+    var scriptComponent: CharacterComponent? {
+        return delegate?.documentContext.beforeInput?.trimmingCharacters(in: CharacterSet.letters.inverted).last?.characterComponents.filter {CharacterComponent.scripts.contains($0)}.first
+    }
+    
     var version: String {
         let versionNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
         let buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
@@ -150,6 +154,8 @@ class Keyboard: NSObject {
         guard let currentKey = currentKey else {
             return
         }
+        
+        currentLabel = currentLabel.applyingScriptComponent()
         
         for shiftFlagDirection in shiftFlagDirections {
             switch shiftFlagDirection {
@@ -301,12 +307,14 @@ class Keyboard: NSObject {
             
             shouldDeletePreviousCharacter = true
             
-            let mixingComponents = characterComponents.map {CharacterComponent.letterToMixingComponentDictionary[$0] ?? $0}
-            let combiningComponents = characterComponents.map {CharacterComponent.letterToCombiningComponentDictionary[$0] ?? $0}
+            let modifierCharacterComponents = characterComponents.removing(characterComponents: CharacterComponent.scripts)
+            
+            let mixingComponents = modifierCharacterComponents.map {CharacterComponent.letterToMixingComponentDictionary[$0] ?? $0}
+            let combiningComponents = modifierCharacterComponents.map {CharacterComponent.letterToCombiningComponentDictionary[$0] ?? $0}
             
             let combiningSuffix: [CharacterComponent] = [direction == .left ? .combining : (direction == .upLeft ? .above : .below)]
             
-            var combiningCharacter: String = (characterComponents + combiningSuffix).character
+            var combiningCharacter: String = (modifierCharacterComponents + combiningSuffix).character
             combiningCharacter = (combiningComponents + combiningSuffix).character
             
             guard combiningCharacter.isEmpty else {
@@ -314,7 +322,7 @@ class Keyboard: NSObject {
                 break
             }
             
-            let ligatureCharacter = (previousCharacter.characterComponents + characterComponents).character
+            let ligatureCharacter = (previousCharacter.characterComponents + modifierCharacterComponents).character
             let combinedCharacter = (previousCharacter.characterComponents + mixingComponents).character
             
             if ligatureCharacter != combinedCharacter && ligatureCharacter.isEmpty == false && combinedCharacter.isEmpty == false {

@@ -23,6 +23,35 @@ extension String {
         return characterComponentsDictionary[self]?.normalized ?? .init()
     }
     
+    private func appending(characterComponent: CharacterComponent) -> String {
+        
+        if self.characterComponents.isEmpty {
+            return self
+        }
+        
+        let characterComponents = self.characterComponents + [characterComponent]
+        
+        if characterComponents.character.isEmpty {
+            return self
+        }
+        
+        return characterComponents.character
+    }
+    
+    func applyingScriptComponent() -> String {
+        
+        if characterComponents.isEmpty {
+            return self
+        }
+        
+        if let scriptComponent = Keyboard.default.scriptComponent {
+            return appending(characterComponent: scriptComponent)
+        }
+        else {
+            return characterComponents.removing(characterComponents: CharacterComponent.scripts).character
+        }
+    }
+    
     func size(withFont font: UIFont) -> CGSize {
         return (self as NSString).size(withAttributes: [.font: font])
     }

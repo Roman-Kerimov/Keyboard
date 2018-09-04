@@ -153,6 +153,7 @@ class KeyView: UIButton {
         NotificationCenter.default.addLocaleObserver(self)
         
         NotificationCenter.default.addObserver(self, selector: #selector(setNeedsLayout), name: .KeyboardAppearanceDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(setNeedsLayout), name: .DocumentContextDidChange, object: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -185,6 +186,12 @@ class KeyView: UIButton {
         backgroundView.backgroundColor = !isEnabled ? .quaternaryLabelColor : isHighlighted != isServiceKey && isSpecialReturnType ? .controlAccentColor : isHighlighted == isServiceKey && !isSpecialReturnType ? .controlColor : .quaternaryLabelColor
         
         mainLabelView.textColor = !isEnabled ? .disabledControlTextColor : isHighlighted != isServiceKey && isSpecialReturnType ? .alternateSelectedControlTextColor : .labelColor
+        
+        if let scriptComponent = Keyboard.default.scriptComponent {
+            if mainLabelView.text?.count == 1 && mainLabelView.text?.first?.belongsTo(.letters) == true && mainLabelView.text?.characterComponents.contains(scriptComponent) == false {
+                mainLabelView.textColor = .tertiaryLabelColor
+            }
+        }
         
         imageLabelView.tintColor = mainLabelView.textColor
         

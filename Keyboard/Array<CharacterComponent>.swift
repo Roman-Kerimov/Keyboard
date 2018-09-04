@@ -38,4 +38,8 @@ extension Array where Element == CharacterComponent {
         
         return extraArray.filter { $0.character.isEmpty == false} .map { $0.normalized }
     }
+    
+    func removing(characterComponents: Set<CharacterComponent>) -> [CharacterComponent] {
+        return filter {!characterComponents.contains($0)}
+    }
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 enum CharacterComponent {
-    private static let commutative: Set<CharacterComponent> = .init([.capital, .smallCapital, .superscript, .subscript] + extraComponents + letterToMixingComponentDictionary.values.filter {$0 != .extraH && $0 != .tilde})
+    private static let commutative: Set<CharacterComponent> = Set.init([.capital, .smallCapital, .superscript, .subscript] + extraComponents + letterToMixingComponentDictionary.values.filter {$0 != .extraH && $0 != .tilde}).union(scripts)
     
     public var isCommutative: Bool {
         return CharacterComponent.commutative.contains(self)
@@ -104,6 +104,8 @@ enum CharacterComponent {
     case broken
     case archaic
     case vend
+    
+    static let scripts: Set<CharacterComponent> = [.greek]
     
     case greek, final, symbol, lunate
     

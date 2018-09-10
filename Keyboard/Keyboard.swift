@@ -150,10 +150,14 @@ class Keyboard: NSObject {
     
     private var shouldDeletePreviousCharacter: Bool = false
     
+    private var previousDocumentContextBeforeInput: String = .init()
+    
     private func input() {
         guard let currentKey = currentKey else {
             return
         }
+        
+        previousDocumentContextBeforeInput = delegate?.documentContext.beforeInput ?? .init()
         
         currentLabel = currentLabel.applyingScriptComponent()
         
@@ -364,7 +368,10 @@ class Keyboard: NSObject {
             characterComponents += [.extraDownRight]
         }
         
-        delegate?.delete()
+        if delegate?.documentContext.beforeInput != previousDocumentContextBeforeInput {
+            delegate?.delete()
+        }
+        
         input()
         
         if currentLabel.isEmpty {

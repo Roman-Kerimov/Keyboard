@@ -90,7 +90,11 @@ class UnicodeCollectionView: CharacterCollectionView {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         deselectItem(at: indexPath, animated: false)
         
-        for _ in textForSearch {
+        let scriptCodeLength = UnicodeTable.default.scriptCodeLength
+        
+        let deleteCount = scriptCodeLength > 0 && indexPath.item == 0 ? scriptCodeLength + 1 : textForSearch.count
+        
+        for _ in 0..<deleteCount {
             Keyboard.default.delegate?.delete()
         }
         
@@ -117,10 +121,11 @@ class UnicodeCollectionView: CharacterCollectionView {
         
         let documentContextBeforeInput = Keyboard.default.delegate?.documentContext.beforeInput ?? self.documentContextBeforeInput
         
-        var textForSearch =
+        var textForSearch: String = .init(
             documentContextBeforeInput
                 .components(separatedBy: .whitespacesAndNewlines).last?
-                .components(separatedBy: CharacterSet.printableASCII.inverted).last ?? .init()
+                .split {$0.belongsTo(.symbols)} .last ?? .init()
+        )
         
         if textForSearch.contains(.reverseSolidus) {
             textForSearch = .reverseSolidus + ( textForSearch.components(separatedBy: String.reverseSolidus).last ?? .init() )

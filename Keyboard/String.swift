@@ -23,10 +23,14 @@ extension String {
         return characterComponentsDictionary[self]?.normalized ?? .init()
     }
     
-    private func appending(characterComponent: CharacterComponent) -> String {
+    func appending(characterComponent: CharacterComponent) -> String {
         
         if self.characterComponents.isEmpty {
             return self
+        }
+        
+        if characterComponent == .latin {
+            return self.characterComponents.removing(characterComponents: CharacterComponent.scripts).character
         }
         
         let characterComponents = self.characterComponents + [characterComponent]

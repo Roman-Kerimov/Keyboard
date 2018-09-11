@@ -105,9 +105,10 @@ enum CharacterComponent {
     case archaic
     case vend
     
-    static let scripts: Set<CharacterComponent> = [.greek]
+    static let scripts: Set<CharacterComponent> = [.greek, .latin]
     
     case greek, final, symbol, lunate
+    case latin
     
     case doubleStruck
     case script

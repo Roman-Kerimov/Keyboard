@@ -36,6 +36,9 @@
 		9633A3CA1E5DFE8D00DFA503 /* DeleteRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9633A3C91E5DFE8D00DFA503 /* DeleteRowView.swift */; };
 		9637C6F120F2440200078395 /* UIKeyboardAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637C6F020F2440200078395 /* UIKeyboardAppearance.swift */; };
 		9637C6F220F2440200078395 /* UIKeyboardAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637C6F020F2440200078395 /* UIKeyboardAppearance.swift */; };
+		963A53F6214808D2001CAD75 /* codeScriptDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963A53F5214808D2001CAD75 /* codeScriptDictionary.swift */; };
+		963A53F7214808D2001CAD75 /* codeScriptDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963A53F5214808D2001CAD75 /* codeScriptDictionary.swift */; };
+		963A53F8214808D2001CAD75 /* codeScriptDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963A53F5214808D2001CAD75 /* codeScriptDictionary.swift */; };
 		963BA6631F3B1FD000BFE3A7 /* LegalTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963BA6621F3B1FD000BFE3A7 /* LegalTextView.swift */; };
 		963BA6641F3B1FD000BFE3A7 /* LegalTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963BA6621F3B1FD000BFE3A7 /* LegalTextView.swift */; };
 		963DE0B0202F00B60040A448 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963DE0AF202F00B60040A448 /* main.swift */; };
@@ -383,6 +386,7 @@
 		962D7CC720CD75320047B8B9 /* NSRegularExpression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSRegularExpression.swift; sourceTree = "<group>"; };
 		9633A3C91E5DFE8D00DFA503 /* DeleteRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteRowView.swift; sourceTree = "<group>"; };
 		9637C6F020F2440200078395 /* UIKeyboardAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKeyboardAppearance.swift; sourceTree = "<group>"; };
+		963A53F5214808D2001CAD75 /* codeScriptDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = codeScriptDictionary.swift; sourceTree = "<group>"; };
 		963BA6621F3B1FD000BFE3A7 /* LegalTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalTextView.swift; sourceTree = "<group>"; };
 		963DE0AF202F00B60040A448 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		963DE0B1202F012B0040A448 /* StatusMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenu.swift; sourceTree = "<group>"; };
@@ -716,6 +720,7 @@
 				9643FC4C1F78F8D5004DA2C0 /* CharacterComponent.swift */,
 				96B6B35A1F9764F400231AE6 /* Array<CharacterComponent>.swift */,
 				9643FC4F1F78F94B004DA2C0 /* characterComponentsDictionary.swift */,
+				963A53F5214808D2001CAD75 /* codeScriptDictionary.swift */,
 				96C49DC41EB7DF1F006F93ED /* Character.swift */,
 				96848D9E1EE05F080009869A /* String.swift */,
 				96443FBF208C9D12002FFA6B /* NSMutableAttributedString.swift */,
@@ -1133,6 +1138,7 @@
 				96E0342220317A330039E653 /* QUIT.swift in Sources */,
 				96498A3F205F4A7D002B1071 /* Keycode.swift in Sources */,
 				96200BE9208CDC8D002930D6 /* ENABLE_KEYBOARD.swift in Sources */,
+				963A53F6214808D2001CAD75 /* codeScriptDictionary.swift in Sources */,
 				96E0341E203179F00039E653 /* CONTINUE.swift in Sources */,
 				96533A7E1F12938D00B07CA3 /* DeleteRowView.swift in Sources */,
 				9643FC501F78F94B004DA2C0 /* characterComponentsDictionary.swift in Sources */,
@@ -1220,6 +1226,7 @@
 				961D74922009003900BBC5FB /* Key.swift in Sources */,
 				96848DA11EE0B64F0009869A /* UnicodeTable.swift in Sources */,
 				96E033F7203154FC0039E653 /* LEGAL_NOTICES.swift in Sources */,
+				963A53F7214808D2001CAD75 /* codeScriptDictionary.swift in Sources */,
 				9696CBC22031800B007CC94B /* Template.swift in Sources */,
 				9633A3CA1E5DFE8D00DFA503 /* DeleteRowView.swift in Sources */,
 				96E0341B203179C50039E653 /* EMERGENCY_CALL.swift in Sources */,
@@ -1335,6 +1342,7 @@
 				96DB1A7C202FB84F00B96D3C /* LegalTextView.swift in Sources */,
 				960FEFEE203D37590099E449 /* AXAttribute.swift in Sources */,
 				9697F881202FA88C001EC50A /* Internationalization.swift in Sources */,
+				963A53F8214808D2001CAD75 /* codeScriptDictionary.swift in Sources */,
 				96E0340C2031567A0039E653 /* ROUTE.swift in Sources */,
 				965A8B4220D315A000E0260E /* HIDE_FOR_APPLICATION.swift in Sources */,
 				96F28C1D2030205C0023313C /* CharacterComponent.swift in Sources */,

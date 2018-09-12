@@ -16,15 +16,22 @@ class StatusMenu: NSMenu {
     init() {
         super.init(title: .init())
         
-        let title: NSMutableAttributedString = .init(string: "Kd")
-        title.addAttribute(.font, value: UIFont.boldMenuFont)
-        title.addAttribute(.foregroundColor, value: UIColor.controlTextColor)
+        let controlText = "Kd"
+        let controlTextFont: UIFont = .boldMenuFont
         
-        if !AXIsProcessTrusted() {
-            title.addAttribute(.foregroundColor, value: UIColor.disabledControlTextColor)
-        }
+        let disabledControlTextColor: UIColor = .disabledControlTextColor
+        let disabledControlTextColorWithoutAlphaComponent: UIColor  = UIColor.windowBackgroundColor.blended(withFraction: disabledControlTextColor.alphaComponent, of: disabledControlTextColor)!
         
+        let title: NSMutableAttributedString = .init(string: controlText)
+        title.addAttribute(.font, value: controlTextFont)
+        title.addAttribute(.foregroundColor, value: AXIsProcessTrusted() ? .controlTextColor : disabledControlTextColorWithoutAlphaComponent)
         statusItem.button?.attributedTitle = title
+        
+        let alternateTitle: NSMutableAttributedString = .init(string: controlText)
+        alternateTitle.addAttribute(.font, value: controlTextFont)
+        alternateTitle.addAttribute(.foregroundColor, value: UIColor.selectedMenuItemTextColor)
+        statusItem.button?.attributedAlternateTitle = alternateTitle
+        
         statusItem.menu = self
         
         if !AXIsProcessTrusted() {

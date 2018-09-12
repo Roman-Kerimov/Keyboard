@@ -118,9 +118,20 @@ func eventTapCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent,
     let key: Key
     
     if TISInputSource.currentKeyboardLayout.isASCIICapable {
-        let disabledKeys: [Keycode] = [.grave, .one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .zero, .hyphenMinus, .equal, .leftSquareBracket, .rightSquareBracket, .reverseSolidus, .apostrophe]
         
-        if disabledKeys.contains(event.keycode) {
+        let selectorKeys: [Keycode] = [.grave, .one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .zero, .hyphenMinus, .equal, .leftSquareBracket, .rightSquareBracket, .reverseSolidus, .apostrophe]
+        
+        if let item = selectorKeys.firstIndex(of: event.keycode) {
+            
+            if event.type == .keyDown {
+                
+                let unicodeSearchView = AppDelegate.unicodeSearchWindow.contentView as! UnicodeCollectionView
+                
+                if item < unicodeSearchView.numberOfItems(inSection: 0) {
+                    unicodeSearchView.collectionView(unicodeSearchView, didSelectItemAt: .init(item: item, section: 0))
+                }
+            }
+            
             return nil
         }
         

@@ -92,7 +92,9 @@ class UnicodeCollectionView: CharacterCollectionView {
         
         let scriptCodeLength = UnicodeTable.default.scriptCodeLength
         
-        let deleteCount = scriptCodeLength > 0 && indexPath.item == 0 ? scriptCodeLength + 1 : textForSearch.count
+        let isScriptCodeItem: Bool = scriptCodeLength > 0 && indexPath.item == 0
+        
+        let deleteCount = isScriptCodeItem ? scriptCodeLength + 1 : textForSearch.count
         
         for _ in 0..<deleteCount {
             Keyboard.default.delegate?.delete()
@@ -100,16 +102,17 @@ class UnicodeCollectionView: CharacterCollectionView {
         
         let character = characters[indexPath.item]
         
-        
-        var frequentlyUsedCharacters = Keyboard.default.frequentlyUsedCharacters
-        
-        if let index = frequentlyUsedCharacters.index(of: character) {
-            frequentlyUsedCharacters.remove(at: index)
+        if !isScriptCodeItem {
+            var frequentlyUsedCharacters = Keyboard.default.frequentlyUsedCharacters
+            
+            if let index = frequentlyUsedCharacters.index(of: character) {
+                frequentlyUsedCharacters.remove(at: index)
+            }
+            
+            frequentlyUsedCharacters = [character] + frequentlyUsedCharacters
+            
+            Keyboard.default.frequentlyUsedCharacters = .init( frequentlyUsedCharacters.suffix(100) )
         }
-        
-        frequentlyUsedCharacters = [character] + frequentlyUsedCharacters
-        
-        Keyboard.default.frequentlyUsedCharacters = .init( frequentlyUsedCharacters.suffix(100) )
         
         Keyboard.default.delegate?.insert(text: character.description)
         NotificationCenter.default.post(.init(name: .DocumentContextDidChange))

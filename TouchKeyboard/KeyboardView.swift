@@ -59,7 +59,7 @@ internal class KeyboardView: UIView {
             
             characterSequenceView.characters = characterSequence
             
-            unicodeCollectionView.documentContextBeforeInput = documentContextBeforeInput
+            characterSearchView.documentContextBeforeInput = documentContextBeforeInput
         }
     }
     
@@ -109,8 +109,8 @@ internal class KeyboardView: UIView {
         return deleteRowView.characterSequence
     }
     
-    public var unicodeCollectionView: UnicodeCollectionView {
-        return layoutView.unicodeCollectionView
+    public var characterSearchView: CharacterSearchView {
+        return layoutView.characterSearchView
     }
     
     private var keys: [KeyView] {
@@ -141,7 +141,7 @@ internal class KeyboardView: UIView {
         documentContext = .init(beforeInput: text, afterInput: nil)
         NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
         
-        SearchUnicodeScalars.init(for: unicodeCollectionView).start()
+        SearchUnicodeScalars.init(for: characterSearchView).start()
     }
     
     private let deleteRowView: DeleteRowView = .init()

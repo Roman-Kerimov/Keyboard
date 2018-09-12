@@ -265,7 +265,7 @@ class KeyView: UIButton {
     @objc func longPressGestureAction(gesture: UIGestureRecognizer) {
         isHighlighted = true
         
-        KeyboardViewController.shared.keyboardView.unicodeCollectionView.isHiddenUnicodeNames = true
+        KeyboardViewController.shared.keyboardView.characterSearchView.isHiddenUnicodeNames = true
         
         switch gesture.state {
             

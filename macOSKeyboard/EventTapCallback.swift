@@ -125,10 +125,10 @@ func eventTapCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent,
             
             if event.type == .keyDown {
                 
-                let unicodeSearchView = AppDelegate.unicodeSearchWindow.contentView as! UnicodeCollectionView
+                let characterSearchView = AppDelegate.characterSearchWindow.contentView as! CharacterSearchView
                 
-                if item < unicodeSearchView.numberOfItems(inSection: 0) {
-                    unicodeSearchView.collectionView(unicodeSearchView, didSelectItemAt: .init(item: item, section: 0))
+                if item < characterSearchView.numberOfItems(inSection: 0) {
+                    characterSearchView.collectionView(characterSearchView, didSelectItemAt: .init(item: item, section: 0))
                 }
             }
             

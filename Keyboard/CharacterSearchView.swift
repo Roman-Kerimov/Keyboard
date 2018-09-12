@@ -1,5 +1,5 @@
 //
-//  UnicodeCollectionView.swift
+//  CharacterSearchView.swift
 //  Keyboard
 //
 //  Created by Roman Kerimov on 2017-05-15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UnicodeCollectionView: CharacterCollectionView {
+class CharacterSearchView: CharacterCollectionView {
 
     var documentContextBeforeInput: String = .init()
 

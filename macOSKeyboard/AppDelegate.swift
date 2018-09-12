@@ -18,13 +18,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
     static var preEnterDocumentContext: DocumentContext?
     static var keycodeToKeyDictionary: [Keycode: Key] = .init()
     
-    static let unicodeSearchWindow = UnicodeSearchWindow.init()
+    static let characterSearchWindow = CharacterSearchWindow.init()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
           
         NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
         
-        AppDelegate.unicodeSearchWindow.setIsVisible(isProcessTrusted)
+        AppDelegate.characterSearchWindow.setIsVisible(isProcessTrusted)
         
         Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true) { (timer) in
             if self.isProcessTrusted != AXIsProcessTrusted() {
@@ -40,7 +40,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
                 
                 NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
                 
-                AppDelegate.unicodeSearchWindow.setIsVisible(self.previousDocumentContext != .init())
+                AppDelegate.characterSearchWindow.setIsVisible(self.previousDocumentContext != .init())
             }
             
             self.statusMenu.visibilityMenuItem.isHidden = !AppDelegate.isUserDefaultsVisibility

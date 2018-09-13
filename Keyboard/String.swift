@@ -23,6 +23,10 @@ extension String {
         return characterComponentsDictionary[self]?.normalized ?? .init()
     }
     
+    func removing(characterComponents: Set<CharacterComponent>) -> String {
+        return self.characterComponents.removing(characterComponents: characterComponents).character
+    }
+    
     func appending(characterComponent: CharacterComponent) -> String {
         
         if self.characterComponents.isEmpty {
@@ -30,7 +34,7 @@ extension String {
         }
         
         if characterComponent == .latin {
-            return self.characterComponents.removing(characterComponents: CharacterComponent.scripts).character
+            return removing(characterComponents: CharacterComponent.scripts)
         }
         
         let characterComponents = self.characterComponents + [characterComponent]
@@ -52,7 +56,7 @@ extension String {
             return appending(characterComponent: scriptComponent)
         }
         else {
-            return characterComponents.removing(characterComponents: CharacterComponent.scripts).character
+            return removing(characterComponents: CharacterComponent.scripts)
         }
     }
     

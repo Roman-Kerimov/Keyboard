@@ -78,7 +78,7 @@ class SearchUnicodeScalars: Operation {
             searchRegularExpression = .contains(text)
             
             for scriptCodeLength in 2...3 {
-                let scriptCode: String = .init(text.suffix(scriptCodeLength).description.lowercased().flatMap {$0.characterComponents.removing(characterComponents: CharacterComponent.scripts).character} )
+                let scriptCode: String = .init(text.suffix(scriptCodeLength).description.lowercased().flatMap {$0.removing(characterComponents: CharacterComponent.scripts)} )
                 
                 guard let scriptCharacterComponent = codeScriptDictionary[scriptCode] else {
                     continue

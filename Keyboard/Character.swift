@@ -42,4 +42,8 @@ extension Character {
     var characterComponents: [CharacterComponent] {
         return description.characterComponents
     }
+    
+    func removing(characterComponents: Set<CharacterComponent>) -> String {
+        return description.removing(characterComponents: characterComponents)
+    }
 }

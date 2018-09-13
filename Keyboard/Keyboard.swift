@@ -14,7 +14,7 @@ class Keyboard: NSObject {
     var delegate: KeyboardDelegate?
     
     var scriptComponent: CharacterComponent? {
-        return delegate?.documentContext.beforeInput?.trimmingCharacters(in: CharacterSet.letters.inverted).last?.characterComponents.filter {CharacterComponent.scripts.contains($0)}.first
+        return delegate?.documentContext.beforeInput?.applyingTransform(.stripCombiningMarks, reverse: false)?.trimmingCharacters(in: CharacterSet.letters.inverted).last?.characterComponents.filter {CharacterComponent.scripts.contains($0)}.first
     }
     
     var version: String {

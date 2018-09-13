@@ -8,7 +8,15 @@
 import Foundation
 
 class Key: NSObject {
-    let label: String
+    
+    var label: String {
+        get {
+            return baseLabel.applyingScriptComponent()
+        }
+    }
+    
+    private let baseLabel: String
+    
     let shiftDownLabel: String
     let shiftUpLabel: String
     let shiftRightLabel: String
@@ -21,7 +29,7 @@ class Key: NSObject {
          shiftLeftLabel: String = .init()
         ) {
         
-        self.label = label
+        self.baseLabel = label
         self.shiftDownLabel = shiftDownLabel
         self.shiftUpLabel = shiftUpLabel
         self.shiftLeftLabel = shiftLeftLabel

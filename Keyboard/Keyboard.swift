@@ -159,8 +159,6 @@ class Keyboard: NSObject {
         
         previousDocumentContextBeforeInput = delegate?.documentContext.beforeInput ?? .init()
         
-        currentLabel = currentLabel.applyingScriptComponent()
-        
         for shiftFlagDirection in shiftFlagDirections {
             switch shiftFlagDirection {
                 

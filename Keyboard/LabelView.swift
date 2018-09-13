@@ -32,7 +32,7 @@ class LabelView: UILabel {
                 super.text = "tab"
                 
             default:
-                super.text = newValue?.applyingScriptComponent()
+                super.text = newValue
             }
         }
     }
@@ -50,15 +50,10 @@ class LabelView: UILabel {
         
         adjustsFontSizeToFitWidth = true
         textAlignment = .center
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(applyScriptComponent), name: .DocumentContextDidChange, object: nil)
     }
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    @objc private func applyScriptComponent() {
-        text = text?.applyingScriptComponent()
-    }
+
 }

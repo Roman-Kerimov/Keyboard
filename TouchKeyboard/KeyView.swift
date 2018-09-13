@@ -162,7 +162,7 @@ class KeyView: UIButton {
         mainLabelView.textColor = !isEnabled ? .disabledControlTextColor : isHighlighted != isServiceKey && isSpecialReturnType ? .alternateSelectedControlTextColor : .labelColor
         
         if let scriptComponent = Keyboard.default.scriptComponent {
-            if mainLabelView.text?.count == 1 && mainLabelView.text?.first?.belongsTo(.letters) == true && mainLabelView.text?.characterComponents.contains(scriptComponent) == false {
+            if key.label.count == 1 && key.label.first?.belongsTo(.letters) == true && key.label.characterComponents.contains(scriptComponent) == false {
                 mainLabelView.textColor = .tertiaryLabelColor
             }
         }

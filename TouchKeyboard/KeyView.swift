@@ -58,25 +58,8 @@ class KeyView: UIButton {
     
     public var key: Key {
         didSet {
-            if mainLabelView.text == oldValue.label {
-                setLabels()
-            }
-            else {
-                setShiftLabels()
-            }
+            setNeedsLayout()
         }
-    }
-    
-    private func setLabels() {
-        mainLabelView.text = key.label
-        setShiftLabels()
-    }
-    
-    private func setShiftLabels() {
-        shiftDownLabelView.text = key.shiftDownLabel
-        shiftUpLabelView.text = key.shiftUpLabel
-        shiftRightLabelView.text = key.shiftRightLabel
-        shiftLeftLabelView.text = key.shiftLeftLabel
     }
     
     private var labelFileName: String {
@@ -123,8 +106,6 @@ class KeyView: UIButton {
         // It is for activation of touch events
         backgroundColor = .touchableClear
         
-        setLabels()
-        
         backgroundView = UIView()
         backgroundView.isUserInteractionEnabled = false
         backgroundView.isExclusiveTouch = false
@@ -152,6 +133,7 @@ class KeyView: UIButton {
     
         NotificationCenter.default.addLocaleObserver(self)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(setNeedsLayout), name: .KeyboardStateDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(setNeedsLayout), name: .KeyboardAppearanceDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(setNeedsLayout), name: .DocumentContextDidChange, object: nil)
     }
@@ -160,21 +142,13 @@ class KeyView: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func didMoveToSuperview() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardStateDidChange), name: .KeyboardStateDidChange, object: nil)
-    }
-    
-    @objc func keyboardStateDidChange() {
-        guard let key = Keyboard.default.currentKey else {
-            return
-        }
-        
-        if key == self.key {
-            mainLabelView.text = Keyboard.default.currentLabel
-        }
-    }
-    
     override func layoutSubviews() {
+        
+        mainLabelView.text = Keyboard.default.currentKey == key ? Keyboard.default.currentLabel : key.label
+        shiftDownLabelView.text = key.shiftDownLabel
+        shiftUpLabelView.text = key.shiftUpLabel
+        shiftRightLabelView.text = key.shiftRightLabel
+        shiftLeftLabelView.text = key.shiftLeftLabel
         
         shiftUpLabelView.textColor = .secondaryLabelColor
         shiftDownLabelView.textColor = .secondaryLabelColor
@@ -286,9 +260,7 @@ class KeyView: UIButton {
         case .ended:
             
             Keyboard.default.up(key: key)
-            
-            mainLabelView.text = key.label
-            updateLocalizedStrings()
+
             isHighlighted = false
             
         default:
@@ -341,7 +313,5 @@ class KeyView: UIButton {
                 Keyboard.default.shift(direction: shiftDirection)
             }
         }
-        
-        mainLabelView.center = backgroundView.center
     }
 }

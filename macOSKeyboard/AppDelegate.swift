@@ -21,7 +21,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
     static let characterSearchWindow = CharacterSearchWindow.init()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-          
+        
+        AppDelegate.synchronizeKeyboardLayout()
+        
         NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
         
         AppDelegate.characterSearchWindow.setIsVisible(isProcessTrusted)
@@ -56,10 +58,42 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
             CFRunLoopAddSource(CFRunLoopGetCurrent(), CFMachPortCreateRunLoopSource(kCFAllocatorDefault, eventTap, 0), .commonModes)
             CGEvent.tapEnable(tap: eventTap, enable: true)
         }
+        
+        CFNotificationCenterAddObserver(CFNotificationCenterGetDistributedCenter(), nil, AppDelegate.synchronizeKeyboardLayoutNotificationCallback, kTISNotifySelectedKeyboardInputSourceChanged, nil, .deliverImmediately)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(synchronizeSystemInputSource), name: .LayoutDidChange, object: nil)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
+    }
+    
+    static func synchronizeKeyboardLayout() {
+        
+        guard TISInputSource.currentKeyboardLayout.isASCIICapable else {
+            return
+        }
+        
+        if let keyboardLayout = KeyboardLayout.list[TISInputSource.currentKeyboardLayout.id] {
+            Keyboard.default.layout = keyboardLayout
+        }
+        else {
+            AppDelegate.synchronizeSystemInputSource()
+        }
+    }
+    
+    static var synchronizeKeyboardLayoutNotificationCallback: CFNotificationCallback = { (center, observer, name, object, userInfo) in
+        AppDelegate.synchronizeKeyboardLayout()
+    }
+    
+    static func synchronizeSystemInputSource() {
+        let inputSource = TISInputSource.inputSourceList[Keyboard.default.layout.inputSourceID]
+        TISEnableInputSource(inputSource)
+        TISSelectInputSource(inputSource)
+    }
+    
+    @objc func synchronizeSystemInputSource() {
+        AppDelegate.synchronizeSystemInputSource()
     }
     
     private func tap(label: String, flags: CGEventFlags = .init()) {

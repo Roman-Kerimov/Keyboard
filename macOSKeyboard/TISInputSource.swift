@@ -12,6 +12,10 @@ extension TISInputSource {
         return TISCopyCurrentKeyboardLayoutInputSource().takeRetainedValue()
     }
     
+    static var inputSourceList: [TISInputSource] { 
+        return TISCreateInputSourceList(nil, true)?.takeRetainedValue() as! [TISInputSource]
+    }
+    
     private func get(property: CFString) -> String {
         let propertyPointer = TISGetInputSourceProperty(self, property)
         return Unmanaged<CFString>.fromOpaque(propertyPointer!).takeUnretainedValue() as String
@@ -37,5 +41,16 @@ extension TISInputSource {
     
     var unicodeKeyLayoutData: Data {
         return get(property: kTISPropertyUnicodeKeyLayoutData)
+    }
+}
+
+extension Array where Element == TISInputSource {
+    subscript(id: String) -> Element? {
+        
+        guard let index = map({$0.id}).firstIndex(of: id) else {
+            return nil
+        }
+        
+        return self[index]
     }
 }

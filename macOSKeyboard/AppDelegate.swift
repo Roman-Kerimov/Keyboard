@@ -74,7 +74,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
             return
         }
         
-        if let keyboardLayout = KeyboardLayout.list[TISInputSource.currentKeyboardLayout.id] {
+        if let keyboardLayout = KeyboardLayout.list.element(inputSourceID: TISInputSource.currentKeyboardLayout.id) {
             Keyboard.default.layout = keyboardLayout
         }
         else {

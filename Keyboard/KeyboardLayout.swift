@@ -139,7 +139,7 @@ struct KeyboardLayout {
 }
 
 extension Array where Element == KeyboardLayout {
-    subscript(inputSourceID: String) -> Element? {
+    func element(inputSourceID: String) -> Element? {
         
         guard let index = self.map( {$0.inputSourceID} ).firstIndex(of: inputSourceID) else {
             return nil

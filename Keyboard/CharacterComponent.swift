@@ -49,7 +49,7 @@ enum CharacterComponent {
     case superscript, `subscript`, middle, raised
     
     case highStroke, topbar
-    case stroke, lightCentralizationStroke, obliqueStroke
+    case stroke, lightCentralizationStroke, obliqueStroke, verticalStroke
     case lowStroke
     case diagonalStroke
     case longLeg
@@ -91,6 +91,7 @@ enum CharacterComponent {
         //.lazyS
         .z: .zDigraph,
         .n: .tilde,
+        .k: .cyrillic,
         
         // block tilde diacritic from tilde
         .tilde: .space,
@@ -105,9 +106,10 @@ enum CharacterComponent {
     case archaic
     case vend
     
-    static let scripts: Set<CharacterComponent> = [.greek, .latin]
+    static let scripts: Set<CharacterComponent> = [.cyrillic, .greek, .latin]
     
-    case greek, final, symbol, lunate
+    case cyrillic, titlo, palatalization, pokrytie
+    case greek, final, symbol, lunate, dasia, psili
     case latin
     
     case doubleStruck

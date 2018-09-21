@@ -2737,8 +2737,773 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     
     // MARK: - 0400..04FF; Cyrillic
     
+    //0400          ; CYRILLIC CAPITAL LETTER IE WITH GRAVE
+    "Ѐ": [.e, .capital, .cyrillic, .grave, .above],
+    
+    //0401          ; CYRILLIC CAPITAL LETTER IO
+    "Ё": [.i, .o, .capital, .cyrillic],
+    
+    //0402          ; CYRILLIC CAPITAL LETTER DJE
+    "Ђ": [.d, .capital, .extra0, .cyrillic],
+    
+    //0403          ; CYRILLIC CAPITAL LETTER GJE
+    "Ѓ": [.g, .capital, .cyrillic, .acute, .above],
+    
+    //0404          ; CYRILLIC CAPITAL LETTER UKRAINIAN IE
+    "Є": [.i, .e, .capital, .cyrillic],
+    
+    //0405          ; CYRILLIC CAPITAL LETTER DZE
+    "Ѕ": [.d, .z, .capital, .cyrillic],
+    
+    //0406          ; CYRILLIC CAPITAL LETTER BYELORUSSIAN-UKRAINIAN I
+    "І": [.i, .capital, .cyrillic, .extra0],
+    
+    //0407          ; CYRILLIC CAPITAL LETTER YI
+    "Ї": [.i, .capital, .cyrillic, .extra0, .diaeresis, .above],
+    
+    //0408          ; CYRILLIC CAPITAL LETTER JE
+    "Ј": [.j, .capital, .cyrillic],
+    
+    //0409          ; CYRILLIC CAPITAL LETTER LJE
+    "Љ": [.l, .j, .capital, .cyrillic],
+    
+    //040A          ; CYRILLIC CAPITAL LETTER NJE
+    "Њ": [.n, .j, .capital, .cyrillic],
+    
+    //040B          ; CYRILLIC CAPITAL LETTER TSHE
+    "Ћ": [.t, .extra0, .capital, .cyrillic],
+    
+    //040C          ; CYRILLIC CAPITAL LETTER KJE
+    "Ќ": [.k, .capital, .cyrillic, .acute, .above],
+    
+    //040D          ; CYRILLIC CAPITAL LETTER I WITH GRAVE
+    "Ѝ": [.i, .capital, .cyrillic, .grave, .above],
+    
+    //040E          ; CYRILLIC CAPITAL LETTER SHORT U
+    "Ў": [.u, .capital, .cyrillic, .breve, .above],
+    
+    //040F          ; CYRILLIC CAPITAL LETTER DZHE
+    "Џ": [.d, .z, .extraH, .capital, .cyrillic],
+    
+    //0410          ; CYRILLIC CAPITAL LETTER A
+    "А": [.a, .capital, .cyrillic],
+    
+    //0411          ; CYRILLIC CAPITAL LETTER BE
+    "Б": [.b, .capital, .cyrillic],
+    
+    //0412          ; CYRILLIC CAPITAL LETTER VE
+    "В": [.v, .capital, .cyrillic],
+    
+    //0413          ; CYRILLIC CAPITAL LETTER GHE
+    "Г": [.g, .capital, .cyrillic],
+    
+    //0414          ; CYRILLIC CAPITAL LETTER DE
+    "Д": [.d, .capital, .cyrillic],
+    
+    //0415          ; CYRILLIC CAPITAL LETTER IE
+    "Е": [.e, .capital, .cyrillic],
+    
+    //0416          ; CYRILLIC CAPITAL LETTER ZHE
+    "Ж": [.z, .capital, .cyrillic, .extraH],
+    
+    //0417          ; CYRILLIC CAPITAL LETTER ZE
+    "З": [.z, .capital, .cyrillic],
+    
+    //0418          ; CYRILLIC CAPITAL LETTER I
+    "И": [.i, .capital, .cyrillic],
+    
+    //0419          ; CYRILLIC CAPITAL LETTER SHORT I
+    "Й": [.i, .capital, .cyrillic, .breve, .above],
+    
+    //041A          ; CYRILLIC CAPITAL LETTER KA
+    "К": [.k, .capital, .cyrillic],
+    
+    //041B          ; CYRILLIC CAPITAL LETTER EL
+    "Л": [.l, .capital, .cyrillic],
+    
+    //041C          ; CYRILLIC CAPITAL LETTER EM
+    "М": [.m, .capital, .cyrillic],
+    
+    //041D          ; CYRILLIC CAPITAL LETTER EN
+    "Н": [.n, .capital, .cyrillic],
+    
+    //041E          ; CYRILLIC CAPITAL LETTER O
+    "О": [.o, .capital, .cyrillic],
+    
+    //041F          ; CYRILLIC CAPITAL LETTER PE
+    "П": [.p, .capital, .cyrillic],
+    
+    //0420          ; CYRILLIC CAPITAL LETTER ER
+    "Р": [.r, .capital, .cyrillic],
+    
+    //0421          ; CYRILLIC CAPITAL LETTER ES
+    "С": [.s, .capital, .cyrillic],
+    
+    //0422          ; CYRILLIC CAPITAL LETTER TE
+    "Т": [.t, .capital, .cyrillic],
+    
+    //0423          ; CYRILLIC CAPITAL LETTER U
+    "У": [.u, .capital, .cyrillic],
+    
+    //0424          ; CYRILLIC CAPITAL LETTER EF
+    "Ф": [.f, .capital, .cyrillic],
+    
+    //0425          ; CYRILLIC CAPITAL LETTER HA
+    "Х": [.h, .capital, .cyrillic],
+    
+    //0426          ; CYRILLIC CAPITAL LETTER TSE
+    "Ц": [.c, .capital, .cyrillic],
+    
+    //0427          ; CYRILLIC CAPITAL LETTER CHE
+    "Ч": [.c, .capital, .cyrillic, .extraH],
+    
+    //0428          ; CYRILLIC CAPITAL LETTER SHA
+    "Ш": [.s, .capital, .cyrillic, .extraH],
+    
+    //0429          ; CYRILLIC CAPITAL LETTER SHCHA
+    "Щ": [.s, .capital, .cyrillic, .extraH, .descender],
+    
+    //042A          ; CYRILLIC CAPITAL LETTER HARD SIGN
+    "Ъ": [.y, .capital, .cyrillic, .extra0],
+    
+    //042B          ; CYRILLIC CAPITAL LETTER YERU
+    "Ы": [.y, .capital, .cyrillic],
+    
+    //042C          ; CYRILLIC CAPITAL LETTER SOFT SIGN
+    "Ь": [.j, .capital, .cyrillic, .extra0],
+    
+    //042D          ; CYRILLIC CAPITAL LETTER E
+    "Э": [.e, .capital, .turned, .cyrillic],
+    
+    //042E          ; CYRILLIC CAPITAL LETTER YU
+    "Ю": [.i, .u, .capital, .cyrillic],
+    
+    //042F          ; CYRILLIC CAPITAL LETTER YA
+    "Я": [.i, .a, .capital, .cyrillic],
+    
+    //0430          ; CYRILLIC SMALL LETTER A
+    "а": [.a, .cyrillic],
+    
+    //0431          ; CYRILLIC SMALL LETTER BE
+    "б": [.b, .cyrillic],
+    
+    //0432          ; CYRILLIC SMALL LETTER VE
+    "в": [.v, .cyrillic],
+    
+    //0433          ; CYRILLIC SMALL LETTER GHE
+    "г": [.g, .cyrillic],
+    
+    //0434          ; CYRILLIC SMALL LETTER DE
+    "д": [.d, .cyrillic],
+    
+    //0435          ; CYRILLIC SMALL LETTER IE
+    "е": [.e, .cyrillic],
+    
+    //0436          ; CYRILLIC SMALL LETTER ZHE
+    "ж": [.z, .extraH, .cyrillic],
+    
+    //0437          ; CYRILLIC SMALL LETTER ZE
+    "з": [.z, .cyrillic],
+    
+    //0438          ; CYRILLIC SMALL LETTER I
+    "и": [.i, .cyrillic],
+    
+    //0439          ; CYRILLIC SMALL LETTER SHORT I
+    "й": [.i, .cyrillic, .breve, .above],
+    
+    //043A          ; CYRILLIC SMALL LETTER KA
+    "к": [.k, .cyrillic],
+    
     //043B          ; CYRILLIC SMALL LETTER EL
-    "л": [.l, .k],
+    "л": [.l, .cyrillic],
+    
+    //043C          ; CYRILLIC SMALL LETTER EM
+    "м": [.m, .cyrillic],
+    
+    //043D          ; CYRILLIC SMALL LETTER EN
+    "н": [.n, .cyrillic],
+    
+    //043E          ; CYRILLIC SMALL LETTER O
+    "о": [.o, .cyrillic],
+    
+    //043F          ; CYRILLIC SMALL LETTER PE
+    "п": [.p, .cyrillic],
+    
+    //0440          ; CYRILLIC SMALL LETTER ER
+    "р": [.r, .cyrillic],
+    
+    //0441          ; CYRILLIC SMALL LETTER ES
+    "с": [.s, .cyrillic],
+    
+    //0442          ; CYRILLIC SMALL LETTER TE
+    "т": [.t, .cyrillic],
+    
+    //0443          ; CYRILLIC SMALL LETTER U
+    "у": [.u, .cyrillic],
+    
+    //0444          ; CYRILLIC SMALL LETTER EF
+    "ф": [.f, .cyrillic],
+    
+    //0445          ; CYRILLIC SMALL LETTER HA
+    "х": [.h, .cyrillic],
+    
+    //0446          ; CYRILLIC SMALL LETTER TSE
+    "ц": [.c, .cyrillic],
+    
+    //0447          ; CYRILLIC SMALL LETTER CHE
+    "ч": [.c, .extraH, .cyrillic],
+    
+    //0448          ; CYRILLIC SMALL LETTER SHA
+    "ш": [.s, .extraH, .cyrillic],
+    
+    //0449          ; CYRILLIC SMALL LETTER SHCHA
+    "щ": [.s, .extraH, .cyrillic, .descender],
+    
+    //044A          ; CYRILLIC SMALL LETTER HARD SIGN
+    "ъ": [.y, .cyrillic, .extra0],
+    
+    //044B          ; CYRILLIC SMALL LETTER YERU
+    "ы": [.y, .cyrillic],
+    
+    //044C          ; CYRILLIC SMALL LETTER SOFT SIGN
+    "ь": [.j, .cyrillic, .extra0],
+    
+    //044D          ; CYRILLIC SMALL LETTER E
+    "э": [.e, .turned, .cyrillic],
+    
+    //044E          ; CYRILLIC SMALL LETTER YU
+    "ю": [.i, .u, .cyrillic],
+    
+    //044F          ; CYRILLIC SMALL LETTER YA
+    "я": [.i, .a, .cyrillic],
+    
+    //0450          ; CYRILLIC SMALL LETTER IE WITH GRAVE
+    "ѐ": [.e, .cyrillic, .grave, .above],
+    
+    //0451          ; CYRILLIC SMALL LETTER IO
+    "ё": [.i, .o, .cyrillic],
+    
+    //0452          ; CYRILLIC SMALL LETTER DJE
+    "ђ": [.d, .extra0, .cyrillic],
+    
+    //0453          ; CYRILLIC SMALL LETTER GJE
+    "ѓ": [.g, .cyrillic, .acute],
+    
+    //0454          ; CYRILLIC SMALL LETTER UKRAINIAN IE
+    "є": [.i, .e, .cyrillic],
+    
+    //0455          ; CYRILLIC SMALL LETTER DZE
+    "ѕ": [.d, .z, .cyrillic],
+    
+    //0456          ; CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I
+    "і": [.i, .cyrillic, .extra0],
+    
+    //0457          ; CYRILLIC SMALL LETTER YI
+    "ї": [.i, .cyrillic, .extra0, .diaeresis, .above],
+    
+    //0458          ; CYRILLIC SMALL LETTER JE
+    "ј": [.j, .cyrillic],
+    
+    //0459          ; CYRILLIC SMALL LETTER LJE
+    "љ": [.l, .j, .cyrillic],
+    
+    //045A          ; CYRILLIC SMALL LETTER NJE
+    "њ": [.n, .j, .cyrillic],
+    
+    //045B          ; CYRILLIC SMALL LETTER TSHE
+    "ћ": [.t, .extra0, .cyrillic],
+    
+    //045C          ; CYRILLIC SMALL LETTER KJE
+    "ќ": [.k, .cyrillic, .acute, .above],
+    
+    //045D          ; CYRILLIC SMALL LETTER I WITH GRAVE
+    "ѝ": [.i, .cyrillic, .grave, .above],
+    
+    //045E          ; CYRILLIC SMALL LETTER SHORT U
+    "ў": [.u, .cyrillic, .breve, .above],
+    
+    //045F          ; CYRILLIC SMALL LETTER DZHE
+    "џ": [.d, .z, .extraH, .cyrillic],
+    
+    //0460          ; CYRILLIC CAPITAL LETTER OMEGA
+    "Ѡ": [.o, .capital, .o, .cyrillic],
+    
+    //0461          ; CYRILLIC SMALL LETTER OMEGA
+    "ѡ": [.o, .o, .cyrillic],
+    
+    //0462          ; CYRILLIC CAPITAL LETTER YAT
+    "Ѣ": [.i, .extra0, .e, .capital, .cyrillic],
+    
+    //0463          ; CYRILLIC SMALL LETTER YAT
+    "ѣ": [.i, .extra0, .e, .cyrillic],
+    
+    //0464          ; CYRILLIC CAPITAL LETTER IOTIFIED E
+    "Ѥ": [.j, .e, .capital, .cyrillic],
+    
+    //0465          ; CYRILLIC SMALL LETTER IOTIFIED E
+    "ѥ": [.j, .e, .cyrillic],
+    
+    //0466          ; CYRILLIC CAPITAL LETTER LITTLE YUS
+    "Ѧ": [.e, .n, .capital, .cyrillic],
+    
+    //0467          ; CYRILLIC SMALL LETTER LITTLE YUS
+    "ѧ": [.e, .n, .cyrillic],
+    
+    //0468          ; CYRILLIC CAPITAL LETTER IOTIFIED LITTLE YUS
+    "Ѩ": [.j, .e, .n, .capital, .cyrillic],
+    
+    //0469          ; CYRILLIC SMALL LETTER IOTIFIED LITTLE YUS
+    "ѩ": [.j, .e, .n, .cyrillic],
+    
+    //046A          ; CYRILLIC CAPITAL LETTER BIG YUS
+    "Ѫ": [.o, .n, .capital, .cyrillic],
+    
+    //046B          ; CYRILLIC SMALL LETTER BIG YUS
+    "ѫ": [.o, .n, .cyrillic],
+    
+    //046C          ; CYRILLIC CAPITAL LETTER IOTIFIED BIG YUS
+    "Ѭ": [.j, .o, .n, .capital, .cyrillic],
+    
+    //046D          ; CYRILLIC SMALL LETTER IOTIFIED BIG YUS
+    "ѭ": [.j, .o, .n, .cyrillic],
+    
+    //046E          ; CYRILLIC CAPITAL LETTER KSI
+    "Ѯ": [.x, .capital, .cyrillic],
+    
+    //046F          ; CYRILLIC SMALL LETTER KSI
+    "ѯ": [.x, .cyrillic],
+    
+    //0470          ; CYRILLIC CAPITAL LETTER PSI
+    "Ѱ": [.p, .s, .capital, .cyrillic],
+    
+    //0471          ; CYRILLIC SMALL LETTER PSI
+    "ѱ": [.p, .s, .cyrillic],
+    
+    //0472          ; CYRILLIC CAPITAL LETTER FITA
+    "Ѳ": [.t, .h, .capital, .cyrillic],
+    
+    //0473          ; CYRILLIC SMALL LETTER FITA
+    "ѳ": [.t, .h, .cyrillic],
+    
+    //0474          ; CYRILLIC CAPITAL LETTER IZHITSA
+    "Ѵ": [.i, .h, .capital, .cyrillic],
+    
+    //0475          ; CYRILLIC SMALL LETTER IZHITSA
+    "ѵ": [.i, .h, .cyrillic],
+    
+    //0476          ; CYRILLIC CAPITAL LETTER IZHITSA WITH DOUBLE GRAVE ACCENT
+    "Ѷ": [.i, .h, .capital, .cyrillic, .grave, .doubled, .above],
+    
+    //0477          ; CYRILLIC SMALL LETTER IZHITSA WITH DOUBLE GRAVE ACCENT
+    "ѷ": [.i, .h, .cyrillic, .grave, .doubled, .above],
+    
+    //0478          ; CYRILLIC CAPITAL LETTER UK
+    "Ѹ": [.o, .u, .capital, .cyrillic],
+    
+    //0479          ; CYRILLIC SMALL LETTER UK
+    "ѹ": [.o, .u, .cyrillic],
+    
+    //047A          ; CYRILLIC CAPITAL LETTER ROUND OMEGA
+    "Ѻ": [.o, .extra0, .capital, .cyrillic],
+    
+    //047B          ; CYRILLIC SMALL LETTER ROUND OMEGA
+    "ѻ": [.o, .extra0, .cyrillic],
+    
+    //047C          ; CYRILLIC CAPITAL LETTER OMEGA WITH TITLO
+    "Ѽ": [.o, .o, .capital, .cyrillic, .titlo],
+    
+    //047D          ; CYRILLIC SMALL LETTER OMEGA WITH TITLO
+    "ѽ": [.o, .o, .cyrillic, .titlo],
+    
+    //047E          ; CYRILLIC CAPITAL LETTER OT
+    "Ѿ": [.o, .o, .t, .capital, .cyrillic],
+    
+    //047F          ; CYRILLIC SMALL LETTER OT
+    "ѿ": [.o, .o, .t, .cyrillic],
+    
+    //0480          ; CYRILLIC CAPITAL LETTER KOPPA
+    "Ҁ": [.q, .capital, .cyrillic],
+    
+    //0481          ; CYRILLIC SMALL LETTER KOPPA
+    "ҁ": [.q, .cyrillic],
+    
+    //0482          ; CYRILLIC THOUSANDS SIGN
+    "҂": [],
+    
+    //0483          ; COMBINING CYRILLIC TITLO
+    "҃": [.titlo],
+    
+    //0484          ; COMBINING CYRILLIC PALATALIZATION
+    "҄": [.palatalization],
+    
+    //0485          ; COMBINING CYRILLIC DASIA PNEUMATA
+    "҅": [.dasia, .cyrillic],
+    
+    //0486          ; COMBINING CYRILLIC PSILI PNEUMATA
+    "҆": [.psili, .cyrillic],
+    
+    //0487          ; COMBINING CYRILLIC POKRYTIE
+    "҇": [.pokrytie],
+    
+    //0488          ; COMBINING CYRILLIC HUNDRED THOUSANDS SIGN
+    "҈": [],
+    
+    //0489          ; COMBINING CYRILLIC MILLIONS SIGN
+    "҉": [],
+    
+    //048A          ; CYRILLIC CAPITAL LETTER SHORT I WITH TAIL
+    "Ҋ": [.i, .capital, .cyrillic, .tail],
+    
+    //048B          ; CYRILLIC SMALL LETTER SHORT I WITH TAIL
+    "ҋ": [.i, .cyrillic, .tail],
+    
+    //048C          ; CYRILLIC CAPITAL LETTER SEMISOFT SIGN
+    "Ҍ": [.j, .extra0, .stroke, .capital, .cyrillic],
+    
+    //048D          ; CYRILLIC SMALL LETTER SEMISOFT SIGN
+    "ҍ": [.j, .extra0, .stroke, .cyrillic],
+    
+    //048E          ; CYRILLIC CAPITAL LETTER ER WITH TICK
+    "Ҏ": [.r, .capital, .stroke, .cyrillic],
+    
+    //048F          ; CYRILLIC SMALL LETTER ER WITH TICK
+    "ҏ": [.r, .stroke, .cyrillic],
+    
+    //0490          ; CYRILLIC CAPITAL LETTER GHE WITH UPTURN
+    "Ґ": [.g, .capital, .extra0, .cyrillic],
+    
+    //0491          ; CYRILLIC SMALL LETTER GHE WITH UPTURN
+    "ґ": [.g, .extra0, .cyrillic],
+    
+    //0492          ; CYRILLIC CAPITAL LETTER GHE WITH STROKE
+    "Ғ": [.g, .capital, .stroke, .cyrillic],
+    
+    //0493          ; CYRILLIC SMALL LETTER GHE WITH STROKE
+    "ғ": [.g, .stroke, .cyrillic],
+    
+    //0494          ; CYRILLIC CAPITAL LETTER GHE WITH MIDDLE HOOK
+    "Ҕ": [.g, .capital, .hook, .cyrillic],
+    
+    //0495          ; CYRILLIC SMALL LETTER GHE WITH MIDDLE HOOK
+    "ҕ": [.g, .hook, .cyrillic],
+    
+    //0496          ; CYRILLIC CAPITAL LETTER ZHE WITH DESCENDER
+    "Җ": [.z, .extraH, .capital, .cyrillic, .descender],
+    
+    //0497          ; CYRILLIC SMALL LETTER ZHE WITH DESCENDER
+    "җ": [.z, .extraH, .cyrillic, .descender],
+    
+    //0498          ; CYRILLIC CAPITAL LETTER ZE WITH DESCENDER
+    "Ҙ": [.z, .capital, .cyrillic, .descender],
+    
+    //0499          ; CYRILLIC SMALL LETTER ZE WITH DESCENDER
+    "ҙ": [.z, .cyrillic, .descender],
+    
+    //049A          ; CYRILLIC CAPITAL LETTER KA WITH DESCENDER
+    "Қ": [.k, .capital, .cyrillic, .descender],
+    
+    //049B          ; CYRILLIC SMALL LETTER KA WITH DESCENDER
+    "қ": [.k, .cyrillic, .descender],
+    
+    //049C          ; CYRILLIC CAPITAL LETTER KA WITH VERTICAL STROKE
+    "Ҝ": [.k, .capital, .cyrillic, .verticalStroke],
+    
+    //049D          ; CYRILLIC SMALL LETTER KA WITH VERTICAL STROKE
+    "ҝ": [.k, .cyrillic, .verticalStroke],
+    
+    //049E          ; CYRILLIC CAPITAL LETTER KA WITH STROKE
+    "Ҟ": [.k, .capital, .cyrillic, .stroke],
+    
+    //049F          ; CYRILLIC SMALL LETTER KA WITH STROKE
+    "ҟ": [.k, .cyrillic, .stroke],
+    
+    //04A0          ; CYRILLIC CAPITAL LETTER BASHKIR KA
+    "Ҡ": [.k, .capital, .cyrillic, .extra0],
+    
+    //04A1          ; CYRILLIC SMALL LETTER BASHKIR KA
+    "ҡ": [.k, .cyrillic, .extra0],
+    
+    //04A2          ; CYRILLIC CAPITAL LETTER EN WITH DESCENDER
+    "Ң": [.n, .capital, .cyrillic, .descender],
+    
+    //04A3          ; CYRILLIC SMALL LETTER EN WITH DESCENDER
+    "ң": [.n, .cyrillic, .descender],
+    
+    //04A4          ; CYRILLIC CAPITAL LIGATURE EN GHE
+    "Ҥ": [.n, .g, .capital, .cyrillic],
+    
+    //04A5          ; CYRILLIC SMALL LIGATURE EN GHE
+    "ҥ": [.n, .g, .cyrillic],
+    
+    //04A6          ; CYRILLIC CAPITAL LETTER PE WITH MIDDLE HOOK
+    "Ҧ": [.p, .capital, .cyrillic, .hook],
+    
+    //04A7          ; CYRILLIC SMALL LETTER PE WITH MIDDLE HOOK
+    "ҧ": [.p, .cyrillic, .hook],
+    
+    //04A8          ; CYRILLIC CAPITAL LETTER ABKHASIAN HA
+    "Ҩ": [.o, .capital, .cyrillic, .curl],
+    
+    //04A9          ; CYRILLIC SMALL LETTER ABKHASIAN HA
+    "ҩ": [.o, .cyrillic, .curl],
+    
+    //04AA          ; CYRILLIC CAPITAL LETTER ES WITH DESCENDER
+    "Ҫ": [.s, .capital, .cyrillic, .descender],
+    
+    //04AB          ; CYRILLIC SMALL LETTER ES WITH DESCENDER
+    "ҫ": [.s, .cyrillic, .descender],
+    
+    //04AC          ; CYRILLIC CAPITAL LETTER TE WITH DESCENDER
+    "Ҭ": [.t, .capital, .cyrillic, .descender],
+    
+    //04AD          ; CYRILLIC SMALL LETTER TE WITH DESCENDER
+    "ҭ": [.t, .cyrillic, .descender],
+    
+    //04AE          ; CYRILLIC CAPITAL LETTER STRAIGHT U
+    "Ү": [.u, .capital, .cyrillic, .extra0],
+
+    //04AF          ; CYRILLIC SMALL LETTER STRAIGHT U
+    "ү": [.u, .cyrillic, .extra0],
+
+    //04B0          ; CYRILLIC CAPITAL LETTER STRAIGHT U WITH STROKE
+    "Ұ": [.u, .capital, .cyrillic, .extra0, .stroke],
+
+    //04B1          ; CYRILLIC SMALL LETTER STRAIGHT U WITH STROKE
+    "ұ": [.u, .cyrillic, .extra0, .stroke],
+
+    //04B2          ; CYRILLIC CAPITAL LETTER HA WITH DESCENDER
+    "Ҳ": [.h, .capital, .cyrillic, .descender],
+
+    //04B3          ; CYRILLIC SMALL LETTER HA WITH DESCENDER
+    "ҳ": [.h, .cyrillic, .descender],
+
+    //04B4          ; CYRILLIC CAPITAL LIGATURE TE TSE
+    "Ҵ": [.t, .c, .capital, .cyrillic],
+
+    //04B5          ; CYRILLIC SMALL LIGATURE TE TSE
+    "ҵ": [.t, .c, .cyrillic],
+
+    //04B6          ; CYRILLIC CAPITAL LETTER CHE WITH DESCENDER
+    "Ҷ": [.c, .extraH, .capital, .cyrillic, .descender],
+
+    //04B7          ; CYRILLIC SMALL LETTER CHE WITH DESCENDER
+    "ҷ": [.c, .extraH, .cyrillic, .descender],
+
+    //04B8          ; CYRILLIC CAPITAL LETTER CHE WITH VERTICAL STROKE
+    "Ҹ": [.c, .extraH, .capital, .cyrillic, .verticalStroke],
+
+    //04B9          ; CYRILLIC SMALL LETTER CHE WITH VERTICAL STROKE
+    "ҹ": [.c, .extraH, .cyrillic, .verticalStroke],
+
+    //04BA          ; CYRILLIC CAPITAL LETTER SHHA
+    "Һ": [.h, .capital, .cyrillic, .extra0],
+
+    //04BB          ; CYRILLIC SMALL LETTER SHHA
+    "һ": [.h, .cyrillic, .extra0],
+
+    //04BC          ; CYRILLIC CAPITAL LETTER ABKHASIAN CHE
+    "Ҽ": [.c, .extraH, .capital, .cyrillic, .extra2],
+
+    //04BD          ; CYRILLIC SMALL LETTER ABKHASIAN CHE
+    "ҽ": [.c, .extraH, .cyrillic, .extra2],
+
+    //04BE          ; CYRILLIC CAPITAL LETTER ABKHASIAN CHE WITH DESCENDER
+    "Ҿ": [.c, .extraH, .capital, .cyrillic, .extra2, .descender],
+
+    //04BF          ; CYRILLIC SMALL LETTER ABKHASIAN CHE WITH DESCENDER
+    "ҿ": [.c, .extraH, .cyrillic, .extra2, .descender],
+
+    //04C0          ; CYRILLIC LETTER PALOCHKA
+    "Ӏ": [.h, .extraH, .capital, .cyrillic],
+
+    //04C1          ; CYRILLIC CAPITAL LETTER ZHE WITH BREVE
+    "Ӂ": [.z, .extraH, .capital, .cyrillic, .breve, .above],
+
+    //04C2          ; CYRILLIC SMALL LETTER ZHE WITH BREVE
+    "ӂ": [.z, .extraH, .cyrillic, .breve, .above],
+
+    //04C3          ; CYRILLIC CAPITAL LETTER KA WITH HOOK
+    "Ӄ": [.k, .capital, .cyrillic, .hook],
+
+    //04C4          ; CYRILLIC SMALL LETTER KA WITH HOOK
+    "ӄ": [.k, .cyrillic, .hook],
+
+    //04C5          ; CYRILLIC CAPITAL LETTER EL WITH TAIL
+    "Ӆ": [.l, .capital, .cyrillic, .tail],
+
+    //04C6          ; CYRILLIC SMALL LETTER EL WITH TAIL
+    "ӆ": [.l, .cyrillic, .tail],
+
+    //04C7          ; CYRILLIC CAPITAL LETTER EN WITH HOOK
+    "Ӈ": [.n, .capital, .cyrillic, .hook],
+
+    //04C8          ; CYRILLIC SMALL LETTER EN WITH HOOK
+    "ӈ": [.n, .cyrillic, .hook],
+
+    //04C9          ; CYRILLIC CAPITAL LETTER EN WITH TAIL
+    "Ӊ": [.n, .capital, .cyrillic, .tail],
+
+    //04CA          ; CYRILLIC SMALL LETTER EN WITH TAIL
+    "ӊ": [.n, .cyrillic, .tail],
+
+    //04CB          ; CYRILLIC CAPITAL LETTER KHAKASSIAN CHE
+    "Ӌ": [.c, .extraH, .capital, .cyrillic, .extra1],
+
+    //04CC          ; CYRILLIC SMALL LETTER KHAKASSIAN CHE
+    "ӌ": [.c, .extraH, .cyrillic, .extra1],
+
+    //04CD          ; CYRILLIC CAPITAL LETTER EM WITH TAIL
+    "Ӎ": [.m, .capital, .cyrillic, .tail],
+
+    //04CE          ; CYRILLIC SMALL LETTER EM WITH TAIL
+    "ӎ": [.m, .cyrillic, .tail],
+
+    //04CF          ; CYRILLIC SMALL LETTER PALOCHKA
+    "ӏ": [.h, .extraH, .cyrillic],
+
+    //04D0          ; CYRILLIC CAPITAL LETTER A WITH BREVE
+    "Ӑ": [.a, .capital, .cyrillic, .breve, .above],
+
+    //04D1          ; CYRILLIC SMALL LETTER A WITH BREVE
+    "ӑ": [.a, .cyrillic, .breve, .above],
+
+    //04D2          ; CYRILLIC CAPITAL LETTER A WITH DIAERESIS
+    "Ӓ": [.a, .capital, .cyrillic, .diaeresis, .above],
+
+    //04D3          ; CYRILLIC SMALL LETTER A WITH DIAERESIS
+    "ӓ": [.a, .cyrillic, .diaeresis, .above],
+
+    //04D4          ; CYRILLIC CAPITAL LIGATURE A IE
+    "Ӕ": [.a, .e, .capital, .cyrillic],
+
+    //04D5          ; CYRILLIC SMALL LIGATURE A IE
+    "ӕ": [.a, .e, .cyrillic],
+
+    //04D6          ; CYRILLIC CAPITAL LETTER IE WITH BREVE
+    "Ӗ": [.e, .capital, .cyrillic, .breve, .above],
+
+    //04D7          ; CYRILLIC SMALL LETTER IE WITH BREVE
+    "ӗ": [.e, .cyrillic, .breve, .above],
+
+    //04D8          ; CYRILLIC CAPITAL LETTER SCHWA
+    "Ә": [.a, .extra0, .capital, .cyrillic],
+
+    //04D9          ; CYRILLIC SMALL LETTER SCHWA
+    "ә": [.a, .extra0, .cyrillic],
+
+    //04DA          ; CYRILLIC CAPITAL LETTER SCHWA WITH DIAERESIS
+    "Ӛ": [.a, .extra0, .capital, .cyrillic, .diaeresis, .above],
+
+    //04DB          ; CYRILLIC SMALL LETTER SCHWA WITH DIAERESIS
+    "ӛ": [.a, .extra0, .cyrillic, .diaeresis, .above],
+
+    //04DC          ; CYRILLIC CAPITAL LETTER ZHE WITH DIAERESIS
+    "Ӝ": [.z, .extraH, .capital, .cyrillic, .diaeresis, .above],
+
+    //04DD          ; CYRILLIC SMALL LETTER ZHE WITH DIAERESIS
+    "ӝ": [.z, .extraH, .cyrillic, .diaeresis, .above],
+
+    //04DE          ; CYRILLIC CAPITAL LETTER ZE WITH DIAERESIS
+    "Ӟ": [.z, .capital, .cyrillic, .diaeresis, .above],
+
+    //04DF          ; CYRILLIC SMALL LETTER ZE WITH DIAERESIS
+    "ӟ": [.z, .cyrillic, .diaeresis, .above],
+
+    //04E0          ; CYRILLIC CAPITAL LETTER ABKHASIAN DZE
+    "Ӡ": [.d, .z, .capital, .cyrillic, .extra0],
+
+    //04E1          ; CYRILLIC SMALL LETTER ABKHASIAN DZE
+    "ӡ": [.d, .z, .cyrillic, .extra0],
+
+    //04E2          ; CYRILLIC CAPITAL LETTER I WITH MACRON
+    "Ӣ": [.i, .capital, .cyrillic, .macron, .above],
+
+    //04E3          ; CYRILLIC SMALL LETTER I WITH MACRON
+    "ӣ": [.i, .cyrillic, .macron, .above],
+
+    //04E4          ; CYRILLIC CAPITAL LETTER I WITH DIAERESIS
+    "Ӥ": [.i, .capital, .cyrillic, .diaeresis, .above],
+
+    //04E5          ; CYRILLIC SMALL LETTER I WITH DIAERESIS
+    "ӥ": [.i, .cyrillic, .diaeresis, .above],
+
+    //04E6          ; CYRILLIC CAPITAL LETTER O WITH DIAERESIS
+    "Ӧ": [.o, .capital, .cyrillic, .diaeresis, .above],
+
+    //04E7          ; CYRILLIC SMALL LETTER O WITH DIAERESIS
+    "ӧ": [.o, .cyrillic, .diaeresis, .above],
+
+    //04E8          ; CYRILLIC CAPITAL LETTER BARRED O
+    "Ө": [.o, .stroke, .capital, .cyrillic],
+
+    //04E9          ; CYRILLIC SMALL LETTER BARRED O
+    "ө": [.o, .stroke, .cyrillic],
+
+    //04EA          ; CYRILLIC CAPITAL LETTER BARRED O WITH DIAERESIS
+    "Ӫ": [.o, .stroke, .capital, .cyrillic, .diaeresis, .above],
+
+    //04EB          ; CYRILLIC SMALL LETTER BARRED O WITH DIAERESIS
+    "ӫ": [.o, .stroke, .cyrillic, .diaeresis, .above],
+
+    //04EC          ; CYRILLIC CAPITAL LETTER E WITH DIAERESIS
+    "Ӭ": [.e, .capital, .cyrillic, .turned, .diaeresis, .above],
+
+    //04ED          ; CYRILLIC SMALL LETTER E WITH DIAERESIS
+    "ӭ": [.e, .cyrillic, .turned, .diaeresis, .above],
+
+    //04EE          ; CYRILLIC CAPITAL LETTER U WITH MACRON
+    "Ӯ": [.u, .capital, .cyrillic, .macron, .above],
+
+    //04EF          ; CYRILLIC SMALL LETTER U WITH MACRON
+    "ӯ": [.u, .cyrillic, .macron, .above],
+
+    //04F0          ; CYRILLIC CAPITAL LETTER U WITH DIAERESIS
+    "Ӱ": [.u, .capital, .cyrillic, .diaeresis, .above],
+
+    //04F1          ; CYRILLIC SMALL LETTER U WITH DIAERESIS
+    "ӱ": [.u, .cyrillic, .diaeresis, .above],
+
+    //04F2          ; CYRILLIC CAPITAL LETTER U WITH DOUBLE ACUTE
+    "Ӳ": [.u, .capital, .cyrillic, .acute, .doubled, .above],
+
+    //04F3          ; CYRILLIC SMALL LETTER U WITH DOUBLE ACUTE
+    "ӳ": [.u, .cyrillic, .acute, .doubled, .above],
+
+    //04F4          ; CYRILLIC CAPITAL LETTER CHE WITH DIAERESIS
+    "Ӵ": [.c, .extraH, .capital, .cyrillic, .diaeresis, .above],
+
+    //04F5          ; CYRILLIC SMALL LETTER CHE WITH DIAERESIS
+    "ӵ": [.c, .extraH, .cyrillic, .diaeresis, .above],
+
+    //04F6          ; CYRILLIC CAPITAL LETTER GHE WITH DESCENDER
+    "Ӷ": [.g, .capital, .cyrillic, .descender],
+
+    //04F7          ; CYRILLIC SMALL LETTER GHE WITH DESCENDER
+    "ӷ": [.g, .cyrillic, .descender],
+
+    //04F8          ; CYRILLIC CAPITAL LETTER YERU WITH DIAERESIS
+    "Ӹ": [.y, .capital, .cyrillic, .diaeresis, .above],
+
+    //04F9          ; CYRILLIC SMALL LETTER YERU WITH DIAERESIS
+    "ӹ": [.y, .cyrillic, .diaeresis, .above],
+
+    //04FA          ; CYRILLIC CAPITAL LETTER GHE WITH STROKE AND HOOK
+    "Ӻ": [.g, .capital, .cyrillic, .stroke, .hook],
+
+    //04FB          ; CYRILLIC SMALL LETTER GHE WITH STROKE AND HOOK
+    "ӻ": [.g, .cyrillic, .stroke, .hook],
+
+    //04FC          ; CYRILLIC CAPITAL LETTER HA WITH HOOK
+    "Ӽ": [.h, .capital, .cyrillic, .hook],
+
+    //04FD          ; CYRILLIC SMALL LETTER HA WITH HOOK
+    "ӽ": [.h, .cyrillic, .hook],
+
+    //04FE          ; CYRILLIC CAPITAL LETTER HA WITH STROKE
+    "Ӿ": [.h, .capital, .cyrillic, .stroke],
+
+    //04FF          ; CYRILLIC SMALL LETTER HA WITH STROKE
+    "ӿ": [.h, .cyrillic, .stroke],
 
 
     // MARK: - 1AB0..1AFF; Combining Diacritical Marks Extended

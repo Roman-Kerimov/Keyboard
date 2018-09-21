@@ -6,6 +6,8 @@
 //
 
 let codeScriptDictionary: [String: CharacterComponent] = [
+    "cy": .cyrillic,
     "gr": .greek,
+    "ki": .cyrillic,
     "la": .latin,
 ]

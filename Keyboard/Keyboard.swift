@@ -13,10 +13,6 @@ class Keyboard: NSObject {
     static let `default`: Keyboard = .init()
     var delegate: KeyboardDelegate?
     
-    var scriptComponent: CharacterComponent? {
-        return delegate?.documentContext.beforeInput?.applyingTransform(.stripCombiningMarks, reverse: false)?.trimmingCharacters(in: CharacterSet.letters.inverted).last?.characterComponents.filter {CharacterComponent.scripts.contains($0)}.first
-    }
-    
     var version: String {
         let versionNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
         let buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String

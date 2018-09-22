@@ -48,16 +48,11 @@ extension String {
     
     func applyingScriptComponent() -> String {
         
-        if characterComponents.isEmpty {
+        guard let scriptComponent = Keyboard.default.scriptComponent else {
             return self
         }
         
-        if let scriptComponent = Keyboard.default.scriptComponent {
-            return appending(characterComponent: scriptComponent)
-        }
-        else {
-            return removing(characterComponents: CharacterComponent.scripts)
-        }
+        return appending(characterComponent: scriptComponent)
     }
     
     func size(withFont font: UIFont) -> CGSize {

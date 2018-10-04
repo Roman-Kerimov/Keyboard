@@ -61,10 +61,12 @@ class SearchUnicodeScalars: Operation {
         case 2:
             searchRegularExpression = .contains(word: text)
             
-            if Locale.regionCodes.contains(text) {
-                foundCharacters.append(flag(fromRegionCode: text))
+            let regionCode = text.uppercased()
+            
+            if Locale.regionCodes.contains(regionCode) {
+                foundCharacters.append(flag(fromRegionCode: regionCode))
                 
-                for localeIdentifier in (Locale.availableIdentifiers.filter { $0.hasSuffix(text) } + ["en_\(text)"]) {
+                for localeIdentifier in (Locale.availableIdentifiers.filter { $0.hasSuffix(regionCode) } + ["en_\(regionCode)"]) {
                     if let currencySymbol = Locale.init(identifier: localeIdentifier).currencySymbol {
                         if currencySymbol.count == 1 {
                             foundCharacters.append(.init(currencySymbol))

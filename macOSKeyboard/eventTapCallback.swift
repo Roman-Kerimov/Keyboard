@@ -108,7 +108,7 @@ func eventTapCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent,
         Keyboard.default.shiftFlag = event.flags.contains(.maskCommand)
     }
     
-    if Keyboard.default.shiftFlag == false && event.flags.contains(.maskCommand) {
+    if Keyboard.default.shiftFlag == false && (event.flags.contains(.maskCommand) || event.type == .keyUp) {
         return Unmanaged.passRetained(event)
     }
     

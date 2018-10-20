@@ -20,6 +20,7 @@ class CharacterSearchWindow: NSWindow {
         collectionBehavior = .canJoinAllSpaces
         allowsToolTipsWhenApplicationIsInactive = true
         titlebarAppearsTransparent = true
+        titleVisibility = .hidden
         isMovable = false
         
         let characterSearchView = CharacterSearchView.init()

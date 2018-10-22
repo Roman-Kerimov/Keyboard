@@ -14,6 +14,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
 
     let statusMenu: StatusMenu = .init()
     
+    static var commandPressedKeycodes: [Keycode] = .init()
+    
     private var previousDocumentContext: DocumentContext = .init()
     static var preEnterDocumentContext: DocumentContext?
     static var keycodeToKeyDictionary: [Keycode: Key] = .init()

@@ -183,11 +183,7 @@ class KeyView: UIButton {
         }
         
         backgroundView.layer.cornerRadius = KeyView.spacing
-        
-        let keyEdgeInset = KeyView.spacing / 2
-        
-        backgroundView.frame = frame.insetBy(dx: keyEdgeInset, dy: keyEdgeInset)
-        backgroundView.frame.origin = .init(x: keyEdgeInset, y: keyEdgeInset)
+        backgroundView.frame = CGRect.init(origin: .zero, size: frame.size).insetBy(scalar: KeyView.spacing/2)
         
         let verticalShiftLabelIndent = KeyView.spacing * 2.2
         let horizontalShiftLabelIndent = KeyView.spacing * 1.0

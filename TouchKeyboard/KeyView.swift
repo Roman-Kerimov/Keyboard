@@ -17,10 +17,6 @@ class KeyView: UIButton {
     override func updateLocalizedStrings() {
         super.updateLocalizedStrings()
         
-        guard key == .enter else {
-            return
-        }
-        
         guard let returnKeyType = returnKeyType else {
             return
         }
@@ -77,7 +73,7 @@ class KeyView: UIButton {
     private var backgroundView: UIView!
     
     private var returnKeyType: UIReturnKeyType? {
-        return Bundle.main.isInterfaceBuilder ? .default : Keyboard.default.delegate?.returnKeyType
+        return key != .enter ? nil : Keyboard.default.delegate?.returnKeyType ?? .default
     }
     
     private var isServiceKey: Bool {

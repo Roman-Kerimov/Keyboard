@@ -27,7 +27,7 @@ extension UIApplication {
 }
 
 class KeyboardViewController: UIInputViewController, KeyboardDelegate {
-    static var shared: KeyboardViewController = .init()
+    fileprivate static var shared: KeyboardViewController = .init()
     
     @objc private func updateDocumentContext() {
         keyboardView.documentContext = textDocumentProxy.documentContext
@@ -218,6 +218,10 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
     
     var documentContext: DocumentContext {
         return textDocumentProxy.documentContext
+    }
+    
+    var returnKeyType: UIReturnKeyType? {
+        return textDocumentProxy.returnKeyType
     }
 }
 

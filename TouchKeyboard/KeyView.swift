@@ -77,7 +77,7 @@ class KeyView: UIButton {
     private var backgroundView: UIView!
     
     private var returnKeyType: UIReturnKeyType? {
-        return Bundle.main.isInterfaceBuilder ? .default : KeyboardViewController.shared.textDocumentProxy.returnKeyType
+        return Bundle.main.isInterfaceBuilder ? .default : Keyboard.default.delegate?.returnKeyType
     }
     
     private var isServiceKey: Bool {
@@ -232,8 +232,6 @@ class KeyView: UIButton {
     
     @objc func longPressGestureAction(gesture: UIGestureRecognizer) {
         isHighlighted = true
-        
-        KeyboardViewController.shared.keyboardView.characterSearchView.isHiddenUnicodeNames = true
         
         switch gesture.state {
             

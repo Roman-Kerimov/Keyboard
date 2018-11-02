@@ -418,6 +418,8 @@ class Keyboard: NSObject {
         set {
             UserDefaults.standard.set(newValue.rawValue, forKey: layoutModeKey)
             UserDefaults.standard.synchronize()
+            
+            NotificationCenter.default.post(name: .LayoutModeDidChange, object: nil)
         }
     }
     
@@ -442,4 +444,6 @@ extension NSNotification.Name {
     static let DocumentContextDidChange: NSNotification.Name = .init("oDap18soqXQONnkeMJsCZSGmkexar2g")
     
     static let LayoutDidChange: NSNotification.Name = .init("DjG5zBrx84Y5CwuF858vXxznGIFNnQ5")
+    
+    static let LayoutModeDidChange: NSNotification.Name = .init("JkvFKpRydra3urZI47XVkMoMnd8bFhV")
 }

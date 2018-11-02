@@ -20,7 +20,12 @@ class CharacterSequenceView: CharacterCollectionView {
     
     private var longPressGestureRecognizer: UILongPressGestureRecognizer!
     
-    override init() {
+    private let deleteButton: UIButton?
+    
+    init(deleteButton: UIButton?) {
+        
+        self.deleteButton = deleteButton
+        
         super.init()
 
         layout.sectionInset = .init(top: 0, left: 0, bottom: 0, right: layout.itemSize.width)
@@ -91,7 +96,10 @@ class CharacterSequenceView: CharacterCollectionView {
                 let targetPosition: CGPoint = .init(x: touchPosition.x, y: center.y)
                 
                 updateInteractiveMovementTargetPosition(targetPosition)
-                deleteKey.isHighlighted = longPressGestureRecognizer.location(in: KeyboardViewController.shared.keyboardView.deleteKey).x > 0
+                
+                if let deleteButton = deleteButton {
+                    deleteButton.isHighlighted = longPressGestureRecognizer.location(in: deleteButton).x > 0
+                }
             }
             else if isUppercase && isChangeStage {
                 cancelInteractiveMovement()
@@ -171,7 +179,7 @@ class CharacterSequenceView: CharacterCollectionView {
         
         disableAtimations()
         
-        if deleteKey.isHighlighted {
+        if deleteButton?.isHighlighted == true {
             cancelInteractiveMovement()
             
             performBatchUpdates({
@@ -189,7 +197,7 @@ class CharacterSequenceView: CharacterCollectionView {
                 NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
             })
             
-            deleteKey.isHighlighted = false
+            deleteButton?.isHighlighted = false
             return
         }
         
@@ -315,7 +323,10 @@ class CharacterSequenceView: CharacterCollectionView {
     }
     
     func performCharacterSequenceUpdates(_ updates: () -> Void) {
-        KeyboardViewController.shared.textDocumentProxy.deleteBackward(characters.count)
+        
+        characters.forEach { (_) in
+            Keyboard.default.delegate?.delete()
+        }
         
         let shouldRemoveFirstSpace = characters.first != .space
         
@@ -332,7 +343,7 @@ class CharacterSequenceView: CharacterCollectionView {
             text = .init(characters)
         }
         
-        KeyboardViewController.shared.textDocumentProxy.insertText(text)
+        Keyboard.default.delegate?.insert(text: text)
     }
     
     private func removeDoubleSpace() {
@@ -345,9 +356,5 @@ class CharacterSequenceView: CharacterCollectionView {
                 break
             }
         }
-    }
-    
-    internal var deleteKey: KeyView {
-        return KeyboardViewController.shared.keyboardView.deleteKey
     }
 }

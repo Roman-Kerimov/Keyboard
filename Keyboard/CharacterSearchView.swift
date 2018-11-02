@@ -41,6 +41,7 @@ class CharacterSearchView: CharacterCollectionView {
         
         NotificationCenter.default.addObserver(self, selector: #selector(search), name: .UnicodeDataFilesDidLoad, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(search), name: .DocumentContextDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(hideUnicodeNames), name: .KeyboardStateDidChange, object: nil)
         
         if Bundle.main.isInterfaceBuilder {
             characters = .init("⌨🎹😀😇ǶÆ")
@@ -147,12 +148,16 @@ class CharacterSearchView: CharacterCollectionView {
         }
     }
     
-    public var isHiddenUnicodeNames: Bool = true {
+    private var isHiddenUnicodeNames: Bool = true {
         didSet {
             for cell in visibleCells as! [CharacterCollectionViewCell] {
                 cell.unicodeName.isHidden = isHiddenUnicodeNames
             }
         }
+    }
+    
+    @objc private func hideUnicodeNames() {
+        isHiddenUnicodeNames = true
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

@@ -5,7 +5,7 @@
 //  Created by Roman Kerimov on 2018-01-29.
 //
 
-import Foundation
+import UIKit
 
 protocol KeyboardDelegate {
     
@@ -16,4 +16,17 @@ protocol KeyboardDelegate {
     func insert(text: String)
     
     var documentContext: DocumentContext {get}
+    
+    var returnKeyType: UIReturnKeyType? {get}
+    var needsInputModeSwitchKey: Bool {get}
+}
+
+extension KeyboardDelegate {
+    var returnKeyType: UIReturnKeyType? {
+        return nil
+    }
+    
+    var needsInputModeSwitchKey: Bool {
+        return false
+    }
 }

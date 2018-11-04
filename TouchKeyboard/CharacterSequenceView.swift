@@ -35,6 +35,8 @@ class CharacterSequenceView: CharacterCollectionView {
         addGestureRecognizer(longPressGestureRecognizer)
         longPressGestureRecognizer.minimumPressDuration = 0
         
+        NotificationCenter.default.addObserver(self, selector: #selector(updateCharacters), name: .CharacterSequenceDidChange, object: nil)
+        
         if Bundle.main.isInterfaceBuilder {
             characters = .init("keyboard😀")
         }
@@ -42,6 +44,10 @@ class CharacterSequenceView: CharacterCollectionView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func updateCharacters() {
+        characters = Keyboard.default.characterSequence
     }
     
     override func reloadData() {

@@ -10,8 +10,6 @@ import UIKit
 
 class CharacterSearchView: CharacterCollectionView {
 
-    var documentContextBeforeInput: String = .init()
-
     internal var size: CGSize = .zero {
         didSet {
             frame.size = size
@@ -123,7 +121,7 @@ class CharacterSearchView: CharacterCollectionView {
     
     @objc private func search() {
         
-        let documentContextBeforeInput = Keyboard.default.delegate?.documentContext.beforeInput ?? self.documentContextBeforeInput
+        let documentContextBeforeInput = Keyboard.default.delegate?.documentContext.beforeInput ?? .init()
         
         var textForSearch: String = .init(
             documentContextBeforeInput

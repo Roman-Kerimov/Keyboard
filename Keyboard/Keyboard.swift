@@ -393,6 +393,47 @@ class Keyboard: NSObject {
     
     private override init() {
         super.init()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateCharacterSequence), name: .DocumentContextDidChange, object: nil)
+    }
+    
+    var characterSequence: [Character] = .init()
+    
+    @objc private func updateCharacterSequence() {
+        let documentContextBeforeInput: String = delegate?.documentContext.beforeInput ?? .init()
+        
+        characterSequence = .init()
+        
+        var spaceCount = 0
+        
+        var isNonspaceSequence: Bool = false
+        
+        for character in documentContextBeforeInput.reversed() {
+            
+            switch character {
+            case Character.space:
+                spaceCount += 1
+                
+            case Character.return, Character.tab:
+                return
+                
+            default:
+                isNonspaceSequence = true
+                spaceCount = 0
+            }
+            
+            if spaceCount == 2 {
+                break
+            }
+            
+            characterSequence = [character] + characterSequence
+            
+            if spaceCount == 1 && isNonspaceSequence {
+                break
+            }
+        }
+        
+        NotificationCenter.default.post(name: .CharacterSequenceDidChange, object: nil)
     }
     
     private let layoutKey = "LBPQsNPr8gJHi8Ds05etypaTVEiq8X1"
@@ -446,4 +487,6 @@ extension NSNotification.Name {
     static let LayoutDidChange: NSNotification.Name = .init("DjG5zBrx84Y5CwuF858vXxznGIFNnQ5")
     
     static let LayoutModeDidChange: NSNotification.Name = .init("JkvFKpRydra3urZI47XVkMoMnd8bFhV")
+    
+    static let CharacterSequenceDidChange: NSNotification.Name = .init("c6nAy6MZmbxXz30pZpJDx1Okn6yce96")
 }

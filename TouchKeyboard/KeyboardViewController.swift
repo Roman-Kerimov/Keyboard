@@ -30,7 +30,6 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
     fileprivate static var shared: KeyboardViewController = .init()
     
     @objc private func updateDocumentContext() {
-        keyboardView.documentContext = textDocumentProxy.documentContext
         
         keyboardView.spaceKey.key = textDocumentProxy.returnKeyType == .default ? .space : .spaceWithoutReturn
         

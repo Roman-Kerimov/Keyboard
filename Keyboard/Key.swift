@@ -9,7 +9,7 @@ import Foundation
 
 class Key: NSObject {
     
-    var label: String
+    let label: String
     let shiftDownLabel: String
     let shiftUpLabel: String
     let shiftRightLabel: String

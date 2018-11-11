@@ -408,14 +408,14 @@ class Keyboard: NSObject {
         
         var isNonspaceSequence: Bool = false
         
-        for character in documentContextBeforeInput.reversed() {
+        cycle: for character in documentContextBeforeInput.reversed() {
             
             switch character {
             case Character.space:
                 spaceCount += 1
                 
             case Character.return, Character.tab:
-                return
+                break cycle
                 
             default:
                 isNonspaceSequence = true

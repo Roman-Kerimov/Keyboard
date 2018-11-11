@@ -28,8 +28,13 @@ class CharacterSequenceView: CharacterCollectionView {
         
         super.init()
 
+        #if os(iOS)
         layout.sectionInset = .init(top: 0, left: 0, bottom: 0, right: layout.itemSize.width)
+        #endif
+        
         layout.scrollDirection = .horizontal
+        
+        alwaysBounceVertical = false
         
         longPressGestureRecognizer = UILongPressGestureRecognizer.init(target: self, action: #selector(handleLongPressGesture(from:)))
         addGestureRecognizer(longPressGestureRecognizer)
@@ -55,7 +60,7 @@ class CharacterSequenceView: CharacterCollectionView {
         
         OperationQueue.main.addOperation {
             if self.contentSize.width > self.frame.size.width {
-                self.scrollToItem(at: IndexPath.init(row: self.characters.count - 1, section: 0), at: .right, animated: true)
+                self.scrollToItem(at: IndexPath.init(item: self.characters.count - 1, section: 0), at: .right, animated: true)
             }
         }
     }
@@ -189,13 +194,13 @@ class CharacterSequenceView: CharacterCollectionView {
             cancelInteractiveMovement()
             
             performBatchUpdates({
-                if activeCharacter == .space && activeIndexPath?.item == characters.count - 1 {
+                if self.activeCharacter == .space && self.activeIndexPath?.item == self.characters.count - 1 {
                     Keyboard.default.delegate?.delete()
                 }
                 else {
-                    performCharacterSequenceUpdates {
-                        characters.remove(at: activeIndexPath!.item)
-                        deleteItems(at: [activeIndexPath!])
+                    self.performCharacterSequenceUpdates {
+                        self.characters.remove(at: self.activeIndexPath!.item)
+                        self.deleteItems(at: [self.activeIndexPath!])
                     }
                 }
             }, completion: { _ in
@@ -209,7 +214,7 @@ class CharacterSequenceView: CharacterCollectionView {
         
         if activeCharacter == .space {
             let destinationIndexPath: IndexPath = indexPathForItem(at: activeCell.center)
-                ?? .init(row: characters.count - 1, section: 0)
+                ?? .init(item: characters.count - 1, section: 0)
             
             cancelInteractiveMovement()
             
@@ -221,23 +226,23 @@ class CharacterSequenceView: CharacterCollectionView {
                     return
                 }
                 
-                performCharacterSequenceUpdates {
-                    if activeIndexPath?.item == 0 {
-                        characters.insert(.space, at: destinationIndexPath.item + 1)
+                self.performCharacterSequenceUpdates {
+                    if self.activeIndexPath?.item == 0 {
+                        self.characters.insert(.space, at: destinationIndexPath.item + 1)
                     }
                     else {
-                        characters.insert(.space, at: destinationIndexPath.item)
+                        self.characters.insert(.space, at: destinationIndexPath.item)
                     }
                     
-                    insertItems(at: [destinationIndexPath])
+                    self.insertItems(at: [destinationIndexPath])
                 }
                 
                 if destinationIndexPath.item > 0
-                    && characters[destinationIndexPath.item - 1] != .space
-                    && characters[destinationIndexPath.item] != .space {
+                    && self.characters[destinationIndexPath.item - 1] != .space
+                    && self.characters[destinationIndexPath.item] != .space {
                  
-                    performBatchUpdates({
-                        reloadItems(at: indexPathsForVisibleItems)
+                    self.performBatchUpdates({
+                        self.reloadItems(at: self.indexPathsForVisibleItems)
                     })
                 }
                 
@@ -269,7 +274,7 @@ class CharacterSequenceView: CharacterCollectionView {
             
         cell.title.font = characterFont
         cell.backgroundColor = UIColor.labelColor.withAlphaComponent(0.05)
-        cell.layer.cornerRadius = layout.itemSize.width * 0.3
+        cell.cornerRadius = layout.itemSize.width * 0.3
         
         return cell
     }
@@ -281,11 +286,11 @@ class CharacterSequenceView: CharacterCollectionView {
             && activeIndexPath != proposedIndexPath {
             
             if proposedIndexPath.item == 0 {
-                return .init(row: proposedIndexPath.item + 1, section: 0)
+                return .init(item: proposedIndexPath.item + 1, section: 0)
             }
             
             if proposedIndexPath.item == characters.count - 1 {
-                return .init(row: proposedIndexPath.item - 1, section: 0)
+                return .init(item: proposedIndexPath.item - 1, section: 0)
             }
         }
         
@@ -356,8 +361,8 @@ class CharacterSequenceView: CharacterCollectionView {
         for (index, character) in characters.enumerated() {
             if character == .space && index > 0 && characters[index - 1] == .space {
                 performBatchUpdates({
-                    characters.remove(at: index)
-                    deleteItems(at: [.init(row: index, section: 0)])
+                    self.characters.remove(at: index)
+                    self.deleteItems(at: [.init(item: index, section: 0)])
                 })
                 break
             }

@@ -36,6 +36,8 @@
 		962D7CC920CD75320047B8B9 /* NSRegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962D7CC720CD75320047B8B9 /* NSRegularExpression.swift */; };
 		962D7CCA20CD75320047B8B9 /* NSRegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962D7CC720CD75320047B8B9 /* NSRegularExpression.swift */; };
 		963212B4217B820500E8A6B2 /* FloatingWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963212B3217B820500E8A6B2 /* FloatingWindow.swift */; };
+		963212B6217C61BC00E8A6B2 /* CharacterSequenceWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963212B5217C61BB00E8A6B2 /* CharacterSequenceWindow.swift */; };
+		963212B7217C643200E8A6B2 /* CharacterSequenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665F3751E9D847300850F97 /* CharacterSequenceView.swift */; };
 		9633A3CA1E5DFE8D00DFA503 /* DeleteRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9633A3C91E5DFE8D00DFA503 /* DeleteRowView.swift */; };
 		9637C6F120F2440200078395 /* UIKeyboardAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637C6F020F2440200078395 /* UIKeyboardAppearance.swift */; };
 		9637C6F220F2440200078395 /* UIKeyboardAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637C6F020F2440200078395 /* UIKeyboardAppearance.swift */; };
@@ -389,6 +391,7 @@
 		962B5342218C91EA001C4914 /* CGRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
 		962D7CC720CD75320047B8B9 /* NSRegularExpression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSRegularExpression.swift; sourceTree = "<group>"; };
 		963212B3217B820500E8A6B2 /* FloatingWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingWindow.swift; sourceTree = "<group>"; };
+		963212B5217C61BB00E8A6B2 /* CharacterSequenceWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSequenceWindow.swift; sourceTree = "<group>"; };
 		9633A3C91E5DFE8D00DFA503 /* DeleteRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteRowView.swift; sourceTree = "<group>"; };
 		9637C6F020F2440200078395 /* UIKeyboardAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKeyboardAppearance.swift; sourceTree = "<group>"; };
 		963A53F5214808D2001CAD75 /* codeScriptDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = codeScriptDictionary.swift; sourceTree = "<group>"; };
@@ -743,6 +746,7 @@
 				96F7FBE81FBB299400F7146C /* CollectionViewFlowLayout.swift */,
 				96BC5F551DEB961F002E0752 /* LabelView.swift */,
 				960F6E941EC9F7E600EFC7B7 /* CharacterSearchView.swift */,
+				9665F3751E9D847300850F97 /* CharacterSequenceView.swift */,
 				96848DA01EE0B64F0009869A /* UnicodeTable.swift */,
 				96436BA020C1DA2D0065ED03 /* UnicodeItem.swift */,
 				9697C3E220BB514900FE3007 /* UnicodeDataFile.swift */,
@@ -780,7 +784,6 @@
 				969F15F61E54EE3600C0DD7D /* LanguageTableView.swift */,
 				966194D21DE2FCEF007FCF02 /* KeyboardLayoutView.swift */,
 				9633A3C91E5DFE8D00DFA503 /* DeleteRowView.swift */,
-				9665F3751E9D847300850F97 /* CharacterSequenceView.swift */,
 				9654DF791D4E1D0900DDB0EF /* SpaceRowView.swift */,
 				965D15C81D32AE3B0098FA57 /* KeyView.swift */,
 				962B5342218C91EA001C4914 /* CGRect.swift */,
@@ -837,6 +840,7 @@
 				96D6E94E20C8494800C357FA /* NonAccessibilityDocumentContext.swift */,
 				963212B3217B820500E8A6B2 /* FloatingWindow.swift */,
 				96BE9C7020A8340400C2C03F /* CharacterSearchWindow.swift */,
+				963212B5217C61BB00E8A6B2 /* CharacterSequenceWindow.swift */,
 				967502532089E1D300FD6CED /* LaunchAgent.swift */,
 				9673CAD7203282490030E2CA /* AXUIElement.swift */,
 				960FEFED203D37590099E449 /* AXAttribute.swift */,
@@ -1341,6 +1345,7 @@
 				96E033F8203154FC0039E653 /* LEGAL_NOTICES.swift in Sources */,
 				96F28C192030205C0023313C /* KeyboardDelegate.swift in Sources */,
 				968DEA8120CCDFA400750040 /* eventTapCallback.swift in Sources */,
+				963212B7217C643200E8A6B2 /* CharacterSequenceView.swift in Sources */,
 				96EBF2A7209CE86900AE00E7 /* CharacterSearchView.swift in Sources */,
 				96E03420203179F00039E653 /* CONTINUE.swift in Sources */,
 				96E033F42031549C0039E653 /* ABOUT.swift in Sources */,
@@ -1360,6 +1365,7 @@
 				96F28C1E2030205C0023313C /* Array<CharacterComponent>.swift in Sources */,
 				96F28C1F2030205C0023313C /* characterComponentsDictionary.swift in Sources */,
 				96AED32F203120DE00498A7E /* LayoutMenuItem.swift in Sources */,
+				963212B6217C61BC00E8A6B2 /* CharacterSequenceWindow.swift in Sources */,
 				96D6E94F20C8494800C357FA /* NonAccessibilityDocumentContext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

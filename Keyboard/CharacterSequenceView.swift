@@ -59,6 +59,11 @@ class CharacterSequenceView: CharacterCollectionView {
         super.reloadData()
         
         OperationQueue.main.addOperation {
+            
+            #if os(macOS)
+            self.window?.setContentSize(.init(width: min(self.layout.collectionViewContentSize.width, UIScreen.main.bounds.width - (self.window?.frame.origin.x ?? 0)), height: self.frame.height))
+            #endif
+            
             if self.contentSize.width > self.frame.size.width {
                 self.scrollToItem(at: IndexPath.init(item: self.characters.count - 1, section: 0), at: .right, animated: true)
             }

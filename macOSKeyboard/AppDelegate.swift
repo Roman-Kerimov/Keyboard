@@ -29,9 +29,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
         
         NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
         
-        AppDelegate.characterSearchWindow.setIsVisible(isProcessTrusted)
+        layoutWindows()
         
-        AppDelegate.characterSequenceWindow.setFrameOrigin(.init(x: AppDelegate.characterSearchWindow.frame.width + 20, y: AppDelegate.characterSearchWindow.frame.origin.y))
+        AppDelegate.characterSearchWindow.setIsVisible(isProcessTrusted)
         AppDelegate.characterSequenceWindow.setIsVisible(isProcessTrusted)
         
         Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true) { (timer) in
@@ -73,6 +73,17 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
+    }
+    
+    func applicationDidChangeScreenParameters(_ notification: Notification) {
+        layoutWindows()
+    }
+    
+    func layoutWindows() {
+        let visibleFrame = NSScreen.main?.visibleFrame ?? .zero
+        
+        AppDelegate.characterSearchWindow.setFrameOrigin(visibleFrame.origin)
+        AppDelegate.characterSequenceWindow.setFrameOrigin(.init(x: AppDelegate.characterSearchWindow.frame.maxX + 20, y: visibleFrame.origin.y))
     }
     
     static func synchronizeKeyboardLayout() {

@@ -27,10 +27,6 @@ class CharacterSequenceView: CharacterCollectionView {
         self.deleteButton = deleteButton
         
         super.init()
-
-        #if os(iOS)
-        layout.sectionInset = .init(top: 0, left: 0, bottom: 0, right: layout.itemSize.width)
-        #endif
         
         layout.scrollDirection = .horizontal
         

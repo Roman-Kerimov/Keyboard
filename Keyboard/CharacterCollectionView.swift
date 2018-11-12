@@ -42,6 +42,8 @@ class CharacterCollectionView: UICollectionView, UICollectionViewDelegateFlowLay
         alwaysBounceVertical = true
         backgroundColor = .touchableClear
         
+        clipsToBounds = false
+        
         if Bundle.main.isInterfaceBuilder {
             characters = .init("CharacterCollectionView")
         }

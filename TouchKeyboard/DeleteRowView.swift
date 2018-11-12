@@ -19,8 +19,8 @@ class DeleteRowView: UIView {
         
         super.init(frame: .zero)
         
-        addSubview(characterSequence)
         addSubview(deleteKey)
+        addSubview(characterSequence)
     }
     
     internal required init(coder: NSCoder) {
@@ -32,7 +32,6 @@ class DeleteRowView: UIView {
         let deleteKeyWidth = frame.width / 5
         deleteKey.frame = .init(origin: .init(x: frame.width - deleteKeyWidth, y: 0), size: .init(width: deleteKeyWidth, height: frame.height))
         
-        characterSequence.contentInset = .init(top: 0, left: 0, bottom: 0, right: deleteKey.frame.width)
-        characterSequence.frame.size = .init(width: frame.width, height: frame.height)
+        characterSequence.frame.size = .init(width: frame.width - deleteKeyWidth, height: frame.height)
     }
 }

@@ -35,7 +35,6 @@ class CharacterSearchView: CharacterCollectionView {
         }
         
         layout.minimumLineSpacing = 0
-        clipsToBounds = false
         
         NotificationCenter.default.addObserver(self, selector: #selector(search), name: .UnicodeDataFilesDidLoad, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(search), name: .DocumentContextDidChange, object: nil)

@@ -132,15 +132,7 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
         case .appLanguage:
             cell.textLabel?.text = LANGUAGE.string
             
-            let languageCode = Language.current.rawValue
-            let locale = Locale(identifier: languageCode)
-            
-            if locale.scriptCode == nil {
-                cell.detailTextLabel?.text = locale.localizedString(forIdentifier: languageCode)
-            }
-            else {
-                cell.detailTextLabel?.text = locale.localizedString(forLanguageCode: locale.languageCode!)
-            }
+            cell.detailTextLabel?.text = Language.current.localizedName
             
             cell.accessoryType = .disclosureIndicator
             

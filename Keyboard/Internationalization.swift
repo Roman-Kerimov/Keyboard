@@ -27,7 +27,12 @@ extension Language {
     #endif
     
     static var preferredList: [Language] {
-        let languageCodes: [String] = Bundle.main.isInterfaceBuilder ? .init() : UserDefaults.standard.array(forKey: "AppleLanguages") as! [String]
+        var languageCodes: [String] = Bundle.main.isInterfaceBuilder ? .init() : UserDefaults.standard.array(forKey: "AppleLanguages") as! [String]
+        
+        if let ruIndex = languageCodes.firstIndex(where: {$0.hasPrefix("ru")}) {
+            languageCodes.remove(at: ruIndex)
+            languageCodes.insert(contentsOf: [Language.ru_Cyrl.rawValue, Language.ru_Latn.rawValue], at: ruIndex)
+        }
 
         var languages: [Language] = []
         
@@ -44,11 +49,22 @@ extension Language {
     }
     
     var selfName: String {
-        return Locale(identifier: rawValue).localizedString(forIdentifier: rawValue) ?? .init()
+        return Locale(identifier: rawValue).localizedString(forIdentifier: rawValue)?.translatingScriptIfNeeded(language: self) ?? .init()
     }
     
     var localizedName: String {
-        return Locale(identifier: Language.current.rawValue).localizedString(forIdentifier: rawValue) ?? .init()
+        return Locale(identifier: Language.current.rawValue).localizedString(forIdentifier: rawValue)?.translatingScriptIfNeeded(language: .current) ?? .init()
+    }
+}
+
+fileprivate extension String {
+    func translatingScriptIfNeeded(language: Language) -> String {
+        switch language {
+        case .ru_Latn:
+            return self.translating(from: .Cyrl, to: .Latn, withTable: .ru)
+        default:
+           return self
+        }
     }
 }
 

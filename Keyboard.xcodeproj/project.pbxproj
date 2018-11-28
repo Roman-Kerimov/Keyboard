@@ -160,6 +160,11 @@
 		969E83051EED842E009A1F2D /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969E83041EED842E009A1F2D /* UIView.swift */; };
 		969F15F51E549BD300C0DD7D /* ViewController<UIView>.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969F15F41E549BD300C0DD7D /* ViewController<UIView>.swift */; };
 		969F15F71E54EE3600C0DD7D /* LanguageTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969F15F61E54EE3600C0DD7D /* LanguageTableView.swift */; };
+		96A8EB0B21AEC4F200941FA0 /* LinguisticKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96A8EB0A21AEC4F200941FA0 /* LinguisticKit.framework */; };
+		96A8EB0C21AEC50100941FA0 /* LinguisticKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96A8EB0A21AEC4F200941FA0 /* LinguisticKit.framework */; };
+		96A8EB0D21AEC50100941FA0 /* LinguisticKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96A8EB0A21AEC4F200941FA0 /* LinguisticKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		96A8EB0E21AEC51300941FA0 /* LinguisticKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96A8EB0A21AEC4F200941FA0 /* LinguisticKit.framework */; };
+		96A8EB0F21AEC51300941FA0 /* LinguisticKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96A8EB0A21AEC4F200941FA0 /* LinguisticKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		96AC6CA3203C23B200555164 /* CGEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AC6CA2203C23B200555164 /* CGEvent.swift */; };
 		96ACD588205261EE007CFDCF /* NSPasteboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96ACD587205261EE007CFDCF /* NSPasteboard.swift */; };
 		96AED32F203120DE00498A7E /* LayoutMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AED32E203120DE00498A7E /* LayoutMenuItem.swift */; };
@@ -300,12 +305,24 @@
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		96A8EB0621AEC49000941FA0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				96A8EB0D21AEC50100941FA0 /* LinguisticKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		96E46DF02086A21B00D49583 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				96A8EB0F21AEC51300941FA0 /* LinguisticKit.framework in Embed Frameworks */,
 				96E46DEF2086A21B00D49583 /* UIKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -462,6 +479,7 @@
 		969E83041EED842E009A1F2D /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		969F15F41E549BD300C0DD7D /* ViewController<UIView>.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController<UIView>.swift"; sourceTree = "<group>"; };
 		969F15F61E54EE3600C0DD7D /* LanguageTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageTableView.swift; sourceTree = "<group>"; };
+		96A8EB0A21AEC4F200941FA0 /* LinguisticKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LinguisticKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96AC6CA2203C23B200555164 /* CGEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGEvent.swift; sourceTree = "<group>"; };
 		96ACD587205261EE007CFDCF /* NSPasteboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSPasteboard.swift; sourceTree = "<group>"; };
 		96AED32E203120DE00498A7E /* LayoutMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutMenuItem.swift; sourceTree = "<group>"; };
@@ -518,6 +536,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96A8EB0C21AEC50100941FA0 /* LinguisticKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,6 +544,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96A8EB0B21AEC4F200941FA0 /* LinguisticKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,6 +559,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96A8EB0E21AEC51300941FA0 /* LinguisticKit.framework in Frameworks */,
 				96E46DEE2086A21B00D49583 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -799,6 +820,7 @@
 		96DB1A77202FB80300B96D3C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				96A8EB0A21AEC4F200941FA0 /* LinguisticKit.framework */,
 				96DB1A78202FB80300B96D3C /* UIKit.framework */,
 			);
 			name = Frameworks;
@@ -887,6 +909,7 @@
 				964AB92E1D1B6490004C827C /* Frameworks */,
 				964AB92F1D1B6490004C827C /* Resources */,
 				964AB9721D1B6535004C827C /* Embed App Extensions */,
+				96A8EB0621AEC49000941FA0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

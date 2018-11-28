@@ -6,6 +6,8 @@
 //
 //
 
+import LinguisticKit
+
 enum Language: String, CaseIterable {
     //case az = "az"
     //case az_Cyrl = "az-Cyrl"
@@ -31,7 +33,8 @@ enum Language: String, CaseIterable {
     case pt_PT = "pt-PT"
     case pt_BR = "pt-BR"
     case ro = "ro"
-    case ru = "ru"
+    case ru_Cyrl = "ru-Cyrl"
+    case ru_Latn = "ru-Latn"
     case sk = "sk"
     case sv = "sv"
     case tr = "tr"
@@ -99,7 +102,8 @@ extension LocalizedString {
             case .pt_PT: return pt_PT
             case .pt_BR: return pt_BR
             case .ro: return ro
-            case .ru: return ru
+            case .ru_Cyrl: return ru
+            case .ru_Latn: return ru.translating(from: .Cyrl, to: .Latn, withTable: .ru)
             case .sk: return sk
             case .sv: return sv
             case .tr: return tr

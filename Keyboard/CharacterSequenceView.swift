@@ -33,11 +33,14 @@ class CharacterSequenceView: CharacterCollectionView {
         alwaysBounceVertical = false
         
         longPressGestureRecognizer = UILongPressGestureRecognizer.init(target: self, action: #selector(handleLongPressGesture(from:)))
+        longPressGestureRecognizer.cancelsTouchesInView = false
         addGestureRecognizer(longPressGestureRecognizer)
         longPressGestureRecognizer.minimumPressDuration = 0
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateCharacters), name: .CharacterSequenceDidChange, object: nil)
         
+        register(AutocompleteView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: AutocompleteView.reuseIdentifier)
+
         if Bundle.main.isInterfaceBuilder {
             characters = .init("keyboard😀")
         }
@@ -61,7 +64,7 @@ class CharacterSequenceView: CharacterCollectionView {
             #endif
             
             if self.contentSize.width > self.frame.size.width {
-                self.scrollToItem(at: IndexPath.init(item: self.characters.count - 1, section: 0), at: .right, animated: true)
+                self.scrollRectToVisible(.init(origin: .init(x: self.contentSize.width - self.visibleSize.width, y: 0), size: self.visibleSize), animated: true)
             }
         }
     }
@@ -368,5 +371,16 @@ class CharacterSequenceView: CharacterCollectionView {
                 break
             }
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AutocompleteView.reuseIdentifier, for: indexPath) as! AutocompleteView
+        view.text = Keyboard.default.autocompleteLabel
+        view.font = characterFont
+        return view
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return .init(width: Keyboard.default.autocompleteLabel.size(withFont: characterFont).width, height: layout.itemSize.height)
     }
 }

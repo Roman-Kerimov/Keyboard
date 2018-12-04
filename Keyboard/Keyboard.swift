@@ -394,12 +394,31 @@ class Keyboard: NSObject {
     private override init() {
         super.init()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(updateCharacterSequence), name: .DocumentContextDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(documentContextDidChange), name: .DocumentContextDidChange, object: nil)
     }
     
     var characterSequence: [Character] = .init()
     
-    @objc private func updateCharacterSequence() {
+    var autocompleteText: String = .init()
+    var autocompleteLabel: String = .init()
+    var autocompleteDeleteCount: Int = 0
+    
+    @objc func autocomplete() {
+        for _ in 0..<autocompleteDeleteCount {
+            delegate?.delete()
+        }
+        
+        autocompleteDeleteCount = 0
+        
+        delegate?.insert(text: autocompleteText)
+        
+        autocompleteText = .init()
+        autocompleteLabel = .init()
+        
+        NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
+    }
+    
+    @objc private func documentContextDidChange() {
         let documentContextBeforeInput: String = delegate?.documentContext.beforeInput ?? .init()
         
         characterSequence = .init()
@@ -431,6 +450,24 @@ class Keyboard: NSObject {
             if spaceCount == 1 && isNonspaceSequence {
                 break
             }
+        }
+        
+        let scriptTranslationCode = documentContextBeforeInput.components(separatedBy: .whitespaces).last ?? .init()
+        
+        if let scriptTranslation = scriptTraslationCodeDictionary[scriptTranslationCode] {
+            let contextLine = documentContextBeforeInput.components(separatedBy: .newlines).last?.trimmingCharacters(in: .whitespaces) ?? .init()
+            
+            autocompleteDeleteCount = contextLine.count
+            
+            autocompleteText = String.init(contextLine.dropLast(scriptTranslationCode.count + 1)).translating(from: scriptTranslation.source, to: scriptTranslation.target, withTable: scriptTranslation.table)
+            
+            let labelLength = 10
+            autocompleteLabel = (autocompleteText.count > labelLength ? "..." : "") + autocompleteText.suffix(labelLength)
+        }
+        else {
+            autocompleteText = .init()
+            autocompleteLabel = .init()
+            autocompleteDeleteCount = 0
         }
         
         NotificationCenter.default.post(name: .CharacterSequenceDidChange, object: nil)

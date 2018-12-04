@@ -128,6 +128,13 @@ func eventTapCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent,
     
     if TISInputSource.currentKeyboardLayout.isASCIICapable {
         
+        if event.keycode == .tab && event.type == .keyDown && Keyboard.default.autocompleteText.isEmpty == false {
+            
+            Keyboard.default.autocomplete()
+            
+            return nil
+        }
+        
         let selectorKeys: [Keycode] = [.grave, .one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .zero, .hyphenMinus, .equal, .leftSquareBracket, .rightSquareBracket, .reverseSolidus, .apostrophe]
         
         if let item = selectorKeys.firstIndex(of: event.keycode) {

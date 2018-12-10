@@ -105,7 +105,7 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
         switch Section.allCases[section] {
             
         case .about:
-            return Keyboard.default.version
+            return Bundle.main.version
             
         default:
             return nil

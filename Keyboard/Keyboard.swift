@@ -13,12 +13,6 @@ class Keyboard: NSObject {
     static let `default`: Keyboard = .init()
     var delegate: KeyboardDelegate?
     
-    var version: String {
-        let versionNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
-        let buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
-        return "\(VERSION.string) \(versionNumber) (\(buildNumber))"
-    }
-    
     private var shiftDirections: [ShiftDirection] = .init()
     
     internal var shiftFlag: Bool = false {

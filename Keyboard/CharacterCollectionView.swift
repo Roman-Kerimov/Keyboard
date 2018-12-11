@@ -25,7 +25,6 @@ class CharacterCollectionView: UICollectionView, UICollectionViewDelegateFlowLay
     }
     
     internal let layout: CollectionViewFlowLayout = .init()
-    let characterCellReuseIdentifier = "fWz2pPGnOBKbeARRwDdJswgBqDYSA6P"
     
     init() {
         super.init(frame: .zero, collectionViewLayout: layout)
@@ -33,7 +32,7 @@ class CharacterCollectionView: UICollectionView, UICollectionViewDelegateFlowLay
         dataSource = self
         delegate = self
         
-        register(CharacterCollectionViewCell.self, forCellWithReuseIdentifier: characterCellReuseIdentifier)
+        register(CharacterCollectionViewCell.self, forCellWithReuseIdentifier: CharacterCollectionViewCell.reuseIdentifier)
         backgroundColor = .clear
         
         showsVerticalScrollIndicator = false
@@ -59,7 +58,7 @@ class CharacterCollectionView: UICollectionView, UICollectionViewDelegateFlowLay
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: characterCellReuseIdentifier, for: indexPath) as! CharacterCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCollectionViewCell.reuseIdentifier, for: indexPath) as! CharacterCollectionViewCell
         
         var character = characters[indexPath.item]
         

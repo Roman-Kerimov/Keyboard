@@ -103,7 +103,7 @@ class CharacterSearchView: CharacterCollectionView {
         if !isScriptCodeItem {
             var frequentlyUsedCharacters = Keyboard.default.frequentlyUsedCharacters
             
-            if let index = frequentlyUsedCharacters.index(of: character) {
+            if let index = frequentlyUsedCharacters.firstIndex(of: character) {
                 frequentlyUsedCharacters.remove(at: index)
             }
             

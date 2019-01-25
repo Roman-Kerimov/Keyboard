@@ -43,6 +43,8 @@ class KeyView: UIButton {
             mainLabelView.text = EMERGENCY_CALL.string
         case .continue:
             mainLabelView.text = CONTINUE.string
+        @unknown default:
+            mainLabelView.text = Key.enter.label
         }
     }
     

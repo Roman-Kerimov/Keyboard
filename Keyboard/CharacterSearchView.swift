@@ -109,7 +109,7 @@ class CharacterSearchView: CharacterCollectionView {
             
             frequentlyUsedCharacters = [character] + frequentlyUsedCharacters
             
-            Keyboard.default.frequentlyUsedCharacters = .init( frequentlyUsedCharacters.suffix(100) )
+            Keyboard.default.frequentlyUsedCharacters = .init( frequentlyUsedCharacters.prefix(100) )
         }
         
         Keyboard.default.delegate?.insert(text: character.description)

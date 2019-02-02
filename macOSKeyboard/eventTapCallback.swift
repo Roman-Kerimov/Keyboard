@@ -128,9 +128,17 @@ func eventTapCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent,
     
     if TISInputSource.currentKeyboardLayout.isASCIICapable {
         
-        if event.keycode == .tab && event.type == .keyDown && Keyboard.default.autocompleteText.isEmpty == false {
+        if event.keycode == .capsLock && event.flags.contains(.maskAlphaShift) {
             
-            Keyboard.default.autocomplete()
+            var ioConnect: io_connect_t = .init(0)
+            let ioService = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching(kIOHIDSystemClass))
+            IOServiceOpen(ioService, mach_task_self_, UInt32(kIOHIDParamConnectType), &ioConnect)
+            IOHIDSetModifierLockState(ioConnect, Int32(kIOHIDCapsLockState), false)
+            IOServiceClose(ioConnect)
+            
+            if Keyboard.default.autocompleteText.isEmpty == false {
+                Keyboard.default.autocomplete()
+            }
             
             return nil
         }

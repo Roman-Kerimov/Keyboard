@@ -453,7 +453,7 @@ class Keyboard: NSObject {
             
             autocompleteDeleteCount = contextLine.count
             
-            autocompleteText = String.init(contextLine.dropLast(scriptTranslationCode.count + 1)).translating(from: scriptTranslation.source, to: scriptTranslation.target, withTable: scriptTranslation.table, withEscapeSequence: "`")
+            autocompleteText = contextLine.dropLast(scriptTranslationCode.count + 1).translating(from: scriptTranslation.source, to: scriptTranslation.target, withTable: scriptTranslation.table, withEscapeSequence: "`")
             
             let labelLength = 10
             autocompleteLabel = (autocompleteText.count > labelLength ? "..." : "") + autocompleteText.suffix(labelLength)

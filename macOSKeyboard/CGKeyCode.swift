@@ -60,9 +60,9 @@ extension CGKeyCode {
         var actualStringLength: Int = 0
         var unicodeString: [UniChar] = .init(repeating: 0, count: maxStringLength)
         
-        let _ = TISInputSource.currentKeyboardLayout.unicodeKeyLayoutData.withUnsafeBytes { keyLayoutPointer in
-            UCKeyTranslate(keyLayoutPointer, virtualKeyCode, keyAction, modifierKeyState, keyboardType, keyTranslateOptions, &deadKeyState, maxStringLength, &actualStringLength, &unicodeString)
-        }
+        let keyLayoutPointer = NSData.init(data: TISInputSource.currentKeyboardLayout.unicodeKeyLayoutData).bytes.assumingMemoryBound(to: UCKeyboardLayout.self)
+        
+        UCKeyTranslate(keyLayoutPointer, virtualKeyCode, keyAction, modifierKeyState, keyboardType, keyTranslateOptions, &deadKeyState, maxStringLength, &actualStringLength, &unicodeString)
         
         return .init(utf16CodeUnits: &unicodeString, count: actualStringLength)
     }

@@ -217,8 +217,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
         }
         
         return .init(
-            beforeInput: .init(text.prefix(upTo: .init(encodedOffset: selectedTextRange.lowerBound))),
-            afterInput: .init(text.suffix(from: .init(encodedOffset: selectedTextRange.upperBound)))
+            beforeInput: .init(text.prefix(upTo: String.Index.init(utf16Offset: selectedTextRange.lowerBound, in: text))),
+            afterInput: .init(text.suffix(from: String.Index.init(utf16Offset: selectedTextRange.upperBound, in: text)))
         )
     }
     

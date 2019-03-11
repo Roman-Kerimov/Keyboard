@@ -148,10 +148,10 @@ class KeyView: UIButton {
         shiftRightLabelView.text = key.shiftRightLabel
         shiftLeftLabelView.text = key.shiftLeftLabel
         
-        shiftUpLabelView.textColor = .secondaryLabelColor
-        shiftDownLabelView.textColor = .secondaryLabelColor
-        shiftLeftLabelView.textColor = .secondaryLabelColor
-        shiftRightLabelView.textColor = .secondaryLabelColor
+        shiftUpLabelView.textColor = .labelColor
+        shiftDownLabelView.textColor = .labelColor
+        shiftLeftLabelView.textColor = .labelColor
+        shiftRightLabelView.textColor = .labelColor
         
         updateLocalizedStrings()
         

@@ -5,6 +5,9 @@
       location = "group:Keyboard.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:Calculator/Calculator.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:LinguisticKit/LinguisticKit.xcodeproj">
    </FileRef>
    <FileRef

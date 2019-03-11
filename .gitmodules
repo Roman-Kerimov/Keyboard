@@ -4,3 +4,6 @@
 [submodule "UIKit"]
 	path = UIKit
 	url = https://github.com/Roman-Kerimov/UIKit.git
+[submodule "Calculator"]
+	path = Calculator
+	url = https://github.com/Roman-Kerimov/Calculator.git

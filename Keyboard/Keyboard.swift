@@ -447,14 +447,11 @@ class Keyboard: NSObject {
             }
         }
         
-        let scriptTranslationCode = documentContextBeforeInput.components(separatedBy: .whitespaces).last ?? .init()
-        
-        if let scriptTranslation = scriptTraslationCodeDictionary[scriptTranslationCode] {
-            let contextLine = documentContextBeforeInput.components(separatedBy: .newlines).last?.trimmingCharacters(in: .whitespaces) ?? .init()
+        if let scriptTranslation = documentContextBeforeInput.translationByTargetScriptCode() {
             
-            autocompleteDeleteCount = contextLine.count
+            autocompleteDeleteCount = scriptTranslation.sourceString.count
             
-            autocompleteText = contextLine.dropLast(scriptTranslationCode.count + 1).translating(from: scriptTranslation.source, to: scriptTranslation.target, withTable: scriptTranslation.table, withEscapeSequence: "`")
+            autocompleteText = scriptTranslation.translatedString
             
             let labelLength = 10
             autocompleteLabel = (autocompleteText.count > labelLength ? "..." : "") + autocompleteText.suffix(labelLength)

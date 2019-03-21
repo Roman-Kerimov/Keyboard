@@ -69,6 +69,7 @@
 		96443FC1208C9D12002FFA6B /* NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96443FBF208C9D12002FFA6B /* NSMutableAttributedString.swift */; };
 		96443FC2208C9D12002FFA6B /* NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96443FBF208C9D12002FFA6B /* NSMutableAttributedString.swift */; };
 		96443FC4208CB34D002FFA6B /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96443FC3208CB34D002FFA6B /* UIFont.swift */; };
+		9644DAFF22436E7600C687A9 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9644DAFE22436E7600C687A9 /* Settings.bundle */; };
 		96498A3F205F4A7D002B1071 /* Keycode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96498A3E205F4A7D002B1071 /* Keycode.swift */; };
 		96498A40205F4A7D002B1071 /* Keycode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96498A3E205F4A7D002B1071 /* Keycode.swift */; };
 		96498A41205F4A7D002B1071 /* Keycode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96498A3E205F4A7D002B1071 /* Keycode.swift */; };
@@ -437,6 +438,7 @@
 		96443FBB208BE94D002FFA6B /* AccessibilityMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityMenuItem.swift; sourceTree = "<group>"; };
 		96443FBF208C9D12002FFA6B /* NSMutableAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedString.swift; sourceTree = "<group>"; };
 		96443FC3208CB34D002FFA6B /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		9644DAFE22436E7600C687A9 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		96464A1C1F3AF2A5006F8F6B /* SettingsContainerView_LegalNoticesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContainerView_LegalNoticesView.swift; sourceTree = "<group>"; };
 		96498A3E205F4A7D002B1071 /* Keycode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keycode.swift; sourceTree = "<group>"; };
 		964AB9311D1B6490004C827C /* Keyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Keyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -721,6 +723,7 @@
 				964AB93E1D1B6490004C827C /* Assets.xcassets */,
 				964AB9401D1B6490004C827C /* LaunchScreen.storyboard */,
 				964AB9431D1B6490004C827C /* Info.plist */,
+				9644DAFE22436E7600C687A9 /* Settings.bundle */,
 			);
 			path = iOSKeyboard;
 			sourceTree = "<group>";
@@ -1100,6 +1103,7 @@
 				964AB93F1D1B6490004C827C /* Assets.xcassets in Resources */,
 				96436BA420C1E0700065ED03 /* emoji-test.txt in Resources */,
 				964AB93A1D1B6490004C827C /* Main.storyboard in Resources */,
+				9644DAFF22436E7600C687A9 /* Settings.bundle in Resources */,
 				96533A971F1293B000B07CA3 /* Labels_Settings.ai in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -16,7 +16,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+ 
+        window = .init(frame: UIScreen.main.bounds)
+        
+        guard let window = self.window else {
+            fatalError()
+        }
+        
+        window.rootViewController = GuideViewController.init()
+        window.makeKeyAndVisible()
+
         return true
     }
 

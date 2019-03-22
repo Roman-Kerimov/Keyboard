@@ -5,7 +5,10 @@
 //  Created by Roman Kerimov on 2018-02-12.
 //
 
+import Foundation
+
 struct VERSION: LocalizedString {
+    private static let version = Bundle.main.version
     static var az:        String {return ""}
     static var az_Cyrl:   String {return ""}
     static var ca:        String {return ""}
@@ -13,7 +16,7 @@ struct VERSION: LocalizedString {
     static var da:        String {return ""}
     static var de:        String {return ""}
     static var el:        String {return ""}
-    static var en:        String {return "Version"}
+    static var en:        String {return "Version: \(version)"}
     static var eo:        String {return ""}
     static var es:        String {return ""}
     static var es_MX:     String {return ""}
@@ -30,7 +33,7 @@ struct VERSION: LocalizedString {
     static var pt_PT:     String {return ""}
     static var pt_BR:     String {return ""}
     static var ro:        String {return ""}
-    static var ru:        String {return "Версия"}
+    static var ru:        String {return "Версия: \(version)"}
     static var sk:        String {return ""}
     static var sv:        String {return ""}
     static var tr:        String {return ""}

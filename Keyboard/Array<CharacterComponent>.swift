@@ -22,7 +22,15 @@ extension Array where Element == CharacterComponent {
     }
     
     var normalized: [CharacterComponent] {
-        return self.filter {!$0.isCommutative} + (self.filter {$0.isCommutative} .sorted {$0.hashValue < $1.hashValue})
+        return nonCommutatives + commutatives
+    }
+    
+    var nonCommutatives: [CharacterComponent] {
+        return self.filter {!$0.isCommutative}
+    }
+    
+    var commutatives: [CharacterComponent] {
+        return self.filter {$0.isCommutative} .sorted {$0 < $1}
     }
     
     static var extraArrayExtension: [[CharacterComponent]] = .init()
@@ -41,5 +49,113 @@ extension Array where Element == CharacterComponent {
     
     func removing(characterComponents: Set<CharacterComponent>) -> [CharacterComponent] {
         return filter {!characterComponents.contains($0)}
+    }
+    
+    
+    
+    var shiftGestures: [String] {
+        
+        if self.contains(where: {[.above, .combining, .below].contains($0)}) {
+            let shiftGestureComponents = characterComponentsDictionary[self.character]!.compactMap { (component) -> String? in
+                
+                switch component {
+                case .above:
+                    return "↖︎"
+                    
+                case .combining:
+                    return "←"
+                    
+                case .below:
+                    return "↙︎"
+                    
+                default:
+                    
+                    guard let baseComponent = CharacterComponent.baseComponents[component] else {
+                        return nil
+                    }
+                    
+                    return [baseComponent].character
+                }
+            }
+            
+            guard shiftGestureComponents.count == self.count else {
+                return []
+            }
+            
+            return [shiftGestureComponents.joined()]
+        }
+        
+        guard nonCommutatives.isEmpty == false else {
+            return []
+        }
+        
+        let componentPermulations = (commutatives + nonCommutatives.dropFirst().flatMap {[$0, .combining]}).permulations.map {[nonCommutatives.first!] + $0}
+        
+        return componentPermulations.compactMap { (components) -> String? in
+            var shiftGesture = String.init()
+            
+            for (index, component) in components.enumerated() {
+                
+                let shiftGestureComponent: String
+                
+                switch component {
+                case .capital:
+                    shiftGestureComponent = "↑"
+                    
+                case .smallCapital:
+                    shiftGestureComponent = "↑↓"
+                    
+                case .superscript:
+                    
+                    shiftGestureComponent = "↗︎"
+                    
+                case .subscript:
+                    shiftGestureComponent = "↘︎"
+                    
+                case .combining:
+                    
+                    let componentsBefore = components.prefix(through: index)
+                    
+                    guard componentsBefore.filter({KeyboardLayout.qwerty.components.contains($0)}).count - componentsBefore.filter({$0 == .combining}).count == 1 else {
+                        return nil
+                    }
+                    
+                    shiftGestureComponent = "←"
+                    
+                default:
+                    if component.isExtraComponent {
+                        guard let extraComponentIndex = extraArray.firstIndex(where: {$0.contains(component)}) else {
+                            return nil
+                        }
+                        
+                        shiftGestureComponent = .init("→↓←".prefix(extraComponentIndex+1))
+                    }
+                    else if KeyboardLayout.qwerty.components.contains(component) {
+                        guard [component].character.isEmpty == false  else {
+                            return nil
+                        }
+                        shiftGestureComponent = [component].character
+                    }
+                    else if let baseComponent = CharacterComponent.baseComponents[component]  {
+                        shiftGestureComponent = [baseComponent].character + "←"
+                    }
+                    else {
+                        return nil
+                    }
+                }
+                
+                guard Array.init(components.prefix(through: index)).removing(characterComponents: [.combining]).character.isEmpty == false else {
+                    return nil
+                }
+                
+                guard shiftGesture.last != shiftGestureComponent.first else {
+                    return nil
+                }
+                
+                shiftGesture.append(shiftGestureComponent)
+            }
+            
+            return shiftGesture
+        }
     }
 }

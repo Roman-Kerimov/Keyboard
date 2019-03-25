@@ -50,4 +50,30 @@ class Array_CharacterComponent_Tests: XCTestCase {
     func testHumanReadabilityKeys() {
         XCTAssert([.a, .capital].key == ".a, .capital")
     }
+    
+    func testShiftGestures() {
+        XCTAssertEqual("A".characterComponents.shiftGestures, ["a↑"])
+        XCTAssertEqual("ʟ".characterComponents.shiftGestures, ["l↑↓"])
+        XCTAssertEqual("Ʀ".characterComponents.shiftGestures, ["r↑↓↑"])
+        XCTAssertEqual("ᵃ".characterComponents.shiftGestures, ["a↗︎"])
+        XCTAssertEqual("ᴬ".characterComponents.shiftGestures, ["a↑↗︎", "a↗︎↑"])
+        XCTAssertEqual("ə".characterComponents.shiftGestures, ["a→"])
+        XCTAssertEqual("ɐ".characterComponents.shiftGestures, ["a→↓"])
+        XCTAssertEqual("ʁ".characterComponents.shiftGestures, ["r↑↓→↓←"])
+        XCTAssertEqual("ᵊ".characterComponents.shiftGestures, ["a→↗︎", "a↗︎→"])
+        XCTAssertEqual("ᵄ".characterComponents.shiftGestures, ["a→↓↗︎", "a↗︎→↓"])
+        XCTAssertEqual("ₐ".characterComponents.shiftGestures, ["a↘︎"])
+        XCTAssertEqual("æ".characterComponents.shiftGestures, ["ae←"])
+        XCTAssertEqual("ǈ".characterComponents.shiftGestures, ["l↑j←", "lj↑←", "lj←↑"])
+        XCTAssertEqual("Ǉ".characterComponents.shiftGestures, ["l↑j↑←", "l↑j←↑", "lj↑←↑"])
+        XCTAssertEqual("ꟹ".characterComponents.shiftGestures, ["o↗︎e←", "oe↗︎←", "oe←↗︎"])
+        XCTAssertEqual("ʂ".characterComponents.shiftGestures, ["st←"])
+        XCTAssertEqual("̢".characterComponents.shiftGestures, ["t↙︎"])
+
+        XCTAssertEqual("̗".characterComponents.shiftGestures, ["a↙︎"])
+        XCTAssertEqual("́".characterComponents.shiftGestures, ["a↖︎"])
+        
+        XCTAssertEqual("⃒".characterComponents.shiftGestures, ["|←"])
+        
+    }
 }

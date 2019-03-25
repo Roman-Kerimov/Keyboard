@@ -33,6 +33,8 @@ struct KeyboardLayout {
         return rows.map { $0.count }.max()!
     }
     
+    let components: Set<CharacterComponent>
+    
     static let list: [KeyboardLayout] = [.qwerty, .dvorak, .colemak, .azerty, .qwertz]
     
     init(name: String, rows: [[CharacterComponent]], defaultInputSourceID: String) {
@@ -75,6 +77,8 @@ struct KeyboardLayout {
         
         self.rows = keyRows
         self.inputSourceID = defaultInputSourceID
+        
+        components = Set.init(.init(rows.joined()) + .init(shiftDownRows.joined()))
     }
 
     static let qwerty = KeyboardLayout(

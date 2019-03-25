@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum CharacterComponent {
+enum CharacterComponent: Int {
     private static let commutative: Set<CharacterComponent> = Set.init([.capital, .smallCapital, .superscript, .subscript] + extraComponents + letterToMixingComponentDictionary.values.filter {$0 != .extraH && $0 != .tilde}).union(scripts)
     
     public var isCommutative: Bool {
@@ -65,6 +65,27 @@ enum CharacterComponent {
     case not, notLow
     case lazyS
     case zDigraph
+    
+    static let baseComponents = mergeDictionaries(
+        Dictionary.init(uniqueKeysWithValues: letterToMixingComponentDictionary.map {($1, $0)}),
+        Dictionary.init(uniqueKeysWithValues: letterToCombiningComponentDictionary.map {($1, $0)})
+    )
+    
+    static func mergeDictionaries(_ lhs: Dictionary<CharacterComponent, CharacterComponent>, _ rhs: Dictionary<CharacterComponent, CharacterComponent>) -> Dictionary<CharacterComponent, CharacterComponent> {
+        var result = lhs
+        
+        for (key, value) in rhs {
+            if let lhsValue = lhs[key] {
+                if lhsValue != value {
+                    fatalError()
+                }
+            }
+            
+            result[key] = value
+        }
+        
+        return result
+    }
     
     internal static let letterToMixingComponentDictionary: [CharacterComponent: CharacterComponent] = [
         //.highStroke
@@ -219,4 +240,10 @@ enum CharacterComponent {
     
     case beginHighTone, endHighTone
     case beginLowTone, endLowTone
+}
+
+extension CharacterComponent: Comparable {
+    static func < (lhs: CharacterComponent, rhs: CharacterComponent) -> Bool {
+        return lhs.rawValue < rhs.rawValue
+    }
 }

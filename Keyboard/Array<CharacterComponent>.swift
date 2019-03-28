@@ -105,14 +105,21 @@ extension Array where Element == CharacterComponent {
                 case .smallCapital:
                     shiftGestureComponent = "↑↓"
                     
-                case .superscript:
+                case .superscript, .extraUpRight:
                     
                     shiftGestureComponent = "↗︎"
                     
-                case .subscript:
+                case .extraRight:
+                    shiftGestureComponent = "→"
+                    
+                case .subscript, .extraDownRight:
                     shiftGestureComponent = "↘︎"
                     
-                case .combining:
+                case .extraDownLeft:
+                    shiftGestureComponent = "↙︎"
+                    
+                    
+                case .combining, .extraLeft:
                     
                     let componentsBefore = components.prefix(through: index)
                     
@@ -121,6 +128,9 @@ extension Array where Element == CharacterComponent {
                     }
                     
                     shiftGestureComponent = "←"
+                    
+                case .extraUpLeft:
+                    shiftGestureComponent = "↖︎"
                     
                 default:
                     if component.isExtraComponent {

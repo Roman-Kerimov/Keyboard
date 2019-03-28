@@ -76,5 +76,10 @@ class Array_CharacterComponent_Tests: XCTestCase {
         
         XCTAssertEqual("⃒".characterComponents.shiftGestures, ["|←"])
         
+        XCTAssertEqual("“".characterComponents.shiftGestures, ["\"↖︎"])
+        XCTAssertEqual("«".characterComponents.shiftGestures, ["\"←"])
+        XCTAssertEqual("„".characterComponents.shiftGestures, ["\"↙︎"])
+        XCTAssertEqual("”".characterComponents.shiftGestures, ["\"↗︎"])
+        XCTAssertEqual("»".characterComponents.shiftGestures, ["\"→"])
     }
 }

@@ -203,6 +203,8 @@
 		96BE9C7120A8340400C2C03F /* CharacterSearchWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BE9C7020A8340400C2C03F /* CharacterSearchWindow.swift */; };
 		96C1EC2E205131EC00AC27CB /* CGEventFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C1EC2D205131EC00AC27CB /* CGEventFlags.swift */; };
 		96C49DC51EB7DF1F006F93ED /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C49DC41EB7DF1F006F93ED /* Character.swift */; };
+		96D23570224CC76B0018C266 /* StringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D2356F224CC76B0018C266 /* StringTests.swift */; };
+		96D23571224CC76B0018C266 /* StringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D2356F224CC76B0018C266 /* StringTests.swift */; };
 		96D2B8DD1E35538B006772A5 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D2B8DC1E35538B006772A5 /* Localization.swift */; };
 		96D6E94F20C8494800C357FA /* NonAccessibilityDocumentContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D6E94E20C8494800C357FA /* NonAccessibilityDocumentContext.swift */; };
 		96DB1A7A202FB84F00B96D3C /* LegalNoticesText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961FC3301F3AE14B00ADB15D /* LegalNoticesText.swift */; };
@@ -528,6 +530,7 @@
 		96BE9C7020A8340400C2C03F /* CharacterSearchWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSearchWindow.swift; sourceTree = "<group>"; };
 		96C1EC2D205131EC00AC27CB /* CGEventFlags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGEventFlags.swift; sourceTree = "<group>"; };
 		96C49DC41EB7DF1F006F93ED /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		96D2356F224CC76B0018C266 /* StringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTests.swift; sourceTree = "<group>"; };
 		96D2B8DC1E35538B006772A5 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		96D6E94E20C8494800C357FA /* NonAccessibilityDocumentContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonAccessibilityDocumentContext.swift; sourceTree = "<group>"; };
 		96DB1A78202FB80300B96D3C /* UIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -834,6 +837,7 @@
 				96534194224727FD0097B522 /* Array<Equatable>Tests.swift */,
 				96B6B35D1F97660E00231AE6 /* Array<CharacterComponent>Tests.swift */,
 				965BFAD01F797BBB00B8F682 /* CharacterComponentsDictionaryTests.swift */,
+				96D2356F224CC76B0018C266 /* StringTests.swift */,
 			);
 			path = KeyboardTests;
 			sourceTree = "<group>";
@@ -1359,6 +1363,7 @@
 				965BFAD11F797BBB00B8F682 /* CharacterComponentsDictionaryTests.swift in Sources */,
 				96B6B35E1F97660E00231AE6 /* Array<CharacterComponent>Tests.swift in Sources */,
 				96905E4720EF268C006F3DE9 /* KeyboardTests.swift in Sources */,
+				96D23570224CC76B0018C266 /* StringTests.swift in Sources */,
 				965BFAC91F7979FA00B8F682 /* iOSKeyboardTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1467,6 +1472,7 @@
 				96B6BC4B2031ADBC002509E4 /* CharacterComponentsDictionaryTests.swift in Sources */,
 				96E354FD2020DDBD00668374 /* macOSKeyboardTests.swift in Sources */,
 				96905E4820EF268C006F3DE9 /* KeyboardTests.swift in Sources */,
+				96D23571224CC76B0018C266 /* StringTests.swift in Sources */,
 				96B6BC4A2031ADB6002509E4 /* Array<CharacterComponent>Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

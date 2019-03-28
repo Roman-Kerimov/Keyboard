@@ -1,5 +1,5 @@
 //
-//  Array.swift
+//  Array<Equatable>.swift
 //  Keyboard
 //
 //  Created by Roman Kerimov on 2019-03-24.

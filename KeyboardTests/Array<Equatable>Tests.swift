@@ -1,5 +1,5 @@
 //
-//  ArrayTests.swift
+//  Array<Equatable>Tests.swift
 //  Keyboard
 //
 //  Created by Roman Kerimov on 2019-03-24.
@@ -8,7 +8,7 @@
 import XCTest
 @testable import Keyboard
 
-class ArrayTests: XCTestCase {
+class Array_Equatable_Tests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.

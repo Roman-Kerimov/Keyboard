@@ -10,7 +10,7 @@ import XCTest
 
 class StringTests: XCTestCase {
 
-    func testShiftGestures() {
+    func testShiftGesture() {
         XCTAssertEqual("ç̌".shiftGesture, "cs↙︎v↖︎")
         XCTAssertEqual("3²".shiftGesture, "32↗︎")
     }

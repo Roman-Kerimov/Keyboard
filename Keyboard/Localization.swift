@@ -1,5 +1,5 @@
 //
-//  Internationalization.swift
+//  Localization.swift
 //  Keyboard
 //
 //  Created by Roman Kerimov on 2017-01-14.

@@ -51,12 +51,10 @@ extension Array where Element == CharacterComponent {
         return filter {!characterComponents.contains($0)}
     }
     
-    
-    
-    var shiftGestures: [String] {
+    var defaultShiftGesture: String? {
         
         if self.contains(where: {[.above, .combining, .below].contains($0)}) {
-            let shiftGestureComponents = characterComponentsDictionary[self.character]!.compactMap { (component) -> String? in
+            let shiftGestureComponents = self.compactMap { (component) -> String? in
                 
                 switch component {
                 case .above:
@@ -79,93 +77,92 @@ extension Array where Element == CharacterComponent {
             }
             
             guard shiftGestureComponents.count == self.count else {
-                return []
+                return nil
             }
             
-            return [shiftGestureComponents.joined()]
+            return shiftGestureComponents.joined()
         }
         
-        guard nonCommutatives.isEmpty == false else {
-            return []
+        var componentSegments: [[CharacterComponent]] = []
+
+        for component in self {
+
+            if !component.isCommutative || componentSegments.isEmpty {
+                componentSegments.append([component])
+            }
+            else {
+                componentSegments[componentSegments.index(before: componentSegments.endIndex)].append(component)
+            }
         }
+
+        let components = componentSegments.enumerated().flatMap {[$0.element.first!] + $0.element.dropFirst().sorted()}
         
-        let componentPermulations = (commutatives + nonCommutatives.dropFirst().flatMap {[$0, .combining]}).permulations.map {[nonCommutatives.first!] + $0}
+        var shiftGesture = String.init()
         
-        return componentPermulations.compactMap { (components) -> String? in
-            var shiftGesture = String.init()
+        for (index, component) in components.enumerated() {
             
-            for (index, component) in components.enumerated() {
+            let shiftGestureComponent: String
+            
+            switch component {
+            case .capital:
+                shiftGestureComponent = "↑"
                 
-                let shiftGestureComponent: String
+            case .smallCapital:
+                shiftGestureComponent = "↑↓"
                 
-                switch component {
-                case .capital:
-                    shiftGestureComponent = "↑"
-                    
-                case .smallCapital:
-                    shiftGestureComponent = "↑↓"
-                    
-                case .superscript, .extraUpRight:
-                    
-                    shiftGestureComponent = "↗︎"
-                    
-                case .extraRight:
-                    shiftGestureComponent = "→"
-                    
-                case .subscript, .extraDownRight:
-                    shiftGestureComponent = "↘︎"
-                    
-                case .extraDownLeft:
-                    shiftGestureComponent = "↙︎"
-                    
-                    
-                case .combining, .extraLeft:
-                    
-                    let componentsBefore = components.prefix(through: index)
-                    
-                    guard componentsBefore.filter({KeyboardLayout.qwerty.components.contains($0)}).count - componentsBefore.filter({$0 == .combining}).count == 1 else {
-                        return nil
-                    }
-                    
-                    shiftGestureComponent = "←"
-                    
-                case .extraUpLeft:
-                    shiftGestureComponent = "↖︎"
-                    
-                default:
-                    if component.isExtraComponent {
-                        guard let extraComponentIndex = extraArray.firstIndex(where: {$0.contains(component)}) else {
-                            return nil
-                        }
-                        
-                        shiftGestureComponent = .init("→↓←".prefix(extraComponentIndex+1))
-                    }
-                    else if KeyboardLayout.qwerty.components.contains(component) {
-                        guard [component].character.isEmpty == false  else {
-                            return nil
-                        }
-                        shiftGestureComponent = [component].character
-                    }
-                    else if let baseComponent = CharacterComponent.baseComponents[component]  {
-                        shiftGestureComponent = [baseComponent].character + "←"
-                    }
-                    else {
-                        return nil
-                    }
-                }
+            case .superscript, .extraUpRight:
                 
-                guard Array.init(components.prefix(through: index)).removing(characterComponents: [.combining]).character.isEmpty == false else {
+                shiftGestureComponent = "↗︎"
+                
+            case .extraRight:
+                shiftGestureComponent = "→"
+                
+            case .subscript, .extraDownRight:
+                shiftGestureComponent = "↘︎"
+                
+            case .extraDownLeft:
+                shiftGestureComponent = "↙︎"
+                
+                
+            case .extraLeft:
+                
+                let componentsBefore = components.prefix(through: index)
+                
+                guard componentsBefore.filter({KeyboardLayout.qwerty.components.contains($0)}).count - componentsBefore.filter({$0 == .combining}).count == 1 else {
                     return nil
                 }
                 
-                guard shiftGesture.last != shiftGestureComponent.first else {
+                shiftGestureComponent = "←"
+                
+            case .extraUpLeft:
+                shiftGestureComponent = "↖︎"
+                
+            default:
+                if component.isExtraComponent {
+                    guard let extraComponentIndex = extraArray.firstIndex(where: {$0.contains(component)}) else {
+                        return nil
+                    }
+                    
+                    shiftGestureComponent = .init("→↓←".prefix(extraComponentIndex+1))
+                }
+                else if KeyboardLayout.qwerty.components.contains(component) {
+                    guard [component].character.isEmpty == false  else {
+                        return nil
+                    }
+                    
+                    shiftGestureComponent = [component].character + (shiftGesture.isEmpty ? "" : "←")
+                }
+                else if let baseComponent = CharacterComponent.baseComponents[component]  {
+                    shiftGestureComponent = [baseComponent].character + "←"
+                }
+                else {
                     return nil
                 }
-                
-                shiftGesture.append(shiftGestureComponent)
             }
             
-            return shiftGesture
+            shiftGesture.append(shiftGestureComponent)
         }
+        
+        return shiftGesture
     }
 }

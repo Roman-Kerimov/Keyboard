@@ -43,7 +43,8 @@ enum CharacterComponent: Int {
     case glottalStop, ain, saltillo, sinologicalDot
     case interrobang
     
-    case capital, smallCapital
+    case smallCapital
+    case capital
     case extra0, turned, reversed, inverted, sideways, extra1, extra2
     case extraLeft, extraUpLeft, extraDownLeft, extraRight, extraUpRight, extraDownRight
     case superscript, `subscript`, middle, raised

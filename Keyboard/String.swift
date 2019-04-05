@@ -19,11 +19,11 @@ extension String {
     static let v: String = Character.v.description
     static let z: String = Character.z.description
     
-    var shiftGesture: String? {
+    var defaultShiftGesture: String? {
         
         let decomposedUnicodeScalars = decomposedStringWithCanonicalMapping.unicodeScalars
         
-        let shiftGestures = decomposedUnicodeScalars.compactMap {$0.description.characterComponents.shiftGestures.first}
+        let shiftGestures = decomposedUnicodeScalars.compactMap {$0.description.characterComponents.defaultShiftGesture}
         
         if shiftGestures.count != decomposedUnicodeScalars.count {
             return nil
@@ -33,7 +33,7 @@ extension String {
     }
     
     var characterComponents: [CharacterComponent] {
-        return characterComponentsDictionary[self]?.normalized ?? .init()
+        return characterComponentsDictionary[self] ?? .init()
     }
     
     func removing(characterComponents: Set<CharacterComponent>) -> String {

@@ -126,12 +126,6 @@ extension Array where Element == CharacterComponent {
                 
             case .extraLeft:
                 
-                let componentsBefore = components.prefix(through: index)
-                
-                guard componentsBefore.filter({KeyboardLayout.qwerty.components.contains($0)}).count - componentsBefore.filter({$0 == .combining}).count == 1 else {
-                    return nil
-                }
-                
                 shiftGestureComponent = "←"
                 
             case .extraUpLeft:

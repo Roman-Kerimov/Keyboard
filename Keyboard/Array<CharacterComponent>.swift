@@ -150,7 +150,21 @@ extension Array where Element == CharacterComponent {
                         return nil
                     }
                     
-                    shiftGestureComponent = [component].character + (shiftGesture.isEmpty ? "" : "←")
+                    if shiftGesture.isEmpty {
+                        shiftGestureComponent = [component].character
+                    }
+                    else if let mixingComponent = CharacterComponent.letterToMixingComponentDictionary[component] {
+                        
+                        if (components.prefix(upTo: index) + [mixingComponent]).character.isEmpty {
+                            shiftGestureComponent = [component].character + "←"
+                        }
+                        else {
+                            shiftGestureComponent = [component].character + "←→"
+                        }
+                    }
+                    else {
+                        shiftGestureComponent = [component].character + "←"
+                    }
                 }
                 else if let baseComponent = CharacterComponent.baseComponents[component]  {
                     shiftGestureComponent = [baseComponent].character + "←"

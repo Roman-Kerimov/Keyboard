@@ -69,6 +69,7 @@ class Array_CharacterComponent_Tests: XCTestCase {
         XCTAssertEqual("Ǉ".characterComponents.defaultShiftGesture, "l↑j←↑")
         XCTAssertEqual("ꟹ".characterComponents.defaultShiftGesture, "oe←↗︎")
         XCTAssertEqual("ʂ".characterComponents.defaultShiftGesture, "st←")
+        XCTAssertEqual("ﬆ".characterComponents.defaultShiftGesture, "st←→")
         XCTAssertEqual("̢".characterComponents.defaultShiftGesture, "t↙︎")
 
         XCTAssertEqual("̗".characterComponents.defaultShiftGesture, "a↙︎")

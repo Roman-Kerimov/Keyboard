@@ -72,4 +72,37 @@ class KeyboardTests: XCTestCase, KeyboardDelegate {
         
         XCTAssertEqual(documentContext.beforeInput, [latinText, cyrillicText].joined(separator: .return))
     }
+    
+    func testByDefaultShiftGestures() {
+        for (character, shiftGesture) in characterComponentsDictionary.keys.map({($0, $0.defaultShiftGesture)}) {
+            
+            guard let shiftGesture = shiftGesture else {
+                continue
+            }
+            
+            document = .init()
+            
+            func upKeyIfNeeded() {
+                if let key = Keyboard.default.currentKey {
+                    Keyboard.default.up(key: key)
+                }
+            }
+            
+            for gestureComponent in shiftGesture {
+                guard let shiftDirection = Keyboard.ShiftDirection.init(rawValue: gestureComponent) else {
+                    upKeyIfNeeded()
+                    
+                    Keyboard.default.down(key: Key.init(label: gestureComponent.description))
+                    
+                    continue
+                }
+                
+                Keyboard.default.shift(direction: shiftDirection)
+            }
+            
+            upKeyIfNeeded()
+            
+            XCTAssertEqual(document, character)
+        }
+    }
 }

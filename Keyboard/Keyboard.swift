@@ -368,15 +368,15 @@ class Keyboard: NSObject {
         }
     }
     
-    internal enum ShiftDirection {
-        case downLeft
-        case down
-        case downRight
-        case right
-        case upRight
-        case up
-        case upLeft
-        case left
+    internal enum ShiftDirection: Character {
+        case downLeft = "↙︎"
+        case down = "↓"
+        case downRight = "↘︎"
+        case right = "→"
+        case upRight = "↗︎"
+        case up = "↑"
+        case upLeft = "↖︎"
+        case left = "←"
     }
 
     enum KeyboardLayoutMode: String {

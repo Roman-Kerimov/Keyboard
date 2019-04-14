@@ -54,7 +54,11 @@ extension Array where Element == CharacterComponent {
     var defaultShiftGesture: String? {
         
         if self.contains(where: {[.above, .combining, .below].contains($0)}) {
-            let shiftGestureComponents = self.compactMap { (component) -> String? in
+            
+            var components = self
+            components.insert(components.removeLast(), at: 1)
+            
+            let shiftGestureComponents = components.enumerated().compactMap { (offset, component) -> String? in
                 
                 switch component {
                 case .above:
@@ -72,7 +76,12 @@ extension Array where Element == CharacterComponent {
                         return nil
                     }
                     
-                    return [baseComponent].character
+                    if offset <= 1 {
+                        return [baseComponent].character
+                    }
+                    else {
+                        return [baseComponent].character + "←"
+                    }
                 }
             }
             

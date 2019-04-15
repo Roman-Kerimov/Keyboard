@@ -78,7 +78,7 @@ struct KeyboardLayout {
         self.rows = keyRows
         self.inputSourceID = defaultInputSourceID
         
-        components = Set.init(.init(rows.joined()) + .init(shiftDownRows.joined()) + KeyboardLayout.shiftUpDictionary.values)
+        components = Set.init(.init(rows.joined()) + .init(shiftDownRows.joined()) + KeyboardLayout.shiftUpDictionary.values + [.space])
     }
 
     static let qwerty = KeyboardLayout(

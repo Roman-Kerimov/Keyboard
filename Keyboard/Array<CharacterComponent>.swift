@@ -53,6 +53,10 @@ extension Array where Element == CharacterComponent {
     
     var defaultShiftGesture: String? {
         
+        guard !isEmpty else {
+            return nil
+        }
+        
         if self.contains(where: {[.above, .combining, .below].contains($0)}) {
             
             var components = self

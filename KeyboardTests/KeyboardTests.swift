@@ -74,9 +74,9 @@ class KeyboardTests: XCTestCase, KeyboardDelegate {
     }
     
     func testByDefaultShiftGestures() {
-        for (character, shiftGesture) in characterComponentsDictionary.keys.map({($0, $0.defaultShiftGesture)}) {
+        for character in characterComponentsDictionary.keys {
             
-            guard let shiftGesture = shiftGesture else {
+            guard let shiftGesture = character.defaultShiftGesture else {
                 continue
             }
             

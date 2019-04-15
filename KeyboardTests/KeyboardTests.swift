@@ -74,7 +74,7 @@ class KeyboardTests: XCTestCase, KeyboardDelegate {
     }
     
     func testByDefaultShiftGestures() {
-        for character in characterComponentsDictionary.keys {
+        for character in characterComponentsDictionary.keys.map({(CharacterSet.nonBaseCharacters.contains($0.unicodeScalars.first!) ? "◌" : "") + $0}) {
             
             guard let shiftGesture = character.defaultShiftGesture else {
                 continue

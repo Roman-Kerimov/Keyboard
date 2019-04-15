@@ -45,8 +45,8 @@ enum CharacterComponent: Int {
     
     case smallCapital
     case capital
-    case extra0, turned, reversed, inverted, sideways, extra1, extra2
     case extraLeft, extraUpLeft, extraDownLeft, extraRight, extraUpRight, extraDownRight
+    case extra0, turned, reversed, inverted, sideways, extra1, extra2
     case superscript, `subscript`, middle, raised
     
     case highStroke, topbar

@@ -83,5 +83,6 @@ class Array_CharacterComponent_Tests: XCTestCase {
         XCTAssertEqual("”".characterComponents.defaultShiftGesture, "\"↗︎")
         XCTAssertEqual("»".characterComponents.defaultShiftGesture, "\"→")
         XCTAssertEqual("᷄".characterComponents.defaultShiftGesture, "‐↖︎a←")
+        XCTAssertEqual("‛".characterComponents.defaultShiftGesture, "\'↗︎→")
     }
 }

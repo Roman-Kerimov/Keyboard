@@ -30,7 +30,7 @@ extension Array where Element == CharacterComponent {
     }
     
     var commutatives: [CharacterComponent] {
-        return self.filter {$0.isCommutative} .sorted {$0 < $1}
+        return self.filter {$0.isCommutative} .sorted(by: <)
     }
     
     static var extraArrayExtension: [[CharacterComponent]] = .init()

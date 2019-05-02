@@ -57,7 +57,8 @@ extension Array where Element == CharacterComponent {
             return nil
         }
         
-        if self.contains(where: {[.above, .combining, .below].contains($0)}) {
+        if self.contains(where: {[.above, .combining, .below].contains($0)})
+            || (CharacterComponent.baseComponents[self.first!] != nil && self.contains(where: {[.superscript, .subscript].contains($0)})) {
             
             var components = self
             components.insert(components.removeLast(), at: 1)
@@ -73,6 +74,12 @@ extension Array where Element == CharacterComponent {
                     
                 case .below:
                     return "↙︎"
+                    
+                case .superscript:
+                    return "↖︎↗︎"
+                    
+                case .subscript:
+                    return "↙︎↘︎"
                     
                 default:
                     

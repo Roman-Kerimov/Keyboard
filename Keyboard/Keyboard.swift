@@ -297,10 +297,7 @@ class Keyboard: NSObject {
                 break
             }
             
-            guard let previousCharacter = delegate?.documentContext.beforeInput?.dropLast().last else {
-                currentLabel = .init()
-                break
-            }
+            let previousCharacterOrNil = delegate?.documentContext.beforeInput?.dropLast().last
             
             shouldDeletePreviousCharacter = true
             
@@ -315,9 +312,14 @@ class Keyboard: NSObject {
             combiningCharacter = (combiningComponents + combiningSuffix).character
             
             guard combiningCharacter.isEmpty else {
-                currentLabel = (previousCharacter.description + combiningCharacter).precomposedStringWithCanonicalMapping
+                currentLabel = ((previousCharacterOrNil?.description ?? .init()) + combiningCharacter).precomposedStringWithCanonicalMapping
                 
                 currentCombiningCharacter = combiningCharacter
+                break
+            }
+            
+            guard let previousCharacter = previousCharacterOrNil else {
+                currentLabel = .init()
                 break
             }
             

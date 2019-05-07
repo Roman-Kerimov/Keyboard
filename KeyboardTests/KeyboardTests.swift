@@ -85,6 +85,17 @@ class KeyboardTests: XCTestCase, KeyboardDelegate {
         
         Keyboard.default.up(key: o)
     }
+    
+    func testCombiningCharactersAtBeginningOfString() {
+        let a: Key = Key.init(label: "a")
+        Keyboard.default.down(key: a)
+        
+        Keyboard.default.shift(direction: .upLeft)
+        XCTAssertEqual(document, "́")
+        
+        Keyboard.default.up(key: a)
+
+    }
 
     func testScriptTranslation() {
         let cyrillicText = "Съешь же ещё этих мягких французских булок, да выпей чаю."
@@ -102,7 +113,7 @@ class KeyboardTests: XCTestCase, KeyboardDelegate {
     }
     
     func testByDefaultShiftGestures() {
-        for character in characterComponentsDictionary.keys.map({(CharacterSet.nonBaseCharacters.contains($0.unicodeScalars.first!) ? "◌" : "") + $0}) {
+        for character in characterComponentsDictionary.keys {
             
             guard let shiftGesture = character.defaultShiftGesture else {
                 continue

@@ -119,6 +119,8 @@ class Keyboard: NSObject {
             currentKey = nil
             Array<CharacterComponent>.extraArrayExtension = .init()
         }
+        
+        currentCombiningCharacter = nil
     }
     
     private var autorepeatStartTimer: Timer?
@@ -210,6 +212,8 @@ class Keyboard: NSObject {
             NotificationCenter.default.post(name: .KeyboardStateDidChange, object: nil)
         }
     }
+    
+    var currentCombiningCharacter: String? = nil
     
     private func shiftUp(key: Key) {
         if currentLabel == key.label && key.shiftUpLabel.isEmpty == false {
@@ -312,6 +316,8 @@ class Keyboard: NSObject {
             
             guard combiningCharacter.isEmpty else {
                 currentLabel = (previousCharacter.description + combiningCharacter).precomposedStringWithCanonicalMapping
+                
+                currentCombiningCharacter = combiningCharacter
                 break
             }
             
@@ -348,13 +354,31 @@ class Keyboard: NSObject {
             
             characterComponents += [.extraRight]
             
-        case .upRight:
-            characterComponents += [.superscript]
-            characterComponents += [.extraUpRight]
+        case .upRight, .downRight:
+            if direction == .upRight {
+                characterComponents += [.superscript]
+                characterComponents += [.extraUpRight]
+            }
+            else {
+                characterComponents += [.subscript]
+                characterComponents += [.extraDownRight]
+            }
             
-        case .downRight:
-            characterComponents += [.subscript]
-            characterComponents += [.extraDownRight]
+            
+            if let combiningCharacter = currentCombiningCharacter {
+                
+                var unicodeScalars = currentLabel.decomposedStringWithCanonicalMapping.unicodeScalars
+                
+                let combiningCharacterIndex = unicodeScalars.lastIndex(of: combiningCharacter.unicodeScalars.first!)
+                
+                let modifierLetterComponents = combiningCharacter.characterComponents.removing(characterComponents: [direction == .upRight ? .above : .below]) + [direction == .upRight ? .superscript : .subscript]
+                
+                unicodeScalars.remove(at: combiningCharacterIndex!)
+                
+                currentLabel = .init(unicodeScalars) + modifierLetterComponents.character
+                
+                currentCombiningCharacter = nil
+            }
         }
         
         if delegate?.documentContext.beforeInput != previousDocumentContextBeforeInput {

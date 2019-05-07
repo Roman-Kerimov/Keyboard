@@ -57,6 +57,34 @@ class KeyboardTests: XCTestCase, KeyboardDelegate {
         XCTAssertEqual(document, "þə")
         Keyboard.default.up(key: a)
     }
+    
+    func testModifierLetters() {
+        let a: Key = Key.init(label: "a")
+        Keyboard.default.down(key: a)
+        Keyboard.default.up(key: a)
+        
+        let u: Key = Key.init(label: "u")
+        Keyboard.default.down(key: u)
+        
+        Keyboard.default.shift(direction: .upLeft)
+        XCTAssertEqual(document, "ă")
+        
+        Keyboard.default.shift(direction: .upRight)
+        XCTAssertEqual(document, "a˘")
+        
+        Keyboard.default.up(key: u)
+        
+        let o: Key = Key.init(label: "o")
+        Keyboard.default.down(key: o)
+        
+        Keyboard.default.shift(direction: .downLeft)
+        XCTAssertEqual(document, "a˘̥")
+        
+        Keyboard.default.shift(direction: .downRight)
+        XCTAssertEqual(document, "a˘˳")
+        
+        Keyboard.default.up(key: o)
+    }
 
     func testScriptTranslation() {
         let cyrillicText = "Съешь же ещё этих мягких французских булок, да выпей чаю."

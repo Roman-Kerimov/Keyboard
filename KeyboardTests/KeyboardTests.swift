@@ -96,6 +96,28 @@ class KeyboardTests: XCTestCase, KeyboardDelegate {
         Keyboard.default.up(key: a)
 
     }
+    
+    func testCompoundCombiningCharacters() {
+        let a: Key = Key.init(label: "a")
+        Keyboard.default.down(key: a)
+        Keyboard.default.up(key: a)
+        
+        
+        Keyboard.default.down(key: a)
+        
+        Keyboard.default.shift(direction: .upLeft)
+        XCTAssertEqual(document, "á")
+        
+        Keyboard.default.up(key: a)
+        
+        let hyphen = Key.init(label: "‐")
+        Keyboard.default.down(key: hyphen)
+        
+        Keyboard.default.shift(direction: .left)
+        XCTAssertEqual(document, "a᷇")
+        
+        Keyboard.default.up(key: hyphen)
+    }
 
     func testScriptTranslation() {
         let cyrillicText = "Съешь же ещё этих мягких французских булок, да выпей чаю."

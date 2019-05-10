@@ -34,10 +34,20 @@ class Array_CharacterComponent_Tests: XCTestCase {
         characterComponets.append(.capital)
         XCTAssert(characterComponets.character == "A")
     }
+    
+    func testCompoundCombiningCharacters() {
+        characterComponets.append(.acute)
+        characterComponets.append(.above)
+        XCTAssert(characterComponets.character == "́")
+        
+        characterComponets.append(.macron)
+        XCTAssert(characterComponets.character == "᷇")
+    }
 
     func testNormalizationOfCommutativeCharacterComponents() {
         XCTAssertEqual([.r, .capital, .smallCapital].normalized, [.r, .smallCapital, .capital].normalized)
         XCTAssertEqual([.p, .extraH, .greek].normalized, [.p, .greek, .extraH].normalized)
+        XCTAssertEqual([.acute, .above, .macron].normalized, [.acute, .macron, .above].normalized)
     }
     
     func testExtraArrow() {

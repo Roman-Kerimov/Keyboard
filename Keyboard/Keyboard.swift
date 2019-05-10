@@ -249,7 +249,7 @@ class Keyboard: NSObject {
             return
         }
         
-        switch direction {
+        SwitchDirection: switch direction {
             
         case .up:
             shiftUp(key: key)
@@ -321,6 +321,22 @@ class Keyboard: NSObject {
             guard let previousCharacter = previousCharacterOrNil else {
                 currentLabel = .init()
                 break
+            }
+            
+            let previousCharacterUnicodeScalars = previousCharacter.description.decomposedStringWithCanonicalMapping.unicodeScalars
+            
+            for (index, unicodeScalar) in previousCharacterUnicodeScalars.enumerated().reversed() {
+                
+                guard let newUnicodeScalar = (unicodeScalar.description.characterComponents + combiningComponents).character.unicodeScalars.first else {
+                    
+                    continue
+                }
+                
+                var unicodeScalarStrings = previousCharacterUnicodeScalars.map {$0.description}
+                unicodeScalarStrings[index] = newUnicodeScalar.description
+                currentLabel = unicodeScalarStrings.joined()
+                
+                break SwitchDirection
             }
             
             let ligatureCharacter = (previousCharacter.characterComponents + modifierCharacterComponents).character

@@ -113,7 +113,6 @@ enum CharacterComponent: Int {
         //.lazyS
         .z: .zDigraph,
         .n: .tilde,
-        .k: .cyrillic,
         
         // block tilde diacritic from tilde
         .tilde: .space,

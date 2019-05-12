@@ -14,4 +14,13 @@ class StringTests: XCTestCase {
         XCTAssertEqual("ç̌".defaultShiftGesture, "cs↙︎v↖︎")
         XCTAssertEqual("3²".defaultShiftGesture, "32↗︎")
     }
+    
+    func testDefaultShiftGesturesForTilde() {
+        
+        // LATIN SMALL LETTER Z WITH MIDDLE TILDE
+        XCTAssertEqual("ᵶ".defaultShiftGesture, "zn←")
+        
+        // COMBINING TILDE OVERLAY
+        XCTAssertEqual("z̴".defaultShiftGesture, "z~←")
+    }
 }

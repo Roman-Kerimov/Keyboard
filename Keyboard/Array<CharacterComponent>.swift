@@ -159,6 +159,9 @@ extension Array where Element == CharacterComponent {
                     
                     shiftGestureComponent = .init("→↓←".prefix(extraComponentIndex+1))
                 }
+                else if let baseComponent = CharacterComponent.baseComponents[component], !shiftGesture.isEmpty {
+                    shiftGestureComponent = [baseComponent].character + "←"
+                }
                 else if KeyboardLayout.qwerty.components.contains(component) {
                     guard [component].character.isEmpty == false  else {
                         return nil
@@ -179,9 +182,6 @@ extension Array where Element == CharacterComponent {
                     else {
                         shiftGestureComponent = [component].character + "←"
                     }
-                }
-                else if let baseComponent = CharacterComponent.baseComponents[component]  {
-                    shiftGestureComponent = [baseComponent].character + "←"
                 }
                 else {
                     return nil

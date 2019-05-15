@@ -3602,7 +3602,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ᴎ": [.n, .reversed, .smallCapital],
 
     //1D0F          ; LATIN LETTER SMALL CAPITAL O
-    "ᴏ": [.smallCapital],
+    "ᴏ": [.o, .smallCapital],
 
     //1D10          ; LATIN LETTER SMALL CAPITAL OPEN O
     "ᴐ": [.o, .extraH, .smallCapital],

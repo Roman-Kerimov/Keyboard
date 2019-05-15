@@ -10,7 +10,7 @@ import Foundation
 extension Array where Element == CharacterComponent {
     
     private static let characterDictionary: [String: String] = .init(
-        uniqueKeysWithValues: characterComponentsDictionary.filter {!$0.value.isEmpty} .map {($0.value.key, $0.key)}
+        uniqueKeysWithValues: characterComponentsDictionary.filter {!$0.value.isEmpty && $0.value != [.combined]} .map {($0.value.key, $0.key)}
     )
     
     var key: String {

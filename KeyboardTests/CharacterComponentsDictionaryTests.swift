@@ -27,7 +27,7 @@ class CharacterComponentsDictionaryTests: XCTestCase {
     func testDictionaryDoesNotContainDuplicateValues() {
         var dictionary: [String: Int] = .init()
         for (character, characterComponents) in characterComponentsDictionary {
-            guard !characterComponents.isEmpty else {
+            guard !characterComponents.isEmpty, characterComponents != [.combined] else {
                 continue
             }
             XCTAssertNil(dictionary[characterComponents.key], "Dictionary literal contains duplicate value for \"\(character)\"")
@@ -41,6 +41,21 @@ class CharacterComponentsDictionaryTests: XCTestCase {
         
         for (character, characterComponents) in characterComponentsDictionary {
             XCTAssert(characterComponents.extraArray.count <= maxExtraCount, "Character \(character) has more than \(maxExtraCount) extra characters")
+        }
+    }
+    
+    func testCombined() {
+        for (character, characterComponents) in characterComponentsDictionary {
+            guard character.unicodeScalars.count == 1 else {
+                continue
+            }
+            
+            if character.decomposedStringWithCanonicalMapping.unicodeScalars.count > 1, character.decomposedStringWithCanonicalMapping.precomposedStringWithCanonicalMapping.unicodeScalars.count == 1 {
+                XCTAssert(characterComponents == [.combined], "\"\(character)\".characterComponents != [\([.combined].key)]")
+            }
+            else {
+                XCTAssert(characterComponents != [.combined], "\"\(character)\".characterComponents == [\([.combined].key)]")
+            }
         }
     }
 }

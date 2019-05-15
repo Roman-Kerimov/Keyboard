@@ -396,73 +396,73 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "¿": [.questionMark, .turned],
 
     //00C0          ; LATIN CAPITAL LETTER A WITH GRAVE
-    "À": [.a, .grave, .above, .capital],
+    "À": [.combined],
 
     //00C1          ; LATIN CAPITAL LETTER A WITH ACUTE
-    "Á": [.a, .acute, .above, .capital],
+    "Á": [.combined],
 
     //00C2          ; LATIN CAPITAL LETTER A WITH CIRCUMFLEX
-    "Â": [.a, .circumflex, .above, .capital],
+    "Â": [.combined],
 
     //00C3          ; LATIN CAPITAL LETTER A WITH TILDE
-    "Ã": [.a, .tilde, .above, .capital],
+    "Ã": [.combined],
 
     //00C4          ; LATIN CAPITAL LETTER A WITH DIAERESIS
-    "Ä": [.a, .diaeresis, .above, .capital],
+    "Ä": [.combined],
 
     //00C5          ; LATIN CAPITAL LETTER A WITH RING ABOVE
-    "Å": [.a, .ring, .above, .capital],
+    "Å": [.combined],
 
     //00C6          ; LATIN CAPITAL LETTER AE
     "Æ": [.a, .e, .capital],
 
     //00C7          ; LATIN CAPITAL LETTER C WITH CEDILLA
-    "Ç": [.c, .cedilla, .capital],
+    "Ç": [.combined],
 
     //00C8          ; LATIN CAPITAL LETTER E WITH GRAVE
-    "È": [.e, .grave, .above, .capital],
+    "È": [.combined],
 
     //00C9          ; LATIN CAPITAL LETTER E WITH ACUTE
-    "É": [.e, .acute, .above, .capital],
+    "É": [.combined],
 
     //00CA          ; LATIN CAPITAL LETTER E WITH CIRCUMFLEX
-    "Ê": [.e, .circumflex, .above, .capital],
+    "Ê": [.combined],
 
     //00CB          ; LATIN CAPITAL LETTER E WITH DIAERESIS
-    "Ë": [.e, .diaeresis, .above, .capital],
+    "Ë": [.combined],
 
     //00CC          ; LATIN CAPITAL LETTER I WITH GRAVE
-    "Ì": [.i, .grave, .above, .capital],
+    "Ì": [.combined],
 
     //00CD          ; LATIN CAPITAL LETTER I WITH ACUTE
-    "Í": [.i, .acute, .above, .capital],
+    "Í": [.combined],
 
     //00CE          ; LATIN CAPITAL LETTER I WITH CIRCUMFLEX
-    "Î": [.i, .circumflex, .above, .capital],
+    "Î": [.combined],
 
     //00CF          ; LATIN CAPITAL LETTER I WITH DIAERESIS
-    "Ï": [.i, .diaeresis, .above, .capital],
+    "Ï": [.combined],
 
     //00D0          ; LATIN CAPITAL LETTER ETH
     "Ð": [.d, .extraH, .capital],
 
     //00D1          ; LATIN CAPITAL LETTER N WITH TILDE
-    "Ñ": [.n, .tilde, .above, .capital],
+    "Ñ": [.combined],
 
     //00D2          ; LATIN CAPITAL LETTER O WITH GRAVE
-    "Ò": [.o, .grave, .above, .capital],
+    "Ò": [.combined],
 
     //00D3          ; LATIN CAPITAL LETTER O WITH ACUTE
-    "Ó": [.o, .acute, .above, .capital],
+    "Ó": [.combined],
 
     //00D4          ; LATIN CAPITAL LETTER O WITH CIRCUMFLEX
-    "Ô": [.o, .circumflex, .above, .capital],
+    "Ô": [.combined],
 
     //00D5          ; LATIN CAPITAL LETTER O WITH TILDE
-    "Õ": [.o, .tilde, .above, .capital],
+    "Õ": [.combined],
 
     //00D6          ; LATIN CAPITAL LETTER O WITH DIAERESIS
-    "Ö": [.o, .diaeresis, .above, .capital],
+    "Ö": [.combined],
 
     //00D7          ; MULTIPLICATION SIGN
     "×": [.multiplicationSign],
@@ -471,19 +471,19 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "Ø": [.o, .diagonalStroke, .capital],
 
     //00D9          ; LATIN CAPITAL LETTER U WITH GRAVE
-    "Ù": [.u, .grave, .above, .capital],
+    "Ù": [.combined],
 
     //00DA          ; LATIN CAPITAL LETTER U WITH ACUTE
-    "Ú": [.u, .acute, .above, .capital],
+    "Ú": [.combined],
 
     //00DB          ; LATIN CAPITAL LETTER U WITH CIRCUMFLEX
-    "Û": [.u, .circumflex, .above, .capital],
+    "Û": [.combined],
 
     //00DC          ; LATIN CAPITAL LETTER U WITH DIAERESIS
-    "Ü": [.u, .diaeresis, .above, .capital],
+    "Ü": [.combined],
 
     //00DD          ; LATIN CAPITAL LETTER Y WITH ACUTE
-    "Ý": [.y, .acute, .above, .capital],
+    "Ý": [.combined],
 
     //00DE          ; LATIN CAPITAL LETTER THORN
     "Þ": [.t, .extraH, .capital],
@@ -492,73 +492,73 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ß": [.s, .s],
 
     //00E0          ; LATIN SMALL LETTER A WITH GRAVE
-    "à": [.a, .grave, .above],
+    "à": [.combined],
 
     //00E1          ; LATIN SMALL LETTER A WITH ACUTE
-    "á": [.a, .acute, .above],
+    "á": [.combined],
 
     //00E2          ; LATIN SMALL LETTER A WITH CIRCUMFLEX
-    "â": [.a, .circumflex, .above],
+    "â": [.combined],
 
     //00E3          ; LATIN SMALL LETTER A WITH TILDE
-    "ã": [.a, .tilde, .above],
+    "ã": [.combined],
 
     //00E4          ; LATIN SMALL LETTER A WITH DIAERESIS
-    "ä": [.a, .diaeresis, .above],
+    "ä": [.combined],
 
     //00E5          ; LATIN SMALL LETTER A WITH RING ABOVE
-    "å": [.a, .ring, .above],
+    "å": [.combined],
 
     //00E6          ; LATIN SMALL LETTER AE
     "æ": [.a, .e],
 
     //00E7          ; LATIN SMALL LETTER C WITH CEDILLA
-    "ç": [.c, .cedilla],
+    "ç": [.combined],
 
     //00E8          ; LATIN SMALL LETTER E WITH GRAVE
-    "è": [.e, .grave, .above],
+    "è": [.combined],
 
     //00E9          ; LATIN SMALL LETTER E WITH ACUTE
-    "é": [.e, .acute, .above],
+    "é": [.combined],
 
     //00EA          ; LATIN SMALL LETTER E WITH CIRCUMFLEX
-    "ê": [.e, .circumflex, .above],
+    "ê": [.combined],
 
     //00EB          ; LATIN SMALL LETTER E WITH DIAERESIS
-    "ë": [.e, .diaeresis, .above],
+    "ë": [.combined],
 
     //00EC          ; LATIN SMALL LETTER I WITH GRAVE
-    "ì": [.i, .grave, .above],
+    "ì": [.combined],
 
     //00ED          ; LATIN SMALL LETTER I WITH ACUTE
-    "í": [.i, .acute, .above],
+    "í": [.combined],
 
     //00EE          ; LATIN SMALL LETTER I WITH CIRCUMFLEX
-    "î": [.i, .circumflex, .above],
+    "î": [.combined],
 
     //00EF          ; LATIN SMALL LETTER I WITH DIAERESIS
-    "ï": [.i, .diaeresis, .above],
+    "ï": [.combined],
 
     //00F0          ; LATIN SMALL LETTER ETH
     "ð": [.d, .extraH],
 
     //00F1          ; LATIN SMALL LETTER N WITH TILDE
-    "ñ": [.n, .tilde, .above],
+    "ñ": [.combined],
 
     //00F2          ; LATIN SMALL LETTER O WITH GRAVE
-    "ò": [.o, .grave, .above],
+    "ò": [.combined],
 
     //00F3          ; LATIN SMALL LETTER O WITH ACUTE
-    "ó": [.o, .acute, .above],
+    "ó": [.combined],
 
     //00F4          ; LATIN SMALL LETTER O WITH CIRCUMFLEX
-    "ô": [.o, .circumflex, .above],
+    "ô": [.combined],
 
     //00F5          ; LATIN SMALL LETTER O WITH TILDE
-    "õ": [.o, .tilde, .above],
+    "õ": [.combined],
 
     //00F6          ; LATIN SMALL LETTER O WITH DIAERESIS
-    "ö": [.o, .diaeresis, .above],
+    "ö": [.combined],
 
     //00F7          ; DIVISION SIGN
     "÷": [.divisionSign],
@@ -567,76 +567,76 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ø": [.o, .diagonalStroke],
 
     //00F9          ; LATIN SMALL LETTER U WITH GRAVE
-    "ù": [.u, .grave, .above],
+    "ù": [.combined],
 
     //00FA          ; LATIN SMALL LETTER U WITH ACUTE
-    "ú": [.u, .acute, .above],
+    "ú": [.combined],
 
     //00FB          ; LATIN SMALL LETTER U WITH CIRCUMFLEX
-    "û": [.u, .circumflex, .above],
+    "û": [.combined],
 
     //00FC          ; LATIN SMALL LETTER U WITH DIAERESIS
-    "ü": [.u, .diaeresis, .above],
+    "ü": [.combined],
 
     //00FD          ; LATIN SMALL LETTER Y WITH ACUTE
-    "ý": [.y, .acute, .above],
+    "ý": [.combined],
 
     //00FE          ; LATIN SMALL LETTER THORN
     "þ": [.t, .extraH],
 
     //00FF          ; LATIN SMALL LETTER Y WITH DIAERESIS
-    "ÿ": [.y, .diaeresis, .above],
+    "ÿ": [.combined],
 
     
     // MARK: - 0100..017F; Latin Extended-A
     
     //0100          ; LATIN CAPITAL LETTER A WITH MACRON
-    "Ā": [.a, .macron, .above, .capital],
+    "Ā": [.combined],
 
     //0101          ; LATIN SMALL LETTER A WITH MACRON
-    "ā": [.a, .macron, .above],
+    "ā": [.combined],
 
     //0102          ; LATIN CAPITAL LETTER A WITH BREVE
-    "Ă": [.a, .breve, .above, .capital],
+    "Ă": [.combined],
 
     //0103          ; LATIN SMALL LETTER A WITH BREVE
-    "ă": [.a, .breve, .above],
+    "ă": [.combined],
 
     //0104          ; LATIN CAPITAL LETTER A WITH OGONEK
-    "Ą": [.a, .ogonek, .below, .capital],
+    "Ą": [.combined],
 
     //0105          ; LATIN SMALL LETTER A WITH OGONEK
-    "ą": [.a, .ogonek, .below],
+    "ą": [.combined],
 
     //0106          ; LATIN CAPITAL LETTER C WITH ACUTE
-    "Ć": [.c, .acute, .above, .capital],
+    "Ć": [.combined],
 
     //0107          ; LATIN SMALL LETTER C WITH ACUTE
-    "ć": [.c, .acute, .above],
+    "ć": [.combined],
 
     //0108          ; LATIN CAPITAL LETTER C WITH CIRCUMFLEX
-    "Ĉ": [.c, .circumflex, .above, .capital],
+    "Ĉ": [.combined],
 
     //0109          ; LATIN SMALL LETTER C WITH CIRCUMFLEX
-    "ĉ": [.c, .circumflex, .above],
+    "ĉ": [.combined],
 
     //010A          ; LATIN CAPITAL LETTER C WITH DOT ABOVE
-    "Ċ": [.c, .dot, .above, .capital],
+    "Ċ": [.combined],
 
     //010B          ; LATIN SMALL LETTER C WITH DOT ABOVE
-    "ċ": [.c, .dot, .above],
+    "ċ": [.combined],
 
     //010C          ; LATIN CAPITAL LETTER C WITH CARON
-    "Č": [.c, .caron, .above, .capital],
+    "Č": [.combined],
 
     //010D          ; LATIN SMALL LETTER C WITH CARON
-    "č": [.c, .caron, .above],
+    "č": [.combined],
 
     //010E          ; LATIN CAPITAL LETTER D WITH CARON
-    "Ď": [.d, .caron, .above, .capital],
+    "Ď": [.combined],
     
     //010F          ; LATIN SMALL LETTER D WITH CARON
-    "ď": [.d, .caron, .above],
+    "ď": [.combined],
 
     //0110          ; LATIN CAPITAL LETTER D WITH STROKE
     "Đ": [.d, .stroke, .capital],
@@ -645,64 +645,64 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "đ": [.d, .stroke],
 
     //0112          ; LATIN CAPITAL LETTER E WITH MACRON
-    "Ē": [.e, .macron, .above, .capital],
+    "Ē": [.combined],
 
     //0113          ; LATIN SMALL LETTER E WITH MACRON
-    "ē": [.e, .macron, .above],
+    "ē": [.combined],
 
     //0114          ; LATIN CAPITAL LETTER E WITH BREVE
-    "Ĕ": [.e, .breve, .above, .capital],
+    "Ĕ": [.combined],
 
     //0115          ; LATIN SMALL LETTER E WITH BREVE
-    "ĕ": [.e, .breve, .above],
+    "ĕ": [.combined],
 
     //0116          ; LATIN CAPITAL LETTER E WITH DOT ABOVE
-    "Ė": [.e, .dot, .above, .capital],
+    "Ė": [.combined],
 
     //0117          ; LATIN SMALL LETTER E WITH DOT ABOVE
-    "ė": [.e, .dot, .above],
+    "ė": [.combined],
 
     //0118          ; LATIN CAPITAL LETTER E WITH OGONEK
-    "Ę": [.e, .ogonek, .below, .capital],
+    "Ę": [.combined],
 
     //0119          ; LATIN SMALL LETTER E WITH OGONEK
-    "ę": [.e, .ogonek, .below],
+    "ę": [.combined],
 
     //011A          ; LATIN CAPITAL LETTER E WITH CARON
-    "Ě": [.e, .caron, .above, .capital],
+    "Ě": [.combined],
 
     //011B          ; LATIN SMALL LETTER E WITH CARON
-    "ě": [.e, .caron, .above],
+    "ě": [.combined],
 
     //011C          ; LATIN CAPITAL LETTER G WITH CIRCUMFLEX
-    "Ĝ": [.g, .circumflex, .above, .capital],
+    "Ĝ": [.combined],
 
     //011D          ; LATIN SMALL LETTER G WITH CIRCUMFLEX
-    "ĝ": [.g, .circumflex, .above],
+    "ĝ": [.combined],
 
     //011E          ; LATIN CAPITAL LETTER G WITH BREVE
-    "Ğ": [.g, .breve, .above, .capital],
+    "Ğ": [.combined],
 
     //011F          ; LATIN SMALL LETTER G WITH BREVE
-    "ğ": [.g, .breve, .above],
+    "ğ": [.combined],
 
     //0120          ; LATIN CAPITAL LETTER G WITH DOT ABOVE
-    "Ġ": [.g, .dot, .above, .capital],
+    "Ġ": [.combined],
 
     //0121          ; LATIN SMALL LETTER G WITH DOT ABOVE
-    "ġ": [.g, .dot, .above],
+    "ġ": [.combined],
 
     //0122          ; LATIN CAPITAL LETTER G WITH CEDILLA
-    "Ģ": [.g, .cedilla, .capital],
+    "Ģ": [.combined],
 
     //0123          ; LATIN SMALL LETTER G WITH CEDILLA
-    "ģ": [.g, .cedilla],
+    "ģ": [.combined],
 
     //0124          ; LATIN CAPITAL LETTER H WITH CIRCUMFLEX
-    "Ĥ": [.h, .circumflex, .above, .capital],
+    "Ĥ": [.combined],
 
     //0125          ; LATIN SMALL LETTER H WITH CIRCUMFLEX
-    "ĥ": [.h, .circumflex, .above],
+    "ĥ": [.combined],
 
     //0126          ; LATIN CAPITAL LETTER H WITH STROKE
     "Ħ": [.h, .stroke, .capital],
@@ -711,31 +711,31 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ħ": [.h, .stroke],
 
     //0128          ; LATIN CAPITAL LETTER I WITH TILDE
-    "Ĩ": [.i, .tilde, .above, .capital],
+    "Ĩ": [.combined],
 
     //0129          ; LATIN SMALL LETTER I WITH TILDE
-    "ĩ": [.i, .tilde, .above],
+    "ĩ": [.combined],
 
     //012A          ; LATIN CAPITAL LETTER I WITH MACRON
-    "Ī": [.i, .macron, .above, .capital],
+    "Ī": [.combined],
 
     //012B          ; LATIN SMALL LETTER I WITH MACRON
-    "ī": [.i, .macron, .above],
+    "ī": [.combined],
 
     //012C          ; LATIN CAPITAL LETTER I WITH BREVE
-    "Ĭ": [.i, .breve, .above, .capital],
+    "Ĭ": [.combined],
 
     //012D          ; LATIN SMALL LETTER I WITH BREVE
-    "ĭ": [.i, .breve, .above],
+    "ĭ": [.combined],
 
     //012E          ; LATIN CAPITAL LETTER I WITH OGONEK
-    "Į": [.i, .ogonek, .above, .capital],
+    "Į": [.combined],
 
     //012F          ; LATIN SMALL LETTER I WITH OGONEK
-    "į": [.i, .ogonek, .above],
+    "į": [.combined],
 
     //0130          ; LATIN CAPITAL LETTER I WITH DOT ABOVE
-    "İ": [.i, .dot, .above, .capital],
+    "İ": [.combined],
 
     //0131          ; LATIN SMALL LETTER DOTLESS I
     "ı": [.i, .dot, .above],
@@ -747,37 +747,37 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ĳ": [.i, .j],
 
     //0134          ; LATIN CAPITAL LETTER J WITH CIRCUMFLEX
-    "Ĵ": [.j, .circumflex, .above, .capital],
+    "Ĵ": [.combined],
 
     //0135          ; LATIN SMALL LETTER J WITH CIRCUMFLEX
-    "ĵ": [.j, .circumflex, .above],
+    "ĵ": [.combined],
 
     //0136          ; LATIN CAPITAL LETTER K WITH CEDILLA
-    "Ķ": [.k, .cedilla, .capital],
+    "Ķ": [.combined],
 
     //0137          ; LATIN SMALL LETTER K WITH CEDILLA
-    "ķ": [.k, .cedilla],
+    "ķ": [.combined],
 
     //0138          ; LATIN SMALL LETTER KRA
     "ĸ": [.k, .longLeg],
 
     //0139          ; LATIN CAPITAL LETTER L WITH ACUTE
-    "Ĺ": [.l, .acute, .above, .capital],
+    "Ĺ": [.combined],
 
     //013A          ; LATIN SMALL LETTER L WITH ACUTE
-    "ĺ": [.l, .acute, .above],
+    "ĺ": [.combined],
 
     //013B          ; LATIN CAPITAL LETTER L WITH CEDILLA
-    "Ļ": [.l, .cedilla, .capital],
+    "Ļ": [.combined],
 
     //013C          ; LATIN SMALL LETTER L WITH CEDILLA
-    "ļ": [.l, .cedilla],
+    "ļ": [.combined],
 
     //013D          ; LATIN CAPITAL LETTER L WITH CARON
-    "Ľ": [.l, .caron, .above, .capital],
+    "Ľ": [.combined],
 
     //013E          ; LATIN SMALL LETTER L WITH CARON
-    "ľ": [.l, .caron, .above],
+    "ľ": [.combined],
 
     //013F          ; LATIN CAPITAL LETTER L WITH MIDDLE DOT
     "ĿL": [.l, .l, .capital, .capital],
@@ -793,22 +793,22 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ł": [.l, .diagonalStroke],
 
     //0143          ; LATIN CAPITAL LETTER N WITH ACUTE
-    "Ń": [.n, .acute, .above, .capital],
+    "Ń": [.combined],
 
     //0144          ; LATIN SMALL LETTER N WITH ACUTE
-    "ń": [.n, .acute, .above],
+    "ń": [.combined],
 
     //0145          ; LATIN CAPITAL LETTER N WITH CEDILLA
-    "Ņ": [.n, .cedilla, .capital],
+    "Ņ": [.combined],
 
     //0146          ; LATIN SMALL LETTER N WITH CEDILLA
-    "ņ": [.n, .cedilla],
+    "ņ": [.combined],
 
     //0147          ; LATIN CAPITAL LETTER N WITH CARON
-    "Ň": [.n, .caron, .above, .capital],
+    "Ň": [.combined],
 
     //0148          ; LATIN SMALL LETTER N WITH CARON
-    "ň": [.n, .caron, .above],
+    "ň": [.combined],
 
     //0149          ; LATIN SMALL LETTER N PRECEDED BY APOSTROPHE
     "ŉ": [],
@@ -820,22 +820,22 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ŋ": [.n, .g],
 
     //014C          ; LATIN CAPITAL LETTER O WITH MACRON
-    "Ō": [.o, .macron, .above, .capital],
+    "Ō": [.combined],
 
     //014D          ; LATIN SMALL LETTER O WITH MACRON
-    "ō": [.o, .macron, .above],
+    "ō": [.combined],
 
     //014E          ; LATIN CAPITAL LETTER O WITH BREVE
-    "Ŏ": [.o, .breve, .above, .capital],
+    "Ŏ": [.combined],
 
     //014F          ; LATIN SMALL LETTER O WITH BREVE
-    "ŏ": [.o, .breve, .above],
+    "ŏ": [.combined],
 
     //0150          ; LATIN CAPITAL LETTER O WITH DOUBLE ACUTE
-    "Ő": [.o, .acute, .doubled, .above, .capital],
+    "Ő": [.combined],
 
     //0151          ; LATIN SMALL LETTER O WITH DOUBLE ACUTE
-    "ő": [.o, .acute, .doubled, .above],
+    "ő": [.combined],
 
     //0152          ; LATIN CAPITAL LIGATURE OE
     "Œ": [.o, .e, .capital],
@@ -844,58 +844,58 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "œ": [.o, .e],
 
     //0154          ; LATIN CAPITAL LETTER R WITH ACUTE
-    "Ŕ": [.r, .acute, .above, .capital],
+    "Ŕ": [.combined],
 
     //0155          ; LATIN SMALL LETTER R WITH ACUTE
-    "ŕ": [.r, .acute, .above],
+    "ŕ": [.combined],
 
     //0156          ; LATIN CAPITAL LETTER R WITH CEDILLA
-    "Ŗ": [.r, .cedilla, .capital],
+    "Ŗ": [.combined],
 
     //0157          ; LATIN SMALL LETTER R WITH CEDILLA
-    "ŗ": [.r, .cedilla],
+    "ŗ": [.combined],
 
     //0158          ; LATIN CAPITAL LETTER R WITH CARON
-    "Ř": [.r, .caron, .above, .capital],
+    "Ř": [.combined],
 
     //0159          ; LATIN SMALL LETTER R WITH CARON
-    "ř": [.r, .caron, .above],
+    "ř": [.combined],
 
     //015A          ; LATIN CAPITAL LETTER S WITH ACUTE
-    "Ś": [.s, .acute, .above, .capital],
+    "Ś": [.combined],
 
     //015B          ; LATIN SMALL LETTER S WITH ACUTE
-    "ś": [.s, .acute, .above],
+    "ś": [.combined],
 
     //015C          ; LATIN CAPITAL LETTER S WITH CIRCUMFLEX
-    "Ŝ": [.s, .circumflex, .above, .capital],
+    "Ŝ": [.combined],
 
     //015D          ; LATIN SMALL LETTER S WITH CIRCUMFLEX
-    "ŝ": [.s, .circumflex, .above],
+    "ŝ": [.combined],
 
     //015E          ; LATIN CAPITAL LETTER S WITH CEDILLA
-    "Ş": [.s, .cedilla, .capital],
+    "Ş": [.combined],
 
     //015F          ; LATIN SMALL LETTER S WITH CEDILLA
-    "ş": [.s, .cedilla],
+    "ş": [.combined],
 
     //0160          ; LATIN CAPITAL LETTER S WITH CARON
-    "Š": [.s, .caron, .above, .capital],
+    "Š": [.combined],
 
     //0161          ; LATIN SMALL LETTER S WITH CARON
-    "š": [.s, .caron, .above],
+    "š": [.combined],
 
     //0162          ; LATIN CAPITAL LETTER T WITH CEDILLA
-    "Ţ": [.t, .cedilla, .capital],
+    "Ţ": [.combined],
 
     //0163          ; LATIN SMALL LETTER T WITH CEDILLA
-    "ţ": [.t, .cedilla],
+    "ţ": [.combined],
 
     //0164          ; LATIN CAPITAL LETTER T WITH CARON
-    "Ť": [.t, .caron, .above, .capital],
+    "Ť": [.combined],
 
     //0165          ; LATIN SMALL LETTER T WITH CARON
-    "ť": [.t, .caron, .above],
+    "ť": [.combined],
 
     //0166          ; LATIN CAPITAL LETTER T WITH STROKE
     "Ŧ": [.t, .stroke, .capital],
@@ -904,73 +904,73 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ŧ": [.t, .stroke],
 
     //0168          ; LATIN CAPITAL LETTER U WITH TILDE
-    "Ũ": [.u, .tilde, .above, .capital],
+    "Ũ": [.combined],
 
     //0169          ; LATIN SMALL LETTER U WITH TILDE
-    "ũ": [.u, .tilde, .above],
+    "ũ": [.combined],
 
     //016A          ; LATIN CAPITAL LETTER U WITH MACRON
-    "Ū": [.u, .macron, .above, .capital],
+    "Ū": [.combined],
 
     //016B          ; LATIN SMALL LETTER U WITH MACRON
-    "ū": [.u, .macron, .above],
+    "ū": [.combined],
 
     //016C          ; LATIN CAPITAL LETTER U WITH BREVE
-    "Ŭ": [.u, .breve, .above, .capital],
+    "Ŭ": [.combined],
 
     //016D          ; LATIN SMALL LETTER U WITH BREVE
-    "ŭ": [.u, .breve, .above],
+    "ŭ": [.combined],
 
     //016E          ; LATIN CAPITAL LETTER U WITH RING ABOVE
-    "Ů": [.u, .ring, .above, .capital],
+    "Ů": [.combined],
 
     //016F          ; LATIN SMALL LETTER U WITH RING ABOVE
-    "ů": [.u, .ring, .above],
+    "ů": [.combined],
 
     //0170          ; LATIN CAPITAL LETTER U WITH DOUBLE ACUTE
-    "Ű": [.u, .acute, .doubled, .above, .capital],
+    "Ű": [.combined],
 
     //0171          ; LATIN SMALL LETTER U WITH DOUBLE ACUTE
-    "ű": [.u, .acute, .doubled, .above],
+    "ű": [.combined],
 
     //0172          ; LATIN CAPITAL LETTER U WITH OGONEK
-    "Ų": [.u, .ogonek, .below, .capital],
+    "Ų": [.combined],
 
     //0173          ; LATIN SMALL LETTER U WITH OGONEK
-    "ų": [.u, .ogonek, .below],
+    "ų": [.combined],
 
     //0174          ; LATIN CAPITAL LETTER W WITH CIRCUMFLEX
-    "Ŵ": [.w, .circumflex, .above, .capital],
+    "Ŵ": [.combined],
 
     //0175          ; LATIN SMALL LETTER W WITH CIRCUMFLEX
-    "ŵ": [.w, .circumflex, .above],
+    "ŵ": [.combined],
 
     //0176          ; LATIN CAPITAL LETTER Y WITH CIRCUMFLEX
-    "Ŷ": [.y, .circumflex, .above, .capital],
+    "Ŷ": [.combined],
 
     //0177          ; LATIN SMALL LETTER Y WITH CIRCUMFLEX
-    "ŷ": [.y, .circumflex, .above],
+    "ŷ": [.combined],
 
     //0178          ; LATIN CAPITAL LETTER Y WITH DIAERESIS
-    "Ÿ": [.y, .diaeresis, .above, .capital],
+    "Ÿ": [.combined],
 
     //0179          ; LATIN CAPITAL LETTER Z WITH ACUTE
-    "Ź": [.z, .acute, .above, .capital],
+    "Ź": [.combined],
 
     //017A          ; LATIN SMALL LETTER Z WITH ACUTE
-    "ź": [.z, .acute, .above],
+    "ź": [.combined],
 
     //017B          ; LATIN CAPITAL LETTER Z WITH DOT ABOVE
-    "Ż": [.z, .dot, .above, .capital],
+    "Ż": [.combined],
 
     //017C          ; LATIN SMALL LETTER Z WITH DOT ABOVE
-    "ż": [.z, .dot, .above],
+    "ż": [.combined],
 
     //017D          ; LATIN CAPITAL LETTER Z WITH CARON
-    "Ž": [.z, .caron, .above, .capital],
+    "Ž": [.combined],
 
     //017E          ; LATIN SMALL LETTER Z WITH CARON
-    "ž": [.z, .caron, .above],
+    "ž": [.combined],
 
     //017F          ; LATIN SMALL LETTER LONG S
     "ſ": [.s, .l],
@@ -1075,10 +1075,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "Ɵ": [.o, .stroke, .capital],
 
     //01A0          ; LATIN CAPITAL LETTER O WITH HORN
-    "Ơ": [.o, .horn, .capital],
+    "Ơ": [.combined],
 
     //01A1          ; LATIN SMALL LETTER O WITH HORN
-    "ơ": [.o, .horn],
+    "ơ": [.combined],
 
     //01A2          ; LATIN CAPITAL LETTER OI
     "Ƣ": [.o, .i, .capital],
@@ -1120,10 +1120,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "Ʈ": [.t, .retroflexHook, .capital],
 
     //01AF          ; LATIN CAPITAL LETTER U WITH HORN
-    "Ư": [.u, .horn, .capital],
+    "Ư": [.combined],
 
     //01B0          ; LATIN SMALL LETTER U WITH HORN
-    "ư": [.u, .horn],
+    "ư": [.combined],
 
     //01B1          ; LATIN CAPITAL LETTER UPSILON
     "Ʊ": [.u, .extraH, .capital],
@@ -1210,73 +1210,73 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ǌ": [.n, .j],
 
     //01CD          ; LATIN CAPITAL LETTER A WITH CARON
-    "Ǎ": [.a, .caron, .above, .capital],
+    "Ǎ": [.combined],
 
     //01CE          ; LATIN SMALL LETTER A WITH CARON
-    "ǎ": [.a, .caron, .above],
+    "ǎ": [.combined],
 
     //01CF          ; LATIN CAPITAL LETTER I WITH CARON
-    "Ǐ": [.i, .caron, .above, .capital],
+    "Ǐ": [.combined],
 
     //01D0          ; LATIN SMALL LETTER I WITH CARON
-    "ǐ": [.i, .caron, .above],
+    "ǐ": [.combined],
 
     //01D1          ; LATIN CAPITAL LETTER O WITH CARON
-    "Ǒ": [.o, .caron, .above, .capital],
+    "Ǒ": [.combined],
 
     //01D2          ; LATIN SMALL LETTER O WITH CARON
-    "ǒ": [.o, .caron, .above],
+    "ǒ": [.combined],
 
     //01D3          ; LATIN CAPITAL LETTER U WITH CARON
-    "Ǔ": [.u, .caron, .above, .capital],
+    "Ǔ": [.combined],
 
     //01D4          ; LATIN SMALL LETTER U WITH CARON
-    "ǔ": [.u, .caron, .above],
+    "ǔ": [.combined],
 
     //01D5          ; LATIN CAPITAL LETTER U WITH DIAERESIS AND MACRON
-    "Ǖ": [.u, .diaeresis, .above, .macron, .above, .capital],
+    "Ǖ": [.combined],
 
     //01D6          ; LATIN SMALL LETTER U WITH DIAERESIS AND MACRON
-    "ǖ": [.u, .diaeresis, .above, .macron, .above],
+    "ǖ": [.combined],
 
     //01D7          ; LATIN CAPITAL LETTER U WITH DIAERESIS AND ACUTE
-    "Ǘ": [.u, .diaeresis, .above, .acute, .above, .capital],
+    "Ǘ": [.combined],
 
     //01D8          ; LATIN SMALL LETTER U WITH DIAERESIS AND ACUTE
-    "ǘ": [.u, .diaeresis, .above, .acute, .above],
+    "ǘ": [.combined],
 
     //01D9          ; LATIN CAPITAL LETTER U WITH DIAERESIS AND CARON
-    "Ǚ": [.u, .diaeresis, .above, .caron, .above, .capital],
+    "Ǚ": [.combined],
 
     //01DA          ; LATIN SMALL LETTER U WITH DIAERESIS AND CARON
-    "ǚ": [.u, .diaeresis, .above, .caron, .above],
+    "ǚ": [.combined],
 
     //01DB          ; LATIN CAPITAL LETTER U WITH DIAERESIS AND GRAVE
-    "Ǜ": [.u, .diaeresis, .above, .grave, .above, .capital],
+    "Ǜ": [.combined],
 
     //01DC          ; LATIN SMALL LETTER U WITH DIAERESIS AND GRAVE
-    "ǜ": [.u, .diaeresis, .above, .grave, .above],
+    "ǜ": [.combined],
 
     //01DD          ; LATIN SMALL LETTER TURNED E
     "ǝ": [.e, .turned],
 
     //01DE          ; LATIN CAPITAL LETTER A WITH DIAERESIS AND MACRON
-    "Ǟ": [.a, .diaeresis, .above, .macron, .above, .capital],
+    "Ǟ": [.combined],
 
     //01DF          ; LATIN SMALL LETTER A WITH DIAERESIS AND MACRON
-    "ǟ": [.a, .diaeresis, .above, .macron, .above],
+    "ǟ": [.combined],
 
     //01E0          ; LATIN CAPITAL LETTER A WITH DOT ABOVE AND MACRON
-    "Ǡ": [.a, .dot, .above, .macron, .above, .capital],
+    "Ǡ": [.combined],
 
     //01E1          ; LATIN SMALL LETTER A WITH DOT ABOVE AND MACRON
-    "ǡ": [.a, .dot, .above, .macron, .above],
+    "ǡ": [.combined],
 
     //01E2          ; LATIN CAPITAL LETTER AE WITH MACRON
-    "Ǣ": [.a, .e, .macron, .above, .capital],
+    "Ǣ": [.combined],
 
     //01E3          ; LATIN SMALL LETTER AE WITH MACRON
-    "ǣ": [.a, .e, .macron, .above],
+    "ǣ": [.combined],
 
     //01E4          ; LATIN CAPITAL LETTER G WITH STROKE
     "Ǥ": [.g, .stroke, .capital],
@@ -1285,37 +1285,37 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ǥ": [.g, .stroke],
 
     //01E6          ; LATIN CAPITAL LETTER G WITH CARON
-    "Ǧ": [.g, .caron, .above, .capital],
+    "Ǧ": [.combined],
 
     //01E7          ; LATIN SMALL LETTER G WITH CARON
-    "ǧ": [.g, .caron, .above],
+    "ǧ": [.combined],
 
     //01E8          ; LATIN CAPITAL LETTER K WITH CARON
-    "Ǩ": [.k, .caron, .above, .capital],
+    "Ǩ": [.combined],
 
     //01E9          ; LATIN SMALL LETTER K WITH CARON
-    "ǩ": [.k, .caron, .above],
+    "ǩ": [.combined],
 
     //01EA          ; LATIN CAPITAL LETTER O WITH OGONEK
-    "Ǫ": [.o, .ogonek, .below, .capital],
+    "Ǫ": [.combined],
 
     //01EB          ; LATIN SMALL LETTER O WITH OGONEK
-    "ǫ": [.o, .ogonek, .below],
+    "ǫ": [.combined],
 
     //01EC          ; LATIN CAPITAL LETTER O WITH OGONEK AND MACRON
-    "Ǭ": [.o, .ogonek, .below, .macron, .above, .capital],
+    "Ǭ": [.combined],
 
     //01ED          ; LATIN SMALL LETTER O WITH OGONEK AND MACRON
-    "ǭ": [.o, .ogonek, .below, .macron, .above],
+    "ǭ": [.combined],
 
     //01EE          ; LATIN CAPITAL LETTER EZH WITH CARON
-    "Ǯ": [.z, .extraH, .caron, .above, .capital],
+    "Ǯ": [.combined],
 
     //01EF          ; LATIN SMALL LETTER EZH WITH CARON
-    "ǯ": [.z, .extraH, .caron, .above],
+    "ǯ": [.combined],
 
     //01F0          ; LATIN SMALL LETTER J WITH CARON
-    "ǰ": [.j, .caron, .above],
+    "ǰ": [.combined],
 
     //01F1          ; LATIN CAPITAL LETTER DZ
     "Ǳ": [.d, .capital, .z, .capital],
@@ -1327,10 +1327,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ǳ": [.d, .z],
 
     //01F4          ; LATIN CAPITAL LETTER G WITH ACUTE
-    "Ǵ": [.g, .acute, .above, .capital],
+    "Ǵ": [.combined],
 
     //01F5          ; LATIN SMALL LETTER G WITH ACUTE
-    "ǵ": [.g, .acute, .above],
+    "ǵ": [.combined],
 
     //01F6          ; LATIN CAPITAL LETTER HWAIR
     "Ƕ": [.h, .v, .capital],
@@ -1339,112 +1339,112 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "Ƿ": [.w, .extraH, .capital],
 
     //01F8          ; LATIN CAPITAL LETTER N WITH GRAVE
-    "Ǹ": [.n, .grave, .above, .capital],
+    "Ǹ": [.combined],
 
     //01F9          ; LATIN SMALL LETTER N WITH GRAVE
-    "ǹ": [.n, .grave, .above],
+    "ǹ": [.combined],
 
     //01FA          ; LATIN CAPITAL LETTER A WITH RING ABOVE AND ACUTE
-    "Ǻ": [.a, .ring, .above, .acute, .above, .capital],
+    "Ǻ": [.combined],
 
     //01FB          ; LATIN SMALL LETTER A WITH RING ABOVE AND ACUTE
-    "ǻ": [.a, .ring, .above, .acute, .above],
+    "ǻ": [.combined],
 
     //01FC          ; LATIN CAPITAL LETTER AE WITH ACUTE
-    "Ǽ": [.a, .e, .acute, .above, .capital],
+    "Ǽ": [.combined],
 
     //01FD          ; LATIN SMALL LETTER AE WITH ACUTE
-    "ǽ": [.a, .e, .acute, .above],
+    "ǽ": [.combined],
 
     //01FE          ; LATIN CAPITAL LETTER O WITH STROKE AND ACUTE
-    "Ǿ": [.o, .diagonalStroke, .acute, .above, .capital],
+    "Ǿ": [.combined],
 
     //01FF          ; LATIN SMALL LETTER O WITH STROKE AND ACUTE
-    "ǿ": [.o, .diagonalStroke, .acute, .above],
+    "ǿ": [.combined],
 
     //0200          ; LATIN CAPITAL LETTER A WITH DOUBLE GRAVE
-    "Ȁ": [.a, .grave, .doubled, .above, .capital],
+    "Ȁ": [.combined],
 
     //0201          ; LATIN SMALL LETTER A WITH DOUBLE GRAVE
-    "ȁ": [.a, .grave, .doubled, .above],
+    "ȁ": [.combined],
 
     //0202          ; LATIN CAPITAL LETTER A WITH INVERTED BREVE
-    "Ȃ": [.a, .invertedBreve, .above, .capital],
+    "Ȃ": [.combined],
 
     //0203          ; LATIN SMALL LETTER A WITH INVERTED BREVE
-    "ȃ": [.a, .invertedBreve, .above],
+    "ȃ": [.combined],
 
     //0204          ; LATIN CAPITAL LETTER E WITH DOUBLE GRAVE
-    "Ȅ": [.e, .grave, .doubled, .above, .capital],
+    "Ȅ": [.combined],
 
     //0205          ; LATIN SMALL LETTER E WITH DOUBLE GRAVE
-    "ȅ": [.e, .grave, .doubled, .above],
+    "ȅ": [.combined],
 
     //0206          ; LATIN CAPITAL LETTER E WITH INVERTED BREVE
-    "Ȇ": [.e, .invertedBreve, .above, .capital],
+    "Ȇ": [.combined],
 
     //0207          ; LATIN SMALL LETTER E WITH INVERTED BREVE
-    "ȇ": [.e, .invertedBreve, .above],
+    "ȇ": [.combined],
 
     //0208          ; LATIN CAPITAL LETTER I WITH DOUBLE GRAVE
-    "Ȉ": [.i, .grave, .doubled, .above, .capital],
+    "Ȉ": [.combined],
 
     //0209          ; LATIN SMALL LETTER I WITH DOUBLE GRAVE
-    "ȉ": [.i, .grave, .doubled, .above],
+    "ȉ": [.combined],
 
     //020A          ; LATIN CAPITAL LETTER I WITH INVERTED BREVE
-    "Ȋ": [.i, .invertedBreve, .above, .capital],
+    "Ȋ": [.combined],
 
     //020B          ; LATIN SMALL LETTER I WITH INVERTED BREVE
-    "ȋ": [.i, .invertedBreve, .above],
+    "ȋ": [.combined],
 
     //020C          ; LATIN CAPITAL LETTER O WITH DOUBLE GRAVE
-    "Ȍ": [.o, .grave, .doubled, .above, .capital],
+    "Ȍ": [.combined],
 
     //020D          ; LATIN SMALL LETTER O WITH DOUBLE GRAVE
-    "ȍ": [.o, .grave, .doubled, .above],
+    "ȍ": [.combined],
 
     //020E          ; LATIN CAPITAL LETTER O WITH INVERTED BREVE
-    "Ȏ": [.o, .invertedBreve, .above, .capital],
+    "Ȏ": [.combined],
 
     //020F          ; LATIN SMALL LETTER O WITH INVERTED BREVE
-    "ȏ": [.o, .invertedBreve, .above],
+    "ȏ": [.combined],
 
     //0210          ; LATIN CAPITAL LETTER R WITH DOUBLE GRAVE
-    "Ȑ": [.r, .grave, .doubled, .above, .capital],
+    "Ȑ": [.combined],
 
     //0211          ; LATIN SMALL LETTER R WITH DOUBLE GRAVE
-    "ȑ": [.r, .grave, .doubled, .above],
+    "ȑ": [.combined],
 
     //0212          ; LATIN CAPITAL LETTER R WITH INVERTED BREVE
-    "Ȓ": [.r, .invertedBreve, .above, .capital],
+    "Ȓ": [.combined],
 
     //0213          ; LATIN SMALL LETTER R WITH INVERTED BREVE
-    "ȓ": [.r, .invertedBreve, .above],
+    "ȓ": [.combined],
 
     //0214          ; LATIN CAPITAL LETTER U WITH DOUBLE GRAVE
-    "Ȕ": [.u, .grave, .doubled, .above, .capital],
+    "Ȕ": [.combined],
 
     //0215          ; LATIN SMALL LETTER U WITH DOUBLE GRAVE
-    "ȕ": [.u, .grave, .doubled, .above],
+    "ȕ": [.combined],
 
     //0216          ; LATIN CAPITAL LETTER U WITH INVERTED BREVE
-    "Ȗ": [.u, .invertedBreve, .above, .capital],
+    "Ȗ": [.combined],
 
     //0217          ; LATIN SMALL LETTER U WITH INVERTED BREVE
-    "ȗ": [.u, .invertedBreve, .above],
+    "ȗ": [.combined],
 
     //0218          ; LATIN CAPITAL LETTER S WITH COMMA BELOW
-    "Ș": [.s, .comma, .below, .capital],
+    "Ș": [.combined],
 
     //0219          ; LATIN SMALL LETTER S WITH COMMA BELOW
-    "ș": [.s, .comma, .below],
+    "ș": [.combined],
 
     //021A          ; LATIN CAPITAL LETTER T WITH COMMA BELOW
-    "Ț": [.t, .comma, .below, .capital],
+    "Ț": [.combined],
 
     //021B          ; LATIN SMALL LETTER T WITH COMMA BELOW
-    "ț": [.t, .comma, .below],
+    "ț": [.combined],
 
     //021C          ; LATIN CAPITAL LETTER YOGH
     "Ȝ": [.y, .extraH, .capital],
@@ -1453,10 +1453,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ȝ": [.y, .extraH],
 
     //021E          ; LATIN CAPITAL LETTER H WITH CARON
-    "Ȟ": [.h, .caron, .above, .capital],
+    "Ȟ": [.combined],
 
     //021F          ; LATIN SMALL LETTER H WITH CARON
-    "ȟ": [.h, .caron, .above],
+    "ȟ": [.combined],
 
     //0220          ; LATIN CAPITAL LETTER N WITH LONG RIGHT LEG
     "Ƞ": [.n, .longLeg, .capital],
@@ -1477,46 +1477,46 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ȥ": [.z, .hook],
 
     //0226          ; LATIN CAPITAL LETTER A WITH DOT ABOVE
-    "Ȧ": [.a, .dot, .above, .capital],
+    "Ȧ": [.combined],
 
     //0227          ; LATIN SMALL LETTER A WITH DOT ABOVE
-    "ȧ": [.a, .dot, .above],
+    "ȧ": [.combined],
 
     //0228          ; LATIN CAPITAL LETTER E WITH CEDILLA
-    "Ȩ": [.e, .cedilla, .capital],
+    "Ȩ": [.combined],
 
     //0229          ; LATIN SMALL LETTER E WITH CEDILLA
-    "ȩ": [.e, .cedilla],
+    "ȩ": [.combined],
 
     //022A          ; LATIN CAPITAL LETTER O WITH DIAERESIS AND MACRON
-    "Ȫ": [.o, .diaeresis, .above, .macron, .above, .capital],
+    "Ȫ": [.combined],
 
     //022B          ; LATIN SMALL LETTER O WITH DIAERESIS AND MACRON
-    "ȫ": [.o, .diaeresis, .above, .macron, .above],
+    "ȫ": [.combined],
 
     //022C          ; LATIN CAPITAL LETTER O WITH TILDE AND MACRON
-    "Ȭ": [.o, .tilde, .above, .macron, .above, .capital],
+    "Ȭ": [.combined],
 
     //022D          ; LATIN SMALL LETTER O WITH TILDE AND MACRON
-    "ȭ": [.o, .tilde, .above, .macron, .above],
+    "ȭ": [.combined],
 
     //022E          ; LATIN CAPITAL LETTER O WITH DOT ABOVE
-    "Ȯ": [.o, .dot, .above, .capital],
+    "Ȯ": [.combined],
 
     //022F          ; LATIN SMALL LETTER O WITH DOT ABOVE
-    "ȯ": [.o, .dot, .above],
+    "ȯ": [.combined],
 
     //0230          ; LATIN CAPITAL LETTER O WITH DOT ABOVE AND MACRON
-    "Ȱ": [.o, .dot, .above, .macron, .above, .capital],
+    "Ȱ": [.combined],
 
     //0231          ; LATIN SMALL LETTER O WITH DOT ABOVE AND MACRON
-    "ȱ": [.o, .dot, .above, .macron, .above],
+    "ȱ": [.combined],
 
     //0232          ; LATIN CAPITAL LETTER Y WITH MACRON
-    "Ȳ": [.y, .macron, .above, .capital],
+    "Ȳ": [.combined],
 
     //0233          ; LATIN SMALL LETTER Y WITH MACRON
-    "ȳ": [.y, .macron, .above],
+    "ȳ": [.combined],
 
     //0234          ; LATIN SMALL LETTER L WITH CURL
     "ȴ": [.l, .curl],
@@ -2738,16 +2738,16 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     // MARK: - 0400..04FF; Cyrillic
     
     //0400          ; CYRILLIC CAPITAL LETTER IE WITH GRAVE
-    "Ѐ": [.e, .capital, .cyrillic, .grave, .above],
+    "Ѐ": [.combined],
     
     //0401          ; CYRILLIC CAPITAL LETTER IO
-    "Ё": [.i, .o, .capital, .cyrillic],
+    "Ё": [.combined],
     
     //0402          ; CYRILLIC CAPITAL LETTER DJE
     "Ђ": [.d, .capital, .extra0, .cyrillic],
     
     //0403          ; CYRILLIC CAPITAL LETTER GJE
-    "Ѓ": [.g, .capital, .cyrillic, .acute, .above],
+    "Ѓ": [.combined],
     
     //0404          ; CYRILLIC CAPITAL LETTER UKRAINIAN IE
     "Є": [.i, .e, .capital, .cyrillic],
@@ -2759,7 +2759,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "І": [.i, .capital, .cyrillic, .extra0],
     
     //0407          ; CYRILLIC CAPITAL LETTER YI
-    "Ї": [.i, .capital, .cyrillic, .extra0, .diaeresis, .above],
+    "Ї": [.combined],
     
     //0408          ; CYRILLIC CAPITAL LETTER JE
     "Ј": [.j, .capital, .cyrillic],
@@ -2774,13 +2774,13 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "Ћ": [.t, .extra0, .capital, .cyrillic],
     
     //040C          ; CYRILLIC CAPITAL LETTER KJE
-    "Ќ": [.k, .capital, .cyrillic, .acute, .above],
+    "Ќ": [.combined],
     
     //040D          ; CYRILLIC CAPITAL LETTER I WITH GRAVE
-    "Ѝ": [.i, .capital, .cyrillic, .grave, .above],
+    "Ѝ": [.combined],
     
     //040E          ; CYRILLIC CAPITAL LETTER SHORT U
-    "Ў": [.u, .capital, .cyrillic, .breve, .above],
+    "Ў": [.combined],
     
     //040F          ; CYRILLIC CAPITAL LETTER DZHE
     "Џ": [.d, .z, .extraH, .capital, .cyrillic],
@@ -2813,7 +2813,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "И": [.i, .capital, .cyrillic],
     
     //0419          ; CYRILLIC CAPITAL LETTER SHORT I
-    "Й": [.i, .capital, .cyrillic, .breve, .above],
+    "Й": [.combined],
     
     //041A          ; CYRILLIC CAPITAL LETTER KA
     "К": [.k, .capital, .cyrillic],
@@ -2909,7 +2909,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "и": [.i, .cyrillic],
     
     //0439          ; CYRILLIC SMALL LETTER SHORT I
-    "й": [.i, .cyrillic, .breve, .above],
+    "й": [.combined],
     
     //043A          ; CYRILLIC SMALL LETTER KA
     "к": [.k, .cyrillic],
@@ -2978,16 +2978,16 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "я": [.i, .a, .cyrillic],
     
     //0450          ; CYRILLIC SMALL LETTER IE WITH GRAVE
-    "ѐ": [.e, .cyrillic, .grave, .above],
+    "ѐ": [.combined],
     
     //0451          ; CYRILLIC SMALL LETTER IO
-    "ё": [.i, .o, .cyrillic],
+    "ё": [.combined],
     
     //0452          ; CYRILLIC SMALL LETTER DJE
     "ђ": [.d, .extra0, .cyrillic],
     
     //0453          ; CYRILLIC SMALL LETTER GJE
-    "ѓ": [.g, .cyrillic, .acute],
+    "ѓ": [.combined],
     
     //0454          ; CYRILLIC SMALL LETTER UKRAINIAN IE
     "є": [.i, .e, .cyrillic],
@@ -2999,7 +2999,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "і": [.i, .cyrillic, .extra0],
     
     //0457          ; CYRILLIC SMALL LETTER YI
-    "ї": [.i, .cyrillic, .extra0, .diaeresis, .above],
+    "ї": [.combined],
     
     //0458          ; CYRILLIC SMALL LETTER JE
     "ј": [.j, .cyrillic],
@@ -3014,13 +3014,13 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ћ": [.t, .extra0, .cyrillic],
     
     //045C          ; CYRILLIC SMALL LETTER KJE
-    "ќ": [.k, .cyrillic, .acute, .above],
+    "ќ": [.combined],
     
     //045D          ; CYRILLIC SMALL LETTER I WITH GRAVE
-    "ѝ": [.i, .cyrillic, .grave, .above],
+    "ѝ": [.combined],
     
     //045E          ; CYRILLIC SMALL LETTER SHORT U
-    "ў": [.u, .cyrillic, .breve, .above],
+    "ў": [.combined],
     
     //045F          ; CYRILLIC SMALL LETTER DZHE
     "џ": [.d, .z, .extraH, .cyrillic],
@@ -3092,10 +3092,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ѵ": [.i, .h, .cyrillic],
     
     //0476          ; CYRILLIC CAPITAL LETTER IZHITSA WITH DOUBLE GRAVE ACCENT
-    "Ѷ": [.i, .h, .capital, .cyrillic, .grave, .doubled, .above],
+    "Ѷ": [.combined],
     
     //0477          ; CYRILLIC SMALL LETTER IZHITSA WITH DOUBLE GRAVE ACCENT
-    "ѷ": [.i, .h, .cyrillic, .grave, .doubled, .above],
+    "ѷ": [.combined],
     
     //0478          ; CYRILLIC CAPITAL LETTER UK
     "Ѹ": [.o, .u, .capital, .cyrillic],
@@ -3317,10 +3317,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "Ӏ": [.h, .extraH, .capital, .cyrillic],
 
     //04C1          ; CYRILLIC CAPITAL LETTER ZHE WITH BREVE
-    "Ӂ": [.z, .extraH, .capital, .cyrillic, .breve, .above],
+    "Ӂ": [.combined],
 
     //04C2          ; CYRILLIC SMALL LETTER ZHE WITH BREVE
-    "ӂ": [.z, .extraH, .cyrillic, .breve, .above],
+    "ӂ": [.combined],
 
     //04C3          ; CYRILLIC CAPITAL LETTER KA WITH HOOK
     "Ӄ": [.k, .capital, .cyrillic, .hook],
@@ -3362,16 +3362,16 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ӏ": [.h, .extraH, .cyrillic],
 
     //04D0          ; CYRILLIC CAPITAL LETTER A WITH BREVE
-    "Ӑ": [.a, .capital, .cyrillic, .breve, .above],
+    "Ӑ": [.combined],
 
     //04D1          ; CYRILLIC SMALL LETTER A WITH BREVE
-    "ӑ": [.a, .cyrillic, .breve, .above],
+    "ӑ": [.combined],
 
     //04D2          ; CYRILLIC CAPITAL LETTER A WITH DIAERESIS
-    "Ӓ": [.a, .capital, .cyrillic, .diaeresis, .above],
+    "Ӓ": [.combined],
 
     //04D3          ; CYRILLIC SMALL LETTER A WITH DIAERESIS
-    "ӓ": [.a, .cyrillic, .diaeresis, .above],
+    "ӓ": [.combined],
 
     //04D4          ; CYRILLIC CAPITAL LIGATURE A IE
     "Ӕ": [.a, .e, .capital, .cyrillic],
@@ -3380,10 +3380,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ӕ": [.a, .e, .cyrillic],
 
     //04D6          ; CYRILLIC CAPITAL LETTER IE WITH BREVE
-    "Ӗ": [.e, .capital, .cyrillic, .breve, .above],
+    "Ӗ": [.combined],
 
     //04D7          ; CYRILLIC SMALL LETTER IE WITH BREVE
-    "ӗ": [.e, .cyrillic, .breve, .above],
+    "ӗ": [.combined],
 
     //04D8          ; CYRILLIC CAPITAL LETTER SCHWA
     "Ә": [.a, .extra0, .capital, .cyrillic],
@@ -3392,22 +3392,22 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ә": [.a, .extra0, .cyrillic],
 
     //04DA          ; CYRILLIC CAPITAL LETTER SCHWA WITH DIAERESIS
-    "Ӛ": [.a, .extra0, .capital, .cyrillic, .diaeresis, .above],
+    "Ӛ": [.combined],
 
     //04DB          ; CYRILLIC SMALL LETTER SCHWA WITH DIAERESIS
-    "ӛ": [.a, .extra0, .cyrillic, .diaeresis, .above],
+    "ӛ": [.combined],
 
     //04DC          ; CYRILLIC CAPITAL LETTER ZHE WITH DIAERESIS
-    "Ӝ": [.z, .extraH, .capital, .cyrillic, .diaeresis, .above],
+    "Ӝ": [.combined],
 
     //04DD          ; CYRILLIC SMALL LETTER ZHE WITH DIAERESIS
-    "ӝ": [.z, .extraH, .cyrillic, .diaeresis, .above],
+    "ӝ": [.combined],
 
     //04DE          ; CYRILLIC CAPITAL LETTER ZE WITH DIAERESIS
-    "Ӟ": [.z, .capital, .cyrillic, .diaeresis, .above],
+    "Ӟ": [.combined],
 
     //04DF          ; CYRILLIC SMALL LETTER ZE WITH DIAERESIS
-    "ӟ": [.z, .cyrillic, .diaeresis, .above],
+    "ӟ": [.combined],
 
     //04E0          ; CYRILLIC CAPITAL LETTER ABKHASIAN DZE
     "Ӡ": [.d, .z, .capital, .cyrillic, .extra0],
@@ -3416,22 +3416,22 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ӡ": [.d, .z, .cyrillic, .extra0],
 
     //04E2          ; CYRILLIC CAPITAL LETTER I WITH MACRON
-    "Ӣ": [.i, .capital, .cyrillic, .macron, .above],
+    "Ӣ": [.combined],
 
     //04E3          ; CYRILLIC SMALL LETTER I WITH MACRON
-    "ӣ": [.i, .cyrillic, .macron, .above],
+    "ӣ": [.combined],
 
     //04E4          ; CYRILLIC CAPITAL LETTER I WITH DIAERESIS
-    "Ӥ": [.i, .capital, .cyrillic, .diaeresis, .above],
+    "Ӥ": [.combined],
 
     //04E5          ; CYRILLIC SMALL LETTER I WITH DIAERESIS
-    "ӥ": [.i, .cyrillic, .diaeresis, .above],
+    "ӥ": [.combined],
 
     //04E6          ; CYRILLIC CAPITAL LETTER O WITH DIAERESIS
-    "Ӧ": [.o, .capital, .cyrillic, .diaeresis, .above],
+    "Ӧ": [.combined],
 
     //04E7          ; CYRILLIC SMALL LETTER O WITH DIAERESIS
-    "ӧ": [.o, .cyrillic, .diaeresis, .above],
+    "ӧ": [.combined],
 
     //04E8          ; CYRILLIC CAPITAL LETTER BARRED O
     "Ө": [.o, .stroke, .capital, .cyrillic],
@@ -3440,40 +3440,40 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ө": [.o, .stroke, .cyrillic],
 
     //04EA          ; CYRILLIC CAPITAL LETTER BARRED O WITH DIAERESIS
-    "Ӫ": [.o, .stroke, .capital, .cyrillic, .diaeresis, .above],
+    "Ӫ": [.combined],
 
     //04EB          ; CYRILLIC SMALL LETTER BARRED O WITH DIAERESIS
-    "ӫ": [.o, .stroke, .cyrillic, .diaeresis, .above],
+    "ӫ": [.combined],
 
     //04EC          ; CYRILLIC CAPITAL LETTER E WITH DIAERESIS
-    "Ӭ": [.e, .capital, .cyrillic, .turned, .diaeresis, .above],
+    "Ӭ": [.combined],
 
     //04ED          ; CYRILLIC SMALL LETTER E WITH DIAERESIS
-    "ӭ": [.e, .cyrillic, .turned, .diaeresis, .above],
+    "ӭ": [.combined],
 
     //04EE          ; CYRILLIC CAPITAL LETTER U WITH MACRON
-    "Ӯ": [.u, .capital, .cyrillic, .macron, .above],
+    "Ӯ": [.combined],
 
     //04EF          ; CYRILLIC SMALL LETTER U WITH MACRON
-    "ӯ": [.u, .cyrillic, .macron, .above],
+    "ӯ": [.combined],
 
     //04F0          ; CYRILLIC CAPITAL LETTER U WITH DIAERESIS
-    "Ӱ": [.u, .capital, .cyrillic, .diaeresis, .above],
+    "Ӱ": [.combined],
 
     //04F1          ; CYRILLIC SMALL LETTER U WITH DIAERESIS
-    "ӱ": [.u, .cyrillic, .diaeresis, .above],
+    "ӱ": [.combined],
 
     //04F2          ; CYRILLIC CAPITAL LETTER U WITH DOUBLE ACUTE
-    "Ӳ": [.u, .capital, .cyrillic, .acute, .doubled, .above],
+    "Ӳ": [.combined],
 
     //04F3          ; CYRILLIC SMALL LETTER U WITH DOUBLE ACUTE
-    "ӳ": [.u, .cyrillic, .acute, .doubled, .above],
+    "ӳ": [.combined],
 
     //04F4          ; CYRILLIC CAPITAL LETTER CHE WITH DIAERESIS
-    "Ӵ": [.c, .extraH, .capital, .cyrillic, .diaeresis, .above],
+    "Ӵ": [.combined],
 
     //04F5          ; CYRILLIC SMALL LETTER CHE WITH DIAERESIS
-    "ӵ": [.c, .extraH, .cyrillic, .diaeresis, .above],
+    "ӵ": [.combined],
 
     //04F6          ; CYRILLIC CAPITAL LETTER GHE WITH DESCENDER
     "Ӷ": [.g, .capital, .cyrillic, .descender],
@@ -3482,10 +3482,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ӷ": [.g, .cyrillic, .descender],
 
     //04F8          ; CYRILLIC CAPITAL LETTER YERU WITH DIAERESIS
-    "Ӹ": [.y, .capital, .cyrillic, .diaeresis, .above],
+    "Ӹ": [.combined],
 
     //04F9          ; CYRILLIC SMALL LETTER YERU WITH DIAERESIS
-    "ӹ": [.y, .cyrillic, .diaeresis, .above],
+    "ӹ": [.combined],
 
     //04FA          ; CYRILLIC CAPITAL LETTER GHE WITH STROKE AND HOOK
     "Ӻ": [.g, .capital, .cyrillic, .stroke, .hook],
@@ -4332,472 +4332,472 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     // MARK: - 1E00..1EFF; Latin Extended Additional
     
     //1E00          ; LATIN CAPITAL LETTER A WITH RING BELOW
-    "Ḁ": [.a, .capital, .ring, .below],
+    "Ḁ": [.combined],
 
     //1E01          ; LATIN SMALL LETTER A WITH RING BELOW
-    "ḁ": [.a, .ring, .below],
+    "ḁ": [.combined],
 
     //1E02          ; LATIN CAPITAL LETTER B WITH DOT ABOVE
-    "Ḃ": [.b, .capital, .dot, .above],
+    "Ḃ": [.combined],
 
     //1E03          ; LATIN SMALL LETTER B WITH DOT ABOVE
-    "ḃ": [.b, .dot, .above],
+    "ḃ": [.combined],
 
     //1E04          ; LATIN CAPITAL LETTER B WITH DOT BELOW
-    "Ḅ": [.b, .capital, .dot, .below],
+    "Ḅ": [.combined],
 
     //1E05          ; LATIN SMALL LETTER B WITH DOT BELOW
-    "ḅ": [.b, .dot, .below],
+    "ḅ": [.combined],
 
     //1E06          ; LATIN CAPITAL LETTER B WITH LINE BELOW
-    "Ḇ": [.b, .capital, .macron, .below],
+    "Ḇ": [.combined],
 
     //1E07          ; LATIN SMALL LETTER B WITH LINE BELOW
-    "ḇ": [.b, .macron, .below],
+    "ḇ": [.combined],
 
     //1E08          ; LATIN CAPITAL LETTER C WITH CEDILLA AND ACUTE
-    "Ḉ": [.c, .capital, .cedilla, .acute, .above],
+    "Ḉ": [.combined],
 
     //1E09          ; LATIN SMALL LETTER C WITH CEDILLA AND ACUTE
-    "ḉ": [.c, .cedilla, .acute, .above],
+    "ḉ": [.combined],
 
     //1E0A          ; LATIN CAPITAL LETTER D WITH DOT ABOVE
-    "Ḋ": [.d, .capital, .dot, .above],
+    "Ḋ": [.combined],
 
     //1E0B          ; LATIN SMALL LETTER D WITH DOT ABOVE
-    "ḋ": [.d, .dot, .above],
+    "ḋ": [.combined],
 
     //1E0C          ; LATIN CAPITAL LETTER D WITH DOT BELOW
-    "Ḍ": [.d, .capital, .dot, .below],
+    "Ḍ": [.combined],
 
     //1E0D          ; LATIN SMALL LETTER D WITH DOT BELOW
-    "ḍ": [.d, .dot, .below],
+    "ḍ": [.combined],
 
     //1E0E          ; LATIN CAPITAL LETTER D WITH LINE BELOW
-    "Ḏ": [.d, .capital, .macron, .below],
+    "Ḏ": [.combined],
 
     //1E0F          ; LATIN SMALL LETTER D WITH LINE BELOW
-    "ḏ": [.d, .macron, .below],
+    "ḏ": [.combined],
 
     //1E10          ; LATIN CAPITAL LETTER D WITH CEDILLA
-    "Ḑ": [.d, .capital, .cedilla],
+    "Ḑ": [.combined],
 
     //1E11          ; LATIN SMALL LETTER D WITH CEDILLA
-    "ḑ": [.d, .cedilla],
+    "ḑ": [.combined],
 
     //1E12          ; LATIN CAPITAL LETTER D WITH CIRCUMFLEX BELOW
-    "Ḓ": [.d, .capital, .circumflex, .below],
+    "Ḓ": [.combined],
 
     //1E13          ; LATIN SMALL LETTER D WITH CIRCUMFLEX BELOW
-    "ḓ": [.d, .circumflex, .below],
+    "ḓ": [.combined],
 
     //1E14          ; LATIN CAPITAL LETTER E WITH MACRON AND GRAVE
-    "Ḕ": [.e, .capital, .macron, .above, .grave, .above],
+    "Ḕ": [.combined],
 
     //1E15          ; LATIN SMALL LETTER E WITH MACRON AND GRAVE
-    "ḕ": [.e, .macron, .above, .grave, .above],
+    "ḕ": [.combined],
 
     //1E16          ; LATIN CAPITAL LETTER E WITH MACRON AND ACUTE
-    "Ḗ": [.e, .capital, .macron, .above, .acute, .above],
+    "Ḗ": [.combined],
 
     //1E17          ; LATIN SMALL LETTER E WITH MACRON AND ACUTE
-    "ḗ": [.e, .macron, .above, .acute, .above],
+    "ḗ": [.combined],
 
     //1E18          ; LATIN CAPITAL LETTER E WITH CIRCUMFLEX BELOW
-    "Ḙ": [.e, .capital, .circumflex, .below],
+    "Ḙ": [.combined],
 
     //1E19          ; LATIN SMALL LETTER E WITH CIRCUMFLEX BELOW
-    "ḙ": [.e, .circumflex, .below],
+    "ḙ": [.combined],
 
     //1E1A          ; LATIN CAPITAL LETTER E WITH TILDE BELOW
-    "Ḛ": [.e, .capital, .tilde, .below],
+    "Ḛ": [.combined],
 
     //1E1B          ; LATIN SMALL LETTER E WITH TILDE BELOW
-    "ḛ": [.e, .tilde, .below],
+    "ḛ": [.combined],
 
     //1E1C          ; LATIN CAPITAL LETTER E WITH CEDILLA AND BREVE
-    "Ḝ": [.e, .capital, .cedilla, .breve, .above],
+    "Ḝ": [.combined],
 
     //1E1D          ; LATIN SMALL LETTER E WITH CEDILLA AND BREVE
-    "ḝ": [.e, .cedilla, .breve, .above],
+    "ḝ": [.combined],
 
     //1E1E          ; LATIN CAPITAL LETTER F WITH DOT ABOVE
-    "Ḟ": [.f, .capital, .dot, .above],
+    "Ḟ": [.combined],
 
     //1E1F          ; LATIN SMALL LETTER F WITH DOT ABOVE
-    "ḟ": [.f, .dot, .above],
+    "ḟ": [.combined],
 
     //1E20          ; LATIN CAPITAL LETTER G WITH MACRON
-    "Ḡ": [.g, .capital, .macron, .above],
+    "Ḡ": [.combined],
 
     //1E21          ; LATIN SMALL LETTER G WITH MACRON
-    "ḡ": [.g, .macron, .above],
+    "ḡ": [.combined],
 
     //1E22          ; LATIN CAPITAL LETTER H WITH DOT ABOVE
-    "Ḣ": [.h, .capital, .dot, .above],
+    "Ḣ": [.combined],
 
     //1E23          ; LATIN SMALL LETTER H WITH DOT ABOVE
-    "ḣ": [.h, .dot, .above],
+    "ḣ": [.combined],
 
     //1E24          ; LATIN CAPITAL LETTER H WITH DOT BELOW
-    "Ḥ": [.h, .capital, .dot, .below],
+    "Ḥ": [.combined],
 
     //1E25          ; LATIN SMALL LETTER H WITH DOT BELOW
-    "ḥ": [.h, .dot, .below],
+    "ḥ": [.combined],
 
     //1E26          ; LATIN CAPITAL LETTER H WITH DIAERESIS
-    "Ḧ": [.h, .capital, .diaeresis, .above],
+    "Ḧ": [.combined],
 
     //1E27          ; LATIN SMALL LETTER H WITH DIAERESIS
-    "ḧ": [.h, .diaeresis, .above],
+    "ḧ": [.combined],
 
     //1E28          ; LATIN CAPITAL LETTER H WITH CEDILLA
-    "Ḩ": [.h, .capital, .cedilla],
+    "Ḩ": [.combined],
 
     //1E29          ; LATIN SMALL LETTER H WITH CEDILLA
-    "ḩ": [.h, .cedilla],
+    "ḩ": [.combined],
 
     //1E2A          ; LATIN CAPITAL LETTER H WITH BREVE BELOW
-    "Ḫ": [.h, .capital, .breve, .below],
+    "Ḫ": [.combined],
 
     //1E2B          ; LATIN SMALL LETTER H WITH BREVE BELOW
-    "ḫ": [.h, .breve, .below],
+    "ḫ": [.combined],
 
     //1E2C          ; LATIN CAPITAL LETTER I WITH TILDE BELOW
-    "Ḭ": [.i, .capital, .tilde, .below],
+    "Ḭ": [.combined],
 
     //1E2D          ; LATIN SMALL LETTER I WITH TILDE BELOW
-    "ḭ": [.i, .tilde, .below],
+    "ḭ": [.combined],
 
     //1E2E          ; LATIN CAPITAL LETTER I WITH DIAERESIS AND ACUTE
-    "Ḯ": [.i, .capital, .diaeresis, .above, .acute, .above],
+    "Ḯ": [.combined],
 
     //1E2F          ; LATIN SMALL LETTER I WITH DIAERESIS AND ACUTE
-    "ḯ": [.i, .diaeresis, .above, .acute, .above],
+    "ḯ": [.combined],
 
     //1E30          ; LATIN CAPITAL LETTER K WITH ACUTE
-    "Ḱ": [.k, .capital, .acute, .above],
+    "Ḱ": [.combined],
 
     //1E31          ; LATIN SMALL LETTER K WITH ACUTE
-    "ḱ": [.k, .acute, .above],
+    "ḱ": [.combined],
 
     //1E32          ; LATIN CAPITAL LETTER K WITH DOT BELOW
-    "Ḳ": [.k, .capital, .dot, .below],
+    "Ḳ": [.combined],
 
     //1E33          ; LATIN SMALL LETTER K WITH DOT BELOW
-    "ḳ": [.k, .dot, .below],
+    "ḳ": [.combined],
 
     //1E34          ; LATIN CAPITAL LETTER K WITH LINE BELOW
-    "Ḵ": [.k, .capital, .macron, .below],
+    "Ḵ": [.combined],
 
     //1E35          ; LATIN SMALL LETTER K WITH LINE BELOW
-    "ḵ": [.k, .macron, .below],
+    "ḵ": [.combined],
 
     //1E36          ; LATIN CAPITAL LETTER L WITH DOT BELOW
-    "Ḷ": [.l, .capital, .dot, .below],
+    "Ḷ": [.combined],
 
     //1E37          ; LATIN SMALL LETTER L WITH DOT BELOW
-    "ḷ": [.l, .dot, .below],
+    "ḷ": [.combined],
 
     //1E38          ; LATIN CAPITAL LETTER L WITH DOT BELOW AND MACRON
-    "Ḹ": [.l, .capital, .dot, .below, .macron, .above],
+    "Ḹ": [.combined],
 
     //1E39          ; LATIN SMALL LETTER L WITH DOT BELOW AND MACRON
-    "ḹ": [.l, .dot, .below, .macron, .above],
+    "ḹ": [.combined],
 
     //1E3A          ; LATIN CAPITAL LETTER L WITH LINE BELOW
-    "Ḻ": [.l, .capital, .macron, .below],
+    "Ḻ": [.combined],
 
     //1E3B          ; LATIN SMALL LETTER L WITH LINE BELOW
-    "ḻ": [.l, .macron, .below],
+    "ḻ": [.combined],
 
     //1E3C          ; LATIN CAPITAL LETTER L WITH CIRCUMFLEX BELOW
-    "Ḽ": [.l, .capital, .circumflex, .below],
+    "Ḽ": [.combined],
 
     //1E3D          ; LATIN SMALL LETTER L WITH CIRCUMFLEX BELOW
-    "ḽ": [.l, .circumflex, .below],
+    "ḽ": [.combined],
 
     //1E3E          ; LATIN CAPITAL LETTER M WITH ACUTE
-    "Ḿ": [.m, .capital, .acute, .above],
+    "Ḿ": [.combined],
 
     //1E3F          ; LATIN SMALL LETTER M WITH ACUTE
-    "ḿ": [.m, .acute, .above],
+    "ḿ": [.combined],
 
     //1E40          ; LATIN CAPITAL LETTER M WITH DOT ABOVE
-    "Ṁ": [.m, .capital, .dot, .above],
+    "Ṁ": [.combined],
 
     //1E41          ; LATIN SMALL LETTER M WITH DOT ABOVE
-    "ṁ": [.m, .dot, .above],
+    "ṁ": [.combined],
 
     //1E42          ; LATIN CAPITAL LETTER M WITH DOT BELOW
-    "Ṃ": [.m, .capital, .dot, .below],
+    "Ṃ": [.combined],
 
     //1E43          ; LATIN SMALL LETTER M WITH DOT BELOW
-    "ṃ": [.m, .dot, .below],
+    "ṃ": [.combined],
 
     //1E44          ; LATIN CAPITAL LETTER N WITH DOT ABOVE
-    "Ṅ": [.n, .capital, .dot, .above],
+    "Ṅ": [.combined],
 
     //1E45          ; LATIN SMALL LETTER N WITH DOT ABOVE
-    "ṅ": [.n, .dot, .above],
+    "ṅ": [.combined],
 
     //1E46          ; LATIN CAPITAL LETTER N WITH DOT BELOW
-    "Ṇ": [.n, .capital, .dot, .below],
+    "Ṇ": [.combined],
 
     //1E47          ; LATIN SMALL LETTER N WITH DOT BELOW
-    "ṇ": [.n, .dot, .below],
+    "ṇ": [.combined],
 
     //1E48          ; LATIN CAPITAL LETTER N WITH LINE BELOW
-    "Ṉ": [.n, .capital, .macron, .below],
+    "Ṉ": [.combined],
 
     //1E49          ; LATIN SMALL LETTER N WITH LINE BELOW
-    "ṉ": [.n, .macron, .below],
+    "ṉ": [.combined],
 
     //1E4A          ; LATIN CAPITAL LETTER N WITH CIRCUMFLEX BELOW
-    "Ṋ": [.n, .capital, .circumflex, .below],
+    "Ṋ": [.combined],
 
     //1E4B          ; LATIN SMALL LETTER N WITH CIRCUMFLEX BELOW
-    "ṋ": [.n, .circumflex, .below],
+    "ṋ": [.combined],
 
     //1E4C          ; LATIN CAPITAL LETTER O WITH TILDE AND ACUTE
-    "Ṍ": [.o, .capital, .tilde, .above, .acute, .above],
+    "Ṍ": [.combined],
 
     //1E4D          ; LATIN SMALL LETTER O WITH TILDE AND ACUTE
-    "ṍ": [.o, .tilde, .above, .acute, .above],
+    "ṍ": [.combined],
 
     //1E4E          ; LATIN CAPITAL LETTER O WITH TILDE AND DIAERESIS
-    "Ṏ": [.o, .capital, .tilde, .above, .diaeresis, .above],
+    "Ṏ": [.combined],
 
     //1E4F          ; LATIN SMALL LETTER O WITH TILDE AND DIAERESIS
-    "ṏ": [.o, .tilde, .above, .diaeresis, .above],
+    "ṏ": [.combined],
 
     //1E50          ; LATIN CAPITAL LETTER O WITH MACRON AND GRAVE
-    "Ṑ": [.o, .capital, .macron, .above, .grave, .above],
+    "Ṑ": [.combined],
 
     //1E51          ; LATIN SMALL LETTER O WITH MACRON AND GRAVE
-    "ṑ": [.o, .macron, .above, .grave, .above],
+    "ṑ": [.combined],
 
     //1E52          ; LATIN CAPITAL LETTER O WITH MACRON AND ACUTE
-    "Ṓ": [.o, .capital, .macron, .above, .acute, .above],
+    "Ṓ": [.combined],
 
     //1E53          ; LATIN SMALL LETTER O WITH MACRON AND ACUTE
-    "ṓ": [.o, .macron, .above, .acute, .above],
+    "ṓ": [.combined],
 
     //1E54          ; LATIN CAPITAL LETTER P WITH ACUTE
-    "Ṕ": [.p, .capital, .acute, .above],
+    "Ṕ": [.combined],
 
     //1E55          ; LATIN SMALL LETTER P WITH ACUTE
-    "ṕ": [.p, .acute, .above],
+    "ṕ": [.combined],
 
     //1E56          ; LATIN CAPITAL LETTER P WITH DOT ABOVE
-    "Ṗ": [.p, .capital, .dot, .above],
+    "Ṗ": [.combined],
 
     //1E57          ; LATIN SMALL LETTER P WITH DOT ABOVE
-    "ṗ": [.p, .dot, .above],
+    "ṗ": [.combined],
 
     //1E58          ; LATIN CAPITAL LETTER R WITH DOT ABOVE
-    "Ṙ": [.r, .capital, .dot, .above],
+    "Ṙ": [.combined],
 
     //1E59          ; LATIN SMALL LETTER R WITH DOT ABOVE
-    "ṙ": [.r, .dot, .above],
+    "ṙ": [.combined],
 
     //1E5A          ; LATIN CAPITAL LETTER R WITH DOT BELOW
-    "Ṛ": [.r, .capital, .dot, .below],
+    "Ṛ": [.combined],
 
     //1E5B          ; LATIN SMALL LETTER R WITH DOT BELOW
-    "ṛ": [.r, .dot, .below],
+    "ṛ": [.combined],
 
     //1E5C          ; LATIN CAPITAL LETTER R WITH DOT BELOW AND MACRON
-    "Ṝ": [.r, .capital, .dot, .below, .macron, .above],
+    "Ṝ": [.combined],
 
     //1E5D          ; LATIN SMALL LETTER R WITH DOT BELOW AND MACRON
-    "ṝ": [.r, .dot, .below, .macron, .above],
+    "ṝ": [.combined],
 
     //1E5E          ; LATIN CAPITAL LETTER R WITH LINE BELOW
-    "Ṟ": [.r, .capital, .macron, .below],
+    "Ṟ": [.combined],
 
     //1E5F          ; LATIN SMALL LETTER R WITH LINE BELOW
-    "ṟ": [.r, .macron, .below],
+    "ṟ": [.combined],
 
     //1E60          ; LATIN CAPITAL LETTER S WITH DOT ABOVE
-    "Ṡ": [.s, .capital, .dot, .above],
+    "Ṡ": [.combined],
 
     //1E61          ; LATIN SMALL LETTER S WITH DOT ABOVE
-    "ṡ": [.s, .dot, .above],
+    "ṡ": [.combined],
 
     //1E62          ; LATIN CAPITAL LETTER S WITH DOT BELOW
-    "Ṣ": [.s, .capital, .dot, .below],
+    "Ṣ": [.combined],
 
     //1E63          ; LATIN SMALL LETTER S WITH DOT BELOW
-    "ṣ": [.s, .dot, .below],
+    "ṣ": [.combined],
 
     //1E64          ; LATIN CAPITAL LETTER S WITH ACUTE AND DOT ABOVE
-    "Ṥ": [.s, .capital, .acute, .above, .dot, .above],
+    "Ṥ": [.combined],
 
     //1E65          ; LATIN SMALL LETTER S WITH ACUTE AND DOT ABOVE
-    "ṥ": [.s, .acute, .above, .dot, .above],
+    "ṥ": [.combined],
 
     //1E66          ; LATIN CAPITAL LETTER S WITH CARON AND DOT ABOVE
-    "Ṧ": [.s, .capital, .caron, .above, .dot, .above],
+    "Ṧ": [.combined],
 
     //1E67          ; LATIN SMALL LETTER S WITH CARON AND DOT ABOVE
-    "ṧ": [.s, .caron, .above, .dot, .above],
+    "ṧ": [.combined],
 
     //1E68          ; LATIN CAPITAL LETTER S WITH DOT BELOW AND DOT ABOVE
-    "Ṩ": [.s, .capital, .dot, .below, .dot, .above],
+    "Ṩ": [.combined],
 
     //1E69          ; LATIN SMALL LETTER S WITH DOT BELOW AND DOT ABOVE
-    "ṩ": [.s, .dot, .below, .dot, .above],
+    "ṩ": [.combined],
 
     //1E6A          ; LATIN CAPITAL LETTER T WITH DOT ABOVE
-    "Ṫ": [.t, .capital, .dot, .above],
+    "Ṫ": [.combined],
 
     //1E6B          ; LATIN SMALL LETTER T WITH DOT ABOVE
-    "ṫ": [.t, .dot, .above],
+    "ṫ": [.combined],
 
     //1E6C          ; LATIN CAPITAL LETTER T WITH DOT BELOW
-    "Ṭ": [.t, .capital, .dot, .below],
+    "Ṭ": [.combined],
 
     //1E6D          ; LATIN SMALL LETTER T WITH DOT BELOW
-    "ṭ": [.t, .dot, .below],
+    "ṭ": [.combined],
 
     //1E6E          ; LATIN CAPITAL LETTER T WITH LINE BELOW
-    "Ṯ": [.t, .capital, .macron, .below],
+    "Ṯ": [.combined],
 
     //1E6F          ; LATIN SMALL LETTER T WITH LINE BELOW
-    "ṯ": [.t, .macron, .below],
+    "ṯ": [.combined],
 
     //1E70          ; LATIN CAPITAL LETTER T WITH CIRCUMFLEX BELOW
-    "Ṱ": [.t, .capital, .circumflex, .below],
+    "Ṱ": [.combined],
 
     //1E71          ; LATIN SMALL LETTER T WITH CIRCUMFLEX BELOW
-    "ṱ": [.t, .circumflex, .below],
+    "ṱ": [.combined],
 
     //1E72          ; LATIN CAPITAL LETTER U WITH DIAERESIS BELOW
-    "Ṳ": [.u, .capital, .diaeresis, .below],
+    "Ṳ": [.combined],
 
     //1E73          ; LATIN SMALL LETTER U WITH DIAERESIS BELOW
-    "ṳ": [.u, .diaeresis, .below],
+    "ṳ": [.combined],
 
     //1E74          ; LATIN CAPITAL LETTER U WITH TILDE BELOW
-    "Ṵ": [.u, .capital, .tilde, .below],
+    "Ṵ": [.combined],
 
     //1E75          ; LATIN SMALL LETTER U WITH TILDE BELOW
-    "ṵ": [.u, .tilde, .below],
+    "ṵ": [.combined],
 
     //1E76          ; LATIN CAPITAL LETTER U WITH CIRCUMFLEX BELOW
-    "Ṷ": [.u, .capital, .circumflex, .below],
+    "Ṷ": [.combined],
 
     //1E77          ; LATIN SMALL LETTER U WITH CIRCUMFLEX BELOW
-    "ṷ": [.u, .circumflex, .below],
+    "ṷ": [.combined],
 
     //1E78          ; LATIN CAPITAL LETTER U WITH TILDE AND ACUTE
-    "Ṹ": [.u, .capital, .tilde, .above, .acute, .above],
+    "Ṹ": [.combined],
 
     //1E79          ; LATIN SMALL LETTER U WITH TILDE AND ACUTE
-    "ṹ": [.u, .tilde, .above, .acute, .above],
+    "ṹ": [.combined],
 
     //1E7A          ; LATIN CAPITAL LETTER U WITH MACRON AND DIAERESIS
-    "Ṻ": [.u, .capital, .macron, .above, .diaeresis, .above],
+    "Ṻ": [.combined],
 
     //1E7B          ; LATIN SMALL LETTER U WITH MACRON AND DIAERESIS
-    "ṻ": [.u, .macron, .above, .diaeresis, .above],
+    "ṻ": [.combined],
 
     //1E7C          ; LATIN CAPITAL LETTER V WITH TILDE
-    "Ṽ": [.v, .capital, .tilde, .above],
+    "Ṽ": [.combined],
 
     //1E7D          ; LATIN SMALL LETTER V WITH TILDE
-    "ṽ": [.v, .tilde, .above],
+    "ṽ": [.combined],
 
     //1E7E          ; LATIN CAPITAL LETTER V WITH DOT BELOW
-    "Ṿ": [.v, .capital, .dot, .below],
+    "Ṿ": [.combined],
 
     //1E7F          ; LATIN SMALL LETTER V WITH DOT BELOW
-    "ṿ": [.v, .dot, .below],
+    "ṿ": [.combined],
 
     //1E80          ; LATIN CAPITAL LETTER W WITH GRAVE
-    "Ẁ": [.w, .capital, .grave, .above],
+    "Ẁ": [.combined],
 
     //1E81          ; LATIN SMALL LETTER W WITH GRAVE
-    "ẁ": [.w, .grave, .above],
+    "ẁ": [.combined],
 
     //1E82          ; LATIN CAPITAL LETTER W WITH ACUTE
-    "Ẃ": [.w, .capital, .acute, .above],
+    "Ẃ": [.combined],
 
     //1E83          ; LATIN SMALL LETTER W WITH ACUTE
-    "ẃ": [.w, .acute, .above],
+    "ẃ": [.combined],
 
     //1E84          ; LATIN CAPITAL LETTER W WITH DIAERESIS
-    "Ẅ": [.w, .capital, .diaeresis, .above],
+    "Ẅ": [.combined],
 
     //1E85          ; LATIN SMALL LETTER W WITH DIAERESIS
-    "ẅ": [.w, .diaeresis, .above],
+    "ẅ": [.combined],
 
     //1E86          ; LATIN CAPITAL LETTER W WITH DOT ABOVE
-    "Ẇ": [.w, .capital, .dot, .above],
+    "Ẇ": [.combined],
 
     //1E87          ; LATIN SMALL LETTER W WITH DOT ABOVE
-    "ẇ": [.w, .dot, .above],
+    "ẇ": [.combined],
 
     //1E88          ; LATIN CAPITAL LETTER W WITH DOT BELOW
-    "Ẉ": [.w, .capital, .dot, .below],
+    "Ẉ": [.combined],
 
     //1E89          ; LATIN SMALL LETTER W WITH DOT BELOW
-    "ẉ": [.w, .dot, .below],
+    "ẉ": [.combined],
 
     //1E8A          ; LATIN CAPITAL LETTER X WITH DOT ABOVE
-    "Ẋ": [.x, .capital, .dot, .above],
+    "Ẋ": [.combined],
 
     //1E8B          ; LATIN SMALL LETTER X WITH DOT ABOVE
-    "ẋ": [.x, .dot, .above],
+    "ẋ": [.combined],
 
     //1E8C          ; LATIN CAPITAL LETTER X WITH DIAERESIS
-    "Ẍ": [.x, .capital, .diaeresis, .above],
+    "Ẍ": [.combined],
 
     //1E8D          ; LATIN SMALL LETTER X WITH DIAERESIS
-    "ẍ": [.x, .diaeresis, .above],
+    "ẍ": [.combined],
 
     //1E8E          ; LATIN CAPITAL LETTER Y WITH DOT ABOVE
-    "Ẏ": [.y, .capital, .dot, .above],
+    "Ẏ": [.combined],
 
     //1E8F          ; LATIN SMALL LETTER Y WITH DOT ABOVE
-    "ẏ": [.y, .dot, .above],
+    "ẏ": [.combined],
 
     //1E90          ; LATIN CAPITAL LETTER Z WITH CIRCUMFLEX
-    "Ẑ": [.z, .capital, .circumflex, .above],
+    "Ẑ": [.combined],
 
     //1E91          ; LATIN SMALL LETTER Z WITH CIRCUMFLEX
-    "ẑ": [.z, .circumflex, .above],
+    "ẑ": [.combined],
 
     //1E92          ; LATIN CAPITAL LETTER Z WITH DOT BELOW
-    "Ẓ": [.z, .capital, .dot, .below],
+    "Ẓ": [.combined],
 
     //1E93          ; LATIN SMALL LETTER Z WITH DOT BELOW
-    "ẓ": [.z, .dot, .below],
+    "ẓ": [.combined],
 
     //1E94          ; LATIN CAPITAL LETTER Z WITH LINE BELOW
-    "Ẕ": [.z, .capital, .macron, .below],
+    "Ẕ": [.combined],
 
     //1E95          ; LATIN SMALL LETTER Z WITH LINE BELOW
-    "ẕ": [.z, .macron, .below],
+    "ẕ": [.combined],
 
     //1E96          ; LATIN SMALL LETTER H WITH LINE BELOW
-    "ẖ": [.h, .macron, .below],
+    "ẖ": [.combined],
 
     //1E97          ; LATIN SMALL LETTER T WITH DIAERESIS
-    "ẗ": [.t, .diaeresis, .above],
+    "ẗ": [.combined],
 
     //1E98          ; LATIN SMALL LETTER W WITH RING ABOVE
-    "ẘ": [.w, .ring, .above],
+    "ẘ": [.combined],
 
     //1E99          ; LATIN SMALL LETTER Y WITH RING ABOVE
-    "ẙ": [.y, .ring, .above],
+    "ẙ": [.combined],
 
     //1E9A          ; LATIN SMALL LETTER A WITH RIGHT HALF RING
     "ẚ": [.a, .ring, .rightHalf],
 
     //1E9B          ; LATIN SMALL LETTER LONG S WITH DOT ABOVE
-    "ẛ": [.s, .l, .dot, .above],
+    "ẛ": [.combined],
 
     //1E9C          ; LATIN SMALL LETTER LONG S WITH DIAGONAL STROKE
     "ẜ": [.s, .l, .diagonalStroke],
@@ -4812,274 +4812,274 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ẟ": [.d, .extraH, .extra1],
 
     //1EA0          ; LATIN CAPITAL LETTER A WITH DOT BELOW
-    "Ạ": [.a, .capital, .dot, .below],
+    "Ạ": [.combined],
 
     //1EA1          ; LATIN SMALL LETTER A WITH DOT BELOW
-    "ạ": [.a, .dot, .below],
+    "ạ": [.combined],
 
     //1EA2          ; LATIN CAPITAL LETTER A WITH HOOK ABOVE
-    "Ả": [.a, .capital, .hook, .above],
+    "Ả": [.combined],
 
     //1EA3          ; LATIN SMALL LETTER A WITH HOOK ABOVE
-    "ả": [.a, .hook, .above],
+    "ả": [.combined],
 
     //1EA4          ; LATIN CAPITAL LETTER A WITH CIRCUMFLEX AND ACUTE
-    "Ấ": [.a, .capital, .circumflex, .above, .acute, .above],
+    "Ấ": [.combined],
 
     //1EA5          ; LATIN SMALL LETTER A WITH CIRCUMFLEX AND ACUTE
-    "ấ": [.a, .circumflex, .above, .acute, .above],
+    "ấ": [.combined],
 
     //1EA6          ; LATIN CAPITAL LETTER A WITH CIRCUMFLEX AND GRAVE
-    "Ầ": [.a, .capital, .circumflex, .above, .grave, .above],
+    "Ầ": [.combined],
 
     //1EA7          ; LATIN SMALL LETTER A WITH CIRCUMFLEX AND GRAVE
-    "ầ": [.a, .circumflex, .above, .grave, .above],
+    "ầ": [.combined],
 
     //1EA8          ; LATIN CAPITAL LETTER A WITH CIRCUMFLEX AND HOOK ABOVE
-    "Ẩ": [.a, .capital, .circumflex, .above, .hook, .above],
+    "Ẩ": [.combined],
 
     //1EA9          ; LATIN SMALL LETTER A WITH CIRCUMFLEX AND HOOK ABOVE
-    "ẩ": [.a, .circumflex, .above, .hook, .above],
+    "ẩ": [.combined],
 
     //1EAA          ; LATIN CAPITAL LETTER A WITH CIRCUMFLEX AND TILDE
-    "Ẫ": [.a, .capital, .circumflex, .above, .tilde, .above],
+    "Ẫ": [.combined],
 
     //1EAB          ; LATIN SMALL LETTER A WITH CIRCUMFLEX AND TILDE
-    "ẫ": [.a, .circumflex, .above, .tilde, .above],
+    "ẫ": [.combined],
 
     //1EAC          ; LATIN CAPITAL LETTER A WITH CIRCUMFLEX AND DOT BELOW
-    "Ậ": [.a, .capital, .dot, .below, .circumflex, .above],
+    "Ậ": [.combined],
 
     //1EAD          ; LATIN SMALL LETTER A WITH CIRCUMFLEX AND DOT BELOW
-    "ậ": [.a, .dot, .below, .circumflex, .above],
+    "ậ": [.combined],
 
     //1EAE          ; LATIN CAPITAL LETTER A WITH BREVE AND ACUTE
-    "Ắ": [.a, .capital, .breve, .above, .acute, .above],
+    "Ắ": [.combined],
 
     //1EAF          ; LATIN SMALL LETTER A WITH BREVE AND ACUTE
-    "ắ": [.a, .breve, .above, .acute, .above],
+    "ắ": [.combined],
 
     //1EB0          ; LATIN CAPITAL LETTER A WITH BREVE AND GRAVE
-    "Ằ": [.a, .capital, .breve, .above, .grave, .above],
+    "Ằ": [.combined],
 
     //1EB1          ; LATIN SMALL LETTER A WITH BREVE AND GRAVE
-    "ằ": [.a, .breve, .above, .grave, .above],
+    "ằ": [.combined],
 
     //1EB2          ; LATIN CAPITAL LETTER A WITH BREVE AND HOOK ABOVE
-    "Ẳ": [.a, .capital, .breve, .above, .hook, .above],
+    "Ẳ": [.combined],
 
     //1EB3          ; LATIN SMALL LETTER A WITH BREVE AND HOOK ABOVE
-    "ẳ": [.a, .breve, .above, .hook, .above],
+    "ẳ": [.combined],
 
     //1EB4          ; LATIN CAPITAL LETTER A WITH BREVE AND TILDE
-    "Ẵ": [.a, .capital, .breve, .above, .tilde, .above],
+    "Ẵ": [.combined],
 
     //1EB5          ; LATIN SMALL LETTER A WITH BREVE AND TILDE
-    "ẵ": [.a, .breve, .above, .tilde, .above],
+    "ẵ": [.combined],
 
     //1EB6          ; LATIN CAPITAL LETTER A WITH BREVE AND DOT BELOW
-    "Ặ": [.a, .capital, .dot, .below, .breve, .above],
+    "Ặ": [.combined],
 
     //1EB7          ; LATIN SMALL LETTER A WITH BREVE AND DOT BELOW
-    "ặ": [.a, .dot, .below, .breve, .above],
+    "ặ": [.combined],
 
     //1EB8          ; LATIN CAPITAL LETTER E WITH DOT BELOW
-    "Ẹ": [.e, .capital, .dot, .below],
+    "Ẹ": [.combined],
 
     //1EB9          ; LATIN SMALL LETTER E WITH DOT BELOW
-    "ẹ": [.e, .dot, .below],
+    "ẹ": [.combined],
 
     //1EBA          ; LATIN CAPITAL LETTER E WITH HOOK ABOVE
-    "Ẻ": [.e, .capital, .hook, .above],
+    "Ẻ": [.combined],
 
     //1EBB          ; LATIN SMALL LETTER E WITH HOOK ABOVE
-    "ẻ": [.e, .hook, .above],
+    "ẻ": [.combined],
 
     //1EBC          ; LATIN CAPITAL LETTER E WITH TILDE
-    "Ẽ": [.e, .capital, .tilde, .above],
+    "Ẽ": [.combined],
 
     //1EBD          ; LATIN SMALL LETTER E WITH TILDE
-    "ẽ": [.e, .tilde, .above],
+    "ẽ": [.combined],
 
     //1EBE          ; LATIN CAPITAL LETTER E WITH CIRCUMFLEX AND ACUTE
-    "Ế": [.e, .capital, .circumflex, .above, .acute, .above],
+    "Ế": [.combined],
 
     //1EBF          ; LATIN SMALL LETTER E WITH CIRCUMFLEX AND ACUTE
-    "ế": [.e, .circumflex, .above, .acute, .above],
+    "ế": [.combined],
 
     //1EC0          ; LATIN CAPITAL LETTER E WITH CIRCUMFLEX AND GRAVE
-    "Ề": [.e, .capital, .circumflex, .above, .grave, .above],
+    "Ề": [.combined],
 
     //1EC1          ; LATIN SMALL LETTER E WITH CIRCUMFLEX AND GRAVE
-    "ề": [.e, .circumflex, .above, .grave, .above],
+    "ề": [.combined],
 
     //1EC2          ; LATIN CAPITAL LETTER E WITH CIRCUMFLEX AND HOOK ABOVE
-    "Ể": [.e, .capital, .circumflex, .above, .hook, .above],
+    "Ể": [.combined],
 
     //1EC3          ; LATIN SMALL LETTER E WITH CIRCUMFLEX AND HOOK ABOVE
-    "ể": [.e, .circumflex, .above, .hook, .above],
+    "ể": [.combined],
 
     //1EC4          ; LATIN CAPITAL LETTER E WITH CIRCUMFLEX AND TILDE
-    "Ễ": [.e, .capital, .circumflex, .above, .tilde, .above],
+    "Ễ": [.combined],
 
     //1EC5          ; LATIN SMALL LETTER E WITH CIRCUMFLEX AND TILDE
-    "ễ": [.e, .circumflex, .above, .tilde, .above],
+    "ễ": [.combined],
 
     //1EC6          ; LATIN CAPITAL LETTER E WITH CIRCUMFLEX AND DOT BELOW
-    "Ệ": [.e, .capital, .dot, .below, .circumflex, .above],
+    "Ệ": [.combined],
 
     //1EC7          ; LATIN SMALL LETTER E WITH CIRCUMFLEX AND DOT BELOW
-    "ệ": [.e, .dot, .below, .circumflex, .above],
+    "ệ": [.combined],
 
     //1EC8          ; LATIN CAPITAL LETTER I WITH HOOK ABOVE
-    "Ỉ": [.i, .capital, .hook, .above],
+    "Ỉ": [.combined],
 
     //1EC9          ; LATIN SMALL LETTER I WITH HOOK ABOVE
-    "ỉ": [.i, .hook, .above],
+    "ỉ": [.combined],
 
     //1ECA          ; LATIN CAPITAL LETTER I WITH DOT BELOW
-    "Ị": [.i, .capital, .dot, .below],
+    "Ị": [.combined],
 
     //1ECB          ; LATIN SMALL LETTER I WITH DOT BELOW
-    "ị": [.i, .dot, .below],
+    "ị": [.combined],
 
     //1ECC          ; LATIN CAPITAL LETTER O WITH DOT BELOW
-    "Ọ": [.o, .capital, .dot, .below],
+    "Ọ": [.combined],
 
     //1ECD          ; LATIN SMALL LETTER O WITH DOT BELOW
-    "ọ": [.o, .dot, .below],
+    "ọ": [.combined],
 
     //1ECE          ; LATIN CAPITAL LETTER O WITH HOOK ABOVE
-    "Ỏ": [.o, .capital, .hook, .above],
+    "Ỏ": [.combined],
 
     //1ECF          ; LATIN SMALL LETTER O WITH HOOK ABOVE
-    "ỏ": [.o, .hook, .above],
+    "ỏ": [.combined],
 
     //1ED0          ; LATIN CAPITAL LETTER O WITH CIRCUMFLEX AND ACUTE
-    "Ố": [.o, .capital, .circumflex, .above, .acute, .above],
+    "Ố": [.combined],
 
     //1ED1          ; LATIN SMALL LETTER O WITH CIRCUMFLEX AND ACUTE
-    "ố": [.o, .circumflex, .above, .acute, .above],
+    "ố": [.combined],
 
     //1ED2          ; LATIN CAPITAL LETTER O WITH CIRCUMFLEX AND GRAVE
-    "Ồ": [.o, .capital, .circumflex, .above, .grave, .above],
+    "Ồ": [.combined],
 
     //1ED3          ; LATIN SMALL LETTER O WITH CIRCUMFLEX AND GRAVE
-    "ồ": [.o, .circumflex, .above, .grave, .above],
+    "ồ": [.combined],
 
     //1ED4          ; LATIN CAPITAL LETTER O WITH CIRCUMFLEX AND HOOK ABOVE
-    "Ổ": [.o, .capital, .circumflex, .above, .hook, .above],
+    "Ổ": [.combined],
 
     //1ED5          ; LATIN SMALL LETTER O WITH CIRCUMFLEX AND HOOK ABOVE
-    "ổ": [.o, .circumflex, .above, .hook, .above],
+    "ổ": [.combined],
 
     //1ED6          ; LATIN CAPITAL LETTER O WITH CIRCUMFLEX AND TILDE
-    "Ỗ": [.o, .capital, .circumflex, .above, .tilde, .above],
+    "Ỗ": [.combined],
 
     //1ED7          ; LATIN SMALL LETTER O WITH CIRCUMFLEX AND TILDE
-    "ỗ": [.o, .circumflex, .above, .tilde, .above],
+    "ỗ": [.combined],
 
     //1ED8          ; LATIN CAPITAL LETTER O WITH CIRCUMFLEX AND DOT BELOW
-    "Ộ": [.o, .capital, .dot, .below, .circumflex, .above],
+    "Ộ": [.combined],
 
     //1ED9          ; LATIN SMALL LETTER O WITH CIRCUMFLEX AND DOT BELOW
-    "ộ": [.o, .dot, .below, .circumflex, .above],
+    "ộ": [.combined],
 
     //1EDA          ; LATIN CAPITAL LETTER O WITH HORN AND ACUTE
-    "Ớ": [.o, .capital, .horn, .acute, .above],
+    "Ớ": [.combined],
 
     //1EDB          ; LATIN SMALL LETTER O WITH HORN AND ACUTE
-    "ớ": [.o, .horn, .acute, .above],
+    "ớ": [.combined],
 
     //1EDC          ; LATIN CAPITAL LETTER O WITH HORN AND GRAVE
-    "Ờ": [.o, .capital, .horn, .grave, .above],
+    "Ờ": [.combined],
 
     //1EDD          ; LATIN SMALL LETTER O WITH HORN AND GRAVE
-    "ờ": [.o, .horn, .grave, .above],
+    "ờ": [.combined],
 
     //1EDE          ; LATIN CAPITAL LETTER O WITH HORN AND HOOK ABOVE
-    "Ở": [.o, .capital, .horn, .hook, .above],
+    "Ở": [.combined],
 
     //1EDF          ; LATIN SMALL LETTER O WITH HORN AND HOOK ABOVE
-    "ở": [.o, .horn, .hook, .above],
+    "ở": [.combined],
 
     //1EE0          ; LATIN CAPITAL LETTER O WITH HORN AND TILDE
-    "Ỡ": [.o, .capital, .horn, .tilde, .above],
+    "Ỡ": [.combined],
 
     //1EE1          ; LATIN SMALL LETTER O WITH HORN AND TILDE
-    "ỡ": [.o, .horn, .tilde, .above],
+    "ỡ": [.combined],
 
     //1EE2          ; LATIN CAPITAL LETTER O WITH HORN AND DOT BELOW
-    "Ợ": [.o, .capital, .horn, .dot, .below],
+    "Ợ": [.combined],
 
     //1EE3          ; LATIN SMALL LETTER O WITH HORN AND DOT BELOW
-    "ợ": [.o, .horn, .dot, .below],
+    "ợ": [.combined],
 
     //1EE4          ; LATIN CAPITAL LETTER U WITH DOT BELOW
-    "Ụ": [.u, .capital, .dot, .below],
+    "Ụ": [.combined],
 
     //1EE5          ; LATIN SMALL LETTER U WITH DOT BELOW
-    "ụ": [.u, .dot, .below],
+    "ụ": [.combined],
 
     //1EE6          ; LATIN CAPITAL LETTER U WITH HOOK ABOVE
-    "Ủ": [.u, .capital, .hook, .above],
+    "Ủ": [.combined],
 
     //1EE7          ; LATIN SMALL LETTER U WITH HOOK ABOVE
-    "ủ": [.u, .hook, .above],
+    "ủ": [.combined],
 
     //1EE8          ; LATIN CAPITAL LETTER U WITH HORN AND ACUTE
-    "Ứ": [.u, .capital, .horn, .acute, .above],
+    "Ứ": [.combined],
 
     //1EE9          ; LATIN SMALL LETTER U WITH HORN AND ACUTE
-    "ứ": [.u, .horn, .acute, .above],
+    "ứ": [.combined],
 
     //1EEA          ; LATIN CAPITAL LETTER U WITH HORN AND GRAVE
-    "Ừ": [.u, .capital, .horn, .grave, .above],
+    "Ừ": [.combined],
 
     //1EEB          ; LATIN SMALL LETTER U WITH HORN AND GRAVE
-    "ừ": [.u, .horn, .grave, .above],
+    "ừ": [.combined],
 
     //1EEC          ; LATIN CAPITAL LETTER U WITH HORN AND HOOK ABOVE
-    "Ử": [.u, .capital, .horn, .hook, .above],
+    "Ử": [.combined],
 
     //1EED          ; LATIN SMALL LETTER U WITH HORN AND HOOK ABOVE
-    "ử": [.u, .horn, .hook, .above],
+    "ử": [.combined],
 
     //1EEE          ; LATIN CAPITAL LETTER U WITH HORN AND TILDE
-    "Ữ": [.u, .capital, .horn, .tilde, .above],
+    "Ữ": [.combined],
 
     //1EEF          ; LATIN SMALL LETTER U WITH HORN AND TILDE
-    "ữ": [.u, .horn, .tilde, .above],
+    "ữ": [.combined],
 
     //1EF0          ; LATIN CAPITAL LETTER U WITH HORN AND DOT BELOW
-    "Ự": [.u, .capital, .horn, .dot, .below],
+    "Ự": [.combined],
 
     //1EF1          ; LATIN SMALL LETTER U WITH HORN AND DOT BELOW
-    "ự": [.u, .horn, .dot, .below],
+    "ự": [.combined],
 
     //1EF2          ; LATIN CAPITAL LETTER Y WITH GRAVE
-    "Ỳ": [.y, .capital, .grave, .above],
+    "Ỳ": [.combined],
 
     //1EF3          ; LATIN SMALL LETTER Y WITH GRAVE
-    "ỳ": [.y, .grave, .above],
+    "ỳ": [.combined],
 
     //1EF4          ; LATIN CAPITAL LETTER Y WITH DOT BELOW
-    "Ỵ": [.y, .capital, .dot, .below],
+    "Ỵ": [.combined],
 
     //1EF5          ; LATIN SMALL LETTER Y WITH DOT BELOW
-    "ỵ": [.y, .dot, .below],
+    "ỵ": [.combined],
 
     //1EF6          ; LATIN CAPITAL LETTER Y WITH HOOK ABOVE
-    "Ỷ": [.y, .capital, .hook, .above],
+    "Ỷ": [.combined],
 
     //1EF7          ; LATIN SMALL LETTER Y WITH HOOK ABOVE
-    "ỷ": [.y, .hook, .above],
+    "ỷ": [.combined],
 
     //1EF8          ; LATIN CAPITAL LETTER Y WITH TILDE
-    "Ỹ": [.y, .capital, .tilde, .above],
+    "Ỹ": [.combined],
 
     //1EF9          ; LATIN SMALL LETTER Y WITH TILDE
-    "ỹ": [.y, .tilde, .above],
+    "ỹ": [.combined],
 
     //1EFA          ; LATIN CAPITAL LETTER MIDDLE-WELSH LL
     "Ỻ": [.l, .l, .middleWelsh, .capital],
@@ -6035,7 +6035,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "∃": [],
 
     //2204          ; THERE DOES NOT EXIST
-    "∄": [],
+    "∄": [.combined],
 
     //2205          ; EMPTY SET
     "∅": [],
@@ -6050,7 +6050,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "∈": [],
 
     //2209          ; NOT AN ELEMENT OF
-    "∉": [],
+    "∉": [.combined],
 
     //220A          ; SMALL ELEMENT OF
     "∊": [],
@@ -6059,7 +6059,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "∋": [],
 
     //220C          ; DOES NOT CONTAIN AS MEMBER
-    "∌": [],
+    "∌": [.combined],
 
     //220D          ; SMALL CONTAINS AS MEMBER
     "∍": [],
@@ -6131,13 +6131,13 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "∣": [],
 
     //2224          ; DOES NOT DIVIDE
-    "∤": [],
+    "∤": [.combined],
 
     //2225          ; PARALLEL TO
     "∥": [],
 
     //2226          ; NOT PARALLEL TO
-    "∦": [],
+    "∦": [.combined],
 
     //2227          ; LOGICAL AND
     "∧": [.ampersand, .extra0],
@@ -6218,7 +6218,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "≀": [],
 
     //2241          ; NOT TILDE
-    "≁": [.tilde, .not],
+    "≁": [.combined],
 
     //2242          ; MINUS TILDE
     "≂": [.minusSign, .tilde],
@@ -6227,7 +6227,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "≃": [.tilde, .equalsSign],
 
     //2244          ; NOT ASYMPTOTICALLY EQUAL TO
-    "≄": [.tilde, .not, .equalsSign],
+    "≄": [.combined],
 
     //2245          ; APPROXIMATELY EQUAL TO
     "≅": [.tilde, .equalsSign, .doubled],
@@ -6236,13 +6236,13 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "≆": [.tilde, .equalsSign, .doubled, .not],
 
     //2247          ; NEITHER APPROXIMATELY NOR ACTUALLY EQUAL TO
-    "≇": [.tilde, .not, .equalsSign, .doubled],
+    "≇": [.combined],
 
     //2248          ; ALMOST EQUAL TO
     "≈": [.tilde, .doubled],
 
     //2249          ; NOT ALMOST EQUAL TO
-    "≉": [.tilde, .doubled, .not],
+    "≉": [.combined],
 
     //224A          ; ALMOST EQUAL OR EQUAL TO
     "≊": [.tilde, .doubled, .equalsSign],
@@ -6311,13 +6311,13 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "≟": [.equalsSign, .questionMark, .above],
 
     //2260          ; NOT EQUAL TO
-    "≠": [.equalsSign, .not],
+    "≠": [.combined],
 
     //2261          ; IDENTICAL TO
     "≡": [.equalsSign, .doubled],
 
     //2262          ; NOT IDENTICAL TO
-    "≢": [.equalsSign, .doubled, .not],
+    "≢": [.combined],
 
     //2263          ; STRICTLY EQUIVALENT TO
     "≣": [.equalsSign, .equalsSign],
@@ -6350,19 +6350,19 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "≬": [.parenthesis, .parenthesis, .reversed],
 
     //226D          ; NOT EQUIVALENT TO
-    "≭": [.equalsSign, .breve, .not],
+    "≭": [.combined],
 
     //226E          ; NOT LESS-THAN
-    "≮": [.lessThanSign, .not],
+    "≮": [.combined],
 
     //226F          ; NOT GREATER-THAN
-    "≯": [.greaterThanSign, .not],
+    "≯": [.combined],
 
     //2270          ; NEITHER LESS-THAN NOR EQUAL TO
-    "≰": [.lessThanSign, .equalsSign, .not],
+    "≰": [.combined],
 
     //2271          ; NEITHER GREATER-THAN NOR EQUAL TO
-    "≱": [.greaterThanSign, .equalsSign, .not],
+    "≱": [.combined],
 
     //2272          ; LESS-THAN OR EQUIVALENT TO
     "≲": [.lessThanSign, .tilde],
@@ -6371,10 +6371,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "≳": [.greaterThanSign, .tilde],
 
     //2274          ; NEITHER LESS-THAN NOR EQUIVALENT TO
-    "≴": [.lessThanSign, .tilde, .not],
+    "≴": [.combined],
 
     //2275          ; NEITHER GREATER-THAN NOR EQUIVALENT TO
-    "≵": [.greaterThanSign, .tilde, .not],
+    "≵": [.combined],
 
     //2276          ; LESS-THAN OR GREATER-THAN
     "≶": [.lessThanSign, .greaterThanSign],
@@ -6383,10 +6383,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "≷": [.greaterThanSign, .lessThanSign],
 
     //2278          ; NEITHER LESS-THAN NOR GREATER-THAN
-    "≸": [.lessThanSign, .greaterThanSign, .not],
+    "≸": [.combined],
 
     //2279          ; NEITHER GREATER-THAN NOR LESS-THAN
-    "≹": [.greaterThanSign, .lessThanSign, .not],
+    "≹": [.combined],
 
     //227A          ; PRECEDES
     "≺": [],
@@ -6407,10 +6407,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "≿": [],
 
     //2280          ; DOES NOT PRECEDE
-    "⊀": [],
+    "⊀": [.combined],
 
     //2281          ; DOES NOT SUCCEED
-    "⊁": [],
+    "⊁": [.combined],
 
     //2282          ; SUBSET OF
     "⊂": [],
@@ -6419,10 +6419,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⊃": [],
 
     //2284          ; NOT A SUBSET OF
-    "⊄": [],
+    "⊄": [.combined],
 
     //2285          ; NOT A SUPERSET OF
-    "⊅": [],
+    "⊅": [.combined],
 
     //2286          ; SUBSET OF OR EQUAL TO
     "⊆": [],
@@ -6431,10 +6431,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⊇": [],
 
     //2288          ; NEITHER A SUBSET OF NOR EQUAL TO
-    "⊈": [],
+    "⊈": [.combined],
 
     //2289          ; NEITHER A SUPERSET OF NOR EQUAL TO
-    "⊉": [],
+    "⊉": [.combined],
 
     //228A          ; SUBSET OF WITH NOT EQUAL TO
     "⊊": [],
@@ -6539,16 +6539,16 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⊫": [],
 
     //22AC          ; DOES NOT PROVE
-    "⊬": [],
+    "⊬": [.combined],
 
     //22AD          ; NOT TRUE
-    "⊭": [],
+    "⊭": [.combined],
 
     //22AE          ; DOES NOT FORCE
-    "⊮": [],
+    "⊮": [.combined],
 
     //22AF          ; NEGATED DOUBLE VERTICAL BAR DOUBLE RIGHT TURNSTILE
-    "⊯": [],
+    "⊯": [.combined],
 
     //22B0          ; PRECEDES UNDER RELATION
     "⊰": [],
@@ -6695,16 +6695,16 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⋟": [],
 
     //22E0          ; DOES NOT PRECEDE OR EQUAL
-    "⋠": [],
+    "⋠": [.combined],
 
     //22E1          ; DOES NOT SUCCEED OR EQUAL
-    "⋡": [],
+    "⋡": [.combined],
 
     //22E2          ; NOT SQUARE IMAGE OF OR EQUAL TO
-    "⋢": [],
+    "⋢": [.combined],
 
     //22E3          ; NOT SQUARE ORIGINAL OF OR EQUAL TO
-    "⋣": [],
+    "⋣": [.combined],
 
     //22E4          ; SQUARE IMAGE OF OR NOT EQUAL TO
     "⋤": [],
@@ -6725,16 +6725,16 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⋩": [],
 
     //22EA          ; NOT NORMAL SUBGROUP OF
-    "⋪": [],
+    "⋪": [.combined],
 
     //22EB          ; DOES NOT CONTAIN AS NORMAL SUBGROUP
-    "⋫": [],
+    "⋫": [.combined],
 
     //22EC          ; NOT NORMAL SUBGROUP OF OR EQUAL TO
-    "⋬": [],
+    "⋬": [.combined],
 
     //22ED          ; DOES NOT CONTAIN AS NORMAL SUBGROUP OR EQUAL
-    "⋭": [],
+    "⋭": [.combined],
 
     //22EE          ; VERTICAL ELLIPSIS
     "⋮": [],

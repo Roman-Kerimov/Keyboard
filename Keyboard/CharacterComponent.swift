@@ -241,6 +241,9 @@ enum CharacterComponent: Int {
     
     case beginHighTone, endHighTone
     case beginLowTone, endLowTone
+    
+    // Service components
+    case combined
 }
 
 extension CharacterComponent: Comparable {

@@ -327,6 +327,10 @@ class Keyboard: NSObject {
             
             for (index, unicodeScalar) in previousCharacterUnicodeScalars.enumerated().reversed() {
                 
+                guard unicodeScalar.properties.isGraphemeExtend else {
+                    continue
+                }
+                
                 guard let newUnicodeScalar = (unicodeScalar.description.characterComponents + combiningComponents).character.unicodeScalars.first else {
                     
                     continue

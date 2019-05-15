@@ -118,6 +118,20 @@ class KeyboardTests: XCTestCase, KeyboardDelegate {
         
         Keyboard.default.up(key: hyphen)
     }
+    
+    func testExtraLigatures() {
+        let n: Key = Key.init(label: "n")
+        Keyboard.default.down(key: n)
+        Keyboard.default.up(key: n)
+        
+        let j: Key = Key.init(label: "j")
+        Keyboard.default.down(key: j)
+        Keyboard.default.shift(direction: .left)
+        Keyboard.default.shift(direction: .right)
+        Keyboard.default.up(key: j)
+        
+        XCTAssertEqual(document, "ǌ")
+    }
 
     func testScriptTranslation() {
         let cyrillicText = "Съешь же ещё этих мягких французских булок, да выпей чаю."

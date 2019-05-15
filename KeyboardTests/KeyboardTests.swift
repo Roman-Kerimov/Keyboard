@@ -132,6 +132,24 @@ class KeyboardTests: XCTestCase, KeyboardDelegate {
         
         XCTAssertEqual(document, "ǌ")
     }
+    
+    func testCharactersWithRingComponent() {
+        let x: Key = Key.init(label: "x")
+        Keyboard.default.down(key: x)
+        Keyboard.default.up(key: x)
+        
+        let h: Key = Key.init(label: "h")
+        Keyboard.default.down(key: h)
+        Keyboard.default.shift(direction: .left)
+        Keyboard.default.up(key: h)
+        
+        let o: Key = Key.init(label: "o")
+        Keyboard.default.down(key: o)
+        Keyboard.default.shift(direction: .left)
+        Keyboard.default.up(key: o)
+        
+        XCTAssertEqual(document, "ꭔ")
+    }
 
     func testScriptTranslation() {
         let cyrillicText = "Съешь же ещё этих мягких французских булок, да выпей чаю."

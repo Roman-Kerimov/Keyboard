@@ -8,7 +8,7 @@
 import Foundation
 
 enum CharacterComponent: Int {
-    private static let commutative: Set<CharacterComponent> = Set.init([.capital, .smallCapital, .superscript, .subscript, .above, .below, .extraUpLeft, .extraLeft, .extraDownLeft, .extraUpRight, .extraRight, .extraDownRight] + extraComponents + letterToMixingComponentDictionary.values.filter {$0 != .extraH && $0 != .tilde}).union(scripts)
+    private static let commutative: Set<CharacterComponent> = Set.init([.capital, .smallCapital, .superscript, .subscript, .above, .below, .extraUpLeft, .extraLeft, .extraDownLeft, .extraUpRight, .extraRight, .extraDownRight] + extraComponents + letterToMixingComponentDictionary.values.filter {![.extraH, .tilde, .ring].contains($0)}).union(scripts)
     
     public var isCommutative: Bool {
         return CharacterComponent.commutative.contains(self)
@@ -101,7 +101,8 @@ enum CharacterComponent: Int {
         .j: .palatalHook,
         //.tone
         .h: .extraH,
-        .o: .closed, //.ring, .ringBottom
+        .o: .ring, // (.closed)
+        //.ringBottom
         .c: .curl,
         .b: .belt,
         .v: .tail, //.notch
@@ -116,6 +117,10 @@ enum CharacterComponent: Int {
         
         // block tilde diacritic from tilde
         .tilde: .space,
+    ]
+    
+    static let replaces: [CharacterComponent: CharacterComponent] = [
+        .closed: .ring,
     ]
     
     case letterScript

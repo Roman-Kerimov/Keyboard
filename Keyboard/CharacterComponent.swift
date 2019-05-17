@@ -14,7 +14,7 @@ enum CharacterComponent: Int {
         return CharacterComponent.commutative.contains(self)
     }
     
-    internal static let extraComponents: [CharacterComponent] = [.extra0, .letterScript, .turned, .reversed, .inverted, .sideways, .extra1, .extra2]
+    internal static let extraComponents: [CharacterComponent] = [.extra0, .dotless, .letterScript, .turned, .reversed, .inverted, .sideways, .extra1, .extra2]
     
     internal var isExtraComponent: Bool {
         return CharacterComponent.extraComponents.contains(self)
@@ -49,6 +49,7 @@ enum CharacterComponent: Int {
     case extra0, turned, reversed, inverted, sideways, extra1, extra2
     case superscript, `subscript`, middle, raised
     
+    case dotless
     case highStroke, topbar
     case stroke, lightCentralizationStroke, obliqueStroke, verticalStroke
     case lowStroke

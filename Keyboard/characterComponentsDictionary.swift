@@ -738,7 +738,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "İ": [.i, .dot, .above, .capital],
 
     //0131          ; LATIN SMALL LETTER DOTLESS I
-    "ı": [.i, .dot, .above],
+    "ı": [.i, .dotless],
 
     //0132          ; LATIN CAPITAL LIGATURE IJ
     "Ĳ": [.i, .j, .capital],
@@ -1528,7 +1528,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ȶ": [.t, .curl],
 
     //0237          ; LATIN SMALL LETTER DOTLESS J
-    "ȷ": [.j, .dot, .above],
+    "ȷ": [.j, .dotless],
 
     //0238          ; LATIN SMALL LETTER DB DIGRAPH
     "ȸ": [.d, .b],
@@ -1651,7 +1651,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ɞ": [.e, .extraH, .closed, .reversed],
 
     //025F          ; LATIN SMALL LETTER DOTLESS J WITH STROKE
-    "ɟ": [.j, .stroke, .dot, .above],
+    "ɟ": [.j, .stroke, .dotless],
 
     //0260          ; LATIN SMALL LETTER G WITH HOOK
     "ɠ": [.g, .hook],
@@ -4043,7 +4043,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ᶠ": [.f, .superscript],
 
     //1DA1          ; MODIFIER LETTER SMALL DOTLESS J WITH STROKE
-    "ᶡ": [.j, .stroke, .dot, .superscript],
+    "ᶡ": [.j, .stroke, .dotless, .superscript],
 
     //1DA2          ; MODIFIER LETTER SMALL SCRIPT G
     "ᶢ": [.g, .letterScript, .superscript],
@@ -10691,10 +10691,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "𝚣": [.z, .monospace],
 
     //1D6A4         ; MATHEMATICAL ITALIC SMALL DOTLESS I
-    "𝚤": [.i, .dot, .italic],
+    "𝚤": [.i, .dotless, .italic],
 
     //1D6A5         ; MATHEMATICAL ITALIC SMALL DOTLESS J
-    "𝚥": [.j, .dot, .italic],
+    "𝚥": [.j, .dotless, .italic],
 
     //1D6A8         ; MATHEMATICAL BOLD CAPITAL ALPHA
     "𝚨": [.a, .capital, .greek, .bold],

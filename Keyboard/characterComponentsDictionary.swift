@@ -1873,7 +1873,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ʨ": [.t, .s, .curl],
 
     //02A9          ; LATIN SMALL LETTER FENG DIGRAPH
-    "ʩ": [.f, .n, .g],
+    "ʩ": [.f, .g],
 
     //02AA          ; LATIN SMALL LETTER LS DIGRAPH
     "ʪ": [.l, .s],

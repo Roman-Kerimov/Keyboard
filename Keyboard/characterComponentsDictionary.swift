@@ -8033,22 +8033,22 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ꜩ": [.t, .z],
 
     //A72A          ; LATIN CAPITAL LETTER TRESILLO
-    "Ꜫ": [.q, .capital, .comma, .superscript],
+    "Ꜫ": [.q, .capital, .comma],
 
     //A72B          ; LATIN SMALL LETTER TRESILLO
-    "ꜫ": [.q, .comma, .superscript],
+    "ꜫ": [.q, .comma],
 
     //A72C          ; LATIN CAPITAL LETTER CUATRILLO
-    "Ꜭ": [.k, .capital, .comma, .superscript],
+    "Ꜭ": [.k, .capital, .comma],
 
     //A72D          ; LATIN SMALL LETTER CUATRILLO
-    "ꜭ": [.k, .comma, .superscript],
+    "ꜭ": [.k, .comma],
 
     //A72E          ; LATIN CAPITAL LETTER CUATRILLO WITH COMMA
-    "Ꜯ": [.k, .capital, .comma, .superscript, .comma],
+    "Ꜯ": [.k, .capital, .comma, .comma],
 
     //A72F          ; LATIN SMALL LETTER CUATRILLO WITH COMMA
-    "ꜯ": [.k, .comma, .superscript, .comma],
+    "ꜯ": [.k, .comma, .comma],
 
     //A730          ; LATIN LETTER SMALL CAPITAL F
     "ꜰ": [.f, .smallCapital],

@@ -3686,7 +3686,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ᴪ": [.p, .s, .greek, .smallCapital],
 
     //1D2B          ; CYRILLIC LETTER SMALL CAPITAL EL
-    "ᴫ": [.l, .k, .smallCapital],
+    "ᴫ": [.l, .cyrillic, .smallCapital],
 
     //1D2C          ; MODIFIER LETTER CAPITAL A
     "ᴬ": [.a, .capital, .superscript],
@@ -3917,7 +3917,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ᵷ": [.g, .turned],
 
     //1D78          ; MODIFIER LETTER CYRILLIC EN
-    "ᵸ": [.n, .k, .superscript],
+    "ᵸ": [.n, .cyrillic, .superscript],
 
     //1D79          ; LATIN SMALL LETTER INSULAR G
     "ᵹ": [.g, .insular],

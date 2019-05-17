@@ -1702,7 +1702,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ɯ": [.m, .turned],
 
     //0270          ; LATIN SMALL LETTER TURNED M WITH LONG LEG
-    "ɰ": [.m, .l, .turned], //?!
+    "ɰ": [.m, .longLeg, .turned], //?!
 
     //0271          ; LATIN SMALL LETTER M WITH HOOK
     "ɱ": [.m, .hook],

@@ -117,6 +117,7 @@ enum CharacterComponent: Int {
         .z: .zDigraph,
         .n: .tilde,
         .comma: .ejective,
+        .fullStop: .dot,
         
         // block tilde diacritic from tilde
         .tilde: .space,

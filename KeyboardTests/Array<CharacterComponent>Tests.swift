@@ -40,7 +40,7 @@ class Array_CharacterComponent_Tests: XCTestCase {
         XCTAssertEqual([.p, .extraH, .greek].normalized, [.p, .greek, .extraH].normalized)
     }
     
-    func testExtraArrow() {
+    func testExtraArray() {
         characterComponets = [.r, .smallCapital]
         XCTAssertEqual((characterComponets + [.turned]).normalized, characterComponets.extraArray[0])
         XCTAssertEqual((characterComponets + [.reversed]).normalized, characterComponets.extraArray[1])

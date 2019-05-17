@@ -4076,7 +4076,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ᶫ": [.l, .smallCapital, .superscript],
 
     //1DAC          ; MODIFIER LETTER SMALL M WITH HOOK
-    "ᶬ": [.m, .f, .superscript],
+    "ᶬ": [.m, .hook, .superscript],
 
     //1DAD          ; MODIFIER LETTER SMALL TURNED M WITH LONG LEG
     "ᶭ": [.m, .longLeg, .turned, .superscript],

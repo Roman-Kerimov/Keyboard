@@ -153,7 +153,7 @@ extension Array where Element == CharacterComponent {
                 
             default:
                 if component.isExtraComponent {
-                    guard let extraComponentIndex = extraArray.firstIndex(where: {$0.contains(component)}) else {
+                    guard let extraComponentIndex = components.prefix(while: {$0 != component}).extraArray.firstIndex(where: {$0.contains(component)}) else {
                         return nil
                     }
                     

@@ -22,5 +22,11 @@ class StringTests: XCTestCase {
         
         // COMBINING TILDE OVERLAY
         XCTAssertEqual("z̴".defaultShiftGesture, "z~←")
+        
+        
+    }
+    
+    func testDefaultShiftGesturesForExtraCharacters() {
+        XCTAssertEqual("ⱹ".defaultShiftGesture, "r→↓f←")
     }
 }

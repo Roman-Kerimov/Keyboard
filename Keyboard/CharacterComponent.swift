@@ -66,6 +66,7 @@ enum CharacterComponent: Int {
     case not, notLow
     case lazyS
     case zDigraph
+    case ejective
     
     static let baseComponents = mergeDictionaries(
         Dictionary.init(uniqueKeysWithValues: letterToMixingComponentDictionary.map {($1, $0)}),
@@ -114,6 +115,7 @@ enum CharacterComponent: Int {
         //.lazyS
         .z: .zDigraph,
         .n: .tilde,
+        .comma: .ejective,
         
         // block tilde diacritic from tilde
         .tilde: .space,

@@ -3530,10 +3530,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "᪶": [.line, .w, .below],
 
     //1AB7          ; COMBINING OPEN MARK BELOW
-    "᪷": [.extraH, .below],
+    "᪷": [.open, .below],
 
     //1AB8          ; COMBINING DOUBLE OPEN MARK BELOW
-    "᪸": [.extraH, .doubled, .below],
+    "᪸": [.open, .doubled, .below],
 
     //1AB9          ; COMBINING LIGHT CENTRALIZATION STROKE BELOW
     "᪹": [.diagonalStroke, .below],

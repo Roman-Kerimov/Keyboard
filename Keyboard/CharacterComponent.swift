@@ -155,6 +155,7 @@ enum CharacterComponent: Int {
     case horn
     case cedilla
     case ogonek
+    case open
     case diaeresis
     case dot
     case macron

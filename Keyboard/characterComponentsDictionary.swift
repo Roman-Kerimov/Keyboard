@@ -2188,7 +2188,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "̏": [.grave, .doubled, .above],
 
     //0310          ; COMBINING CANDRABINDU
-    "̐": [.breve, .above, .dot],
+    "̐": [.breve, .dot, .above],
 
     //0311          ; COMBINING INVERTED BREVE
     "̑": [.invertedBreve, .above],

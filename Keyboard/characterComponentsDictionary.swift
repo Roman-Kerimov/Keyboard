@@ -7796,7 +7796,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⸫": [],
 
     //2E2C          ; SQUARED FOUR DOT PUNCTUATION
-    "⸬": [],
+    "⸬": [.colon, .colon],
 
     //2E2D          ; FIVE DOT MARK
     "⸭": [],

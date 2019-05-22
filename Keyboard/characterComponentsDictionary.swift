@@ -7064,10 +7064,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⩙": [.verticalLine, .extra0, .ampersand, .extra0],
 
     //2A5A          ; LOGICAL AND WITH MIDDLE STEM
-    "⩚": [.ampersand, .extra0, .verticalLine],
+    "⩚": [.ampersand, .extra0, .middleStem],
 
     //2A5B          ; LOGICAL OR WITH MIDDLE STEM
-    "⩛": [.verticalLine, .extra0, .verticalLine],
+    "⩛": [.verticalLine, .extra0, .middleStem],
 
     //2A5C          ; LOGICAL AND WITH HORIZONTAL DASH
     "⩜": [.ampersand, .extra0, .stroke],

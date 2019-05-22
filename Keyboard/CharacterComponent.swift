@@ -68,6 +68,7 @@ enum CharacterComponent: Int {
     case lazyS
     case zDigraph
     case ejective
+    case middleStem
     
     static let baseComponents = mergeDictionaries(
         Dictionary.init(uniqueKeysWithValues: letterToMixingComponentDictionary.map {($1, $0)}),

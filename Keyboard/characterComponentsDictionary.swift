@@ -6197,7 +6197,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "∹": [.minusSign, .colon],
 
     //223A          ; GEOMETRIC PROPORTION
-    "∺": [.colon, .minusSign, .colon],
+    "∺": [],
 
     //223B          ; HOMOTHETIC
     "∻": [.tilde, .dot, .below, .dot, .above],

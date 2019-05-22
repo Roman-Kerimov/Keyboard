@@ -6200,7 +6200,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "∺": [],
 
     //223B          ; HOMOTHETIC
-    "∻": [.tilde, .dot, .below, .dot, .above],
+    "∻": [],
 
     //223C          ; TILDE OPERATOR
     "∼": [],

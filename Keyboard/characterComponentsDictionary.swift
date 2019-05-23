@@ -36,10 +36,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "'": [.apostrophe],
     
     //0028          ; LEFT PARENTHESIS
-    "(": [.parenthesis],
+    "(": [.leftParenthesis],
     
     //0029          ; RIGHT PARENTHESIS
-    ")": [.parenthesis, .reversed],
+    ")": [.rightParenthesis],
     
     //002A          ; ASTERISK
     "*": [.asterisk],
@@ -3542,16 +3542,16 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "᪺": [.diagonalStroke, .dot, .below],
 
     //1ABB          ; COMBINING PARENTHESES ABOVE
-    "᪻": [.parenthesis, .above],
+    "᪻": [.parentheses, .above],
 
     //1ABC          ; COMBINING DOUBLE PARENTHESES ABOVE
-    "᪼": [.parenthesis, .doubled, .above],
+    "᪼": [.parentheses, .doubled, .above],
 
     //1ABD          ; COMBINING PARENTHESES BELOW
-    "᪽": [.parenthesis, .below],
+    "᪽": [.parentheses, .below],
 
     //1ABE          ; COMBINING PARENTHESES OVERLAY
-    "᪾": [.parenthesis, .combining],
+    "᪾": [.parentheses, .combining],
     
     
     // MARK: - 1D00..1D7F; Phonetic Extensions
@@ -5429,10 +5429,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⁼": [.equalsSign, .superscript],
 
     //207D          ; SUPERSCRIPT LEFT PARENTHESIS
-    "⁽": [.parenthesis, .superscript],
+    "⁽": [.leftParenthesis, .superscript],
 
     //207E          ; SUPERSCRIPT RIGHT PARENTHESIS
-    "⁾": [.parenthesis, .reversed, .superscript],
+    "⁾": [.rightParenthesis, .superscript],
 
     //207F          ; SUPERSCRIPT LATIN SMALL LETTER N
     "ⁿ": [.n, .superscript],
@@ -5477,10 +5477,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "₌": [.equalsSign, .subscript],
 
     //208D          ; SUBSCRIPT LEFT PARENTHESIS
-    "₍": [.parenthesis, .subscript],
+    "₍": [.leftParenthesis, .subscript],
 
     //208E          ; SUBSCRIPT RIGHT PARENTHESIS
-    "₎": [.parenthesis, .reversed, .subscript],
+    "₎": [.rightParenthesis, .subscript],
 
     //2090          ; LATIN SUBSCRIPT SMALL LETTER A
     "ₐ": [.a, .subscript],
@@ -6347,7 +6347,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "≫": [.greaterThanSign, .greaterThanSign],
 
     //226C          ; BETWEEN
-    "≬": [.parenthesis, .parenthesis, .reversed],
+    "≬": [.leftParenthesis, .rightParenthesis],
 
     //226D          ; NOT EQUIVALENT TO
     "≭": [.equalsSign, .breve, .not],
@@ -7784,10 +7784,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⸧": [],
 
     //2E28          ; LEFT DOUBLE PARENTHESIS
-    "⸨": [.parenthesis, .doubled],
+    "⸨": [.leftParenthesis, .doubled],
 
     //2E29          ; RIGHT DOUBLE PARENTHESIS
-    "⸩": [.parenthesis, .doubled, .reversed],
+    "⸩": [.rightParenthesis, .doubled],
 
     //2E2A          ; TWO DOTS OVER ONE DOT PUNCTUATION
     "⸪": [],

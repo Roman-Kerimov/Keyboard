@@ -41,9 +41,9 @@ struct KeyboardLayout {
         self.name = name
         
         let shiftDownRows: [[CharacterComponent]] = [
-            [ .asterisk,     .apostrophe,    .ampersand,   .verticalLine, .tilde,   .divisionSign,       .seven, .eight, .nine,  .minusSign,  ],
-            [ .commercialAt, .numberSign,    .dollarSign,  .percentSign,  .caret,   .multiplicationSign, .four,  .five,  .six,   .plusSign,   ],
-            [ .curlyBracket, .squareBracket, .parenthesis, .lessThanSign, .solidus, .zero,               .one,   .two,   .three, .equalsSign, ],
+            [ .asterisk,     .apostrophe,    .ampersand,       .verticalLine, .tilde,   .divisionSign,       .seven, .eight, .nine,  .minusSign,  ],
+            [ .commercialAt, .numberSign,    .dollarSign,      .percentSign,  .caret,   .multiplicationSign, .four,  .five,  .six,   .plusSign,   ],
+            [ .curlyBracket, .squareBracket, .leftParenthesis, .lessThanSign, .solidus, .zero,               .one,   .two,   .three, .equalsSign, ],
         ]
         
         let keycodeRows: [[Keycode]] = [
@@ -139,7 +139,10 @@ struct KeyboardLayout {
         .hyphen: .lowLine,
     ]
     
-    static let shiftRightDictionary: [CharacterComponent: CharacterComponent] = [.lessThanSign: .greaterThanSign]
+    static let shiftRightDictionary: [CharacterComponent: CharacterComponent] = [
+        .lessThanSign: .greaterThanSign,
+        .leftParenthesis: .rightParenthesis,
+    ]
 }
 
 extension Array where Element == KeyboardLayout {

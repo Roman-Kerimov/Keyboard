@@ -143,6 +143,8 @@ struct KeyboardLayout {
         .lessThanSign: .greaterThanSign,
         .leftParenthesis: .rightParenthesis,
     ]
+    
+    static let reversedShiftRightDictionary = Dictionary.init(uniqueKeysWithValues: shiftRightDictionary.map {($1, $0)})
 }
 
 extension Array where Element == KeyboardLayout {

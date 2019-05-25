@@ -183,6 +183,9 @@ extension Array where Element == CharacterComponent {
                         shiftGestureComponent = [component].character + "←"
                     }
                 }
+                else if let baseComponent = KeyboardLayout.reversedShiftRightDictionary[component] {
+                    shiftGestureComponent = [baseComponent].character + "→" + (shiftGesture.isEmpty ? "" : "←")
+                }
                 else {
                     return nil
                 }

@@ -33,4 +33,9 @@ class StringTests: XCTestCase {
     func testCandrabindu() {
         XCTAssertEqual("̐".defaultShiftGesture, "u↖︎.←")
     }
+    
+    func testDefaultShiftGesturesWithShiftRight() {
+        XCTAssertEqual(">".defaultShiftGesture, "<→")
+        XCTAssertEqual("≬".defaultShiftGesture, "((→←")
+    }
 }

@@ -7298,7 +7298,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⪧": [.greaterThanSign, .closed],
 
     //2AA8          ; LESS-THAN CLOSED BY CURVE ABOVE SLANTED EQUAL
-    "⪨": [.lessThanSign, .closed, .equalsSign, .extra1],
+    "⪨": [.lessThanSign, .closed, .equalsSign],
 
     //2AA9          ; GREATER-THAN CLOSED BY CURVE ABOVE SLANTED EQUAL
     "⪩": [.greaterThanSign, .closed, .equalsSign, .extra1],

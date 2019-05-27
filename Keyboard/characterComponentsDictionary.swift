@@ -6590,7 +6590,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⊼": [.minusSign, .ampersand],
 
     //22BD          ; NOR
-    "⊽": [.minusSign, .verticalLine, .extra0],
+    "⊽": [.minusSign, .verticalLine],
 
     //22BE          ; RIGHT ANGLE WITH ARC
     "⊾": [],

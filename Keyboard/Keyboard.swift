@@ -231,13 +231,6 @@ class Keyboard: NSObject {
     }
     
     private func shiftDown(key: Key) {
-        if currentLabel == "Ɯ" {
-            print(characterComponents.normalized)
-            print(characterComponents.extraArray.first!.normalized)
-            
-        }
-        
-        
         if currentLabel == key.label && key.shiftDownLabel.isEmpty == false {
             currentLabel = key.shiftDownLabel.first?.description ?? .init()
         }

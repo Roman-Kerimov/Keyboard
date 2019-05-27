@@ -7118,7 +7118,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⩫": [.tilde, .dot, .belowLeft, .dot, .aboveRight],
 
     //2A6C          ; SIMILAR MINUS SIMILAR
-    "⩬": [.tilde, .minusSign, .tilde],
+    "⩬": [],
 
     //2A6D          ; CONGRUENT WITH DOT ABOVE
     "⩭": [.tilde, .equalsSign, .doubled, .dot, .above],

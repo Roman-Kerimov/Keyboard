@@ -163,6 +163,19 @@ class KeyboardTests: XCTestCase, KeyboardDelegate {
         
         XCTAssertEqual(document, "ꟽ")
     }
+    
+    func testEquivalentTo() {
+        let equal = Key.init(label: "=")
+        Keyboard.default.down(key: equal)
+        Keyboard.default.up(key: equal)
+        
+        let u = Key.init(label: "u")
+        Keyboard.default.down(key: u)
+        Keyboard.default.shift(direction: .left)
+        Keyboard.default.up(key: u)
+        
+        XCTAssertEqual(document, "≍")
+    }
 
     func testScriptTranslation() {
         let cyrillicText = "Съешь же ещё этих мягких французских булок, да выпей чаю."

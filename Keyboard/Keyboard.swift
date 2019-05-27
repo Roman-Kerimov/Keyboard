@@ -343,20 +343,22 @@ class Keyboard: NSObject {
                 break SwitchDirection
             }
             
+            let combinedCharacter = (previousCharacter.characterComponents + combiningComponents).character
             let ligatureCharacter = (previousCharacter.characterComponents + modifierCharacterComponents).character
-            let combinedCharacter = (previousCharacter.characterComponents + mixingComponents).character
+            let mixiedCharacter = (previousCharacter.characterComponents + mixingComponents).character
             
-            if ligatureCharacter != combinedCharacter && ligatureCharacter.isEmpty == false && combinedCharacter.isEmpty == false {
+            if ligatureCharacter != mixiedCharacter && ligatureCharacter.isEmpty == false && mixiedCharacter.isEmpty == false {
                 Array<CharacterComponent>.extraArrayExtension = [ligatureCharacter.characterComponents]
             }
             
-            if previousCharacter.characterComponents.isEmpty || (combinedCharacter.isEmpty && ligatureCharacter.isEmpty) {
+            if previousCharacter.characterComponents.isEmpty || (mixiedCharacter.isEmpty && ligatureCharacter.isEmpty && combinedCharacter.isEmpty) {
                 currentLabel = .init()
                 shouldDeletePreviousCharacter = false
             }
             else {
-                characterComponents = ligatureCharacter.characterComponents
                 characterComponents = combinedCharacter.characterComponents
+                characterComponents = ligatureCharacter.characterComponents
+                characterComponents = mixiedCharacter.characterComponents
             }
             
         case .right:

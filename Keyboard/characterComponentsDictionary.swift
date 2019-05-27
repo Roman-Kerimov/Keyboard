@@ -6587,7 +6587,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⊻": [.verticalLine, .extra0, .minusSign],
 
     //22BC          ; NAND
-    "⊼": [.minusSign, .ampersand, .extra0],
+    "⊼": [.minusSign, .ampersand],
 
     //22BD          ; NOR
     "⊽": [.minusSign, .verticalLine, .extra0],

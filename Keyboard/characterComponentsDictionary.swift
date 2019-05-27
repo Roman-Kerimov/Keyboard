@@ -7235,7 +7235,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⪒": [.greaterThanSign, .lessThanSign, .equalsSign, .doubled],
 
     //2A93          ; LESS-THAN ABOVE SLANTED EQUAL ABOVE GREATER-THAN ABOVE SLANTED EQUAL
-    "⪓": [.lessThanSign, .equalsSign, .extra1, .greaterThanSign, .equalsSign, .extra1],
+    "⪓": [.lessThanSign, .equalsSign, .greaterThanSign, .equalsSign],
 
     //2A94          ; GREATER-THAN ABOVE SLANTED EQUAL ABOVE LESS-THAN ABOVE SLANTED EQUAL
     "⪔": [.greaterThanSign, .equalsSign, .extra1, .lessThanSign, .equalsSign, .extra1],

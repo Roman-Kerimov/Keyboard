@@ -61,6 +61,10 @@ class Array_CharacterComponent_Tests: XCTestCase {
         XCTAssert([.a, .capital].key == ".a, .capital")
     }
     
+    func testDebugDestcription() {
+        XCTAssertEqual([CharacterComponent.a, .capital].debugDescription, "[.a, .capital]")
+    }
+    
     func testDefaultShiftGesture() {
         XCTAssertEqual("A".characterComponents.defaultShiftGesture, "a↑")
         XCTAssertEqual("ʟ".characterComponents.defaultShiftGesture, "l↑↓")

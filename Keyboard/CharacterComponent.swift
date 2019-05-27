@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum CharacterComponent: Int {
+enum CharacterComponent: String, CaseIterable {
     private static let commutative: Set<CharacterComponent> = Set.init([.capital, .smallCapital, .superscript, .subscript, .above, .below, .extraUpLeft, .extraLeft, .extraDownLeft, .extraUpRight, .extraRight, .extraDownRight] + extraComponents + letterToMixingComponentDictionary.values.filter {![.extraH, .tilde, .ring].contains($0)}).union(scripts)
     
     public var isCommutative: Bool {
@@ -258,8 +258,16 @@ enum CharacterComponent: Int {
     case combined
 }
 
+private let ordinalNumbers: [CharacterComponent: Int] = .init(uniqueKeysWithValues: CharacterComponent.allCases.enumerated().map {($1, $0)} )
+
 extension CharacterComponent: Comparable {
     static func < (lhs: CharacterComponent, rhs: CharacterComponent) -> Bool {
-        return lhs.rawValue < rhs.rawValue
+        return ordinalNumbers[lhs]! < ordinalNumbers[rhs]!
+    }
+}
+
+extension CharacterComponent: CustomStringConvertible {
+    var description: String {
+        return ".\(rawValue)"
     }
 }

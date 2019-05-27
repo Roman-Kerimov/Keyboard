@@ -428,10 +428,10 @@ class Keyboard: NSObject {
     }
 
     enum KeyboardLayoutMode: String {
-        case horizontal = "horizontal"
-        case vertical = "vertical"
-        
-        case `default` = "default"
+        case horizontal
+        case vertical
+
+        case `default`
     }
     
     private override init() {

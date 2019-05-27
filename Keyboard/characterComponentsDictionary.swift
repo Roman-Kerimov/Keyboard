@@ -7061,7 +7061,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⩘": [],
 
     //2A59          ; LOGICAL OR OVERLAPPING LOGICAL AND
-    "⩙": [.verticalLine, .extra0, .ampersand, .extra0],
+    "⩙": [.verticalLine, .extra0, .ampersand],
 
     //2A5A          ; LOGICAL AND WITH MIDDLE STEM
     "⩚": [.ampersand, .extra0, .middleStem],

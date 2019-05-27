@@ -6818,7 +6818,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⨇": [.ampersand, .extra0, .ampersand],
 
     //2A08          ; TWO LOGICAL OR OPERATOR
-    "⨈": [.verticalLine, .extra0, .verticalLine, .extra0],
+    "⨈": [.verticalLine, .extra0, .verticalLine],
 
     //2A09          ; N-ARY TIMES OPERATOR
     "⨉": [],

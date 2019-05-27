@@ -33,7 +33,7 @@ extension String {
     }
     
     var characterComponents: [CharacterComponent] {
-        return characterComponentsDictionary[self] ?? .init()
+        return characterComponentsDictionary[self]?.map {CharacterComponent.replaces[$0] ?? $0} ?? .init()
     }
     
     func removing(characterComponents: Set<CharacterComponent>) -> String {

@@ -14,7 +14,7 @@ extension Array where Element == CharacterComponent {
     )
     
     var key: String {
-        return normalized.map {.fullStop + .init(describing: $0)} .joined(separator: .comma + .space)
+        return normalized.map {.fullStop + .init(describing: CharacterComponent.replaces[$0] ?? $0)} .joined(separator: .comma + .space)
     }
     
     var character: String {
@@ -53,8 +53,17 @@ extension Array where Element == CharacterComponent {
     
     var defaultShiftGesture: String? {
         
-        if self.contains(where: {[.above, .combining, .below].contains($0)}) {
-            let shiftGestureComponents = self.compactMap { (component) -> String? in
+        guard !isEmpty else {
+            return nil
+        }
+        
+        if self.contains(where: {[.above, .combining, .below].contains($0)})
+            || (CharacterComponent.baseComponents[self.first!] != nil && self.contains(where: {[.superscript, .subscript].contains($0)})) {
+            
+            var components = self
+            components.insert(components.removeLast(), at: 1)
+            
+            let shiftGestureComponents = components.enumerated().compactMap { (offset, component) -> String? in
                 
                 switch component {
                 case .above:
@@ -66,13 +75,24 @@ extension Array where Element == CharacterComponent {
                 case .below:
                     return "↙︎"
                     
+                case .superscript:
+                    return "↖︎↗︎"
+                    
+                case .subscript:
+                    return "↙︎↘︎"
+                    
                 default:
                     
                     guard let baseComponent = CharacterComponent.baseComponents[component] else {
                         return nil
                     }
                     
-                    return [baseComponent].character
+                    if offset <= 1 {
+                        return [baseComponent].character
+                    }
+                    else {
+                        return [baseComponent].character + "←"
+                    }
                 }
             }
             
@@ -133,11 +153,14 @@ extension Array where Element == CharacterComponent {
                 
             default:
                 if component.isExtraComponent {
-                    guard let extraComponentIndex = extraArray.firstIndex(where: {$0.contains(component)}) else {
+                    guard let extraComponentIndex = components.prefix(while: {$0 != component}).extraArray.firstIndex(where: {$0.contains(component)}) else {
                         return nil
                     }
                     
                     shiftGestureComponent = .init("→↓←".prefix(extraComponentIndex+1))
+                }
+                else if let baseComponent = CharacterComponent.baseComponents[component], !shiftGesture.isEmpty {
+                    shiftGestureComponent = [baseComponent].character + "←"
                 }
                 else if KeyboardLayout.qwerty.components.contains(component) {
                     guard [component].character.isEmpty == false  else {
@@ -160,8 +183,8 @@ extension Array where Element == CharacterComponent {
                         shiftGestureComponent = [component].character + "←"
                     }
                 }
-                else if let baseComponent = CharacterComponent.baseComponents[component]  {
-                    shiftGestureComponent = [baseComponent].character + "←"
+                else if let baseComponent = KeyboardLayout.reversedShiftRightDictionary[component] {
+                    shiftGestureComponent = [baseComponent].character + "→" + (shiftGesture.isEmpty ? "" : "←")
                 }
                 else {
                     return nil

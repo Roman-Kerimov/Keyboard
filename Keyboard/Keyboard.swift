@@ -119,6 +119,8 @@ class Keyboard: NSObject {
             currentKey = nil
             Array<CharacterComponent>.extraArrayExtension = .init()
         }
+        
+        currentCombiningCharacter = nil
     }
     
     private var autorepeatStartTimer: Timer?
@@ -211,6 +213,8 @@ class Keyboard: NSObject {
         }
     }
     
+    var currentCombiningCharacter: String? = nil
+    
     private func shiftUp(key: Key) {
         if currentLabel == key.label && key.shiftUpLabel.isEmpty == false {
             currentLabel = key.shiftUpLabel
@@ -231,7 +235,7 @@ class Keyboard: NSObject {
             currentLabel = key.shiftDownLabel.first?.description ?? .init()
         }
         else if characterComponents.extraArray.count > 1
-            && characterComponents == characterComponents.extraArray[0] {
+            && characterComponents.normalized == characterComponents.extraArray[0].normalized {
             
             characterComponents = characterComponents.extraArray[1]
         }
@@ -245,7 +249,7 @@ class Keyboard: NSObject {
             return
         }
         
-        switch direction {
+        SwitchDirection: switch direction {
             
         case .up:
             shiftUp(key: key)
@@ -293,10 +297,7 @@ class Keyboard: NSObject {
                 break
             }
             
-            guard let previousCharacter = delegate?.documentContext.beforeInput?.dropLast().last else {
-                currentLabel = .init()
-                break
-            }
+            let previousCharacterOrNil = delegate?.documentContext.beforeInput?.dropLast().last
             
             shouldDeletePreviousCharacter = true
             
@@ -311,24 +312,53 @@ class Keyboard: NSObject {
             combiningCharacter = (combiningComponents + combiningSuffix).character
             
             guard combiningCharacter.isEmpty else {
-                currentLabel = (previousCharacter.description + combiningCharacter).precomposedStringWithCanonicalMapping
+                currentLabel = ((previousCharacterOrNil?.description ?? .init()) + combiningCharacter).precomposedStringWithCanonicalMapping
+                
+                currentCombiningCharacter = combiningCharacter
                 break
             }
             
-            let ligatureCharacter = (previousCharacter.characterComponents + modifierCharacterComponents).character
-            let combinedCharacter = (previousCharacter.characterComponents + mixingComponents).character
+            guard let previousCharacter = previousCharacterOrNil else {
+                currentLabel = .init()
+                break
+            }
             
-            if ligatureCharacter != combinedCharacter && ligatureCharacter.isEmpty == false && combinedCharacter.isEmpty == false {
+            let previousCharacterUnicodeScalars = previousCharacter.description.decomposedStringWithCanonicalMapping.unicodeScalars
+            
+            for (index, unicodeScalar) in previousCharacterUnicodeScalars.enumerated().reversed() {
+                
+                guard unicodeScalar.properties.isGraphemeExtend else {
+                    continue
+                }
+                
+                guard let newUnicodeScalar = (unicodeScalar.description.characterComponents + combiningComponents).character.unicodeScalars.first else {
+                    
+                    continue
+                }
+                
+                var unicodeScalarStrings = previousCharacterUnicodeScalars.map {$0.description}
+                unicodeScalarStrings[index] = newUnicodeScalar.description
+                currentLabel = unicodeScalarStrings.joined()
+                
+                break SwitchDirection
+            }
+            
+            let combinedCharacter = (previousCharacter.characterComponents + combiningComponents).character
+            let ligatureCharacter = (previousCharacter.characterComponents + modifierCharacterComponents).character
+            let mixiedCharacter = (previousCharacter.characterComponents + mixingComponents).character
+            
+            if ligatureCharacter != mixiedCharacter && ligatureCharacter.isEmpty == false && mixiedCharacter.isEmpty == false {
                 Array<CharacterComponent>.extraArrayExtension = [ligatureCharacter.characterComponents]
             }
             
-            if previousCharacter.characterComponents.isEmpty || (combinedCharacter.isEmpty && ligatureCharacter.isEmpty) {
+            if previousCharacter.characterComponents.isEmpty || (mixiedCharacter.isEmpty && ligatureCharacter.isEmpty && combinedCharacter.isEmpty) {
                 currentLabel = .init()
                 shouldDeletePreviousCharacter = false
             }
             else {
-                characterComponents = ligatureCharacter.characterComponents
                 characterComponents = combinedCharacter.characterComponents
+                characterComponents = ligatureCharacter.characterComponents
+                characterComponents = mixiedCharacter.characterComponents
             }
             
         case .right:
@@ -348,13 +378,31 @@ class Keyboard: NSObject {
             
             characterComponents += [.extraRight]
             
-        case .upRight:
-            characterComponents += [.superscript]
-            characterComponents += [.extraUpRight]
+        case .upRight, .downRight:
+            if direction == .upRight {
+                characterComponents += [.superscript]
+                characterComponents += [.extraUpRight]
+            }
+            else {
+                characterComponents += [.subscript]
+                characterComponents += [.extraDownRight]
+            }
             
-        case .downRight:
-            characterComponents += [.subscript]
-            characterComponents += [.extraDownRight]
+            
+            if let combiningCharacter = currentCombiningCharacter {
+                
+                var unicodeScalars = currentLabel.decomposedStringWithCanonicalMapping.unicodeScalars
+                
+                let combiningCharacterIndex = unicodeScalars.lastIndex(of: combiningCharacter.unicodeScalars.first!)
+                
+                let modifierLetterComponents = combiningCharacter.characterComponents.removing(characterComponents: [direction == .upRight ? .above : .below]) + [direction == .upRight ? .superscript : .subscript]
+                
+                unicodeScalars.remove(at: combiningCharacterIndex!)
+                
+                currentLabel = .init(unicodeScalars) + modifierLetterComponents.character
+                
+                currentCombiningCharacter = nil
+            }
         }
         
         if delegate?.documentContext.beforeInput != previousDocumentContextBeforeInput {
@@ -368,15 +416,15 @@ class Keyboard: NSObject {
         }
     }
     
-    internal enum ShiftDirection {
-        case downLeft
-        case down
-        case downRight
-        case right
-        case upRight
-        case up
-        case upLeft
-        case left
+    internal enum ShiftDirection: Character {
+        case downLeft = "↙︎"
+        case down = "↓"
+        case downRight = "↘︎"
+        case right = "→"
+        case upRight = "↗︎"
+        case up = "↑"
+        case upLeft = "↖︎"
+        case left = "←"
     }
 
     enum KeyboardLayoutMode: String {

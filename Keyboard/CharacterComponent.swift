@@ -8,13 +8,13 @@
 import Foundation
 
 enum CharacterComponent: Int {
-    private static let commutative: Set<CharacterComponent> = Set.init([.capital, .smallCapital, .superscript, .subscript, .extraUpLeft, .extraLeft, .extraDownLeft, .extraUpRight, .extraRight, .extraDownRight] + extraComponents + letterToMixingComponentDictionary.values.filter {$0 != .extraH && $0 != .tilde}).union(scripts)
+    private static let commutative: Set<CharacterComponent> = Set.init([.capital, .smallCapital, .superscript, .subscript, .above, .below, .extraUpLeft, .extraLeft, .extraDownLeft, .extraUpRight, .extraRight, .extraDownRight] + extraComponents + letterToMixingComponentDictionary.values.filter {![.extraH, .tilde, .ring].contains($0)}).union(scripts)
     
     public var isCommutative: Bool {
         return CharacterComponent.commutative.contains(self)
     }
     
-    internal static let extraComponents: [CharacterComponent] = [.extra0, .letterScript, .turned, .reversed, .inverted, .sideways, .extra1, .extra2]
+    internal static let extraComponents: [CharacterComponent] = [.extra0, .dotless, .letterScript, .turned, .reversed, .inverted, .sideways, .extra1, .extra2]
     
     internal var isExtraComponent: Bool {
         return CharacterComponent.extraComponents.contains(self)
@@ -26,7 +26,7 @@ enum CharacterComponent: Int {
     
     case zero, one, two, three, four, five, six, seven, eight, nine
     
-    case space, exclamationMark, quotationMark, numberSign, dollarSign, percentSign, ampersand, apostrophe, parenthesis, asterisk, plusSign, comma, fullStop, solidus, colon, semicolon, lessThanSign, equalsSign, greaterThanSign, questionMark, commercialAt, squareBracket, caret, lowLine, curlyBracket, verticalLine, tilde
+    case space, exclamationMark, quotationMark, numberSign, dollarSign, percentSign, ampersand, apostrophe, leftParenthesis, rightParenthesis, asterisk, plusSign, comma, fullStop, solidus, colon, semicolon, lessThanSign, equalsSign, greaterThanSign, questionMark, commercialAt, squareBracket, caret, lowLine, curlyBracket, verticalLine, tilde
     
     case tildeOperator
     
@@ -45,10 +45,11 @@ enum CharacterComponent: Int {
     
     case smallCapital
     case capital
-    case extra0, turned, reversed, inverted, sideways, extra1, extra2
     case extraLeft, extraUpLeft, extraDownLeft, extraRight, extraUpRight, extraDownRight
+    case extra0, turned, reversed, inverted, sideways, extra1, extra2
     case superscript, `subscript`, middle, raised
     
+    case dotless
     case highStroke, topbar
     case stroke, lightCentralizationStroke, obliqueStroke, verticalStroke
     case lowStroke
@@ -66,6 +67,8 @@ enum CharacterComponent: Int {
     case not, notLow
     case lazyS
     case zDigraph
+    case ejective
+    case middleStem
     
     static let baseComponents = mergeDictionaries(
         Dictionary.init(uniqueKeysWithValues: letterToMixingComponentDictionary.map {($1, $0)}),
@@ -101,7 +104,8 @@ enum CharacterComponent: Int {
         .j: .palatalHook,
         //.tone
         .h: .extraH,
-        .o: .closed, //.ring, .ringBottom
+        .o: .ring, // (.closed)
+        //.ringBottom
         .c: .curl,
         .b: .belt,
         .v: .tail, //.notch
@@ -113,10 +117,15 @@ enum CharacterComponent: Int {
         //.lazyS
         .z: .zDigraph,
         .n: .tilde,
-        .k: .cyrillic,
+        .comma: .ejective,
+        .fullStop: .dot,
         
         // block tilde diacritic from tilde
         .tilde: .space,
+    ]
+    
+    static let replaces: [CharacterComponent: CharacterComponent] = [
+        .closed: .ring,
     ]
     
     case letterScript
@@ -147,6 +156,7 @@ enum CharacterComponent: Int {
     case horn
     case cedilla
     case ogonek
+    case open
     case diaeresis
     case dot
     case macron
@@ -170,6 +180,7 @@ enum CharacterComponent: Int {
     case tildeOverlay
     case ringOverlay
     case verticalLineOverlay
+    case parentheses
     
     internal static let letterToCombiningComponentDictionary: [CharacterComponent: CharacterComponent] = [
         // .horn
@@ -197,7 +208,8 @@ enum CharacterComponent: Int {
         .solidus: .shortDiagonalStroke, // .longDiagonalStroke
         .tilde: .tildeOverlay,
         // .ringOverlay
-        .verticalLine: .verticalLineOverlay
+        .verticalLine: .verticalLineOverlay,
+        .leftParenthesis: .parentheses,
     ]
     
     case doubled

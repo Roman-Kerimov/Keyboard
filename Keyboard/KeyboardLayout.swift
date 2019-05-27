@@ -41,9 +41,9 @@ struct KeyboardLayout {
         self.name = name
         
         let shiftDownRows: [[CharacterComponent]] = [
-            [ .asterisk,     .apostrophe,    .ampersand,   .verticalLine, .tilde,   .divisionSign,       .seven, .eight, .nine,  .minusSign,  ],
-            [ .commercialAt, .numberSign,    .dollarSign,  .percentSign,  .caret,   .multiplicationSign, .four,  .five,  .six,   .plusSign,   ],
-            [ .curlyBracket, .squareBracket, .parenthesis, .lessThanSign, .solidus, .zero,               .one,   .two,   .three, .equalsSign, ],
+            [ .asterisk,     .apostrophe,    .ampersand,       .verticalLine, .tilde,   .divisionSign,       .seven, .eight, .nine,  .minusSign,  ],
+            [ .commercialAt, .numberSign,    .dollarSign,      .percentSign,  .caret,   .multiplicationSign, .four,  .five,  .six,   .plusSign,   ],
+            [ .curlyBracket, .squareBracket, .leftParenthesis, .lessThanSign, .solidus, .zero,               .one,   .two,   .three, .equalsSign, ],
         ]
         
         let keycodeRows: [[Keycode]] = [
@@ -78,7 +78,7 @@ struct KeyboardLayout {
         self.rows = keyRows
         self.inputSourceID = defaultInputSourceID
         
-        components = Set.init(.init(rows.joined()) + .init(shiftDownRows.joined()) + KeyboardLayout.shiftUpDictionary.values)
+        components = Set.init(.init(rows.joined()) + .init(shiftDownRows.joined()) + KeyboardLayout.shiftUpDictionary.values + [.space])
     }
 
     static let qwerty = KeyboardLayout(
@@ -139,7 +139,12 @@ struct KeyboardLayout {
         .hyphen: .lowLine,
     ]
     
-    static let shiftRightDictionary: [CharacterComponent: CharacterComponent] = [.lessThanSign: .greaterThanSign]
+    static let shiftRightDictionary: [CharacterComponent: CharacterComponent] = [
+        .lessThanSign: .greaterThanSign,
+        .leftParenthesis: .rightParenthesis,
+    ]
+    
+    static let reversedShiftRightDictionary = Dictionary.init(uniqueKeysWithValues: shiftRightDictionary.map {($1, $0)})
 }
 
 extension Array where Element == KeyboardLayout {

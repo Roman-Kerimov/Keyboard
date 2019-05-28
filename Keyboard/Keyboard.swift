@@ -207,8 +207,11 @@ class Keyboard: NSObject {
         }
     }
     
+    var previousLabel: String = .init()
+    
     internal var currentLabel: String = .init() {
         didSet {
+            previousLabel = oldValue
             NotificationCenter.default.post(name: .KeyboardStateDidChange, object: nil)
         }
     }
@@ -405,7 +408,7 @@ class Keyboard: NSObject {
             }
         }
         
-        if delegate?.documentContext.beforeInput != previousDocumentContextBeforeInput {
+        if delegate?.documentContext.beforeInput?.last?.description == previousLabel {
             delegate?.delete()
         }
         

@@ -9,37 +9,37 @@
 import LinguisticKit
 
 enum Language: String, CaseIterable {
-    //case az = "az"
-    //case az_Cyrl = "az-Cyrl"
-    case ca = "ca"
-    case cs = "cs"
-    case da = "da"
-    case de = "de"
-    case el = "el"
-    case en = "en"
-    case eo = "eo"
-    case es = "es"
-    case es_MX = "es-MX"
-    case fi = "fi"
-    case fr = "fr"
-    case hr = "hr"
-    case hu = "hu"
-    case id = "id"
-    case it = "it"
-    case ms = "ms"
-    case nb = "nb"
-    case nl = "nl"
-    case pl = "pl"
-    case pt_PT = "pt-PT"
-    case pt_BR = "pt-BR"
-    case ro = "ro"
-    case ru_Cyrl = "ru-Cyrl"
-    case ru_Latn = "ru-Latn"
-    case sk = "sk"
-    case sv = "sv"
-    case tr = "tr"
-    case uk = "uk"
-    case vi = "vi"
+    //case az
+    //case az_Cyrl
+    case ca
+    case cs
+    case da
+    case de
+    case el
+    case en
+    case eo
+    case es
+    case es_MX
+    case fi
+    case fr
+    case hr
+    case hu
+    case id
+    case it
+    case ms
+    case nb
+    case nl
+    case pl
+    case pt_PT
+    case pt_BR
+    case ro
+    case ru_Cyrl
+    case ru_Latn
+    case sk
+    case sv
+    case tr
+    case uk
+    case vi
 }
 
 protocol LocalizedString {

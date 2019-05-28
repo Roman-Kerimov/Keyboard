@@ -308,6 +308,41 @@
 			remoteGlobalIDString = 964AB9301D1B6490004C827C;
 			remoteInfo = iOSKeyboard;
 		};
+		96E13CB7229D06F40097FBBC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 96E13CB0229D06F40097FBBC /* Calculator.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "Calculator::Calculator::Product";
+			remoteInfo = Calculator;
+		};
+		96E13CB9229D06F40097FBBC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 96E13CB0229D06F40097FBBC /* Calculator.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "Calculator::CalculatorTests::Product";
+			remoteInfo = CalculatorTests;
+		};
+		96E13CC2229D06F40097FBBC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 96E13CBB229D06F40097FBBC /* LinguisticKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "LinguisticKit::LinguisticKit::Product";
+			remoteInfo = LinguisticKit;
+		};
+		96E13CC4229D06F40097FBBC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 96E13CBB229D06F40097FBBC /* LinguisticKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "LinguisticKit::LinguisticKitTests::Product";
+			remoteInfo = LinguisticKitTests;
+		};
+		96E13CCA229D06F40097FBBC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 96E13CC6229D06F40097FBBC /* UIKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 961E1B93202BCF8E002A4167;
+			remoteInfo = UIKit;
+		};
 		96E354F92020DDBD00668374 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 964AB9271D1B63C0004C827C /* Project object */;
@@ -551,6 +586,9 @@
 		96E03419203179C50039E653 /* EMERGENCY_CALL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMERGENCY_CALL.swift; sourceTree = "<group>"; };
 		96E0341D203179F00039E653 /* CONTINUE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CONTINUE.swift; sourceTree = "<group>"; };
 		96E0342120317A330039E653 /* QUIT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QUIT.swift; sourceTree = "<group>"; };
+		96E13CB0229D06F40097FBBC /* Calculator.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Calculator.xcodeproj; path = Calculator/Calculator.xcodeproj; sourceTree = "<group>"; };
+		96E13CBB229D06F40097FBBC /* LinguisticKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = LinguisticKit.xcodeproj; path = LinguisticKit/LinguisticKit.xcodeproj; sourceTree = "<group>"; };
+		96E13CC6229D06F40097FBBC /* UIKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = UIKit.xcodeproj; path = UIKit/UIKit.xcodeproj; sourceTree = "<group>"; };
 		96E354E72020DDBC00668374 /* Keyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Keyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96E354E92020DDBC00668374 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96E354ED2020DDBC00668374 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -718,6 +756,9 @@
 				9697C3D720BB180300FE3007 /* Emoji */,
 				964AB9321D1B6490004C827C /* Products */,
 				96DB1A77202FB80300B96D3C /* Frameworks */,
+				96E13CB0229D06F40097FBBC /* Calculator.xcodeproj */,
+				96E13CBB229D06F40097FBBC /* LinguisticKit.xcodeproj */,
+				96E13CC6229D06F40097FBBC /* UIKit.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -903,6 +944,32 @@
 				96E0341D203179F00039E653 /* CONTINUE.swift */,
 			);
 			path = LocalizedStrings;
+			sourceTree = "<group>";
+		};
+		96E13CB1229D06F40097FBBC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				96E13CB8229D06F40097FBBC /* Calculator.framework */,
+				96E13CBA229D06F40097FBBC /* CalculatorTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		96E13CBC229D06F40097FBBC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				96E13CC3229D06F40097FBBC /* LinguisticKit.framework */,
+				96E13CC5229D06F40097FBBC /* LinguisticKitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		96E13CC7229D06F40097FBBC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				96E13CCB229D06F40097FBBC /* UIKit.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		96E354E82020DDBC00668374 /* macOSKeyboard */ = {
@@ -1105,6 +1172,20 @@
 			mainGroup = 964AB9261D1B63C0004C827C;
 			productRefGroup = 964AB9321D1B6490004C827C /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 96E13CB1229D06F40097FBBC /* Products */;
+					ProjectRef = 96E13CB0229D06F40097FBBC /* Calculator.xcodeproj */;
+				},
+				{
+					ProductGroup = 96E13CBC229D06F40097FBBC /* Products */;
+					ProjectRef = 96E13CBB229D06F40097FBBC /* LinguisticKit.xcodeproj */;
+				},
+				{
+					ProductGroup = 96E13CC7229D06F40097FBBC /* Products */;
+					ProjectRef = 96E13CC6229D06F40097FBBC /* UIKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				964AB9301D1B6490004C827C /* iOSKeyboard */,
@@ -1115,6 +1196,44 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		96E13CB8229D06F40097FBBC /* Calculator.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Calculator.framework;
+			remoteRef = 96E13CB7229D06F40097FBBC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		96E13CBA229D06F40097FBBC /* CalculatorTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = file;
+			path = CalculatorTests.xctest;
+			remoteRef = 96E13CB9229D06F40097FBBC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		96E13CC3229D06F40097FBBC /* LinguisticKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = LinguisticKit.framework;
+			remoteRef = 96E13CC2229D06F40097FBBC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		96E13CC5229D06F40097FBBC /* LinguisticKitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = file;
+			path = LinguisticKitTests.xctest;
+			remoteRef = 96E13CC4229D06F40097FBBC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		96E13CCB229D06F40097FBBC /* UIKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = UIKit.framework;
+			remoteRef = 96E13CCA229D06F40097FBBC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		964AB92F1D1B6490004C827C /* Resources */ = {

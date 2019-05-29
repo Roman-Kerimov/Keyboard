@@ -27,7 +27,7 @@ extension Language {
     #endif
     
     static var preferredList: [Language] {
-        var languageCodes: [String] = Bundle.main.isInterfaceBuilder ? .init() : UserDefaults.standard.array(forKey: "AppleLanguages") as! [String]
+        var languageCodes: [String] = Bundle.main.isInterfaceBuilder ? ["en", "ru"] : UserDefaults.standard.array(forKey: "AppleLanguages") as! [String]
         
         if let ruIndex = languageCodes.firstIndex(where: {$0.hasPrefix("ru")}) {
             languageCodes.remove(at: ruIndex)

@@ -577,6 +577,18 @@ class Keyboard: NSObject {
             UserDefaults.standard.synchronize()
         }
     }
+
+    private let cacheVersionKey = "rBNkEMNHcuYIU3bttg2lYblKGlClU7z"
+    var cacheVersion: String {
+        get {
+            return UserDefaults.standard.object(forKey: cacheVersionKey) as? String ?? .init()
+        }
+        
+        set {
+            UserDefaults.standard.set(newValue, forKey: cacheVersionKey)
+            UserDefaults.standard.synchronize()
+        }
+    }
 }
 
 extension NSNotification.Name {

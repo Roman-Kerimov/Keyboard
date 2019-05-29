@@ -24,6 +24,11 @@ class LoadUnicodeDataFiles: Operation {
         
         collectFileGarbage()
         
+        if Keyboard.default.cacheVersion != Bundle.main.version {
+            try? FileManager.default.removeItem(at: UnicodeTable.default.cacheURL)
+            Keyboard.default.cacheVersion = Bundle.main.version
+        }
+        
         var processedStringCount = 0
         
         for dataFile in UnicodeDataFile.allCases {

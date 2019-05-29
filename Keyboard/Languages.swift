@@ -103,7 +103,7 @@ extension LocalizedString {
             case .pt_BR: return pt_BR
             case .ro: return ro
             case .ru_Cyrl: return ru
-            case .ru_Latn: return ru.translating(from: .Cyrl, to: .Latn, withTable: .ru)
+            case .ru_Latn: return ru.applyingTransform(from: .Cyrl, to: .Latn, withTable: .ru)
             case .sk: return sk
             case .sv: return sv
             case .tr: return tr

@@ -499,11 +499,11 @@ class Keyboard: NSObject {
             }
         }
         
-        if let scriptTranslation = documentContextBeforeInput.translationByTargetScriptCode() {
+        if let scriptTransformation = documentContextBeforeInput.transformationByTargetScriptCode() {
             
-            autocompleteDeleteCount = scriptTranslation.sourceString.count
+            autocompleteDeleteCount = scriptTransformation.sourceString.count
             
-            autocompleteText = scriptTranslation.translatedString
+            autocompleteText = scriptTransformation.targetString
             
             let labelLength = 10
             autocompleteLabel = (autocompleteText.count > labelLength ? "..." : "") + autocompleteText.suffix(labelLength)

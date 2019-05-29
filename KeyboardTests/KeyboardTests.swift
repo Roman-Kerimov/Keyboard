@@ -177,9 +177,9 @@ class KeyboardTests: XCTestCase, KeyboardDelegate {
         XCTAssertEqual(document, "≍")
     }
 
-    func testScriptTranslation() {
+    func testScriptTransformation() {
         let cyrillicText = "Съешь же ещё этих мягких французских булок, да выпей чаю."
-        let latinText = cyrillicText.translating(from: .Cyrl, to: .Latn, withTable: .ru)
+        let latinText = cyrillicText.applyingTransform(from: .Cyrl, to: .Latn, withTable: .ru)
         
         insert(text: latinText)
         insert(text: .return)

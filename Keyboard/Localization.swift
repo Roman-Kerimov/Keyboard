@@ -49,19 +49,19 @@ extension Language {
     }
     
     var selfName: String {
-        return Locale(identifier: rawValue).localizedString(forIdentifier: rawValue)?.translatingScriptIfNeeded(language: self) ?? .init()
+        return Locale(identifier: rawValue).localizedString(forIdentifier: rawValue)?.applyingTransformIfNeeded(language: self) ?? .init()
     }
     
     var localizedName: String {
-        return Locale(identifier: Language.current.rawValue).localizedString(forIdentifier: rawValue)?.translatingScriptIfNeeded(language: .current) ?? .init()
+        return Locale(identifier: Language.current.rawValue).localizedString(forIdentifier: rawValue)?.applyingTransformIfNeeded(language: .current) ?? .init()
     }
 }
 
 fileprivate extension String {
-    func translatingScriptIfNeeded(language: Language) -> String {
+    func applyingTransformIfNeeded(language: Language) -> String {
         switch language {
         case .ru_Latn:
-            return self.translating(from: .Cyrl, to: .Latn, withTable: .ru)
+            return self.applyingTransform(from: .Cyrl, to: .Latn, withTable: .ru)
         default:
            return self
         }

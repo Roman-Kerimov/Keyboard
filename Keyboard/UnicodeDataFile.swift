@@ -24,7 +24,7 @@ enum UnicodeDataFile: String, CaseIterable {
     }
     
     var cacheURL: URL {
-        return URL.applicationSupport.appendingPathComponent(name)
+        return UnicodeTable.default.cacheURL.appendingPathComponent(name)
     }
     
     static let totalStringCount = allCases.map {$0.strings.count}.reduce(0, +)

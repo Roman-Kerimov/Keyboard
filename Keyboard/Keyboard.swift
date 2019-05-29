@@ -211,7 +211,6 @@ class Keyboard: NSObject {
     
     internal var currentLabel: String = .init() {
         didSet {
-            previousLabel = oldValue
             NotificationCenter.default.post(name: .KeyboardStateDidChange, object: nil)
         }
     }
@@ -248,6 +247,8 @@ class Keyboard: NSObject {
     }
     
     internal func shift(direction: ShiftDirection) {
+        previousLabel = currentLabel
+        
         guard let key = currentKey else {
             return
         }

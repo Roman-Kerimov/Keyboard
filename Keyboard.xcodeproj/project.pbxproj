@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -169,20 +169,16 @@
 		9697C3E520BB514900FE3007 /* UnicodeDataFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9697C3E220BB514900FE3007 /* UnicodeDataFile.swift */; };
 		9697F881202FA88C001EC50A /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9694E23C1E29D72800ED3A85 /* Localization.swift */; };
 		9697F882202FA8A1001EC50A /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D2B8DC1E35538B006772A5 /* Languages.swift */; };
+		969C3BC422A8962D0070F0B7 /* Calculator in Frameworks */ = {isa = PBXBuildFile; productRef = 969C3BC322A8962D0070F0B7 /* Calculator */; };
+		969C3BC622A8962D0070F0B7 /* LinguisticKit in Frameworks */ = {isa = PBXBuildFile; productRef = 969C3BC522A8962D0070F0B7 /* LinguisticKit */; };
+		969C3BC822A896730070F0B7 /* Calculator in Frameworks */ = {isa = PBXBuildFile; productRef = 969C3BC722A896730070F0B7 /* Calculator */; };
+		969C3BCA22A896730070F0B7 /* LinguisticKit in Frameworks */ = {isa = PBXBuildFile; productRef = 969C3BC922A896730070F0B7 /* LinguisticKit */; };
+		969C3BCC22A896850070F0B7 /* Calculator in Frameworks */ = {isa = PBXBuildFile; productRef = 969C3BCB22A896850070F0B7 /* Calculator */; };
+		969C3BCE22A896850070F0B7 /* LinguisticKit in Frameworks */ = {isa = PBXBuildFile; productRef = 969C3BCD22A896850070F0B7 /* LinguisticKit */; };
 		969E83051EED842E009A1F2D /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969E83041EED842E009A1F2D /* UIView.swift */; };
 		969F15F51E549BD300C0DD7D /* ViewController<UIView>.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969F15F41E549BD300C0DD7D /* ViewController<UIView>.swift */; };
 		969F15F71E54EE3600C0DD7D /* LanguageTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969F15F61E54EE3600C0DD7D /* LanguageTableView.swift */; };
 		96A15AD52243EE36008F0BE6 /* GuideTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A15AD42243EE36008F0BE6 /* GuideTableView.swift */; };
-		96A81B732236BAE9006CF096 /* Calculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96A81B722236BAE9006CF096 /* Calculator.framework */; };
-		96A81B742236BAFA006CF096 /* Calculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96A81B722236BAE9006CF096 /* Calculator.framework */; };
-		96A81B752236BAFA006CF096 /* Calculator.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96A81B722236BAE9006CF096 /* Calculator.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		96A81B762236BB0F006CF096 /* Calculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96A81B722236BAE9006CF096 /* Calculator.framework */; };
-		96A81B772236BB0F006CF096 /* Calculator.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96A81B722236BAE9006CF096 /* Calculator.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		96A8EB0B21AEC4F200941FA0 /* LinguisticKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96A8EB0A21AEC4F200941FA0 /* LinguisticKit.framework */; };
-		96A8EB0C21AEC50100941FA0 /* LinguisticKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96A8EB0A21AEC4F200941FA0 /* LinguisticKit.framework */; };
-		96A8EB0D21AEC50100941FA0 /* LinguisticKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96A8EB0A21AEC4F200941FA0 /* LinguisticKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		96A8EB0E21AEC51300941FA0 /* LinguisticKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96A8EB0A21AEC4F200941FA0 /* LinguisticKit.framework */; };
-		96A8EB0F21AEC51300941FA0 /* LinguisticKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96A8EB0A21AEC4F200941FA0 /* LinguisticKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		96AC6CA3203C23B200555164 /* CGEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AC6CA2203C23B200555164 /* CGEvent.swift */; };
 		96ACD588205261EE007CFDCF /* NSPasteboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96ACD587205261EE007CFDCF /* NSPasteboard.swift */; };
 		96AED32F203120DE00498A7E /* LayoutMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AED32E203120DE00498A7E /* LayoutMenuItem.swift */; };
@@ -308,34 +304,6 @@
 			remoteGlobalIDString = 964AB9301D1B6490004C827C;
 			remoteInfo = iOSKeyboard;
 		};
-		96E13CB7229D06F40097FBBC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 96E13CB0229D06F40097FBBC /* Calculator.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = "Calculator::Calculator::Product";
-			remoteInfo = Calculator;
-		};
-		96E13CB9229D06F40097FBBC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 96E13CB0229D06F40097FBBC /* Calculator.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = "Calculator::CalculatorTests::Product";
-			remoteInfo = CalculatorTests;
-		};
-		96E13CC2229D06F40097FBBC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 96E13CBB229D06F40097FBBC /* LinguisticKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = "LinguisticKit::LinguisticKit::Product";
-			remoteInfo = LinguisticKit;
-		};
-		96E13CC4229D06F40097FBBC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 96E13CBB229D06F40097FBBC /* LinguisticKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = "LinguisticKit::LinguisticKitTests::Product";
-			remoteInfo = LinguisticKitTests;
-		};
 		96E13CCA229D06F40097FBBC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 96E13CC6229D06F40097FBBC /* UIKit.xcodeproj */;
@@ -370,8 +338,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				96A81B752236BAFA006CF096 /* Calculator.framework in Embed Frameworks */,
-				96A8EB0D21AEC50100941FA0 /* LinguisticKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -382,9 +348,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				96A8EB0F21AEC51300941FA0 /* LinguisticKit.framework in Embed Frameworks */,
 				96E46DEF2086A21B00D49583 /* UIKit.framework in Embed Frameworks */,
-				96A81B772236BB0F006CF096 /* Calculator.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -542,12 +506,12 @@
 		9697C3DC20BB180300FE3007 /* ReadMe.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
 		9697C3DD20BB180300FE3007 /* emoji-sequences.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "emoji-sequences.txt"; sourceTree = "<group>"; };
 		9697C3E220BB514900FE3007 /* UnicodeDataFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnicodeDataFile.swift; sourceTree = "<group>"; };
+		969C3BC022A895E10070F0B7 /* LinguisticKit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = LinguisticKit; sourceTree = "<group>"; };
+		969C3BC222A895EB0070F0B7 /* Calculator */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Calculator; sourceTree = "<group>"; };
 		969E83041EED842E009A1F2D /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		969F15F41E549BD300C0DD7D /* ViewController<UIView>.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController<UIView>.swift"; sourceTree = "<group>"; };
 		969F15F61E54EE3600C0DD7D /* LanguageTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageTableView.swift; sourceTree = "<group>"; };
 		96A15AD42243EE36008F0BE6 /* GuideTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideTableView.swift; sourceTree = "<group>"; };
-		96A81B722236BAE9006CF096 /* Calculator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Calculator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		96A8EB0A21AEC4F200941FA0 /* LinguisticKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LinguisticKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96AC6CA2203C23B200555164 /* CGEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGEvent.swift; sourceTree = "<group>"; };
 		96ACD587205261EE007CFDCF /* NSPasteboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSPasteboard.swift; sourceTree = "<group>"; };
 		96AED32E203120DE00498A7E /* LayoutMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutMenuItem.swift; sourceTree = "<group>"; };
@@ -586,8 +550,6 @@
 		96E03419203179C50039E653 /* EMERGENCY_CALL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMERGENCY_CALL.swift; sourceTree = "<group>"; };
 		96E0341D203179F00039E653 /* CONTINUE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CONTINUE.swift; sourceTree = "<group>"; };
 		96E0342120317A330039E653 /* QUIT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QUIT.swift; sourceTree = "<group>"; };
-		96E13CB0229D06F40097FBBC /* Calculator.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Calculator.xcodeproj; path = Calculator/Calculator.xcodeproj; sourceTree = "<group>"; };
-		96E13CBB229D06F40097FBBC /* LinguisticKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = LinguisticKit.xcodeproj; path = LinguisticKit/LinguisticKit.xcodeproj; sourceTree = "<group>"; };
 		96E13CC6229D06F40097FBBC /* UIKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = UIKit.xcodeproj; path = UIKit/UIKit.xcodeproj; sourceTree = "<group>"; };
 		96E354E72020DDBC00668374 /* Keyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Keyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96E354E92020DDBC00668374 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -612,8 +574,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96A81B742236BAFA006CF096 /* Calculator.framework in Frameworks */,
-				96A8EB0C21AEC50100941FA0 /* LinguisticKit.framework in Frameworks */,
+				969C3BC622A8962D0070F0B7 /* LinguisticKit in Frameworks */,
+				969C3BC422A8962D0070F0B7 /* Calculator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -621,8 +583,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96A81B732236BAE9006CF096 /* Calculator.framework in Frameworks */,
-				96A8EB0B21AEC4F200941FA0 /* LinguisticKit.framework in Frameworks */,
+				969C3BCA22A896730070F0B7 /* LinguisticKit in Frameworks */,
+				969C3BC822A896730070F0B7 /* Calculator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -637,9 +599,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96A8EB0E21AEC51300941FA0 /* LinguisticKit.framework in Frameworks */,
+				969C3BCC22A896850070F0B7 /* Calculator in Frameworks */,
 				96E46DEE2086A21B00D49583 /* UIKit.framework in Frameworks */,
-				96A81B762236BB0F006CF096 /* Calculator.framework in Frameworks */,
+				969C3BCE22A896850070F0B7 /* LinguisticKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -756,8 +718,8 @@
 				9697C3D720BB180300FE3007 /* Emoji */,
 				964AB9321D1B6490004C827C /* Products */,
 				96DB1A77202FB80300B96D3C /* Frameworks */,
-				96E13CB0229D06F40097FBBC /* Calculator.xcodeproj */,
-				96E13CBB229D06F40097FBBC /* LinguisticKit.xcodeproj */,
+				969C3BC222A895EB0070F0B7 /* Calculator */,
+				969C3BC022A895E10070F0B7 /* LinguisticKit */,
 				96E13CC6229D06F40097FBBC /* UIKit.xcodeproj */,
 			);
 			sourceTree = "<group>";
@@ -912,8 +874,6 @@
 		96DB1A77202FB80300B96D3C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				96A81B722236BAE9006CF096 /* Calculator.framework */,
-				96A8EB0A21AEC4F200941FA0 /* LinguisticKit.framework */,
 				96DB1A78202FB80300B96D3C /* UIKit.framework */,
 			);
 			name = Frameworks;
@@ -944,24 +904,6 @@
 				96E0341D203179F00039E653 /* CONTINUE.swift */,
 			);
 			path = LocalizedStrings;
-			sourceTree = "<group>";
-		};
-		96E13CB1229D06F40097FBBC /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				96E13CB8229D06F40097FBBC /* Calculator.framework */,
-				96E13CBA229D06F40097FBBC /* CalculatorTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		96E13CBC229D06F40097FBBC /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				96E13CC3229D06F40097FBBC /* LinguisticKit.framework */,
-				96E13CC5229D06F40097FBBC /* LinguisticKitTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		96E13CC7229D06F40097FBBC /* Products */ = {
@@ -1037,6 +979,10 @@
 				964AB96D1D1B6535004C827C /* PBXTargetDependency */,
 			);
 			name = iOSKeyboard;
+			packageProductDependencies = (
+				969C3BC322A8962D0070F0B7 /* Calculator */,
+				969C3BC522A8962D0070F0B7 /* LinguisticKit */,
+			);
 			productName = iOSKeyboard;
 			productReference = 964AB9311D1B6490004C827C /* Keyboard.app */;
 			productType = "com.apple.product-type.application";
@@ -1054,6 +1000,10 @@
 			dependencies = (
 			);
 			name = iOSKeyboardExtension;
+			packageProductDependencies = (
+				969C3BC722A896730070F0B7 /* Calculator */,
+				969C3BC922A896730070F0B7 /* LinguisticKit */,
+			);
 			productName = iOSKeyboardExtension;
 			productReference = 964AB9671D1B6535004C827C /* KeyboardExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -1091,6 +1041,10 @@
 			dependencies = (
 			);
 			name = macOSKeyboard;
+			packageProductDependencies = (
+				969C3BCB22A896850070F0B7 /* Calculator */,
+				969C3BCD22A896850070F0B7 /* LinguisticKit */,
+			);
 			productName = macOSKeyboard;
 			productReference = 96E354E72020DDBC00668374 /* Keyboard.app */;
 			productType = "com.apple.product-type.application";
@@ -1174,14 +1128,6 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 96E13CB1229D06F40097FBBC /* Products */;
-					ProjectRef = 96E13CB0229D06F40097FBBC /* Calculator.xcodeproj */;
-				},
-				{
-					ProductGroup = 96E13CBC229D06F40097FBBC /* Products */;
-					ProjectRef = 96E13CBB229D06F40097FBBC /* LinguisticKit.xcodeproj */;
-				},
-				{
 					ProductGroup = 96E13CC7229D06F40097FBBC /* Products */;
 					ProjectRef = 96E13CC6229D06F40097FBBC /* UIKit.xcodeproj */;
 				},
@@ -1198,34 +1144,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		96E13CB8229D06F40097FBBC /* Calculator.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Calculator.framework;
-			remoteRef = 96E13CB7229D06F40097FBBC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		96E13CBA229D06F40097FBBC /* CalculatorTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = file;
-			path = CalculatorTests.xctest;
-			remoteRef = 96E13CB9229D06F40097FBBC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		96E13CC3229D06F40097FBBC /* LinguisticKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = LinguisticKit.framework;
-			remoteRef = 96E13CC2229D06F40097FBBC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		96E13CC5229D06F40097FBBC /* LinguisticKitTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = file;
-			path = LinguisticKitTests.xctest;
-			remoteRef = 96E13CC4229D06F40097FBBC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		96E13CCB229D06F40097FBBC /* UIKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -2261,6 +2179,33 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		969C3BC322A8962D0070F0B7 /* Calculator */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Calculator;
+		};
+		969C3BC522A8962D0070F0B7 /* LinguisticKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = LinguisticKit;
+		};
+		969C3BC722A896730070F0B7 /* Calculator */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Calculator;
+		};
+		969C3BC922A896730070F0B7 /* LinguisticKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = LinguisticKit;
+		};
+		969C3BCB22A896850070F0B7 /* Calculator */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Calculator;
+		};
+		969C3BCD22A896850070F0B7 /* LinguisticKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = LinguisticKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 964AB9271D1B63C0004C827C /* Project object */;
 }

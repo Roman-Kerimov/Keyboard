@@ -128,7 +128,7 @@ func eventTapCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent,
     
     if TISInputSource.currentKeyboardLayout.isASCIICapable {
         
-        if event.keycode == .capsLock && event.flags.contains(.maskAlphaShift) {
+        if event.flags.contains(.maskAlphaShift) {
             
             var ioConnect: io_connect_t = .init(0)
             let ioService = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching(kIOHIDSystemClass))

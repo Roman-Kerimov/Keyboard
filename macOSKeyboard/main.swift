@@ -7,7 +7,7 @@
 
 import AppKit
 
-LaunchAgent.load()
+//LaunchAgent.load()
 
 let application = NSApplication.shared
 NSApp.setActivationPolicy(.prohibited)

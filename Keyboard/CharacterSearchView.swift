@@ -36,13 +36,16 @@ class CharacterSearchView: CharacterCollectionView {
         
         layout.minimumLineSpacing = 0
         
-        NotificationCenter.default.addObserver(self, selector: #selector(search), name: .UnicodeDataFilesDidLoad, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(search), name: .DocumentContextDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateCharacters), name: .FoundCharactersDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(hideUnicodeNames), name: .KeyboardStateDidChange, object: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func updateCharacters() {
+        characters = Keyboard.default.foundCharacters
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -82,53 +85,7 @@ class CharacterSearchView: CharacterCollectionView {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         deselectItem(at: indexPath, animated: false)
         
-        let scriptCodeLength = UnicodeTable.default.scriptCodeLength
-        
-        let isScriptCodeItem: Bool = scriptCodeLength > 0 && indexPath.item == 0
-        
-        let deleteCount = isScriptCodeItem ? scriptCodeLength + 1 : textForSearch.count
-        
-        for _ in 0..<deleteCount {
-            Keyboard.default.delegate?.delete()
-        }
-        
-        let character = characters[indexPath.item]
-        
-        if !isScriptCodeItem {
-            var frequentlyUsedCharacters = Keyboard.default.frequentlyUsedCharacters
-            
-            if let index = frequentlyUsedCharacters.firstIndex(of: character) {
-                frequentlyUsedCharacters.remove(at: index)
-            }
-            
-            frequentlyUsedCharacters = [character] + frequentlyUsedCharacters
-            
-            Keyboard.default.frequentlyUsedCharacters = .init( frequentlyUsedCharacters.prefix(100) )
-        }
-        
-        Keyboard.default.delegate?.insert(text: character.description)
-        NotificationCenter.default.post(.init(name: .DocumentContextDidChange))
-    }
-    
-    private var textForSearch: String = .init()
-    
-    @objc private func search() {
-        
-        let documentContextBeforeInput = Keyboard.default.delegate?.documentContext.beforeInput ?? .init()
-        
-        var textForSearch: String = .init(
-            documentContextBeforeInput
-                .components(separatedBy: .whitespacesAndNewlines).last?
-                .split {$0.belongsTo(.symbols)} .last ?? .init()
-        )
-        
-        if textForSearch.contains(.reverseSolidus) {
-            textForSearch = .reverseSolidus + ( textForSearch.components(separatedBy: String.reverseSolidus).last ?? .init() )
-        }
-        
-        self.textForSearch = textForSearch
-        
-        UnicodeTable.default.searchScalars(byName: textForSearch.replacingOccurrences(of: String.reverseSolidus, with: ""), for: self)
+        Keyboard.default.insert(item: indexPath.item)
     }
     
     @objc override func reloadData() {

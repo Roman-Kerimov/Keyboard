@@ -148,12 +148,7 @@ func eventTapCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent,
         if let item = selectorKeys.firstIndex(of: event.keycode) {
             
             if event.type == .keyDown {
-                
-                let characterSearchView = AppDelegate.characterSearchWindow.contentView as! CharacterSearchView
-                
-                if item < characterSearchView.numberOfItems(inSection: 0) {
-                    characterSearchView.collectionView(characterSearchView, didSelectItemAt: .init(item: item, section: 0))
-                }
+                Keyboard.default.insert(item: item)
             }
             
             return nil

@@ -8,11 +8,6 @@
 import Foundation
 
 class SearchUnicodeScalars: Operation {
-    let characterCollectionView: CharacterCollectionView
-    
-    init(for characterCollectionView: CharacterCollectionView) {
-        self.characterCollectionView = characterCollectionView
-    }
     
     override func main() {
         let text = UnicodeTable.default.textForSearch
@@ -39,7 +34,7 @@ class SearchUnicodeScalars: Operation {
         
         func updateUnicodeCollectionView() {
             DispatchQueue.main.async {
-                self.characterCollectionView.characters = foundCharacters
+                Keyboard.default.foundCharacters = foundCharacters
             }
         }
         

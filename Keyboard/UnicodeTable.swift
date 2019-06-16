@@ -38,14 +38,14 @@ class UnicodeTable: NSObject {
     
     internal var frequentlyUsedCharacters: [Character] = Keyboard.default.frequentlyUsedCharacters
     
-    public func searchScalars(byName text: String, for characterCollectionView: CharacterCollectionView) {
+    public func searchScalars(byName text: String) {
         if let searchUnicodeScalarsOperation = backgroudOperationQueue.operations.last as? SearchUnicodeScalars {
             searchUnicodeScalarsOperation.cancel()
         }
         
         textForSearch = text
         
-        backgroudOperationQueue.addOperation( SearchUnicodeScalars.init(for: characterCollectionView) )
+        backgroudOperationQueue.addOperation( SearchUnicodeScalars.init() )
     }
     
     var cacheURL: URL {

@@ -9,9 +9,6 @@
 import Foundation
 
 extension Language {
-    #if TARGET_INTERFACE_BUILDER
-    static var current: Language = .en
-    #else
     private static let currentKey = "rrvfFT9eUMTqwVCEW4cbDo3c4TJsa1O"
     static var current: Language {
         get {
@@ -24,10 +21,9 @@ extension Language {
             NotificationCenter.default.post(name: .LocalizationDidChange, object: nil)
         }
     }
-    #endif
     
     static var preferredList: [Language] {
-        var languageCodes: [String] = Bundle.main.isInterfaceBuilder ? ["en", "ru"] : UserDefaults.standard.array(forKey: "AppleLanguages") as! [String]
+        var languageCodes: [String] = UserDefaults.standard.array(forKey: "AppleLanguages") as! [String]
         
         if let ruIndex = languageCodes.firstIndex(where: {$0.hasPrefix("ru")}) {
             languageCodes.remove(at: ruIndex)

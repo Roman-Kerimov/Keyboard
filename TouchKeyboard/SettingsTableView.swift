@@ -8,7 +8,6 @@
 
 import UIKit
 
-@IBDesignable
 internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
     override func updateLocalizedStrings() {

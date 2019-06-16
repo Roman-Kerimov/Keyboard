@@ -7,7 +7,6 @@
 
 import UIKit
 
-@IBDesignable
 class GuideTableView: UITableView {
     
     override func updateLocalizedStrings() {

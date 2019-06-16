@@ -42,10 +42,6 @@ class CharacterCollectionView: UICollectionView, UICollectionViewDelegateFlowLay
         backgroundColor = .touchableClear
         
         clipsToBounds = false
-        
-        if Bundle.main.isInterfaceBuilder {
-            characters = .init("CharacterCollectionView")
-        }
     }
     
     required init?(coder aDecoder: NSCoder) {

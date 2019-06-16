@@ -8,12 +8,7 @@
 
 import UIKit
 
-@IBDesignable
 internal class KeyboardView: UIView {
-    
-    @IBInspectable internal var text: String = .init()
-    @IBInspectable internal var darkAppearance: Bool = false
-    @IBInspectable internal var alternateLayoutMode: Bool = false
     
     enum State {
         case disappeared, disappearing, appearing, appeared
@@ -49,9 +44,6 @@ internal class KeyboardView: UIView {
     }
     */
 
-    #if TARGET_INTERFACE_BUILDER
-    private var layoutMode: Keyboard.KeyboardLayoutMode = .default
-    #else
     private var layoutMode: Keyboard.KeyboardLayoutMode {
         get {
             return Keyboard.default.layoutMode
@@ -61,7 +53,6 @@ internal class KeyboardView: UIView {
             Keyboard.default.layoutMode = newValue
         }
     }
-    #endif
     
     private var characterSequenceView: CharacterSequenceView {
         return deleteRowView.characterSequence
@@ -87,16 +78,6 @@ internal class KeyboardView: UIView {
     private var heightConstraint: NSLayoutConstraint?
     
     private let backgroundView: UIView = .init()
-    
-    override internal func prepareForInterfaceBuilder() {
-        super.prepareForInterfaceBuilder()
-        
-        state = .appeared
-        
-        enterKey.isEnabled = false
-        
-        LoadUnicodeDataFiles.init().start()
-    }
     
     private let deleteRowView: DeleteRowView = .init()
     private let layoutView: KeyboardLayoutView = .init()
@@ -125,23 +106,11 @@ internal class KeyboardView: UIView {
     
     override func layoutSubviews() {
         
-        #if TARGET_INTERFACE_BUILDER
-            Keyboard.default.delegate = self
-            
-            UIKeyboardAppearance.current = darkAppearance ? .dark : .default
-            
-            backgroundView.backgroundColor = .windowBackgroundColor
-            
-            NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
-            
-            SearchUnicodeScalars.init(for: characterSearchView).start()
-        #endif
-        
         guard state != .disappeared else {
             return
         }
         
-        let scaleFactor: CGFloat = Bundle.main.isInterfaceBuilder ? 1 : bounds.width / UIScreen.main.bounds.width
+        let scaleFactor: CGFloat = bounds.width / UIScreen.main.bounds.width
         
         let minimalScreenSize: CGSize = CGSize.init(width: 320, height: 480).applying(.init(scale: scaleFactor))
         
@@ -151,11 +120,7 @@ internal class KeyboardView: UIView {
             layoutMode = isPrefferedVerticalMode ? .vertical : .horizontal
         }
         
-        if alternateLayoutMode {
-            layoutMode = layoutMode == .vertical ? .horizontal : .vertical
-        }
-        
-        let screenSize: CGSize = Bundle.main.isInterfaceBuilder ? bounds.size : UIScreen.main.bounds.size.applying(.init(scale: scaleFactor))
+        let screenSize: CGSize = UIScreen.main.bounds.size.applying(.init(scale: scaleFactor))
         
         let isHorizontalMode = layoutMode == .horizontal || screenSize.height < minimalScreenSize.height
         
@@ -218,17 +183,12 @@ internal class KeyboardView: UIView {
             heightConstraint?.isActive = true
         }
         
-        if !Bundle.main.isInterfaceBuilder && !Bundle.main.isExtension {
+        if !Bundle.main.isExtension {
             frame = UIScreen.main.bounds
             frame.size.height = keyboardSize.height
         }
         
-        backgroundView.frame = .init(
-            x: 0,
-            y: Bundle.main.isInterfaceBuilder ? bounds.height - keyboardSize.height : 0,
-            width: bounds.width,
-            height:  keyboardSize.height
-        )
+        backgroundView.frame = .init(origin: .zero, size: .init(width: bounds.width, height:  keyboardSize.height)) 
         
         let deleteRowHeight: CGFloat = deleteRowHeightInKeys * keySize.height
         let spaceRowHeight: CGFloat = spaceRowHeightInKeys * keySize.height
@@ -318,17 +278,3 @@ internal class KeyboardView: UIView {
         }
     }
 }
-
-#if TARGET_INTERFACE_BUILDER
-extension KeyboardView: KeyboardDelegate {
-    
-    func delete() {}
-    func enter() {}
-    func settings() {}
-    func insert(text: String) {}
-    
-    var documentContext: DocumentContext {
-        return .init(beforeInput: text, afterInput: nil)
-    }
-}
-#endif

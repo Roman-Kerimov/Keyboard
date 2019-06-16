@@ -40,10 +40,6 @@ class CharacterSequenceView: CharacterCollectionView {
         NotificationCenter.default.addObserver(self, selector: #selector(updateCharacters), name: .CharacterSequenceDidChange, object: nil)
         
         register(AutocompleteView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: AutocompleteView.reuseIdentifier)
-
-        if Bundle.main.isInterfaceBuilder {
-            characters = .init("keyboard😀")
-        }
     }
     
     required init?(coder aDecoder: NSCoder) {

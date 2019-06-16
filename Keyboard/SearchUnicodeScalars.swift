@@ -41,10 +41,6 @@ class SearchUnicodeScalars: Operation {
             DispatchQueue.main.async {
                 self.characterCollectionView.characters = foundCharacters
             }
-            
-            if Bundle.main.isInterfaceBuilder {
-                characterCollectionView.characters = foundCharacters
-            }
         }
         
         let searchRegularExpression: NSRegularExpression

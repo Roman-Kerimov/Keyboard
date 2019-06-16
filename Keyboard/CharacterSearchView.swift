@@ -39,12 +39,6 @@ class CharacterSearchView: CharacterCollectionView {
         NotificationCenter.default.addObserver(self, selector: #selector(search), name: .UnicodeDataFilesDidLoad, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(search), name: .DocumentContextDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(hideUnicodeNames), name: .KeyboardStateDidChange, object: nil)
-        
-        if Bundle.main.isInterfaceBuilder {
-            characters = .init("⌨🎹😀😇ǶÆ")
-            
-            isHiddenUnicodeNames = false
-        }
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -138,9 +138,6 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
     }
     
     override var needsInputModeSwitchKey: Bool {
-        if Bundle.main.isInterfaceBuilder {
-            return true
-        }
         
         guard Bundle.main.isExtension else {
             return false

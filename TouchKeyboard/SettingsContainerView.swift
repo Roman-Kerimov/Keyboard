@@ -8,10 +8,7 @@
 
 import UIKit
 
-@IBDesignable
 class SettingsContainerView: UIStackView {
-    
-    @IBInspectable var language: String = Language.en.rawValue
     
     override func updateLocalizedStrings() {
         super.updateLocalizedStrings()
@@ -30,14 +27,6 @@ class SettingsContainerView: UIStackView {
     let settingsViewController = ViewController <SettingsTableView> ()
     
     var widthConstraint: NSLayoutConstraint!
-
-    override func prepareForInterfaceBuilder() {
-        Language.current = Language(rawValue: language) ?? .en
-        
-        super.prepareForInterfaceBuilder()
-        
-        backButton.backgroundColor = shadeColor
-    }
     
     private let titleLabel: UILabel = .init()
     
@@ -49,7 +38,7 @@ class SettingsContainerView: UIStackView {
         axis = .horizontal
         distribution = .fill
         
-        translatesAutoresizingMaskIntoConstraints = Bundle.main.isInterfaceBuilder
+        translatesAutoresizingMaskIntoConstraints = false
         
         backButton.translatesAutoresizingMaskIntoConstraints = false
         

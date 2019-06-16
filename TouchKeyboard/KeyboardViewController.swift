@@ -213,7 +213,11 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
     
     func insert(text: String) {
         textDocumentProxy.insertText(text)
-        textDocumentProxy.adjustTextPosition(byCharacterOffset: 1)
+        
+        if [.asciiCapableNumberPad, .decimalPad, .numberPad, .numbersAndPunctuation, .phonePad].contains(textDocumentProxy.keyboardType) {
+            
+            textDocumentProxy.adjustTextPosition(byCharacterOffset: 1)
+        }
     }
     
     var documentContext: DocumentContext {

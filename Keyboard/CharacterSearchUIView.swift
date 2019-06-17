@@ -1,5 +1,5 @@
 //
-//  CharacterSearchView.swift
+//  CharacterSearchUIView.swift
 //  Keyboard
 //
 //  Created by Roman Kerimov on 2017-05-15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CharacterSearchView: CharacterCollectionView {
+class CharacterSearchUIView: CharacterCollectionUIView {
 
     internal var size: CGSize = .zero {
         didSet {
@@ -50,7 +50,7 @@ class CharacterSearchView: CharacterCollectionView {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! CharacterCollectionViewCell
+        let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! CharacterCollectionUIViewCell
         
         let characterFontSize = 0.7 * layout.itemSize.width
         cell.title.font = .systemFont(ofSize: characterFontSize)
@@ -98,7 +98,7 @@ class CharacterSearchView: CharacterCollectionView {
     
     private var isHiddenUnicodeNames: Bool = true {
         didSet {
-            for cell in visibleCells as! [CharacterCollectionViewCell] {
+            for cell in visibleCells as! [CharacterCollectionUIViewCell] {
                 cell.unicodeName.isHidden = isHiddenUnicodeNames
             }
         }

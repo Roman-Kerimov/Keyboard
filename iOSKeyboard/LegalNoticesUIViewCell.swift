@@ -1,5 +1,5 @@
 //
-//  IterfaceLanguageTableViewCell.swift
+//  LegalNoticesUIViewCell.swift
 //  iOSKeyboard
 //
 //  Created by Roman Kerimov on 2019-03-22.
@@ -7,20 +7,19 @@
 
 import UIKit
 
-class IterfaceLanguageTableViewCell: LocalizedTableViewCell {
+class LegalNoticesUIViewCell: LocalizedUIViewCell {
     
     override func updateLocalizedStrings() {
         super.updateLocalizedStrings()
         
-        textLabel?.text = LANGUAGE.string
-        detailTextLabel?.text = Language.current.localizedName
+        textLabel?.text = LEGAL_NOTICES.string
         accessoryType = .disclosureIndicator
     }
     
     override init() {
         super.init()
         
-        detailViewController = ViewController<LanguageTableView>.init()
+        detailViewController = ViewController<LegalNoticesUIView>.init()
     }
     
     required init?(coder aDecoder: NSCoder) {

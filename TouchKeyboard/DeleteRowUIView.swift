@@ -1,5 +1,5 @@
 //
-//  DeleteRowView.swift
+//  DeleteRowUIView.swift
 //  Keyboard
 //
 //  Created by Roman Kerimov on 2017-02-22.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-class DeleteRowView: UIView {
+class DeleteRowUIView: UIView {
     
-    let deleteKey = KeyView(key: .delete)
-    internal let characterSequence: CharacterSequenceView
+    let deleteKey = KeyUIView(key: .delete)
+    internal let characterSequence: CharacterSequenceUIView
     
     init() {
         

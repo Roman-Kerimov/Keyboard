@@ -1,5 +1,5 @@
 //
-//  KeyboardView.swift
+//  KeyboardUIView.swift
 //  Keyboard
 //
 //  Created by Roman Kerimov on 2016-07-09.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-internal class KeyboardView: UIView {
+internal class KeyboardUIView: UIView {
     
     enum State {
         case disappeared, disappearing, appearing, appeared
@@ -16,23 +16,23 @@ internal class KeyboardView: UIView {
     
     var state: State = .disappeared
     
-    internal var nextKeyboardKey: KeyView {
+    internal var nextKeyboardKey: KeyUIView {
         return spaceRowView.nextKeyboardKey
     }
     
-    internal var dismissKeyboardKey: KeyView {
+    internal var dismissKeyboardKey: KeyUIView {
         return spaceRowView.dismissKeyboardKey
     }
     
-    internal var deleteKey: KeyView {
+    internal var deleteKey: KeyUIView {
         return deleteRowView.deleteKey
     }
     
-    internal var enterKey: KeyView {
+    internal var enterKey: KeyUIView {
         return spaceRowView.enterKey
     }
     
-    internal var spaceKey: KeyView {
+    internal var spaceKey: KeyUIView {
         return spaceRowView.spaceKey
     }
 
@@ -54,16 +54,16 @@ internal class KeyboardView: UIView {
         }
     }
     
-    private var characterSequenceView: CharacterSequenceView {
+    private var characterSequenceView: CharacterSequenceUIView {
         return deleteRowView.characterSequence
     }
     
-    public var characterSearchView: CharacterSearchView {
+    public var characterSearchView: CharacterSearchUIView {
         return layoutView.characterSearchView
     }
     
-    private var keys: [KeyView] {
-        var keyViews: [KeyView] = []
+    private var keys: [KeyUIView] {
+        var keyViews: [KeyUIView] = []
         
         for row in layoutView.keyViews {
             keyViews += row
@@ -79,9 +79,9 @@ internal class KeyboardView: UIView {
     
     private let backgroundView: UIView = .init()
     
-    private let deleteRowView: DeleteRowView = .init()
-    private let layoutView: KeyboardLayoutView = .init()
-    private let spaceRowView: SpaceRowView = .init()
+    private let deleteRowView: DeleteRowUIView = .init()
+    private let layoutView: KeyboardLayoutUIView = .init()
+    private let spaceRowView: SpaceRowUIView = .init()
     
     override private init(frame: CGRect = .zero) {
         super.init(frame: frame)
@@ -193,9 +193,9 @@ internal class KeyboardView: UIView {
         let deleteRowHeight: CGFloat = deleteRowHeightInKeys * keySize.height
         let spaceRowHeight: CGFloat = spaceRowHeightInKeys * keySize.height
         
-        KeyView.size = keySize
-        KeyView.spacing = deleteRowHeight * 0.1
-        KeyView.labelFontSize = min(spaceRowHeight * 0.5, 36)
+        KeyUIView.size = keySize
+        KeyUIView.spacing = deleteRowHeight * 0.1
+        KeyUIView.labelFontSize = min(spaceRowHeight * 0.5, 36)
         
         deleteRowView.frame = .init(origin: .zero, size: .init(width: keyboardSize.width, height: deleteRowHeight))
         
@@ -229,7 +229,7 @@ internal class KeyboardView: UIView {
         layoutView.layout = Keyboard.default.layout
     }
     
-    internal var settingsContainerView: SettingsContainerView = .init()
+    internal var settingsContainerView: SettingsContainerUIView = .init()
     
     private var settingsRightConstraint: NSLayoutConstraint!
     

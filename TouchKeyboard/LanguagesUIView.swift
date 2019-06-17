@@ -1,5 +1,5 @@
 //
-//  LanguageTableView.swift
+//  LanguagesUIView.swift
 //  Keyboard
 //
 //  Created by Roman Kerimov on 2017-02-15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LanguageTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
+class LanguagesUIView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
     override func updateLocalizedStrings() {
         preferredLanguages = Language.preferredList

@@ -1,5 +1,5 @@
 //
-//  KeyboardViewController.swift
+//  KeyboardUIViewController.swift
 //  Keyboard
 //
 //  Created by Roman Kerimov on 2016-06-23.
@@ -10,24 +10,24 @@ import UIKit
 
 extension UIView {
     open override var inputViewController: UIInputViewController? {
-        return KeyboardViewController.shared
+        return KeyboardUIViewController.shared
     }
 }
 
 extension UIViewController {
     open override var inputViewController: UIInputViewController? {
-        return KeyboardViewController.shared
+        return KeyboardUIViewController.shared
     }
 }
 
 extension UIApplication {
     open override var inputViewController: UIInputViewController? {
-        return KeyboardViewController.shared
+        return KeyboardUIViewController.shared
     }
 }
 
-class KeyboardViewController: UIInputViewController, KeyboardDelegate {
-    fileprivate static var shared: KeyboardViewController = .init()
+class KeyboardUIViewController: UIInputViewController, KeyboardDelegate {
+    fileprivate static var shared: KeyboardUIViewController = .init()
     
     @objc private func updateDocumentContext() {
         
@@ -41,7 +41,7 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
         }
     }
     
-    let keyboardView = KeyboardView()
+    let keyboardView = KeyboardUIView()
     
     override func loadView() {
         view = keyboardView
@@ -58,7 +58,7 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
         
         // Perform custom UI setup here
         
-        KeyboardViewController.shared = self
+        KeyboardUIViewController.shared = self
         Keyboard.default.delegate = self
         
         keyboardView.frame = UIScreen.main.bounds

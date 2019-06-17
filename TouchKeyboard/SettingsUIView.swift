@@ -1,5 +1,5 @@
 //
-//  SettingsViewController.swift
+//  SettingsUIView.swift
 //  Keyboard
 //
 //  Created by Roman Kerimov on 2017-01-12.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
+internal class SettingsUIView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
     override func updateLocalizedStrings() {
         super.updateLocalizedStrings()
@@ -39,8 +39,8 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
         case allowMultipleSpaces
     }
     
-    internal let languageTableViewController: ViewController<LanguageTableView> = .init()
-    internal let legalNoticesViewController: ViewController<LegalNoticesTextView> = .init()
+    internal let languageTableViewController: ViewController<LanguagesUIView> = .init()
+    internal let legalNoticesViewController: ViewController<LegalNoticesUIView> = .init()
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)!

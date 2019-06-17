@@ -1,11 +1,11 @@
 //
-//  LegalNoticesText.swift
+//  legalNotices.swift
 //  Keyboard
 //
 //  Created by Roman Kerimov on 2017-08-09.
 //
 
-let legalNoticesText =
+let legalNotices =
     
 """
 Acknowledgments:

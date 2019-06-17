@@ -9,7 +9,7 @@ import Cocoa
 
 class LegalNoticesMenuItem: LocalizedMenuItem {
     
-    let legalNoticesViewController: ViewController<LegalNoticesTextView> = .init()
+    let legalNoticesViewController: ViewController<LegalNoticesUIView> = .init()
     
     override func updateLocalizedStrings() {
         super.updateLocalizedStrings()

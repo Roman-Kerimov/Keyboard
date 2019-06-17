@@ -1,5 +1,5 @@
 //
-//  CharacterCollectionView.swift
+//  CharacterCollectionUIView.swift
 //  Keyboard
 //
 //  Created by Roman Kerimov on 2017-05-15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CharacterCollectionView: UICollectionView, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+class CharacterCollectionUIView: UICollectionView, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -32,7 +32,7 @@ class CharacterCollectionView: UICollectionView, UICollectionViewDelegateFlowLay
         dataSource = self
         delegate = self
         
-        register(CharacterCollectionViewCell.self, forCellWithReuseIdentifier: CharacterCollectionViewCell.reuseIdentifier)
+        register(CharacterCollectionUIViewCell.self, forCellWithReuseIdentifier: CharacterCollectionUIViewCell.reuseIdentifier)
         backgroundColor = .clear
         
         showsVerticalScrollIndicator = false
@@ -54,7 +54,7 @@ class CharacterCollectionView: UICollectionView, UICollectionViewDelegateFlowLay
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCollectionViewCell.reuseIdentifier, for: indexPath) as! CharacterCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCollectionUIViewCell.reuseIdentifier, for: indexPath) as! CharacterCollectionUIViewCell
         
         var character = characters[indexPath.item]
         

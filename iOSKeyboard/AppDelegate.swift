@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             fatalError()
         }
         
-        window.rootViewController = GuideViewController.init()
+        window.rootViewController = GuideUIViewController.init()
         window.makeKeyAndVisible()
 
         return true

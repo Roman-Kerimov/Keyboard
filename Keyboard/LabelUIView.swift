@@ -1,5 +1,5 @@
 //
-//  LabelView.swift
+//  LabelUIView.swift
 //  Keyboard
 //
 //  Created by Roman Kerimov on 2016-11-28.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LabelView: UILabel {
+class LabelUIView: UILabel {
 
     /*
     // Only override draw() if you perform custom drawing.

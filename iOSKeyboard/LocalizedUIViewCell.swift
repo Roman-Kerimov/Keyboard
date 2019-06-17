@@ -1,5 +1,5 @@
 //
-//  LocalizedTableViewCell.swift
+//  LocalizedUIViewCell.swift
 //  iOSKeyboard
 //
 //  Created by Roman Kerimov on 2019-03-22.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LocalizedTableViewCell: UITableViewCell {
+class LocalizedUIViewCell: UITableViewCell {
     
     var detailViewController: UIViewController? = nil
     

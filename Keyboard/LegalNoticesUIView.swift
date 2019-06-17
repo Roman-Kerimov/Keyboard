@@ -1,5 +1,5 @@
 //
-//  LegalNoticesTextView.swift
+//  LegalNoticesUIView.swift
 //  Keyboard
 //
 //  Created by Roman Kerimov on 2017-08-09.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LegalNoticesTextView: LegalTextView {
+class LegalNoticesUIView: LegalTextUIView {
     
     override func updateLocalizedStrings() {
         super.updateLocalizedStrings()
@@ -16,7 +16,7 @@ class LegalNoticesTextView: LegalTextView {
     }
     
     init() {
-        super.init(text: legalNoticesText)
+        super.init(text: legalNotices)
         
         NotificationCenter.default.addLocaleObserver(self)
     }

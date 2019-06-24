@@ -5,7 +5,7 @@
 //  Created by Roman Kerimov on 2018-02-10.
 //
 
-import UIKit
+import AppKit
 
 class StatusMenu: NSMenu {
     
@@ -17,10 +17,10 @@ class StatusMenu: NSMenu {
         super.init(title: .init())
         
         let controlText = "Kd"
-        let controlTextFont: UIFont = .boldMenuFont
+        let controlTextFont: NSFont = .boldMenuFont
         
-        let disabledControlTextColor: UIColor = .disabledControlTextColor
-        let disabledControlTextColorWithoutAlphaComponent: UIColor  = UIColor.windowBackgroundColor.blended(withFraction: disabledControlTextColor.alphaComponent, of: disabledControlTextColor)!
+        let disabledControlTextColor: NSColor = .disabledControlTextColor
+        let disabledControlTextColorWithoutAlphaComponent: NSColor  = NSColor.windowBackgroundColor.blended(withFraction: disabledControlTextColor.alphaComponent, of: disabledControlTextColor)!
         
         let title: NSMutableAttributedString = .init(string: controlText)
         title.addAttribute(.font, value: controlTextFont)
@@ -29,7 +29,7 @@ class StatusMenu: NSMenu {
         
         let alternateTitle: NSMutableAttributedString = .init(string: controlText)
         alternateTitle.addAttribute(.font, value: controlTextFont)
-        alternateTitle.addAttribute(.foregroundColor, value: UIColor.selectedMenuItemTextColor)
+        alternateTitle.addAttribute(.foregroundColor, value: NSColor.selectedMenuItemTextColor)
         statusItem.button?.attributedAlternateTitle = alternateTitle
         
         statusItem.menu = self

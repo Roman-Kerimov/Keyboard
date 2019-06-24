@@ -5,7 +5,7 @@
 //  Created by Roman Kerimov on 2018-04-22.
 //
 
-import UIKit
+import AppKit
 
 class AccessibilityMenuItem: LocalizedMenuItem {
 
@@ -13,7 +13,7 @@ class AccessibilityMenuItem: LocalizedMenuItem {
         super.updateLocalizedStrings()
         
         let title: NSMutableAttributedString = .init(string: ENABLE_KEYBOARD.string)
-        title.addAttribute(.font, value: UIFont.boldMenuFont)
+        title.addAttribute(.font, value: NSFont.boldMenuFont)
         attributedTitle = title
     }
     

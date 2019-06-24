@@ -5,7 +5,7 @@
 //  Created by Roman Kerimov on 2018-04-20.
 //
 
-import Cocoa
+import AppKit
 
 struct LaunchAgent {
     private init() {}

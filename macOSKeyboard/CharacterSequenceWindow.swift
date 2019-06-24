@@ -5,8 +5,6 @@
 //  Created by Roman Kerimov on 2018-10-21.
 //
 
-import UIKit
-
 class CharacterSequenceWindow: FloatingWindow {
     
     init() {

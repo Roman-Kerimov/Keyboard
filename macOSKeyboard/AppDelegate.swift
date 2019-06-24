@@ -5,7 +5,7 @@
 //  Created by Roman Kerimov on 2018-01-30.
 //
 
-import Cocoa
+import AppKit
 import Carbon
 
 class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {

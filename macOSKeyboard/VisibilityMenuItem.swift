@@ -5,7 +5,7 @@
 //  Created by Roman Kerimov on 2018-06-14.
 //
 
-import Cocoa
+import AppKit
 
 class VisibilityMenuItem: LocalizedMenuItem {
     override func updateLocalizedStrings() {

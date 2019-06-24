@@ -5,8 +5,6 @@
 //  Created by Roman Kerimov on 2018-05-13.
 //
 
-import UIKit
-
 class CharacterSearchWindow: FloatingWindow {
     
     init() {

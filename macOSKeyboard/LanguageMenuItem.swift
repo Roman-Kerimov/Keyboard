@@ -5,7 +5,7 @@
 //  Created by Roman Kerimov on 2018-02-12.
 //
 
-import Cocoa
+import AppKit
 
 class LanguageMenuItem: LocalizedMenuItem {
     

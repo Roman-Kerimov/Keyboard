@@ -5,11 +5,11 @@
 //  Created by Roman Kerimov on 2018-10-20.
 //
 
-import UIKit
+import AppKit
 
 class FloatingWindow: NSWindow {
     
-    init(contentView: UIView) {
+    init(contentView: NSView) {
         super.init(
             contentRect: contentView.frame,
             styleMask: [.titled, .fullSizeContentView],

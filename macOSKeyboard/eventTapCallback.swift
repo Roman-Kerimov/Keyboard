@@ -5,7 +5,7 @@
 //  Created by Roman Kerimov on 2018-06-10.
 //
 
-import Cocoa
+import AppKit
 import Carbon
 
 func eventTapCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent, refcon: UnsafeMutableRawPointer?) -> Unmanaged<CGEvent>? {

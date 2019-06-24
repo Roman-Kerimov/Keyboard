@@ -5,7 +5,7 @@
 //  Created by Roman Kerimov on 2019-01-05.
 //
 
-import UIKit
+import AppKit
 
 class GuideWindow: NSWindow, NSWindowDelegate {
 

@@ -175,6 +175,7 @@
 		969F15F51E549BD300C0DD7D /* ViewController<UIView>.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969F15F41E549BD300C0DD7D /* ViewController<UIView>.swift */; };
 		969F15F71E54EE3600C0DD7D /* LanguagesUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969F15F61E54EE3600C0DD7D /* LanguagesUIView.swift */; };
 		96A15AD52243EE36008F0BE6 /* GuideTableUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A15AD42243EE36008F0BE6 /* GuideTableUIView.swift */; };
+		96A41BD122C22986009057F5 /* CharacterSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A41BCF22C22986009057F5 /* CharacterSearchView.swift */; };
 		96AC6CA3203C23B200555164 /* CGEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AC6CA2203C23B200555164 /* CGEvent.swift */; };
 		96ACD588205261EE007CFDCF /* NSPasteboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96ACD587205261EE007CFDCF /* NSPasteboard.swift */; };
 		96AED32F203120DE00498A7E /* LayoutMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AED32E203120DE00498A7E /* LayoutMenuItem.swift */; };
@@ -505,6 +506,7 @@
 		969F15F41E549BD300C0DD7D /* ViewController<UIView>.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController<UIView>.swift"; sourceTree = "<group>"; };
 		969F15F61E54EE3600C0DD7D /* LanguagesUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguagesUIView.swift; sourceTree = "<group>"; };
 		96A15AD42243EE36008F0BE6 /* GuideTableUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideTableUIView.swift; sourceTree = "<group>"; };
+		96A41BCF22C22986009057F5 /* CharacterSearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterSearchView.swift; sourceTree = "<group>"; };
 		96AC6CA2203C23B200555164 /* CGEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGEvent.swift; sourceTree = "<group>"; };
 		96ACD587205261EE007CFDCF /* NSPasteboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSPasteboard.swift; sourceTree = "<group>"; };
 		96AED32E203120DE00498A7E /* LayoutMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutMenuItem.swift; sourceTree = "<group>"; };
@@ -914,6 +916,7 @@
 				963212B3217B820500E8A6B2 /* FloatingWindow.swift */,
 				96B8908A21E04EA800917CB2 /* GuideWindow.swift */,
 				96BE9C7020A8340400C2C03F /* CharacterSearchWindow.swift */,
+				96A41BCF22C22986009057F5 /* CharacterSearchView.swift */,
 				963212B5217C61BB00E8A6B2 /* CharacterSequenceWindow.swift */,
 				967502532089E1D300FD6CED /* LaunchAgent.swift */,
 				9673CAD7203282490030E2CA /* AXUIElement.swift */,
@@ -1451,6 +1454,7 @@
 				96DB1A7A202FB84F00B96D3C /* legalNotices.swift in Sources */,
 				96E033EC2031540A0039E653 /* KEYBOARD.swift in Sources */,
 				966EB96D202FC0D3007718F2 /* LegalNoticesMenuItem.swift in Sources */,
+				96A41BD122C22986009057F5 /* CharacterSearchView.swift in Sources */,
 				96C1EC2E205131EC00AC27CB /* CGEventFlags.swift in Sources */,
 				96DBC14B205EBD8700910E7A /* TISInputSource.swift in Sources */,
 				966CB25620911C99005C7B5B /* CGAffineTransform.swift in Sources */,

@@ -5,12 +5,13 @@
 //  Created by Roman Kerimov on 2018-05-13.
 //
 
+import SwiftUI
+
 class CharacterSearchWindow: FloatingWindow {
     
     init() {
-        let characterSearchView = CharacterSearchUIView.init()
-        characterSearchView.size = .init(width: 30, height: 250)
+        super.init(contentView: NSHostingView(rootView: CharacterSearchView().environmentObject(Keyboard.default)))
         
-        super.init(contentView: characterSearchView)
+        setFrame(.init(origin: .zero, size: .init(width: 30, height: 250)), display: true)
     }
 }

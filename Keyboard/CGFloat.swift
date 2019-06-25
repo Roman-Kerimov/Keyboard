@@ -5,7 +5,7 @@
 //  Created by Roman Kerimov on 2019-06-25.
 //
 
-import Foundation
+import CoreGraphics
 
 extension CGFloat {
     static let characterSearchViewFontSizeFactor: Self = 0.7

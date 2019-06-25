@@ -1672,7 +1672,6 @@
 					"@executable_path/Frameworks",
 				);
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = Vnj5sWxe2rI2VKE6oD4eKqaGdBABwSD;
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -1781,7 +1780,6 @@
 					"@executable_path/../../Frameworks",
 				);
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = Vnj5sWxe2rI2VKE6oD4eKqaGdBABwSD.01AGiMSn;
 				PRODUCT_NAME = "$(PROJECT_NAME)Extension";
 				SKIP_INSTALL = YES;

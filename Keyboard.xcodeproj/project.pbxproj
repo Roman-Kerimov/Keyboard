@@ -1220,7 +1220,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "killall Keyboard || true";
+			shellScript = "killall Keyboard || true\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

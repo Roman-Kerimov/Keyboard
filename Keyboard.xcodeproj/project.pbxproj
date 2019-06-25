@@ -287,6 +287,7 @@
 		96F7FBE91FBB299400F7146C /* CollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F7FBE81FBB299400F7146C /* CollectionViewFlowLayout.swift */; };
 		96F7FBEA1FBB299400F7146C /* CollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F7FBE81FBB299400F7146C /* CollectionViewFlowLayout.swift */; };
 		96F8D1D11E26FAE0000D1DFC /* SettingsUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8D1D01E26FAE0000D1DFC /* SettingsUIView.swift */; };
+		96FF403022C2489600290877 /* ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FF402F22C2489600290877 /* ScrollView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -566,6 +567,7 @@
 		96F716B81F0438B6004A77C7 /* Locale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locale.swift; sourceTree = "<group>"; };
 		96F7FBE81FBB299400F7146C /* CollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		96F8D1D01E26FAE0000D1DFC /* SettingsUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsUIView.swift; sourceTree = "<group>"; };
+		96FF402F22C2489600290877 /* ScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -942,6 +944,7 @@
 				96F28C2320302AC00023313C /* VersionMenuItem.swift */,
 				96AFEBA6202FA9080099F70B /* QuitMenuItem.swift */,
 				96AFEBA8202FAB830099F70B /* LocalizedMenuItem.swift */,
+				96FF402F22C2489600290877 /* ScrollView.swift */,
 				96E354ED2020DDBC00668374 /* Assets.xcassets */,
 				96E354F22020DDBD00668374 /* Info.plist */,
 				96E354F32020DDBD00668374 /* macOSKeyboard.entitlements */,
@@ -1462,6 +1465,7 @@
 				96DB1A7A202FB84F00B96D3C /* legalNotices.swift in Sources */,
 				96E033EC2031540A0039E653 /* KEYBOARD.swift in Sources */,
 				966EB96D202FC0D3007718F2 /* LegalNoticesMenuItem.swift in Sources */,
+				96FF403022C2489600290877 /* ScrollView.swift in Sources */,
 				96A41BD122C22986009057F5 /* CharacterSearchView.swift in Sources */,
 				96C1EC2E205131EC00AC27CB /* CGEventFlags.swift in Sources */,
 				96DBC14B205EBD8700910E7A /* TISInputSource.swift in Sources */,

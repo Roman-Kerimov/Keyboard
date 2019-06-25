@@ -23,7 +23,7 @@ struct CharacterSearchView : View {
                     }
                 }
             }
-            .padding(.trailing, -100)
+            .withoutScrollIndicator()
         }
     }
 }

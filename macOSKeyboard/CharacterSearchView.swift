@@ -18,7 +18,7 @@ struct CharacterSearchView : View {
                         
                         Text(self.keyboard.foundCharacters[item].description)
                             .frame(width: geometry.size.width, height: geometry.size.width, alignment: .center)
-                            .font(Font.system(size: .init(0.7) * geometry.size.width))
+                            .font(.system(size: geometry.size.width * .characterSearchViewFontSizeFactor))
                             .tapAction({self.keyboard.insert(item: item)})
                     }
                 }

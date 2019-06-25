@@ -137,6 +137,9 @@
 		966CB25520911C99005C7B5B /* CGAffineTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966CB25320911C99005C7B5B /* CGAffineTransform.swift */; };
 		966CB25620911C99005C7B5B /* CGAffineTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966CB25320911C99005C7B5B /* CGAffineTransform.swift */; };
 		966EB96D202FC0D3007718F2 /* LegalNoticesMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966EB96C202FC0D3007718F2 /* LegalNoticesMenuItem.swift */; };
+		966F34EE22C2419D00147B72 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966F34ED22C2419D00147B72 /* CGFloat.swift */; };
+		966F34EF22C2419D00147B72 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966F34ED22C2419D00147B72 /* CGFloat.swift */; };
+		966F34F022C2419D00147B72 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966F34ED22C2419D00147B72 /* CGFloat.swift */; };
 		9673CAD8203282490030E2CA /* AXUIElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9673CAD7203282490030E2CA /* AXUIElement.swift */; };
 		967491B51EE16BDD00DC19E0 /* CharacterSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967491B41EE16BDD00DC19E0 /* CharacterSet.swift */; };
 		967502542089E1D300FD6CED /* LaunchAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967502532089E1D300FD6CED /* LaunchAgent.swift */; };
@@ -476,6 +479,7 @@
 		9665F3771E9D921500850F97 /* CharacterCollectionUIViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterCollectionUIViewCell.swift; sourceTree = "<group>"; };
 		966CB25320911C99005C7B5B /* CGAffineTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGAffineTransform.swift; sourceTree = "<group>"; };
 		966EB96C202FC0D3007718F2 /* LegalNoticesMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalNoticesMenuItem.swift; sourceTree = "<group>"; };
+		966F34ED22C2419D00147B72 /* CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloat.swift; sourceTree = "<group>"; };
 		9673CAD7203282490030E2CA /* AXUIElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AXUIElement.swift; sourceTree = "<group>"; };
 		967491B41EE16BDD00DC19E0 /* CharacterSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterSet.swift; sourceTree = "<group>"; };
 		967502532089E1D300FD6CED /* LaunchAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAgent.swift; sourceTree = "<group>"; };
@@ -824,6 +828,7 @@
 				969450BF20B3215100DD7EF3 /* URL.swift */,
 				96F716B81F0438B6004A77C7 /* Locale.swift */,
 				967491B41EE16BDD00DC19E0 /* CharacterSet.swift */,
+				966F34ED22C2419D00147B72 /* CGFloat.swift */,
 			);
 			path = Keyboard;
 			sourceTree = "<group>";
@@ -1267,6 +1272,7 @@
 				9643FC501F78F94B004DA2C0 /* characterComponentsDictionary.swift in Sources */,
 				96533A801F12938D00B07CA3 /* CharacterSearchUIView.swift in Sources */,
 				96E0340A2031567A0039E653 /* ROUTE.swift in Sources */,
+				966F34EE22C2419D00147B72 /* CGFloat.swift in Sources */,
 				96436BA120C1DA2D0065ED03 /* UnicodeItem.swift in Sources */,
 				96533A7B1F12938D00B07CA3 /* SettingsUIView.swift in Sources */,
 				961FC3311F3AE14B00ADB15D /* legalNotices.swift in Sources */,
@@ -1333,6 +1339,7 @@
 				9697C3E420BB514900FE3007 /* UnicodeDataFile.swift in Sources */,
 				961CEA0021B0D32800E1A14D /* ReuseIdentifier.swift in Sources */,
 				965D15C11D3146BB0098FA57 /* KeyboardUIView.swift in Sources */,
+				966F34EF22C2419D00147B72 /* CGFloat.swift in Sources */,
 				96200BEA208CDC8D002930D6 /* ENABLE_KEYBOARD.swift in Sources */,
 				96E033F32031549C0039E653 /* ABOUT.swift in Sources */,
 				96F716B91F0438B6004A77C7 /* Locale.swift in Sources */,
@@ -1407,6 +1414,7 @@
 				96AC6CA3203C23B200555164 /* CGEvent.swift in Sources */,
 				96F28C1A2030205C0023313C /* DocumentContext.swift in Sources */,
 				9696CBC32031800B007CC94B /* Template.swift in Sources */,
+				966F34F022C2419D00147B72 /* CGFloat.swift in Sources */,
 				965A8B4620D317C100E0260E /* SHOW_FOR_APPLICATION.swift in Sources */,
 				9697C3E520BB514900FE3007 /* UnicodeDataFile.swift in Sources */,
 				96EBF29D209C7C8B00AE00E7 /* UIColor.swift in Sources */,

@@ -52,7 +52,7 @@ class CharacterSearchUIView: CharacterCollectionUIView {
         
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! CharacterCollectionUIViewCell
         
-        let characterFontSize = 0.7 * layout.itemSize.width
+        let characterFontSize = layout.itemSize.width * .characterSearchViewFontSizeFactor
         cell.title.font = .systemFont(ofSize: characterFontSize)
         
         cell.unicodeName.text = characters[indexPath.item].unicodeName

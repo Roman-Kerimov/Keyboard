@@ -1730,7 +1730,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = RomanKerimov.iOSKeyboardTests;
+				PRODUCT_BUNDLE_IDENTIFIER = Vnj5sWxe2rI2VKE6oD4eKqaGdBABwSD.Tests;
 				PRODUCT_NAME = "$(PROJECT_NAME)Tests";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Keyboard.app/Keyboard";
 			};
@@ -1745,7 +1745,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = RomanKerimov.iOSKeyboardTests;
+				PRODUCT_BUNDLE_IDENTIFIER = Vnj5sWxe2rI2VKE6oD4eKqaGdBABwSD.Tests;
 				PRODUCT_NAME = "$(PROJECT_NAME)Tests";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Keyboard.app/Keyboard";
 			};
@@ -1791,7 +1791,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = RomanKerimov.macOSKeyboardTests;
+				PRODUCT_BUNDLE_IDENTIFIER = rY3kmwWHhX4cbk131AvOtLb99XoAEQ1.Tests;
 				PRODUCT_NAME = "$(PROJECT_NAME)Tests";
 				SDKROOT = macosx;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Keyboard.app/Contents/MacOS/Keyboard";
@@ -1808,7 +1808,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = RomanKerimov.macOSKeyboardTests;
+				PRODUCT_BUNDLE_IDENTIFIER = rY3kmwWHhX4cbk131AvOtLb99XoAEQ1.Tests;
 				PRODUCT_NAME = "$(PROJECT_NAME)Tests";
 				SDKROOT = macosx;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Keyboard.app/Contents/MacOS/Keyboard";

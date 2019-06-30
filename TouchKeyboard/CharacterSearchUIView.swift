@@ -36,7 +36,7 @@ class CharacterSearchUIView: CharacterCollectionUIView {
         
         layout.minimumLineSpacing = 0
         
-        NotificationCenter.default.addObserver(self, selector: #selector(updateCharacters), name: .FoundCharactersDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateCharacters), publisher: CharacterSearch.self)
         NotificationCenter.default.addObserver(self, selector: #selector(hideUnicodeNames), name: .KeyboardStateDidChange, object: nil)
     }
     
@@ -74,10 +74,6 @@ class CharacterSearchUIView: CharacterCollectionUIView {
         cell.unicodeName.frame.size.width += cell.unicodeName.font.pointSize/2
         
         cell.unicodeName.isHidden = isHiddenUnicodeNames
-        
-        #if os(macOS)
-        cell.toolTip = cell.unicodeName.text
-        #endif
         
         return cell
     }

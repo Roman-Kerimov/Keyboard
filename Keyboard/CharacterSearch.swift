@@ -8,28 +8,8 @@
 import SwiftUI
 import Combine
 
-#if !os(iOS)
-extension CharacterSearch: BindableObject {
-    typealias PublisherType = PassthroughSubject<CharacterSearch, Never>
-    
-    var didChange: PublisherType {
-        get {
-            if _didChange == nil {
-                _didChange = PublisherType.init()
-            }
-            
-            return _didChange as! PublisherType
-        }
-        
-        set {
-            _didChange = newValue
-        }
-    }
-}
-#endif
-
-class CharacterSearch {
-    var _didChange: Any? = nil
+class CharacterSearch: BindableObject {
+    var didChange: PassthroughSubject<CharacterSearch, Never> = .init()
     
     convenience init(query: String) {
         self.init()
@@ -60,12 +40,7 @@ class CharacterSearch {
     
     var foundCharacters: [Character] = [] {
         didSet {
-            
-            #if !os(iOS)
             didChange.send(self)
-            #endif
-            
-            NotificationCenter.default.post(name: .FoundCharactersDidChange, object: nil)
         }
     }
     
@@ -111,9 +86,4 @@ class CharacterSearch {
             UserDefaults.standard.synchronize()
         }
     }
-}
-
-extension NSNotification.Name {
-    
-    static let FoundCharactersDidChange: NSNotification.Name = .init("fpn2g0hSSEQtCeTBWHdxCrvxultcpkx")
 }

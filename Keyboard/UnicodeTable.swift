@@ -22,31 +22,6 @@ class UnicodeTable: NSObject {
         
         backgroudOperationQueue.addOperation( LoadUnicodeDataFiles.init() )
     }
-
-    internal var textForSearch: String = .init() {
-        didSet {
-            
-            if oldValue == "" && textForSearch == "" {
-                return
-            }
-            
-            frequentlyUsedCharacters = Keyboard.default.frequentlyUsedCharacters
-        }
-    }
-    
-    internal var scriptCodeLength: Int = 0
-    
-    internal var frequentlyUsedCharacters: [Character] = Keyboard.default.frequentlyUsedCharacters
-    
-    public func searchScalars(byName text: String) {
-        if let searchUnicodeScalarsOperation = backgroudOperationQueue.operations.last as? SearchUnicodeScalars {
-            searchUnicodeScalarsOperation.cancel()
-        }
-        
-        textForSearch = text
-        
-        backgroudOperationQueue.addOperation( SearchUnicodeScalars.init() )
-    }
     
     var cacheURL: URL {
         let cacheDirectoryURL = URL.applicationSupport.appendingPathComponent("UDFCache")

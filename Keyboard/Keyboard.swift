@@ -6,32 +6,10 @@
 //
 //
 
-import SwiftUI
-import Combine
+import Foundation
 import Calculator
 
-#if !os(iOS)
-extension Keyboard: BindableObject {
-    typealias PublisherType = PassthroughSubject<Keyboard, Never>
-    
-    var didChange: PublisherType {
-        get {
-            if _didChange == nil {
-                _didChange = PublisherType.init()
-            }
-
-            return _didChange as! PublisherType
-        }
-
-        set {
-            _didChange = newValue
-        }
-    }
-}
-#endif
-
 class Keyboard: NSObject {
-    var _didChange: Any? = nil
     
     static let `default`: Keyboard = .init()
     var delegate: KeyboardDelegate?
@@ -562,50 +540,7 @@ class Keyboard: NSObject {
         NotificationCenter.default.post(name: .CharacterSequenceDidChange, object: nil)
     }
     
-    var foundCharacters: [Character] = [] {
-        didSet {
-            #if !os(iOS)
-            didChange.send(self)
-            #endif
-            
-            NotificationCenter.default.post(name: .FoundCharactersDidChange, object: nil)
-        }
-    }
-    
-    func insert(item: Int) {
-        guard item < foundCharacters.count else {
-            return
-        }
-        
-        let scriptCodeLength = UnicodeTable.default.scriptCodeLength
-        
-        let isScriptCodeItem: Bool = scriptCodeLength > 0 && item == 0
-        
-        let deleteCount = isScriptCodeItem ? scriptCodeLength + 1 : textForSearch.count
-        
-        for _ in 0..<deleteCount {
-            Keyboard.default.delegate?.delete()
-        }
-        
-        let character = foundCharacters[item]
-        
-        if !isScriptCodeItem {
-            var frequentlyUsedCharacters = Keyboard.default.frequentlyUsedCharacters
-            
-            if let index = frequentlyUsedCharacters.firstIndex(of: character) {
-                frequentlyUsedCharacters.remove(at: index)
-            }
-            
-            frequentlyUsedCharacters = [character] + frequentlyUsedCharacters
-            
-            Keyboard.default.frequentlyUsedCharacters = .init( frequentlyUsedCharacters.prefix(100) )
-        }
-        
-        Keyboard.default.delegate?.insert(text: character.description)
-        NotificationCenter.default.post(.init(name: .DocumentContextDidChange))
-    }
-    
-    private var textForSearch: String = .init()
+    let characterSearch: CharacterSearch = .init()
     
     @objc private func search() {
         
@@ -621,9 +556,7 @@ class Keyboard: NSObject {
             textForSearch = .reverseSolidus + ( textForSearch.components(separatedBy: String.reverseSolidus).last ?? .init() )
         }
         
-        self.textForSearch = textForSearch
-        
-        UnicodeTable.default.searchScalars(byName: textForSearch.replacingOccurrences(of: String.reverseSolidus, with: ""))
+        characterSearch.search(textForSearch.replacingOccurrences(of: String.reverseSolidus, with: ""))
     }
     
     
@@ -654,19 +587,6 @@ class Keyboard: NSObject {
             NotificationCenter.default.post(name: .LayoutModeDidChange, object: nil)
         }
     }
-    
-    private let frequentlyUsedCharactersKey = "LBg6QhTolnUzmtHXeo960LT1ZNd3i07"
-    var frequentlyUsedCharacters: [Character] {
-        get {
-            let characterStrings = UserDefaults.standard.object(forKey: frequentlyUsedCharactersKey) as? [String] ?? .init()
-            return characterStrings.map {Character.init($0)}
-        }
-        
-        set {
-            UserDefaults.standard.set(newValue.map {$0.description}, forKey: frequentlyUsedCharactersKey)
-            UserDefaults.standard.synchronize()
-        }
-    }
 
     private let cacheVersionKey = "rBNkEMNHcuYIU3bttg2lYblKGlClU7z"
     var cacheVersion: String {
@@ -692,6 +612,4 @@ extension NSNotification.Name {
     static let LayoutModeDidChange: NSNotification.Name = .init("JkvFKpRydra3urZI47XVkMoMnd8bFhV")
     
     static let CharacterSequenceDidChange: NSNotification.Name = .init("c6nAy6MZmbxXz30pZpJDx1Okn6yce96")
-    
-    static let FoundCharactersDidChange: NSNotification.Name = .init("fpn2g0hSSEQtCeTBWHdxCrvxultcpkx")
 }

@@ -8,18 +8,18 @@
 import SwiftUI
 
 struct CharacterSearchView : View {
-    @EnvironmentObject var keyboard: Keyboard
+    @EnvironmentObject var characterSearch: CharacterSearch
     
     var body: some View { 
         GeometryReader {geometry in
             ScrollView {
                 VStack {
-                    ForEach(0..<self.keyboard.foundCharacters.count) {item in
+                    ForEach(0..<self.characterSearch.foundCharacters.count) {item in
                         
-                        Text(self.keyboard.foundCharacters[item].description)
+                        Text(self.characterSearch.foundCharacters[item].description)
                             .frame(width: geometry.size.width, height: geometry.size.width, alignment: .center)
                             .font(.system(size: geometry.size.width * .characterSearchViewFontSizeFactor))
-                            .tapAction({self.keyboard.insert(item: item)})
+                            .tapAction({self.characterSearch.insert(item: item)})
                     }
                 }
             }

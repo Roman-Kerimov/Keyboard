@@ -148,7 +148,7 @@ func eventTapCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent,
         if let item = selectorKeys.firstIndex(of: event.keycode) {
             
             if event.type == .keyDown {
-                Keyboard.default.insert(item: item)
+                Keyboard.default.characterSearch.insert(item: item)
             }
             
             return nil

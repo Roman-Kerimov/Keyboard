@@ -45,7 +45,7 @@ class CharacterSearchUIView: CharacterCollectionUIView {
     }
     
     @objc func updateCharacters() {
-        characters = Keyboard.default.foundCharacters
+        characters = Keyboard.default.characterSearch.foundCharacters
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -85,7 +85,7 @@ class CharacterSearchUIView: CharacterCollectionUIView {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         deselectItem(at: indexPath, animated: false)
         
-        Keyboard.default.insert(item: indexPath.item)
+        Keyboard.default.characterSearch.insert(item: indexPath.item)
     }
     
     @objc override func reloadData() {

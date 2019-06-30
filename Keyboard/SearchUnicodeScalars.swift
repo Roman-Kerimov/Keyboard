@@ -9,9 +9,16 @@ import Foundation
 
 class SearchUnicodeScalars: Operation {
     
+    let characterSearch: CharacterSearch
+    let text: String
+    
+    init(characterSearch: CharacterSearch, text: String) {
+        self.characterSearch = characterSearch
+        self.text = text
+    }
+    
     override func main() {
-        let text = UnicodeTable.default.textForSearch
-        UnicodeTable.default.scriptCodeLength = 0
+        characterSearch.scriptCodeLength = 0
         
         guard !isCancelled else {
             return
@@ -34,7 +41,7 @@ class SearchUnicodeScalars: Operation {
         
         func updateUnicodeCollectionView() {
             DispatchQueue.main.async {
-                Keyboard.default.foundCharacters = foundCharacters
+                self.characterSearch.foundCharacters = foundCharacters
             }
         }
         
@@ -42,7 +49,7 @@ class SearchUnicodeScalars: Operation {
         
         switch text.count {
         case 0:
-            foundCharacters = UnicodeTable.default.frequentlyUsedCharacters
+            foundCharacters = characterSearch.currentFrequentlyUsedCharacters
             updateUnicodeCollectionView()
             return
             
@@ -86,7 +93,7 @@ class SearchUnicodeScalars: Operation {
                 }
                 
                 foundCharacters.append(.init(targetLetter))
-                UnicodeTable.default.scriptCodeLength = scriptCodeLength
+                characterSearch.scriptCodeLength = scriptCodeLength
             }
         }
         

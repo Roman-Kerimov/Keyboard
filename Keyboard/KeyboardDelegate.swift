@@ -19,6 +19,8 @@ protocol KeyboardDelegate {
     
     var returnKeyType: UIReturnKeyType? {get}
     var needsInputModeSwitchKey: Bool {get}
+    
+    func prepareForPreview()
 }
 
 extension KeyboardDelegate {
@@ -29,4 +31,6 @@ extension KeyboardDelegate {
     var needsInputModeSwitchKey: Bool {
         return false
     }
+    
+    func prepareForPreview() {}
 }

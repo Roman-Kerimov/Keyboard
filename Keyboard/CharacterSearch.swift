@@ -31,6 +31,12 @@ extension CharacterSearch: BindableObject {
 class CharacterSearch {
     var _didChange: Any? = nil
     
+    convenience init(query: String) {
+        self.init()
+        
+        search(query)
+    }
+    
     private let searchOperationQueue: OperationQueue = .init()
     
     var text: String = "" {

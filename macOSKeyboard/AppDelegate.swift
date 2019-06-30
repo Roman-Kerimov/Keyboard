@@ -22,6 +22,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
     
     static let characterSearchWindow = CharacterSearchWindow.init()
     static let characterSequenceWindow: CharacterSequenceWindow = .init()
+    
+    var eventTap: CFMachPort? = nil
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
@@ -63,8 +65,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
         let mouseEventMask: CGEventMask = 1 << CGEventType.leftMouseDown.rawValue | 1 << CGEventType.rightMouseDown.rawValue
         
         let eventMask: CGEventMask = keyboardEventMask | mouseEventMask
+        
+        eventTap = CGEvent.tapCreate(tap: .cghidEventTap, place: .headInsertEventTap, options: .defaultTap, eventsOfInterest: eventMask, callback: eventTapCallback, userInfo: nil)
 
-        if let eventTap = CGEvent.tapCreate(tap: .cghidEventTap, place: .headInsertEventTap, options: .defaultTap, eventsOfInterest: eventMask, callback: eventTapCallback, userInfo: nil) {
+        if let eventTap = self.eventTap {
             
             CFRunLoopAddSource(CFRunLoopGetCurrent(), CFMachPortCreateRunLoopSource(kCFAllocatorDefault, eventTap, 0), .commonModes)
             CGEvent.tapEnable(tap: eventTap, enable: true)
@@ -196,6 +200,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
     
     var documentContext: DocumentContext {
         return AppDelegate.documentContext
+    }
+    
+    func prepareForPreview() {
+        if let eventTap = self.eventTap {
+            CGEvent.tapEnable(tap: eventTap, enable: false)
+        }
+        
+        NSStatusBar.system.removeStatusItem(self.statusMenu.statusItem)
     }
     
     static var documentContext: DocumentContext {

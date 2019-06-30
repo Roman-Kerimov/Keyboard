@@ -31,7 +31,17 @@ struct CharacterSearchView : View {
 #if DEBUG
 struct CharacterSearchView_Previews : PreviewProvider {
     static var previews: some View {
-        CharacterSearchView()
+        Keyboard.default.delegate?.prepareForPreview()
+        LoadUnicodeDataFiles.init().start()
+        
+        return Group {
+            ForEach(["face", "keyboard", "thum", "ru"].identified(by: \.self)) { searchQuery in
+                CharacterSearchView()
+                    .environmentObject(CharacterSearch.init(query: searchQuery))
+                    .previewDisplayName(searchQuery)
+                    .previewLayout(.fixed(width: .characterSearchDefaultWidth, height: .characterSearchDefaultHeight))
+            }
+        }
     }
 }
 #endif

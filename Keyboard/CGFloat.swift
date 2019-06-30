@@ -9,4 +9,7 @@ import CoreGraphics
 
 extension CGFloat {
     static let characterSearchViewFontSizeFactor: Self = 0.7
+    
+    static let characterSearchDefaultWidth: Self = 30
+    static let characterSearchDefaultHeight: Self = 250
 }

@@ -15,15 +15,16 @@ struct CharacterSearchView : View {
             ScrollView {
                 VStack {
                     ForEach(0..<self.characterSearch.foundCharacters.count) {item in
-                        
-                        Text(self.characterSearch.foundCharacters[item].description)
-                            .frame(width: geometry.size.width, height: geometry.size.width, alignment: .center)
-                            .font(.system(size: geometry.size.width * .characterSearchViewFontSizeFactor))
-                            .tapAction({self.characterSearch.insert(item: item)})
+                        HStack {
+                            Text(self.characterSearch.foundCharacters[item].description)
+                                .frame(width: geometry.size.width, height: geometry.size.width, alignment: .center)
+                                .font(.system(size: geometry.size.width * .characterSearchViewFontSizeFactor))
+                                .tapAction({self.characterSearch.insert(item: item)})
+                            Spacer.init(minLength: 100)
+                        }
                     }
                 }
             }
-            .withoutScrollIndicator()
         }
     }
 }

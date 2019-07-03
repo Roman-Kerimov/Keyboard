@@ -41,6 +41,7 @@
 		9620E749202B9EB1003FB02E /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9620E747202B9EB1003FB02E /* Bundle.swift */; };
 		962A3E1F22C9655E0024D0AF /* CombineBackwardCompatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A3E1E22C9655E0024D0AF /* CombineBackwardCompatibility.swift */; };
 		962A3E2022C9655E0024D0AF /* CombineBackwardCompatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A3E1E22C9655E0024D0AF /* CombineBackwardCompatibility.swift */; };
+		962A3E2322C96E1F0024D0AF /* LegalNoticesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A3E2222C96E1F0024D0AF /* LegalNoticesView.swift */; };
 		962B5343218C91EA001C4914 /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962B5342218C91EA001C4914 /* CGRect.swift */; };
 		962B5344218C91EA001C4914 /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962B5342218C91EA001C4914 /* CGRect.swift */; };
 		962D7CC820CD75320047B8B9 /* NSRegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962D7CC720CD75320047B8B9 /* NSRegularExpression.swift */; };
@@ -438,6 +439,7 @@
 		96200BE8208CDC8D002930D6 /* ENABLE_KEYBOARD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ENABLE_KEYBOARD.swift; sourceTree = "<group>"; };
 		9620E747202B9EB1003FB02E /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		962A3E1E22C9655E0024D0AF /* CombineBackwardCompatibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineBackwardCompatibility.swift; sourceTree = "<group>"; };
+		962A3E2222C96E1F0024D0AF /* LegalNoticesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalNoticesView.swift; sourceTree = "<group>"; };
 		962B5342218C91EA001C4914 /* CGRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
 		962D7CC720CD75320047B8B9 /* NSRegularExpression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSRegularExpression.swift; sourceTree = "<group>"; };
 		963212B3217B820500E8A6B2 /* FloatingWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingWindow.swift; sourceTree = "<group>"; };
@@ -947,6 +949,7 @@
 				96AED33220312BA500498A7E /* LanguageMenuItem.swift */,
 				965A8B3D20D2EDF800E0260E /* VisibilityMenuItem.swift */,
 				966EB96C202FC0D3007718F2 /* LegalNoticesMenuItem.swift */,
+				962A3E2222C96E1F0024D0AF /* LegalNoticesView.swift */,
 				96F28C2320302AC00023313C /* VersionMenuItem.swift */,
 				96AFEBA6202FA9080099F70B /* QuitMenuItem.swift */,
 				96AFEBA8202FAB830099F70B /* LocalizedMenuItem.swift */,
@@ -1482,6 +1485,7 @@
 				96BE9C7120A8340400C2C03F /* CharacterSearchWindow.swift in Sources */,
 				9673CAD8203282490030E2CA /* AXUIElement.swift in Sources */,
 				96E033F8203154FC0039E653 /* LEGAL_NOTICES.swift in Sources */,
+				962A3E2322C96E1F0024D0AF /* LegalNoticesView.swift in Sources */,
 				96F28C192030205C0023313C /* KeyboardDelegate.swift in Sources */,
 				968DEA8120CCDFA400750040 /* eventTapCallback.swift in Sources */,
 				963212B7217C643200E8A6B2 /* CharacterSequenceUIView.swift in Sources */,

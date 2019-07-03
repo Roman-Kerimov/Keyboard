@@ -9,6 +9,8 @@
 import UIKit
 
 extension String {
+    static var legalTextFontName = "System Font Bold"
+    
     static let space: String = Character.space.description
     static let `return`: String = Character.return.description
     static let tab: String = Character.tab.description
@@ -85,5 +87,24 @@ extension String {
     
     func contains(_ regularExpression: NSRegularExpression) -> Bool {
         return regularExpression.numberOfMatches(in: self, options: [], range: .init(location: 0, length: count)) != 0
+    }
+    
+    func textHeightFrom(width: CGFloat, fontName: String = "System Font", fontSize: CGFloat = .systemFontSize) -> CGFloat {
+        
+        #if os(macOS)
+        typealias Font = NSFont
+        let text: NSTextField = .init(string: self)
+        text.font = NSFont.init(name: fontName, size: fontSize)
+        #else
+        typealias Font = UIFont
+        let text: UILabel = .init()
+        text.text = self
+        text.numberOfLines = 0
+        #endif
+        
+        text.font = Font.init(name: fontName, size: fontSize)
+        text.lineBreakMode = .byWordWrapping
+        return text.sizeThatFits(CGSize.init(width: width, height: .infinity)).height
+        
     }
 }

@@ -5,16 +5,17 @@
 //  Created by Roman Kerimov on 2018-02-11.
 //
 
-import AppKit
+import SwiftUI
 
 class LegalNoticesMenuItem: LocalizedMenuItem {
     
-    let legalNoticesViewController: ViewController<LegalNoticesUIView> = .init()
+    let legalNoticesView: NSHostingView = .init(rootView: LegalNoticesView())
     
     override func updateLocalizedStrings() {
         super.updateLocalizedStrings()
         
         title = LEGAL_NOTICES.string
+        window.title = LEGAL_NOTICES.string
     }
     
     var window: GuideWindow = .init()
@@ -29,8 +30,8 @@ class LegalNoticesMenuItem: LocalizedMenuItem {
         window.styleMask = [.resizable, .closable, .titled]
         window.isReleasedWhenClosed = false
         
-        window.contentView = legalNoticesViewController.view
-        window.bind(.title, to: legalNoticesViewController, withKeyPath: "title", options: nil)
+        window.contentView = legalNoticesView
+        window.backgroundColor = .textBackgroundColor
         window.center()
     }
     

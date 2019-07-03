@@ -10,6 +10,7 @@ import UIKit
 
 extension String {
     static var legalTextFontName = "System Font Bold"
+    static let characterFontName = "STIXGeneral"
     
     static let space: String = Character.space.description
     static let `return`: String = Character.return.description

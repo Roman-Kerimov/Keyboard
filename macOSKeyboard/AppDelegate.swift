@@ -91,7 +91,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
         let visibleFrame = NSScreen.main?.visibleFrame ?? .zero
         
         AppDelegate.characterSearchWindow.setFrameOrigin(visibleFrame.origin)
-        AppDelegate.characterSequenceWindow.setFrameOrigin(.init(x: AppDelegate.characterSearchWindow.frame.maxX + 20, y: visibleFrame.origin.y))
+        AppDelegate.characterSequenceWindow.updateFrame()
     }
     
     static func synchronizeKeyboardLayout() {

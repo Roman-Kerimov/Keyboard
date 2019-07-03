@@ -187,7 +187,7 @@ class KeyboardTests: XCTestCase, KeyboardDelegate {
         insert(text: " ru")
         NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
         
-        Keyboard.default.autocomplete()
+        Keyboard.default.characterSequence.autocomplete()
         
         XCTAssertEqual(documentContext.beforeInput, [latinText, cyrillicText].joined(separator: .return))
     }

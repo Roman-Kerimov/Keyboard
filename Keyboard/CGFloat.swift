@@ -23,4 +23,9 @@ extension CGFloat {
     
     static let characterSearchDefaultWidth: Self = 30
     static let characterSearchDefaultHeight: Self = 250
+    
+    static let characterSequenceDefaultHeight: Self = 40
+    static let characterSequenceItemWidthExtensionFontSizeFactor: Self = 0.2
+    static let characterSequenceCornerRadiusFontSizeFactor: Self = 0.15
+    static let characterSequenceSpacingFontSizeFactor: Self = 0.05
 }

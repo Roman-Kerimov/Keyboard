@@ -9,7 +9,7 @@ import UIKit
 
 extension UIFont {
     static func characterFont(ofSize size: CGFloat) -> UIFont {
-        return UIFont.init(name: "STIXGeneral", size: size)!
+        return UIFont.init(name: .characterFontName, size: size)!
     }
     
     static var boldMenuFont: UIFont {

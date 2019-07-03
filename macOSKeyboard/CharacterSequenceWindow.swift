@@ -5,18 +5,28 @@
 //  Created by Roman Kerimov on 2018-10-21.
 //
 
+import SwiftUI
+import Combine
+
 class CharacterSequenceWindow: FloatingWindow {
     
     init() {
-        let characterSequenceView = CharacterSequenceUIView.init(deleteButton: nil)
-        characterSequenceView.frame.origin = .zero
-        characterSequenceView.frame.size = .init(width: 1, height: 40)
+        super.init(contentView: NSHostingView.init(rootView: CharacterSequenceView().environmentObject(Keyboard.default.characterSequence)))
         
-        characterSequenceView.layout.itemSize = .init(
-            width: 12,
-            height: characterSequenceView.frame.height
+        setFrame(.init(origin: .zero, size: .init(width: 1, height: .characterSequenceDefaultHeight)), display: true)
+    }
+    
+    func updateFrame(width: Length = 1) {
+        let boundingFrame = (NSScreen.main?.visibleFrame ?? .zero).insetBy(dx:  AppDelegate.characterSearchWindow.frame.width + 20, dy: 0)
+        
+        setFrame(
+            .init(
+                x: boundingFrame.minX,
+                y: boundingFrame.minY,
+                width: min(width + 1, boundingFrame.width),
+                height: frame.height
+            ),
+            display: true
         )
-        
-        super.init(contentView: characterSequenceView)
     }
 }

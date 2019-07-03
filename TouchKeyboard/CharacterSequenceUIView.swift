@@ -20,6 +20,7 @@ class CharacterSequenceUIView: CharacterCollectionUIView {
     
     private var longPressGestureRecognizer: UILongPressGestureRecognizer!
     
+    private var fontSize: CGFloat {1.8 * layout.itemSize.width}
     private let deleteButton: UIButton?
     
     init(deleteButton: UIButton?) {
@@ -37,7 +38,7 @@ class CharacterSequenceUIView: CharacterCollectionUIView {
         addGestureRecognizer(longPressGestureRecognizer)
         longPressGestureRecognizer.minimumPressDuration = 0
         
-        NotificationCenter.default.addObserver(self, selector: #selector(updateCharacters), name: .CharacterSequenceDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateCharacters), publisher: CharacterSequence.self)
         
         register(AutocompleteUIView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: AutocompleteUIView.reuseIdentifier)
     }
@@ -47,7 +48,7 @@ class CharacterSequenceUIView: CharacterCollectionUIView {
     }
     
     @objc func updateCharacters() {
-        characters = Keyboard.default.characterSequence
+        characters = Keyboard.default.characterSequence.characters
     }
     
     override func reloadData() {
@@ -271,7 +272,7 @@ class CharacterSequenceUIView: CharacterCollectionUIView {
     }
     
     private var characterFont: UIFont {
-        return .characterFont(ofSize: 1.8 * layout.itemSize.width)
+        return .characterFont(ofSize: fontSize)
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -279,8 +280,8 @@ class CharacterSequenceUIView: CharacterCollectionUIView {
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! CharacterCollectionUIViewCell
             
         cell.title.font = characterFont
-        cell.backgroundColor = UIColor.labelColor.withAlphaComponent(0.05)
-        cell.cornerRadius = layout.itemSize.width * 0.3
+        cell.backgroundColor = UIColor.labelColor.withAlphaComponent(CGFloat(Double.characterSequenceBackgroundOpacity))
+        cell.cornerRadius = .characterSequenceCornerRadiusFontSizeFactor * fontSize
         
         return cell
     }
@@ -312,13 +313,13 @@ class CharacterSequenceUIView: CharacterCollectionUIView {
         }
         
         return .init(
-            width: characters[indexPath.item].description.size(withFont: characterFont).width + characterFont.pointSize * 0.2,
+            width: characters[indexPath.item].description.size(withFont: characterFont).width + .characterSequenceItemWidthExtensionFontSizeFactor * fontSize,
             height: layout.itemSize.height
         )
     }
     
     var characterSpacing: CGFloat {
-        return floor(layout.itemSize.width * 0.1)
+        return floor(.characterSequenceSpacingFontSizeFactor * fontSize)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -377,12 +378,12 @@ class CharacterSequenceUIView: CharacterCollectionUIView {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AutocompleteUIView.reuseIdentifier, for: indexPath) as! AutocompleteUIView
-        view.text = Keyboard.default.autocompleteLabel
+        view.text = Keyboard.default.characterSequence.autocompleteLabel
         view.font = characterFont
         return view
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        return .init(width: Keyboard.default.autocompleteLabel.size(withFont: characterFont).width, height: layout.itemSize.height)
+        return .init(width: Keyboard.default.characterSequence.autocompleteLabel.size(withFont: characterFont).width, height: layout.itemSize.height)
     }
 }

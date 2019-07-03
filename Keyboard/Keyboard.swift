@@ -446,31 +446,12 @@ class Keyboard: NSObject {
         NotificationCenter.default.addObserver(self, selector: #selector(search), name: .DocumentContextDidChange, object: nil)
     }
     
-    var characterSequence: [Character] = .init()
-    
-    var autocompleteText: String = .init()
-    var autocompleteLabel: String = .init()
-    var autocompleteDeleteCount: Int = 0
-    
-    @objc func autocomplete() {
-        for _ in 0..<autocompleteDeleteCount {
-            delegate?.delete()
-        }
-        
-        autocompleteDeleteCount = 0
-        
-        delegate?.insert(text: autocompleteText)
-        
-        autocompleteText = .init()
-        autocompleteLabel = .init()
-        
-        NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
-    }
+    let characterSequence: CharacterSequence = .init()
     
     @objc private func documentContextDidChange() {
         let documentContextBeforeInput: String = delegate?.documentContext.beforeInput ?? .init()
         
-        characterSequence = .init()
+        characterSequence.characters = .init()
         
         var spaceCount = 0
         
@@ -494,7 +475,7 @@ class Keyboard: NSObject {
                 break
             }
             
-            characterSequence = [character] + characterSequence
+            characterSequence.characters = [character] + characterSequence.characters
             
             if spaceCount == 1 && isNonspaceSequence {
                 break
@@ -503,41 +484,39 @@ class Keyboard: NSObject {
         
         if let scriptTransformation = documentContextBeforeInput.transformationByTargetScriptCode() {
             
-            autocompleteDeleteCount = scriptTransformation.sourceString.count
+            characterSequence.autocompleteDeleteCount = scriptTransformation.sourceString.count
             
-            autocompleteText = scriptTransformation.targetString
+            characterSequence.autocompleteText = scriptTransformation.targetString
             
             let labelLength = 10
-            autocompleteLabel = (autocompleteText.count > labelLength ? "..." : "") + autocompleteText.suffix(labelLength)
+            characterSequence.autocompleteLabel = (characterSequence.autocompleteText.count > labelLength ? "..." : "") + characterSequence.autocompleteText.suffix(labelLength)
         }
         else if let calculation = Calculator.default.evaluate(expressionFromString: documentContextBeforeInput) {
             
-            characterSequence = calculation.expression.map {$0}
+            characterSequence.characters = calculation.expression.map {$0}
             
             if calculation.expression.trimmingCharacters(in: .whitespaces) == calculation.result.trimmingCharacters(in: .whitespaces) {
-                autocompleteText = .init()
-                autocompleteLabel = .init()
-                autocompleteDeleteCount = 0
+                characterSequence.autocompleteText = .init()
+                characterSequence.autocompleteLabel = .init()
+                characterSequence.autocompleteDeleteCount = 0
             }
             else if calculation.expression.contains("=") {
-                autocompleteText = calculation.result
-                autocompleteLabel = calculation.result
-                autocompleteDeleteCount = 0
+                characterSequence.autocompleteText = calculation.result
+                characterSequence.autocompleteLabel = calculation.result
+                characterSequence.autocompleteDeleteCount = 0
             }
             else {
-                autocompleteText = calculation.result
-                autocompleteLabel =  " = " + calculation.result
-                autocompleteDeleteCount = calculation.expression.count
+                characterSequence.autocompleteText = calculation.result
+                characterSequence.autocompleteLabel =  " = " + calculation.result
+                characterSequence.autocompleteDeleteCount = calculation.expression.count
             }
             
         }
         else {
-            autocompleteText = .init()
-            autocompleteLabel = .init()
-            autocompleteDeleteCount = 0
+            characterSequence.autocompleteText = .init()
+            characterSequence.autocompleteLabel = .init()
+            characterSequence.autocompleteDeleteCount = 0
         }
-        
-        NotificationCenter.default.post(name: .CharacterSequenceDidChange, object: nil)
     }
     
     let characterSearch: CharacterSearch = .init()
@@ -610,6 +589,4 @@ extension NSNotification.Name {
     static let LayoutDidChange: NSNotification.Name = .init("DjG5zBrx84Y5CwuF858vXxznGIFNnQ5")
     
     static let LayoutModeDidChange: NSNotification.Name = .init("JkvFKpRydra3urZI47XVkMoMnd8bFhV")
-    
-    static let CharacterSequenceDidChange: NSNotification.Name = .init("c6nAy6MZmbxXz30pZpJDx1Okn6yce96")
 }

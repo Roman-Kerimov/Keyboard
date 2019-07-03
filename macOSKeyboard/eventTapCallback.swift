@@ -136,8 +136,8 @@ func eventTapCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent,
             IOHIDSetModifierLockState(ioConnect, Int32(kIOHIDCapsLockState), false)
             IOServiceClose(ioConnect)
             
-            if Keyboard.default.autocompleteText.isEmpty == false {
-                Keyboard.default.autocomplete()
+            if Keyboard.default.characterSequence.autocompleteText.isEmpty == false {
+                Keyboard.default.characterSequence.autocomplete()
             }
             
             return nil

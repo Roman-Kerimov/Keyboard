@@ -20,7 +20,7 @@ class LegalTextUIView: UITextView {
         isSelectable = false
         
         self.text = text
-        self.font = .boldSystemFont(ofSize: UIFont.systemFontSize * 0.75)
+        self.font = UIFont.init(name: .legalTextFontName, size: .legalTextFontSize)
     }
     
     required init?(coder aDecoder: NSCoder) {

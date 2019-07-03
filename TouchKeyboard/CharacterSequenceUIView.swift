@@ -272,7 +272,7 @@ class CharacterSequenceUIView: CharacterCollectionUIView {
     }
     
     private var characterFont: UIFont {
-        return .characterFont(ofSize: fontSize)
+        return UIFont(name: .characterFontName, size: fontSize)!
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -313,7 +313,7 @@ class CharacterSequenceUIView: CharacterCollectionUIView {
         }
         
         return .init(
-            width: characters[indexPath.item].description.size(withFont: characterFont).width + .characterSequenceItemWidthExtensionFontSizeFactor * fontSize,
+            width: characters[indexPath.item].description.size(fontName: .characterFontName, fontSize: fontSize).width + .characterSequenceItemWidthExtensionFontSizeFactor * fontSize,
             height: layout.itemSize.height
         )
     }
@@ -384,6 +384,6 @@ class CharacterSequenceUIView: CharacterCollectionUIView {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        return .init(width: Keyboard.default.characterSequence.autocompleteLabel.size(withFont: characterFont).width, height: layout.itemSize.height)
+        return .init(width: Keyboard.default.characterSequence.autocompleteLabel.size(fontName: .characterFontName, fontSize: fontSize).width, height: layout.itemSize.height)
     }
 }

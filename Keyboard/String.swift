@@ -6,7 +6,7 @@
 //
 //
 
-import UIKit
+import SwiftUI
 
 extension String {
     static var legalTextFontName = "System Font Bold"
@@ -62,8 +62,15 @@ extension String {
         return characterComponents.character
     }
     
-    func size(withFont font: UIFont) -> CGSize {
-        return (self as NSString).size(withAttributes: [.font: font])
+    func size(fontName: String, fontSize: CGFloat) -> CGSize {
+        
+        #if os(macOS)
+        typealias Font = NSFont
+        #else
+        typealias Font = UIFont
+        #endif
+        
+        return (self as NSString).size(withAttributes: [.font: Font.init(name: fontName, size: fontSize)!])
     }
     
     var hexToUInt32: UInt32? {

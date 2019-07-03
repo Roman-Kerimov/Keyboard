@@ -17,9 +17,9 @@ struct CharacterSequenceView : View {
         
         typealias Item = (character: String, width: Length)
         
-        let characterItems: [Item] = characterSequence.characters.map {($0.description, floor($0.description.size(withFont: .characterFont(ofSize: self.fontSize)).width + .characterSequenceItemWidthExtensionFontSizeFactor * self.fontSize))}
+        let characterItems: [Item] = characterSequence.characters.map {($0.description, floor($0.description.size(fontName: .characterFontName, fontSize: self.fontSize).width + .characterSequenceItemWidthExtensionFontSizeFactor * self.fontSize))}
         
-        let autocompleteWidth = characterSequence.autocompleteLabel.isEmpty ? 0 : characterSequence.autocompleteLabel.size(withFont: .characterFont(ofSize: self.fontSize)).width
+        let autocompleteWidth = characterSequence.autocompleteLabel.isEmpty ? 0 : characterSequence.autocompleteLabel.size(fontName: .characterFontName, fontSize: self.fontSize).width
         
         DispatchQueue.main.async {
             AppDelegate.characterSequenceWindow.updateFrame(width: characterItems.map {$0.width + spacing} .reduce(0, +) + autocompleteWidth)

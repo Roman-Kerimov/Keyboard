@@ -1,9 +1,6 @@
 [submodule "LinguisticKit"]
 	path = LinguisticKit
 	url = https://github.com/Roman-Kerimov/LinguisticKit.git
-[submodule "UIKit"]
-	path = UIKit
-	url = https://github.com/Roman-Kerimov/UIKit.git
 [submodule "Calculator"]
 	path = Calculator
 	url = https://github.com/Roman-Kerimov/Calculator.git

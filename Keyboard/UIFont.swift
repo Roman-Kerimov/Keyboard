@@ -11,8 +11,4 @@ extension UIFont {
     static func characterFont(ofSize size: CGFloat) -> UIFont {
         return UIFont.init(name: .characterFontName, size: size)!
     }
-    
-    static var boldMenuFont: UIFont {
-        return boldSystemFont(ofSize: systemFontSize * 1.3)
-    }
 }

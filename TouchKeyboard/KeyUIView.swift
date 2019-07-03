@@ -168,7 +168,7 @@ class KeyUIView: UIButton {
         shiftRightLabelView.isHidden = isHiddenShiftLabelView
         
         
-        let characterLabelFont: UIFont = .characterFont(ofSize: KeyUIView.labelFontSize)
+        let characterLabelFont = UIFont(name: .characterFontName, size: KeyUIView.labelFontSize)!
         let nameLabelFont: UIFont = .systemFont(ofSize: KeyUIView.labelFontSize/1.8)
         
         mainLabelView.font = [.space, .enter, .delete].contains(key) ? nameLabelFont : characterLabelFont

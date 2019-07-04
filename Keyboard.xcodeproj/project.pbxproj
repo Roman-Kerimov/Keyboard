@@ -692,11 +692,11 @@
 				9697F880202FA868001EC50A /* Keyboard */,
 				96B6BC492031AD4C002509E4 /* KeyboardTests */,
 				96BAEF0C2016D0FD003B32C0 /* TouchKeyboard */,
-				964AB9331D1B6490004C827C /* iOSKeyboard */,
-				965BFAC71F7979FA00B8F682 /* iOSKeyboardTests */,
-				964AB9681D1B6535004C827C /* iOSKeyboardExtension */,
-				96E354E82020DDBC00668374 /* macOSKeyboard */,
-				96E354FB2020DDBD00668374 /* macOSKeyboardTests */,
+				964AB9331D1B6490004C827C /* Keyboard iOS */,
+				965BFAC71F7979FA00B8F682 /* KeyboardTests iOS */,
+				964AB9681D1B6535004C827C /* KeyboardExtension iOS */,
+				96E354E82020DDBC00668374 /* Keyboard macOS */,
+				96E354FB2020DDBD00668374 /* KeyboardTests macOS */,
 				9608923620AF4F98007AA01E /* UCD */,
 				9697C3D720BB180300FE3007 /* Emoji */,
 				964AB9321D1B6490004C827C /* Products */,
@@ -718,7 +718,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		964AB9331D1B6490004C827C /* iOSKeyboard */ = {
+		964AB9331D1B6490004C827C /* Keyboard iOS */ = {
 			isa = PBXGroup;
 			children = (
 				964AB9341D1B6490004C827C /* AppDelegate.swift */,
@@ -732,24 +732,24 @@
 				964AB9431D1B6490004C827C /* Info.plist */,
 				9644DAFE22436E7600C687A9 /* Settings.bundle */,
 			);
-			path = iOSKeyboard;
+			path = "Keyboard iOS";
 			sourceTree = "<group>";
 		};
-		964AB9681D1B6535004C827C /* iOSKeyboardExtension */ = {
+		964AB9681D1B6535004C827C /* KeyboardExtension iOS */ = {
 			isa = PBXGroup;
 			children = (
 				964AB96B1D1B6535004C827C /* Info.plist */,
 			);
-			path = iOSKeyboardExtension;
+			path = "KeyboardExtension iOS";
 			sourceTree = "<group>";
 		};
-		965BFAC71F7979FA00B8F682 /* iOSKeyboardTests */ = {
+		965BFAC71F7979FA00B8F682 /* KeyboardTests iOS */ = {
 			isa = PBXGroup;
 			children = (
 				965BFAC81F7979FA00B8F682 /* iOSKeyboardTests.swift */,
 				965BFACA1F7979FA00B8F682 /* Info.plist */,
 			);
-			path = iOSKeyboardTests;
+			path = "KeyboardTests iOS";
 			sourceTree = "<group>";
 		};
 		9697C3D720BB180300FE3007 /* Emoji */ = {
@@ -889,7 +889,7 @@
 			path = LocalizedStrings;
 			sourceTree = "<group>";
 		};
-		96E354E82020DDBC00668374 /* macOSKeyboard */ = {
+		96E354E82020DDBC00668374 /* Keyboard macOS */ = {
 			isa = PBXGroup;
 			children = (
 				963DE0AF202F00B60040A448 /* main.swift */,
@@ -927,16 +927,16 @@
 				96E354F22020DDBD00668374 /* Info.plist */,
 				96E354F32020DDBD00668374 /* macOSKeyboard.entitlements */,
 			);
-			path = macOSKeyboard;
+			path = "Keyboard macOS";
 			sourceTree = "<group>";
 		};
-		96E354FB2020DDBD00668374 /* macOSKeyboardTests */ = {
+		96E354FB2020DDBD00668374 /* KeyboardTests macOS */ = {
 			isa = PBXGroup;
 			children = (
 				96E354FC2020DDBD00668374 /* macOSKeyboardTests.swift */,
 				96E354FE2020DDBD00668374 /* Info.plist */,
 			);
-			path = macOSKeyboardTests;
+			path = "KeyboardTests macOS";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

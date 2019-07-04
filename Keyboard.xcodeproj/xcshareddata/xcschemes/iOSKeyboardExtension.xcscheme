@@ -17,7 +17,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "964AB9661D1B6535004C827C"
                BuildableName = "KeyboardExtension.appex"
-               BlueprintName = "iOSKeyboardExtension"
+               BlueprintName = "KeyboardExtension iOS"
                ReferencedContainer = "container:Keyboard.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -31,7 +31,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "964AB9301D1B6490004C827C"
                BuildableName = "Keyboard.app"
-               BlueprintName = "iOSKeyboard"
+               BlueprintName = "Keyboard iOS"
                ReferencedContainer = "container:Keyboard.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -42,25 +42,24 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <Testables>
-      </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "964AB9661D1B6535004C827C"
             BuildableName = "KeyboardExtension.appex"
-            BlueprintName = "iOSKeyboardExtension"
+            BlueprintName = "KeyboardExtension iOS"
             ReferencedContainer = "container:Keyboard.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
+      <Testables>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = ""
       selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
       launchStyle = "0"
+      askForAppToLaunch = "Yes"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
@@ -77,12 +76,10 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "964AB9301D1B6490004C827C"
             BuildableName = "Keyboard.app"
-            BlueprintName = "iOSKeyboard"
+            BlueprintName = "Keyboard iOS"
             ReferencedContainer = "container:Keyboard.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -97,7 +94,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "964AB9301D1B6490004C827C"
             BuildableName = "Keyboard.app"
-            BlueprintName = "iOSKeyboard"
+            BlueprintName = "Keyboard iOS"
             ReferencedContainer = "container:Keyboard.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

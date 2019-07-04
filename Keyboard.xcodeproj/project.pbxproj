@@ -691,7 +691,7 @@
 			children = (
 				9697F880202FA868001EC50A /* Keyboard */,
 				96B6BC492031AD4C002509E4 /* KeyboardTests */,
-				96BAEF0C2016D0FD003B32C0 /* TouchKeyboard */,
+				96BAEF0C2016D0FD003B32C0 /* Keyboard UIKit */,
 				964AB9331D1B6490004C827C /* Keyboard iOS */,
 				965BFAC71F7979FA00B8F682 /* KeyboardTests iOS */,
 				964AB9681D1B6535004C827C /* KeyboardExtension iOS */,
@@ -817,7 +817,7 @@
 			path = KeyboardTests;
 			sourceTree = "<group>";
 		};
-		96BAEF0C2016D0FD003B32C0 /* TouchKeyboard */ = {
+		96BAEF0C2016D0FD003B32C0 /* Keyboard UIKit */ = {
 			isa = PBXGroup;
 			children = (
 				96EA39DF1EB0EEDD00F3D804 /* Labels_HideKeyboard.ai */,
@@ -852,7 +852,7 @@
 				969E83041EED842E009A1F2D /* UIView.swift */,
 				969F15F41E549BD300C0DD7D /* ViewController<UIView>.swift */,
 			);
-			path = TouchKeyboard;
+			path = "Keyboard UIKit";
 			sourceTree = "<group>";
 		};
 		96DB1A77202FB80300B96D3C /* Frameworks */ = {

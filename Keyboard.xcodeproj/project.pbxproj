@@ -293,21 +293,21 @@
 			containerPortal = 964AB9271D1B63C0004C827C /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 964AB9661D1B6535004C827C;
-			remoteInfo = iOSKeyboardExtension;
+			remoteInfo = KeyboardExtension_iOS;
 		};
 		965BFACB1F7979FA00B8F682 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 964AB9271D1B63C0004C827C /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 964AB9301D1B6490004C827C;
-			remoteInfo = iOSKeyboard;
+			remoteInfo = Keyboard_iOS;
 		};
 		96E354F92020DDBD00668374 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 964AB9271D1B63C0004C827C /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 96E354E62020DDBC00668374;
-			remoteInfo = macOSKeyboard;
+			remoteInfo = Keyboard_macOS;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -962,7 +962,7 @@
 				969C3BC322A8962D0070F0B7 /* Calculator */,
 				969C3BC522A8962D0070F0B7 /* LinguisticKit */,
 			);
-			productName = iOSKeyboard;
+			productName = Keyboard_iOS;
 			productReference = 964AB9311D1B6490004C827C /* Keyboard.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -983,7 +983,7 @@
 				969C3BC722A896730070F0B7 /* Calculator */,
 				969C3BC922A896730070F0B7 /* LinguisticKit */,
 			);
-			productName = iOSKeyboardExtension;
+			productName = KeyboardExtension_iOS;
 			productReference = 964AB9671D1B6535004C827C /* KeyboardExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
@@ -1001,7 +1001,7 @@
 				965BFACC1F7979FA00B8F682 /* PBXTargetDependency */,
 			);
 			name = "KeyboardTests iOS";
-			productName = iOSKeyboardTests;
+			productName = KeyboardTests_iOS;
 			productReference = 965BFAC61F7979FA00B8F682 /* KeyboardTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -1023,7 +1023,7 @@
 				969C3BCB22A896850070F0B7 /* Calculator */,
 				969C3BCD22A896850070F0B7 /* LinguisticKit */,
 			);
-			productName = macOSKeyboard;
+			productName = Keyboard_macOS;
 			productReference = 96E354E72020DDBC00668374 /* Keyboard.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -1041,7 +1041,7 @@
 				96E354FA2020DDBD00668374 /* PBXTargetDependency */,
 			);
 			name = "KeyboardTests macOS";
-			productName = macOSKeyboardTests;
+			productName = KeyboardTests_macOS;
 			productReference = 96E354F82020DDBD00668374 /* KeyboardTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};

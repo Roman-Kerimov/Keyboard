@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  macOSKeyboard
+//  Keyboard macOS
 //
 //  Created by Roman Kerimov on 2018-01-30.
 //

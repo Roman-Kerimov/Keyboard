@@ -1,6 +1,6 @@
 //
 //  NonAccessibilityDocumentContext.swift
-//  macOSKeyboard
+//  Keyboard macOS
 //
 //  Created by Roman Kerimov on 2018-06-06.
 //

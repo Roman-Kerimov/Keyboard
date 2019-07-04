@@ -1,6 +1,6 @@
 //
 //  GuideTableUIView.swift
-//  iOSKeyboard
+//  Keyboard iOS
 //
 //  Created by Roman Kerimov on 2019-03-21.
 //

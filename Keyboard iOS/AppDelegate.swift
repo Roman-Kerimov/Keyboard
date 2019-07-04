@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  iOSKeyboard
+//  Keyboard iOS
 //
 //  Created by Roman Kerimov on 2016-06-23.
 //

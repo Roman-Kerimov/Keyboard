@@ -1,6 +1,6 @@
 //
 //  LocalizedMenuItem.swift
-//  macOSKeyboard
+//  Keyboard macOS
 //
 //  Created by Roman Kerimov on 2018-02-11.
 //

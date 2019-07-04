@@ -1,6 +1,6 @@
 //
 //  TISInputSource.swift
-//  macOSKeyboard
+//  Keyboard macOS
 //
 //  Created by Roman Kerimov on 2018-03-18.
 //

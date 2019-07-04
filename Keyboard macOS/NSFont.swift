@@ -1,6 +1,6 @@
 //
 //  NSFont.swift
-//  macOSKeyboard
+//  Keyboard macOS
 //
 //  Created by Roman Kerimov on 2019-07-04.
 //

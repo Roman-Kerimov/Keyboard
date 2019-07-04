@@ -1,6 +1,6 @@
 //
 //  GuideWindow.swift
-//  macOSKeyboard
+//  Keyboard macOS
 //
 //  Created by Roman Kerimov on 2019-01-05.
 //

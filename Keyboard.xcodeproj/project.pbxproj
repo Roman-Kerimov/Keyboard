@@ -130,7 +130,7 @@
 		965A8B4220D315A000E0260E /* HIDE_FOR_APPLICATION.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965A8B3F20D315A000E0260E /* HIDE_FOR_APPLICATION.swift */; };
 		965A8B4620D317C100E0260E /* SHOW_FOR_APPLICATION.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965A8B4320D317C100E0260E /* SHOW_FOR_APPLICATION.swift */; };
 		965A8B4820D3268F00E0260E /* NSWorkspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965A8B4720D3268F00E0260E /* NSWorkspace.swift */; };
-		965BFAC91F7979FA00B8F682 /* iOSKeyboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965BFAC81F7979FA00B8F682 /* iOSKeyboardTests.swift */; };
+		965BFAC91F7979FA00B8F682 /* KeyboardTests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965BFAC81F7979FA00B8F682 /* KeyboardTests_iOS.swift */; };
 		965BFAD11F797BBB00B8F682 /* CharacterComponentsDictionaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965BFAD01F797BBB00B8F682 /* CharacterComponentsDictionaryTests.swift */; };
 		965D15C11D3146BB0098FA57 /* KeyboardUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965D15C01D3146BB0098FA57 /* KeyboardUIView.swift */; };
 		965D15C91D32AE3B0098FA57 /* KeyUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965D15C81D32AE3B0098FA57 /* KeyUIView.swift */; };
@@ -259,7 +259,7 @@
 		96E0342420317A330039E653 /* QUIT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E0342120317A330039E653 /* QUIT.swift */; };
 		96E354EA2020DDBC00668374 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E354E92020DDBC00668374 /* AppDelegate.swift */; };
 		96E354EE2020DDBC00668374 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96E354ED2020DDBC00668374 /* Assets.xcassets */; };
-		96E354FD2020DDBD00668374 /* macOSKeyboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E354FC2020DDBD00668374 /* macOSKeyboardTests.swift */; };
+		96E354FD2020DDBD00668374 /* KeyboardTests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E354FC2020DDBD00668374 /* KeyboardTests_macOS.swift */; };
 		96EA39D71EAFDDDE00F3D804 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EA39D61EAFDDDE00F3D804 /* UIImage.swift */; };
 		96EA39E21EB0EEDE00F3D804 /* Labels_HideKeyboard.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96EA39DF1EB0EEDD00F3D804 /* Labels_HideKeyboard.ai */; };
 		96EA39E31EB0EEDE00F3D804 /* Labels_NextKeyboard.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96EA39E01EB0EEDD00F3D804 /* Labels_NextKeyboard.ai */; };
@@ -293,21 +293,21 @@
 			containerPortal = 964AB9271D1B63C0004C827C /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 964AB9661D1B6535004C827C;
-			remoteInfo = iOSKeyboardExtension;
+			remoteInfo = KeyboardExtension_iOS;
 		};
 		965BFACB1F7979FA00B8F682 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 964AB9271D1B63C0004C827C /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 964AB9301D1B6490004C827C;
-			remoteInfo = iOSKeyboard;
+			remoteInfo = Keyboard_iOS;
 		};
 		96E354F92020DDBD00668374 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 964AB9271D1B63C0004C827C /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 96E354E62020DDBC00668374;
-			remoteInfo = macOSKeyboard;
+			remoteInfo = Keyboard_macOS;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -454,7 +454,7 @@
 		965A8B4320D317C100E0260E /* SHOW_FOR_APPLICATION.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHOW_FOR_APPLICATION.swift; sourceTree = "<group>"; };
 		965A8B4720D3268F00E0260E /* NSWorkspace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSWorkspace.swift; sourceTree = "<group>"; };
 		965BFAC61F7979FA00B8F682 /* KeyboardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyboardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		965BFAC81F7979FA00B8F682 /* iOSKeyboardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSKeyboardTests.swift; sourceTree = "<group>"; };
+		965BFAC81F7979FA00B8F682 /* KeyboardTests_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardTests_iOS.swift; sourceTree = "<group>"; };
 		965BFACA1F7979FA00B8F682 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		965BFAD01F797BBB00B8F682 /* CharacterComponentsDictionaryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterComponentsDictionaryTests.swift; sourceTree = "<group>"; };
 		965D15C01D3146BB0098FA57 /* KeyboardUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardUIView.swift; sourceTree = "<group>"; };
@@ -538,9 +538,9 @@
 		96E354E92020DDBC00668374 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96E354ED2020DDBC00668374 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		96E354F22020DDBD00668374 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		96E354F32020DDBD00668374 /* macOSKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOSKeyboard.entitlements; sourceTree = "<group>"; };
+		96E354F32020DDBD00668374 /* Keyboard_macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Keyboard_macOS.entitlements; sourceTree = "<group>"; };
 		96E354F82020DDBD00668374 /* KeyboardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyboardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		96E354FC2020DDBD00668374 /* macOSKeyboardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macOSKeyboardTests.swift; sourceTree = "<group>"; };
+		96E354FC2020DDBD00668374 /* KeyboardTests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardTests_macOS.swift; sourceTree = "<group>"; };
 		96E354FE2020DDBD00668374 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96EA39D61EAFDDDE00F3D804 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		96EA39DF1EB0EEDD00F3D804 /* Labels_HideKeyboard.ai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Labels_HideKeyboard.ai; sourceTree = "<group>"; };
@@ -692,11 +692,11 @@
 				9697F880202FA868001EC50A /* Keyboard */,
 				96B6BC492031AD4C002509E4 /* KeyboardTests */,
 				96BAEF0C2016D0FD003B32C0 /* TouchKeyboard */,
-				964AB9331D1B6490004C827C /* iOSKeyboard */,
-				965BFAC71F7979FA00B8F682 /* iOSKeyboardTests */,
-				964AB9681D1B6535004C827C /* iOSKeyboardExtension */,
-				96E354E82020DDBC00668374 /* macOSKeyboard */,
-				96E354FB2020DDBD00668374 /* macOSKeyboardTests */,
+				964AB9331D1B6490004C827C /* Keyboard iOS */,
+				965BFAC71F7979FA00B8F682 /* KeyboardTests iOS */,
+				964AB9681D1B6535004C827C /* KeyboardExtension iOS */,
+				96E354E82020DDBC00668374 /* Keyboard macOS */,
+				96E354FB2020DDBD00668374 /* KeyboardTests macOS */,
 				9608923620AF4F98007AA01E /* UCD */,
 				9697C3D720BB180300FE3007 /* Emoji */,
 				964AB9321D1B6490004C827C /* Products */,
@@ -718,7 +718,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		964AB9331D1B6490004C827C /* iOSKeyboard */ = {
+		964AB9331D1B6490004C827C /* Keyboard iOS */ = {
 			isa = PBXGroup;
 			children = (
 				964AB9341D1B6490004C827C /* AppDelegate.swift */,
@@ -732,24 +732,24 @@
 				964AB9431D1B6490004C827C /* Info.plist */,
 				9644DAFE22436E7600C687A9 /* Settings.bundle */,
 			);
-			path = iOSKeyboard;
+			path = "Keyboard iOS";
 			sourceTree = "<group>";
 		};
-		964AB9681D1B6535004C827C /* iOSKeyboardExtension */ = {
+		964AB9681D1B6535004C827C /* KeyboardExtension iOS */ = {
 			isa = PBXGroup;
 			children = (
 				964AB96B1D1B6535004C827C /* Info.plist */,
 			);
-			path = iOSKeyboardExtension;
+			path = "KeyboardExtension iOS";
 			sourceTree = "<group>";
 		};
-		965BFAC71F7979FA00B8F682 /* iOSKeyboardTests */ = {
+		965BFAC71F7979FA00B8F682 /* KeyboardTests iOS */ = {
 			isa = PBXGroup;
 			children = (
-				965BFAC81F7979FA00B8F682 /* iOSKeyboardTests.swift */,
+				965BFAC81F7979FA00B8F682 /* KeyboardTests_iOS.swift */,
 				965BFACA1F7979FA00B8F682 /* Info.plist */,
 			);
-			path = iOSKeyboardTests;
+			path = "KeyboardTests iOS";
 			sourceTree = "<group>";
 		};
 		9697C3D720BB180300FE3007 /* Emoji */ = {
@@ -889,7 +889,7 @@
 			path = LocalizedStrings;
 			sourceTree = "<group>";
 		};
-		96E354E82020DDBC00668374 /* macOSKeyboard */ = {
+		96E354E82020DDBC00668374 /* Keyboard macOS */ = {
 			isa = PBXGroup;
 			children = (
 				963DE0AF202F00B60040A448 /* main.swift */,
@@ -925,26 +925,26 @@
 				960F7E8322CD62FE00419F62 /* NSFont.swift */,
 				96E354ED2020DDBC00668374 /* Assets.xcassets */,
 				96E354F22020DDBD00668374 /* Info.plist */,
-				96E354F32020DDBD00668374 /* macOSKeyboard.entitlements */,
+				96E354F32020DDBD00668374 /* Keyboard_macOS.entitlements */,
 			);
-			path = macOSKeyboard;
+			path = "Keyboard macOS";
 			sourceTree = "<group>";
 		};
-		96E354FB2020DDBD00668374 /* macOSKeyboardTests */ = {
+		96E354FB2020DDBD00668374 /* KeyboardTests macOS */ = {
 			isa = PBXGroup;
 			children = (
-				96E354FC2020DDBD00668374 /* macOSKeyboardTests.swift */,
+				96E354FC2020DDBD00668374 /* KeyboardTests_macOS.swift */,
 				96E354FE2020DDBD00668374 /* Info.plist */,
 			);
-			path = macOSKeyboardTests;
+			path = "KeyboardTests macOS";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		964AB9301D1B6490004C827C /* iOSKeyboard */ = {
+		964AB9301D1B6490004C827C /* Keyboard iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 964AB95A1D1B6490004C827C /* Build configuration list for PBXNativeTarget "iOSKeyboard" */;
+			buildConfigurationList = 964AB95A1D1B6490004C827C /* Build configuration list for PBXNativeTarget "Keyboard iOS" */;
 			buildPhases = (
 				964AB92D1D1B6490004C827C /* Sources */,
 				964AB92E1D1B6490004C827C /* Frameworks */,
@@ -957,18 +957,18 @@
 			dependencies = (
 				964AB96D1D1B6535004C827C /* PBXTargetDependency */,
 			);
-			name = iOSKeyboard;
+			name = "Keyboard iOS";
 			packageProductDependencies = (
 				969C3BC322A8962D0070F0B7 /* Calculator */,
 				969C3BC522A8962D0070F0B7 /* LinguisticKit */,
 			);
-			productName = iOSKeyboard;
+			productName = Keyboard_iOS;
 			productReference = 964AB9311D1B6490004C827C /* Keyboard.app */;
 			productType = "com.apple.product-type.application";
 		};
-		964AB9661D1B6535004C827C /* iOSKeyboardExtension */ = {
+		964AB9661D1B6535004C827C /* KeyboardExtension iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 964AB96F1D1B6535004C827C /* Build configuration list for PBXNativeTarget "iOSKeyboardExtension" */;
+			buildConfigurationList = 964AB96F1D1B6535004C827C /* Build configuration list for PBXNativeTarget "KeyboardExtension iOS" */;
 			buildPhases = (
 				964AB9631D1B6535004C827C /* Sources */,
 				964AB9641D1B6535004C827C /* Frameworks */,
@@ -978,18 +978,18 @@
 			);
 			dependencies = (
 			);
-			name = iOSKeyboardExtension;
+			name = "KeyboardExtension iOS";
 			packageProductDependencies = (
 				969C3BC722A896730070F0B7 /* Calculator */,
 				969C3BC922A896730070F0B7 /* LinguisticKit */,
 			);
-			productName = iOSKeyboardExtension;
+			productName = KeyboardExtension_iOS;
 			productReference = 964AB9671D1B6535004C827C /* KeyboardExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		965BFAC51F7979FA00B8F682 /* iOSKeyboardTests */ = {
+		965BFAC51F7979FA00B8F682 /* KeyboardTests iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 965BFACF1F7979FA00B8F682 /* Build configuration list for PBXNativeTarget "iOSKeyboardTests" */;
+			buildConfigurationList = 965BFACF1F7979FA00B8F682 /* Build configuration list for PBXNativeTarget "KeyboardTests iOS" */;
 			buildPhases = (
 				965BFAC21F7979FA00B8F682 /* Sources */,
 				965BFAC31F7979FA00B8F682 /* Frameworks */,
@@ -1000,14 +1000,14 @@
 			dependencies = (
 				965BFACC1F7979FA00B8F682 /* PBXTargetDependency */,
 			);
-			name = iOSKeyboardTests;
-			productName = iOSKeyboardTests;
+			name = "KeyboardTests iOS";
+			productName = KeyboardTests_iOS;
 			productReference = 965BFAC61F7979FA00B8F682 /* KeyboardTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		96E354E62020DDBC00668374 /* macOSKeyboard */ = {
+		96E354E62020DDBC00668374 /* Keyboard macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 96E355032020DDBD00668374 /* Build configuration list for PBXNativeTarget "macOSKeyboard" */;
+			buildConfigurationList = 96E355032020DDBD00668374 /* Build configuration list for PBXNativeTarget "Keyboard macOS" */;
 			buildPhases = (
 				96E354E32020DDBC00668374 /* Sources */,
 				96E354E42020DDBC00668374 /* Frameworks */,
@@ -1018,18 +1018,18 @@
 			);
 			dependencies = (
 			);
-			name = macOSKeyboard;
+			name = "Keyboard macOS";
 			packageProductDependencies = (
 				969C3BCB22A896850070F0B7 /* Calculator */,
 				969C3BCD22A896850070F0B7 /* LinguisticKit */,
 			);
-			productName = macOSKeyboard;
+			productName = Keyboard_macOS;
 			productReference = 96E354E72020DDBC00668374 /* Keyboard.app */;
 			productType = "com.apple.product-type.application";
 		};
-		96E354F72020DDBD00668374 /* macOSKeyboardTests */ = {
+		96E354F72020DDBD00668374 /* KeyboardTests macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 96E355042020DDBD00668374 /* Build configuration list for PBXNativeTarget "macOSKeyboardTests" */;
+			buildConfigurationList = 96E355042020DDBD00668374 /* Build configuration list for PBXNativeTarget "KeyboardTests macOS" */;
 			buildPhases = (
 				96E354F42020DDBD00668374 /* Sources */,
 				96E354F52020DDBD00668374 /* Frameworks */,
@@ -1040,8 +1040,8 @@
 			dependencies = (
 				96E354FA2020DDBD00668374 /* PBXTargetDependency */,
 			);
-			name = macOSKeyboardTests;
-			productName = macOSKeyboardTests;
+			name = "KeyboardTests macOS";
+			productName = KeyboardTests_macOS;
 			productReference = 96E354F82020DDBD00668374 /* KeyboardTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -1106,11 +1106,11 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				964AB9301D1B6490004C827C /* iOSKeyboard */,
-				964AB9661D1B6535004C827C /* iOSKeyboardExtension */,
-				965BFAC51F7979FA00B8F682 /* iOSKeyboardTests */,
-				96E354E62020DDBC00668374 /* macOSKeyboard */,
-				96E354F72020DDBD00668374 /* macOSKeyboardTests */,
+				964AB9301D1B6490004C827C /* Keyboard iOS */,
+				964AB9661D1B6535004C827C /* KeyboardExtension iOS */,
+				965BFAC51F7979FA00B8F682 /* KeyboardTests iOS */,
+				96E354E62020DDBC00668374 /* Keyboard macOS */,
+				96E354F72020DDBD00668374 /* KeyboardTests macOS */,
 			);
 		};
 /* End PBXProject section */
@@ -1369,7 +1369,7 @@
 				96B6B35E1F97660E00231AE6 /* Array<CharacterComponent>Tests.swift in Sources */,
 				96905E4720EF268C006F3DE9 /* KeyboardTests.swift in Sources */,
 				96D23570224CC76B0018C266 /* StringTests.swift in Sources */,
-				965BFAC91F7979FA00B8F682 /* iOSKeyboardTests.swift in Sources */,
+				965BFAC91F7979FA00B8F682 /* KeyboardTests_iOS.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1469,7 +1469,7 @@
 			files = (
 				96534196224727FD0097B522 /* Array<Equatable>Tests.swift in Sources */,
 				96B6BC4B2031ADBC002509E4 /* CharacterComponentsDictionaryTests.swift in Sources */,
-				96E354FD2020DDBD00668374 /* macOSKeyboardTests.swift in Sources */,
+				96E354FD2020DDBD00668374 /* KeyboardTests_macOS.swift in Sources */,
 				96905E4820EF268C006F3DE9 /* KeyboardTests.swift in Sources */,
 				96D23571224CC76B0018C266 /* StringTests.swift in Sources */,
 				96B6BC4A2031ADB6002509E4 /* Array<CharacterComponent>Tests.swift in Sources */,
@@ -1481,17 +1481,17 @@
 /* Begin PBXTargetDependency section */
 		964AB96D1D1B6535004C827C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 964AB9661D1B6535004C827C /* iOSKeyboardExtension */;
+			target = 964AB9661D1B6535004C827C /* KeyboardExtension iOS */;
 			targetProxy = 964AB96C1D1B6535004C827C /* PBXContainerItemProxy */;
 		};
 		965BFACC1F7979FA00B8F682 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 964AB9301D1B6490004C827C /* iOSKeyboard */;
+			target = 964AB9301D1B6490004C827C /* Keyboard iOS */;
 			targetProxy = 965BFACB1F7979FA00B8F682 /* PBXContainerItemProxy */;
 		};
 		96E354FA2020DDBD00668374 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 96E354E62020DDBC00668374 /* macOSKeyboard */;
+			target = 96E354E62020DDBC00668374 /* Keyboard macOS */;
 			targetProxy = 96E354F92020DDBD00668374 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1787,7 +1787,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		964AB95A1D1B6490004C827C /* Build configuration list for PBXNativeTarget "iOSKeyboard" */ = {
+		964AB95A1D1B6490004C827C /* Build configuration list for PBXNativeTarget "Keyboard iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				964AB95B1D1B6490004C827C /* Debug */,
@@ -1796,7 +1796,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		964AB96F1D1B6535004C827C /* Build configuration list for PBXNativeTarget "iOSKeyboardExtension" */ = {
+		964AB96F1D1B6535004C827C /* Build configuration list for PBXNativeTarget "KeyboardExtension iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				964AB9701D1B6535004C827C /* Debug */,
@@ -1805,7 +1805,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		965BFACF1F7979FA00B8F682 /* Build configuration list for PBXNativeTarget "iOSKeyboardTests" */ = {
+		965BFACF1F7979FA00B8F682 /* Build configuration list for PBXNativeTarget "KeyboardTests iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				965BFACD1F7979FA00B8F682 /* Debug */,
@@ -1814,7 +1814,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		96E355032020DDBD00668374 /* Build configuration list for PBXNativeTarget "macOSKeyboard" */ = {
+		96E355032020DDBD00668374 /* Build configuration list for PBXNativeTarget "Keyboard macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				96E354FF2020DDBD00668374 /* Debug */,
@@ -1823,7 +1823,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		96E355042020DDBD00668374 /* Build configuration list for PBXNativeTarget "macOSKeyboardTests" */ = {
+		96E355042020DDBD00668374 /* Build configuration list for PBXNativeTarget "KeyboardTests macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				96E355012020DDBD00668374 /* Debug */,

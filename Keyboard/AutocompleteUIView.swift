@@ -38,7 +38,7 @@ class AutocompleteUIView: UICollectionReusableView {
         
         button.setTitleColor(tintColor, for: .normal)
         
-        button.addTarget(Keyboard.default, action: #selector(Keyboard.default.characterSequence.autocomplete), for: .touchUpInside)
+        button.addTarget(Keyboard.default.characterSequence, action: #selector(Keyboard.default.characterSequence.autocomplete), for: .touchUpInside)
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -181,7 +181,44 @@ extension Key {
     static let rightArrow = keys[124]
     
     
+    static let f13 = keys[105]
+    static let f14 = keys[107]
+    static let f15 = keys[113]
+    static let f16 = keys[106]
+    static let f17 = keys[64]
+    static let f18 = keys[79]
+    static let f19 = keys[80]
+    static let f20 = keys[90]
+    
     static let forwardDelete = keys[117]
+    
+    static let home = keys[115]
+    static let end = keys[119]
+    
+    static let pageUp = keys[116]
+    static let pageDown = keys[121]
+    
+    static let keypad0 = keys[82]
+    static let keypad1 = keys[83]
+    static let keypad2 = keys[84]
+    static let keypad3 = keys[85]
+    static let keypad4 = keys[86]
+    static let keypad5 = keys[87]
+    static let keypad6 = keys[88]
+    static let keypad7 = keys[89]
+    static let keypad8 = keys[91]
+    static let keypad9 = keys[92]
+    
+    static let keypadDecimal = keys[65]
+    
+    static let keypadPlus = keys[69]
+    static let keypadMinus = keys[78]
+    static let keypadMultiply = keys[67]
+    static let keypadDivide = keys[75]
+    static let keypadEquals = keys[81]
+    
+    static let keypadClear = keys[71]
+    static let keypadEnter = keys[76]
     
     
     

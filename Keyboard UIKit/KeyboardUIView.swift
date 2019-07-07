@@ -132,13 +132,13 @@ internal class KeyboardUIView: UIView {
         let spaceRowHeightInKeys: CGFloat = deleteRowHeightInKeys
         
         let sizeInKeysForVerticalMode: CGSize = .init(
-            width: CGFloat(Keyboard.default.layout.columnCount / 2) + 0.2 + horizontalIndentInKeys*2,
-            height: deleteRowHeightInKeys + CGFloat(Keyboard.default.layout.rowCount * 2) + spaceRowHeightInKeys
+            width: CGFloat(Key.layoutBoardColumnCount / 2) + 0.2 + horizontalIndentInKeys*2,
+            height: deleteRowHeightInKeys + CGFloat(Key.layoutBoardRowCount * 2) + spaceRowHeightInKeys
         )
         
         let sizeInKeysForHorizontalMode: CGSize = .init(
-            width: CGFloat(Keyboard.default.layout.columnCount) + horizontalIndentInKeys*2,
-            height: deleteRowHeightInKeys + CGFloat(Keyboard.default.layout.rowCount) + spaceRowHeightInKeys
+            width: CGFloat(Key.layoutBoardColumnCount) + horizontalIndentInKeys*2,
+            height: deleteRowHeightInKeys + CGFloat(Key.layoutBoardRowCount) + spaceRowHeightInKeys
         )
         
         let keyboardSizeInKeys = isHorizontalMode ? sizeInKeysForHorizontalMode : sizeInKeysForVerticalMode

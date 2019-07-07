@@ -61,35 +61,34 @@ class Keyboard: NSObject {
             input()
         }
         else {
-            let layout = Keyboard.default.layout
             let direction: ShiftDirection
             
             switch key {
                 
-            case layout.rows[0][1], layout.rows[0][6]:
+            case .w, .u:
                 direction = .upLeft
                 
-            case layout.rows[0][2], layout.rows[0][7]:
+            case .e, .i:
                 direction = .up
                 
-            case layout.rows[0][3], layout.rows[0][8]:
+            case .r, .o:
                 direction = .upRight
                 
                 
-            case layout.rows[1][1], layout.rows[1][6]:
+            case .s, .j:
                 direction = .left
                 
-            case layout.rows[1][3], layout.rows[1][8]:
+            case .f, .l:
                 direction = .right
                 
                 
-            case layout.rows[2][1], layout.rows[2][6]:
+            case .x, .m:
                 direction = .downLeft
                 
-            case layout.rows[2][2], layout.rows[2][7]:
+            case .c, .comma:
                 direction = .down
                 
-            case layout.rows[2][3], layout.rows[2][8]:
+            case .v, .fullStop:
                 direction = .downRight
                 
             default:
@@ -441,6 +440,8 @@ class Keyboard: NSObject {
     private override init() {
         super.init()
         
+        UserDefaults.standard.register(defaults: [layoutKey : KeyboardLayout.qwerty.name])
+        
         NotificationCenter.default.addObserver(self, selector: #selector(documentContextDidChange), name: .DocumentContextDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(search), name: .UnicodeDataFilesDidLoad, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(search), name: .DocumentContextDidChange, object: nil)
@@ -542,7 +543,7 @@ class Keyboard: NSObject {
     private let layoutKey = "LBPQsNPr8gJHi8Ds05etypaTVEiq8X1"
     var layout: KeyboardLayout {
         get {
-            return KeyboardLayout.list.filter { $0.name == (UserDefaults.standard.string(forKey: layoutKey) ?? "")}.first ?? .qwerty
+            return KeyboardLayout.list.filter { $0.name == (UserDefaults.standard.string(forKey: layoutKey) ?? "")}.first ?? .system
         }
         
         set {

@@ -31,8 +31,6 @@ class KeyboardUIViewController: UIInputViewController, KeyboardDelegate {
     
     @objc private func updateDocumentContext() {
         
-        keyboardView.spaceKey.key = textDocumentProxy.returnKeyType == .default ? .space : .spaceWithoutReturn
-        
         if textDocumentProxy.enablesReturnKeyAutomatically == true {
             keyboardView.enterKey.isEnabled = textDocumentProxy.hasText && textDocumentProxy.returnKeyType != .default
         }

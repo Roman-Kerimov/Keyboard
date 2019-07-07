@@ -28,11 +28,13 @@ protocol KeyboardDelegate {
 
 extension KeyboardDelegate {
     
-    #if !os(macOS)
-    var returnKeyType: UIReturnKeyType? {
-        return nil
+    var needsReturn: Bool {
+        #if os(macOS)
+        return true
+        #else
+        return Keyboard.default.delegate?.returnKeyType == .default
+        #endif
     }
-    #endif
     
     var needsInputModeSwitchKey: Bool {
         return false

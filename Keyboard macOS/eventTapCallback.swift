@@ -10,6 +10,8 @@ import Carbon
 
 func eventTapCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent, refcon: UnsafeMutableRawPointer?) -> Unmanaged<CGEvent>? {
     
+    let key: Key = .by(keycode: event.keycode)
+    
     if [.leftMouseDown, .rightMouseDown].contains(event.type) {
         AppDelegate.nonAccessibilityDocumentContext.reset()
         return Unmanaged.passRetained(event)
@@ -20,12 +22,12 @@ func eventTapCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent,
             AppDelegate.nonAccessibilityDocumentContext.reset()
         }
         else {
-            switch event.keycode {
+            switch key {
                 
             case .delete:
                 AppDelegate.nonAccessibilityDocumentContext.deleteBackward()
                 
-            case .init(kVK_ForwardDelete):
+            case .forwardDelete:
                 AppDelegate.nonAccessibilityDocumentContext.deleteForward()
                 
             case .leftArrow:
@@ -53,15 +55,15 @@ func eventTapCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent,
     
     let isAutorepeatEvent: Bool = event.getIntegerValueField(.keyboardEventAutorepeat) == 0 ? false : true
     
-    let autorepeatKeycodes: [Keycode] = [
+    let autorepeatKeys: [Key] = [
         .delete,
         .leftArrow,
         .rightArrow,
         .downArrow,
         .upArrow,
-        ]
+    ]
     
-    guard !isAutorepeatEvent || autorepeatKeycodes.contains(event.keycode)  else {
+    guard !isAutorepeatEvent || autorepeatKeys.contains(key)  else {
         return nil
     }
     
@@ -70,11 +72,11 @@ func eventTapCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent,
         return Unmanaged.passRetained(event)
     }
     
-    if event.keycode == .enter && event.type == .keyDown {
+    if key == .enter && event.type == .keyDown {
         AppDelegate.preEnterDocumentContext = AppDelegate.documentContext
     }
     
-    if event.keycode == .enter && event.type == .keyUp {
+    if key == .enter && event.type == .keyUp {
         let preEnterContext: String = AppDelegate.preEnterDocumentContext?.beforeInput ?? .init()
         let postEnterContext: String = AppDelegate.documentContext.beforeInput ?? .init()
         
@@ -82,10 +84,10 @@ func eventTapCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent,
             let enteredString = postEnterContext.dropFirst(preEnterContext.count)
             
             if enteredString.last == .return {
-                AppDelegate.tap(keycode: .delete)
+                AppDelegate.tap(key: .delete)
             }
             else if enteredString.contains(.return) {
-                AppDelegate.tap(keycode: .z, flags: .maskCommand)
+                AppDelegate.tap(key: .z, flags: .maskCommand)
             }
         }
     }
@@ -97,14 +99,14 @@ func eventTapCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent,
         }
     }
     
-    let commandKeycodes: [Keycode] = [.leftCommand, .rightCommand]
+    let commandKeys: [Key] = [.leftCommand, .rightCommand]
     
-    if Keyboard.default.currentKey != nil && event.type == .flagsChanged && commandKeycodes.contains(event.keycode) {
+    if Keyboard.default.currentKey != nil && event.type == .flagsChanged && commandKeys.contains(key) {
         Keyboard.default.shiftFlag = event.flags.contains(.maskCommand)
         return nil
     }
     
-    if commandKeycodes.contains(event.keycode) && Keyboard.default.shiftFlag {
+    if commandKeys.contains(key) && Keyboard.default.shiftFlag {
         Keyboard.default.shiftFlag = event.flags.contains(.maskCommand)
     }
     
@@ -124,28 +126,26 @@ func eventTapCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent,
     Keyboard.default.shiftUpFlag = event.flags.contains(.maskShift)
     Keyboard.default.shiftDownFlag = event.flags.contains(.maskAlternate)
     
-    let key: Key
-    
-    if TISInputSource.currentKeyboardLayout.isASCIICapable {
+    if event.flags.contains(.maskAlphaShift) {
         
-        if event.flags.contains(.maskAlphaShift) {
-            
-            var ioConnect: io_connect_t = .init(0)
-            let ioService = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching(kIOHIDSystemClass))
-            IOServiceOpen(ioService, mach_task_self_, UInt32(kIOHIDParamConnectType), &ioConnect)
-            IOHIDSetModifierLockState(ioConnect, Int32(kIOHIDCapsLockState), false)
-            IOServiceClose(ioConnect)
-            
-            if Keyboard.default.characterSequence.autocompleteText.isEmpty == false {
-                Keyboard.default.characterSequence.autocomplete()
-            }
-            
-            return nil
+        var ioConnect: io_connect_t = .init(0)
+        let ioService = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching(kIOHIDSystemClass))
+        IOServiceOpen(ioService, mach_task_self_, UInt32(kIOHIDParamConnectType), &ioConnect)
+        IOHIDSetModifierLockState(ioConnect, Int32(kIOHIDCapsLockState), false)
+        IOServiceClose(ioConnect)
+        
+        if Keyboard.default.characterSequence.autocompleteText.isEmpty == false {
+            Keyboard.default.characterSequence.autocomplete()
         }
         
-        let selectorKeys: [Keycode] = [.grave, .one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .zero, .hyphenMinus, .equal, .leftSquareBracket, .rightSquareBracket, .reverseSolidus, .apostrophe]
+        return nil
+    }
+    
+    if Keyboard.default.layout != .system {
         
-        if let item = selectorKeys.firstIndex(of: event.keycode) {
+        let selectorKeys: [Key] = [.grave, .one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .zero, .hyphenMinus, .equal, .leftSquareBracket, .rightSquareBracket, .reverseSolidus, .apostrophe]
+        
+        if let item = selectorKeys.firstIndex(of: key) {
             
             if event.type == .keyDown {
                 Keyboard.default.characterSearch.insert(item: item)
@@ -153,30 +153,13 @@ func eventTapCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent,
             
             return nil
         }
-        
-        guard let layoutKey = Keyboard.default.layout.key(code: event.keycode) else {
-            if Keyboard.default.shiftFlag {
-                return nil
-            }
-            return Unmanaged.passRetained(event)
-        }
-        
-        key = layoutKey
     }
-    else {
-        switch event.type {
-        case .keyDown:
-            let layoutKey = Keyboard.default.layout.key(code: event.keycode) ?? .init()
-            key = !Keyboard.default.shiftFlag && event.keycode != .space ? .init(label: event.character, shiftDownLabel: layoutKey.shiftDownLabel, shiftUpLabel: event.character) : layoutKey
-            
-            AppDelegate.keycodeToKeyDictionary[event.keycode] = key
-            
-        case .keyUp:
-            key = AppDelegate.keycodeToKeyDictionary[event.keycode] ?? .init()
-            
-        default:
-            return Unmanaged.passRetained(event)
+    
+    guard Keyboard.default.layout.contain(key) else {
+        if Keyboard.default.shiftFlag {
+            return nil
         }
+        return Unmanaged.passRetained(event)
     }
     
     switch event.type {

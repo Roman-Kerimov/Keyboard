@@ -54,11 +54,7 @@ class KeyUIView: UIButton {
         removeGestureRecognizer(longPressGestureRecognizer)
     }
     
-    public var key: Key {
-        didSet {
-            setNeedsLayout()
-        }
-    }
+    let key: Key
     
     private var labelFileName: String {
         return "Labels_\(key.label)"
@@ -134,6 +130,7 @@ class KeyUIView: UIButton {
         NotificationCenter.default.addObserver(self, selector: #selector(setNeedsLayout), name: .KeyboardStateDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(setNeedsLayout), name: .KeyboardAppearanceDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(setNeedsLayout), name: .DocumentContextDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(setNeedsLayout), name: .LayoutDidChange, object: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -196,7 +193,7 @@ class KeyUIView: UIButton {
         shiftUpLabelView.center.y = verticalShiftLabelIndent
         shiftDownLabelView.center.y = frame.height - verticalShiftLabelIndent
 
-        if [.space, .spaceWithoutReturn].contains(key) {
+        if key == .space {
             shiftUpLabelView.center.x = backgroundView.center.x
             shiftDownLabelView.center.x = backgroundView.center.x
         }

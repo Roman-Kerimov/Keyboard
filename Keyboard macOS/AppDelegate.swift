@@ -18,7 +18,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
     
     private var previousDocumentContext: DocumentContext = .init()
     static var preEnterDocumentContext: DocumentContext?
-    static var keycodeToKeyDictionary: [Keycode: Key] = .init()
     
     static let characterSearchWindow = CharacterSearchWindow.init()
     static let characterSequenceWindow: CharacterSequenceWindow = .init()
@@ -95,17 +94,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
     }
     
     static func synchronizeKeyboardLayout() {
-        
-        guard TISInputSource.currentKeyboardLayout.isASCIICapable else {
-            return
-        }
-        
-        if let keyboardLayout = KeyboardLayout.list.element(inputSourceID: TISInputSource.currentKeyboardLayout.id) {
-            Keyboard.default.layout = keyboardLayout
-        }
-        else {
-            AppDelegate.synchronizeSystemInputSource()
-        }
+        Keyboard.default.layout = KeyboardLayout.list.element(inputSourceID: TISInputSource.currentKeyboardLayout.id)
     }
     
     static var synchronizeKeyboardLayoutNotificationCallback: CFNotificationCallback = { (center, observer, name, object, userInfo) in
@@ -127,23 +116,23 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
             return
         }
         
-        tap(keycode: keycode, flags: flags)
+        tap(key: .by(keycode: keycode), flags: flags)
     }
     
     static var skipTapCount: Int = 0
-    private func tap(keycode: Keycode, flags: CGEventFlags = .init()) {
-        AppDelegate.tap(keycode: keycode, flags: flags)
+    private func tap(key: Key, flags: CGEventFlags = .init()) {
+        AppDelegate.tap(key: key, flags: flags)
     }
     
-    static func tap(keycode: Keycode, flags: CGEventFlags = .init()) {
+    static func tap(key: Key, flags: CGEventFlags = .init()) {
         AppDelegate.skipTapCount += 2
         
         let source = CGEventSource.init(stateID: .hidSystemState)
-        let keyDown = CGEvent.init(keyboardEventSource: source, virtualKey: keycode, keyDown: true)
+        let keyDown = CGEvent.init(keyboardEventSource: source, virtualKey: key.keycode, keyDown: true)
         keyDown?.flags = flags
         keyDown?.post(tap: .cghidEventTap)
         
-        let keyUp = CGEvent.init(keyboardEventSource: source, virtualKey: keycode, keyDown: false)
+        let keyUp = CGEvent.init(keyboardEventSource: source, virtualKey: key.keycode, keyDown: false)
         keyUp?.post(tap: .cghidEventTap)
     }
     
@@ -160,12 +149,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
             AXUIElement.focused?.selectedText = .init()
         }
         else {
-            tap(keycode: .delete)
+            tap(key: .delete)
         }
     }
     
     func enter() {
-        tap(keycode: .enter)
+        tap(key: .enter)
     }
     
     func settings() {}
@@ -175,7 +164,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
         
         for flags: CGEventFlags in [[], [.maskShift], [.maskAlternate], [.maskShift, .maskAlternate]] {
             if let keycode: Keycode = .from(label: text, flags: flags) {
-                tap(keycode: keycode, flags: flags)
+                tap(key: .by(keycode: keycode), flags: flags)
                 return
             }
         }

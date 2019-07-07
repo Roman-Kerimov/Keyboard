@@ -18,11 +18,7 @@ class KeyboardLayoutUIView: UIView {
     }
     */
     
-    public var layout: KeyboardLayout = .qwerty {
-        didSet {
-            setKeys()
-        }
-    }
+    var layout: KeyboardLayout = Keyboard.default.layout
     
     var keyViews: [[KeyUIView]] = []
     
@@ -42,41 +38,25 @@ class KeyboardLayoutUIView: UIView {
         
         addSubview(characterSearchView)
         
-        setKeys()
-    }
-    
-    required init(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func setKeys() {
-        for (rowIndex, row) in layout.rows.enumerated() {
+        for (rowIndex, row) in Key.layoutBoard.enumerated() {
             for (columnIndex, key) in row.enumerated() {
                 
                 if rowIndex == keyViews.count {
                     keyViews.append([])
                 }
                 
-                if columnIndex == keyViews[rowIndex].count {
-                    let keyView = KeyUIView.init(key: key)
-                    keyViews[rowIndex].append(keyView)
-                    
-                    let halfKeyboardIndex: Int
-                    
-                    if columnIndex < layout.columnCount/2 {
-                        halfKeyboardIndex = 0
-                    }
-                    else {
-                        halfKeyboardIndex = 1
-                    }
-                    
-                    halfKeyboards[halfKeyboardIndex].addSubview(keyView)
-                }
-                else {
-                    keyViews[rowIndex][columnIndex].key = key
-                }
+                let keyView = KeyUIView.init(key: key)
+                keyViews[rowIndex].append(keyView)
+                
+                let halfKeyboardIndex = columnIndex < Key.layoutBoardColumnCount/2 ? 0 : 1
+                
+                halfKeyboards[halfKeyboardIndex].addSubview(keyView)
             }
         }
+    }
+    
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     var horizontalIndent: CGFloat = 0
@@ -86,8 +66,8 @@ class KeyboardLayoutUIView: UIView {
         for (halfKeyboardIndex, halfKeyboard) in halfKeyboards.enumerated() {
             
             halfKeyboard.frame.size = .init(
-                width: KeyUIView.size.width * .init(Keyboard.default.layout.columnCount / 2),
-                height: KeyUIView.size.height * .init(Keyboard.default.layout.rowCount)
+                width: KeyUIView.size.width * .init(Key.layoutBoardColumnCount / 2),
+                height: KeyUIView.size.height * .init(Key.layoutBoardRowCount)
             )
             
             if halfKeyboardIndex == 0 {
@@ -106,7 +86,7 @@ class KeyboardLayoutUIView: UIView {
                 
                 let halfKeyboardIndex: Int
                 
-                if keyIndex < layout.columnCount/2 {
+                if keyIndex < Key.layoutBoardColumnCount/2 {
                     halfKeyboardIndex = 0
                 }
                 else {

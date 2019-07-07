@@ -45,10 +45,10 @@ extension TISInputSource {
 }
 
 extension Array where Element == TISInputSource {
-    subscript(id: String) -> Element? {
+    subscript(id: String) -> Element {
         
         guard let index = map({$0.id}).firstIndex(of: id) else {
-            return nil
+            return TISInputSource.currentKeyboardLayout
         }
         
         return self[index]

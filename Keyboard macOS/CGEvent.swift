@@ -14,7 +14,7 @@ extension CGEvent {
         }
         
         set {
-            self.setIntegerValueField(.keyboardEventKeycode, value: .init(newValue))
+            self.setIntegerValueField(.keyboardEventKeycode, value: Int64(newValue))
         }
     }
     

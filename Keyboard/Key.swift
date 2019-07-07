@@ -15,9 +15,9 @@ final class Key {
         self.keycode = keycode
     }
     
-    private static let keys: [Key] = (0..<Keycode.keycodeMaxCount).map {Key.init(keycode: .init($0))}
+    private static let keys: [Key] = (0..<Keycode.keycodeMaxCount).map {Key.init(keycode: $0)}
     
-    static func by(keycode: Keycode) -> Key {keys[Int(keycode)]}
+    static func by(keycode: Keycode) -> Key {keys[keycode]}
     
     private var mainComponent: CharacterComponent {
         return Keyboard.default.layout.characterComponent(fromKeycode: keycode)

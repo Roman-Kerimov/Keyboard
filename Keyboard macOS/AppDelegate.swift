@@ -128,11 +128,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
         AppDelegate.skipTapCount += 2
         
         let source = CGEventSource.init(stateID: .hidSystemState)
-        let keyDown = CGEvent.init(keyboardEventSource: source, virtualKey: key.keycode, keyDown: true)
+        let keyDown = CGEvent.init(keyboardEventSource: source, virtualKey: CGKeyCode(key.keycode), keyDown: true)
         keyDown?.flags = flags
         keyDown?.post(tap: .cghidEventTap)
         
-        let keyUp = CGEvent.init(keyboardEventSource: source, virtualKey: key.keycode, keyDown: false)
+        let keyUp = CGEvent.init(keyboardEventSource: source, virtualKey: CGKeyCode(key.keycode), keyDown: false)
         keyUp?.post(tap: .cghidEventTap)
     }
     

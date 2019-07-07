@@ -15,9 +15,9 @@ struct KeyboardLayout: Equatable {
     
     private var characterComponents: [CharacterComponent] = .init(repeating: .none, count: Keycode.keycodeMaxCount)
     
-    func characterComponent(fromKeycode keycode: Keycode) -> CharacterComponent {characterComponents[.init(keycode)]}
+    func characterComponent(fromKeycode keycode: Keycode) -> CharacterComponent {characterComponents[keycode]}
     
-    func contain(_ key: Key) -> Bool {characterComponents[Int(key.keycode)] != .none || key == .enter}
+    func contain(_ key: Key) -> Bool {characterComponents[key.keycode] != .none || key == .enter}
     
     var components: Set<CharacterComponent> {
         .init(characterComponents + KeyboardLayout.option.characterComponents + KeyboardLayout.shiftUpDictionary.values + [.space])
@@ -30,11 +30,11 @@ struct KeyboardLayout: Equatable {
         
         for (characterComponentRow, keyRow) in zip(rows, Key.layoutBoard) {
             for (characterComponent, key) in zip(characterComponentRow, keyRow) {
-                characterComponents[Int.init(key.keycode)] = characterComponent
+                characterComponents[key.keycode] = characterComponent
             }
         }
         
-        characterComponents[Int.init(Key.space.keycode)] = .space
+        characterComponents[Key.space.keycode] = .space
         
         self.inputSourceID = defaultInputSourceID
     }

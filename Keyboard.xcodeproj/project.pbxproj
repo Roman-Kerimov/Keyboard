@@ -135,7 +135,6 @@
 		965D15C11D3146BB0098FA57 /* KeyboardUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965D15C01D3146BB0098FA57 /* KeyboardUIView.swift */; };
 		965D15C91D32AE3B0098FA57 /* KeyUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965D15C81D32AE3B0098FA57 /* KeyUIView.swift */; };
 		966194D31DE2FCEF007FCF02 /* KeyboardLayoutUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966194D21DE2FCEF007FCF02 /* KeyboardLayoutUIView.swift */; };
-		9665B96A2041D773001AB462 /* CGKeyCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665B9692041D773001AB462 /* CGKeyCode.swift */; };
 		9665F3781E9D921500850F97 /* CharacterCollectionUIViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665F3771E9D921500850F97 /* CharacterCollectionUIViewCell.swift */; };
 		966CB25420911C99005C7B5B /* CGAffineTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966CB25320911C99005C7B5B /* CGAffineTransform.swift */; };
 		966CB25520911C99005C7B5B /* CGAffineTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966CB25320911C99005C7B5B /* CGAffineTransform.swift */; };
@@ -460,7 +459,6 @@
 		965D15C01D3146BB0098FA57 /* KeyboardUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardUIView.swift; sourceTree = "<group>"; };
 		965D15C81D32AE3B0098FA57 /* KeyUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyUIView.swift; sourceTree = "<group>"; };
 		966194D21DE2FCEF007FCF02 /* KeyboardLayoutUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutUIView.swift; sourceTree = "<group>"; };
-		9665B9692041D773001AB462 /* CGKeyCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGKeyCode.swift; sourceTree = "<group>"; };
 		9665F3751E9D847300850F97 /* CharacterSequenceUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterSequenceUIView.swift; sourceTree = "<group>"; };
 		9665F3771E9D921500850F97 /* CharacterCollectionUIViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterCollectionUIViewCell.swift; sourceTree = "<group>"; };
 		966CB25320911C99005C7B5B /* CGAffineTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGAffineTransform.swift; sourceTree = "<group>"; };
@@ -906,7 +904,6 @@
 				9673CAD7203282490030E2CA /* AXUIElement.swift */,
 				960FEFED203D37590099E449 /* AXAttribute.swift */,
 				96AC6CA2203C23B200555164 /* CGEvent.swift */,
-				9665B9692041D773001AB462 /* CGKeyCode.swift */,
 				96DBC14A205EBD8700910E7A /* TISInputSource.swift */,
 				96C1EC2D205131EC00AC27CB /* CGEventFlags.swift */,
 				96ACD587205261EE007CFDCF /* NSPasteboard.swift */,
@@ -1421,7 +1418,6 @@
 				96AFEBA9202FAB830099F70B /* LocalizedMenuItem.swift in Sources */,
 				96E0342420317A330039E653 /* QUIT.swift in Sources */,
 				96AFEBA7202FA9080099F70B /* QuitMenuItem.swift in Sources */,
-				9665B96A2041D773001AB462 /* CGKeyCode.swift in Sources */,
 				96DB1A7A202FB84F00B96D3C /* legalNotices.swift in Sources */,
 				96E033EC2031540A0039E653 /* KEYBOARD.swift in Sources */,
 				966EB96D202FC0D3007718F2 /* LegalNoticesMenuItem.swift in Sources */,

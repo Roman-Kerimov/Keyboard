@@ -9,9 +9,9 @@ import AppKit
 
 class FloatingWindow: NSWindow {
     
-    init(contentView: NSView) {
+    init() {
         super.init(
-            contentRect: contentView.frame,
+            contentRect: .zero,
             styleMask: [.titled, .fullSizeContentView],
             backing: .buffered,
             defer: true
@@ -23,8 +23,6 @@ class FloatingWindow: NSWindow {
         titlebarAppearsTransparent = true
         titleVisibility = .hidden
         isMovable = false
-        
-        self.contentView = contentView
         
         makeKeyAndOrderFront(self)
     }

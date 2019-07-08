@@ -6,13 +6,13 @@
 //
 
 import SwiftUI
-import Combine
 
-class CharacterSequenceWindow: FloatingWindow {
+final class CharacterSequenceWindow: FloatingWindow {
     
-    init() {
-        super.init(contentView: NSHostingView.init(rootView: CharacterSequenceView().environmentObject(Keyboard.default.characterSequence)))
+    override init() {
+        super.init()
         
+        contentView = NSHostingView.init(rootView: CharacterSequenceView().environmentObject(Keyboard.default.characterSequence))
         setFrame(.init(origin: .zero, size: .init(width: 1, height: .characterSequenceDefaultHeight)), display: true)
     }
     

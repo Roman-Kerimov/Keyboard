@@ -7,11 +7,12 @@
 
 import SwiftUI
 
-class CharacterSearchWindow: FloatingWindow {
+final class CharacterSearchWindow: FloatingWindow {
     
-    init() {
-        super.init(contentView: NSHostingView(rootView: CharacterSearchView().environmentObject(Keyboard.default.characterSearch)))
+    override init() {
+        super.init()
         
+        contentView = NSHostingView(rootView: CharacterSearchView().environmentObject(Keyboard.default.characterSearch))
         setFrame(.init(origin: .zero, size: .init(width: .characterSearchDefaultWidth, height: .characterSearchDefaultHeight)), display: true)
     }
 }

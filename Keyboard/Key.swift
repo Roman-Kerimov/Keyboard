@@ -19,6 +19,36 @@ final class Key {
     
     static func by(keycode: Keycode) -> Key {keys[Int(keycode)]}
     
+    static let keysByLabel: [String: Key] = .init(uniqueKeysWithValues: keys.filter {!$0.label.isEmpty} .map {($0.label, $0)})
+    
+    static func by(labelCharacter: Character) -> Key? {
+        guard let key = keysByLabel[labelCharacter.description] else {
+            return nil
+        }
+        
+        return key
+    }
+    
+    static let keysByShiftUpLabel: [String: Key] = .init(uniqueKeysWithValues: keys.filter {!$0.shiftUpLabel.isEmpty} .map {($0.shiftUpLabel, $0)})
+    
+    static func by(shiftUpLabelCharacter: Character) -> Key? {
+        guard let key = keysByShiftUpLabel[shiftUpLabelCharacter.description] else {
+            return nil
+        }
+        
+        return key
+    }
+    
+    static let keysByShiftDownLabel: [String: Key] = .init(uniqueKeysWithValues: keys.filter {!$0.shiftDownLabel.isEmpty} .map {($0.shiftDownLabel.first!.description, $0)})
+    
+    static func by(shiftDownLabelCharacter: Character) -> Key? {
+        guard let key = keysByShiftDownLabel[shiftDownLabelCharacter.description] else {
+            return nil
+        }
+        
+        return key
+    }
+    
     private var mainComponent: CharacterComponent {
         return Keyboard.default.layout.characterComponent(fromKeycode: keycode)
     }

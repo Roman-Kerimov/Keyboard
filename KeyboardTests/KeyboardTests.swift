@@ -31,6 +31,10 @@ class KeyboardTests: XCTestCase, KeyboardDelegate {
         return .init(beforeInput: document, afterInput: .init())
     }
     
+    #if canImport(UIKit)
+    var returnKeyType: UIReturnKeyType? {nil}
+    #endif
+    
     var document: String = .init()
 
     override func setUp() {
@@ -42,16 +46,16 @@ class KeyboardTests: XCTestCase, KeyboardDelegate {
     }
 
     func testExtraArrayExtension() {
-        let t: Key = Key.init(label: "t")
+        let t: Key = .by(labelCharacter: "t")!
         Keyboard.default.down(key: t)
         Keyboard.default.up(key: t)
         
-        let h: Key = Key.init(label: "h")
+        let h: Key = .by(labelCharacter: "h")!
         Keyboard.default.down(key: h)
         Keyboard.default.shift(direction: .left)
         Keyboard.default.up(key: h)
         
-        let a: Key = Key.init(label: "a")
+        let a: Key = .by(labelCharacter:"a")!
         Keyboard.default.down(key: a)
         Keyboard.default.shift(direction: .right)
         XCTAssertEqual(document, "þə")
@@ -59,11 +63,11 @@ class KeyboardTests: XCTestCase, KeyboardDelegate {
     }
     
     func testModifierLetters() {
-        let a: Key = Key.init(label: "a")
+        let a: Key = .by(labelCharacter:"a")!
         Keyboard.default.down(key: a)
         Keyboard.default.up(key: a)
         
-        let u: Key = Key.init(label: "u")
+        let u: Key = .by(labelCharacter:"u")!
         Keyboard.default.down(key: u)
         
         Keyboard.default.shift(direction: .upLeft)
@@ -74,7 +78,7 @@ class KeyboardTests: XCTestCase, KeyboardDelegate {
         
         Keyboard.default.up(key: u)
         
-        let o: Key = Key.init(label: "o")
+        let o: Key = .by(labelCharacter:"o")!
         Keyboard.default.down(key: o)
         
         Keyboard.default.shift(direction: .downLeft)
@@ -87,7 +91,7 @@ class KeyboardTests: XCTestCase, KeyboardDelegate {
     }
     
     func testCombiningCharactersAtBeginningOfString() {
-        let a: Key = Key.init(label: "a")
+        let a: Key = .by(labelCharacter:"a")!
         Keyboard.default.down(key: a)
         
         Keyboard.default.shift(direction: .upLeft)
@@ -98,7 +102,7 @@ class KeyboardTests: XCTestCase, KeyboardDelegate {
     }
     
     func testCompoundCombiningCharacters() {
-        let a: Key = Key.init(label: "a")
+        let a: Key = .by(labelCharacter:"a")!
         Keyboard.default.down(key: a)
         Keyboard.default.up(key: a)
         
@@ -110,7 +114,7 @@ class KeyboardTests: XCTestCase, KeyboardDelegate {
         
         Keyboard.default.up(key: a)
         
-        let hyphen = Key.init(label: "‐")
+        let hyphen: Key = .by(labelCharacter:"‐")!
         Keyboard.default.down(key: hyphen)
         
         Keyboard.default.shift(direction: .left)
@@ -120,11 +124,11 @@ class KeyboardTests: XCTestCase, KeyboardDelegate {
     }
     
     func testExtraLigatures() {
-        let n: Key = Key.init(label: "n")
+        let n: Key = .by(labelCharacter:"n")!
         Keyboard.default.down(key: n)
         Keyboard.default.up(key: n)
         
-        let j: Key = Key.init(label: "j")
+        let j: Key = .by(labelCharacter:"j")!
         Keyboard.default.down(key: j)
         Keyboard.default.shift(direction: .left)
         Keyboard.default.shift(direction: .right)
@@ -134,16 +138,16 @@ class KeyboardTests: XCTestCase, KeyboardDelegate {
     }
     
     func testCharactersWithRingComponent() {
-        let x: Key = Key.init(label: "x")
+        let x: Key = .by(labelCharacter:"x")!
         Keyboard.default.down(key: x)
         Keyboard.default.up(key: x)
         
-        let h: Key = Key.init(label: "h")
+        let h: Key = .by(labelCharacter:"h")!
         Keyboard.default.down(key: h)
         Keyboard.default.shift(direction: .left)
         Keyboard.default.up(key: h)
         
-        let o: Key = Key.init(label: "o")
+        let o: Key = .by(labelCharacter:"o")!
         Keyboard.default.down(key: o)
         Keyboard.default.shift(direction: .left)
         Keyboard.default.up(key: o)
@@ -152,7 +156,7 @@ class KeyboardTests: XCTestCase, KeyboardDelegate {
     }
     
     func testCapitalExtraCharacters() {
-        let m: Key = Key.init(label: "m")
+        let m: Key = .by(labelCharacter:"m")!
         Keyboard.default.down(key: m)
         
         Keyboard.default.shift(direction: .up)
@@ -165,11 +169,12 @@ class KeyboardTests: XCTestCase, KeyboardDelegate {
     }
     
     func testEquivalentTo() {
-        let equal = Key.init(label: "=")
+        let equal: Key = .by(shiftDownLabelCharacter:"=")!
         Keyboard.default.down(key: equal)
+        Keyboard.default.shift(direction: .down)
         Keyboard.default.up(key: equal)
         
-        let u = Key.init(label: "u")
+        let u: Key = .by(labelCharacter:"u")!
         Keyboard.default.down(key: u)
         Keyboard.default.shift(direction: .left)
         Keyboard.default.up(key: u)
@@ -211,7 +216,17 @@ class KeyboardTests: XCTestCase, KeyboardDelegate {
                 guard let shiftDirection = Keyboard.ShiftDirection.init(rawValue: gestureComponent) else {
                     upKeyIfNeeded()
                     
-                    Keyboard.default.down(key: Key.init(label: gestureComponent.description))
+                    if let key: Key = .by(labelCharacter: gestureComponent) {
+                        Keyboard.default.down(key: key)
+                    }
+                    else if let key: Key = .by(shiftUpLabelCharacter: gestureComponent) {
+                        Keyboard.default.down(key: key)
+                        Keyboard.default.shift(direction: .up)
+                    }
+                    else if let key: Key = .by(shiftDownLabelCharacter: gestureComponent) {
+                        Keyboard.default.down(key: key)
+                        Keyboard.default.shift(direction: .down)
+                    }
                     
                     continue
                 }

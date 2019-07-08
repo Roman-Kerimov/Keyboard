@@ -25,7 +25,7 @@ final class Key {
     
     var label: String {
         
-        #if os(macOS)
+        #if canImport(Carbon)
         if Keyboard.default.layout == .system {
             return keycode.label(flags: [])
         }

@@ -64,9 +64,11 @@ extension String {
     
     func size(fontName: String, fontSize: CGFloat) -> CGSize {
         
-        #if os(macOS)
+        #if canImport(AppKit)
         typealias Font = NSFont
-        #else
+        #endif
+        
+        #if canImport(UIKit)
         typealias Font = UIFont
         #endif
         
@@ -99,11 +101,13 @@ extension String {
     
     func textHeightFrom(width: CGFloat, fontName: String = "System Font", fontSize: CGFloat = .systemFontSize) -> CGFloat {
         
-        #if os(macOS)
+        #if canImport(AppKit)
         typealias Font = NSFont
         let text: NSTextField = .init(string: self)
         text.font = NSFont.init(name: fontName, size: fontSize)
-        #else
+        #endif
+        
+        #if canImport(UIKit)
         typealias Font = UIFont
         let text: UILabel = .init()
         text.text = self

@@ -30,12 +30,7 @@ class CharacterCollectionUIViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    #if os(macOS)
-    override func layout() {crossLayout()}
-    #else
-    override func layoutSubviews() {crossLayout()}
-    #endif
-    func crossLayout() {
+    override func layoutSubviews() {
         title.frame.size = frame.size
         unicodeName.frame.origin = .init(x: frame.maxX, y: (frame.height - unicodeName.frame.height)/2)
     }

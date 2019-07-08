@@ -17,7 +17,7 @@ protocol KeyboardDelegate {
     
     var documentContext: DocumentContext {get}
     
-    #if !os(macOS)
+    #if canImport(UIKit)
     var returnKeyType: UIReturnKeyType? {get}
     #endif
 
@@ -29,10 +29,10 @@ protocol KeyboardDelegate {
 extension KeyboardDelegate {
     
     var needsReturn: Bool {
-        #if os(macOS)
-        return true
-        #else
+        #if canImport(UIKit)
         return Keyboard.default.delegate?.returnKeyType == .default
+        #else
+        return true
         #endif
     }
     

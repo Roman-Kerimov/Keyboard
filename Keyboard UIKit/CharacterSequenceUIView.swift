@@ -56,16 +56,6 @@ class CharacterSequenceUIView: CharacterCollectionUIView {
         
         OperationQueue.main.addOperation {
             
-            #if os(macOS)
-            if self.layout.collectionViewContentSize.width == 0 {
-                self.window?.setIsVisible(false)
-            }
-            else {
-                self.window?.setContentSize(.init(width: min(self.layout.collectionViewContentSize.width, UIScreen.main.bounds.width - (self.window?.frame.origin.x ?? 0)), height: self.frame.height))
-                self.window?.setIsVisible(true)
-            }
-            #endif
-            
             if self.contentSize.width > self.frame.size.width {
                 self.scrollRectToVisible(.init(origin: .init(x: self.contentSize.width - self.visibleSize.width, y: 0), size: self.visibleSize), animated: true)
             }

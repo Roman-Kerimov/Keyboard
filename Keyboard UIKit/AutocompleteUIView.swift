@@ -45,12 +45,7 @@ class AutocompleteUIView: UICollectionReusableView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    #if os(macOS)
-    override func layout() {crossLayout()}
-    #else
-    override func layoutSubviews() {crossLayout()}
-    #endif
-    func crossLayout() {
+    override func layoutSubviews() {
         button.frame.size = frame.size
     }
 }

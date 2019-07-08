@@ -32,9 +32,7 @@ class ViewController<View: UIView>: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        #if !os(macOS)
-            view.willAppear(animated)
-        #endif
+        view.willAppear(animated)
     }
 
 }

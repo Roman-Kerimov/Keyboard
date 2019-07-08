@@ -216,6 +216,14 @@ class KeyboardTests: XCTestCase, KeyboardDelegate {
                 guard let shiftDirection = Keyboard.ShiftDirection.init(rawValue: gestureComponent) else {
                     upKeyIfNeeded()
                     
+                    guard gestureComponent.characterComponents != [.quotationMark] else {
+                        Keyboard.default.down(key: .by(shiftDownLabelCharacter: "'")!)
+                        Keyboard.default.shift(direction: .down)
+                        Keyboard.default.shift(direction: .up)
+                        
+                        continue
+                    }
+                    
                     if let key: Key = .by(labelCharacter: gestureComponent) {
                         Keyboard.default.down(key: key)
                     }

@@ -780,6 +780,44 @@
 			path = "Keyboard iOSTests";
 			sourceTree = "<group>";
 		};
+		9673A3C222D39C26003DE81A /* Windows */ = {
+			isa = PBXGroup;
+			children = (
+				96BE9C7020A8340400C2C03F /* CharacterSearchWindow.swift */,
+				963212B5217C61BB00E8A6B2 /* CharacterSequenceWindow.swift */,
+				963212B3217B820500E8A6B2 /* FloatingWindow.swift */,
+				96B8908A21E04EA800917CB2 /* GuideWindow.swift */,
+			);
+			path = Windows;
+			sourceTree = "<group>";
+		};
+		9673A3C322D39C6C003DE81A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				962A3E2C22C9F8140024D0AF /* CharacterSequenceView.swift */,
+				96A41BCF22C22986009057F5 /* CharacterSearchView.swift */,
+				962A3E2222C96E1F0024D0AF /* LegalNoticesView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9673A3C422D39CEE003DE81A /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				963DE0B1202F012B0040A448 /* StatusMenu.swift */,
+				96443FBB208BE94D002FFA6B /* AccessibilityMenuItem.swift */,
+				96AED32E203120DE00498A7E /* LayoutMenuItem.swift */,
+				96AED33020312AE600498A7E /* InterfaceLanguageMenuItem.swift */,
+				96AED33220312BA500498A7E /* LanguageMenuItem.swift */,
+				965A8B3D20D2EDF800E0260E /* VisibilityMenuItem.swift */,
+				966EB96C202FC0D3007718F2 /* LegalNoticesMenuItem.swift */,
+				96F28C2320302AC00023313C /* VersionMenuItem.swift */,
+				96AFEBA6202FA9080099F70B /* QuitMenuItem.swift */,
+				96AFEBA8202FAB830099F70B /* LocalizedMenuItem.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
 		9697C3D720BB180300FE3007 /* Emoji */ = {
 			isa = PBXGroup;
 			children = (
@@ -883,15 +921,12 @@
 			isa = PBXGroup;
 			children = (
 				963DE0AF202F00B60040A448 /* main.swift */,
+				9673A3C422D39CEE003DE81A /* Menu */,
+				9673A3C222D39C26003DE81A /* Windows */,
+				9673A3C322D39C6C003DE81A /* Views */,
 				96E354E92020DDBC00668374 /* AppDelegate.swift */,
 				968DEA8020CCDFA400750040 /* eventTapCallback.swift */,
 				96D6E94E20C8494800C357FA /* NonAccessibilityDocumentContext.swift */,
-				963212B3217B820500E8A6B2 /* FloatingWindow.swift */,
-				96B8908A21E04EA800917CB2 /* GuideWindow.swift */,
-				96BE9C7020A8340400C2C03F /* CharacterSearchWindow.swift */,
-				96A41BCF22C22986009057F5 /* CharacterSearchView.swift */,
-				963212B5217C61BB00E8A6B2 /* CharacterSequenceWindow.swift */,
-				962A3E2C22C9F8140024D0AF /* CharacterSequenceView.swift */,
 				967502532089E1D300FD6CED /* LaunchAgent.swift */,
 				9673CAD7203282490030E2CA /* AXUIElement.swift */,
 				960FEFED203D37590099E449 /* AXAttribute.swift */,
@@ -900,17 +935,6 @@
 				96C1EC2D205131EC00AC27CB /* CGEventFlags.swift */,
 				96ACD587205261EE007CFDCF /* NSPasteboard.swift */,
 				965A8B4720D3268F00E0260E /* NSWorkspace.swift */,
-				963DE0B1202F012B0040A448 /* StatusMenu.swift */,
-				96443FBB208BE94D002FFA6B /* AccessibilityMenuItem.swift */,
-				96AED32E203120DE00498A7E /* LayoutMenuItem.swift */,
-				96AED33020312AE600498A7E /* InterfaceLanguageMenuItem.swift */,
-				96AED33220312BA500498A7E /* LanguageMenuItem.swift */,
-				965A8B3D20D2EDF800E0260E /* VisibilityMenuItem.swift */,
-				966EB96C202FC0D3007718F2 /* LegalNoticesMenuItem.swift */,
-				962A3E2222C96E1F0024D0AF /* LegalNoticesView.swift */,
-				96F28C2320302AC00023313C /* VersionMenuItem.swift */,
-				96AFEBA6202FA9080099F70B /* QuitMenuItem.swift */,
-				96AFEBA8202FAB830099F70B /* LocalizedMenuItem.swift */,
 				960F7E8322CD62FE00419F62 /* NSFont.swift */,
 				96E354ED2020DDBC00668374 /* Assets.xcassets */,
 				96E354F22020DDBD00668374 /* Info.plist */,

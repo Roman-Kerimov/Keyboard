@@ -689,12 +689,12 @@
 			children = (
 				9697F880202FA868001EC50A /* Keyboard */,
 				96B6BC492031AD4C002509E4 /* KeyboardTests */,
+				96E354E82020DDBC00668374 /* Keyboard macOS */,
+				96E354FB2020DDBD00668374 /* KeyboardTests macOS */,
 				96BAEF0C2016D0FD003B32C0 /* Keyboard UIKit */,
 				964AB9331D1B6490004C827C /* Keyboard iOS */,
 				965BFAC71F7979FA00B8F682 /* KeyboardTests iOS */,
 				964AB9681D1B6535004C827C /* KeyboardExtension iOS */,
-				96E354E82020DDBC00668374 /* Keyboard macOS */,
-				96E354FB2020DDBD00668374 /* KeyboardTests macOS */,
 				9608923620AF4F98007AA01E /* UCD */,
 				9697C3D720BB180300FE3007 /* Emoji */,
 				964AB9321D1B6490004C827C /* Products */,
@@ -1103,11 +1103,11 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				964AB9301D1B6490004C827C /* Keyboard iOS */,
-				964AB9661D1B6535004C827C /* KeyboardExtension iOS */,
-				965BFAC51F7979FA00B8F682 /* KeyboardTests iOS */,
 				96E354E62020DDBC00668374 /* Keyboard macOS */,
 				96E354F72020DDBD00668374 /* KeyboardTests macOS */,
+				964AB9301D1B6490004C827C /* Keyboard iOS */,
+				965BFAC51F7979FA00B8F682 /* KeyboardTests iOS */,
+				964AB9661D1B6535004C827C /* KeyboardExtension iOS */,
 			);
 		};
 /* End PBXProject section */

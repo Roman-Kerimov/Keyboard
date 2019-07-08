@@ -17,7 +17,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "964AB9661D1B6535004C827C"
                BuildableName = "KeyboardExtension.appex"
-               BlueprintName = "KeyboardExtension iOS"
+               BlueprintName = "Keyboard iOSExtension"
                ReferencedContainer = "container:Keyboard.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,7 +47,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "964AB9661D1B6535004C827C"
             BuildableName = "KeyboardExtension.appex"
-            BlueprintName = "KeyboardExtension iOS"
+            BlueprintName = "Keyboard iOSExtension"
             ReferencedContainer = "container:Keyboard.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

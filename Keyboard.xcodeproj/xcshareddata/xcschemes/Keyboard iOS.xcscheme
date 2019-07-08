@@ -43,7 +43,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "965BFAC51F7979FA00B8F682"
                BuildableName = "KeyboardTests.xctest"
-               BlueprintName = "KeyboardTests iOS"
+               BlueprintName = "Keyboard iOSTests"
                ReferencedContainer = "container:Keyboard.xcodeproj">
             </BuildableReference>
          </TestableReference>

@@ -1,6 +1,6 @@
 //
-//  KeyboardTests_iOS.swift
-//  KeyboardTests iOS
+//  Keyboard_iOSTests.swift
+//  Keyboard iOSTests
 //
 //  Created by Roman Kerimov on 2017-09-25.
 //
@@ -8,7 +8,7 @@
 import XCTest
 @testable import Keyboard
 
-class KeyboardTests_iOS: XCTestCase {
+class Keyboard_iOSTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

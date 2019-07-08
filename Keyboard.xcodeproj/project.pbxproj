@@ -403,7 +403,7 @@
 		9608928520B001AD007AA01E /* SearchUnicodeScalars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUnicodeScalars.swift; sourceTree = "<group>"; };
 		960F6E921EC9ED0400EFC7B7 /* CharacterCollectionUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterCollectionUIView.swift; sourceTree = "<group>"; };
 		960F6E941EC9F7E600EFC7B7 /* CharacterSearchUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterSearchUIView.swift; sourceTree = "<group>"; };
-		960F7E8022CD628B00419F62 /* UIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIFont.swift; path = Keyboard/UIFont.swift; sourceTree = SOURCE_ROOT; };
+		960F7E8022CD628B00419F62 /* UIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIFont.swift; path = "Keyboard iOSExtension/UIFont.swift"; sourceTree = SOURCE_ROOT; };
 		960F7E8322CD62FE00419F62 /* NSFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSFont.swift; sourceTree = "<group>"; };
 		960FEFED203D37590099E449 /* AXAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AXAttribute.swift; sourceTree = "<group>"; };
 		96167F5022C7B5300004DC8D /* CharacterSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSearch.swift; sourceTree = "<group>"; };
@@ -691,7 +691,6 @@
 				96B6BC492031AD4C002509E4 /* KeyboardTests */,
 				96E354E82020DDBC00668374 /* Keyboard macOS */,
 				96E354FB2020DDBD00668374 /* Keyboard macOSTests */,
-				96BAEF0C2016D0FD003B32C0 /* Keyboard UIKit */,
 				964AB9331D1B6490004C827C /* Keyboard iOS */,
 				965BFAC71F7979FA00B8F682 /* Keyboard iOSTests */,
 				964AB9681D1B6535004C827C /* Keyboard iOSExtension */,
@@ -737,6 +736,37 @@
 			isa = PBXGroup;
 			children = (
 				964AB96B1D1B6535004C827C /* Info.plist */,
+				96EA39E11EB0EEDD00F3D804 /* Labels.ai */,
+				96EA39DF1EB0EEDD00F3D804 /* Labels_HideKeyboard.ai */,
+				96EA39E01EB0EEDD00F3D804 /* Labels_NextKeyboard.ai */,
+				96767C241EB11E28004D847C /* Labels_Settings.ai */,
+				961CE9F621B0CCEA00E1A14D /* AutocompleteUIView.swift */,
+				962B5342218C91EA001C4914 /* CGRect.swift */,
+				960F6E921EC9ED0400EFC7B7 /* CharacterCollectionUIView.swift */,
+				9665F3771E9D921500850F97 /* CharacterCollectionUIViewCell.swift */,
+				960F6E941EC9F7E600EFC7B7 /* CharacterSearchUIView.swift */,
+				9665F3751E9D847300850F97 /* CharacterSequenceUIView.swift */,
+				96F7FBE81FBB299400F7146C /* CollectionViewFlowLayout.swift */,
+				962A3E1E22C9655E0024D0AF /* CombineBackwardCompatibility.swift */,
+				9633A3C91E5DFE8D00DFA503 /* DeleteRowUIView.swift */,
+				966194D21DE2FCEF007FCF02 /* KeyboardLayoutUIView.swift */,
+				965D15C01D3146BB0098FA57 /* KeyboardUIView.swift */,
+				964AB9691D1B6535004C827C /* KeyboardUIViewController.swift */,
+				965D15C81D32AE3B0098FA57 /* KeyUIView.swift */,
+				96BC5F551DEB961F002E0752 /* LabelUIView.swift */,
+				969F15F61E54EE3600C0DD7D /* LanguagesUIView.swift */,
+				961FC32D1F3ADD9B00ADB15D /* LegalNoticesUIView.swift */,
+				963BA6621F3B1FD000BFE3A7 /* LegalTextUIView.swift */,
+				961CE9FE21B0D32800E1A14D /* ReuseIdentifier.swift */,
+				964ECA7D1E536FE8008E8757 /* SettingsContainerUIView.swift */,
+				96F8D1D01E26FAE0000D1DFC /* SettingsUIView.swift */,
+				9654DF791D4E1D0900DDB0EF /* SpaceRowUIView.swift */,
+				968694C01EA0F3D100E6C9D0 /* UIColor.swift */,
+				960F7E8022CD628B00419F62 /* UIFont.swift */,
+				96EA39D61EAFDDDE00F3D804 /* UIImage.swift */,
+				9637C6F020F2440200078395 /* UIKeyboardAppearance.swift */,
+				969E83041EED842E009A1F2D /* UIView.swift */,
+				969F15F41E549BD300C0DD7D /* ViewController<UIView>.swift */,
 			);
 			path = "Keyboard iOSExtension";
 			sourceTree = "<group>";
@@ -813,44 +843,6 @@
 				96D2356F224CC76B0018C266 /* StringTests.swift */,
 			);
 			path = KeyboardTests;
-			sourceTree = "<group>";
-		};
-		96BAEF0C2016D0FD003B32C0 /* Keyboard UIKit */ = {
-			isa = PBXGroup;
-			children = (
-				96EA39DF1EB0EEDD00F3D804 /* Labels_HideKeyboard.ai */,
-				96EA39E01EB0EEDD00F3D804 /* Labels_NextKeyboard.ai */,
-				96767C241EB11E28004D847C /* Labels_Settings.ai */,
-				96EA39E11EB0EEDD00F3D804 /* Labels.ai */,
-				961CE9F621B0CCEA00E1A14D /* AutocompleteUIView.swift */,
-				962B5342218C91EA001C4914 /* CGRect.swift */,
-				960F6E921EC9ED0400EFC7B7 /* CharacterCollectionUIView.swift */,
-				9665F3771E9D921500850F97 /* CharacterCollectionUIViewCell.swift */,
-				960F6E941EC9F7E600EFC7B7 /* CharacterSearchUIView.swift */,
-				9665F3751E9D847300850F97 /* CharacterSequenceUIView.swift */,
-				96F7FBE81FBB299400F7146C /* CollectionViewFlowLayout.swift */,
-				962A3E1E22C9655E0024D0AF /* CombineBackwardCompatibility.swift */,
-				9633A3C91E5DFE8D00DFA503 /* DeleteRowUIView.swift */,
-				966194D21DE2FCEF007FCF02 /* KeyboardLayoutUIView.swift */,
-				965D15C01D3146BB0098FA57 /* KeyboardUIView.swift */,
-				964AB9691D1B6535004C827C /* KeyboardUIViewController.swift */,
-				965D15C81D32AE3B0098FA57 /* KeyUIView.swift */,
-				96BC5F551DEB961F002E0752 /* LabelUIView.swift */,
-				969F15F61E54EE3600C0DD7D /* LanguagesUIView.swift */,
-				961FC32D1F3ADD9B00ADB15D /* LegalNoticesUIView.swift */,
-				963BA6621F3B1FD000BFE3A7 /* LegalTextUIView.swift */,
-				961CE9FE21B0D32800E1A14D /* ReuseIdentifier.swift */,
-				964ECA7D1E536FE8008E8757 /* SettingsContainerUIView.swift */,
-				96F8D1D01E26FAE0000D1DFC /* SettingsUIView.swift */,
-				9654DF791D4E1D0900DDB0EF /* SpaceRowUIView.swift */,
-				968694C01EA0F3D100E6C9D0 /* UIColor.swift */,
-				960F7E8022CD628B00419F62 /* UIFont.swift */,
-				96EA39D61EAFDDDE00F3D804 /* UIImage.swift */,
-				9637C6F020F2440200078395 /* UIKeyboardAppearance.swift */,
-				969E83041EED842E009A1F2D /* UIView.swift */,
-				969F15F41E549BD300C0DD7D /* ViewController<UIView>.swift */,
-			);
-			path = "Keyboard UIKit";
 			sourceTree = "<group>";
 		};
 		96DB1A77202FB80300B96D3C /* Frameworks */ = {

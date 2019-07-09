@@ -9,7 +9,7 @@
 import Foundation
 import Calculator
 
-class Keyboard: NSObject {
+final class Keyboard {
     
     static let `default`: Keyboard = .init()
     var delegate: KeyboardDelegate?
@@ -437,8 +437,7 @@ class Keyboard: NSObject {
         case `default`
     }
     
-    private override init() {
-        super.init()
+    private init() {
         
         UserDefaults.standard.register(defaults: [layoutKey : KeyboardLayout.qwerty.name])
         

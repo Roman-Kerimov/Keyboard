@@ -39,16 +39,6 @@ class AppDelegate: NSObject {
         AppDelegate.synchronizeKeyboardLayout()
     }
     
-    static func synchronizeSystemInputSource() {
-        let inputSource = TISInputSource.inputSourceList[Keyboard.default.layout.inputSourceID]
-        TISEnableInputSource(inputSource)
-        TISSelectInputSource(inputSource)
-    }
-    
-    @objc func synchronizeSystemInputSource() {
-        AppDelegate.synchronizeSystemInputSource()
-    }
-    
     private func tap(label: String, flags: CGEventFlags = .init()) {
         guard let keycode: Keycode = .from(label: label, flags: .maskCommand) else {
             return
@@ -185,7 +175,11 @@ extension AppDelegate: NSApplicationDelegate {
         
         CFNotificationCenterAddObserver(CFNotificationCenterGetDistributedCenter(), nil, AppDelegate.synchronizeKeyboardLayoutNotificationCallback, kTISNotifySelectedKeyboardInputSourceChanged, nil, .deliverImmediately)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(synchronizeSystemInputSource), name: .LayoutDidChange, object: nil)
+        _ = Keyboard.default.didChange.sink { (keyboard) in
+            let inputSource = TISInputSource.inputSourceList[keyboard.layout.inputSourceID]
+            TISEnableInputSource(inputSource)
+            TISSelectInputSource(inputSource)
+        }
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {

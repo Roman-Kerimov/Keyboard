@@ -130,7 +130,7 @@ class KeyUIView: UIButton {
         NotificationCenter.default.addObserver(self, selector: #selector(setNeedsLayout), name: .KeyboardStateDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(setNeedsLayout), name: .KeyboardAppearanceDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(setNeedsLayout), name: .DocumentContextDidChange, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(setNeedsLayout), name: .LayoutDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(setNeedsLayout), publisher: Keyboard.self)
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -97,7 +97,7 @@ internal class KeyboardUIView: UIView {
         settingsContainerView.backButton.addTarget(self, action: #selector(hideSettings), for: .allTouchEvents)
         
         NotificationCenter.default.addObserver(self, selector: #selector(setLayout), name: .LayoutDidChange, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(setNeedsLayout), name: .LayoutModeDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(setNeedsLayout), publisher: Keyboard.self)
     }
     
     required internal init?(coder aDecoder: NSCoder) {

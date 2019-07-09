@@ -6,10 +6,12 @@
 //
 //
 
-import Foundation
+import SwiftUI
+import Combine
 import Calculator
 
-final class Keyboard {
+final class Keyboard: BindableObject {
+    var didChange: PassthroughSubject<Keyboard, Never> = .init()
     
     static let `default`: Keyboard = .init()
     var delegate: KeyboardDelegate?
@@ -563,7 +565,7 @@ final class Keyboard {
             UserDefaults.standard.set(newValue.rawValue, forKey: layoutModeKey)
             UserDefaults.standard.synchronize()
             
-            NotificationCenter.default.post(name: .LayoutModeDidChange, object: nil)
+            didChange.send(self)
         }
     }
 
@@ -587,6 +589,4 @@ extension NSNotification.Name {
     static let DocumentContextDidChange: NSNotification.Name = .init("oDap18soqXQONnkeMJsCZSGmkexar2g")
     
     static let LayoutDidChange: NSNotification.Name = .init("DjG5zBrx84Y5CwuF858vXxznGIFNnQ5")
-    
-    static let LayoutModeDidChange: NSNotification.Name = .init("JkvFKpRydra3urZI47XVkMoMnd8bFhV")
 }

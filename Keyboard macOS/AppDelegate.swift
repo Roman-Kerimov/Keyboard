@@ -8,7 +8,7 @@
 import AppKit
 import Carbon
 
-class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
+class AppDelegate: NSObject {
     
     private let isProcessTrusted: Bool = AXIsProcessTrusted()
 
@@ -23,68 +23,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
     static let characterSequenceWindow: CharacterSequenceWindow = .init()
     
     var eventTap: CFMachPort? = nil
-
-    func applicationDidFinishLaunching(_ aNotification: Notification) {
-        
-        AppDelegate.synchronizeKeyboardLayout()
-        
-        NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
-        
-        layoutWindows()
-        
-        AppDelegate.characterSearchWindow.setIsVisible(isProcessTrusted)
-        AppDelegate.characterSequenceWindow.setIsVisible(isProcessTrusted)
-        
-        Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true) { (timer) in
-            if self.isProcessTrusted != AXIsProcessTrusted() {
-                let keyboard: Process = .init()
-                keyboard.launchPath = Bundle.main.executablePath!
-                keyboard.launch()
-                LaunchAgent.unload()
-                NSApp.terminate(self)
-            }
-            
-            if self.previousDocumentContext != self.documentContext {
-                self.previousDocumentContext = self.documentContext
-                
-                NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
-                
-                AppDelegate.characterSearchWindow.setIsVisible(self.previousDocumentContext != .init())
-                AppDelegate.characterSequenceWindow.setIsVisible(self.previousDocumentContext != .init())
-            }
-            
-            self.statusMenu.visibilityMenuItem.isHidden = !AppDelegate.isUserDefaultsVisibility
-            self.statusMenu.visibilityMenuItem.updateLocalizedStrings()
-        }
-        
-        Keyboard.default.delegate = self
-        
-        let keyboardEventMask: CGEventMask = 1 << CGEventType.keyDown.rawValue | 1 << CGEventType.keyUp.rawValue | 1 << CGEventType.flagsChanged.rawValue
-        
-        let mouseEventMask: CGEventMask = 1 << CGEventType.leftMouseDown.rawValue | 1 << CGEventType.rightMouseDown.rawValue
-        
-        let eventMask: CGEventMask = keyboardEventMask | mouseEventMask
-        
-        eventTap = CGEvent.tapCreate(tap: .cghidEventTap, place: .headInsertEventTap, options: .defaultTap, eventsOfInterest: eventMask, callback: eventTapCallback, userInfo: nil)
-
-        if let eventTap = self.eventTap {
-            
-            CFRunLoopAddSource(CFRunLoopGetCurrent(), CFMachPortCreateRunLoopSource(kCFAllocatorDefault, eventTap, 0), .commonModes)
-            CGEvent.tapEnable(tap: eventTap, enable: true)
-        }
-        
-        CFNotificationCenterAddObserver(CFNotificationCenterGetDistributedCenter(), nil, AppDelegate.synchronizeKeyboardLayoutNotificationCallback, kTISNotifySelectedKeyboardInputSourceChanged, nil, .deliverImmediately)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(synchronizeSystemInputSource), name: .LayoutDidChange, object: nil)
-    }
-
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
-    }
-    
-    func applicationDidChangeScreenParameters(_ notification: Notification) {
-        layoutWindows()
-    }
     
     func layoutWindows() {
         let visibleFrame = NSScreen.main?.visibleFrame ?? .zero
@@ -138,66 +76,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
     
     static var archivedPasteboardItems: [NSPasteboardItem]? = nil
     
-    
-    // MARK: - KeyboardDelegate
-
-    func delete() {
-        
-        if AXUIElement.focused?.hasSettable(attribute: .selectedText) == true && AXUIElement.focused?.hasSettable(attribute: .selectedTextRange) == true {
-            let location: Int = AXUIElement.focused!.selectedTextRange!.location
-            AXUIElement.focused?.selectedTextRange = .init(location: location - 1, length: 1)
-            AXUIElement.focused?.selectedText = .init()
-        }
-        else {
-            tap(key: .delete)
-        }
-    }
-    
-    func enter() {
-        tap(key: .enter)
-    }
-    
-    func settings() {}
-    
-    func insert(text: String) {
-        AppDelegate.nonAccessibilityDocumentContext.beforeInput.append(text)
-        
-        for flags: CGEventFlags in [[], [.maskShift], [.maskAlternate], [.maskShift, .maskAlternate]] {
-            if let keycode: Keycode = .from(label: text, flags: flags) {
-                tap(key: .by(keycode: keycode), flags: flags)
-                return
-            }
-        }
-        
-        if AXUIElement.focused?.hasSettable(attribute: .selectedText) == true {
-            AXUIElement.focused?.selectedText = text
-        }
-        else {
-            
-            if AppDelegate.archivedPasteboardItems == nil {
-                AppDelegate.archivedPasteboardItems = NSPasteboard.general.archivedItems
-            }
-            
-            NSPasteboard.general.declareTypes([.string], owner: nil)
-            NSPasteboard.general.setString(text, forType: .string)
-
-            tap(label: .v, flags: .maskCommand)
-        }
-    }
-    
     static var nonAccessibilityDocumentContext: NonAccessibilityDocumentContext = .init()
-    
-    var documentContext: DocumentContext {
-        return AppDelegate.documentContext
-    }
-    
-    func prepareForPreview() {
-        if let eventTap = self.eventTap {
-            CGEvent.tapEnable(tap: eventTap, enable: false)
-        }
-        
-        NSStatusBar.system.removeStatusItem(self.statusMenu.statusItem)
-    }
     
     static var documentContext: DocumentContext {
         
@@ -252,3 +131,128 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
     }
 }
 
+// MARK: - NSApplicationDelegate
+extension AppDelegate: NSApplicationDelegate {
+    
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
+        
+        AppDelegate.synchronizeKeyboardLayout()
+        
+        NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
+        
+        layoutWindows()
+        
+        AppDelegate.characterSearchWindow.setIsVisible(isProcessTrusted)
+        AppDelegate.characterSequenceWindow.setIsVisible(isProcessTrusted)
+        
+        Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true) { (timer) in
+            if self.isProcessTrusted != AXIsProcessTrusted() {
+                let keyboard: Process = .init()
+                keyboard.launchPath = Bundle.main.executablePath!
+                keyboard.launch()
+                LaunchAgent.unload()
+                NSApp.terminate(self)
+            }
+            
+            if self.previousDocumentContext != self.documentContext {
+                self.previousDocumentContext = self.documentContext
+                
+                NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
+                
+                AppDelegate.characterSearchWindow.setIsVisible(self.previousDocumentContext != .init())
+                AppDelegate.characterSequenceWindow.setIsVisible(self.previousDocumentContext != .init())
+            }
+            
+            self.statusMenu.visibilityMenuItem.isHidden = !AppDelegate.isUserDefaultsVisibility
+            self.statusMenu.visibilityMenuItem.updateLocalizedStrings()
+        }
+        
+        Keyboard.default.delegate = self
+        
+        let keyboardEventMask: CGEventMask = 1 << CGEventType.keyDown.rawValue | 1 << CGEventType.keyUp.rawValue | 1 << CGEventType.flagsChanged.rawValue
+        
+        let mouseEventMask: CGEventMask = 1 << CGEventType.leftMouseDown.rawValue | 1 << CGEventType.rightMouseDown.rawValue
+        
+        let eventMask: CGEventMask = keyboardEventMask | mouseEventMask
+        
+        eventTap = CGEvent.tapCreate(tap: .cghidEventTap, place: .headInsertEventTap, options: .defaultTap, eventsOfInterest: eventMask, callback: eventTapCallback, userInfo: nil)
+        
+        if let eventTap = self.eventTap {
+            
+            CFRunLoopAddSource(CFRunLoopGetCurrent(), CFMachPortCreateRunLoopSource(kCFAllocatorDefault, eventTap, 0), .commonModes)
+            CGEvent.tapEnable(tap: eventTap, enable: true)
+        }
+        
+        CFNotificationCenterAddObserver(CFNotificationCenterGetDistributedCenter(), nil, AppDelegate.synchronizeKeyboardLayoutNotificationCallback, kTISNotifySelectedKeyboardInputSourceChanged, nil, .deliverImmediately)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(synchronizeSystemInputSource), name: .LayoutDidChange, object: nil)
+    }
+    
+    func applicationWillTerminate(_ aNotification: Notification) {
+        // Insert code here to tear down your application
+    }
+    
+    func applicationDidChangeScreenParameters(_ notification: Notification) {
+        layoutWindows()
+    }
+}
+
+// MARK: - KeyboardDelegate
+extension AppDelegate: KeyboardDelegate {
+    
+    func delete() {
+        
+        if AXUIElement.focused?.hasSettable(attribute: .selectedText) == true && AXUIElement.focused?.hasSettable(attribute: .selectedTextRange) == true {
+            let location: Int = AXUIElement.focused!.selectedTextRange!.location
+            AXUIElement.focused?.selectedTextRange = .init(location: location - 1, length: 1)
+            AXUIElement.focused?.selectedText = .init()
+        }
+        else {
+            tap(key: .delete)
+        }
+    }
+    
+    func enter() {
+        tap(key: .enter)
+    }
+    
+    func settings() {}
+    
+    func insert(text: String) {
+        AppDelegate.nonAccessibilityDocumentContext.beforeInput.append(text)
+        
+        for flags: CGEventFlags in [[], [.maskShift], [.maskAlternate], [.maskShift, .maskAlternate]] {
+            if let keycode: Keycode = .from(label: text, flags: flags) {
+                tap(key: .by(keycode: keycode), flags: flags)
+                return
+            }
+        }
+        
+        if AXUIElement.focused?.hasSettable(attribute: .selectedText) == true {
+            AXUIElement.focused?.selectedText = text
+        }
+        else {
+            
+            if AppDelegate.archivedPasteboardItems == nil {
+                AppDelegate.archivedPasteboardItems = NSPasteboard.general.archivedItems
+            }
+            
+            NSPasteboard.general.declareTypes([.string], owner: nil)
+            NSPasteboard.general.setString(text, forType: .string)
+            
+            tap(label: .v, flags: .maskCommand)
+        }
+    }
+    
+    var documentContext: DocumentContext {
+        return AppDelegate.documentContext
+    }
+    
+    func prepareForPreview() {
+        if let eventTap = self.eventTap {
+            CGEvent.tapEnable(tap: eventTap, enable: false)
+        }
+        
+        NSStatusBar.system.removeStatusItem(self.statusMenu.statusItem)
+    }
+}

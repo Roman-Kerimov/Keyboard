@@ -35,4 +35,12 @@ class CharacterComponentsDictionaryTests: XCTestCase {
             dictionary[characterComponents.key] = 1
         }
     }
+    
+    func testExtraArrayMaxCount() {
+        let maxExtraCount = 3
+        
+        for (character, characterComponents) in characterComponentsDictionary {
+            XCTAssert(characterComponents.extraArray.count <= maxExtraCount, "Character \(character) has more than \(maxExtraCount) extra characters")
+        }
+    }
 }

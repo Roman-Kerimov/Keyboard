@@ -22,12 +22,19 @@ class KeyboardLayoutView: UIView {
         didSet {
             
             for (rowIndex, row) in layout.rows.enumerated() {
-                for (columnIndex, label) in row.enumerated() {
+                for (columnIndex, baseCharacterComponent) in row.enumerated() {
                     
                     let keyView = keys[rowIndex][columnIndex]
-                    keyView.mainLabel = label
-                    keyView.shiftDownLabel = KeyboardLayout.shiftDown.rows[rowIndex][columnIndex]
-                    keyView.shiftUpLabel = KeyboardLayout.shiftUpDictionary[label] ?? ""
+                    keyView.mainLabel = [baseCharacterComponent].character
+                    let shiftDownCharacterComponents = [KeyboardLayout.shiftDown.rows[rowIndex][columnIndex]]
+                    keyView.shiftDownLabel = shiftDownCharacterComponents.character + shiftDownCharacterComponents.extraArray.filter {$0.contains(.extra0) || $0.contains(.extra1) || $0.contains(.extra2)} .map {$0.character} .joined()
+                    
+                    if let shiftUpCharacterComponent = KeyboardLayout.shiftUpDictionary[baseCharacterComponent] {
+                        keyView.shiftUpLabel = [shiftUpCharacterComponent].character
+                    }
+                    else {
+                        keyView.shiftUpLabel = .init()
+                    }
                 }
             }
             
@@ -77,22 +84,22 @@ class KeyboardLayoutView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(size: CGSize, halfKeyboardSize: CGSize, keySize: CGSize, keySpacing: CGFloat, labelFontSize: CGFloat, unicodeCollectionWidth: CGFloat) {
+    func configure(size: CGSize, halfKeyboardSize: CGSize, keySize: CGSize, keySpacing: CGFloat, labelFontSize: CGFloat, horizontalIndent: CGFloat) {
         frame.size = size
         
         for (halfKeyboardIndex, halfKeyboard) in halfKeyboards.enumerated() {
             halfKeyboard.frame.size = halfKeyboardSize
             
             if halfKeyboardIndex == 0 {
-                halfKeyboard.frame.origin.x = unicodeCollectionWidth
+                halfKeyboard.frame.origin.x = horizontalIndent
             }
             else {
-                halfKeyboard.frame.origin.x = size.width - halfKeyboard.frame.width
+                halfKeyboard.frame.origin.x = size.width - halfKeyboard.frame.width - horizontalIndent
                 halfKeyboard.frame.origin.y = size.height - halfKeyboard.frame.height
             }
         }
         
-        unicodeCollectionView.size = .init(width: unicodeCollectionWidth, height: size.height)
+        unicodeCollectionView.size = .init(width: horizontalIndent, height: size.height)
         
         for (rowIndex, row) in keys.enumerated() {
             for (keyIndex, key) in row.enumerated() {

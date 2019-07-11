@@ -29,7 +29,7 @@ extension UIApplication {
 class KeyboardViewController: UIInputViewController {
     static var shared: KeyboardViewController = .init()
     
-    private var isExtension: Bool {
+    internal var isExtension: Bool {
         return Bundle.main.executablePath?.contains(".appex/") == true
     }
     
@@ -195,6 +195,15 @@ class KeyboardViewController: UIInputViewController {
     
     var cancelNextNormalization = false
     
+    var shouldInsertSpace: Bool {
+        if textDocumentProxy.characterBeforeInput?.isSpaceReturnOrTab == false {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
     func keyAction(label: String) {
         
         guard let specialKey = SpecialKey(rawValue: label) else {
@@ -214,10 +223,7 @@ class KeyboardViewController: UIInputViewController {
         switch specialKey {
             
         case .delete:
-            if KeyboardSettings.shared.allowMultipleSpaces == true {
-                textDocumentProxy.deleteBackward()
-            }
-            else if textDocumentProxy.characterBeforeInput == .space
+            if textDocumentProxy.characterBeforeInput == .space
                 && textDocumentProxy.characterAfterInput?.isSpaceReturnOrTab == false
                 && textDocumentProxy.characterAfterInput?.belongsTo(.punctuationCharacters) == false {
                 
@@ -236,8 +242,7 @@ class KeyboardViewController: UIInputViewController {
                 textDocumentProxy.deleteBackward()
             }
             
-            if KeyboardSettings.shared.allowMultipleSpaces == false
-                && textDocumentProxy.characterBeforeInput == .space
+            if textDocumentProxy.characterBeforeInput == .space
                 && textDocumentProxy.characterAfterInput == .space {
                 
                 cancelNextNormalization = true
@@ -253,28 +258,31 @@ class KeyboardViewController: UIInputViewController {
             }
             
         case .space:
-            if KeyboardSettings.shared.allowMultipleSpaces {
-                textDocumentProxy.insertText(" ")
-            }
-            else if textDocumentProxy.characterAfterInput == .space {
+            if textDocumentProxy.characterAfterInput == .space {
                 cancelNextNormalization = true
                 textDocumentProxy.adjustTextPosition(byCharacterOffset: 1)
             }
-            else if textDocumentProxy.characterBeforeInput?.isSpaceReturnOrTab == false {
-                textDocumentProxy.insertText(" ")
+
+            if shouldInsertSpace {
+                textDocumentProxy.insertText(.space)
+            }
+            
+        case .insistSpace:
+            if !shouldInsertSpace {
+                textDocumentProxy.insertText(.space)
             }
             
         case .return, .tab:
             
             if specialKey == .return {
-                textDocumentProxy.insertText("\n")
+                textDocumentProxy.insertText(.return)
             }
             
             if specialKey == .tab {
-                textDocumentProxy.insertText("\t")
+                textDocumentProxy.insertText(.tab)
             }
             
-            if !KeyboardSettings.shared.allowMultipleSpaces && textDocumentProxy.characterAfterInput == .space {
+            if textDocumentProxy.characterAfterInput == .space {
                 textDocumentProxy.deleteForward(sequenceOf: .init(charactersIn: .space))
             }
             

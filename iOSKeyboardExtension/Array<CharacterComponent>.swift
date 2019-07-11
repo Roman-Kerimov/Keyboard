@@ -14,11 +14,22 @@ extension Array where Element == CharacterComponent {
     )
     
     var key: String {
-        return self.map {$0.hashValue.description}.joined(separator: String.space)
+        return self.normalized.map {$0.hashValue.description} .joined(separator: .space)
     }
     
     var character: String {
         return type(of: self).characterDictionary[self.key] ?? .init()
     }
-
+    
+    var normalized: [CharacterComponent] {
+        return self.filter {!$0.isCommutative} + (self.filter {$0.isCommutative} .sorted {$0.hashValue < $1.hashValue})
+    }
+    
+    var extraArray: [[CharacterComponent]] {
+        let baseCharacterComponents = self.filter { $0.isExtraComponent == false }
+        
+        return (CharacterComponent.extraComponents.map { baseCharacterComponents + [$0]}
+            + [baseCharacterComponents + [CharacterComponent.turned, CharacterComponent.sideways]])
+            .filter { $0.character.isEmpty == false}
+    }
 }

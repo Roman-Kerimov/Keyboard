@@ -51,7 +51,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     ",": [.comma],
     
     //002D          ; HYPHEN-MINUS
-    "-": [.hyphenMinus],
+    "-": [.caret, .extra2],
     
     //002E          ; FULL STOP
     ".": [.fullStop],
@@ -204,7 +204,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "_": [.lowLine],
 
     //0060          ; GRAVE ACCENT
-    "`": [.graveAccent],
+    "`": [.caret, .extra1],
 
     //0061          ; LATIN SMALL LETTER A
     "a": [.a],
@@ -4459,10 +4459,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     " ": [.space, .m, .five, .nonBreaking],
 
     //2030          ; PER MILLE SIGN
-    "‰": [.percentSign, .extra1],
+    "‰": [.percentSign, .percentSign],
 
     //2031          ; PER TEN THOUSAND SIGN
-    "‱": [.percentSign, .extra2],
+    "‱": [.percentSign, .percentSign, .percentSign],
 
     //2032          ; PRIME
     "′": [],
@@ -5594,10 +5594,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "≯": [.greaterThanSign, .not],
 
     //2270          ; NEITHER LESS-THAN NOR EQUAL TO
-    "≰": [.lessThanSign, .not, .equalsSign],
+    "≰": [.lessThanSign, .equalsSign, .not],
 
     //2271          ; NEITHER GREATER-THAN NOR EQUAL TO
-    "≱": [.greaterThanSign, .not, .equalsSign],
+    "≱": [.greaterThanSign, .equalsSign, .not],
 
     //2272          ; LESS-THAN OR EQUIVALENT TO
     "≲": [.lessThanSign, .tilde],
@@ -5606,10 +5606,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "≳": [.greaterThanSign, .tilde],
 
     //2274          ; NEITHER LESS-THAN NOR EQUIVALENT TO
-    "≴": [.lessThanSign, .not, .tilde],
+    "≴": [.lessThanSign, .tilde, .not],
 
     //2275          ; NEITHER GREATER-THAN NOR EQUIVALENT TO
-    "≵": [.greaterThanSign, .not, .tilde],
+    "≵": [.greaterThanSign, .tilde, .not],
 
     //2276          ; LESS-THAN OR GREATER-THAN
     "≶": [.lessThanSign, .greaterThanSign],
@@ -5948,10 +5948,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⋥": [],
 
     //22E6          ; LESS-THAN BUT NOT EQUIVALENT TO
-    "⋦": [.lessThanSign, .tilde, .not],
+    "⋦": [.lessThanSign, .tilde, .notLow],
 
     //22E7          ; GREATER-THAN BUT NOT EQUIVALENT TO
-    "⋧": [.greaterThanSign, .tilde, .not],
+    "⋧": [.greaterThanSign, .tilde, .notLow],
 
     //22E8          ; PRECEDES BUT NOT EQUIVALENT TO
     "⋨": [],
@@ -6434,10 +6434,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⪆": [.greaterThanSign, .tilde, .doubled],
 
     //2A87          ; LESS-THAN AND SINGLE-LINE NOT EQUAL TO
-    "⪇": [.lessThanSign, .equalsSign, .not],
+    "⪇": [.lessThanSign, .equalsSign, .notLow],
 
     //2A88          ; GREATER-THAN AND SINGLE-LINE NOT EQUAL TO
-    "⪈": [.greaterThanSign, .equalsSign, .not],
+    "⪈": [.greaterThanSign, .equalsSign, .notLow],
 
     //2A89          ; LESS-THAN AND NOT APPROXIMATE
     "⪉": [.lessThanSign, .tilde, .doubled, .not],

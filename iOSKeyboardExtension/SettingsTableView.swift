@@ -25,6 +25,11 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
         
         delegate = self
         dataSource = self
+        
+        if KeyboardViewController.shared.isExtension {
+            contentInset = .init(top: -20, left: 0, bottom: 0, right: 0)
+            scrollIndicatorInsets = contentInset
+        }
     }
     
     required internal init?(coder aDecoder: NSCoder) {
@@ -32,7 +37,7 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
     }
         
     internal enum Section {
-        case keyboardMode, keyboardLayouts, boolSection, appLanguage, about
+        case keyboardLayouts, appLanguage, about
         
         static let list = values(of: Section.self)
     }
@@ -67,9 +72,6 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
         case .about:
             KeyboardViewController.shared.keyboardView.settingsContainerView.navigationController
                 .pushViewController(legalNoticesViewController, animated: true)
-            
-        default:
-            break
         }
         
         cell.isSelected = false
@@ -89,9 +91,6 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
             
         case .keyboardLayouts:
             return KeyboardLayout.list.count
-            
-        case .boolSection:
-            return BoolCell.list.count
             
         default:
             return 1
@@ -131,26 +130,6 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
 
         switch Section.list[indexPath.section] {
             
-        case .keyboardMode:
-            let layoutModeSegmentedControlItems = [SpecialKey.horizontalMode.label, SpecialKey.verticalMode.label]
-            let layoutModeSegmentedControl = UISegmentedControl(items: layoutModeSegmentedControlItems)
-            
-            switch KeyboardSettings.shared.layoutMode {
-            case .horizontal:
-                layoutModeSegmentedControl.selectedSegmentIndex = layoutModeSegmentedControlItems.index(of: SpecialKey.horizontalMode.label)!
-                
-            case .vertical:
-                layoutModeSegmentedControl.selectedSegmentIndex = layoutModeSegmentedControlItems.index(of: SpecialKey.verticalMode.label)!
-                
-            case .default:
-                layoutModeSegmentedControl.selectedSegmentIndex = 0
-            }
-            
-            layoutModeSegmentedControl.addTarget(self, action: #selector(action(layoutModeSegmentedControl:)), for: .allEvents)
-            
-            cell.accessoryView = layoutModeSegmentedControl
-            cell.textLabel?.text = SHAPE.string
-            
         case .keyboardLayouts:
             let layout = KeyboardLayout.list[indexPath.row]
             
@@ -161,19 +140,6 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
             }
             else {
                 cell.accessoryType = .none
-            }
-            
-        case .boolSection:
-            let cellSwitch = UISwitch()
-            
-            cell.accessoryView = cellSwitch
-            
-            cellSwitch.addTarget(self, action: #selector(switchDidChange(sender:)), for: .allEvents)
-            
-            switch BoolCell.list[indexPath.row] {
-            case .allowMultipleSpaces:
-                cell.textLabel?.text = MULTIPLE_SPACES.string
-                cellSwitch.isOn = KeyboardSettings.shared.allowMultipleSpaces
             }
             
         case .appLanguage:
@@ -197,20 +163,6 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
         }
         
         return cell
-    }
-    
-    @objc private func action(layoutModeSegmentedControl: UISegmentedControl) {
-        let selectedSegmentIndex = layoutModeSegmentedControl.selectedSegmentIndex
-        let selectedSegmentTitle = layoutModeSegmentedControl.titleForSegment(at: selectedSegmentIndex)!
-        
-        KeyboardViewController.shared.keyAction(label: selectedSegmentTitle)
-    }
-    
-    @objc func switchDidChange(sender: UISwitch) {
-        switch BoolCell.list[indexPath(for: sender.superview as! UITableViewCell)!.row] {
-        case .allowMultipleSpaces:
-            KeyboardSettings.shared.allowMultipleSpaces = sender.isOn
-        }
     }
 
     /*

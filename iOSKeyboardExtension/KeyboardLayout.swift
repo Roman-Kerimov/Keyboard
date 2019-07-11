@@ -12,7 +12,7 @@ struct KeyboardLayout {
     
     let name: String
     
-    let rows: [[String]]
+    let rows: [[CharacterComponent]]
     
     var rowCount: Int {
         return rows.count
@@ -22,40 +22,69 @@ struct KeyboardLayout {
         return rows.map { $0.count }.max()!
     }
     
-    static let list: [KeyboardLayout] = [.qwerty, .dvorak]
+    static let list: [KeyboardLayout] = [.qwerty, .dvorak, .colemak, .azerty, .qwertz]
 
     static let qwerty = KeyboardLayout(
         name: "QWERTY",
         rows: [
-            [	"q",	"w",	"e",	"r",	"t",	"y",	"u",	"i",	"o",	"p",	],
-            [	"a",	"s",	"d",	"f",	"g",	"h",	"j",	"k",	"l",	"'",	],
-            [	"z",	"x",	"c",	"v",	"b",	"n",	"m",	",",	".",	"?",	]
-        ]	
-    )
-    
-    static let shiftUpDictionary: [String: String] = [
-        ".": ":",
-        ",": ";",
-        "?": "!",
-        "'": "\"",
-        SpecialKey.space.label: "_"
-    ]
-    
-    static let shiftDown = KeyboardLayout(
-        name: "ShiftDown",
-        rows: [
-            [	"&",	"<",	">",	"|",	"{}",	"/",	"7",	"8",	"9",	"-",	],
-            [	"@",	"#",	"$",	"%",	"()",	"*",	"4",	"5",	"6",	"+",	],
-            [	"`",	"~",	"^",	"\\",	"[]",	"0",	"1",	"2",	"3",	"=",	]
-        ]	
+            [ .q, .w, .e, .r, .t, .y, .u, .i,     .o,        .p,            ],
+            [ .a, .s, .d, .f, .g, .h, .j, .k,     .l,        .hyphen,       ],
+            [ .z, .x, .c, .v, .b, .n, .m, .comma, .fullStop, .questionMark, ],
+        ]
     )
     
     static let dvorak = KeyboardLayout(
         name: "Dvorak",
         rows: [
-            [	"'",	",",	".",	"p",	"y",	"f",	"g",	"c",	"r",	"l",	],
-            [	"a",	"o",	"e",	"u",	"i",	"d",	"h",	"t",	"n",	"s",	],
-            [	"?",	"q",	"j",	"k",	"x",	"b",	"m",	"w",	"v",	"z",	]
-        ]	
+            [ .hyphen,       .comma, .fullStop, .p, .y, .f, .g, .c, .r, .l, ],
+            [ .a,            .o,     .e,        .u, .i, .d, .h, .t, .n, .s, ],
+            [ .questionMark, .q,     .j,        .k, .x, .b, .m, .w, .v, .z, ],
+        ]
+    )
+    
+    static let colemak = KeyboardLayout(
+        name: "Colemak",
+        rows: [
+            [ .q, .w, .f, .p, .g, .j, .l, .u,     .y,        .hyphen,       ],
+            [ .a, .r, .s, .t, .d, .h, .n, .e,     .i,        .o,            ],
+            [ .z, .x, .c, .v, .b, .k, .m, .comma, .fullStop, .questionMark, ],
+        ]
+    )
+    
+    static let azerty = KeyboardLayout(
+        name: "AZERTY",
+        rows: [
+            [ .a, .z, .e, .r, .t, .y, .u,     .i,        .o,            .p,      ],
+            [ .q, .s, .d, .f, .g, .h, .j,     .k,        .l,            .m,      ],
+            [ .w, .x, .c, .v, .b, .n, .comma, .fullStop, .questionMark, .hyphen, ],
+        ]
+    )
+    
+    static let qwertz = KeyboardLayout(
+        name: "QWERTZ",
+        rows: [
+            [ .q, .w, .e, .r, .t, .z, .u, .i,     .o,        .p,            ],
+            [ .a, .s, .d, .f, .g, .h, .j, .k,     .l,        .questionMark, ],
+            [ .y, .x, .c, .v, .b, .n, .m, .comma, .fullStop, .hyphen,       ],
+        ]
+    )
+    
+    static let shiftUpDictionary: [CharacterComponent: CharacterComponent] = [
+        .fullStop: .colon,
+        .comma: .semicolon,
+        .questionMark: .exclamationMark,
+        .apostrophe: .quotationMark,
+        .space: .lowLine,
+    ]
+    
+    static let shiftRightDictionary: [CharacterComponent: CharacterComponent] = [.lessThanSign: .greaterThanSign]
+    
+    static let shiftDown = KeyboardLayout(
+        name: "ShiftDown",
+        rows: [
+            [ .caret,        .tilde,       .asterisk,     .apostrophe,   .curlyBracket,  .divisionSign,       .seven, .eight, .nine,  .minusSign,  ],
+            [ .commercialAt, .numberSign,  .ampersand,    .verticalLine, .parenthesis,   .multiplicationSign, .four,  .five,  .six,   .plusSign,   ],
+            [ .dollarSign,   .percentSign, .lessThanSign, .solidus,      .squareBracket, .zero,               .one,   .two,   .three, .equalsSign, ],
+        ]
     )
 }

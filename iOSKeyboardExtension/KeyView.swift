@@ -100,14 +100,6 @@ class KeyView: UIButton, ConfigurableView {
     
     private var backgroundView: UIView!
     
-    convenience init(key: SpecialKey) {
-        self.init(label: key.label)
-        
-        if key == .nextKeyboard || key == .dismissKeyboard {
-            //label.font =
-        }
-    }
-    
     private var returnKeyType: UIReturnKeyType? {
         if specialKey == .return {
             #if TARGET_INTERFACE_BUILDER
@@ -122,7 +114,7 @@ class KeyView: UIButton, ConfigurableView {
     }
     
     private var isServiceKey: Bool {
-        return specialKey != nil && specialKey != .space && returnKeyType != .default
+        return specialKey != nil && specialKey != .space && specialKey != .tab && returnKeyType != .default
     }
     
     private var isSpecialReturnType: Bool {
@@ -182,11 +174,14 @@ class KeyView: UIButton, ConfigurableView {
         }
     }
     
-    init(label: String = "", shiftDownLabel: String = "") {
+    init(key: SpecialKey? = nil) {
         super.init(frame: CGRect())
         
-        mainLabel = label
-        shiftUpLabelView.text = KeyboardLayout.shiftUpDictionary[label]
+        mainLabel = key?.label ?? .init()
+        
+        if key == .space {
+            shiftUpLabelView.text = [KeyboardLayout.shiftUpDictionary[CharacterComponent.space]!].character
+        }
         
         // It is for activation of touch events
         backgroundColor = .touchableClear
@@ -209,7 +204,7 @@ class KeyView: UIButton, ConfigurableView {
             addSubview(shiftLeftLabelView)
             
             addSubview(shiftRightLabelView)
-            shiftRightLabelView.text = SpecialKey.tab.label
+            shiftRightLabelView.text = SpecialKey.insistSpace.label
         }
         else {
             shiftDownLabelView.text = shiftDownLabel
@@ -244,9 +239,14 @@ class KeyView: UIButton, ConfigurableView {
         baseFontSize = labelFontSize
         self.spacing = spacing
         
-        mainLabelView.font = mainLabelView.font.withSize(baseFontSize)
+        if specialKey == nil {
+            mainLabelView.font = UIFont.init(name: "Symbola", size: baseFontSize)
+        }
+        else {
+            mainLabelView.font = UIFont.systemFont(ofSize: baseFontSize)
+        }
         
-        let shiftLabelFont = UIFont.systemFont(ofSize: labelFontSize/1.8)
+        let shiftLabelFont = mainLabelView.font.withSize(labelFontSize/1.8)
         shiftUpLabelView.font = shiftLabelFont
         shiftDownLabelView.font = shiftLabelFont
         shiftLeftLabelView.font = shiftLabelFont
@@ -254,7 +254,7 @@ class KeyView: UIButton, ConfigurableView {
         
         if let specialKey = self.specialKey {
             switch specialKey {
-            case .delete, .return:
+            case .delete, .return, .tab:
                 mainLabelView.font = mainLabelView.font.withSize(shiftLabelFont.pointSize)
                 
             case .settings:
@@ -339,6 +339,18 @@ class KeyView: UIButton, ConfigurableView {
     private var gestureStartPoint: CGPoint!
     private var shiftDirections: [ShiftDirection] = .init()
     
+    private var characterComponents: [CharacterComponent] {
+        get {
+            return mainLabelView.text?.characterComponents ?? .init()
+        }
+        
+        set {
+            if newValue.character.isEmpty == false {
+                mainLabelView.text = newValue.character
+            }
+        }
+    }
+    
     @objc func longPressGestureAction(gesture: UIGestureRecognizer) {
         isHighlighted = true
         
@@ -397,29 +409,55 @@ class KeyView: UIButton, ConfigurableView {
                     if mainLabelView.text == mainLabel && shiftUpLabelView.text?.isEmpty == false {
                         mainLabelView.text = shiftUpLabelView.text
                     }
-                    else if specialKey == nil {
-                        mainLabelView.text = mainLabelView.text?.uppercased()
+                    else {
+                        characterComponents += [.capital]
                     }
                     
                 case .down:
                     if mainLabelView.text == mainLabel && shiftDownLabelView.text?.isEmpty == false {
                         mainLabelView.text = shiftDownLabelView.text?.first?.description
                     }
+                    else if characterComponents.extraArray.count > 1
+                        && characterComponents == characterComponents.extraArray[0] {
+                        
+                        characterComponents = characterComponents.extraArray[1]
+                    }
+                    else {
+                        characterComponents = .init(characterComponents.split(separator: .capital, maxSplits: 1, omittingEmptySubsequences: false).joined(separator: [.smallCapital]))
+                    }
                     
                 case .left:
                     if mainLabelView.text == mainLabel && shiftLeftLabelView.text?.isEmpty == false {
                         mainLabelView.text = shiftLeftLabelView.text
+                    }
+                    else if characterComponents.extraArray.count > 2
+                        && characterComponents == characterComponents.extraArray[1] {
+                        
+                        characterComponents = characterComponents.extraArray[2]
                     }
                     
                 case .right:
                     if mainLabelView.text == mainLabel && shiftRightLabelView.text?.isEmpty == false {
                         mainLabelView.text = shiftRightLabelView.text
                     }
-                    else if shiftDownLabelView.text!.count > 1 && shiftDownLabelView.text?.hasPrefix(mainLabelView.text!) == true {
-                        mainLabelView.text = shiftDownLabelView.text?.last?.description
+                    else if characterComponents.extraArray.isEmpty == false
+                        && characterComponents.extraArray.contains(where: {$0.normalized == characterComponents.normalized}) == false {
+                            
+                        characterComponents = characterComponents.extraArray[0]
+                    }
+                    else if characterComponents.count == 1 {
+                        if let extraRightComponent = KeyboardLayout.shiftRightDictionary[characterComponents.first!] {
+                            characterComponents = [extraRightComponent]
+                        }
                     }
                     
-                case .downLeft, .downRight, .upLeft, .upRight:
+                case .upRight:
+                    characterComponents += [.superscript]
+                    
+                case .downRight:
+                    characterComponents += [.subscript]
+                    
+                case .downLeft, .upLeft:
                     break
                 }
             }
@@ -451,6 +489,7 @@ public enum SpecialKey: String {
     
     case delete = "delete"
     case space = " "
+    case insistSpace = "insist"
     case `return` = "return"
     case tab = "tab"
     case nextKeyboard = "NextKeyboard"

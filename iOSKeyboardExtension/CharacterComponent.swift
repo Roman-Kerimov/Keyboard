@@ -8,6 +8,17 @@
 import Foundation
 
 enum CharacterComponent {
+    private static let commutative: Set<CharacterComponent> = .init([.capital, .smallCapital, .superscript, .subscript] + extraComponents)
+    
+    public var isCommutative: Bool {
+        return CharacterComponent.commutative.contains(self)
+    }
+    
+    internal static let extraComponents: [CharacterComponent] = [.extra0, .turned, .reversed, .inverted, .sideways, .extra1, .extra2]
+    
+    internal var isExtraComponent: Bool {
+        return CharacterComponent.extraComponents.contains(self)
+    }
     
     case joiner
     case fractionSlash
@@ -16,7 +27,7 @@ enum CharacterComponent {
     
     case zero, one, two, three, four, five, six, seven, eight, nine
     
-    case space, exclamationMark, quotationMark, numberSign, dollarSign, percentSign, ampersand, apostrophe, parenthesis, asterisk, plusSign, comma, hyphenMinus, fullStop, solidus, colon, semicolon, lessThanSign, equalsSign, greaterThanSign, questionMark, commercialAt, squareBracket, caret, lowLine, graveAccent, curlyBracket, verticalLine, tilde
+    case space, exclamationMark, quotationMark, numberSign, dollarSign, percentSign, ampersand, apostrophe, parenthesis, asterisk, plusSign, comma, fullStop, solidus, colon, semicolon, lessThanSign, equalsSign, greaterThanSign, questionMark, commercialAt, squareBracket, caret, lowLine, curlyBracket, verticalLine, tilde
     
     case tildeOperator
     
@@ -60,7 +71,7 @@ enum CharacterComponent {
     case sBottom
     case uTop
     case wTop
-    case not
+    case not, notLow
     case lazyS
     
     case letterScript

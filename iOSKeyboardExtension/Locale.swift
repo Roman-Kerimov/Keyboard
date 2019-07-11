@@ -1,6 +1,6 @@
 //
-//  LocaleExtension.swift
-//  iOSKeyboardExtension
+//  Locale.swift
+//  Keyboard
 //
 //  Created by Roman Kerimov on 28/06/2017.
 //

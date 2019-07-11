@@ -1,5 +1,5 @@
 //
-//  UIImageExtension.swift
+//  UIImage.swift
 //  Keyboard
 //
 //  Created by Roman Kerimov on 25.04.17.

@@ -1,5 +1,5 @@
 //
-//  StringExtension.swift
+//  String.swift
 //  Keyboard
 //
 //  Created by Roman Kerimov on 01.06.17.

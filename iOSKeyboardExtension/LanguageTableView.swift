@@ -59,7 +59,7 @@ class LanguageTableView: UITableView, UITableViewDelegate, UITableViewDataSource
         }
     }
     
-    private var preferredLanguages: [Language]!
+    private var preferredLanguages: [Language] = [.en, .ru]
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         

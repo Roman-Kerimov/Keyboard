@@ -1,5 +1,5 @@
 //
-//  CharacterSetExtension.swift
+//  CharacterSet.swift
 //  Keyboard
 //
 //  Created by Roman Kerimov on 02/06/2017.

@@ -16,7 +16,8 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
         
         reloadData()
         
-        languageTableViewController.title = AppLanguageTitle.string
+        languageTableViewController.title = LANGUAGE.string
+        legalNoticesViewController.title = LEGAL_NOTICES.string
     }
     
     internal init() {
@@ -30,8 +31,8 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
         fatalError("init(coder:) has not been implemented")
     }
         
-    private enum Section {
-        case keyboardMode, keyboardLayouts, boolSection, appLanguage
+    internal enum Section {
+        case keyboardMode, keyboardLayouts, boolSection, appLanguage, about
         
         static let list = values(of: Section.self)
     }
@@ -42,7 +43,8 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
         static let list = values(of: BoolCell.self)
     }
     
-    private let languageTableViewController: ViewController<LanguageTableView> = .init()
+    internal let languageTableViewController: ViewController<LanguageTableView> = .init()
+    internal let legalNoticesViewController: ViewController<LegalNoticesTextView> = .init()
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)!
@@ -59,7 +61,12 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
             KeyboardViewController.shared.keyboardView.layout = KeyboardLayout.list[indexPath.row]
             
         case .appLanguage:
-            KeyboardViewController.shared.keyboardView.settingsContainerView.navigationController.pushViewController(languageTableViewController, animated: true)
+            KeyboardViewController.shared.keyboardView.settingsContainerView.navigationController
+                .pushViewController(languageTableViewController, animated: true)
+            
+        case .about:
+            KeyboardViewController.shared.keyboardView.settingsContainerView.navigationController
+                .pushViewController(legalNoticesViewController, animated: true)
             
         default:
             break
@@ -95,7 +102,10 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
         switch Section.list[section] {
             
         case .keyboardLayouts:
-            return KeyboardLayoutSectionTitle.string
+            return KEYBOARD.string
+            
+        case .about:
+            return ABOUT.string
             
         default:
             return nil
@@ -103,7 +113,17 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        return nil
+        switch Section.list[section] {
+            
+        case .about:
+            let bundle: Bundle = .init(for: type(of: self))
+            let versionNumber = bundle.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+            let buildNumber = bundle.object(forInfoDictionaryKey: "CFBundleVersion") as! String
+            return "\(VERSION.string): \(versionNumber) (\(buildNumber))"
+            
+        default:
+            return nil
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -129,7 +149,7 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
             layoutModeSegmentedControl.addTarget(self, action: #selector(action(layoutModeSegmentedControl:)), for: .allEvents)
             
             cell.accessoryView = layoutModeSegmentedControl
-            cell.textLabel?.text = KeyboardShapeCellTitle.string
+            cell.textLabel?.text = SHAPE.string
             
         case .keyboardLayouts:
             let layout = KeyboardLayout.list[indexPath.row]
@@ -152,12 +172,12 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
             
             switch BoolCell.list[indexPath.row] {
             case .allowMultipleSpaces:
-                cell.textLabel?.text = AllowMultipleSpacesTitle.string
+                cell.textLabel?.text = MULTIPLE_SPACES.string
                 cellSwitch.isOn = KeyboardSettings.shared.allowMultipleSpaces
             }
             
         case .appLanguage:
-            cell.textLabel?.text = AppLanguageTitle.string
+            cell.textLabel?.text = LANGUAGE.string
             
             let languageCode = Language.current.rawValue
             let locale = Locale(identifier: languageCode)
@@ -169,6 +189,10 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
                 cell.detailTextLabel?.text = locale.localizedString(forLanguageCode: locale.languageCode!)
             }
             
+            cell.accessoryType = .disclosureIndicator
+            
+        case .about:
+            cell.textLabel?.text = LEGAL_NOTICES.string
             cell.accessoryType = .disclosureIndicator
         }
         

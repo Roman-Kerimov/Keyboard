@@ -112,7 +112,7 @@ class UnicodeCollectionView: CharacterCollectionView {
     public func search(byName text: String) {
         textForSearch = text
         
-        UnicodeTable.default.searchScalars(byName: text.replacingOccurrences(of: .reverseSolidus, with: ""), for: self)
+        UnicodeTable.default.searchScalars(byName: text.replacingOccurrences(of: String.reverseSolidus, with: ""), for: self)
     }
     
     override func reloadData() {

@@ -58,7 +58,7 @@ internal class KeyboardView: UIView {
                     .components(separatedBy: CharacterSet.printableASCII.inverted).last ?? .init()
             
             if textForSearch.contains(.reverseSolidus) {
-                textForSearch = .reverseSolidus + ( textForSearch.components(separatedBy: .reverseSolidus).last ?? .init() )
+                textForSearch = .reverseSolidus + ( textForSearch.components(separatedBy: String.reverseSolidus).last ?? .init() )
             }
             
             unicodeCollectionView.search(byName: textForSearch)
@@ -376,8 +376,8 @@ internal class KeyboardView: UIView {
         }
         
         deleteRowView.characterSequence.layout.itemSize = .init(
-            width: .init(Int.init(max(keySize.width, minimalScreenSize.width/5.5)/4)),
-            height: keySize.height
+            width: floor(max(keySize.width, minimalScreenSize.width/5.5)/4),
+            height: deleteRowHeight
         )
         deleteRowView.characterSequence.reloadData()
     }

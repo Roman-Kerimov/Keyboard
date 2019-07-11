@@ -30,7 +30,13 @@ extension Language {
     #endif
     
     static var preferredList: [Language] {
-        let languageCodes = UserDefaults.standard.array(forKey: "AppleLanguages") as! [String]
+        let languageCodes: [String]
+        #if TARGET_INTERFACE_BUILDER
+            languageCodes = .init()
+        #else
+            languageCodes = UserDefaults.standard.array(forKey: "AppleLanguages") as! [String]
+        #endif
+
         var languages: [Language] = []
         
         for languageCode in languageCodes {

@@ -49,7 +49,7 @@ class CharacterCollectionView: UICollectionView, UICollectionViewDelegateFlowLay
         backgroundColor = .touchableClear
         
         #if TARGET_INTERFACE_BUILDER
-            characters = .init("CharacterCollectionView".characters)
+            characters = .init("CharacterCollectionView")
         #endif
     }
     

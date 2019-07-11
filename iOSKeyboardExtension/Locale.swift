@@ -10,7 +10,7 @@ import Foundation
 extension Locale {
     
     static var regionCodes: [String] {
-        let capitalLetters: [Character] = .init("ABCDEFGHIJKLMNOPQRSTUVWXYZ".characters)
+        let capitalLetters: [Character] = .init("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
         
         let enLocale: Locale = .init(identifier: "en")
         

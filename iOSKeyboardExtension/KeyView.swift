@@ -340,6 +340,7 @@ class KeyView: UIButton, ConfigurableView {
     var gestureStartPoint: CGPoint!
     
     @objc func longPressGestureAction(gesture: UIGestureRecognizer) {
+        isHighlighted = true
         
         KeyboardViewController.shared.keyboardView.unicodeCollectionView.isHiddenUnicodeNames = true
         
@@ -364,91 +365,80 @@ class KeyView: UIButton, ConfigurableView {
                 input()
             }
             
-            keyState = .default
+            mainLabelView.text = mainLabel
+            updateLocalizedStrings()
+            isHighlighted = false
             
         default:
             
             let gestureCurrentPoint = gesture.location(in: self)
             
-            let offset = CGPoint(
+            let offsetPoint = CGPoint(
                 x: gestureCurrentPoint.x - gestureStartPoint.x,
                 y: gestureCurrentPoint.y - gestureStartPoint.y
             )
             
-            let threshold = CGPoint(x: bounds.size.height / 2, y: bounds.size.height / 4)
             
-            let isShiftUp = offset.y < -threshold.y
-            let isShiftDown = offset.y > threshold.y
-            let isLeftShift = offset.x < -threshold.x
-            let isRightShift = offset.x > threshold.x
+            let distance = hypot(offsetPoint.x, offsetPoint.y)
+            let threshold = bounds.size.height / 2
             
-            if isLeftShift && shiftLeftLabelView.text != nil {
-                keyState = .shiftLeft
-            }
-            else if isRightShift && shiftRightLabelView.text != nil {
-                keyState = .shiftRight
-            }
-            else if isShiftUp {
-                keyState = .shiftUp
-            }
-            else if isShiftDown && isRightShift && shiftDownLabelView.text != "" {
-                keyState = .shiftDownRight
-            }
-            else if isShiftDown && shiftDownLabelView.text != "" {
-                keyState = .shiftDown
+            if distance > threshold {
+                let direction = ShiftDirection.init(rawValue: (atan2(-offsetPoint.y, offsetPoint.x) / .pi * 4).rounded() / 4) ?? .left
+                
+                switch direction {
+                    
+                case .up:
+                    if shiftUpLabelView.text != nil && shiftUpLabelView.text != "" {
+                        mainLabelView.text = shiftUpLabelView.text
+                    }
+                    else if specialKey == nil {
+                        mainLabelView.text = mainLabel.uppercased()
+                    }
+                    
+                case .down:
+                    mainLabelView.text = String(shiftDownLabelView.text!.first!)
+                    
+                case .downRight:
+                    if shiftDownLabelView.text!.count > 1 {
+                        mainLabelView.text = String(shiftDownLabelView.text!.last!)
+                    }
+                    else {
+                        mainLabelView.text = ""
+                    }
+                    
+                case .left:
+                    mainLabelView.text = shiftLeftLabelView.text
+                    
+                case .right:
+                    mainLabelView.text = shiftRightLabelView.text
+                    
+                case .downLeft, .upRight, .upLeft:
+                    mainLabelView.text = ""
+                }
             }
             else {
-                keyState = .tap
+                mainLabelView.text = mainLabel
+                updateLocalizedStrings()
             }
         }
+        
+        mainLabelView.center = backgroundView.center
     }
     
     var specialKey: SpecialKey? {
         return SpecialKey(rawValue: mainLabel)
     }
     
-    var keyState: KeyState = .default {
-        didSet {
-            isHighlighted = true
-            
-            switch keyState {
-            case .default:
-                mainLabelView.text = mainLabel
-                updateLocalizedStrings()
-                isHighlighted = false
-                
-            case .tap:
-                mainLabelView.text = mainLabel
-                updateLocalizedStrings()
-                
-            case .shiftUp:
-                if shiftUpLabelView.text != nil && shiftUpLabelView.text != "" {
-                    mainLabelView.text = shiftUpLabelView.text
-                }
-                else if specialKey == nil {
-                    mainLabelView.text = mainLabel.uppercased()
-                }
-                
-            case .shiftDown:
-                mainLabelView.text = String(shiftDownLabelView.text!.characters.first!)
-                
-            case .shiftDownRight:
-                mainLabelView.text = String(shiftDownLabelView.text!.characters.last!)
-                
-            case .shiftLeft:
-                mainLabelView.text = shiftLeftLabelView.text
-                
-            case .shiftRight:
-                mainLabelView.text = shiftRightLabelView.text
-            }
-            
-            mainLabelView.center = backgroundView.center
-        }
+    private enum ShiftDirection: CGFloat {
+        case downLeft = -0.75
+        case down = -0.5
+        case downRight = -0.25
+        case right = 0
+        case upRight = 0.25
+        case up = 0.5
+        case upLeft = 0.75
+        case left = 1
     }
-}
-    
-public enum KeyState {
-    case `default`, tap, shiftUp, shiftDown, shiftLeft, shiftRight, shiftDownRight
 }
 
 public enum SpecialKey: String {

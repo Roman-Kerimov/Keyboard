@@ -31,7 +31,7 @@ class CharacterSequenceView: CharacterCollectionView {
         longPressGestureRecognizer.minimumPressDuration = 0
         
         #if TARGET_INTERFACE_BUILDER
-            characters = .init("keyboard😀".characters)
+            characters = .init("keyboard😀")
         #endif
     }
     

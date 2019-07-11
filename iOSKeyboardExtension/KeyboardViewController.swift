@@ -270,18 +270,18 @@ class KeyboardViewController: UIInputViewController {
             }
             
         case .union:
-            var maxSuffixLength = KeyboardLayout.unionDictionary.keys.map { $0.characters.count }.max()!
+            var maxSuffixLength = KeyboardLayout.unionDictionary.keys.map { $0.count }.max()!
             
             Suffix: while maxSuffixLength > 0 {
                 guard textDocumentProxy.documentContextBeforeInput != nil else {
                     return
                 }
                 
-                let combination = String(textDocumentProxy.documentContextBeforeInput!.characters.suffix(maxSuffixLength))
+                let combination = String(textDocumentProxy.documentContextBeforeInput!.suffix(maxSuffixLength))
                 
                 if let union = KeyboardLayout.unionDictionary[combination] {
                     
-                    for _ in 1...combination.characters.count {
+                    for _ in 1...combination.count {
                         textDocumentProxy.deleteBackward()
                     }
                     
@@ -346,19 +346,19 @@ extension UITextDocumentProxy {
     }
     
     var characterBeforeInput: Character? {
-        return stringBeforeInput?.characters.last
+        return stringBeforeInput?.last
     }
     
     var characterAfterInput: Character? {
-        return stringAfterInput?.characters.first
+        return stringAfterInput?.first
     }
     
     private func characterSequenceStringBeforeInput(of characterSet: CharacterSet) -> String {
-        return .init(stringBeforeInput?.components(separatedBy: characterSet.inverted).last!.characters ?? .init())
+        return .init(stringBeforeInput?.components(separatedBy: characterSet.inverted).last! ?? .init())
     }
     
     private func characterSequenceStringAfterInput(of characterSet: CharacterSet) -> String {
-        return .init(stringAfterInput?.components(separatedBy: characterSet.inverted).first!.characters ?? .init())
+        return .init(stringAfterInput?.components(separatedBy: characterSet.inverted).first! ?? .init())
     }
     
     public func deleteBackward(_ count: Int) {

@@ -39,15 +39,12 @@ class SpaceRowView: UIStackView {
         
         axis = .horizontal
         
-        let deleteKey = KeyView(label: deleteLabel)
-        
-        addArrangedSubview(deleteKey)
-        
-        deleteKey.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1/5).isActive = true
-        
         let spaceKey = KeyView(label: spaceLabel)
-        
         addArrangedSubview(spaceKey)
+        
+        let deleteKey = KeyView(label: deleteLabel)
+        addArrangedSubview(deleteKey)
+        deleteKey.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.3).isActive = true
     }
     
     required init(coder: NSCoder) {

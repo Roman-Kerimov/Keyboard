@@ -136,6 +136,10 @@ class KeyboardViewController: UIInputViewController {
             var maxSuffixLength = KeyboardLayout.unionDictionary.keys.map { $0.characters.count }.max()!
             
             Suffix: while maxSuffixLength > 0 {
+                guard textDocumentProxy.documentContextBeforeInput != nil else {
+                    return
+                }
+                
                 let combination = String(textDocumentProxy.documentContextBeforeInput!.characters.suffix(maxSuffixLength))
                 
                 if let union = KeyboardLayout.unionDictionary[combination] {

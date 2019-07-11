@@ -9,12 +9,18 @@
 import UIKit
 
 class KeyboardSettings: NSObject {
+    
+    static let shared: KeyboardSettings = .init()
 
     enum KeyboardLayoutMode: String {
         case horizontal = "horizontal"
         case vertical = "vertical"
         
         case `default` = "default"
+    }
+    
+    private override init() {
+        super.init()
     }
     
     private let layoutKey = "LBPQsNPr8gJHi8Ds05etypaTVEiq8X1"
@@ -41,12 +47,6 @@ class KeyboardSettings: NSObject {
         }
     }
     
-    #if TARGET_INTERFACE_BUILDER
-    
-    var layoutMode: KeyboardLayoutMode = .default
-    
-    #else
-    
     private let layoutModeKey = "PPlmVhk2uT98JemxOJdtAS88aRi3qv9"
     var layoutMode: KeyboardLayoutMode {
         get {
@@ -59,5 +59,15 @@ class KeyboardSettings: NSObject {
         }
     }
     
-    #endif
+    private let frequentlyUsedCharactersKey = "LBg6QhTolnUzmtHXeo960LT1ZNd3i07"
+    var frequentlyUsedCharacters: [String] {
+        get {
+            return UserDefaults.standard.object(forKey: frequentlyUsedCharactersKey) as? [String] ?? .init()
+        }
+        
+        set {
+            UserDefaults.standard.set(newValue, forKey: frequentlyUsedCharactersKey)
+            UserDefaults.standard.synchronize()
+        }
+    }
 }

@@ -11,8 +11,6 @@ import UIKit
 @IBDesignable
 internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
-    let settings = KeyboardSettings()
-    
     override func updateLocalizedStrings() {
         super.updateLocalizedStrings()
         
@@ -58,9 +56,7 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
             
             cell.accessoryType = .checkmark
             
-            settings.layout = KeyboardLayout.list[indexPath.row]
-            
-            KeyboardViewController.shared.keyboardView.layoutView.layout = settings.layout
+            KeyboardViewController.shared.keyboardView.layout = KeyboardLayout.list[indexPath.row]
             
         case .appLanguage:
             KeyboardViewController.shared.keyboardView.settingsContainerView.navigationController.pushViewController(languageTableViewController, animated: true)
@@ -119,7 +115,7 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
             let layoutModeSegmentedControlItems = [SpecialKey.horizontalMode.label, SpecialKey.verticalMode.label]
             let layoutModeSegmentedControl = UISegmentedControl(items: layoutModeSegmentedControlItems)
             
-            switch settings.layoutMode {
+            switch KeyboardSettings.shared.layoutMode {
             case .horizontal:
                 layoutModeSegmentedControl.selectedSegmentIndex = layoutModeSegmentedControlItems.index(of: SpecialKey.horizontalMode.label)!
                 
@@ -140,7 +136,7 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
             
             cell.textLabel?.text = layout.name
             
-            if layout.name == settings.layout.name {
+            if layout.name == KeyboardSettings.shared.layout.name {
                 cell.accessoryType = .checkmark
             }
             else {
@@ -157,7 +153,7 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
             switch BoolCell.list[indexPath.row] {
             case .allowMultipleSpaces:
                 cell.textLabel?.text = AllowMultipleSpacesTitle.string
-                cellSwitch.isOn = settings.allowMultipleSpaces
+                cellSwitch.isOn = KeyboardSettings.shared.allowMultipleSpaces
             }
             
         case .appLanguage:
@@ -189,7 +185,7 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
     func switchDidChange(sender: UISwitch) {
         switch BoolCell.list[indexPath(for: sender.superview as! UITableViewCell)!.row] {
         case .allowMultipleSpaces:
-            settings.allowMultipleSpaces = sender.isOn
+            KeyboardSettings.shared.allowMultipleSpaces = sender.isOn
         }
     }
 

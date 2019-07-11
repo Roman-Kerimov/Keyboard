@@ -16,7 +16,6 @@ class KeyboardViewController: UIInputViewController {
     }
     
     let keyboardView = KeyboardView()
-    let settings = KeyboardSettings()
     
     override func loadView() {
         view = keyboardView
@@ -135,7 +134,7 @@ class KeyboardViewController: UIInputViewController {
         else if textDocumentProxy.characterBeforeInput == .space
             && textDocumentProxy.characterAfterInput == .space {
             
-            moveToSequenceEnd(of: CharacterSet.init(charactersIn: Character.space.string))
+            moveToSequenceEnd(of: CharacterSet.init(charactersIn: .space))
         }
         else if textDocumentProxy.characterBeforeInput == .space
             && textDocumentProxy.characterAfterInput?.isSpaceReturnOrTab == false {
@@ -180,7 +179,7 @@ class KeyboardViewController: UIInputViewController {
                 && textDocumentProxy.characterAfterInput?.belongsTo(.punctuationCharacters) == false
                 && offset == 0 {
                 
-                textDocumentProxy.insertText(Character.space.string)
+                textDocumentProxy.insertText(.space)
                 textDocumentProxy.adjustTextPosition(byCharacterOffset: -1)
             }
             
@@ -191,7 +190,7 @@ class KeyboardViewController: UIInputViewController {
         switch specialKey {
             
         case .delete:
-            if settings.allowMultipleSpaces == true {
+            if KeyboardSettings.shared.allowMultipleSpaces == true {
                 textDocumentProxy.deleteBackward()
             }
             else if textDocumentProxy.characterBeforeInput == .space
@@ -213,7 +212,7 @@ class KeyboardViewController: UIInputViewController {
                 textDocumentProxy.deleteBackward()
             }
             
-            if settings.allowMultipleSpaces == false
+            if KeyboardSettings.shared.allowMultipleSpaces == false
                 && textDocumentProxy.characterBeforeInput == .space
                 && textDocumentProxy.characterAfterInput == .space {
                 
@@ -226,7 +225,7 @@ class KeyboardViewController: UIInputViewController {
             textDocumentProxy.deleteBackward()
             
         case .space:
-            if settings.allowMultipleSpaces {
+            if KeyboardSettings.shared.allowMultipleSpaces {
                 textDocumentProxy.insertText(" ")
             }
             else if textDocumentProxy.characterAfterInput == .space {
@@ -277,11 +276,11 @@ class KeyboardViewController: UIInputViewController {
             keyboardView.showSettings()
             
         case .horizontalMode:
-            settings.layoutMode = .horizontal
+            KeyboardSettings.shared.layoutMode = .horizontal
             keyboardView.configure()
             
         case .verticalMode:
-            settings.layoutMode = .vertical
+            KeyboardSettings.shared.layoutMode = .vertical
             keyboardView.configure()
         }
         

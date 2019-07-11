@@ -18,7 +18,7 @@ internal class KeyboardView: UIView {
         didSet {
             let documentContextBeforeInput: String = documentContext.beforeInput ?? .init()
             
-            var characterSequence: [Character] = .init()
+            var characterSequence: [String] = .init()
             var spaceCount = 0
             
             characterSequenceView.characters = characterSequence
@@ -43,7 +43,7 @@ internal class KeyboardView: UIView {
                     break
                 }
                 
-                characterSequence = [character] + characterSequence
+                characterSequence = [character.description] + characterSequence
                 
                 if spaceCount == 1 && isNonspaceSequence {
                     break
@@ -51,6 +51,17 @@ internal class KeyboardView: UIView {
             }
             
             characterSequenceView.characters = characterSequence
+            
+            var textForSearch: String =
+                documentContextBeforeInput
+                    .components(separatedBy: .whitespacesAndNewlines).last?
+                    .components(separatedBy: CharacterSet.printableASCII.inverted).last ?? .init()
+            
+            if textForSearch.contains(.reverseSolidus) {
+                textForSearch = .reverseSolidus + ( textForSearch.components(separatedBy: .reverseSolidus).last ?? .init() )
+            }
+            
+            unicodeCollectionView.search(byName: textForSearch)
         }
     }
     
@@ -69,9 +80,24 @@ internal class KeyboardView: UIView {
         // Drawing code
     }
     */
+
+    #if TARGET_INTERFACE_BUILDER
     
-    private let settings = KeyboardSettings()
+        private var layoutMode: KeyboardSettings.KeyboardLayoutMode = .default
     
+    #else
+        private var layoutMode: KeyboardSettings.KeyboardLayoutMode {
+            get {
+                return KeyboardSettings.shared.layoutMode
+            }
+            
+            set {
+                KeyboardSettings.shared.layoutMode = newValue
+            }
+        }
+    
+    #endif
+
     internal var colorScheme: KeyboardColorScheme = .default {
         didSet {
             set(colorScheme: colorScheme)
@@ -93,6 +119,10 @@ internal class KeyboardView: UIView {
     
     private var characterSequenceView: CharacterSequenceView {
         return deleteRowView.characterSequence
+    }
+    
+    private var unicodeCollectionView: UnicodeCollectionView {
+        return layoutView.unicodeCollectionView
     }
     
     private var keys: [KeyView] {
@@ -133,7 +163,7 @@ internal class KeyboardView: UIView {
     private let spaceRowHeightInKeys: CGFloat = 1
     
     private var unicodeCollectionWidthInKeys: CGFloat {
-        if settings.layoutMode == .horizontal && isPrefferedVerticalMode {
+        if layoutMode == .horizontal && isPrefferedVerticalMode {
             return 1
         }
         else {
@@ -154,15 +184,15 @@ internal class KeyboardView: UIView {
     
     private var sizeInKeysForVerticalMode: CGSize {
         return CGSize(
-            width: CGFloat(settings.layout.columnCount / 2) + 0.5 + unicodeCollectionWidthInKeys,
-            height: deleteRowHeightInKeys + CGFloat(settings.layout.rowCount * 2) + spaceRowHeightInKeys
+            width: CGFloat(KeyboardSettings.shared.layout.columnCount / 2) + 0.5 + unicodeCollectionWidthInKeys,
+            height: deleteRowHeightInKeys + CGFloat(KeyboardSettings.shared.layout.rowCount * 2) + spaceRowHeightInKeys
         )
     }
     
     private var sizeInKeysForHorizontalMode: CGSize {
         return CGSize(
-            width: CGFloat(settings.layout.columnCount) + unicodeCollectionWidthInKeys,
-            height: deleteRowHeightInKeys + CGFloat(settings.layout.rowCount) + spaceRowHeightInKeys
+            width: CGFloat(KeyboardSettings.shared.layout.columnCount) + unicodeCollectionWidthInKeys,
+            height: deleteRowHeightInKeys + CGFloat(KeyboardSettings.shared.layout.rowCount) + spaceRowHeightInKeys
         )
     }
     
@@ -193,8 +223,8 @@ internal class KeyboardView: UIView {
     
     private var halfKeyboardSize: CGSize {
         return CGSize(
-            width: keySize.width * CGFloat(settings.layout.columnCount / 2),
-            height: keySize.height * CGFloat(settings.layout.rowCount)
+            width: keySize.width * CGFloat(KeyboardSettings.shared.layout.columnCount / 2),
+            height: keySize.height * CGFloat(KeyboardSettings.shared.layout.rowCount)
         )
     }
     
@@ -243,25 +273,25 @@ internal class KeyboardView: UIView {
     
     internal func configure() {
         
-        if settings.layoutMode == .default {
+        if layoutMode == .default {
             if isPrefferedVerticalMode {
-                settings.layoutMode = .vertical
+                layoutMode = .vertical
             }
             else {
-                settings.layoutMode = .horizontal
+                layoutMode = .horizontal
             }
         }
         
         if alternateLayoutMode {
-            if settings.layoutMode == .vertical {
-                settings.layoutMode = .horizontal
+            if layoutMode == .vertical {
+                layoutMode = .horizontal
             }
             else {
-                settings.layoutMode = .vertical
+                layoutMode = .vertical
             }
         }
         
-        let isHorizontalMode = settings.layoutMode == .horizontal || screenSize.height < self.minimalScreenSize.height
+        let isHorizontalMode = layoutMode == .horizontal || screenSize.height < self.minimalScreenSize.height
         
         if isHorizontalMode {
             sizeInKeys = sizeInKeysForHorizontalMode
@@ -327,9 +357,21 @@ internal class KeyboardView: UIView {
         deleteRowView.characterSequence.reloadData()
     }
     
-    private var deleteRowView = DeleteRowView()
-    internal var layoutView = KeyboardLayoutView()
-    private let spaceRowView = SpaceRowView()
+    private let deleteRowView: DeleteRowView = .init()
+    private let layoutView: KeyboardLayoutView = .init()
+    private let spaceRowView: SpaceRowView = .init()
+    
+    public var layout: KeyboardLayout {
+        set {
+            KeyboardSettings.shared.layout = newValue
+            layoutView.layout = newValue
+            configure()
+        }
+        
+        get {
+            return KeyboardSettings.shared.layout
+        }
+    }
     
     override private init(frame: CGRect = .zero) {
         super.init(frame: frame)
@@ -340,7 +382,7 @@ internal class KeyboardView: UIView {
         backgroundView.addSubview(spaceRowView)
         backgroundView.addSubview(layoutView)
         
-        layoutView.layout = settings.layout
+        layoutView.layout = KeyboardSettings.shared.layout
     }
     
     required internal init?(coder aDecoder: NSCoder) {

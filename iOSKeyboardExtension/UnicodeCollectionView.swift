@@ -32,9 +32,9 @@ class UnicodeCollectionView: CharacterCollectionView {
         
         layout.minimumLineSpacing = 0
         
-//        #if TARGET_INTERFACE_BUILDER
-            characters = .init("⌨🎹😀😇ǶÆ".characters)
-//        #endif
+        #if TARGET_INTERFACE_BUILDER
+            characters = "⌨🎹😀😇ǶÆ".characters.map {$0.description}
+        #endif
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -53,7 +53,33 @@ class UnicodeCollectionView: CharacterCollectionView {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        KeyboardViewController.shared.keyAction(label: characters[indexPath.item].string)
+        for _ in textForSearch.characters {
+            KeyboardViewController.shared.keyAction(label: SpecialKey.delete.label)
+        }
+        
+        let character = characters[indexPath.item]
+        
+        
+        var frequentlyUsedCharacters = KeyboardSettings.shared.frequentlyUsedCharacters
+        
+        if let index = frequentlyUsedCharacters.index(of: character) {
+            frequentlyUsedCharacters.remove(at: index)
+        }
+        
+        frequentlyUsedCharacters = [character] + frequentlyUsedCharacters
+        
+        KeyboardSettings.shared.frequentlyUsedCharacters = .init( frequentlyUsedCharacters.suffix(100) )
+        
+        
+        KeyboardViewController.shared.keyAction(label: character)
         KeyboardViewController.shared.updateDocumentContext()
+    }
+    
+    private var textForSearch: String = .init()
+    
+    public func search(byName text: String) {
+        textForSearch = text
+        
+        UnicodeTable.default.searchScalars(byName: text.replacingOccurrences(of: .reverseSolidus, with: ""), for: self)
     }
 }

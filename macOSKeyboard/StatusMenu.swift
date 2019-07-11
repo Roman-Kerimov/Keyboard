@@ -5,7 +5,7 @@
 //  Created by Roman Kerimov on 2018-02-10.
 //
 
-import Cocoa
+import UIKit
 
 class StatusMenu: NSMenu {
     
@@ -13,8 +13,21 @@ class StatusMenu: NSMenu {
     
     init() {
         super.init(title: .init())
-        statusItem.title = "Kd"
+        
+        let title: NSMutableAttributedString = .init(string: "Kd")
+        title.addAttribute(.font, value: UIFont.boldMenuFont)
+        
+        if !AXIsProcessTrusted() {
+            title.addAttribute(.foregroundColor, value: UIColor.lightGray)
+        }
+        
+        statusItem.attributedTitle = title
         statusItem.menu = self
+        
+        if !AXIsProcessTrusted() {
+            addItem(AccessibilityMenuItem.init())
+            addItem(.separator())
+        }
         
         for layout in KeyboardLayout.list {
             addItem(LayoutMenuItem.init(layout: layout))

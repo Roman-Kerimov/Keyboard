@@ -14,7 +14,7 @@ class Key: NSObject {
     let shiftRightLabel: String
     let shiftLeftLabel: String
     
-    init(label: String,
+    init(label: String = .init(),
          shiftDownLabel: String = .init(),
          shiftUpLabel: String = .init(),
          shiftRightLabel: String = .init(),
@@ -29,9 +29,9 @@ class Key: NSObject {
     }
     
     static let delete: Key = .init(label:"delete")
-    static let space: Key = .init(label: " ", shiftUpLabel: "_")
-    static let `return`: Key = .init(label:"return")
-    static let tab: Key = .init(label:"tab")
+    static let space: Key = .init(label: .space, shiftUpLabel: .lowLine, shiftRightLabel: .tab, shiftLeftLabel: .return)
+    static let spaceWithoutReturn: Key = .init(label: .space, shiftUpLabel: .lowLine, shiftRightLabel: .tab)
+    static let enter: Key = .init(label: "enter")
     static let nextKeyboard: Key = .init(label:"NextKeyboard")
     static let dismissKeyboard: Key = .init(label:"HideKeyboard")
     static let settings: Key = .init(label:"Settings")

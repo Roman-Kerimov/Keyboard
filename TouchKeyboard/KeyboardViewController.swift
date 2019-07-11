@@ -32,8 +32,13 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
     @objc internal func updateDocumentContext() {
         keyboardView.documentContext = textDocumentProxy.documentContext
         
+        keyboardView.spaceKey.key = textDocumentProxy.returnKeyType == .default ? .space : .spaceWithoutReturn
+        
         if textDocumentProxy.enablesReturnKeyAutomatically == true {
-            keyboardView.returnKey.isEnabled = textDocumentProxy.hasText
+            keyboardView.enterKey.isEnabled = textDocumentProxy.hasText && textDocumentProxy.returnKeyType != .default
+        }
+        else {
+            keyboardView.enterKey.isEnabled = textDocumentProxy.returnKeyType != .default
         }
     }
     
@@ -138,23 +143,23 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
     }
     
     override var needsInputModeSwitchKey: Bool {
+        if Bundle.main.isInterfaceBuilder {
+            return true
+        }
+        
         guard Bundle.main.isExtension else {
             return false
         }
-        
-        #if TARGET_INTERFACE_BUILDER
+    
+        if #available(iOS 11.0, *) {
+            return super.needsInputModeSwitchKey
+        }
+        else if let installedKeyboards = UserDefaults.standard.object(forKey: "AppleKeyboards") as? [String] {
+            return installedKeyboards.count > 1
+        }
+        else {
             return true
-        #else
-            if #available(iOS 11.0, *) {
-                return super.needsInputModeSwitchKey
-            }
-            else if let installedKeyboards = UserDefaults.standard.object(forKey: "AppleKeyboards") as? [String] {
-                return installedKeyboards.count > 1
-            }
-            else {
-                return true
-            }
-        #endif
+        }
     }
     
     private var previousDocumentContext: DocumentContext = .init()
@@ -203,19 +208,15 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
         textDocumentProxy.deleteBackward()
     }
     
+    func enter() {
+        insert(text: .return)
+    }
+    
     func settings() {
         keyboardView.showSettings()
     }
     
     func insert(text: String) {
-        if textDocumentProxy.characterBeforeInput?.isSpaceReturnOrTab != false
-            && textDocumentProxy.characterAfterInput?.isSpaceReturnOrTab == false
-            && textDocumentProxy.characterAfterInput?.belongsTo(.punctuationCharacters) == false {
-            
-            textDocumentProxy.insertText(.space)
-            textDocumentProxy.adjustTextPosition(byCharacterOffset: -1)
-        }
-        
         textDocumentProxy.insertText(text)
     }
     

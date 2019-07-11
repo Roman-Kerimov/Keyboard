@@ -19,57 +19,94 @@ class Keyboard: NSObject {
         return "\(VERSION.string) \(versionNumber) (\(buildNumber))"
     }
     
+    private var shiftDirections: [ShiftDirection] = .init()
+    
     internal var shiftFlag: Bool = false {
         didSet {
             if shiftFlag == false {
-                currentKeys = []
+                currentKey = nil
+                shiftDirections = .init()
                 Array<CharacterComponent>.extraArrayExtension = .init()
             }
         }
     }
     
-    internal var shiftUpFlag: Bool = false
-    internal var shiftDownFlag: Bool = false
+    internal var shiftUpFlag: Bool = false {
+        didSet {
+            setFlag(direction: .up, value: shiftUpFlag, oldValue: oldValue)
+        }
+    }
+    
+    internal var shiftDownFlag: Bool = false {
+        didSet {
+            setFlag(direction: .down, value: shiftDownFlag, oldValue: oldValue)
+        }
+    }
+    
+    private var shiftFlagDirections: [ShiftDirection] = []
+    
+    private func setFlag(direction: ShiftDirection, value: Bool, oldValue: Bool) {
+        guard value != oldValue else {
+            return
+        }
+        
+        if value {
+            shiftFlagDirections.append(direction)
+        }
+        else if shiftUpFlag == shiftDownFlag {
+            shiftFlagDirections = []
+        }
+    }
     
     internal func down(key: Key) {
         
         if !shiftFlag {
             currentLabel = key.label
-            currentKeys.append(key)
+            currentKey = key
             input()
         }
         else {
             let layout = Keyboard.default.layout
+            let direction: ShiftDirection
+            
             switch key {
                 
             case layout.rows[0][1], layout.rows[0][6]:
-                shift(direction: .upLeft)
+                direction = .upLeft
                 
             case layout.rows[0][2], layout.rows[0][7]:
-                shift(direction: .up)
+                direction = .up
                 
             case layout.rows[0][3], layout.rows[0][8]:
-                shift(direction: .upRight)
+                direction = .upRight
                 
                 
             case layout.rows[1][1], layout.rows[1][6]:
-                shift(direction: .left)
+                direction = .left
                 
             case layout.rows[1][3], layout.rows[1][8]:
-                shift(direction: .right)
+                direction = .right
                 
                 
             case layout.rows[2][1], layout.rows[2][6]:
-                shift(direction: .downLeft)
+                direction = .downLeft
                 
             case layout.rows[2][2], layout.rows[2][7]:
-                shift(direction: .down)
+                direction = .down
                 
             case layout.rows[2][3], layout.rows[2][8]:
-                shift(direction: .downRight)
+                direction = .downRight
                 
             default:
-                break
+                return
+            }
+            
+            if shiftDirections.last == direction {
+                input()
+            }
+            else {
+                shift(direction: direction)
+                shiftDirections.append(direction)
             }
         }
         
@@ -83,12 +120,8 @@ class Keyboard: NSObject {
             stopAutorepeat()
         }
         
-        guard let keyIndex = currentKeys.index(of: key) else {
-            return
-        }
-        
-        if !shiftFlag {
-            currentKeys.remove(at: keyIndex)
+        if !shiftFlag && currentKey == key {
+            currentKey = nil
         }
     }
     
@@ -113,16 +146,22 @@ class Keyboard: NSObject {
     private var shouldDeletePreviousCharacter: Bool = false
     
     private func input() {
-        guard let currentKey = currentKeys.first else {
+        guard let currentKey = currentKey else {
             return
         }
         
-        if shiftUpFlag {
-            shiftUp(key: currentKey)
-        }
-        
-        if shiftDownFlag {
-            shiftDown(key: currentKey)
+        for shiftFlagDirection in shiftFlagDirections {
+            switch shiftFlagDirection {
+                
+            case .up:
+                shiftUp(key: currentKey)
+                
+            case .down:
+                shiftDown(key: currentKey)
+                
+            default:
+                break
+            }
         }
         
         if shouldDeletePreviousCharacter {
@@ -136,11 +175,8 @@ class Keyboard: NSObject {
         case .delete:
             delegate?.delete()
             
-        case .return:
-            delegate?.insert(text: .return)
-            
-        case .tab:
-            delegate?.insert(text: .tab)
+        case .enter:
+            delegate?.enter()
             
         case .settings:
             delegate?.settings()
@@ -155,7 +191,7 @@ class Keyboard: NSObject {
         NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
     }
     
-    internal var currentKeys: [Key] = []
+    internal var currentKey: Key? = nil
     
     private var characterComponents: [CharacterComponent] {
         get {
@@ -205,7 +241,7 @@ class Keyboard: NSObject {
     }
     
     internal func shift(direction: ShiftDirection) {
-        guard let key = currentKeys.first else {
+        guard let key = currentKey else {
             return
         }
         
@@ -233,6 +269,27 @@ class Keyboard: NSObject {
         case .upLeft, .downLeft:
             
             guard key.label.count == 1 else {
+                break
+            }
+            
+            let extraCharacterComponents: [CharacterComponent]
+            
+            switch direction {
+            case .upLeft:
+                extraCharacterComponents = characterComponents + [.extraUpLeft]
+                
+            case .left:
+                extraCharacterComponents = characterComponents + [.extraLeft]
+                
+            case .downLeft:
+                extraCharacterComponents = characterComponents + [.extraDownLeft]
+                
+            default:
+                extraCharacterComponents = []
+            }
+            
+            guard extraCharacterComponents.character.isEmpty else {
+                characterComponents = extraCharacterComponents
                 break
             }
             
@@ -287,11 +344,15 @@ class Keyboard: NSObject {
                 }
             }
             
+            characterComponents += [.extraRight]
+            
         case .upRight:
             characterComponents += [.superscript]
+            characterComponents += [.extraUpRight]
             
         case .downRight:
             characterComponents += [.subscript]
+            characterComponents += [.extraDownRight]
         }
         
         delegate?.delete()

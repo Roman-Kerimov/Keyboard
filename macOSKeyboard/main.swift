@@ -7,6 +7,8 @@
 
 import AppKit
 
+LaunchAgent.load()
+
 let application = NSApplication.shared
 NSApp.setActivationPolicy(.accessory)
 application.delegate = AppDelegate.init()

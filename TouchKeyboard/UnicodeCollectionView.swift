@@ -33,11 +33,11 @@ class UnicodeCollectionView: CharacterCollectionView {
         layout.minimumLineSpacing = 0
         clipsToBounds = false
         
-        #if TARGET_INTERFACE_BUILDER
+        if Bundle.main.isInterfaceBuilder {
             characters = .init("⌨🎹😀😇ǶÆ")
             
             isHiddenUnicodeNames = false
-        #endif
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

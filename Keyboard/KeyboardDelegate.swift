@@ -10,6 +10,7 @@ import Foundation
 protocol KeyboardDelegate {
     
     func delete()
+    func enter()
     func settings()
     
     func insert(text: String)

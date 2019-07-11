@@ -13,6 +13,10 @@ class KeyView: UIButton, ConfigurableView {
     override func updateLocalizedStrings() {
         super.updateLocalizedStrings()
         
+        guard key == .enter else {
+            return
+        }
+        
         guard let returnKeyType = returnKeyType else {
             return
         }
@@ -20,7 +24,7 @@ class KeyView: UIButton, ConfigurableView {
         switch returnKeyType {
             
         case .default:
-            mainLabelView.text = Key.return.label
+            mainLabelView.text = Key.enter.label
         case .go:
             mainLabelView.text = GO.string
         case .join:
@@ -70,12 +74,21 @@ class KeyView: UIButton, ConfigurableView {
     
     public var key: Key {
         didSet {
-            setLabels()
+            if mainLabelView.text == oldValue.label {
+                setLabels()
+            }
+            else {
+                setShiftLabels()
+            }
         }
     }
     
     private func setLabels() {
         mainLabelView.text = key.label
+        setShiftLabels()
+    }
+    
+    private func setShiftLabels() {
         shiftDownLabelView.text = key.shiftDownLabel
         shiftUpLabelView.text = key.shiftUpLabel
         shiftRightLabelView.text = key.shiftRightLabel
@@ -97,24 +110,15 @@ class KeyView: UIButton, ConfigurableView {
     private var backgroundView: UIView!
     
     private var returnKeyType: UIReturnKeyType? {
-        if key == .return {
-            #if TARGET_INTERFACE_BUILDER
-                return .default
-            #else
-                return KeyboardViewController.shared.textDocumentProxy.returnKeyType
-            #endif
-        }
-        else {
-            return nil
-        }
+        return Bundle.main.isInterfaceBuilder ? .default : KeyboardViewController.shared.textDocumentProxy.returnKeyType
     }
     
     private var isServiceKey: Bool {
-        return key.label.count > 1 && key != .space && key != .tab && returnKeyType != .default
+        return key.label.count > 1 && key != .space
     }
     
     private var isSpecialReturnType: Bool {
-        return key == .return
+        return key == .enter
             && returnKeyType != .default
             && returnKeyType != .next
             && returnKeyType != .continue
@@ -216,7 +220,7 @@ class KeyView: UIButton, ConfigurableView {
     }
     
     @objc func keyboardStateDidChange() {
-        guard let key = Keyboard.default.currentKeys.first else {
+        guard let key = Keyboard.default.currentKey else {
             return
         }
         
@@ -237,29 +241,17 @@ class KeyView: UIButton, ConfigurableView {
         baseFontSize = labelFontSize
         self.spacing = spacing
         
-        if key.label.count == 1 {
-            mainLabelView.font = UIFont.init(name: "Symbola", size: baseFontSize)
-        }
-        else {
-            mainLabelView.font = UIFont.systemFont(ofSize: baseFontSize)
-        }
+        let characterLabelFont: UIFont = .characterFont(ofSize: baseFontSize)
+        let nameLabelFont: UIFont = .systemFont(ofSize: labelFontSize/1.8)
         
-        let shiftLabelFont = mainLabelView.font.withSize(labelFontSize/1.8)
-        shiftUpLabelView.font = shiftLabelFont
-        shiftDownLabelView.font = shiftLabelFont
-        shiftLeftLabelView.font = shiftLabelFont
-        shiftRightLabelView.font = shiftLabelFont
+        mainLabelView.font = [.space, .enter, .delete].contains(key) ? nameLabelFont : characterLabelFont
         
-        switch key {
-        case .delete, .return, .tab:
-            mainLabelView.font = mainLabelView.font.withSize(shiftLabelFont.pointSize)
-            
-        case .settings:
-            mainLabelView.font = mainLabelView.font.withSize(shiftLabelFont.pointSize * 2.5)
-            
-        default:
-            break
-        }
+        let characterShiftLabelFont = characterLabelFont.withSize(nameLabelFont.pointSize)
+        
+        shiftUpLabelView.font = characterShiftLabelFont
+        shiftDownLabelView.font = characterShiftLabelFont
+        shiftLeftLabelView.font = nameLabelFont
+        shiftRightLabelView.font = nameLabelFont
         
         if imageLabelView.image != nil {
             imageLabelView.image = UIImage.init(fromPDF: labelFileName, withExtension: .ai, withScale: labelFontSize/24)?.withRenderingMode(.alwaysTemplate)
@@ -281,7 +273,7 @@ class KeyView: UIButton, ConfigurableView {
         shiftUpLabelView.center.y = verticalShiftLabelIndent
         shiftDownLabelView.center.y = frame.height - verticalShiftLabelIndent
 
-        if key == .space {
+        if [.space, .spaceWithoutReturn].contains(key) {
             shiftUpLabelView.center.x = backgroundView.center.x
             shiftDownLabelView.center.x = backgroundView.center.x
         }
@@ -307,7 +299,7 @@ class KeyView: UIButton, ConfigurableView {
     private var previousTime: TimeInterval = 0
     private var previousDistance: CGFloat = 0
     
-    private var shiftDirections: [CGFloat] = .init()
+    private var shiftDirections: [Keyboard.ShiftDirection] = .init()
     
     @objc func longPressGestureAction(gesture: UIGestureRecognizer) {
         isHighlighted = true
@@ -357,35 +349,34 @@ class KeyView: UIButton, ConfigurableView {
             previousTime = currentTime
             previousDistance = distance
             
-            if shiftDirections.last == direction  || startPointSpeed > 300 {
+            let shiftDirection: Keyboard.ShiftDirection
+            
+            switch direction {
+            case -0.75:
+                shiftDirection = .downLeft
+            case -0.5:
+                shiftDirection = .down
+            case -0.25:
+                shiftDirection = .downRight
+            case 0:
+                shiftDirection = .right
+            case 0.25:
+                shiftDirection = .upRight
+            case 0.5:
+                shiftDirection = .up
+            case 0.75:
+                shiftDirection = .upLeft
+            default:
+                shiftDirection = .left
+            }
+            
+            if shiftDirections.last == shiftDirection  || startPointSpeed > 300 {
                 gestureStartPoint = gesture.location(in: self)
                 previousDistance = 0
                 startPointSpeed = speed
             }
             else if distance > threshold {
-                shiftDirections.append(direction)
-                
-                let shiftDirection: Keyboard.ShiftDirection
-                
-                switch direction {
-                case -0.75:
-                    shiftDirection = .downLeft
-                case -0.5:
-                    shiftDirection = .down
-                case -0.25:
-                    shiftDirection = .downRight
-                case 0:
-                    shiftDirection = .right
-                case 0.25:
-                    shiftDirection = .upRight
-                case 0.5:
-                    shiftDirection = .up
-                case 0.75:
-                    shiftDirection = .upLeft
-                default:
-                    shiftDirection = .left
-                }
-                
+                shiftDirections.append(shiftDirection)
                 Keyboard.default.shift(direction: shiftDirection)
             }
         }

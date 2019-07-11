@@ -30,9 +30,9 @@ class CharacterSequenceView: CharacterCollectionView {
         addGestureRecognizer(longPressGestureRecognizer)
         longPressGestureRecognizer.minimumPressDuration = 0
         
-        #if TARGET_INTERFACE_BUILDER
+        if Bundle.main.isInterfaceBuilder {
             characters = .init("keyboard😀")
-        #endif
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -246,7 +246,7 @@ class CharacterSequenceView: CharacterCollectionView {
     }
     
     private var characterFont: UIFont {
-        return UIFont(name: "Courier New", size: 1.4 * layout.itemSize.width)!
+        return .characterFont(ofSize: 1.8 * layout.itemSize.width)
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -288,11 +288,7 @@ class CharacterSequenceView: CharacterCollectionView {
         }
         
         return .init(
-            width: max(
-                layout.itemSize.width,
-                characters[indexPath.item].description.size(withFont: characterFont).width
-            ),
-            
+            width: characters[indexPath.item].description.size(withFont: characterFont).width + characterFont.pointSize * 0.2,
             height: layout.itemSize.height
         )
     }

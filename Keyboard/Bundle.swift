@@ -13,6 +13,18 @@ extension Bundle {
     var isExtension: Bool {
         return bundlePath.hasSuffix(".appex")
     }
+    
+    var isInterfaceBuilder: Bool {
+        #if TARGET_INTERFACE_BUILDER
+        return true
+        #else
+        return false
+        #endif
+    }
+    
+    var productName: String {
+        return infoDictionary?[kCFBundleNameKey as String] as? String ?? .init()
+    }
 }
 
 class MainBundle {}

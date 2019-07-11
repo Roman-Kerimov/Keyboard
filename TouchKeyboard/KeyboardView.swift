@@ -77,8 +77,12 @@ internal class KeyboardView: UIView {
         return deleteRowView.deleteKey
     }
     
-    internal var returnKey: KeyView {
-        return spaceRowView.returnKey
+    internal var enterKey: KeyView {
+        return spaceRowView.enterKey
+    }
+    
+    internal var spaceKey: KeyView {
+        return spaceRowView.spaceKey
     }
 
     /*
@@ -90,20 +94,17 @@ internal class KeyboardView: UIView {
     */
 
     #if TARGET_INTERFACE_BUILDER
-    
-        private var layoutMode: Keyboard.KeyboardLayoutMode = .default
-    
+    private var layoutMode: Keyboard.KeyboardLayoutMode = .default
     #else
-        private var layoutMode: Keyboard.KeyboardLayoutMode {
-            get {
-                return Keyboard.default.layoutMode
-            }
-            
-            set {
-                Keyboard.default.layoutMode = newValue
-            }
+    private var layoutMode: Keyboard.KeyboardLayoutMode {
+        get {
+            return Keyboard.default.layoutMode
         }
-    
+        
+        set {
+            Keyboard.default.layoutMode = newValue
+        }
+    }
     #endif
 
     internal var colorScheme: KeyboardColorScheme = .default {
@@ -120,9 +121,9 @@ internal class KeyboardView: UIView {
         characterSequenceView.colorScheme = colorScheme
         layoutView.unicodeCollectionView.colorScheme = colorScheme
         
-        #if TARGET_INTERFACE_BUILDER
+        if Bundle.main.isInterfaceBuilder {
             backgroundView.backgroundColor = colorScheme.fakeBackroundColorForInterfaceBuilder
-        #endif
+        }
     }
     
     private var characterSequenceView: CharacterSequenceView {
@@ -147,11 +148,7 @@ internal class KeyboardView: UIView {
     }
     
     private var scaleFactor: CGFloat {
-        #if TARGET_INTERFACE_BUILDER
-            return 1
-        #else
-            return bounds.width / UIScreen.main.bounds.width
-        #endif
+        return Bundle.main.isInterfaceBuilder ? 1 : bounds.width / UIScreen.main.bounds.width
     }
     
     private var minimalScreenSize: CGSize {
@@ -159,21 +156,11 @@ internal class KeyboardView: UIView {
     }
     
     private var  screenSize: CGSize {
-        #if TARGET_INTERFACE_BUILDER
-            return bounds.size
-        #else
-            let nativeSize = UIScreen.main.bounds.size
-            return CGSize(width: nativeSize.width * scaleFactor, height: nativeSize.height * scaleFactor)
-        #endif
+        return Bundle.main.isInterfaceBuilder ? bounds.size : UIScreen.main.bounds.size.applying(.init(scale: scaleFactor))
     }
     
     private var coefficientOfIncreaseForMainButtons: CGFloat {
-        if layoutMode == .horizontal && isPrefferedVerticalMode {
-            return 1.2
-        }
-        else {
-            return 1
-        }
+        return layoutMode == .horizontal && isPrefferedVerticalMode ? 1.2 : 1
     }
     
     private var deleteRowHeightInKeys: CGFloat {
@@ -184,12 +171,7 @@ internal class KeyboardView: UIView {
     }
     
     private var horizontalIndentInKeys: CGFloat {
-        if layoutMode == .horizontal && isPrefferedVerticalMode {
-            return 1
-        }
-        else {
-            return 0.5
-        }
+        return layoutMode == .horizontal && isPrefferedVerticalMode ? 1 : 0.5
     }
     
     private let maxKeyboardHeightRatio: CGFloat = 0.59
@@ -239,7 +221,7 @@ internal class KeyboardView: UIView {
     }
     
     private var labelFontSize: CGFloat {
-        return max(keySize.width, minimalScreenSize.width / sizeInKeysForVerticalMode.width) * 6/15
+        return min(spaceRowHeight * 0.5, 36)
     }
     
     private var halfKeyboardSize: CGSize {
@@ -281,11 +263,9 @@ internal class KeyboardView: UIView {
         
         configure()
         
-        colorScheme = .default
+        colorScheme = darkColorScheme ? .dark : .default
         
-        if darkColorScheme {
-            colorScheme = .dark
-        }
+        enterKey.isEnabled = false
     }
     
     private var isPrefferedVerticalMode: Bool {
@@ -295,31 +275,15 @@ internal class KeyboardView: UIView {
     internal func configure() {
         
         if layoutMode == .default {
-            if isPrefferedVerticalMode {
-                layoutMode = .vertical
-            }
-            else {
-                layoutMode = .horizontal
-            }
+            layoutMode = isPrefferedVerticalMode ? .vertical : .horizontal
         }
         
         if alternateLayoutMode {
-            if layoutMode == .vertical {
-                layoutMode = .horizontal
-            }
-            else {
-                layoutMode = .vertical
-            }
+            layoutMode = layoutMode == .vertical ? .horizontal : .vertical
         }
         
         let isHorizontalMode = layoutMode == .horizontal || screenSize.height < self.minimalScreenSize.height
-        
-        if isHorizontalMode {
-            sizeInKeys = sizeInKeysForHorizontalMode
-        }
-        else {
-            sizeInKeys = sizeInKeysForVerticalMode
-        }
+        sizeInKeys = isHorizontalMode ? sizeInKeysForHorizontalMode : sizeInKeysForVerticalMode
         
         if heightConstraint != nil {
             heightConstraint?.constant = size.height
@@ -330,26 +294,25 @@ internal class KeyboardView: UIView {
             heightConstraint?.isActive = true
         }
         
-        #if !TARGET_INTERFACE_BUILDER
-            if !Bundle.main.isExtension {
-                frame = UIScreen.main.bounds
-                frame.size.height = size.height
-            }
-        #endif
+        if !Bundle.main.isInterfaceBuilder && !Bundle.main.isExtension {
+            frame = UIScreen.main.bounds
+            frame.size.height = size.height
+        }
         
-        backgroundView.frame.size = .init(width: bounds.width, height: size.height)
-        
-        #if TARGET_INTERFACE_BUILDER
-            backgroundView.frame.origin = .init(x: 0, y: bounds.height - size.height)
-        #endif
-        
+        backgroundView.frame = .init(
+            x: 0,
+            y: Bundle.main.isInterfaceBuilder ? bounds.height - size.height : 0,
+            width: bounds.width,
+            height:  size.height
+        )
         
         let keySize = self.keySize
         let keySpacing = deleteRowHeight * 0.1
         let labelFontSize: CGFloat = self.labelFontSize
         
         deleteRowView.configure(
-            size: .init(width: size.width, height: deleteRowHeight), keySpacing: keySpacing, labelFontSize: labelFontSize
+            size: .init(width: size.width, height: deleteRowHeight),
+            keySpacing: keySpacing, labelFontSize: labelFontSize
         )
         deleteRowView.frame.origin.y = 0
         
@@ -362,7 +325,8 @@ internal class KeyboardView: UIView {
         layoutView.frame.origin.y = deleteRowHeight
         
         spaceRowView.configure(
-            size: .init(width: size.width, height: spaceRowHeight), keySpacing: keySpacing, labelFontSize: labelFontSize
+            size: .init(width: size.width, height: spaceRowHeight),
+            keySpacing: keySpacing, labelFontSize: labelFontSize
         )
         spaceRowView.frame.origin.y = deleteRowHeight + layoutHeight
         

@@ -18,20 +18,24 @@ extension AXUIElement {
         return focusedUIElement as! AXUIElement
     }
     
-    private func get(attribute: AXAttribute) -> String {
+    private func get(attribute: AXAttribute) -> String? {
         var value: CFTypeRef?
         AXUIElementCopyAttributeValue(self, kAXValueAttribute as CFString, &value)
-        return value as! String
+        return value as? String
     }
     
     private func set(attribute: AXAttribute, value: String) {
         AXUIElementSetAttributeValue(self, attribute.cfString, value as CFTypeRef)
     }
     
-    private func get(attribute: AXAttribute) -> NSRange {
+    private func get(attribute: AXAttribute) -> NSRange? {
         
         var value: CFTypeRef?
         AXUIElementCopyAttributeValue(self, kAXSelectedTextRangeAttribute as CFString, &value)
+        
+        if value == nil {
+            return nil
+        }
 
         var rangeValue: NSRange = .init()
         AXValueGetValue(value as! AXValue, .cfRange, &rangeValue)
@@ -44,34 +48,52 @@ extension AXUIElement {
         AXUIElementSetAttributeValue(self, attribute.cfString, AXValueCreate(.cfRange, &rangeValue) as CFTypeRef)
     }
     
+    
+    func hasSettable(attribute: AXAttribute) -> Bool {
+        
+        var isSettable: DarwinBoolean = .init(false)
+        AXUIElementIsAttributeSettable(self, attribute.cfString, &isSettable)
+        
+        return isSettable.boolValue && attributeNames.filter {$0.hasSuffix("Ancestor")} .isEmpty
+    }
+    
+    private var attributeNames: [String] {
+        
+        var attributeNamesCFArray: CFArray?
+        
+        AXUIElementCopyAttributeNames(.focused, &attributeNamesCFArray)
+        
+        return attributeNamesCFArray as! [String]
+    }
+    
 
-    var text: String {
+    var text: String? {
         get {
             return get(attribute: .value)
         }
         
         set {
-            set(attribute: .value, value: newValue)
+            set(attribute: .value, value: newValue ?? .init())
         }
     }
     
-    var selectedText: String {
+    var selectedText: String? {
         get {
             return get(attribute: .selectedText)
         }
         
         set {
-            set(attribute: .selectedText, value: newValue)
+            set(attribute: .selectedText, value: newValue ?? .init())
         }
     }
     
-    var selectedTextRange: NSRange {
+    var selectedTextRange: NSRange? {
         get {
             return get(attribute: .selectedTextRange)
         }
         
         set {
-            set(attribute: .selectedTextRange, value: newValue)
+            set(attribute: .selectedTextRange, value: newValue ?? .init())
         }
     }
 }

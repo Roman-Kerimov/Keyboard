@@ -29,6 +29,7 @@ class KeyView: UIButton {
             backgroundView.backgroundColor = colorScheme.keyColor
             
             label.textColor = colorScheme.labelColor
+            tintColor = colorScheme.labelColor
             shiftUpLabel.textColor = colorScheme.shiftLabelColor
             shiftDownLabel.textColor = colorScheme.shiftLabelColor
             shiftLeftLabel.textColor = colorScheme.shiftLabelColor
@@ -78,20 +79,16 @@ class KeyView: UIButton {
         case .delete, .return:
             label.font = label.font.withSize(shiftLabelFont.pointSize)
             
-        case .dismissKeyboard:
-            label.font = label.font.withSize(shiftLabelFont.pointSize * 1.2)
-            
-        case .nextKeyboard:
-            label.font = label.font.withSize(shiftLabelFont.pointSize * 1.5)
-            centerXLabelConstraint.constant = label.font.pointSize * 0.02
-            centerYLabelConstraint.constant = label.font.pointSize * 0.05
-            
         case .settings:
             label.font = label.font.withSize(shiftLabelFont.pointSize * 2.5)
             centerXLabelConstraint.constant = label.font.pointSize * 0.025
             
         default:
             break
+        }
+        
+        if imageLabelView.image != nil {
+            imageLabelView.image = UIImage.init(fromPDF: labelFileName, withExtension: .ai, withScale: labelFontSize/24, for: self)?.withRenderingMode(.alwaysTemplate)
         }
     }
     
@@ -100,7 +97,12 @@ class KeyView: UIButton {
     
     let mainLabel: String
     
+    private var labelFileName: String {
+        return "Labels_\(mainLabel)"
+    }
+    
     let label = UILabel()
+    let imageLabelView: UIImageView = .init()
     let shiftUpLabel = ShiftLabel()
     let shiftDownLabel = ShiftLabel()
     
@@ -113,7 +115,34 @@ class KeyView: UIButton {
         self.init(label: key.label)
         
         if key == .nextKeyboard || key == .dismissKeyboard {
-            label.font = UIFont(name: "FiraSans", size: 1)
+            //label.font =
+        }
+    }
+    
+    private var highlightColor: UIColor!
+    
+    override internal var isHighlighted: Bool {
+        didSet {
+            super.isHighlighted = isHighlighted
+            
+            if isHighlighted {
+                
+                backgroundView.backgroundColor = highlightColor
+                label.textColor = colorScheme.activeLabelColor
+                shiftUpLabel.isHidden = true
+                shiftDownLabel.isHidden = true
+                shiftLeftLabel.isHidden = true
+                shiftRightLabel.isHidden = true
+            }
+            else {
+                
+                backgroundView.backgroundColor = colorScheme.keyColor
+                label.textColor = colorScheme.labelColor
+                shiftUpLabel.isHidden = false
+                shiftDownLabel.isHidden = false
+                shiftLeftLabel.isHidden = false
+                shiftRightLabel.isHidden = false
+            }
         }
     }
     
@@ -122,9 +151,9 @@ class KeyView: UIButton {
         super.init(frame: CGRect())
         
         // It is for activation of touch events
-        backgroundColor = UIColor.white.withAlphaComponent(0.001)
+        backgroundColor = .touchableClear
         
-        self.label.numberOfLines = 3
+        highlightColor = tintColor
         
         backgroundView = UIView()
         backgroundView.isUserInteractionEnabled = false
@@ -185,6 +214,16 @@ class KeyView: UIButton {
             self.shiftDownLabel.text = shiftDownLabel
         }
         
+        addSubview(imageLabelView)
+        imageLabelView.translatesAutoresizingMaskIntoConstraints = false
+        imageLabelView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        imageLabelView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        
+        if let imageLabel: UIImage = UIImage.init(fromPDF: labelFileName, withExtension: .ai, withScale: 1, for: self) {
+            imageLabelView.image = imageLabel
+            self.label.isHidden = true
+        }
+        
         longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressGestureAction(gesture:)))
         addGestureRecognizer(longPressGestureRecognizer)
         
@@ -209,17 +248,13 @@ class KeyView: UIButton {
             
         case .began:
             
-            backgroundView.backgroundColor = tintColor
-            label.textColor = colorScheme.activeLabelColor
-            shiftUpLabel.isHidden = true
-            shiftDownLabel.isHidden = true
-            shiftLeftLabel.isHidden = true
-            shiftRightLabel.isHidden = true
+            isHighlighted = true
             
             gestureStartPoint = gesture.location(in: self)
             
             if specialKey == .delete {
                 KeyboardViewController.shared.keyAction(label: self.label.text!)
+                KeyboardViewController.shared.updateDocumentContext()
                 
                 autorepeatThread = Thread(block: {
                     let thread = self.autorepeatThread!
@@ -227,7 +262,12 @@ class KeyView: UIButton {
                     Thread.sleep(forTimeInterval: 0.5)
                     
                     while thread.isCancelled == false {
-                        KeyboardViewController.shared.keyAction(label: self.label.text!)
+                        
+                        OperationQueue.main.addOperation {
+                            KeyboardViewController.shared.keyAction(label: self.label.text!)
+                            KeyboardViewController.shared.updateDocumentContext()
+                        }
+                        
                         Thread.sleep(forTimeInterval: 0.1)
                     }
                     
@@ -243,14 +283,10 @@ class KeyView: UIButton {
             
             if specialKey != .delete {
                 KeyboardViewController.shared.keyAction(label: self.label.text!)
+                KeyboardViewController.shared.updateDocumentContext()
             }
             
-            backgroundView.backgroundColor = colorScheme.keyColor
-            label.textColor = colorScheme.labelColor
-            shiftUpLabel.isHidden = false
-            shiftDownLabel.isHidden = false
-            shiftLeftLabel.isHidden = false
-            shiftRightLabel.isHidden = false
+            isHighlighted = false
             
             label.text = mainLabel
             
@@ -265,33 +301,28 @@ class KeyView: UIButton {
             
             let threshold = CGPoint(x: min(maxKeyWidth / 2, bounds.size.width / 4), y: bounds.size.height / 4)
             
-            let isUpShift = offset.y < -threshold.y
-            let isDownShift = offset.y > threshold.y
+            let isShiftUp = offset.y < -threshold.y
+            let isShiftDown = offset.y > threshold.y
             let isLeftShift = offset.x < -threshold.x
             let isRightShift = offset.x > threshold.x
             
             if isLeftShift && shiftLeftLabel.text != nil {
-                label.text = shiftLeftLabel.text
+                keyState = .shiftLeft
             }
             else if isRightShift && shiftRightLabel.text != nil {
-                label.text = shiftRightLabel.text
+                keyState = .shiftRight
             }
-            else if isUpShift {
-                if shiftUpLabel.text != nil {
-                    label.text = shiftUpLabel.text
-                }
-                else if specialKey == nil {
-                    label.text = mainLabel.uppercased()
-                }
+            else if isShiftUp {
+                keyState = .shiftUp
             }
-            else if isDownShift && isRightShift && shiftDownLabel.text != "" {
-                label.text = String(shiftDownLabel.text!.characters.last!)
+            else if isShiftDown && isRightShift && shiftDownLabel.text != "" {
+                keyState = .shiftDownRight
             }
-            else if isDownShift && shiftDownLabel.text != "" {
-                label.text = String(shiftDownLabel.text!.characters.first!)
+            else if isShiftDown && shiftDownLabel.text != "" {
+                keyState = .shiftDown
             }
             else {
-                label.text = mainLabel
+                keyState = .tap
             }
         }
     }
@@ -303,21 +334,60 @@ class KeyView: UIButton {
         
         return SpecialKey(rawValue: label)
     }
+    
+    var keyState: KeyState = .default {
+        didSet {
+            isHighlighted = true
+            
+            switch keyState {
+            case .default:
+                label.text = mainLabel
+                isHighlighted = false
+            case .tap:
+                label.text = mainLabel
+                
+            case .shiftUp:
+                if shiftUpLabel.text != nil {
+                    label.text = shiftUpLabel.text
+                }
+                else if specialKey == nil {
+                    label.text = mainLabel.uppercased()
+                }
+                
+            case .shiftDown:
+                label.text = String(shiftDownLabel.text!.characters.first!)
+                
+            case .shiftDownRight:
+                label.text = String(shiftDownLabel.text!.characters.last!)
+                
+            case .shiftLeft:
+                label.text = shiftLeftLabel.text
+                
+            case .shiftRight:
+                label.text = shiftRightLabel.text
+            }
+        }
+    }
+}
+    
+public enum KeyState {
+    case `default`, tap, shiftUp, shiftDown, shiftLeft, shiftRight, shiftDownRight
 }
 
-internal enum SpecialKey: String {
+public enum SpecialKey: String {
     var label: String {
         return rawValue
     }
     
     case delete = "delete"
+    case removeCharacter = "removeCharacter"
     case space = " "
     case `return` = "return"
     case tab = "tab"
     case union = "union"
-    case nextKeyboard = "🌐"
-    case dismissKeyboard = "\n⌨\nˇ"
-    case settings = "𑁔"
+    case nextKeyboard = "NextKeyboard"
+    case dismissKeyboard = "HideKeyboard"
+    case settings = "Settings"
     case horizontalMode = "▄▄"
     case verticalMode = "▝█▖"
 }

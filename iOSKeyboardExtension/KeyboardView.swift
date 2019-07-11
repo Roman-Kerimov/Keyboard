@@ -14,8 +14,52 @@ internal class KeyboardView: UIView {
     @IBInspectable internal var darkColorScheme: Bool = false
     @IBInspectable internal var alternateLayoutMode: Bool = false
     
+    internal var documentContext: DocumentContext = .init() {
+        didSet {
+            let documentContextBeforeInput: String = documentContext.beforeInput ?? .init()
+            
+            var characterSequence: [Character] = .init()
+            var spaceCount = 0
+            
+            characterSequenceView.characters = characterSequence
+            
+            var isNonspaceSequence: Bool = false
+            
+            for character in documentContextBeforeInput.characters.reversed() {
+                
+                switch character {
+                case Character.space:
+                    spaceCount += 1
+                    
+                case Character.return, Character.tab:
+                    return
+                    
+                default:
+                    isNonspaceSequence = true
+                    spaceCount = 0
+                }
+                
+                if spaceCount == 2 {
+                    break
+                }
+                
+                characterSequence = [character] + characterSequence
+                
+                if spaceCount == 1 && isNonspaceSequence {
+                    break
+                }
+            }
+            
+            characterSequenceView.characters = characterSequence
+        }
+    }
+    
     internal var nextKeyboardKey: KeyView {
         return spaceRowView.nextKeyboardKey
+    }
+    
+    internal var deleteKey: KeyView {
+        return deleteRowView.deleteKey
     }
 
     /*
@@ -39,9 +83,15 @@ internal class KeyboardView: UIView {
             key.colorScheme = colorScheme
         }
         
+        characterSequenceView.colorScheme = colorScheme
+        
         #if TARGET_INTERFACE_BUILDER
             keyboardView.backgroundColor = colorScheme.fakeBackroundColorForInterfaceBuilder
         #endif
+    }
+    
+    private var characterSequenceView: CharacterSequenceView {
+        return deleteRowView.characterSequence
     }
     
     private var keys: [KeyView] {
@@ -233,6 +283,12 @@ internal class KeyboardView: UIView {
         for key in keys {
             key.configure(maxKeyWidth: maxKeyWidth, keySize: keySize, minimalScreenSize: minimalScreenSize, sizeInKeysForVerticalMode: sizeInKeysForVerticalMode)
         }
+        
+        deleteRowView.characterSequence.layout.itemSize = .init(
+            width: .init(Int.init(max(keySize.width, minimalScreenSize.width/sizeInKeysForVerticalMode.width)/4)),
+            height: keySize.height
+        )
+        deleteRowView.characterSequence.reloadData()
     }
     
     private var deleteRowView = DeleteRowView()

@@ -11,11 +11,12 @@ import UIKit
 class DeleteRowView: RowView {
     
     let deleteKey = KeyView(key: .delete)
+    internal let characterSequence: CharacterSequenceView = .init()
     
     internal override init() {
         super.init()
         
-        addArrangedSubview(UIView())
+        addArrangedSubview(characterSequence)
         
         addArrangedSubview(deleteKey)
         deleteKey.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1/5).isActive = true

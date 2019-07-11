@@ -108,7 +108,16 @@ func eventTapCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent,
         Keyboard.default.shiftFlag = event.flags.contains(.maskCommand)
     }
     
-    if Keyboard.default.shiftFlag == false && event.flags.contains(.maskCommand) {
+    if Keyboard.default.shiftFlag == false && event.flags.contains(.maskCommand) || AppDelegate.commandPressedKeycodes.contains(event.keycode) {
+        
+        if event.type == .keyDown {
+            AppDelegate.commandPressedKeycodes.append(event.keycode)
+        }
+        
+        if event.type == .keyUp {
+            AppDelegate.commandPressedKeycodes.removeAll {$0 == event.keycode}
+        }
+        
         return Unmanaged.passRetained(event)
     }
     
@@ -118,6 +127,13 @@ func eventTapCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent,
     let key: Key
     
     if TISInputSource.currentKeyboardLayout.isASCIICapable {
+        
+        if event.keycode == .tab && event.type == .keyDown && Keyboard.default.autocompleteText.isEmpty == false {
+            
+            Keyboard.default.autocomplete()
+            
+            return nil
+        }
         
         let selectorKeys: [Keycode] = [.grave, .one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .zero, .hyphenMinus, .equal, .leftSquareBracket, .rightSquareBracket, .reverseSolidus, .apostrophe]
         

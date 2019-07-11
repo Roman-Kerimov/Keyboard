@@ -10,8 +10,6 @@ import UIKit
 
 class CharacterSearchView: CharacterCollectionView {
 
-    var documentContextBeforeInput: String = .init()
-
     internal var size: CGSize = .zero {
         didSet {
             frame.size = size
@@ -37,10 +35,10 @@ class CharacterSearchView: CharacterCollectionView {
         }
         
         layout.minimumLineSpacing = 0
-        clipsToBounds = false
         
         NotificationCenter.default.addObserver(self, selector: #selector(search), name: .UnicodeDataFilesDidLoad, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(search), name: .DocumentContextDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(hideUnicodeNames), name: .KeyboardStateDidChange, object: nil)
         
         if Bundle.main.isInterfaceBuilder {
             characters = .init("⌨🎹😀😇ǶÆ")
@@ -122,7 +120,7 @@ class CharacterSearchView: CharacterCollectionView {
     
     @objc private func search() {
         
-        let documentContextBeforeInput = Keyboard.default.delegate?.documentContext.beforeInput ?? self.documentContextBeforeInput
+        let documentContextBeforeInput = Keyboard.default.delegate?.documentContext.beforeInput ?? .init()
         
         var textForSearch: String = .init(
             documentContextBeforeInput
@@ -147,12 +145,16 @@ class CharacterSearchView: CharacterCollectionView {
         }
     }
     
-    public var isHiddenUnicodeNames: Bool = true {
+    private var isHiddenUnicodeNames: Bool = true {
         didSet {
             for cell in visibleCells as! [CharacterCollectionViewCell] {
                 cell.unicodeName.isHidden = isHiddenUnicodeNames
             }
         }
+    }
+    
+    @objc private func hideUnicodeNames() {
+        isHiddenUnicodeNames = true
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

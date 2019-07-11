@@ -19,6 +19,12 @@
 		96146511209C671B00001815 /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665F3771E9D921500850F97 /* CharacterCollectionViewCell.swift */; };
 		96146512209C671B00001815 /* CharacterCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960F6E921EC9ED0400EFC7B7 /* CharacterCollectionView.swift */; };
 		96146513209C675300001815 /* LabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BC5F551DEB961F002E0752 /* LabelView.swift */; };
+		961CE9F721B0CCEA00E1A14D /* AutocompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961CE9F621B0CCEA00E1A14D /* AutocompleteView.swift */; };
+		961CE9F821B0CD0100E1A14D /* AutocompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961CE9F621B0CCEA00E1A14D /* AutocompleteView.swift */; };
+		961CE9F921B0CD0100E1A14D /* AutocompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961CE9F621B0CCEA00E1A14D /* AutocompleteView.swift */; };
+		961CE9FF21B0D32800E1A14D /* ReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961CE9FE21B0D32800E1A14D /* ReuseIdentifier.swift */; };
+		961CEA0021B0D32800E1A14D /* ReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961CE9FE21B0D32800E1A14D /* ReuseIdentifier.swift */; };
+		961CEA0121B0D32800E1A14D /* ReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961CE9FE21B0D32800E1A14D /* ReuseIdentifier.swift */; };
 		961D74912009003900BBC5FB /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961D74902009003900BBC5FB /* Key.swift */; };
 		961D74922009003900BBC5FB /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961D74902009003900BBC5FB /* Key.swift */; };
 		961FC32E1F3ADD9B00ADB15D /* LegalNoticesTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961FC32D1F3ADD9B00ADB15D /* LegalNoticesTextView.swift */; };
@@ -30,9 +36,14 @@
 		96200BEB208CDC8D002930D6 /* ENABLE_KEYBOARD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96200BE8208CDC8D002930D6 /* ENABLE_KEYBOARD.swift */; };
 		9620E748202B9EB1003FB02E /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9620E747202B9EB1003FB02E /* Bundle.swift */; };
 		9620E749202B9EB1003FB02E /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9620E747202B9EB1003FB02E /* Bundle.swift */; };
+		962B5343218C91EA001C4914 /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962B5342218C91EA001C4914 /* CGRect.swift */; };
+		962B5344218C91EA001C4914 /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962B5342218C91EA001C4914 /* CGRect.swift */; };
 		962D7CC820CD75320047B8B9 /* NSRegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962D7CC720CD75320047B8B9 /* NSRegularExpression.swift */; };
 		962D7CC920CD75320047B8B9 /* NSRegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962D7CC720CD75320047B8B9 /* NSRegularExpression.swift */; };
 		962D7CCA20CD75320047B8B9 /* NSRegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962D7CC720CD75320047B8B9 /* NSRegularExpression.swift */; };
+		963212B4217B820500E8A6B2 /* FloatingWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963212B3217B820500E8A6B2 /* FloatingWindow.swift */; };
+		963212B6217C61BC00E8A6B2 /* CharacterSequenceWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963212B5217C61BB00E8A6B2 /* CharacterSequenceWindow.swift */; };
+		963212B7217C643200E8A6B2 /* CharacterSequenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665F3751E9D847300850F97 /* CharacterSequenceView.swift */; };
 		9633A3CA1E5DFE8D00DFA503 /* DeleteRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9633A3C91E5DFE8D00DFA503 /* DeleteRowView.swift */; };
 		9637C6F120F2440200078395 /* UIKeyboardAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637C6F020F2440200078395 /* UIKeyboardAppearance.swift */; };
 		9637C6F220F2440200078395 /* UIKeyboardAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637C6F020F2440200078395 /* UIKeyboardAppearance.swift */; };
@@ -103,6 +114,9 @@
 		96533A961F1293B000B07CA3 /* Labels_HideKeyboard.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96EA39DF1EB0EEDD00F3D804 /* Labels_HideKeyboard.ai */; };
 		96533A971F1293B000B07CA3 /* Labels_Settings.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96767C241EB11E28004D847C /* Labels_Settings.ai */; };
 		9654DF7A1D4E1D0900DDB0EF /* SpaceRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9654DF791D4E1D0900DDB0EF /* SpaceRowView.swift */; };
+		96568B8A21B5CFF000921466 /* scriptTraslationCodeDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96568B8921B5CFF000921466 /* scriptTraslationCodeDictionary.swift */; };
+		96568B8B21B5CFF000921466 /* scriptTraslationCodeDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96568B8921B5CFF000921466 /* scriptTraslationCodeDictionary.swift */; };
+		96568B8C21B5CFF000921466 /* scriptTraslationCodeDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96568B8921B5CFF000921466 /* scriptTraslationCodeDictionary.swift */; };
 		965A22151F3B2D6C000430E6 /* SettingsContainerView_LegalNoticesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96464A1C1F3AF2A5006F8F6B /* SettingsContainerView_LegalNoticesView.swift */; };
 		965A22161F3B2D6D000430E6 /* SettingsContainerView_LegalNoticesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96464A1C1F3AF2A5006F8F6B /* SettingsContainerView_LegalNoticesView.swift */; };
 		965A8B3E20D2EDF800E0260E /* VisibilityMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965A8B3D20D2EDF800E0260E /* VisibilityMenuItem.swift */; };
@@ -155,6 +169,11 @@
 		969E83051EED842E009A1F2D /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969E83041EED842E009A1F2D /* UIView.swift */; };
 		969F15F51E549BD300C0DD7D /* ViewController<UIView>.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969F15F41E549BD300C0DD7D /* ViewController<UIView>.swift */; };
 		969F15F71E54EE3600C0DD7D /* LanguageTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969F15F61E54EE3600C0DD7D /* LanguageTableView.swift */; };
+		96A8EB0B21AEC4F200941FA0 /* LinguisticKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96A8EB0A21AEC4F200941FA0 /* LinguisticKit.framework */; };
+		96A8EB0C21AEC50100941FA0 /* LinguisticKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96A8EB0A21AEC4F200941FA0 /* LinguisticKit.framework */; };
+		96A8EB0D21AEC50100941FA0 /* LinguisticKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96A8EB0A21AEC4F200941FA0 /* LinguisticKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		96A8EB0E21AEC51300941FA0 /* LinguisticKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96A8EB0A21AEC4F200941FA0 /* LinguisticKit.framework */; };
+		96A8EB0F21AEC51300941FA0 /* LinguisticKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96A8EB0A21AEC4F200941FA0 /* LinguisticKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		96AC6CA3203C23B200555164 /* CGEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AC6CA2203C23B200555164 /* CGEvent.swift */; };
 		96ACD588205261EE007CFDCF /* NSPasteboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96ACD587205261EE007CFDCF /* NSPasteboard.swift */; };
 		96AED32F203120DE00498A7E /* LayoutMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AED32E203120DE00498A7E /* LayoutMenuItem.swift */; };
@@ -295,12 +314,24 @@
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		96A8EB0621AEC49000941FA0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				96A8EB0D21AEC50100941FA0 /* LinguisticKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		96E46DF02086A21B00D49583 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				96A8EB0F21AEC51300941FA0 /* LinguisticKit.framework in Embed Frameworks */,
 				96E46DEF2086A21B00D49583 /* UIKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -378,12 +409,17 @@
 		960F6E921EC9ED0400EFC7B7 /* CharacterCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterCollectionView.swift; sourceTree = "<group>"; };
 		960F6E941EC9F7E600EFC7B7 /* CharacterSearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterSearchView.swift; sourceTree = "<group>"; };
 		960FEFED203D37590099E449 /* AXAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AXAttribute.swift; sourceTree = "<group>"; };
+		961CE9F621B0CCEA00E1A14D /* AutocompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteView.swift; sourceTree = "<group>"; };
+		961CE9FE21B0D32800E1A14D /* ReuseIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReuseIdentifier.swift; sourceTree = "<group>"; };
 		961D74902009003900BBC5FB /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		961FC32D1F3ADD9B00ADB15D /* LegalNoticesTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalNoticesTextView.swift; sourceTree = "<group>"; };
 		961FC3301F3AE14B00ADB15D /* LegalNoticesText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalNoticesText.swift; sourceTree = "<group>"; };
 		96200BE8208CDC8D002930D6 /* ENABLE_KEYBOARD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ENABLE_KEYBOARD.swift; sourceTree = "<group>"; };
 		9620E747202B9EB1003FB02E /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
+		962B5342218C91EA001C4914 /* CGRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
 		962D7CC720CD75320047B8B9 /* NSRegularExpression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSRegularExpression.swift; sourceTree = "<group>"; };
+		963212B3217B820500E8A6B2 /* FloatingWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingWindow.swift; sourceTree = "<group>"; };
+		963212B5217C61BB00E8A6B2 /* CharacterSequenceWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSequenceWindow.swift; sourceTree = "<group>"; };
 		9633A3C91E5DFE8D00DFA503 /* DeleteRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteRowView.swift; sourceTree = "<group>"; };
 		9637C6F020F2440200078395 /* UIKeyboardAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKeyboardAppearance.swift; sourceTree = "<group>"; };
 		963A53F5214808D2001CAD75 /* codeScriptDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = codeScriptDictionary.swift; sourceTree = "<group>"; };
@@ -411,6 +447,7 @@
 		964FE8221D1CA9D400D41EA7 /* Keyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Keyboard.storyboard; sourceTree = "<group>"; };
 		96530D661DD1C9A9004E8BAA /* KeyboardLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardLayout.swift; sourceTree = "<group>"; };
 		9654DF791D4E1D0900DDB0EF /* SpaceRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceRowView.swift; sourceTree = "<group>"; };
+		96568B8921B5CFF000921466 /* scriptTraslationCodeDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scriptTraslationCodeDictionary.swift; sourceTree = "<group>"; };
 		965A8B3D20D2EDF800E0260E /* VisibilityMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisibilityMenuItem.swift; sourceTree = "<group>"; };
 		965A8B3F20D315A000E0260E /* HIDE_FOR_APPLICATION.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HIDE_FOR_APPLICATION.swift; sourceTree = "<group>"; };
 		965A8B4320D317C100E0260E /* SHOW_FOR_APPLICATION.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHOW_FOR_APPLICATION.swift; sourceTree = "<group>"; };
@@ -454,6 +491,7 @@
 		969E83041EED842E009A1F2D /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		969F15F41E549BD300C0DD7D /* ViewController<UIView>.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController<UIView>.swift"; sourceTree = "<group>"; };
 		969F15F61E54EE3600C0DD7D /* LanguageTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageTableView.swift; sourceTree = "<group>"; };
+		96A8EB0A21AEC4F200941FA0 /* LinguisticKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LinguisticKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96AC6CA2203C23B200555164 /* CGEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGEvent.swift; sourceTree = "<group>"; };
 		96ACD587205261EE007CFDCF /* NSPasteboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSPasteboard.swift; sourceTree = "<group>"; };
 		96AED32E203120DE00498A7E /* LayoutMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutMenuItem.swift; sourceTree = "<group>"; };
@@ -510,6 +548,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96A8EB0C21AEC50100941FA0 /* LinguisticKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,6 +556,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96A8EB0B21AEC4F200941FA0 /* LinguisticKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,6 +571,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96A8EB0E21AEC51300941FA0 /* LinguisticKit.framework in Frameworks */,
 				96E46DEE2086A21B00D49583 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -721,6 +762,7 @@
 				96B6B35A1F9764F400231AE6 /* Array<CharacterComponent>.swift */,
 				9643FC4F1F78F94B004DA2C0 /* characterComponentsDictionary.swift */,
 				963A53F5214808D2001CAD75 /* codeScriptDictionary.swift */,
+				96568B8921B5CFF000921466 /* scriptTraslationCodeDictionary.swift */,
 				96C49DC41EB7DF1F006F93ED /* Character.swift */,
 				96848D9E1EE05F080009869A /* String.swift */,
 				96443FBF208C9D12002FFA6B /* NSMutableAttributedString.swift */,
@@ -738,6 +780,9 @@
 				96F7FBE81FBB299400F7146C /* CollectionViewFlowLayout.swift */,
 				96BC5F551DEB961F002E0752 /* LabelView.swift */,
 				960F6E941EC9F7E600EFC7B7 /* CharacterSearchView.swift */,
+				9665F3751E9D847300850F97 /* CharacterSequenceView.swift */,
+				961CE9F621B0CCEA00E1A14D /* AutocompleteView.swift */,
+				961CE9FE21B0D32800E1A14D /* ReuseIdentifier.swift */,
 				96848DA01EE0B64F0009869A /* UnicodeTable.swift */,
 				96436BA020C1DA2D0065ED03 /* UnicodeItem.swift */,
 				9697C3E220BB514900FE3007 /* UnicodeDataFile.swift */,
@@ -775,9 +820,9 @@
 				969F15F61E54EE3600C0DD7D /* LanguageTableView.swift */,
 				966194D21DE2FCEF007FCF02 /* KeyboardLayoutView.swift */,
 				9633A3C91E5DFE8D00DFA503 /* DeleteRowView.swift */,
-				9665F3751E9D847300850F97 /* CharacterSequenceView.swift */,
 				9654DF791D4E1D0900DDB0EF /* SpaceRowView.swift */,
 				965D15C81D32AE3B0098FA57 /* KeyView.swift */,
+				962B5342218C91EA001C4914 /* CGRect.swift */,
 				96EA39D61EAFDDDE00F3D804 /* UIImage.swift */,
 				9637C6F020F2440200078395 /* UIKeyboardAppearance.swift */,
 				96EA39E01EB0EEDD00F3D804 /* Labels_NextKeyboard.ai */,
@@ -790,6 +835,7 @@
 		96DB1A77202FB80300B96D3C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				96A8EB0A21AEC4F200941FA0 /* LinguisticKit.framework */,
 				96DB1A78202FB80300B96D3C /* UIKit.framework */,
 			);
 			name = Frameworks;
@@ -829,7 +875,9 @@
 				96E354E92020DDBC00668374 /* AppDelegate.swift */,
 				968DEA8020CCDFA400750040 /* eventTapCallback.swift */,
 				96D6E94E20C8494800C357FA /* NonAccessibilityDocumentContext.swift */,
+				963212B3217B820500E8A6B2 /* FloatingWindow.swift */,
 				96BE9C7020A8340400C2C03F /* CharacterSearchWindow.swift */,
+				963212B5217C61BB00E8A6B2 /* CharacterSequenceWindow.swift */,
 				967502532089E1D300FD6CED /* LaunchAgent.swift */,
 				9673CAD7203282490030E2CA /* AXUIElement.swift */,
 				960FEFED203D37590099E449 /* AXAttribute.swift */,
@@ -876,6 +924,7 @@
 				964AB92E1D1B6490004C827C /* Frameworks */,
 				964AB92F1D1B6490004C827C /* Resources */,
 				964AB9721D1B6535004C827C /* Embed App Extensions */,
+				96A8EB0621AEC49000941FA0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1110,9 +1159,11 @@
 				96533A891F12938D00B07CA3 /* ViewController<UIView>.swift in Sources */,
 				96E0341A203179C50039E653 /* EMERGENCY_CALL.swift in Sources */,
 				965A22161F3B2D6D000430E6 /* SettingsContainerView_LegalNoticesView.swift in Sources */,
+				962B5343218C91EA001C4914 /* CGRect.swift in Sources */,
 				96533A781F12938D00B07CA3 /* KeyboardViewController.swift in Sources */,
 				96533A871F12938D00B07CA3 /* LabelView.swift in Sources */,
 				96533A791F12938D00B07CA3 /* KeyboardView.swift in Sources */,
+				961CE9F821B0CD0100E1A14D /* AutocompleteView.swift in Sources */,
 				964AB9351D1B6490004C827C /* AppDelegate.swift in Sources */,
 				96E033EA2031540A0039E653 /* KEYBOARD.swift in Sources */,
 				9696CBC12031800B007CC94B /* Template.swift in Sources */,
@@ -1146,6 +1197,7 @@
 				96E0340A2031567A0039E653 /* ROUTE.swift in Sources */,
 				96436BA120C1DA2D0065ED03 /* UnicodeItem.swift in Sources */,
 				96533A7B1F12938D00B07CA3 /* SettingsTableView.swift in Sources */,
+				96568B8A21B5CFF000921466 /* scriptTraslationCodeDictionary.swift in Sources */,
 				961FC3311F3AE14B00ADB15D /* LegalNoticesText.swift in Sources */,
 				9608928620B001AD007AA01E /* SearchUnicodeScalars.swift in Sources */,
 				96E033F22031549C0039E653 /* ABOUT.swift in Sources */,
@@ -1158,6 +1210,7 @@
 				966C19F0209775D8000EF1B5 /* UIFont.swift in Sources */,
 				96533A8B1F1293A500B07CA3 /* UIColor.swift in Sources */,
 				96533A7D1F12938D00B07CA3 /* KeyboardLayoutView.swift in Sources */,
+				961CE9FF21B0D32800E1A14D /* ReuseIdentifier.swift in Sources */,
 				96533A7A1F12938D00B07CA3 /* SettingsContainerView.swift in Sources */,
 				969450C020B3215100DD7EF3 /* URL.swift in Sources */,
 				96E033FA203155A80039E653 /* VERSION.swift in Sources */,
@@ -1203,7 +1256,9 @@
 				965D15C91D32AE3B0098FA57 /* KeyView.swift in Sources */,
 				9608928720B001AD007AA01E /* SearchUnicodeScalars.swift in Sources */,
 				96E0340F203157030039E653 /* SEARCH.swift in Sources */,
+				961CE9F721B0CCEA00E1A14D /* AutocompleteView.swift in Sources */,
 				9697C3E420BB514900FE3007 /* UnicodeDataFile.swift in Sources */,
+				961CEA0021B0D32800E1A14D /* ReuseIdentifier.swift in Sources */,
 				965D15C11D3146BB0098FA57 /* KeyboardView.swift in Sources */,
 				96200BEA208CDC8D002930D6 /* ENABLE_KEYBOARD.swift in Sources */,
 				96E033F32031549C0039E653 /* ABOUT.swift in Sources */,
@@ -1216,8 +1271,10 @@
 				961FC32F1F3ADD9B00ADB15D /* LegalNoticesTextView.swift in Sources */,
 				9637C6F220F2440200078395 /* UIKeyboardAppearance.swift in Sources */,
 				96E03407203156660039E653 /* NEXT.swift in Sources */,
+				962B5344218C91EA001C4914 /* CGRect.swift in Sources */,
 				9654DF7A1D4E1D0900DDB0EF /* SpaceRowView.swift in Sources */,
 				9688312B202008040071908B /* DocumentContext.swift in Sources */,
+				96568B8B21B5CFF000921466 /* scriptTraslationCodeDictionary.swift in Sources */,
 				96498A40205F4A7D002B1071 /* Keycode.swift in Sources */,
 				962D7CC920CD75320047B8B9 /* NSRegularExpression.swift in Sources */,
 				96E03413203162BF0039E653 /* SEND.swift in Sources */,
@@ -1288,6 +1345,7 @@
 				96AED33320312BA500498A7E /* LanguageMenuItem.swift in Sources */,
 				963DE0B0202F00B60040A448 /* main.swift in Sources */,
 				96146512209C671B00001815 /* CharacterCollectionView.swift in Sources */,
+				963212B4217B820500E8A6B2 /* FloatingWindow.swift in Sources */,
 				96E034042031562B0039E653 /* JOIN.swift in Sources */,
 				96EBF2AA209D158D00AE00E7 /* CharacterSet.swift in Sources */,
 				9697F882202FA8A1001EC50A /* Localization.swift in Sources */,
@@ -1296,11 +1354,13 @@
 				96EBF2A8209CEBB900AE00E7 /* UnicodeTable.swift in Sources */,
 				96146513209C675300001815 /* LabelView.swift in Sources */,
 				96F28C21203021760023313C /* String.swift in Sources */,
+				961CE9F921B0CD0100E1A14D /* AutocompleteView.swift in Sources */,
 				96436BA320C1DA2D0065ED03 /* UnicodeItem.swift in Sources */,
 				96DB1A7B202FB84F00B96D3C /* LegalNoticesTextView.swift in Sources */,
 				965A8B3E20D2EDF800E0260E /* VisibilityMenuItem.swift in Sources */,
 				96DB1A7D202FB87C00B96D3C /* UIView.swift in Sources */,
 				963DE0B2202F012B0040A448 /* StatusMenu.swift in Sources */,
+				961CEA0121B0D32800E1A14D /* ReuseIdentifier.swift in Sources */,
 				96E033E8203153100039E653 /* SETTINGS.swift in Sources */,
 				96498A41205F4A7D002B1071 /* Keycode.swift in Sources */,
 				96E033F0203154660039E653 /* LANGUAGE.swift in Sources */,
@@ -1322,6 +1382,7 @@
 				96DB1A7A202FB84F00B96D3C /* LegalNoticesText.swift in Sources */,
 				96E033EC2031540A0039E653 /* KEYBOARD.swift in Sources */,
 				966EB96D202FC0D3007718F2 /* LegalNoticesMenuItem.swift in Sources */,
+				96568B8C21B5CFF000921466 /* scriptTraslationCodeDictionary.swift in Sources */,
 				96C1EC2E205131EC00AC27CB /* CGEventFlags.swift in Sources */,
 				96DBC14B205EBD8700910E7A /* TISInputSource.swift in Sources */,
 				966CB25620911C99005C7B5B /* CGAffineTransform.swift in Sources */,
@@ -1331,6 +1392,7 @@
 				96E033F8203154FC0039E653 /* LEGAL_NOTICES.swift in Sources */,
 				96F28C192030205C0023313C /* KeyboardDelegate.swift in Sources */,
 				968DEA8120CCDFA400750040 /* eventTapCallback.swift in Sources */,
+				963212B7217C643200E8A6B2 /* CharacterSequenceView.swift in Sources */,
 				96EBF2A7209CE86900AE00E7 /* CharacterSearchView.swift in Sources */,
 				96E03420203179F00039E653 /* CONTINUE.swift in Sources */,
 				96E033F42031549C0039E653 /* ABOUT.swift in Sources */,
@@ -1350,6 +1412,7 @@
 				96F28C1E2030205C0023313C /* Array<CharacterComponent>.swift in Sources */,
 				96F28C1F2030205C0023313C /* characterComponentsDictionary.swift in Sources */,
 				96AED32F203120DE00498A7E /* LayoutMenuItem.swift in Sources */,
+				963212B6217C61BC00E8A6B2 /* CharacterSequenceWindow.swift in Sources */,
 				96D6E94F20C8494800C357FA /* NonAccessibilityDocumentContext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1425,7 +1488,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CURRENT_PROJECT_VERSION = 30;
+				CURRENT_PROJECT_VERSION = 31;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1435,6 +1498,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
@@ -1462,7 +1527,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CURRENT_PROJECT_VERSION = 30;
+				CURRENT_PROJECT_VERSION = 31;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1471,6 +1536,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1519,7 +1586,6 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = iOSKeyboard/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1574,7 +1640,6 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = iOSKeyboard/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1632,7 +1697,6 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = iOSKeyboardExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1686,7 +1750,6 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = iOSKeyboardExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1736,7 +1799,6 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = iOSKeyboardTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1781,7 +1843,6 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = iOSKeyboardTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1836,7 +1897,6 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = rY3kmwWHhX4cbk131AvOtLb99XoAEQ1;
 				PRODUCT_NAME = "$(PROJECT_NAME)";
@@ -1879,7 +1939,6 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = rY3kmwWHhX4cbk131AvOtLb99XoAEQ1;
 				PRODUCT_NAME = "$(PROJECT_NAME)";
@@ -1928,7 +1987,6 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = RomanKerimov.macOSKeyboardTests;
 				PRODUCT_NAME = "$(PROJECT_NAME)Tests";
@@ -1974,7 +2032,6 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = RomanKerimov.macOSKeyboardTests;
 				PRODUCT_NAME = "$(PROJECT_NAME)Tests";

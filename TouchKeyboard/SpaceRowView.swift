@@ -62,7 +62,7 @@ class SpaceRowView: UIView {
             }
             
             if keyView.key == .nextKeyboard
-                && KeyboardViewController.shared.needsInputModeSwitchKey == false {
+                && Keyboard.default.delegate?.needsInputModeSwitchKey == false {
                 
                 freeSpace = keyWidth
                 keyWidth = 0

@@ -12,7 +12,7 @@ class VersionMenuItem: LocalizedMenuItem {
     override func updateLocalizedStrings() {
         super.updateLocalizedStrings()
         
-        title = Keyboard.default.version
+        title = Bundle.main.version
     }
 
     override init() {

@@ -46,20 +46,6 @@ extension String {
         return characterComponents.character
     }
     
-    func applyingScriptComponent() -> String {
-        
-        if characterComponents.isEmpty {
-            return self
-        }
-        
-        if let scriptComponent = Keyboard.default.scriptComponent {
-            return appending(characterComponent: scriptComponent)
-        }
-        else {
-            return removing(characterComponents: CharacterComponent.scripts)
-        }
-    }
-    
     func size(withFont font: UIFont) -> CGSize {
         return (self as NSString).size(withAttributes: [.font: font])
     }

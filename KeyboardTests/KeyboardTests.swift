@@ -8,6 +8,8 @@
 import XCTest
 @testable import Keyboard
 
+import LinguisticKit
+
 class KeyboardTests: XCTestCase, KeyboardDelegate {
     func delete() {
         guard document.count > 0 else {
@@ -56,4 +58,18 @@ class KeyboardTests: XCTestCase, KeyboardDelegate {
         Keyboard.default.up(key: a)
     }
 
+    func testScriptTranslation() {
+        let cyrillicText = "Съешь же ещё этих мягких французских булок, да выпей чаю."
+        let latinText = cyrillicText.translating(from: .Cyrl, to: .Latn, withTable: .ru)
+        
+        insert(text: latinText)
+        insert(text: .return)
+        insert(text: latinText)
+        insert(text: " ru")
+        NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
+        
+        Keyboard.default.autocomplete()
+        
+        XCTAssertEqual(documentContext.beforeInput, [latinText, cyrillicText].joined(separator: .return))
+    }
 }

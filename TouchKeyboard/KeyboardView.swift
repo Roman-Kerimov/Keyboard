@@ -21,48 +21,6 @@ internal class KeyboardView: UIView {
     
     var state: State = .disappeared
     
-    internal var documentContext: DocumentContext = .init() {
-        didSet {
-            let documentContextBeforeInput: String = documentContext.beforeInput ?? .init()
-            
-            var characterSequence: [Character] = .init()
-            var spaceCount = 0
-            
-            characterSequenceView.characters = characterSequence
-            
-            var isNonspaceSequence: Bool = false
-            
-            for character in documentContextBeforeInput.reversed() {
-                
-                switch character {
-                case Character.space:
-                    spaceCount += 1
-                    
-                case Character.return, Character.tab:
-                    return
-                    
-                default:
-                    isNonspaceSequence = true
-                    spaceCount = 0
-                }
-                
-                if spaceCount == 2 {
-                    break
-                }
-                
-                characterSequence = [character] + characterSequence
-                
-                if spaceCount == 1 && isNonspaceSequence {
-                    break
-                }
-            }
-            
-            characterSequenceView.characters = characterSequence
-            
-            characterSearchView.documentContextBeforeInput = documentContextBeforeInput
-        }
-    }
-    
     internal var nextKeyboardKey: KeyView {
         return spaceRowView.nextKeyboardKey
     }
@@ -138,10 +96,6 @@ internal class KeyboardView: UIView {
         enterKey.isEnabled = false
         
         LoadUnicodeDataFiles.init().start()
-        documentContext = .init(beforeInput: text, afterInput: nil)
-        NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
-        
-        SearchUnicodeScalars.init(for: characterSearchView).start()
     }
     
     private let deleteRowView: DeleteRowView = .init()
@@ -162,6 +116,7 @@ internal class KeyboardView: UIView {
         settingsContainerView.backButton.addTarget(self, action: #selector(hideSettings), for: .allTouchEvents)
         
         NotificationCenter.default.addObserver(self, selector: #selector(setLayout), name: .LayoutDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(setNeedsLayout), name: .LayoutModeDidChange, object: nil)
     }
     
     required internal init?(coder aDecoder: NSCoder) {
@@ -170,11 +125,17 @@ internal class KeyboardView: UIView {
     
     override func layoutSubviews() {
         
-        if Bundle.main.isInterfaceBuilder {
+        #if TARGET_INTERFACE_BUILDER
+            Keyboard.default.delegate = self
+            
             UIKeyboardAppearance.current = darkAppearance ? .dark : .default
             
             backgroundView.backgroundColor = .windowBackgroundColor
-        }
+            
+            NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
+            
+            SearchUnicodeScalars.init(for: characterSearchView).start()
+        #endif
         
         guard state != .disappeared else {
             return
@@ -357,3 +318,17 @@ internal class KeyboardView: UIView {
         }
     }
 }
+
+#if TARGET_INTERFACE_BUILDER
+extension KeyboardView: KeyboardDelegate {
+    
+    func delete() {}
+    func enter() {}
+    func settings() {}
+    func insert(text: String) {}
+    
+    var documentContext: DocumentContext {
+        return .init(beforeInput: text, afterInput: nil)
+    }
+}
+#endif

@@ -21,22 +21,23 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         title.adjustsFontSizeToFitWidth = true
         title.textAlignment = .center
         
-        title.translatesAutoresizingMaskIntoConstraints = false
-        title.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        title.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-        title.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        
         addSubview(unicodeName)
-        
-        unicodeName.translatesAutoresizingMaskIntoConstraints = false
-        unicodeName.leftAnchor.constraint(equalTo: rightAnchor).isActive = true
-        unicodeName.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         
         backgroundColor = .touchableClear
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    #if os(macOS)
+    override func layout() {crossLayout()}
+    #else
+    override func layoutSubviews() {crossLayout()}
+    #endif
+    func crossLayout() {
+        title.frame.size = frame.size
+        unicodeName.frame.origin = .init(x: frame.maxX, y: (frame.height - unicodeName.frame.height)/2)
     }
     
     private var maxUnicodeNameViewWidth: CGFloat {

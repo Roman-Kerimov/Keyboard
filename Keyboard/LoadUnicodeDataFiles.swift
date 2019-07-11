@@ -8,8 +8,8 @@
 import Foundation
 
 class LoadUnicodeDataFiles: Operation {
-    let columnSeparator: String = ";"
-    let commentMarker: String = "#"
+    let columnSeparator: Character = ";"
+    let commentMarker: Character = "#"
     
     override func main() {
         
@@ -26,7 +26,7 @@ class LoadUnicodeDataFiles: Operation {
             case .derivedName:
                 parse(dataFile: dataFile, processedStringCount: &processedStringCount, output: &UnicodeTable.default.codePointNames) { (string, codePointNames) in
                     
-                    let components = string.components(separatedBy: columnSeparator).map {$0.trimmingCharacters(in: .whitespaces)}
+                    let components = string.split(separator: columnSeparator).map {$0.trimmingCharacters(in: .whitespaces)}
                     
                     guard components.count == 2 else {
                         return
@@ -42,7 +42,7 @@ class LoadUnicodeDataFiles: Operation {
             case .emojiTest:
                 parse(dataFile: dataFile, processedStringCount: &processedStringCount, output: &UnicodeTable.default.sequenceItems) { (string, sequenceItems) in
                     
-                    let components = string.components(separatedBy: columnSeparator).flatMap {$0.components(separatedBy: commentMarker + .space)}.map {$0.trimmingCharacters(in: .whitespaces)}
+                    let components = string.split(maxSplits: 2, omittingEmptySubsequences: false) { [columnSeparator, commentMarker].contains($0) } .map {$0.trimmingCharacters(in: .whitespaces)}
                     
                     let unicodeScalars = components[0].components(separatedBy: .whitespaces).map {$0.hexToUnicodeScalar!}
                     let sequence: String = unicodeScalars.map {$0.description} .reduce(.init(), +)
@@ -75,7 +75,7 @@ class LoadUnicodeDataFiles: Operation {
         else {
             for string in dataFile.strings {
                 
-                if string.isEmpty == false && string.hasPrefix(commentMarker) == false {
+                if string.isEmpty == false && string.hasPrefix(commentMarker.description) == false {
                     autoreleasepool {
                         parse(string, &output)
                     }

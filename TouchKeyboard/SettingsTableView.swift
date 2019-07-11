@@ -105,7 +105,7 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
         switch Section.allCases[section] {
             
         case .about:
-            return Keyboard.default.version
+            return Bundle.main.version
             
         default:
             return nil
@@ -132,15 +132,7 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
         case .appLanguage:
             cell.textLabel?.text = LANGUAGE.string
             
-            let languageCode = Language.current.rawValue
-            let locale = Locale(identifier: languageCode)
-            
-            if locale.scriptCode == nil {
-                cell.detailTextLabel?.text = locale.localizedString(forIdentifier: languageCode)
-            }
-            else {
-                cell.detailTextLabel?.text = locale.localizedString(forLanguageCode: locale.languageCode!)
-            }
+            cell.detailTextLabel?.text = Language.current.localizedName
             
             cell.accessoryType = .disclosureIndicator
             

@@ -7,29 +7,12 @@
 
 import UIKit
 
-class CharacterSearchWindow: NSWindow {
-    init() {
-        super.init(
-            contentRect: .init(origin: .zero, size: .init(width: 30, height: 250)),
-            styleMask: [.titled, .fullSizeContentView],
-            backing: .buffered,
-            defer: true
-        )
-        
-        level = .floating
-        collectionBehavior = .canJoinAllSpaces
-        allowsToolTipsWhenApplicationIsInactive = true
-        titlebarAppearsTransparent = true
-        isMovable = false
-        
-        let characterSearchView = CharacterSearchView.init()
-        characterSearchView.size = frame.size
-        contentView = characterSearchView
-        
-        makeKeyAndOrderFront(self)
-    }
+class CharacterSearchWindow: FloatingWindow {
     
-    override var canBecomeKey: Bool {
-        return false
+    init() {
+        let characterSearchView = CharacterSearchView.init()
+        characterSearchView.size = .init(width: 30, height: 250)
+        
+        super.init(contentView: characterSearchView)
     }
 }

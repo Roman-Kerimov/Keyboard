@@ -17,10 +17,6 @@ class KeyView: UIButton {
     override func updateLocalizedStrings() {
         super.updateLocalizedStrings()
         
-        guard key == .enter else {
-            return
-        }
-        
         guard let returnKeyType = returnKeyType else {
             return
         }
@@ -77,7 +73,7 @@ class KeyView: UIButton {
     private var backgroundView: UIView!
     
     private var returnKeyType: UIReturnKeyType? {
-        return Bundle.main.isInterfaceBuilder ? .default : KeyboardViewController.shared.textDocumentProxy.returnKeyType
+        return key != .enter ? nil : Keyboard.default.delegate?.returnKeyType ?? .default
     }
     
     private var isServiceKey: Bool {
@@ -161,12 +157,6 @@ class KeyView: UIButton {
         
         mainLabelView.textColor = !isEnabled ? .disabledControlTextColor : isHighlighted != isServiceKey && isSpecialReturnType ? .alternateSelectedControlTextColor : .labelColor
         
-        if let scriptComponent = Keyboard.default.scriptComponent {
-            if key.label.count == 1 && key.label.first?.belongsTo(.letters) == true && key.label.characterComponents.contains(scriptComponent) == false {
-                mainLabelView.textColor = .tertiaryLabelColor
-            }
-        }
-        
         imageLabelView.tintColor = mainLabelView.textColor
         
         let isHiddenShiftLabelView: Bool = isHighlighted != isServiceKey
@@ -193,11 +183,7 @@ class KeyView: UIButton {
         }
         
         backgroundView.layer.cornerRadius = KeyView.spacing
-        
-        let keyEdgeInset = KeyView.spacing / 2
-        
-        backgroundView.frame = frame.insetBy(dx: keyEdgeInset, dy: keyEdgeInset)
-        backgroundView.frame.origin = .init(x: keyEdgeInset, y: keyEdgeInset)
+        backgroundView.frame = CGRect.init(origin: .zero, size: frame.size).insetBy(scalar: KeyView.spacing/2)
         
         let verticalShiftLabelIndent = KeyView.spacing * 2.2
         let horizontalShiftLabelIndent = KeyView.spacing * 1.0
@@ -238,8 +224,6 @@ class KeyView: UIButton {
     
     @objc func longPressGestureAction(gesture: UIGestureRecognizer) {
         isHighlighted = true
-        
-        KeyboardViewController.shared.keyboardView.characterSearchView.isHiddenUnicodeNames = true
         
         switch gesture.state {
             

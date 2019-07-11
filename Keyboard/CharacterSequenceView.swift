@@ -20,16 +20,27 @@ class CharacterSequenceView: CharacterCollectionView {
     
     private var longPressGestureRecognizer: UILongPressGestureRecognizer!
     
-    override init() {
+    private let deleteButton: UIButton?
+    
+    init(deleteButton: UIButton?) {
+        
+        self.deleteButton = deleteButton
+        
         super.init()
-
-        layout.sectionInset = .init(top: 0, left: 0, bottom: 0, right: layout.itemSize.width)
+        
         layout.scrollDirection = .horizontal
         
+        alwaysBounceVertical = false
+        
         longPressGestureRecognizer = UILongPressGestureRecognizer.init(target: self, action: #selector(handleLongPressGesture(from:)))
+        longPressGestureRecognizer.cancelsTouchesInView = false
         addGestureRecognizer(longPressGestureRecognizer)
         longPressGestureRecognizer.minimumPressDuration = 0
         
+        NotificationCenter.default.addObserver(self, selector: #selector(updateCharacters), name: .CharacterSequenceDidChange, object: nil)
+        
+        register(AutocompleteView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: AutocompleteView.reuseIdentifier)
+
         if Bundle.main.isInterfaceBuilder {
             characters = .init("keyboard😀")
         }
@@ -39,12 +50,21 @@ class CharacterSequenceView: CharacterCollectionView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    @objc func updateCharacters() {
+        characters = Keyboard.default.characterSequence
+    }
+    
     override func reloadData() {
         super.reloadData()
         
         OperationQueue.main.addOperation {
+            
+            #if os(macOS)
+            self.window?.setContentSize(.init(width: min(self.layout.collectionViewContentSize.width, UIScreen.main.bounds.width - (self.window?.frame.origin.x ?? 0)), height: self.frame.height))
+            #endif
+            
             if self.contentSize.width > self.frame.size.width {
-                self.scrollToItem(at: IndexPath.init(row: self.characters.count - 1, section: 0), at: .right, animated: true)
+                self.scrollRectToVisible(.init(origin: .init(x: self.contentSize.width - self.visibleSize.width, y: 0), size: self.visibleSize), animated: true)
             }
         }
     }
@@ -91,7 +111,10 @@ class CharacterSequenceView: CharacterCollectionView {
                 let targetPosition: CGPoint = .init(x: touchPosition.x, y: center.y)
                 
                 updateInteractiveMovementTargetPosition(targetPosition)
-                deleteKey.isHighlighted = longPressGestureRecognizer.location(in: KeyboardViewController.shared.keyboardView.deleteKey).x > 0
+                
+                if let deleteButton = deleteButton {
+                    deleteButton.isHighlighted = longPressGestureRecognizer.location(in: deleteButton).x > 0
+                }
             }
             else if isUppercase && isChangeStage {
                 cancelInteractiveMovement()
@@ -171,17 +194,17 @@ class CharacterSequenceView: CharacterCollectionView {
         
         disableAtimations()
         
-        if deleteKey.isHighlighted {
+        if deleteButton?.isHighlighted == true {
             cancelInteractiveMovement()
             
             performBatchUpdates({
-                if activeCharacter == .space && activeIndexPath?.item == characters.count - 1 {
+                if self.activeCharacter == .space && self.activeIndexPath?.item == self.characters.count - 1 {
                     Keyboard.default.delegate?.delete()
                 }
                 else {
-                    performCharacterSequenceUpdates {
-                        characters.remove(at: activeIndexPath!.item)
-                        deleteItems(at: [activeIndexPath!])
+                    self.performCharacterSequenceUpdates {
+                        self.characters.remove(at: self.activeIndexPath!.item)
+                        self.deleteItems(at: [self.activeIndexPath!])
                     }
                 }
             }, completion: { _ in
@@ -189,13 +212,13 @@ class CharacterSequenceView: CharacterCollectionView {
                 NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
             })
             
-            deleteKey.isHighlighted = false
+            deleteButton?.isHighlighted = false
             return
         }
         
         if activeCharacter == .space {
             let destinationIndexPath: IndexPath = indexPathForItem(at: activeCell.center)
-                ?? .init(row: characters.count - 1, section: 0)
+                ?? .init(item: characters.count - 1, section: 0)
             
             cancelInteractiveMovement()
             
@@ -207,23 +230,23 @@ class CharacterSequenceView: CharacterCollectionView {
                     return
                 }
                 
-                performCharacterSequenceUpdates {
-                    if activeIndexPath?.item == 0 {
-                        characters.insert(.space, at: destinationIndexPath.item + 1)
+                self.performCharacterSequenceUpdates {
+                    if self.activeIndexPath?.item == 0 {
+                        self.characters.insert(.space, at: destinationIndexPath.item + 1)
                     }
                     else {
-                        characters.insert(.space, at: destinationIndexPath.item)
+                        self.characters.insert(.space, at: destinationIndexPath.item)
                     }
                     
-                    insertItems(at: [destinationIndexPath])
+                    self.insertItems(at: [destinationIndexPath])
                 }
                 
                 if destinationIndexPath.item > 0
-                    && characters[destinationIndexPath.item - 1] != .space
-                    && characters[destinationIndexPath.item] != .space {
+                    && self.characters[destinationIndexPath.item - 1] != .space
+                    && self.characters[destinationIndexPath.item] != .space {
                  
-                    performBatchUpdates({
-                        reloadItems(at: indexPathsForVisibleItems)
+                    self.performBatchUpdates({
+                        self.reloadItems(at: self.indexPathsForVisibleItems)
                     })
                 }
                 
@@ -255,7 +278,7 @@ class CharacterSequenceView: CharacterCollectionView {
             
         cell.title.font = characterFont
         cell.backgroundColor = UIColor.labelColor.withAlphaComponent(0.05)
-        cell.layer.cornerRadius = layout.itemSize.width * 0.3
+        cell.cornerRadius = layout.itemSize.width * 0.3
         
         return cell
     }
@@ -267,11 +290,11 @@ class CharacterSequenceView: CharacterCollectionView {
             && activeIndexPath != proposedIndexPath {
             
             if proposedIndexPath.item == 0 {
-                return .init(row: proposedIndexPath.item + 1, section: 0)
+                return .init(item: proposedIndexPath.item + 1, section: 0)
             }
             
             if proposedIndexPath.item == characters.count - 1 {
-                return .init(row: proposedIndexPath.item - 1, section: 0)
+                return .init(item: proposedIndexPath.item - 1, section: 0)
             }
         }
         
@@ -315,7 +338,10 @@ class CharacterSequenceView: CharacterCollectionView {
     }
     
     func performCharacterSequenceUpdates(_ updates: () -> Void) {
-        KeyboardViewController.shared.textDocumentProxy.deleteBackward(characters.count)
+        
+        characters.forEach { (_) in
+            Keyboard.default.delegate?.delete()
+        }
         
         let shouldRemoveFirstSpace = characters.first != .space
         
@@ -332,22 +358,29 @@ class CharacterSequenceView: CharacterCollectionView {
             text = .init(characters)
         }
         
-        KeyboardViewController.shared.textDocumentProxy.insertText(text)
+        Keyboard.default.delegate?.insert(text: text)
     }
     
     private func removeDoubleSpace() {
         for (index, character) in characters.enumerated() {
             if character == .space && index > 0 && characters[index - 1] == .space {
                 performBatchUpdates({
-                    characters.remove(at: index)
-                    deleteItems(at: [.init(row: index, section: 0)])
+                    self.characters.remove(at: index)
+                    self.deleteItems(at: [.init(item: index, section: 0)])
                 })
                 break
             }
         }
     }
     
-    internal var deleteKey: KeyView {
-        return KeyboardViewController.shared.keyboardView.deleteKey
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AutocompleteView.reuseIdentifier, for: indexPath) as! AutocompleteView
+        view.text = Keyboard.default.autocompleteLabel
+        view.font = characterFont
+        return view
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return .init(width: Keyboard.default.autocompleteLabel.size(withFont: characterFont).width, height: layout.itemSize.height)
     }
 }

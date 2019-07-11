@@ -13,16 +13,6 @@ class Keyboard: NSObject {
     static let `default`: Keyboard = .init()
     var delegate: KeyboardDelegate?
     
-    var scriptComponent: CharacterComponent? {
-        return delegate?.documentContext.beforeInput?.applyingTransform(.stripCombiningMarks, reverse: false)?.trimmingCharacters(in: CharacterSet.letters.inverted).last?.characterComponents.filter {CharacterComponent.scripts.contains($0)}.first
-    }
-    
-    var version: String {
-        let versionNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
-        let buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
-        return "\(VERSION.string) \(versionNumber) (\(buildNumber))"
-    }
-    
     private var shiftDirections: [ShiftDirection] = .init()
     
     internal var shiftFlag: Bool = false {
@@ -397,6 +387,84 @@ class Keyboard: NSObject {
     
     private override init() {
         super.init()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(documentContextDidChange), name: .DocumentContextDidChange, object: nil)
+    }
+    
+    var characterSequence: [Character] = .init()
+    
+    var autocompleteText: String = .init()
+    var autocompleteLabel: String = .init()
+    var autocompleteDeleteCount: Int = 0
+    
+    @objc func autocomplete() {
+        for _ in 0..<autocompleteDeleteCount {
+            delegate?.delete()
+        }
+        
+        autocompleteDeleteCount = 0
+        
+        delegate?.insert(text: autocompleteText)
+        
+        autocompleteText = .init()
+        autocompleteLabel = .init()
+        
+        NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
+    }
+    
+    @objc private func documentContextDidChange() {
+        let documentContextBeforeInput: String = delegate?.documentContext.beforeInput ?? .init()
+        
+        characterSequence = .init()
+        
+        var spaceCount = 0
+        
+        var isNonspaceSequence: Bool = false
+        
+        cycle: for character in documentContextBeforeInput.reversed() {
+            
+            switch character {
+            case Character.space:
+                spaceCount += 1
+                
+            case Character.return, Character.tab:
+                break cycle
+                
+            default:
+                isNonspaceSequence = true
+                spaceCount = 0
+            }
+            
+            if spaceCount == 2 {
+                break
+            }
+            
+            characterSequence = [character] + characterSequence
+            
+            if spaceCount == 1 && isNonspaceSequence {
+                break
+            }
+        }
+        
+        let scriptTranslationCode = documentContextBeforeInput.components(separatedBy: .whitespaces).last ?? .init()
+        
+        if let scriptTranslation = scriptTraslationCodeDictionary[scriptTranslationCode] {
+            let contextLine = documentContextBeforeInput.components(separatedBy: .newlines).last?.trimmingCharacters(in: .whitespaces) ?? .init()
+            
+            autocompleteDeleteCount = contextLine.count
+            
+            autocompleteText = String.init(contextLine.dropLast(scriptTranslationCode.count + 1)).translating(from: scriptTranslation.source, to: scriptTranslation.target, withTable: scriptTranslation.table)
+            
+            let labelLength = 10
+            autocompleteLabel = (autocompleteText.count > labelLength ? "..." : "") + autocompleteText.suffix(labelLength)
+        }
+        else {
+            autocompleteText = .init()
+            autocompleteLabel = .init()
+            autocompleteDeleteCount = 0
+        }
+        
+        NotificationCenter.default.post(name: .CharacterSequenceDidChange, object: nil)
     }
     
     private let layoutKey = "LBPQsNPr8gJHi8Ds05etypaTVEiq8X1"
@@ -422,6 +490,8 @@ class Keyboard: NSObject {
         set {
             UserDefaults.standard.set(newValue.rawValue, forKey: layoutModeKey)
             UserDefaults.standard.synchronize()
+            
+            NotificationCenter.default.post(name: .LayoutModeDidChange, object: nil)
         }
     }
     
@@ -446,4 +516,8 @@ extension NSNotification.Name {
     static let DocumentContextDidChange: NSNotification.Name = .init("oDap18soqXQONnkeMJsCZSGmkexar2g")
     
     static let LayoutDidChange: NSNotification.Name = .init("DjG5zBrx84Y5CwuF858vXxznGIFNnQ5")
+    
+    static let LayoutModeDidChange: NSNotification.Name = .init("JkvFKpRydra3urZI47XVkMoMnd8bFhV")
+    
+    static let CharacterSequenceDidChange: NSNotification.Name = .init("c6nAy6MZmbxXz30pZpJDx1Okn6yce96")
 }

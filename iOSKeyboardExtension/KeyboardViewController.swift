@@ -36,6 +36,14 @@ class KeyboardViewController: UIInputViewController {
         KeyboardViewController.shared = self
         
         keyboardView.nextKeyboardKey.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
+        
+        // Hack for working of the keyboard height constraint
+        let hiddenView: UILabel = .init()
+        hiddenView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(hiddenView)
+        hiddenView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+        hiddenView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        hiddenView.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,18 +52,24 @@ class KeyboardViewController: UIInputViewController {
         keyboardView.configure()
     }
     
+    var isAppeared: Bool = false
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         if view.bounds.width < UIScreen.main.bounds.width {
             keyboardView.configure()
         }
+        
+        isAppeared = true
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
         previousDocumentContext = .init()
+        
+        isAppeared = false
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -79,12 +93,12 @@ class KeyboardViewController: UIInputViewController {
     override func textDidChange(_ textInput: UITextInput?) {
         // The app has just changed the document's contents, the document context has been updated.
         
-        let proxy = self.textDocumentProxy
-        
-        if proxy.keyboardAppearance == .dark {
-            keyboardView.colorScheme = .dark
-        } else {
-            keyboardView.colorScheme = .default
+        if !isAppeared {
+            if textDocumentProxy.keyboardAppearance == .dark {
+                keyboardView.colorScheme = .dark
+            } else {
+                keyboardView.colorScheme = .default
+            }
         }
         
         normalizeTextPosition()
@@ -113,26 +127,18 @@ class KeyboardViewController: UIInputViewController {
             return
         }
         
-        guard let characterBeforeInput = textDocumentProxy.characterBeforeInput else {
-            return
-        }
-        
-        guard let characterAfterInput = textDocumentProxy.characterAfterInput else {
-            return
-        }
-        
-        if textDocumentProxy.isSpaceReturnTabOrNilBeforeInput == false
-            && CharacterSet.alphanumerics.contains(characterAfterInput.unicodeScalar) {
+        if textDocumentProxy.characterBeforeInput?.isSpaceReturnOrTab == false
+            && textDocumentProxy.characterAfterInput?.belongsTo(.alphanumerics) == true {
             
             moveToSequenceEnd(of: .alphanumerics)
         }
-        else if characterBeforeInput == .space
-            && characterAfterInput == .space {
+        else if textDocumentProxy.characterBeforeInput == .space
+            && textDocumentProxy.characterAfterInput == .space {
             
             moveToSequenceEnd(of: CharacterSet.init(charactersIn: Character.space.string))
         }
-        else if characterBeforeInput == .space
-            && textDocumentProxy.isSpaceReturnTabOrNilAfterInput == false {
+        else if textDocumentProxy.characterBeforeInput == .space
+            && textDocumentProxy.characterAfterInput?.isSpaceReturnOrTab == false {
             
             cancelNextNormalization = true
             textDocumentProxy.adjustTextPosition(byCharacterOffset: -1)
@@ -151,37 +157,15 @@ class KeyboardViewController: UIInputViewController {
         textDocumentProxy.adjustTextPosition(byCharacterOffset: sequence.count)
     }
     
-    var isLastWhitespace: Bool {
-        if let character = textDocumentProxy.documentContextBeforeInput?.characters.last {
-            return String(character).rangeOfCharacter(from: .whitespacesAndNewlines) != nil
-        }
-        else {
-            return false
-        }
-    }
-    
-    var isNextWhitespace: Bool {
-        if let character = textDocumentProxy.documentContextAfterInput?.characters.first {
-            if String(character) == "\t" {
-                return false
-            }
-            
-            return String(character).rangeOfCharacter(from: .whitespaces) != nil
-        }
-        else {
-            return false
-        }
-    }
-    
     func keyAction(label: String, offset: Int = 0) {
         
         textDocumentProxy.adjustTextPosition(byCharacterOffset: offset)
         
         guard let specialKey = SpecialKey(rawValue: label) else {
             
-            if textDocumentProxy.isSpaceReturnTabOrNilBeforeInput
-                && !textDocumentProxy.isSpaceReturnTabOrNilAfterInput
-                && !CharacterSet.punctuationCharacters.contains(textDocumentProxy.characterAfterInput!.unicodeScalar)
+            if textDocumentProxy.characterBeforeInput?.isSpaceReturnOrTab != false
+                && textDocumentProxy.characterAfterInput?.isSpaceReturnOrTab == false
+                && textDocumentProxy.characterAfterInput?.belongsTo(.punctuationCharacters) == false
                 && offset == 0 {
                 
                 textDocumentProxy.insertText(Character.space.string)
@@ -199,8 +183,8 @@ class KeyboardViewController: UIInputViewController {
                 textDocumentProxy.deleteBackward()
             }
             else if textDocumentProxy.characterBeforeInput == .space
-                && !textDocumentProxy.isSpaceReturnTabOrNilAfterInput
-                && !CharacterSet.punctuationCharacters.contains(textDocumentProxy.characterAfterInput!.unicodeScalar) {
+                && textDocumentProxy.characterAfterInput?.isSpaceReturnOrTab == false
+                && textDocumentProxy.characterAfterInput?.belongsTo(.punctuationCharacters) == false {
                 
                 cancelNextNormalization = true
                 textDocumentProxy.adjustTextPosition(byCharacterOffset: -1)
@@ -210,7 +194,7 @@ class KeyboardViewController: UIInputViewController {
             }
             
             if textDocumentProxy.characterBeforeInput != .space
-                && textDocumentProxy.isSpaceReturnTabOrNilBeforeInput
+                && textDocumentProxy.characterBeforeInput?.isSpaceReturnOrTab != false
                 && textDocumentProxy.characterAfterInput == .space {
                 
                 textDocumentProxy.adjustTextPosition(byCharacterOffset: 1)
@@ -221,7 +205,9 @@ class KeyboardViewController: UIInputViewController {
                 && textDocumentProxy.characterBeforeInput == .space
                 && textDocumentProxy.characterAfterInput == .space {
                 
-                keyAction(label: SpecialKey.delete.label)
+                cancelNextNormalization = true
+                textDocumentProxy.adjustTextPosition(byCharacterOffset: 1)
+                textDocumentProxy.deleteBackward()
             }
             
         case .removeCharacter:
@@ -231,13 +217,11 @@ class KeyboardViewController: UIInputViewController {
             if settings.allowMultipleSpaces {
                 textDocumentProxy.insertText(" ")
             }
-            else if isNextWhitespace {
+            else if textDocumentProxy.characterAfterInput == .space {
                 cancelNextNormalization = true
                 textDocumentProxy.adjustTextPosition(byCharacterOffset: 1)
             }
-            else if textDocumentProxy.documentContextBeforeInput != nil &&
-                textDocumentProxy.documentContextBeforeInput != "" &&
-                !isLastWhitespace {
+            else if textDocumentProxy.characterBeforeInput?.isSpaceReturnOrTab == false {
                 textDocumentProxy.insertText(" ")
             }
             
@@ -293,17 +277,6 @@ class KeyboardViewController: UIInputViewController {
     }
 }
 
-extension UIView {
-    func alignBounds() {
-        NSLayoutConstraint.activate([
-            topAnchor.constraint(equalTo: superview!.topAnchor),
-            leftAnchor.constraint(equalTo: superview!.leftAnchor),
-            rightAnchor.constraint(equalTo: superview!.rightAnchor),
-            bottomAnchor.constraint(equalTo: superview!.bottomAnchor),
-        ])
-    }
-}
-
 struct DocumentContext: Equatable {
     let beforeInput: String?
     let afterInput: String?
@@ -342,19 +315,5 @@ extension UITextDocumentProxy {
     
     var characterAfterInput: Character? {
         return stringAfterInput?.characters.first
-    }
-    
-    var isSpaceReturnTabOrNilBeforeInput: Bool {
-        return characterBeforeInput == .space
-            || characterBeforeInput == .return
-            || characterBeforeInput == .tab
-            || characterBeforeInput == nil
-    }
-    
-    var isSpaceReturnTabOrNilAfterInput: Bool {
-        return characterAfterInput == .space
-            || characterAfterInput == .return
-            || characterAfterInput == .tab
-            || characterAfterInput == nil
     }
 }

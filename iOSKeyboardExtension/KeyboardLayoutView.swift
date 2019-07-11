@@ -18,48 +18,40 @@ class KeyboardLayoutView: UIView {
     }
     */
     
-    var halfKeyboards: [HalfKeyboardView] = []
-    
-    var halfKeyboardSize = CGSize() {
+    public var layout: KeyboardLayout = .qwerty {
         didSet {
-            if halfKeyboardWidthConstraint != nil && halfKeyboardHeightConstraint != nil  {
-            	halfKeyboardWidthConstraint!.constant = halfKeyboardSize.width
-                halfKeyboardHeightConstraint!.constant = halfKeyboardSize.height
+            
+            for (rowIndex, labelsRow) in layout.labels.enumerated() {
+                for (columnIndex, label) in labelsRow.enumerated() {
+                    
+                    let keyView = keys[rowIndex][columnIndex]
+                    keyView.mainLabel = label
+                    keyView.shiftDownLabel = KeyboardLayout.shiftDown.labels[rowIndex][columnIndex]
+                    keyView.shiftUpLabel = KeyboardLayout.shiftUpDictionary[label] ?? ""
+                }
             }
-            else {
-                halfKeyboardWidthConstraint = halfKeyboards.first!.widthAnchor.constraint(equalToConstant: halfKeyboardSize.width)
-                halfKeyboardWidthConstraint!.isActive = true
-                
-                halfKeyboardHeightConstraint = halfKeyboards.first!.heightAnchor.constraint(equalToConstant: halfKeyboardSize.height)
-                halfKeyboardHeightConstraint!.isActive = true
-            }
+            
         }
     }
     
-    private var halfKeyboardHeightConstraint: NSLayoutConstraint?
-    private var halfKeyboardWidthConstraint: NSLayoutConstraint?
+    var keys: [[KeyView]] = Array.init(repeating: Array.init(repeating: .init(), count: 10), count: 3)
     
-    init(layout: KeyboardLayout) {
-        super.init(frame: CGRect())
-        
-        translatesAutoresizingMaskIntoConstraints = false
+    var halfKeyboards: [UIView] = .init()
+    internal let unicodeCollectionView: UnicodeCollectionView = .init()
+    
+    init() {
+        super.init(frame: .zero)
         
         for _ in 0...1 {
-            let halfKeyboard = HalfKeyboardView(rowCount: layout.rowCount)
+            let halfKeyboard: UIView = .init()
             halfKeyboards.append(halfKeyboard)
             addSubview(halfKeyboard)
         }
         
-        halfKeyboards.first!.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        halfKeyboards.first!.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        halfKeyboards.last!.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-        halfKeyboards.last!.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        addSubview(unicodeCollectionView)
         
-        halfKeyboards.first!.widthAnchor.constraint(equalTo: halfKeyboards.last!.widthAnchor).isActive = true
-        halfKeyboards.first!.heightAnchor.constraint(equalTo: halfKeyboards.last!.heightAnchor).isActive = true
-        
-        for (rowIndex, labelsRow) in layout.labels.enumerated() {
-            for (columnIndex, label) in labelsRow.enumerated() {
+        for rowIndex in 0...2 {
+            for columnIndex in 0...9 {
                 
                 let halfKeyboardIndex: Int
                 
@@ -70,9 +62,11 @@ class KeyboardLayoutView: UIView {
                     halfKeyboardIndex = 1
                 }
                 
-                let key = KeyView(label: label, shiftDownLabel: KeyboardLayout.shiftDown.labels[rowIndex][columnIndex])
+                let keyView = KeyView.init()
                 
-                halfKeyboards[halfKeyboardIndex].rows[rowIndex].addArrangedSubview(key)
+                halfKeyboards[halfKeyboardIndex].addSubview(keyView)
+                
+                keys[rowIndex][columnIndex] = keyView
             }
         }
     }
@@ -80,5 +74,40 @@ class KeyboardLayoutView: UIView {
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
+    func configure(size: CGSize, halfKeyboardSize: CGSize, keySize: CGSize, labelFontSize: CGFloat, unicodeCollectionWidth: CGFloat) {
+        frame.size = size
+        
+        for (halfKeyboardIndex, halfKeyboard) in halfKeyboards.enumerated() {
+            halfKeyboard.frame.size = halfKeyboardSize
+            
+            if halfKeyboardIndex == 0 {
+                halfKeyboard.frame.origin.x = unicodeCollectionWidth
+            }
+            else {
+                halfKeyboard.frame.origin.x = size.width - halfKeyboard.frame.width
+                halfKeyboard.frame.origin.y = size.height - halfKeyboard.frame.height
+            }
+        }
+        
+        unicodeCollectionView.size = .init(width: unicodeCollectionWidth, height: size.height)
+        
+        for (rowIndex, row) in keys.enumerated() {
+            for (keyIndex, key) in row.enumerated() {
+                
+                let halfKeyboardIndex: Int
+                
+                if keyIndex < layout.columnCount/2 {
+                    halfKeyboardIndex = 0
+                }
+                else {
+                    halfKeyboardIndex = 1
+                }
+                
+                key.frame.origin.x = keySize.width * .init(keyIndex - row.count/2 * halfKeyboardIndex)
+                key.frame.origin.y = keySize.height * .init(rowIndex)
+                key.configure(size: keySize, labelFontSize: labelFontSize)
+            }
+        }
+    }
 }

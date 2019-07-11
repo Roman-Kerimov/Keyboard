@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CharacterSequenceView: UICollectionView, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+class CharacterSequenceView: CharacterCollectionView {
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -18,36 +18,14 @@ class CharacterSequenceView: UICollectionView, UICollectionViewDelegateFlowLayou
     }
     */
     
-    var characters: [Character] = .init() {
-        didSet {
-            reloadData()
-        }
-    }
-    
-    var colorScheme: KeyboardColorScheme = .default {
-        didSet {
-            reloadData()
-        }
-    }
-    
-    internal let layout: UICollectionViewFlowLayout = .init()
     private var longPressGestureRecognizer: UILongPressGestureRecognizer!
     
-    let characterCellReuseIdentifier = "fWz2pPGnOBKbeARRwDdJswgBqDYSA6P"
-    
-    init() {
+    override init() {
+        super.init()
 
         layout.sectionInset = .init(top: 0, left: 0, bottom: 0, right: layout.itemSize.width)
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 0
-        
-        super.init(frame: .zero, collectionViewLayout: layout)
-        
-        dataSource = self
-        delegate = self
-        
-        register(CharacterCollectionViewCell.self, forCellWithReuseIdentifier: characterCellReuseIdentifier)
-        backgroundColor = .clear
         
         longPressGestureRecognizer = UILongPressGestureRecognizer.init(target: self, action: #selector(handleLongPressGesture(from:)))
         addGestureRecognizer(longPressGestureRecognizer)
@@ -191,16 +169,11 @@ class CharacterSequenceView: UICollectionView, UICollectionViewDelegateFlowLayou
         deleteKey.isHighlighted = false
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return characters.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: characterCellReuseIdentifier, for: indexPath) as! CharacterCollectionViewCell
-        
-        cell.title.text = String.init(characters[indexPath.row])
-        cell.title.textColor = colorScheme.labelColor
+        let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! CharacterCollectionViewCell
+        cell.configure()
+            
         cell.title.font = UIFont(name: "Courier New", size: 1.4 * layout.itemSize.width)
         cell.backgroundColor = colorScheme.labelColor.withAlphaComponent(0.05)
         
@@ -234,5 +207,4 @@ class CharacterSequenceView: UICollectionView, UICollectionViewDelegateFlowLayou
     internal var deleteKey: KeyView {
         return KeyboardViewController.shared.keyboardView.deleteKey
     }
-
 }

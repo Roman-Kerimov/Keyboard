@@ -60,7 +60,7 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
             
             settings.layout = KeyboardLayout.list[indexPath.row]
             
-            KeyboardViewController.shared.keyboardView.updateKeyboardLayout()
+            KeyboardViewController.shared.keyboardView.layoutView.layout = settings.layout
             
         case .appLanguage:
             KeyboardViewController.shared.keyboardView.settingsContainerView.navigationController.pushViewController(languageTableViewController, animated: true)

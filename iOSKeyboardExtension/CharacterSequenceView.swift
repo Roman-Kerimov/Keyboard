@@ -32,7 +32,7 @@ class CharacterSequenceView: CharacterCollectionView {
         longPressGestureRecognizer.minimumPressDuration = 0
         
         #if TARGET_INTERFACE_BUILDER
-            characters = .init("keyboard".characters)
+            characters = .init("keyboard😀".characters)
         #endif
     }
     
@@ -193,7 +193,8 @@ class CharacterSequenceView: CharacterCollectionView {
         }
         
         if activeCharacter == .space {
-            let destinationIndexPath: IndexPath = .init(row: .init(activeCell.center.x / layout.itemSize.width), section: 0)
+            let destinationIndexPath: IndexPath = indexPathForItem(at: activeCell.center)
+                ?? .init(row: characters.count - 1, section: 0)
             
             cancelInteractiveMovement()
             
@@ -233,15 +234,58 @@ class CharacterSequenceView: CharacterCollectionView {
         enableAtimations()
     }
     
+    private var characterFont: UIFont {
+        return UIFont(name: "Courier New", size: 1.4 * layout.itemSize.width)!
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! CharacterCollectionViewCell
         cell.configure()
             
-        cell.title.font = UIFont(name: "Courier New", size: 1.4 * layout.itemSize.width)
+        cell.title.font = characterFont
         cell.backgroundColor = colorScheme.labelColor.withAlphaComponent(0.05)
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, targetIndexPathForMoveFromItemAt originalIndexPath: IndexPath, toProposedIndexPath proposedIndexPath: IndexPath) -> IndexPath {
+        
+        if characters[proposedIndexPath.item] == .space
+            && activeCharacter != .space
+            && activeIndexPath != proposedIndexPath {
+            
+            if proposedIndexPath.item == 0 {
+                return .init(row: proposedIndexPath.item + 1, section: 0)
+            }
+            
+            if proposedIndexPath.item == characters.count - 1 {
+                return .init(row: proposedIndexPath.item - 1, section: 0)
+            }
+        }
+        
+        return proposedIndexPath
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let label: UILabel = .init()
+        label.text = characters[indexPath.item].description
+        label.font = characterFont
+        
+        return .init(
+            width: max(
+                layout.itemSize.width,
+                label.intrinsicContentSize.width
+            ),
+            
+            height: layout.itemSize.height
+        )
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
@@ -255,7 +299,24 @@ class CharacterSequenceView: CharacterCollectionView {
     func performCharacterSequenceUpdates(_ updates: () -> Void) {
         KeyboardViewController.shared.textDocumentProxy.deleteBackward(characters.count)
         updates()
+        removeDoubleSpace()
         KeyboardViewController.shared.textDocumentProxy.insertText(.init(characters))
+        
+        performBatchUpdates({
+            reloadItems(at: indexPathsForVisibleItems)
+        })
+    }
+    
+    private func removeDoubleSpace() {
+        for (index, character) in characters.enumerated() {
+            if character == .space && index > 0 && characters[index - 1] == .space {
+                performBatchUpdates({
+                    characters.remove(at: index)
+                    deleteItems(at: [.init(row: index, section: 0)])
+                })
+                break
+            }
+        }
     }
     
     internal var deleteKey: KeyView {

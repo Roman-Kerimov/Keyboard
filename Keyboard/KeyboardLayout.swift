@@ -14,6 +14,8 @@ struct KeyboardLayout {
     
     let rows: [[Key]]
     
+    let inputSourceID: String
+    
     func key(code: Keycode) -> Key? {
         return keycodeToKeyDictionary[code]
     }
@@ -33,7 +35,7 @@ struct KeyboardLayout {
     
     static let list: [KeyboardLayout] = [.qwerty, .dvorak, .colemak, .azerty, .qwertz]
     
-    init(name: String, rows: [[CharacterComponent]]) {
+    init(name: String, rows: [[CharacterComponent]], defaultInputSourceID: String) {
         self.name = name
         
         let shiftDownRows: [[CharacterComponent]] = [
@@ -72,6 +74,7 @@ struct KeyboardLayout {
         }
         
         self.rows = keyRows
+        self.inputSourceID = defaultInputSourceID
     }
 
     static let qwerty = KeyboardLayout(
@@ -80,7 +83,8 @@ struct KeyboardLayout {
             [ .q, .w, .e, .r, .t, .y, .u, .i,     .o,        .p,            ],
             [ .a, .s, .d, .f, .g, .h, .j, .k,     .l,        .questionMark, ],
             [ .z, .x, .c, .v, .b, .n, .m, .comma, .fullStop, .hyphen,       ],
-        ]
+        ],
+        defaultInputSourceID: "com.apple.keylayout.ABC"
     )
     
     static let dvorak = KeyboardLayout(
@@ -89,7 +93,8 @@ struct KeyboardLayout {
             [ .questionMark, .comma, .fullStop, .p, .y, .f, .g, .c, .r, .l, ],
             [ .a,            .o,     .e,        .u, .i, .d, .h, .t, .n, .s, ],
             [ .hyphen,       .q,     .j,        .k, .x, .b, .m, .w, .v, .z, ],
-        ]
+        ],
+        defaultInputSourceID: "com.apple.keylayout.DVORAK-QWERTYCMD"
     )
     
     static let colemak = KeyboardLayout(
@@ -98,7 +103,8 @@ struct KeyboardLayout {
             [ .q, .w, .f, .p, .g, .j, .l, .u,     .y,        .hyphen,       ],
             [ .a, .r, .s, .t, .d, .h, .n, .e,     .i,        .o,            ],
             [ .z, .x, .c, .v, .b, .k, .m, .comma, .fullStop, .questionMark, ],
-        ]
+        ],
+        defaultInputSourceID: "com.apple.keylayout.Colemak"
     )
     
     static let azerty = KeyboardLayout(
@@ -107,7 +113,8 @@ struct KeyboardLayout {
             [ .a, .z, .e, .r, .t, .y, .u,     .i,        .o,            .p,      ],
             [ .q, .s, .d, .f, .g, .h, .j,     .k,        .l,            .m,      ],
             [ .w, .x, .c, .v, .b, .n, .comma, .fullStop, .questionMark, .hyphen, ],
-        ]
+        ],
+        defaultInputSourceID: "com.apple.keylayout.ABC-AZERTY"
     )
     
     static let qwertz = KeyboardLayout(
@@ -116,7 +123,8 @@ struct KeyboardLayout {
             [ .q, .w, .e, .r, .t, .z, .u, .i,     .o,        .p,            ],
             [ .a, .s, .d, .f, .g, .h, .j, .k,     .l,        .questionMark, ],
             [ .y, .x, .c, .v, .b, .n, .m, .comma, .fullStop, .hyphen,       ],
-        ]
+        ],
+        defaultInputSourceID: "com.apple.keylayout.ABC-QWERTZ"
     )
     
     static let shiftUpDictionary: [CharacterComponent: CharacterComponent] = [
@@ -128,4 +136,15 @@ struct KeyboardLayout {
     ]
     
     static let shiftRightDictionary: [CharacterComponent: CharacterComponent] = [.lessThanSign: .greaterThanSign]
+}
+
+extension Array where Element == KeyboardLayout {
+    func element(inputSourceID: String) -> Element? {
+        
+        guard let index = self.map( {$0.inputSourceID} ).firstIndex(of: inputSourceID) else {
+            return nil
+        }
+        
+        return self[index]
+    }
 }

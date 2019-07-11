@@ -27,7 +27,7 @@ class KeyboardLayoutView: UIView {
     var keyViews: [[KeyView]] = []
     
     var halfKeyboards: [UIView] = .init()
-    internal let unicodeCollectionView: UnicodeCollectionView = .init()
+    internal let characterSearchView: CharacterSearchView = .init()
     
     init() {
         super.init(frame: .zero)
@@ -40,7 +40,7 @@ class KeyboardLayoutView: UIView {
             addSubview(halfKeyboard)
         }
         
-        addSubview(unicodeCollectionView)
+        addSubview(characterSearchView)
         
         setKeys()
     }
@@ -99,7 +99,7 @@ class KeyboardLayoutView: UIView {
             }
         }
         
-        unicodeCollectionView.size = .init(width: horizontalIndent, height: frame.height)
+        characterSearchView.size = .init(width: horizontalIndent, height: frame.height)
         
         for (rowIndex, row) in keyViews.enumerated() {
             for (keyIndex, key) in row.enumerated() {

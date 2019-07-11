@@ -16,6 +16,7 @@ class SearchUnicodeScalars: Operation {
     
     override func main() {
         let text = UnicodeTable.default.textForSearch
+        UnicodeTable.default.scriptCodeLength = 0
         
         guard !isCancelled else {
             return
@@ -75,6 +76,25 @@ class SearchUnicodeScalars: Operation {
             
         default:
             searchRegularExpression = .contains(text)
+            
+            for scriptCodeLength in 2...3 {
+                let scriptCode: String = .init(text.suffix(scriptCodeLength).description.lowercased().flatMap {$0.removing(characterComponents: CharacterComponent.scripts)} )
+                
+                guard let scriptCharacterComponent = codeScriptDictionary[scriptCode] else {
+                    continue
+                }
+                
+                let letter = text.dropLast(scriptCodeLength).last!.description
+                
+                let targetLetter = letter.appending(characterComponent: scriptCharacterComponent)
+                
+                guard targetLetter != letter else {
+                    break
+                }
+                
+                foundCharacters.append(.init(targetLetter))
+                UnicodeTable.default.scriptCodeLength = scriptCodeLength
+            }
         }
         
         let foundSequenceCharacters = UnicodeTable.default.sequenceItems

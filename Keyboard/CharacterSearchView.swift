@@ -1,5 +1,5 @@
 //
-//  UnicodeCollectionView.swift
+//  CharacterSearchView.swift
 //  Keyboard
 //
 //  Created by Roman Kerimov on 2017-05-15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UnicodeCollectionView: CharacterCollectionView {
+class CharacterSearchView: CharacterCollectionView {
 
     var documentContextBeforeInput: String = .init()
 
@@ -72,8 +72,8 @@ class UnicodeCollectionView: CharacterCollectionView {
             cell.unicodeName.text = regionCode + unicodeLabelSeparator + cell.unicodeName.text!
         }
         
-        cell.unicodeName.textColor = colorScheme.unicodeNameTextColor
-        cell.unicodeName.backgroundColor = colorScheme.unicodeNameBackgroundColor
+        cell.unicodeName.textColor = .unemphasizedSelectedTextColor
+        cell.unicodeName.backgroundColor = .unemphasizedSelectedTextBackgroundColor
         cell.unicodeName.font = .boldSystemFont(ofSize: characterFontSize/2)
         
         cell.unicodeName.frame.size.width += cell.unicodeName.font.pointSize/2
@@ -90,22 +90,29 @@ class UnicodeCollectionView: CharacterCollectionView {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         deselectItem(at: indexPath, animated: false)
         
-        for _ in textForSearch {
+        let scriptCodeLength = UnicodeTable.default.scriptCodeLength
+        
+        let isScriptCodeItem: Bool = scriptCodeLength > 0 && indexPath.item == 0
+        
+        let deleteCount = isScriptCodeItem ? scriptCodeLength + 1 : textForSearch.count
+        
+        for _ in 0..<deleteCount {
             Keyboard.default.delegate?.delete()
         }
         
         let character = characters[indexPath.item]
         
-        
-        var frequentlyUsedCharacters = Keyboard.default.frequentlyUsedCharacters
-        
-        if let index = frequentlyUsedCharacters.index(of: character) {
-            frequentlyUsedCharacters.remove(at: index)
+        if !isScriptCodeItem {
+            var frequentlyUsedCharacters = Keyboard.default.frequentlyUsedCharacters
+            
+            if let index = frequentlyUsedCharacters.index(of: character) {
+                frequentlyUsedCharacters.remove(at: index)
+            }
+            
+            frequentlyUsedCharacters = [character] + frequentlyUsedCharacters
+            
+            Keyboard.default.frequentlyUsedCharacters = .init( frequentlyUsedCharacters.suffix(100) )
         }
-        
-        frequentlyUsedCharacters = [character] + frequentlyUsedCharacters
-        
-        Keyboard.default.frequentlyUsedCharacters = .init( frequentlyUsedCharacters.suffix(100) )
         
         Keyboard.default.delegate?.insert(text: character.description)
         NotificationCenter.default.post(.init(name: .DocumentContextDidChange))
@@ -117,10 +124,11 @@ class UnicodeCollectionView: CharacterCollectionView {
         
         let documentContextBeforeInput = Keyboard.default.delegate?.documentContext.beforeInput ?? self.documentContextBeforeInput
         
-        var textForSearch =
+        var textForSearch: String = .init(
             documentContextBeforeInput
                 .components(separatedBy: .whitespacesAndNewlines).last?
-                .components(separatedBy: CharacterSet.printableASCII.inverted).last ?? .init()
+                .split {$0.belongsTo(.symbols)} .last ?? .init()
+        )
         
         if textForSearch.contains(.reverseSolidus) {
             textForSearch = .reverseSolidus + ( textForSearch.components(separatedBy: String.reverseSolidus).last ?? .init() )

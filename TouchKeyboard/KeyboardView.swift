@@ -12,7 +12,7 @@ import UIKit
 internal class KeyboardView: UIView {
     
     @IBInspectable internal var text: String = .init()
-    @IBInspectable internal var darkColorScheme: Bool = false
+    @IBInspectable internal var darkAppearance: Bool = false
     @IBInspectable internal var alternateLayoutMode: Bool = false
     
     enum State {
@@ -59,7 +59,7 @@ internal class KeyboardView: UIView {
             
             characterSequenceView.characters = characterSequence
             
-            unicodeCollectionView.documentContextBeforeInput = documentContextBeforeInput
+            characterSearchView.documentContextBeforeInput = documentContextBeforeInput
         }
     }
     
@@ -104,32 +104,13 @@ internal class KeyboardView: UIView {
         }
     }
     #endif
-
-    internal var colorScheme: KeyboardColorScheme = .default {
-        didSet {
-            set(colorScheme: colorScheme)
-        }
-    }
-    
-    private func set(colorScheme: KeyboardColorScheme) {
-        for key in keys {
-            key.colorScheme = colorScheme
-        }
-        
-        characterSequenceView.colorScheme = colorScheme
-        layoutView.unicodeCollectionView.colorScheme = colorScheme
-        
-        if Bundle.main.isInterfaceBuilder {
-            backgroundView.backgroundColor = colorScheme.fakeBackroundColorForInterfaceBuilder
-        }
-    }
     
     private var characterSequenceView: CharacterSequenceView {
         return deleteRowView.characterSequence
     }
     
-    public var unicodeCollectionView: UnicodeCollectionView {
-        return layoutView.unicodeCollectionView
+    public var characterSearchView: CharacterSearchView {
+        return layoutView.characterSearchView
     }
     
     private var keys: [KeyView] {
@@ -154,15 +135,13 @@ internal class KeyboardView: UIView {
         
         state = .appeared
         
-        colorScheme = darkColorScheme ? .dark : .default
-        
         enterKey.isEnabled = false
         
         LoadUnicodeDataFiles.init().start()
         documentContext = .init(beforeInput: text, afterInput: nil)
         NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
         
-        SearchUnicodeScalars.init(for: unicodeCollectionView).start()
+        SearchUnicodeScalars.init(for: characterSearchView).start()
     }
     
     private let deleteRowView: DeleteRowView = .init()
@@ -190,6 +169,12 @@ internal class KeyboardView: UIView {
     }
     
     override func layoutSubviews() {
+        
+        if Bundle.main.isInterfaceBuilder {
+            UIKeyboardAppearance.current = darkAppearance ? .dark : .default
+            
+            backgroundView.backgroundColor = .windowBackgroundColor
+        }
         
         guard state != .disappeared else {
             return

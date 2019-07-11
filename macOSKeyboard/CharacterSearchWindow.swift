@@ -1,5 +1,5 @@
 //
-//  UnicodeSearchWindow.swift
+//  CharacterSearchWindow.swift
 //  macOSKeyboard
 //
 //  Created by Roman Kerimov on 2018-05-13.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UnicodeSearchWindow: NSWindow {
+class CharacterSearchWindow: NSWindow {
     init() {
         super.init(
             contentRect: .init(origin: .zero, size: .init(width: 30, height: 250)),
@@ -22,9 +22,9 @@ class UnicodeSearchWindow: NSWindow {
         titlebarAppearsTransparent = true
         isMovable = false
         
-        let unicodeCollectionView = UnicodeCollectionView.init()
-        unicodeCollectionView.size = frame.size
-        contentView = unicodeCollectionView
+        let characterSearchView = CharacterSearchView.init()
+        characterSearchView.size = frame.size
+        contentView = characterSearchView
         
         makeKeyAndOrderFront(self)
     }

@@ -1,5 +1,5 @@
 //
-//  CharacterComponentsDictionary.swift
+//  characterComponentsDictionary.swift
 //  Keyboard
 //
 //  Created by Roman Kerimov on 2017-09-25.

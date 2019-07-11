@@ -34,6 +34,8 @@ class UnicodeTable: NSObject {
         }
     }
     
+    internal var scriptCodeLength: Int = 0
+    
     internal var frequentlyUsedCharacters: [Character] = Keyboard.default.frequentlyUsedCharacters
     
     public func searchScalars(byName text: String, for characterCollectionView: CharacterCollectionView) {
@@ -41,7 +43,7 @@ class UnicodeTable: NSObject {
             searchUnicodeScalarsOperation.cancel()
         }
         
-        textForSearch = text.uppercased()
+        textForSearch = text
         
         backgroudOperationQueue.addOperation( SearchUnicodeScalars.init(for: characterCollectionView) )
     }

@@ -26,7 +26,7 @@ struct KeyboardColorScheme {
     static let light = KeyboardColorScheme(
         keyColor: .white,
         labelColor: .black,
-        shiftLabelColor: UIColor.black.withAlphaComponent(0.1),
+        shiftLabelColor: UIColor.black.withAlphaComponent(0.4),
         settingsLabelColor: .lightGray,
         
         fakeBackroundColorForInterfaceBuilder: UIColor.black.withAlphaComponent(0.1)
@@ -35,7 +35,7 @@ struct KeyboardColorScheme {
     static let dark = KeyboardColorScheme(
         keyColor: UIColor.white.withAlphaComponent(0.3),
         labelColor: .white,
-        shiftLabelColor: UIColor.white.withAlphaComponent(0.13),
+        shiftLabelColor: UIColor.white.withAlphaComponent(0.5),
         settingsLabelColor: .lightGray,
         
         fakeBackroundColorForInterfaceBuilder: .darkGray

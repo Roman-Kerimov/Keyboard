@@ -285,10 +285,10 @@ class KeyView: UIButton {
                 }
             }
             else if isDownShift && isRightShift && shiftDownLabel.text != "" {
-                label.text = shiftDownLabel.text?.components(separatedBy: " ").last
+                label.text = String(shiftDownLabel.text!.characters.last!)
             }
             else if isDownShift && shiftDownLabel.text != "" {
-                label.text = shiftDownLabel.text?.components(separatedBy: " ").first
+                label.text = String(shiftDownLabel.text!.characters.first!)
             }
             else {
                 label.text = mainLabel

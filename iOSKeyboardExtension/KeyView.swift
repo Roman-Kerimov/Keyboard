@@ -353,7 +353,12 @@ class KeyView: UIButton, ConfigurableView {
     }
     
     private var longPressGestureRecognizer: UILongPressGestureRecognizer!
+    
     private var gestureStartPoint: CGPoint!
+    private var startPointSpeed: CGFloat = 0
+    private var previousTime: TimeInterval = 0
+    private var previousDistance: CGFloat = 0
+    
     private var shiftDirections: [ShiftDirection] = .init()
     
     private var characterComponents: [CharacterComponent] {
@@ -382,6 +387,10 @@ class KeyView: UIButton, ConfigurableView {
             isHighlighted = true
             
             gestureStartPoint = gesture.location(in: self)
+            startPointSpeed = 0
+            
+            previousTime = Date.timeIntervalSinceReferenceDate
+            previousDistance = 0
             
             if specialKey == .delete {
                 startAutorepeat()
@@ -415,8 +424,15 @@ class KeyView: UIButton, ConfigurableView {
             let threshold = bounds.size.height / 2
             let direction = ShiftDirection.init(rawValue: (atan2(-offsetPoint.y, offsetPoint.x) / .pi * 4).rounded() / 4) ?? .left
             
-            if shiftDirections.last == direction {
+            let currentTime = Date.timeIntervalSinceReferenceDate
+            let speed = (distance - previousDistance) / .init(currentTime - previousTime)
+            previousTime = currentTime
+            previousDistance = distance
+            
+            if shiftDirections.last == direction  || startPointSpeed > 300 {
                 gestureStartPoint = gesture.location(in: self)
+                previousDistance = 0
+                startPointSpeed = speed
             }
             else if distance > threshold {
                 shiftDirections.append(direction)
@@ -460,29 +476,44 @@ class KeyView: UIButton, ConfigurableView {
                         characterComponents = characterComponents.extraArray[2]
                     }
                     else if specialKey == nil {
-                        guard let previousCharacter = KeyboardViewController.shared.textDocumentProxy.characterBeforeInput else {
-                            mainLabelView.text = nil
-                            break
-                        }
-                        
-                        shouldDeletePreviousCharacter = true
-                        
-                        let modifierComponents: [CharacterComponent] = characterComponents.map { CharacterComponent.letterToModifierComponentDictionary[$0] ?? $0}
-                        
-                        let ligatureCharacter = (previousCharacter.characterComponents + characterComponents).character
-                        let combinedCharacter = (previousCharacter.characterComponents + modifierComponents).character
-                        
-                        if ligatureCharacter != combinedCharacter && ligatureCharacter.isEmpty == false && combinedCharacter.isEmpty == false {
-                            Array<CharacterComponent>.extraArrayExtension = [ligatureCharacter.characterComponents]
-                        }
-                        
-                        if previousCharacter.characterComponents.isEmpty || (combinedCharacter.isEmpty && ligatureCharacter.isEmpty) {
-                            mainLabelView.text = previousCharacter.description
-                        }
-                        else {
-                            characterComponents = ligatureCharacter.characterComponents
-                            characterComponents = combinedCharacter.characterComponents
-                        }
+                        fallthrough
+                    }
+                    
+                case .upLeft, .downLeft:
+                    
+                    guard let previousCharacter = KeyboardViewController.shared.textDocumentProxy.characterBeforeInput else {
+                        mainLabelView.text = nil
+                        break
+                    }
+                    
+                    shouldDeletePreviousCharacter = true
+                    
+                    let mixingComponents = characterComponents.map {CharacterComponent.letterToMixingComponentDictionary[$0] ?? $0}
+                    let combiningComponents = characterComponents.map {CharacterComponent.letterToCombiningComponentDictionary[$0] ?? $0}
+                    
+                    let combiningSuffix: [CharacterComponent] = [direction == .left ? .combining : (direction == .upLeft ? .above : .below)]
+                    
+                    var combiningCharacter: String = (characterComponents + combiningSuffix).character
+                    combiningCharacter = (combiningComponents + combiningSuffix).character
+                    
+                    guard combiningCharacter.isEmpty else {
+                        mainLabelView.text = (previousCharacter.description + combiningCharacter).precomposedStringWithCanonicalMapping
+                        break
+                    }
+                    
+                    let ligatureCharacter = (previousCharacter.characterComponents + characterComponents).character
+                    let combinedCharacter = (previousCharacter.characterComponents + mixingComponents).character
+                    
+                    if ligatureCharacter != combinedCharacter && ligatureCharacter.isEmpty == false && combinedCharacter.isEmpty == false {
+                        Array<CharacterComponent>.extraArrayExtension = [ligatureCharacter.characterComponents]
+                    }
+                    
+                    if previousCharacter.characterComponents.isEmpty || (combinedCharacter.isEmpty && ligatureCharacter.isEmpty) {
+                        mainLabelView.text = previousCharacter.description
+                    }
+                    else {
+                        characterComponents = ligatureCharacter.characterComponents
+                        characterComponents = combinedCharacter.characterComponents
                     }
                     
                 case .right:
@@ -505,9 +536,6 @@ class KeyView: UIButton, ConfigurableView {
                     
                 case .downRight:
                     characterComponents += [.subscript]
-                    
-                case .downLeft, .upLeft:
-                    break
                 }
             }
         }

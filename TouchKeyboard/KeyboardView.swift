@@ -11,8 +11,15 @@ import UIKit
 @IBDesignable
 internal class KeyboardView: UIView {
     
+    @IBInspectable internal var text: String = .init()
     @IBInspectable internal var darkColorScheme: Bool = false
     @IBInspectable internal var alternateLayoutMode: Bool = false
+    
+    enum State {
+        case disappeared, disappearing, appearing, appeared
+    }
+    
+    var state: State = .disappeared
     
     internal var documentContext: DocumentContext = .init() {
         didSet {
@@ -51,6 +58,8 @@ internal class KeyboardView: UIView {
             }
             
             characterSequenceView.characters = characterSequence
+            
+            unicodeCollectionView.documentContextBeforeInput = documentContextBeforeInput
         }
     }
     
@@ -143,9 +152,17 @@ internal class KeyboardView: UIView {
     override internal func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         
+        state = .appeared
+        
         colorScheme = darkColorScheme ? .dark : .default
         
         enterKey.isEnabled = false
+        
+        LoadUnicodeDataFiles.init().start()
+        documentContext = .init(beforeInput: text, afterInput: nil)
+        NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
+        
+        SearchUnicodeScalars.init(for: unicodeCollectionView).start()
     }
     
     private let deleteRowView: DeleteRowView = .init()
@@ -173,6 +190,10 @@ internal class KeyboardView: UIView {
     }
     
     override func layoutSubviews() {
+        
+        guard state != .disappeared else {
+            return
+        }
         
         let scaleFactor: CGFloat = Bundle.main.isInterfaceBuilder ? 1 : bounds.width / UIScreen.main.bounds.width
         

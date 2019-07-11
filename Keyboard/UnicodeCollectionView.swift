@@ -10,13 +10,7 @@ import UIKit
 
 class UnicodeCollectionView: CharacterCollectionView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+    var documentContextBeforeInput: String = .init()
 
     internal var size: CGSize = .zero {
         didSet {
@@ -121,9 +115,7 @@ class UnicodeCollectionView: CharacterCollectionView {
     
     @objc private func search() {
         
-        guard let documentContextBeforeInput = Keyboard.default.delegate?.documentContext.beforeInput else {
-            return
-        }
+        let documentContextBeforeInput = Keyboard.default.delegate?.documentContext.beforeInput ?? self.documentContextBeforeInput
         
         var textForSearch =
             documentContextBeforeInput

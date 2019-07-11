@@ -13,7 +13,7 @@ class AccessibilityMenuItem: LocalizedMenuItem {
         super.updateLocalizedStrings()
         
         let title: NSMutableAttributedString = .init(string: ENABLE_KEYBOARD.string)
-        title.addAttribute(NSAttributedStringKey.font, value: UIFont.boldMenuFont)
+        title.addAttribute(.font, value: UIFont.boldMenuFont)
         attributedTitle = title
     }
     

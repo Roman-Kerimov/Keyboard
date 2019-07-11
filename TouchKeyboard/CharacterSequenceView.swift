@@ -52,7 +52,7 @@ class CharacterSequenceView: CharacterCollectionView {
     private var activeIndexPath: IndexPath? {
         willSet {
             if let newValue = newValue {
-                activeCell = cellForItem(at: newValue) as! CharacterCollectionViewCell
+                activeCell = cellForItem(at: newValue) as? CharacterCollectionViewCell
             }
         }
     }

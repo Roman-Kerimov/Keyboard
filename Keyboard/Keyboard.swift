@@ -122,6 +122,7 @@ class Keyboard: NSObject {
         
         if !shiftFlag && currentKey == key {
             currentKey = nil
+            Array<CharacterComponent>.extraArrayExtension = .init()
         }
     }
     

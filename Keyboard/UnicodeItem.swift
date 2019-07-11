@@ -7,18 +7,14 @@
 
 import Foundation
 
-class UnicodeItem: NSObject, NSCoding, Comparable {
+class UnicodeItem: Codable, Comparable {
+    
+    static func == (lhs: UnicodeItem, rhs: UnicodeItem) -> Bool {
+        return lhs.order == rhs.order
+    }
     
     static func < (lhs: UnicodeItem, rhs: UnicodeItem) -> Bool {
         return lhs.order < rhs.order
-    }
-    
-    private enum Key: Int {
-        case codePoints, isFullyQualified, name, order
-        
-        var string: String {
-            return rawValue.description
-        }
     }
     
     let codePoints: String
@@ -36,28 +32,5 @@ class UnicodeItem: NSObject, NSCoding, Comparable {
         self.order = UnicodeItem.count
         
         UnicodeItem.count += 1
-    }
-    
-    func encode(with aCoder: NSCoder) {
-        aCoder.encode(codePoints, forKey: Key.codePoints.string)
-        aCoder.encode(isFullyQualified, forKey: Key.isFullyQualified.string)
-        aCoder.encode(name, forKey: Key.name.string)
-        aCoder.encode(order, forKey: Key.order.string)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        
-        guard let codePoints = aDecoder.decodeObject(forKey: Key.codePoints.string) as? String,
-            let isFullyQualified = aDecoder.decodeObject(forKey: Key.isFullyQualified.string) as? Bool,
-            let name = aDecoder.decodeObject(forKey: Key.name.string) as? String,
-            let order = aDecoder.decodeObject(forKey: Key.order.string) as? Int else {
-                
-            return nil
-        }
-        
-        self.codePoints = codePoints
-        self.isFullyQualified = isFullyQualified
-        self.name = name
-        self.order = order
     }
 }

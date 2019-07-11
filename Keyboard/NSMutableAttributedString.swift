@@ -8,7 +8,7 @@
 import Foundation
 
 extension NSMutableAttributedString {
-    func addAttribute(_ name: NSAttributedStringKey, value: Any) {
+    func addAttribute(_ name: NSAttributedString.Key, value: Any) {
         addAttribute(name, value: value, range: .init(location: 0, length: string.count))
     }
 }

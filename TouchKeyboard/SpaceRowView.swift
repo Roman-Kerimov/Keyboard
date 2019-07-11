@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SpaceRowView: RowView {
+class SpaceRowView: UIView {
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -34,8 +34,8 @@ class SpaceRowView: RowView {
     internal let enterKey: KeyView = .init(key: .enter)
     internal let dismissKeyboardKey: KeyView = .init(key: .dismissKeyboard)
     
-    internal override init() {
-        super.init()
+    init() {
+        super.init(frame: .zero)
         
         for key in keys {
             addSubview(key.view)
@@ -46,8 +46,7 @@ class SpaceRowView: RowView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func configure(size: CGSize, keySpacing: CGFloat, labelFontSize: CGFloat) {
-        super.configure(size: size, keySpacing: keySpacing, labelFontSize: labelFontSize)
+    override func layoutSubviews() {
         
         let allParts = keys.map {$0.proportion} .reduce(0, +)
         
@@ -55,7 +54,7 @@ class SpaceRowView: RowView {
         
         var originX: CGFloat = 0
         for (proportion, keyView) in keys {
-            var keyWidth = size.width * proportion/allParts
+            var keyWidth = frame.width * proportion/allParts
             
             if keyView.key == .space {
                  keyWidth += freeSpace
@@ -73,8 +72,7 @@ class SpaceRowView: RowView {
                 keyView.isHidden = false
             }
             
-            keyView.configure(size: .init(width: keyWidth, height: size.height), spacing: keySpacing, labelFontSize: labelFontSize)
-            keyView.frame.origin.x = originX
+            keyView.frame = .init(x: originX, y: 0, width: keyWidth, height: frame.height)
             
             originX += keyWidth
         }

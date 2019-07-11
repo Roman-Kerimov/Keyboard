@@ -11,7 +11,9 @@ LaunchAgent.load()
 
 let application = NSApplication.shared
 NSApp.setActivationPolicy(.prohibited)
-application.delegate = AppDelegate.init()
+
+private let appDelegate = AppDelegate.init()
+application.delegate = appDelegate
 
 application.run()
 

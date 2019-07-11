@@ -78,20 +78,10 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
         hiddenView.isHidden = true
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        keyboardView.configure()
-    }
-    
     var isAppeared: Bool = false
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        if view.bounds.width < UIScreen.main.bounds.width {
-            keyboardView.configure()
-        }
         
         isAppeared = true
     }
@@ -111,9 +101,7 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
             UIView.setAnimationsEnabled(false)
         }
         
-        coordinator.animate(alongsideTransition: { _ in
-            self.keyboardView.configure()
-        }) { _ in
+        coordinator.animate(alongsideTransition: nil) { _ in
             UIView.setAnimationsEnabled(true)
         }
     }

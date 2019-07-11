@@ -34,14 +34,6 @@ class LabelView: UILabel {
             default:
                 super.text = newValue
             }
-            
-            frame.size = intrinsicContentSize
-            
-            for view in parentViews {
-                if let configurableView = view as? ConfigurableView {
-                    configurableView.configure()
-                }
-            }
         }
     }
     

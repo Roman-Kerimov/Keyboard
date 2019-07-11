@@ -59,14 +59,14 @@ class LoadUnicodeDataFiles: Operation {
         NotificationCenter.default.post(name: .UnicodeDataFilesDidLoad, object: nil)
     }
     
-    private func parse<Type>(dataFile: UnicodeDataFile, processedStringCount: inout Int, output: inout Type, parse: (String, inout Type) -> Void) {
+    private func parse<Type: Codable>(dataFile: UnicodeDataFile, processedStringCount: inout Int, output: inout Type, parse: (String, inout Type) -> Void) {
         
         func updateProgress() {
             let progress: Float = .init(processedStringCount) / .init(UnicodeDataFile.totalStringCount)
             NotificationCenter.default.post(name: .UnicodeDataFilesLoadingProgressDidChange, object: progress)
         }
         
-        if let outputObject = NSKeyedUnarchiver.unarchiveObject(withFile: dataFile.cacheURL.path) as? Type {
+        if let outputObject = try? PropertyListDecoder.init().decode(Type.self, from: (try? Data.init(contentsOf: dataFile.cacheURL)) ?? .init()) {
             output = outputObject
             
             processedStringCount += dataFile.strings.count
@@ -85,7 +85,9 @@ class LoadUnicodeDataFiles: Operation {
                 updateProgress()
             }
             
-            NSKeyedArchiver.archiveRootObject(output, toFile: dataFile.cacheURL.path)
+            if let data = try? PropertyListEncoder.init().encode(output) {
+                try! data.write(to: dataFile.cacheURL)
+            }
         }
     }
 }

@@ -5,7 +5,7 @@
 //  Created by Roman Kerimov on 2017-09-25.
 //
 
-import Foundation
+// This file uses data from UCD/Blocks.txt and UCD/extracted/DerivedName.txt
 
 let characterComponentsDictionary: [String: [CharacterComponent]] = [
     

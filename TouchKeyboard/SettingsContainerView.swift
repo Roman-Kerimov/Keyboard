@@ -114,6 +114,6 @@ class SettingsContainerView: UIStackView {
             break
         }
         
-        KeyboardViewController.shared.keyboardView.configure()
+        KeyboardViewController.shared.keyboardView.setNeedsLayout()
     }
 }

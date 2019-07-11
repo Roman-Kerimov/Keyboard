@@ -26,7 +26,8 @@ class DeleteRowView: UIView {
     
     override func layoutSubviews() {
         
-        deleteKey.frame = .init(origin: .init(x: frame.width - deleteKey.frame.width, y: 0), size: .init(width: frame.width / 5, height: frame.height))
+        let deleteKeyWidth = frame.width / 5
+        deleteKey.frame = .init(origin: .init(x: frame.width - deleteKeyWidth, y: 0), size: .init(width: deleteKeyWidth, height: frame.height))
         
         characterSequence.contentInset = .init(top: 0, left: 0, bottom: 0, right: deleteKey.frame.width)
         characterSequence.frame.size = .init(width: frame.width, height: frame.height)

@@ -101,6 +101,8 @@
 		96EA39E21EB0EEDE00F3D804 /* Labels_HideKeyboard.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96EA39DF1EB0EEDD00F3D804 /* Labels_HideKeyboard.ai */; };
 		96EA39E31EB0EEDE00F3D804 /* Labels_NextKeyboard.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96EA39E01EB0EEDD00F3D804 /* Labels_NextKeyboard.ai */; };
 		96F716B91F0438B6004A77C7 /* Locale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F716B81F0438B6004A77C7 /* Locale.swift */; };
+		96F7FBE91FBB299400F7146C /* CollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F7FBE81FBB299400F7146C /* CollectionViewFlowLayout.swift */; };
+		96F7FBEA1FBB299400F7146C /* CollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F7FBE81FBB299400F7146C /* CollectionViewFlowLayout.swift */; };
 		96F8D1D11E26FAE0000D1DFC /* SettingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8D1D01E26FAE0000D1DFC /* SettingsTableView.swift */; };
 /* End PBXBuildFile section */
 
@@ -194,6 +196,7 @@
 		96EA39E01EB0EEDD00F3D804 /* Labels_NextKeyboard.ai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Labels_NextKeyboard.ai; sourceTree = "<group>"; };
 		96EA39E11EB0EEDD00F3D804 /* Labels.ai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Labels.ai; sourceTree = "<group>"; };
 		96F716B81F0438B6004A77C7 /* Locale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locale.swift; sourceTree = "<group>"; };
+		96F7FBE81FBB299400F7146C /* CollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		96F8D1D01E26FAE0000D1DFC /* SettingsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -291,6 +294,7 @@
 				96848DA01EE0B64F0009869A /* UnicodeTable.swift */,
 				960F6E921EC9ED0400EFC7B7 /* CharacterCollectionView.swift */,
 				9665F3771E9D921500850F97 /* CharacterCollectionViewCell.swift */,
+				96F7FBE81FBB299400F7146C /* CollectionViewFlowLayout.swift */,
 				9654DF791D4E1D0900DDB0EF /* SpaceRowView.swift */,
 				9633A3C71E5DFA3C00DFA503 /* RowView.swift */,
 				965D15C81D32AE3B0098FA57 /* KeyView.swift */,
@@ -491,6 +495,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96F7FBE91FBB299400F7146C /* CollectionViewFlowLayout.swift in Sources */,
 				9643FC4D1F78F8D5004DA2C0 /* CharacterComponent.swift in Sources */,
 				96533A901F1293A500B07CA3 /* UIView.swift in Sources */,
 				96533A891F12938D00B07CA3 /* ViewController<UIView>.swift in Sources */,
@@ -569,6 +574,7 @@
 				9633A3CA1E5DFE8D00DFA503 /* DeleteRowView.swift in Sources */,
 				969E83031EED830C009A1F2D /* ConfigurableViewProtocol.swift in Sources */,
 				96F8D1D11E26FAE0000D1DFC /* SettingsTableView.swift in Sources */,
+				96F7FBEA1FBB299400F7146C /* CollectionViewFlowLayout.swift in Sources */,
 				960F6E931EC9ED0400EFC7B7 /* CharacterCollectionView.swift in Sources */,
 				96530D671DD1C9A9004E8BAA /* KeyboardLayout.swift in Sources */,
 				968694C11EA0F3D100E6C9D0 /* UIColor.swift in Sources */,
@@ -644,7 +650,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -679,7 +685,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

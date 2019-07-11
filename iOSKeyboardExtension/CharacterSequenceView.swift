@@ -141,7 +141,8 @@ class CharacterSequenceView: CharacterCollectionView {
                 }
                 
                 performCharacterSequenceUpdates {
-                    characters[activeIndexPath.item] = Character.init(activeCell.title.text!)
+                    characters.remove(at: activeIndexPath.item)
+                    characters.insert(contentsOf: activeCell.title.text!, at: activeIndexPath.item)
                 }
             }
             
@@ -280,14 +281,16 @@ class CharacterSequenceView: CharacterCollectionView {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let label: UILabel = .init()
-        label.text = characters[indexPath.item].description
-        label.font = characterFont
+        var characters = self.characters
+        
+        if activeIndexPath != nil && activeIndexPath!.item < characters.count && layout.targetIndexPath != nil && layout.targetIndexPath!.item < characters.count {
+            characters.insert(characters.remove(at: activeIndexPath!.item), at: layout.targetIndexPath!.item)
+        }
         
         return .init(
             width: max(
                 layout.itemSize.width,
-                label.intrinsicContentSize.width
+                characters[indexPath.item].description.size(withFont: characterFont).width
             ),
             
             height: layout.itemSize.height

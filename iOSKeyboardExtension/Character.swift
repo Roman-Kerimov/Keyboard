@@ -15,6 +15,8 @@ extension Character {
     static let `return`: Character = "\n"
     static let tab: Character = "\t"
     static let reverseSolidus: Character = "\\"
+    static let comma: Character = ","
+    static let fullStop: Character = "."
     
     func belongsTo(_ characterSet: CharacterSet) -> Bool {
         return characterSet.contains(self.unicodeScalars.first!)
@@ -41,5 +43,9 @@ extension Character {
         }
         
         return outputString
+    }
+    
+    var characterComponents: [CharacterComponent] {
+        return description.characterComponents
     }
 }

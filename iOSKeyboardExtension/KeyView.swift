@@ -304,12 +304,29 @@ class KeyView: UIButton, ConfigurableView {
         imageLabelView.center = backgroundView.center
     }
     
+    private var shouldDeletePreviousCharacter: Bool = false
+    
     private func input() {
         if specialKey == .return {
             KeyboardViewController.shared.keyAction(label: SpecialKey.return.label)
         }
         else {
-            KeyboardViewController.shared.keyAction(label: mainLabelView.text ?? "")
+            
+            if shouldDeletePreviousCharacter {
+                shouldDeletePreviousCharacter = false
+                
+                guard KeyboardViewController.shared.textDocumentProxy.characterBeforeInput?.description != mainLabelView.text else {
+                    return
+                }
+                
+                KeyboardViewController.shared.textDocumentProxy.deleteBackward()
+            }
+            
+            guard let mainLabel = mainLabelView.text else {
+                return
+            }
+            
+            KeyboardViewController.shared.keyAction(label: mainLabel)
         }
         
         KeyboardViewController.shared.updateDocumentContext()
@@ -382,6 +399,7 @@ class KeyView: UIButton, ConfigurableView {
             mainLabelView.text = mainLabel
             updateLocalizedStrings()
             isHighlighted = false
+            Array<CharacterComponent>.extraArrayExtension = .init()
             
         default:
             
@@ -411,6 +429,12 @@ class KeyView: UIButton, ConfigurableView {
                     }
                     else {
                         characterComponents += [.capital]
+                        
+                        if characterComponents.count == 1 {
+                            if let shiftUpCharacterComponent = KeyboardLayout.shiftUpDictionary[characterComponents.first!] {
+                                characterComponents = [shiftUpCharacterComponent]
+                            }
+                        }
                     }
                     
                 case .down:
@@ -434,6 +458,31 @@ class KeyView: UIButton, ConfigurableView {
                         && characterComponents == characterComponents.extraArray[1] {
                         
                         characterComponents = characterComponents.extraArray[2]
+                    }
+                    else if specialKey == nil {
+                        guard let previousCharacter = KeyboardViewController.shared.textDocumentProxy.characterBeforeInput else {
+                            mainLabelView.text = nil
+                            break
+                        }
+                        
+                        shouldDeletePreviousCharacter = true
+                        
+                        let modifierComponents: [CharacterComponent] = characterComponents.map { CharacterComponent.letterToModifierComponentDictionary[$0] ?? $0}
+                        
+                        let ligatureCharacter = (previousCharacter.characterComponents + characterComponents).character
+                        let combinedCharacter = (previousCharacter.characterComponents + modifierComponents).character
+                        
+                        if ligatureCharacter != combinedCharacter && ligatureCharacter.isEmpty == false && combinedCharacter.isEmpty == false {
+                            Array<CharacterComponent>.extraArrayExtension = [ligatureCharacter.characterComponents]
+                        }
+                        
+                        if previousCharacter.characterComponents.isEmpty || (combinedCharacter.isEmpty && ligatureCharacter.isEmpty) {
+                            mainLabelView.text = previousCharacter.description
+                        }
+                        else {
+                            characterComponents = ligatureCharacter.characterComponents
+                            characterComponents = combinedCharacter.characterComponents
+                        }
                     }
                     
                 case .right:

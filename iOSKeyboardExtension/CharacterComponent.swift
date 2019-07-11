@@ -8,19 +8,18 @@
 import Foundation
 
 enum CharacterComponent {
-    private static let commutative: Set<CharacterComponent> = .init([.capital, .smallCapital, .superscript, .subscript] + extraComponents)
+    private static let commutative: Set<CharacterComponent> = .init([.capital, .smallCapital, .superscript, .subscript] + extraComponents + letterToModifierComponentDictionary.values.filter {$0 != .extraH})
     
     public var isCommutative: Bool {
         return CharacterComponent.commutative.contains(self)
     }
     
-    internal static let extraComponents: [CharacterComponent] = [.extra0, .turned, .reversed, .inverted, .sideways, .extra1, .extra2]
+    internal static let extraComponents: [CharacterComponent] = [.extra0, .letterScript, .turned, .reversed, .inverted, .sideways, .extra1, .extra2]
     
     internal var isExtraComponent: Bool {
         return CharacterComponent.extraComponents.contains(self)
     }
     
-    case joiner
     case fractionSlash
     
     case a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z
@@ -43,13 +42,12 @@ enum CharacterComponent {
     case divisionSign
     
     case notSign
-    case schwa
     case egyptologialAlef, egyptologicalAin
     case glottalStop, ain, saltillo, sinologicalDot
     case interrobang
     
     case capital, smallCapital
-    case extra0, turned, reversed, inverted, ramsHorn, sideways, extra1, extra2
+    case extra0, turned, reversed, inverted, sideways, extra1, extra2
     case extraLeft
     case superscript, `subscript`, middle, raised
     
@@ -58,21 +56,50 @@ enum CharacterComponent {
     case lowStroke
     case diagonalStroke, shortDiagonalStroke, longDiagonalStroke
     case longLeg
-    case L
     case hook, retroflexHook, palatalHook
     case tone
-    case open, closed
+    case extraH
+    case closed
     case horn
     case curl, belt, crossedTail, loop
     case tail, notch, flourish
     case descender
     case um
-    case dTop
     case sBottom
-    case uTop
-    case wTop
     case not, notLow
     case lazyS
+    case zDigraph
+    
+    internal static let letterToModifierComponentDictionary: [CharacterComponent: CharacterComponent] = [
+        //.highStroke
+        //.topbar
+        .hyphen: .stroke,
+        //.shortStroke
+        //.longStroke
+        //.lightCentralizationStroke
+        //.obliqueStroke
+        //.lowStroke
+        .solidus: .diagonalStroke,
+        .l: .longLeg,
+        .f: .hook,
+        .t: .retroflexHook,
+        .j: .palatalHook,
+        //.tone
+        .h: .extraH,
+        .o: .closed,
+        //.horn
+        .c: .curl,
+        .b: .belt,
+        //.crossedTail, .loop
+        .v: .tail, //.notch
+        //.flourish: ,
+        .q: .descender,
+        //.um
+        //.sBottom
+        //.not, .notLow
+        //.lazyS
+        .z: .zDigraph
+    ]
     
     case letterScript
     case insular

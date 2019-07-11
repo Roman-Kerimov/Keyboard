@@ -14,7 +14,7 @@ extension Array where Element == CharacterComponent {
     )
     
     var key: String {
-        return self.normalized.map {$0.hashValue.description} .joined(separator: .space)
+        return normalized.map {.fullStop + .init(describing: $0)} .joined(separator: .comma + .space)
     }
     
     var character: String {
@@ -25,11 +25,15 @@ extension Array where Element == CharacterComponent {
         return self.filter {!$0.isCommutative} + (self.filter {$0.isCommutative} .sorted {$0.hashValue < $1.hashValue})
     }
     
+    static var extraArrayExtension: [[CharacterComponent]] = .init()
     var extraArray: [[CharacterComponent]] {
         let baseCharacterComponents = self.filter { $0.isExtraComponent == false }
         
-        return (CharacterComponent.extraComponents.map { baseCharacterComponents + [$0]}
-            + [baseCharacterComponents + [CharacterComponent.turned, CharacterComponent.sideways]])
-            .filter { $0.character.isEmpty == false}
+        var extraArray = Array<CharacterComponent>.extraArrayExtension + CharacterComponent.extraComponents.map { baseCharacterComponents + [$0]}
+        
+        //For LATIN SMALL LETTER SIDEWAYS TURNED M
+        extraArray += [baseCharacterComponents + [.turned, .sideways]]
+        
+        return extraArray.filter { $0.character.isEmpty == false} .map { $0.normalized }
     }
 }

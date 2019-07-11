@@ -31,9 +31,7 @@ class KeyboardViewController: UIInputViewController {
         Localization.initialize()
         KeyboardViewController.shared = self
         
-        keyboardView.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
-        
-        keyboardView.hideButton.addTarget(self, action: #selector(dismissKeyboard), for: .touchUpInside)
+        keyboardView.nextKeyboardKey.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,8 +48,13 @@ class KeyboardViewController: UIInputViewController {
         }
     }
     
-    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
-        keyboardView.configure()
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        
+        coordinator.animate(alongsideTransition: nil) { (context) in
+            self.keyboardView.configure()
+        }
+        
+        super.viewWillTransition(to: size, with: coordinator)
     }
     
     override func didReceiveMemoryWarning() {
@@ -99,12 +102,17 @@ class KeyboardViewController: UIInputViewController {
     
     func keyAction(label: String) {
         
-        switch label {
+        guard let specialKey = SpecialKey(rawValue: label) else {
+            textDocumentProxy.insertText(label)
+            return
+        }
+        
+        switch specialKey {
             
-        case deleteLabel:
+        case .delete:
             textDocumentProxy.deleteBackward()
             
-        case spaceLabel:
+        case .space:
             if settings.allowMultipleSpaces {
                 textDocumentProxy.insertText(" ")
             }
@@ -117,13 +125,13 @@ class KeyboardViewController: UIInputViewController {
                 textDocumentProxy.insertText(" ")
             }
             
-        case returnLabel:
+        case .return:
             textDocumentProxy.insertText("\n")
             
-        case tabLabel:
+        case .tab:
             textDocumentProxy.insertText("\t")
             
-        case unionLabel:
+        case .union:
             var maxSuffixLength = KeyboardLayout.unionDictionary.keys.map { $0.characters.count }.max()!
             
             Suffix: while maxSuffixLength > 0 {
@@ -146,9 +154,23 @@ class KeyboardViewController: UIInputViewController {
                 
                 maxSuffixLength -= 1
             }
-        
-        default:
-            textDocumentProxy.insertText(label)
+            
+        case .nextKeyboard:
+            break
+            
+        case .dismissKeyboard:
+            dismissKeyboard()
+            
+        case .settings:
+            keyboardView.showSettings()
+            
+        case .horizontalMode:
+            settings.layoutMode = .horizontal
+            keyboardView.configure()
+            
+        case .verticalMode:
+            settings.layoutMode = .vertical
+            keyboardView.configure()
         }
     }
 }

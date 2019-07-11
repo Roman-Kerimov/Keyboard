@@ -14,12 +14,8 @@ internal class KeyboardView: UIView {
     @IBInspectable internal var darkColorScheme: Bool = false
     @IBInspectable internal var alternateLayoutMode: Bool = false
     
-    internal var nextKeyboardButton: UIButton {
-        return settingsRowView.nextKeyboardButton
-    }
-    
-    internal var hideButton: UIButton {
-        return settingsRowView.hideButton
+    internal var nextKeyboardKey: KeyView {
+        return spaceRowView.nextKeyboardKey
     }
 
     /*
@@ -43,8 +39,6 @@ internal class KeyboardView: UIView {
             key.colorScheme = colorScheme
         }
         
-        settingsRowView.colorScheme = colorScheme
-        
         #if TARGET_INTERFACE_BUILDER
             keyboardView.backgroundColor = colorScheme.fakeBackroundColorForInterfaceBuilder
         #endif
@@ -59,6 +53,7 @@ internal class KeyboardView: UIView {
             }
         }
         
+        keyViews += deleteRowView.arrangedSubviews.filter {$0 is KeyView} as! [KeyView]
         keyViews += spaceRowView.arrangedSubviews as! [KeyView]
         
         return keyViews
@@ -85,9 +80,10 @@ internal class KeyboardView: UIView {
         #endif
     }
     
+    private let deleteRowHeightInKeys: CGFloat = 1
     private let spaceRowHeightInKeys: CGFloat = 1
     
-    private let maxKeyboardHeightRatio: CGFloat = 0.56
+    private let maxKeyboardHeightRatio: CGFloat = 0.59
     
     private var maxKeyWidth: CGFloat {
         return 102.4 * scaleFactor
@@ -101,25 +97,21 @@ internal class KeyboardView: UIView {
     private var sizeInKeysForVerticalMode: CGSize {
         return CGSize(
             width: CGFloat(settings.layout.columnCount / 2) + 0.5,
-            height: CGFloat(settings.layout.rowCount * 2) + spaceRowHeightInKeys
+            height: deleteRowHeightInKeys + CGFloat(settings.layout.rowCount * 2) + spaceRowHeightInKeys
         )
     }
     
     private var sizeInKeysForHorizontalMode: CGSize {
         return CGSize(
             width: CGFloat(settings.layout.columnCount),
-            height: CGFloat(settings.layout.rowCount) + spaceRowHeightInKeys
+            height: deleteRowHeightInKeys + CGFloat(settings.layout.rowCount) + spaceRowHeightInKeys
         )
-    }
-    
-    private var settingsRowHeight: CGFloat {
-        return max(screenSize.width, screenSize.height) * 0.04
     }
     
     private var keySize: CGSize {
         let keyWidth = min(maxKeyWidth, screenSize.width / sizeInKeys.width)
         
-        let maxKeyboardHeight = (screenSize.height * maxKeyboardHeightRatio - settingsRowHeight)
+        let maxKeyboardHeight = (screenSize.height * maxKeyboardHeightRatio)
         
         return CGSize(
             width: keyWidth,
@@ -144,6 +136,10 @@ internal class KeyboardView: UIView {
         )
     }
     
+    private var deleteRowHeight: CGFloat {
+        return deleteRowHeightInKeys * keySize.height
+    }
+    
     private var spaceRowHeight: CGFloat {
         return spaceRowHeightInKeys * keySize.height
     }
@@ -151,7 +147,7 @@ internal class KeyboardView: UIView {
     private var size: CGSize {
         return CGSize(
             width: keySize.width * sizeInKeys.width,
-            height: keySize.height * sizeInKeys.height + settingsRowHeight
+            height: keySize.height * sizeInKeys.height
         )
     }
     
@@ -175,12 +171,6 @@ internal class KeyboardView: UIView {
     }
     
     internal func configure() {
-        if settingsRowView.layoutModeSegmentedControl.numberOfSegments < 2 {
-            settingsRowView.layoutModeSegmentedControl.insertSegment(withTitle: verticalModeLabel, at: 1, animated: false)
-        }
-        
-        let verticalModeIndex = modeSegmentLabels.index(of: verticalModeLabel)!
-        let horizontalModeIndex = modeSegmentLabels.index(of: horizontalModeLabel)!
         
         if settings.layoutMode == .default {
             if bounds.width < self.minimalScreenSize.height {
@@ -200,35 +190,13 @@ internal class KeyboardView: UIView {
             }
         }
         
-        switch settings.layoutMode {
-            
-        case .horizontal:
-            settingsRowView.layoutModeSegmentedControl.selectedSegmentIndex = horizontalModeIndex
-            
-        case .vertical:
-            settingsRowView.layoutModeSegmentedControl.selectedSegmentIndex = verticalModeIndex
-            
-        default:
-            abort()
-        }
-        
-        if screenSize.height < self.minimalScreenSize.height {
-            settingsRowView.layoutModeSegmentedControl.selectedSegmentIndex = horizontalModeIndex
-            settingsRowView.layoutModeSegmentedControl.removeSegment(at: verticalModeIndex, animated: false)
-        }
-        
-        switch settingsRowView.layoutModeSegmentedControl.selectedSegmentIndex {
-            
-        case verticalModeIndex:
-            keyboardStackView.alignment = .trailing
-            sizeInKeys = self.sizeInKeysForVerticalMode
-            
-        case horizontalModeIndex:
+        if settings.layoutMode == .horizontal || screenSize.height < self.minimalScreenSize.height {
             keyboardStackView.alignment = .center
             sizeInKeys = sizeInKeysForHorizontalMode
-            
-        default:
-            abort()
+        }
+        else {
+            keyboardStackView.alignment = .trailing
+            sizeInKeys = self.sizeInKeysForVerticalMode
         }
         
         if widthConstraint != nil {
@@ -253,9 +221,9 @@ internal class KeyboardView: UIView {
             keyboardView.heightAnchor.constraint(equalToConstant: size.height).isActive = true
         #endif
         
+        deleteRowView.height = deleteRowHeight
         layoutView.halfKeyboardSize = halfKeyboardSize
         spaceRowView.height = spaceRowHeight
-        settingsRowView.height = settingsRowHeight
         
         let maxKeyWidth = self.maxKeyWidth
         let keySize = self.keySize
@@ -267,9 +235,9 @@ internal class KeyboardView: UIView {
         }
     }
     
+    private var deleteRowView = DeleteRowView()
     private var layoutContainerView = UIView()
     private let spaceRowView = SpaceRowView()
-    private let settingsRowView = SettingsRowView()
     
     override private init(frame: CGRect = .zero) {
         super.init(frame: frame)
@@ -290,42 +258,21 @@ internal class KeyboardView: UIView {
         keyboardStackView.axis = .vertical
         keyboardStackView.translatesAutoresizingMaskIntoConstraints = false
         
+        keyboardStackView.addArrangedSubview(deleteRowView)
+        
         keyboardStackView.addArrangedSubview(layoutContainerView)
         addKeyboardLayout()
         
         keyboardStackView.addArrangedSubview(spaceRowView)
-        keyboardStackView.addArrangedSubview(settingsRowView)
         
+        layoutContainerView.widthAnchor.constraint(equalTo: deleteRowView.widthAnchor).isActive = true
         layoutContainerView.widthAnchor.constraint(equalTo: spaceRowView.widthAnchor).isActive = true
-        
-        settingsRowView.widthAnchor.constraint(equalTo: keyboardStackView.widthAnchor).isActive = true
-        
-        settingsRowView.layoutModeSegmentedControl.addTarget(self, action: #selector(keyboardModeDidChange), for: .allEvents)
-        
-        settingsRowView.settingsButton.addTarget(self, action: #selector(showSettings), for: .touchUpInside)
         
         settingsContainerView.backButton.addTarget(self, action: #selector(hideSettings), for: .allTouchEvents)
     }
     
     required internal init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    @objc private func keyboardModeDidChange(segmentedControl: UISegmentedControl) {
-        
-        switch segmentedControl.selectedSegmentIndex {
-            
-        case modeSegmentLabels.index(of: verticalModeLabel)!:
-            settings.layoutMode = .vertical
-            
-        case modeSegmentLabels.index(of: horizontalModeLabel)!:
-            settings.layoutMode = .horizontal
-            
-        default:
-            abort()
-        }
-        
-        configure()
     }
     
     private var layoutView = KeyboardLayoutView(layout: KeyboardSettings().layout)
@@ -351,7 +298,7 @@ internal class KeyboardView: UIView {
     
     private let settingsAnimateDuration = 0.3
     
-    @objc private func showSettings() {
+    @objc internal func showSettings() {
         addSubview(settingsContainerView)
         
         settingsRightConstraint = settingsContainerView.rightAnchor.constraint(equalTo: rightAnchor, constant: settingsContainerView.widthConstraint.constant)

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SpaceRowView: UIStackView {
+class SpaceRowView: RowView {
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -18,37 +18,33 @@ class SpaceRowView: UIStackView {
     }
     */
     
-    var height: CGFloat = 0 {
-        didSet {
-            if heightConstraint != nil {
-                heightConstraint!.constant = height
-            }
-            else {
-                heightConstraint = heightAnchor.constraint(equalToConstant: height)
-                heightConstraint!.isActive = true
-            }
-        }
-    }
+    let nextKeyboardKey = KeyView(key: .nextKeyboard)
+    let dismissKeyboardKey = KeyView(key: .dismissKeyboard)
+    let spaceKey = KeyView(key: .space)
+    let returnKey = KeyView(key: .return)
+    let settingsKey = KeyView(key: .settings)
     
-    private var heightConstraint: NSLayoutConstraint?
-    
-    init() {
-        super.init(frame: CGRect())
+    internal override init() {
+        super.init()
         
-        translatesAutoresizingMaskIntoConstraints = false
+        let compactKeyMultiplier: CGFloat = 1/8
         
-        axis = .horizontal
+        addArrangedSubview(nextKeyboardKey)
+        nextKeyboardKey.widthAnchor.constraint(equalTo: widthAnchor, multiplier: compactKeyMultiplier).isActive = true
         
-        let spaceKey = KeyView(label: spaceLabel)
+        addArrangedSubview(dismissKeyboardKey)
+        dismissKeyboardKey.widthAnchor.constraint(equalTo: widthAnchor, multiplier: compactKeyMultiplier).isActive = true
+        
         addArrangedSubview(spaceKey)
         
-        let deleteKey = KeyView(label: deleteLabel)
-        addArrangedSubview(deleteKey)
-        deleteKey.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.3).isActive = true
+        addArrangedSubview(returnKey)
+        returnKey.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1/5).isActive = true
+        
+        addArrangedSubview(settingsKey)
+        settingsKey.widthAnchor.constraint(equalTo: widthAnchor, multiplier: compactKeyMultiplier).isActive = true
     }
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
 }

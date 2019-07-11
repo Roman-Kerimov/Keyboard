@@ -58,6 +58,14 @@ class CharacterSequenceView: CharacterCollectionView {
         }
     }
     
+    private var activeCharacter: Character? {
+        guard let activeIndexPath = activeIndexPath else {
+            return nil
+        }
+        
+        return characters[activeIndexPath.item]
+    }
+    
     private var activeCell: CharacterCollectionViewCell!
     
     private enum CharacterSequenceActionStage {
@@ -146,14 +154,83 @@ class CharacterSequenceView: CharacterCollectionView {
     }
     
     override func endInteractiveMovement() {
-        super.endInteractiveMovement()
+        guard let activeCell = self.activeCell else {
+            return
+        }
+        
+        func disableAtimations() {
+            UIView.setAnimationsEnabled(false)
+            activeCell.isHidden = true
+        }
+        
+        func enableAtimations() {
+            UIView.setAnimationsEnabled(true)
+            activeCell.isHidden = false
+        }
+        
+        disableAtimations()
         
         if deleteKey.isHighlighted {
+            cancelInteractiveMovement()
             
-            if characters[activeIndexPath!.item] == .space && activeIndexPath?.item == characters.count - 1 {
-                KeyboardViewController.shared.keyAction(label: SpecialKey.removeCharacter.label)
-            }
+            performBatchUpdates({
+                if activeCharacter == .space && activeIndexPath?.item == characters.count - 1 {
+                    KeyboardViewController.shared.keyAction(label: SpecialKey.delete.label)
+                }
+                else {
+                    performCharacterSequenceUpdates {
+                        characters.remove(at: activeIndexPath!.item)
+                        deleteItems(at: [activeIndexPath!])
+                    }
+                }
+            }, completion: { _ in
+                enableAtimations()
+                KeyboardViewController.shared.updateDocumentContext()
+            })
+            
+            deleteKey.isHighlighted = false
+            return
         }
+        
+        if activeCharacter == .space {
+            let destinationIndexPath: IndexPath = .init(row: .init(activeCell.center.x / layout.itemSize.width), section: 0)
+            
+            cancelInteractiveMovement()
+            
+            let shouldInsertSpace: Bool = destinationIndexPath.item < characters.count - 1
+            let shouldDeleteSpace: Bool = shouldInsertSpace && activeIndexPath?.item == characters.count - 1
+            
+            performBatchUpdates({
+                guard shouldInsertSpace else {
+                    return
+                }
+                
+                performCharacterSequenceUpdates {
+                    if activeIndexPath?.item == 0 {
+                        characters.insert(.space, at: destinationIndexPath.item + 1)
+                    }
+                    else {
+                        characters.insert(.space, at: destinationIndexPath.item)
+                    }
+                    
+                    insertItems(at: [destinationIndexPath])
+                }
+            }, completion: { (_) in
+                enableAtimations()
+                
+                if shouldDeleteSpace {
+                    KeyboardViewController.shared.keyAction(label: SpecialKey.delete.label)
+                }
+                
+                KeyboardViewController.shared.updateDocumentContext()
+            })
+            
+            return
+        }
+        
+        super.endInteractiveMovement()
+        
+        enableAtimations()
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -169,28 +246,16 @@ class CharacterSequenceView: CharacterCollectionView {
     
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         
-        let sourceOffset = sourceIndexPath.item - characters.count + 1
-        let destinationOffset = destinationIndexPath.item - characters.count + 1
-        
-        if sourceOffset > destinationOffset {
-            KeyboardViewController.shared.keyAction(label: SpecialKey.delete.label, offset: sourceOffset)
+        performCharacterSequenceUpdates {
+            let sourceCharacter = characters.remove(at: sourceIndexPath.item)
+            characters.insert(sourceCharacter, at: destinationIndexPath.item)
         }
-        else {
-            KeyboardViewController.shared.keyAction(label: SpecialKey.removeCharacter.label, offset: sourceOffset)
-        }
-        
-        let sourceCharacter = characters[sourceIndexPath.item]
-        let destinationCharacter = characters[destinationIndexPath.item]
-        
-        if !deleteKey.isHighlighted {
-            KeyboardViewController.shared.keyAction(label: sourceCharacter.description, offset: destinationOffset)
-        }
-        
-        if sourceCharacter == .space && destinationCharacter == .space {
-            KeyboardViewController.shared.updateDocumentContext()
-        }
-        
-        deleteKey.isHighlighted = false
+    }
+    
+    func performCharacterSequenceUpdates(_ updates: () -> Void) {
+        KeyboardViewController.shared.textDocumentProxy.deleteBackward(characters.count)
+        updates()
+        KeyboardViewController.shared.textDocumentProxy.insertText(.init(characters))
     }
     
     internal var deleteKey: KeyView {

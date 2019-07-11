@@ -8,15 +8,32 @@
 
 import UIKit
 
+extension UIView {
+    open override var inputViewController: UIInputViewController? {
+        return KeyboardViewController.shared
+    }
+}
+
+extension UIViewController {
+    open override var inputViewController: UIInputViewController? {
+        return KeyboardViewController.shared
+    }
+}
+
+extension UIApplication {
+    open override var inputViewController: UIInputViewController? {
+        return KeyboardViewController.shared
+    }
+}
+
 class KeyboardViewController: UIInputViewController {
-    static var shared: KeyboardViewController!
+    static var shared: KeyboardViewController = .init()
     
     internal func updateDocumentContext() {
         keyboardView.documentContext = textDocumentProxy.documentContext
         
         if textDocumentProxy.enablesReturnKeyAutomatically == true {
-            keyboardView.returnKey.isEnabled = textDocumentProxy.documentContext.beforeInput?.isEmpty == false
-                || textDocumentProxy.documentContext.afterInput?.isEmpty == false
+            keyboardView.returnKey.isEnabled = textDocumentProxy.hasText
         }
     }
     
@@ -38,6 +55,8 @@ class KeyboardViewController: UIInputViewController {
         // Perform custom UI setup here
         Localization.initialize()
         KeyboardViewController.shared = self
+        
+        keyboardView.frame = UIScreen.main.bounds
         
         keyboardView.nextKeyboardKey.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
         
@@ -109,6 +128,22 @@ class KeyboardViewController: UIInputViewController {
         updateDocumentContext()
     }
     
+    override var needsInputModeSwitchKey: Bool {
+        guard Bundle.main.executablePath?.contains(".appex/") == true else {
+            return false
+        }
+        
+        #if TARGET_INTERFACE_BUILDER
+            return true
+        #else
+            if #available(iOS 11.0, *) {
+                return super.needsInputModeSwitchKey
+            } else {
+                return true
+            }
+        #endif
+    }
+    
     private var previousDocumentContext: DocumentContext = .init()
     
     internal func normalizeTextPosition() {
@@ -153,12 +188,18 @@ class KeyboardViewController: UIInputViewController {
     
     func moveToSequenceStart(of characterSet: CharacterSet) {
         let sequence = textDocumentProxy.stringBeforeInput?.components(separatedBy: characterSet.inverted).last!.characters ?? .init()
-        textDocumentProxy.adjustTextPosition(byCharacterOffset: -sequence.count)
+        
+        DispatchQueue.main.async {
+            self.textDocumentProxy.adjustTextPosition(byCharacterOffset: -sequence.count)
+        }
     }
     
     func moveToSequenceEnd(of characterSet: CharacterSet) {
         let sequence = textDocumentProxy.stringAfterInput?.components(separatedBy: characterSet.inverted).first!.characters ?? .init()
-        textDocumentProxy.adjustTextPosition(byCharacterOffset: sequence.count)
+        
+        DispatchQueue.main.async {
+            self.textDocumentProxy.adjustTextPosition(byCharacterOffset: sequence.count)
+        }
     }
     
     func keyAction(label: String, offset: Int = 0) {
@@ -225,9 +266,6 @@ class KeyboardViewController: UIInputViewController {
                 textDocumentProxy.adjustTextPosition(byCharacterOffset: 1)
                 textDocumentProxy.deleteBackward()
             }
-            
-        case .removeCharacter:
-            textDocumentProxy.deleteBackward()
             
         case .space:
             if KeyboardSettings.shared.allowMultipleSpaces {
@@ -331,5 +369,11 @@ extension UITextDocumentProxy {
     
     var characterAfterInput: Character? {
         return stringAfterInput?.characters.first
+    }
+    
+    public func deleteBackward(_ count: Int) {
+        for _ in 0..<count {
+            deleteBackward()
+        }
     }
 }

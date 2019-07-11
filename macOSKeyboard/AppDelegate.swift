@@ -58,7 +58,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
         
         Keyboard.default.delegate = self
         
-        let eventMask: CGEventMask = 1 << CGEventType.keyDown.rawValue | 1 << CGEventType.keyUp.rawValue | 1 << CGEventType.flagsChanged.rawValue | 1 << CGEventType.leftMouseDown.rawValue | 1 << CGEventType.rightMouseDown.rawValue
+        let keyboardEventMask: CGEventMask = 1 << CGEventType.keyDown.rawValue | 1 << CGEventType.keyUp.rawValue | 1 << CGEventType.flagsChanged.rawValue
+        
+        let mouseEventMask: CGEventMask = 1 << CGEventType.leftMouseDown.rawValue | 1 << CGEventType.rightMouseDown.rawValue
+        
+        let eventMask: CGEventMask = keyboardEventMask | mouseEventMask
 
         if let eventTap = CGEvent.tapCreate(tap: .cghidEventTap, place: .headInsertEventTap, options: .defaultTap, eventsOfInterest: eventMask, callback: eventTapCallback, userInfo: nil) {
             
@@ -213,8 +217,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, KeyboardDelegate {
         }
         
         return .init(
-            beforeInput: .init(text.prefix(upTo: .init(encodedOffset: selectedTextRange.lowerBound))),
-            afterInput: .init(text.suffix(from: .init(encodedOffset: selectedTextRange.upperBound)))
+            beforeInput: .init(text.prefix(upTo: String.Index.init(utf16Offset: selectedTextRange.lowerBound, in: text))),
+            afterInput: .init(text.suffix(from: String.Index.init(utf16Offset: selectedTextRange.upperBound, in: text)))
         )
     }
     

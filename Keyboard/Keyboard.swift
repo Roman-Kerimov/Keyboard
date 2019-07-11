@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Calculator
 
 class Keyboard: NSObject {
     
@@ -453,10 +454,31 @@ class Keyboard: NSObject {
             
             autocompleteDeleteCount = contextLine.count
             
-            autocompleteText = String.init(contextLine.dropLast(scriptTranslationCode.count + 1)).translating(from: scriptTranslation.source, to: scriptTranslation.target, withTable: scriptTranslation.table)
+            autocompleteText = contextLine.dropLast(scriptTranslationCode.count + 1).translating(from: scriptTranslation.source, to: scriptTranslation.target, withTable: scriptTranslation.table, withEscapeSequence: "`")
             
             let labelLength = 10
             autocompleteLabel = (autocompleteText.count > labelLength ? "..." : "") + autocompleteText.suffix(labelLength)
+        }
+        else if let calculation = Calculator.default.evaluate(expressionFromString: documentContextBeforeInput) {
+            
+            characterSequence = calculation.expression.map {$0}
+            
+            if calculation.expression.trimmingCharacters(in: .whitespaces) == calculation.result.trimmingCharacters(in: .whitespaces) {
+                autocompleteText = .init()
+                autocompleteLabel = .init()
+                autocompleteDeleteCount = 0
+            }
+            else if calculation.expression.contains("=") {
+                autocompleteText = calculation.result
+                autocompleteLabel = calculation.result
+                autocompleteDeleteCount = 0
+            }
+            else {
+                autocompleteText = calculation.result
+                autocompleteLabel =  " = " + calculation.result
+                autocompleteDeleteCount = calculation.expression.count
+            }
+            
         }
         else {
             autocompleteText = .init()

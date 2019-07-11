@@ -43,6 +43,8 @@ class KeyView: UIButton {
             mainLabelView.text = EMERGENCY_CALL.string
         case .continue:
             mainLabelView.text = CONTINUE.string
+        @unknown default:
+            mainLabelView.text = Key.enter.label
         }
     }
     
@@ -146,10 +148,10 @@ class KeyView: UIButton {
         shiftRightLabelView.text = key.shiftRightLabel
         shiftLeftLabelView.text = key.shiftLeftLabel
         
-        shiftUpLabelView.textColor = .secondaryLabelColor
-        shiftDownLabelView.textColor = .secondaryLabelColor
-        shiftLeftLabelView.textColor = .secondaryLabelColor
-        shiftRightLabelView.textColor = .secondaryLabelColor
+        shiftUpLabelView.textColor = .labelColor
+        shiftDownLabelView.textColor = .labelColor
+        shiftLeftLabelView.textColor = .labelColor
+        shiftRightLabelView.textColor = .labelColor
         
         updateLocalizedStrings()
         

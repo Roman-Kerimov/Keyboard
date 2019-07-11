@@ -78,10 +78,10 @@ class SettingsContainerView: UIStackView {
 
         switch Keyboard.default.layoutMode {
         case .horizontal:
-            layoutModeSegmentedControl.selectedSegmentIndex = layoutModeSegmentedControlItems.index(of: horizontalModeLabel)!
+            layoutModeSegmentedControl.selectedSegmentIndex = layoutModeSegmentedControlItems.firstIndex(of: horizontalModeLabel)!
 
         case .vertical:
-            layoutModeSegmentedControl.selectedSegmentIndex = layoutModeSegmentedControlItems.index(of: verticalModeLabel)!
+            layoutModeSegmentedControl.selectedSegmentIndex = layoutModeSegmentedControlItems.firstIndex(of: verticalModeLabel)!
 
         case .default:
             layoutModeSegmentedControl.selectedSegmentIndex = 0

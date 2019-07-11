@@ -17,7 +17,7 @@ class LegalNoticesMenuItem: LocalizedMenuItem {
         title = LEGAL_NOTICES.string
     }
     
-    var window: NSWindow = .init()
+    var window: GuideWindow = .init()
     
     override init() {
         super.init()

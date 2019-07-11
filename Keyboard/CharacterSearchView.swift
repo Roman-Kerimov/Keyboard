@@ -103,13 +103,13 @@ class CharacterSearchView: CharacterCollectionView {
         if !isScriptCodeItem {
             var frequentlyUsedCharacters = Keyboard.default.frequentlyUsedCharacters
             
-            if let index = frequentlyUsedCharacters.index(of: character) {
+            if let index = frequentlyUsedCharacters.firstIndex(of: character) {
                 frequentlyUsedCharacters.remove(at: index)
             }
             
             frequentlyUsedCharacters = [character] + frequentlyUsedCharacters
             
-            Keyboard.default.frequentlyUsedCharacters = .init( frequentlyUsedCharacters.suffix(100) )
+            Keyboard.default.frequentlyUsedCharacters = .init( frequentlyUsedCharacters.prefix(100) )
         }
         
         Keyboard.default.delegate?.insert(text: character.description)

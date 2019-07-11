@@ -169,6 +169,11 @@
 		969E83051EED842E009A1F2D /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969E83041EED842E009A1F2D /* UIView.swift */; };
 		969F15F51E549BD300C0DD7D /* ViewController<UIView>.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969F15F41E549BD300C0DD7D /* ViewController<UIView>.swift */; };
 		969F15F71E54EE3600C0DD7D /* LanguageTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969F15F61E54EE3600C0DD7D /* LanguageTableView.swift */; };
+		96A81B732236BAE9006CF096 /* Calculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96A81B722236BAE9006CF096 /* Calculator.framework */; };
+		96A81B742236BAFA006CF096 /* Calculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96A81B722236BAE9006CF096 /* Calculator.framework */; };
+		96A81B752236BAFA006CF096 /* Calculator.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96A81B722236BAE9006CF096 /* Calculator.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		96A81B762236BB0F006CF096 /* Calculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96A81B722236BAE9006CF096 /* Calculator.framework */; };
+		96A81B772236BB0F006CF096 /* Calculator.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96A81B722236BAE9006CF096 /* Calculator.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		96A8EB0B21AEC4F200941FA0 /* LinguisticKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96A8EB0A21AEC4F200941FA0 /* LinguisticKit.framework */; };
 		96A8EB0C21AEC50100941FA0 /* LinguisticKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96A8EB0A21AEC4F200941FA0 /* LinguisticKit.framework */; };
 		96A8EB0D21AEC50100941FA0 /* LinguisticKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96A8EB0A21AEC4F200941FA0 /* LinguisticKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -186,6 +191,7 @@
 		96B6B35E1F97660E00231AE6 /* Array<CharacterComponent>Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B6B35D1F97660E00231AE6 /* Array<CharacterComponent>Tests.swift */; };
 		96B6BC4A2031ADB6002509E4 /* Array<CharacterComponent>Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B6B35D1F97660E00231AE6 /* Array<CharacterComponent>Tests.swift */; };
 		96B6BC4B2031ADBC002509E4 /* CharacterComponentsDictionaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965BFAD01F797BBB00B8F682 /* CharacterComponentsDictionaryTests.swift */; };
+		96B8908B21E04EA800917CB2 /* GuideWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B8908A21E04EA800917CB2 /* GuideWindow.swift */; };
 		96BC5F561DEB961F002E0752 /* LabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BC5F551DEB961F002E0752 /* LabelView.swift */; };
 		96BE9C7120A8340400C2C03F /* CharacterSearchWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BE9C7020A8340400C2C03F /* CharacterSearchWindow.swift */; };
 		96C1EC2E205131EC00AC27CB /* CGEventFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C1EC2D205131EC00AC27CB /* CGEventFlags.swift */; };
@@ -320,6 +326,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				96A81B752236BAFA006CF096 /* Calculator.framework in Embed Frameworks */,
 				96A8EB0D21AEC50100941FA0 /* LinguisticKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -333,6 +340,7 @@
 			files = (
 				96A8EB0F21AEC51300941FA0 /* LinguisticKit.framework in Embed Frameworks */,
 				96E46DEF2086A21B00D49583 /* UIKit.framework in Embed Frameworks */,
+				96A81B772236BB0F006CF096 /* Calculator.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -491,6 +499,7 @@
 		969E83041EED842E009A1F2D /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		969F15F41E549BD300C0DD7D /* ViewController<UIView>.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController<UIView>.swift"; sourceTree = "<group>"; };
 		969F15F61E54EE3600C0DD7D /* LanguageTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageTableView.swift; sourceTree = "<group>"; };
+		96A81B722236BAE9006CF096 /* Calculator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Calculator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96A8EB0A21AEC4F200941FA0 /* LinguisticKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LinguisticKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96AC6CA2203C23B200555164 /* CGEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGEvent.swift; sourceTree = "<group>"; };
 		96ACD587205261EE007CFDCF /* NSPasteboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSPasteboard.swift; sourceTree = "<group>"; };
@@ -501,6 +510,7 @@
 		96AFEBA8202FAB830099F70B /* LocalizedMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedMenuItem.swift; sourceTree = "<group>"; };
 		96B6B35A1F9764F400231AE6 /* Array<CharacterComponent>.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array<CharacterComponent>.swift"; sourceTree = "<group>"; };
 		96B6B35D1F97660E00231AE6 /* Array<CharacterComponent>Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array<CharacterComponent>Tests.swift"; sourceTree = "<group>"; };
+		96B8908A21E04EA800917CB2 /* GuideWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideWindow.swift; sourceTree = "<group>"; };
 		96BC5F551DEB961F002E0752 /* LabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelView.swift; sourceTree = "<group>"; };
 		96BE9C7020A8340400C2C03F /* CharacterSearchWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSearchWindow.swift; sourceTree = "<group>"; };
 		96C1EC2D205131EC00AC27CB /* CGEventFlags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGEventFlags.swift; sourceTree = "<group>"; };
@@ -548,6 +558,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96A81B742236BAFA006CF096 /* Calculator.framework in Frameworks */,
 				96A8EB0C21AEC50100941FA0 /* LinguisticKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -556,6 +567,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96A81B732236BAE9006CF096 /* Calculator.framework in Frameworks */,
 				96A8EB0B21AEC4F200941FA0 /* LinguisticKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -573,6 +585,7 @@
 			files = (
 				96A8EB0E21AEC51300941FA0 /* LinguisticKit.framework in Frameworks */,
 				96E46DEE2086A21B00D49583 /* UIKit.framework in Frameworks */,
+				96A81B762236BB0F006CF096 /* Calculator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -835,6 +848,7 @@
 		96DB1A77202FB80300B96D3C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				96A81B722236BAE9006CF096 /* Calculator.framework */,
 				96A8EB0A21AEC4F200941FA0 /* LinguisticKit.framework */,
 				96DB1A78202FB80300B96D3C /* UIKit.framework */,
 			);
@@ -876,6 +890,7 @@
 				968DEA8020CCDFA400750040 /* eventTapCallback.swift */,
 				96D6E94E20C8494800C357FA /* NonAccessibilityDocumentContext.swift */,
 				963212B3217B820500E8A6B2 /* FloatingWindow.swift */,
+				96B8908A21E04EA800917CB2 /* GuideWindow.swift */,
 				96BE9C7020A8340400C2C03F /* CharacterSearchWindow.swift */,
 				963212B5217C61BB00E8A6B2 /* CharacterSequenceWindow.swift */,
 				967502532089E1D300FD6CED /* LaunchAgent.swift */,
@@ -1060,6 +1075,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -1396,6 +1412,7 @@
 				96EBF2A7209CE86900AE00E7 /* CharacterSearchView.swift in Sources */,
 				96E03420203179F00039E653 /* CONTINUE.swift in Sources */,
 				96E033F42031549C0039E653 /* ABOUT.swift in Sources */,
+				96B8908B21E04EA800917CB2 /* GuideWindow.swift in Sources */,
 				96EBF290209C6AF600AE00E7 /* CollectionViewFlowLayout.swift in Sources */,
 				9608928820B001AD007AA01E /* SearchUnicodeScalars.swift in Sources */,
 				96E034002031560E0039E653 /* GO.swift in Sources */,
@@ -1488,7 +1505,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CURRENT_PROJECT_VERSION = 31;
+				CURRENT_PROJECT_VERSION = 32;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1527,7 +1544,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CURRENT_PROJECT_VERSION = 31;
+				CURRENT_PROJECT_VERSION = 32;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1599,7 +1616,7 @@
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1651,7 +1668,7 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1712,7 +1729,7 @@
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1763,7 +1780,7 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1811,7 +1828,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Keyboard.app/Keyboard";
 			};
@@ -1854,7 +1871,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Keyboard.app/Keyboard";
 				VALIDATE_PRODUCT = YES;
@@ -1904,7 +1921,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1945,7 +1962,7 @@
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -1994,7 +2011,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Keyboard.app/Contents/MacOS/Keyboard";
 			};
 			name = Debug;
@@ -2038,7 +2055,7 @@
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Keyboard.app/Contents/MacOS/Keyboard";
 			};
 			name = Release;

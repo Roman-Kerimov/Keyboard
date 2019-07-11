@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14092" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14081.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Settings-->
+        <scene sceneID="xrn-lH-IEa">
+            <objects>
+                <viewController storyboardIdentifier="izfgpPfwNHHRUR8q" title="Settings" id="6o1-hM-Hff" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gel-YS-cqR"/>
+                        <viewControllerLayoutGuide type="bottom" id="JDr-fY-eZk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Tlj-yJ-DDS" customClass="SettingsContainerView" customModule="iOSKeyboard">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="2000"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <size key="freeformSize" width="320" height="2000"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="seB-M8-P8f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1620" y="796"/>
+        </scene>
+        <!--Language-->
+        <scene sceneID="Djd-0O-kMx">
+            <objects>
+                <viewController storyboardIdentifier="NcsYfk7mdonBwgVI" title="Language" id="jg9-1r-ogL" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tW9-Im-vID"/>
+                        <viewControllerLayoutGuide type="bottom" id="pby-ha-NTX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PHL-4B-NF9" customClass="SettingsContainerView_LanguageTableView" customModule="iOSKeyboard">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="2000"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <size key="freeformSize" width="320" height="2000"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nxn-OR-jYt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2423" y="795"/>
+        </scene>
+        <!--Legal Notices-->
+        <scene sceneID="djl-km-V8n">
+            <objects>
+                <viewController storyboardIdentifier="A2wZ7Ce2JhYpf6NX" title="Legal Notices" id="3Ph-4M-r4f" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8uQ-62-8lx"/>
+                        <viewControllerLayoutGuide type="bottom" id="hoY-DH-D4b"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kSH-KL-8VU" customClass="SettingsContainerView_LegalNoticesView" customModule="iOSKeyboard">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="2000"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <size key="freeformSize" width="320" height="2000"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2oM-DO-OHZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3236" y="794"/>
+        </scene>
+        <!--Light & Standard-->
+        <scene sceneID="8D7-HL-cUB">
+            <objects>
+                <viewController storyboardIdentifier="QVdcCR894yh0xZca" title="Light &amp; Standard" id="iPZ-iz-MAm" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hKn-PQ-Uu7"/>
+                        <viewControllerLayoutGuide type="bottom" id="WZN-dL-Yhu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RNR-F8-1nW" customClass="KeyboardView" customModule="iOSKeyboard">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iVd-RV-nqM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6" y="41"/>
+        </scene>
+        <!--Light & Alternate-->
+        <scene sceneID="57d-qI-8ES">
+            <objects>
+                <viewController storyboardIdentifier="ol7WRgkt67P4Ndgl" title="Light &amp; Alternate" id="7H2-I5-WHd" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="085-ef-uIk"/>
+                        <viewControllerLayoutGuide type="bottom" id="bzN-IU-IpS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gUH-IG-wlv" customClass="KeyboardView" customModule="iOSKeyboard">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="alternateLayoutMode" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M4m-9G-nt1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="773" y="41"/>
+        </scene>
+        <!--Dark & Standard-->
+        <scene sceneID="GeJ-Kx-6fg">
+            <objects>
+                <viewController storyboardIdentifier="ON7OjRjAufSaMWvl" title="Dark &amp; Standard" id="05e-C9-ntO" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NR2-Xb-dTo"/>
+                        <viewControllerLayoutGuide type="bottom" id="j13-NA-xqG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oOb-hS-t9E" customClass="KeyboardView" customModule="iOSKeyboard">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="darkColorScheme" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jfp-Hh-2jG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-8" y="814"/>
+        </scene>
+        <!--Dark & Alternate-->
+        <scene sceneID="PAV-Gi-J8L">
+            <objects>
+                <viewController storyboardIdentifier="ycGuEoz6QqeRaYkb" title="Dark &amp; Alternate" id="mex-WL-eDw" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xKj-op-max"/>
+                        <viewControllerLayoutGuide type="bottom" id="zqd-xT-211"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mit-Dn-gwH" customClass="KeyboardView" customModule="iOSKeyboard">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="alternateLayoutMode" value="YES"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="darkColorScheme" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rZq-i1-21t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="773" y="813"/>
+        </scene>
+    </scenes>
+</document>

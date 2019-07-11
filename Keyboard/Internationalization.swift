@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Language {
+extension Language: CaseIterable {
     #if TARGET_INTERFACE_BUILDER
     static var current: Language = .en
     #else
@@ -43,13 +43,6 @@ extension Language {
         return languages
     }
     
-    static var list: [Language] {
-        struct Stored {
-            static let list = values(of: Language.self)
-        }
-        return Stored.list
-    }
-    
     var selfName: String {
         return Locale(identifier: rawValue).localizedString(forIdentifier: rawValue) ?? .init()
     }
@@ -57,38 +50,6 @@ extension Language {
     var localizedName: String {
         return Locale(identifier: Language.current.rawValue).localizedString(forIdentifier: rawValue) ?? .init()
     }
-}
-
-internal func values<Enum: Hashable>(of: Enum.Type) -> [Enum] {
-    var iterateEnum: AnyIterator<Enum> {
-        var index = 0
-        
-        return AnyIterator {
-            let next = withUnsafeBytes(of: &index) {
-                $0.load(as: Enum.self)
-            }
-            
-            if next.hashValue != index {
-                return nil
-            }
-            
-            index += 1
-            
-            return next
-        }
-    }
-    
-    var values: [Enum] = []
-    
-    for value in iterateEnum {
-        guard value != values.first else {
-            break
-        }
-        
-        values.append(value)
-    }
-    
-    return values
 }
 
 extension NSObject {

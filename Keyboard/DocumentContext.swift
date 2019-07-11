@@ -8,14 +8,14 @@
 import Foundation
 
 struct DocumentContext: Equatable {
-    let beforeInput: String
-    let afterInput: String
+    let beforeInput: String?
+    let afterInput: String?
     
     static func ==(left: DocumentContext, right: DocumentContext) -> Bool {
         return left.beforeInput == right.beforeInput && left.afterInput == right.afterInput
     }
     
-    init(beforeInput: String = .init(), afterInput: String = .init()) {
+    init(beforeInput: String? = nil, afterInput: String? = nil) {
         self.beforeInput = beforeInput
         self.afterInput = afterInput
     }

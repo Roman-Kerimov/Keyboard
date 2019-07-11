@@ -10,7 +10,7 @@ import AppKit
 LaunchAgent.load()
 
 let application = NSApplication.shared
-NSApp.setActivationPolicy(.accessory)
+NSApp.setActivationPolicy(.prohibited)
 application.delegate = AppDelegate.init()
 
 application.run()

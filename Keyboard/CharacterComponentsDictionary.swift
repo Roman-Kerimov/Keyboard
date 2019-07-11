@@ -4427,7 +4427,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "†": [.asterisk, .extra1],
 
     //2021          ; DOUBLE DAGGER
-    "‡": [.asterisk, .extra2],
+    "‡": [.asterisk, .extra1, .doubled],
 
     //2022          ; BULLET
     "•": [],
@@ -4928,7 +4928,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ℕ": [.n, .capital, .doubleStruck],
 
     //2116          ; NUMERO SIGN
-    "№": [.n, .capital, .numberSign],
+    "№": [.numberSign, .extra0],
 
     //2117          ; SOUND RECORDING COPYRIGHT
     "℗": [],
@@ -7119,6 +7119,21 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
 
     //2E49          ; DOUBLE STACKED COMMA
     "⹉": [],
+    
+    //2E4A          ; DOTTED SOLIDUS
+    "⹊": [.solidus, .dot],
+    
+    //2E4B          ; TRIPLE DAGGER
+    "⹋": [.asterisk, .extra1, .tripled],
+    
+    //2E4C          ; MEDIEVAL COMMA
+    "⹌": [],
+    
+    //2E4D          ; PARAGRAPHUS MARK
+    "⹍": [],
+    
+    //2E4E          ; PUNCTUS ELEVATUS MARK
+    "⹎": [],
 
     
     // MARK: - A700..A71F; Modifier Tone Letters
@@ -7650,6 +7665,9 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
 
     //A7AE          ; LATIN CAPITAL LETTER SMALL CAPITAL I
     "Ɪ": [.i, .smallCapital, .capital],
+    
+    //A7AF          ; LATIN LETTER SMALL CAPITAL Q
+    "ꞯ": [.q, .smallCapital],
 
     //A7B0          ; LATIN CAPITAL LETTER TURNED K
     "Ʞ": [.k, .capital, .turned],
@@ -7674,6 +7692,12 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
 
     //A7B7          ; LATIN SMALL LETTER OMEGA
     "ꞷ": [.o, .o, .extraH],
+    
+    //A7B8          ; LATIN CAPITAL LETTER U WITH STROKE
+    "Ꞹ": [.u, .capital, .diagonalStroke],
+    
+    //A7B9          ; LATIN SMALL LETTER U WITH STROKE
+    "ꞹ": [.u, .diagonalStroke],
 
     //A7F7          ; LATIN EPIGRAPHIC LETTER SIDEWAYS I
     "ꟷ": [.i, .capital, .sideways],

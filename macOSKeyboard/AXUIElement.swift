@@ -10,17 +10,21 @@ import Foundation
 extension AXUIElement {
     static let systemWide = AXUIElementCreateSystemWide()
     
-    static var focused: AXUIElement {
+    static var focused: AXUIElement? {
         
         var focusedUIElement: CFTypeRef?
         AXUIElementCopyAttributeValue(.systemWide, kAXFocusedUIElementAttribute as CFString, &focusedUIElement)
-
-        return focusedUIElement as! AXUIElement
+        
+        if let focusedUIElement = focusedUIElement {
+            return (focusedUIElement as! AXUIElement)
+        }
+        
+        return nil
     }
     
     private func get(attribute: AXAttribute) -> String? {
         var value: CFTypeRef?
-        AXUIElementCopyAttributeValue(self, kAXValueAttribute as CFString, &value)
+        AXUIElementCopyAttributeValue(self, attribute.cfString, &value)
         return value as? String
     }
     
@@ -31,7 +35,7 @@ extension AXUIElement {
     private func get(attribute: AXAttribute) -> NSRange? {
         
         var value: CFTypeRef?
-        AXUIElementCopyAttributeValue(self, kAXSelectedTextRangeAttribute as CFString, &value)
+        AXUIElementCopyAttributeValue(self, attribute.cfString, &value)
         
         if value == nil {
             return nil
@@ -61,7 +65,7 @@ extension AXUIElement {
         
         var attributeNamesCFArray: CFArray?
         
-        AXUIElementCopyAttributeNames(.focused, &attributeNamesCFArray)
+        AXUIElementCopyAttributeNames(self, &attributeNamesCFArray)
         
         return attributeNamesCFArray as! [String]
     }
@@ -95,5 +99,9 @@ extension AXUIElement {
         set {
             set(attribute: .selectedTextRange, value: newValue ?? .init())
         }
+    }
+    
+    var role: String? {
+        return get(attribute: .role)
     }
 }

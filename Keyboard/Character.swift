@@ -32,20 +32,11 @@ extension Character {
     }
     
     var unicodeName: String {
-        var outputString = self.description.applyingTransform(.toUnicodeName, reverse: false) ?? ""
-        outputString = outputString.replacingOccurrences(of: "}\\N{", with: unicodeNameSeparator)
-        outputString = outputString.replacingOccurrences(of: "\\N{", with: String.space)
-        outputString = outputString.replacingOccurrences(of: "}", with: String.space)
-        
-        if outputString.hasPrefix(.space) {
-            outputString = .init(outputString.suffix(outputString.count - 1))
+        if let name = UnicodeTable.default.sequenceItems[self.description]?.name {
+            return name
         }
         
-        if outputString.hasSuffix(.space) {
-            outputString = .init(outputString.prefix(outputString.count - 1))
-        }
-        
-        return outputString
+        return unicodeScalars.map {UnicodeTable.default.codePointNames[$0.value] ?? .init()}.joined(separator: unicodeNameSeparator)
     }
     
     var characterComponents: [CharacterComponent] {

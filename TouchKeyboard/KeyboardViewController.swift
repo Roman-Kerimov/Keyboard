@@ -29,7 +29,7 @@ extension UIApplication {
 class KeyboardViewController: UIInputViewController, KeyboardDelegate {
     static var shared: KeyboardViewController = .init()
     
-    @objc internal func updateDocumentContext() {
+    @objc private func updateDocumentContext() {
         keyboardView.documentContext = textDocumentProxy.documentContext
         
         keyboardView.spaceKey.key = textDocumentProxy.returnKeyType == .default ? .space : .spaceWithoutReturn
@@ -67,6 +67,8 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
         keyboardView.nextKeyboardKey.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
         keyboardView.dismissKeyboardKey.addTarget(self, action: #selector(dismissKeyboard), for: .allTouchEvents)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(updateDocumentContext), name: .DocumentContextDidChange, object: nil)
+        
         // Hack for working of the keyboard height constraint
         let hiddenView: UILabel = .init()
         hiddenView.translatesAutoresizingMaskIntoConstraints = false
@@ -92,8 +94,6 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
         }
         
         isAppeared = true
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(updateDocumentContext), name: .DocumentContextDidChange, object: nil)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -139,7 +139,7 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
         }
         
         normalizeTextPosition()
-        updateDocumentContext()
+        NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
     }
     
     override var needsInputModeSwitchKey: Bool {

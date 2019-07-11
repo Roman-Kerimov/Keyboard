@@ -26,4 +26,28 @@ extension String {
     func size(withFont font: UIFont) -> CGSize {
         return (self as NSString).size(withAttributes: [.font: font])
     }
+    
+    var hexToUInt32: UInt32? {
+        var output: UInt32 = 0
+        
+        if Scanner.init(string: self).scanHexInt32(&output) {
+            return output
+        }
+        else {
+            return nil
+        }
+    }
+    
+    var hexToUnicodeScalar: Unicode.Scalar? {
+        
+        guard let codePoint = hexToUInt32 else {
+            return nil
+        }
+        
+        return Unicode.Scalar.init(codePoint)
+    }
+    
+    func contains(_ regularExpression: NSRegularExpression) -> Bool {
+        return regularExpression.numberOfMatches(in: self, options: [], range: .init(location: 0, length: count)) != 0
+    }
 }

@@ -11,14 +11,17 @@ class StatusMenu: NSMenu {
     
     var statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
     
+    let visibilityMenuItem: VisibilityMenuItem = .init()
+    
     init() {
         super.init(title: .init())
         
         let title: NSMutableAttributedString = .init(string: "Kd")
         title.addAttribute(.font, value: UIFont.boldMenuFont)
+        title.addAttribute(.foregroundColor, value: UIColor.textColor)
         
         if !AXIsProcessTrusted() {
-            title.addAttribute(.foregroundColor, value: UIColor.lightGray)
+            title.addAttribute(.foregroundColor, value: UIColor.disabledControlTextColor)
         }
         
         statusItem.attributedTitle = title
@@ -34,6 +37,8 @@ class StatusMenu: NSMenu {
         }
         addItem(.separator())
         addItem(InterfaceLanguageMenuItem.init())
+        addItem(.separator())
+        addItem(visibilityMenuItem)
         addItem(.separator())
         addItem(LegalNoticesMenuItem.init())
         addItem(VersionMenuItem.init())

@@ -32,16 +32,12 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
         fatalError("init(coder:) has not been implemented")
     }
         
-    internal enum Section {
+    internal enum Section: CaseIterable {
         case keyboardLayouts, appLanguage, about
-        
-        static let list = values(of: Section.self)
     }
     
-    private enum BoolCell {
+    private enum BoolCell: CaseIterable {
         case allowMultipleSpaces
-        
-        static let list = values(of: BoolCell.self)
     }
     
     internal let languageTableViewController: ViewController<LanguageTableView> = .init()
@@ -50,7 +46,7 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)!
         
-        switch Section.list[indexPath.section] {
+        switch Section.allCases[indexPath.section] {
             
         case .keyboardLayouts:
             for cell in tableView.visibleCells {
@@ -75,13 +71,13 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
 
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return Section.list.count
+        return Section.allCases.count
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
-        switch Section.list[section] {
+        switch Section.allCases[section] {
             
         case .keyboardLayouts:
             return KeyboardLayout.list.count
@@ -92,7 +88,7 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch Section.list[section] {
+        switch Section.allCases[section] {
             
         case .keyboardLayouts:
             return KEYBOARD.string
@@ -106,7 +102,7 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        switch Section.list[section] {
+        switch Section.allCases[section] {
             
         case .about:
             return Keyboard.default.version
@@ -119,7 +115,7 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
 
-        switch Section.list[indexPath.section] {
+        switch Section.allCases[indexPath.section] {
             
         case .keyboardLayouts:
             let layout = KeyboardLayout.list[indexPath.row]

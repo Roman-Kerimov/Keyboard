@@ -22,7 +22,7 @@ class InterfaceLanguageMenuItem: LocalizedMenuItem {
         
         languageMenu.addItem(.separator())
         
-        for language in Language.list {
+        for language in Language.allCases {
             languageMenu.addItem(LanguageMenuItem.init(language: language))
         }
         

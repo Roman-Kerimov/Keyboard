@@ -37,9 +37,9 @@ struct KeyboardLayout {
         self.name = name
         
         let shiftDownRows: [[CharacterComponent]] = [
-            [ .caret,        .tilde,       .asterisk,     .apostrophe,   .curlyBracket,  .divisionSign,       .seven, .eight, .nine,  .minusSign,  ],
-            [ .commercialAt, .numberSign,  .ampersand,    .verticalLine, .parenthesis,   .multiplicationSign, .four,  .five,  .six,   .plusSign,   ],
-            [ .dollarSign,   .percentSign, .lessThanSign, .solidus,      .squareBracket, .zero,               .one,   .two,   .three, .equalsSign, ],
+            [ .asterisk,     .apostrophe,    .ampersand,   .verticalLine, .tilde,   .divisionSign,       .seven, .eight, .nine,  .minusSign,  ],
+            [ .commercialAt, .numberSign,    .dollarSign,  .percentSign,  .caret,   .multiplicationSign, .four,  .five,  .six,   .plusSign,   ],
+            [ .curlyBracket, .squareBracket, .parenthesis, .lessThanSign, .solidus, .zero,               .one,   .two,   .three, .equalsSign, ],
         ]
         
         let keycodeRows: [[Keycode]] = [
@@ -78,17 +78,17 @@ struct KeyboardLayout {
         name: "QWERTY",
         rows: [
             [ .q, .w, .e, .r, .t, .y, .u, .i,     .o,        .p,            ],
-            [ .a, .s, .d, .f, .g, .h, .j, .k,     .l,        .hyphen,       ],
-            [ .z, .x, .c, .v, .b, .n, .m, .comma, .fullStop, .questionMark, ],
+            [ .a, .s, .d, .f, .g, .h, .j, .k,     .l,        .questionMark, ],
+            [ .z, .x, .c, .v, .b, .n, .m, .comma, .fullStop, .hyphen,       ],
         ]
     )
     
     static let dvorak = KeyboardLayout(
         name: "Dvorak",
         rows: [
-            [ .hyphen,       .comma, .fullStop, .p, .y, .f, .g, .c, .r, .l, ],
+            [ .questionMark, .comma, .fullStop, .p, .y, .f, .g, .c, .r, .l, ],
             [ .a,            .o,     .e,        .u, .i, .d, .h, .t, .n, .s, ],
-            [ .questionMark, .q,     .j,        .k, .x, .b, .m, .w, .v, .z, ],
+            [ .hyphen,       .q,     .j,        .k, .x, .b, .m, .w, .v, .z, ],
         ]
     )
     
@@ -124,7 +124,7 @@ struct KeyboardLayout {
         .comma: .semicolon,
         .questionMark: .exclamationMark,
         .apostrophe: .quotationMark,
-        .space: .lowLine,
+        .hyphen: .lowLine,
     ]
     
     static let shiftRightDictionary: [CharacterComponent: CharacterComponent] = [.lessThanSign: .greaterThanSign]

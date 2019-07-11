@@ -39,7 +39,6 @@ class LegalNoticesMenuItem: LocalizedMenuItem {
     }
     
     override func menuItemAction() {
-        window.makeKeyAndOrderFront(self)
-        NSApp.activate(ignoringOtherApps: true)
+        window.orderFrontRegardless()
     }
 }

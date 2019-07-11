@@ -81,6 +81,10 @@ internal func values<Enum: Hashable>(of: Enum.Type) -> [Enum] {
     var values: [Enum] = []
     
     for value in iterateEnum {
+        guard value != values.first else {
+            break
+        }
+        
         values.append(value)
     }
     

@@ -29,6 +29,10 @@ extension UIApplication {
 class KeyboardViewController: UIInputViewController {
     static var shared: KeyboardViewController = .init()
     
+    private var isExtension: Bool {
+        return Bundle.main.executablePath?.contains(".appex/") == true
+    }
+    
     internal func updateDocumentContext() {
         keyboardView.documentContext = textDocumentProxy.documentContext
         
@@ -98,8 +102,14 @@ class KeyboardViewController: UIInputViewController {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         
-        DispatchQueue.main.async {
+        if isExtension {
+            UIView.setAnimationsEnabled(false)
+        }
+        
+        coordinator.animate(alongsideTransition: { _ in
             self.keyboardView.configure()
+        }) { _ in
+            UIView.setAnimationsEnabled(true)
         }
     }
     
@@ -128,7 +138,7 @@ class KeyboardViewController: UIInputViewController {
     }
     
     override var needsInputModeSwitchKey: Bool {
-        guard Bundle.main.executablePath?.contains(".appex/") == true else {
+        guard isExtension else {
             return false
         }
         

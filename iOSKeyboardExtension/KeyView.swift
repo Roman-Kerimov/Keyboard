@@ -207,7 +207,6 @@ class KeyView: UIButton, ConfigurableView {
             shiftDownLabelView.text = SpecialKey.space.label
             
             addSubview(shiftLeftLabelView)
-            shiftLeftLabelView.text = SpecialKey.union.label
             
             addSubview(shiftRightLabelView)
             shiftRightLabelView.text = SpecialKey.tab.label
@@ -336,8 +335,9 @@ class KeyView: UIButton, ConfigurableView {
         repeatTimer?.invalidate()
     }
     
-    var longPressGestureRecognizer: UILongPressGestureRecognizer!
-    var gestureStartPoint: CGPoint!
+    private var longPressGestureRecognizer: UILongPressGestureRecognizer!
+    private var gestureStartPoint: CGPoint!
+    private var shiftDirections: [ShiftDirection] = .init()
     
     @objc func longPressGestureAction(gesture: UIGestureRecognizer) {
         isHighlighted = true
@@ -347,6 +347,8 @@ class KeyView: UIButton, ConfigurableView {
         switch gesture.state {
             
         case .began:
+            
+            shiftDirections = .init()
             
             isHighlighted = true
             
@@ -381,14 +383,18 @@ class KeyView: UIButton, ConfigurableView {
             
             let distance = hypot(offsetPoint.x, offsetPoint.y)
             let threshold = bounds.size.height / 2
+            let direction = ShiftDirection.init(rawValue: (atan2(-offsetPoint.y, offsetPoint.x) / .pi * 4).rounded() / 4) ?? .left
             
-            if distance > threshold {
-                let direction = ShiftDirection.init(rawValue: (atan2(-offsetPoint.y, offsetPoint.x) / .pi * 4).rounded() / 4) ?? .left
+            if shiftDirections.last == direction {
+                gestureStartPoint = gesture.location(in: self)
+            }
+            else if distance > threshold {
+                shiftDirections.append(direction)
                 
                 switch direction {
                     
                 case .up:
-                    if shiftUpLabelView.text != nil && shiftUpLabelView.text != "" {
+                    if shiftUpLabelView.text?.isEmpty == false {
                         mainLabelView.text = shiftUpLabelView.text
                     }
                     else if specialKey == nil {
@@ -396,29 +402,26 @@ class KeyView: UIButton, ConfigurableView {
                     }
                     
                 case .down:
-                    mainLabelView.text = String(shiftDownLabelView.text!.first!)
-                    
-                case .downRight:
-                    if shiftDownLabelView.text!.count > 1 {
-                        mainLabelView.text = String(shiftDownLabelView.text!.last!)
-                    }
-                    else {
-                        mainLabelView.text = ""
+                    if shiftDownLabelView.text?.isEmpty == false {
+                        mainLabelView.text = shiftDownLabelView.text?.first?.description
                     }
                     
                 case .left:
-                    mainLabelView.text = shiftLeftLabelView.text
+                    if shiftLeftLabelView.text?.isEmpty == false {
+                        mainLabelView.text = shiftLeftLabelView.text
+                    }
                     
                 case .right:
-                    mainLabelView.text = shiftRightLabelView.text
+                    if shiftRightLabelView.text?.isEmpty == false {
+                        mainLabelView.text = shiftRightLabelView.text
+                    }
+                    else if shiftDownLabelView.text!.count > 1 && shiftDownLabelView.text?.hasPrefix(mainLabelView.text!) == true {
+                        mainLabelView.text = shiftDownLabelView.text?.last?.description
+                    }
                     
-                case .downLeft, .upRight, .upLeft:
-                    mainLabelView.text = ""
+                case .downLeft, .downRight, .upLeft, .upRight:
+                    break
                 }
-            }
-            else {
-                mainLabelView.text = mainLabel
-                updateLocalizedStrings()
             }
         }
         
@@ -450,7 +453,6 @@ public enum SpecialKey: String {
     case space = " "
     case `return` = "return"
     case tab = "tab"
-    case union = "union"
     case nextKeyboard = "NextKeyboard"
     case dismissKeyboard = "HideKeyboard"
     case settings = "Settings"

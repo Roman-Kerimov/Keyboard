@@ -96,12 +96,11 @@ class KeyboardViewController: UIInputViewController {
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
         
-        coordinator.animate(alongsideTransition: nil) { (context) in
+        DispatchQueue.main.async {
             self.keyboardView.configure()
         }
-        
-        super.viewWillTransition(to: size, with: coordinator)
     }
     
     override func didReceiveMemoryWarning() {
@@ -267,30 +266,6 @@ class KeyboardViewController: UIInputViewController {
             
             if !KeyboardSettings.shared.allowMultipleSpaces && textDocumentProxy.characterAfterInput == .space {
                 textDocumentProxy.deleteForward(sequenceOf: .init(charactersIn: .space))
-            }
-            
-        case .union:
-            var maxSuffixLength = KeyboardLayout.unionDictionary.keys.map { $0.count }.max()!
-            
-            Suffix: while maxSuffixLength > 0 {
-                guard textDocumentProxy.documentContextBeforeInput != nil else {
-                    return
-                }
-                
-                let combination = String(textDocumentProxy.documentContextBeforeInput!.suffix(maxSuffixLength))
-                
-                if let union = KeyboardLayout.unionDictionary[combination] {
-                    
-                    for _ in 1...combination.count {
-                        textDocumentProxy.deleteBackward()
-                    }
-                    
-                    textDocumentProxy.insertText(union)
-                    
-                    break Suffix
-                }
-                
-                maxSuffixLength -= 1
             }
             
         case .nextKeyboard:

@@ -52,9 +52,30 @@ class UnicodeCollectionView: CharacterCollectionView {
         cell.title.font = .systemFont(ofSize: characterFontSize)
         
         cell.unicodeName.text = characters[indexPath.item].unicodeName
+        
+        let REGIONAL_INDICATOR_LETTER_ = "REGIONAL INDICATOR SYMBOL LETTER "
+        
+        if cell.unicodeName.text!.contains(REGIONAL_INDICATOR_LETTER_)
+            && cell.unicodeName.text!.contains(unicodeNameSeparator) {
+            
+            let regionCode = cell.unicodeName.text!
+                .replacingOccurrences(of: unicodeNameSeparator + REGIONAL_INDICATOR_LETTER_, with: "")
+                .replacingOccurrences(of: REGIONAL_INDICATOR_LETTER_, with: "")
+            
+            let unicodeLabelSeparator = " | "
+            
+            cell.unicodeName.text! = regionCode
+            
+            if let regionName = Locale.init(identifier: "en").localizedString(forRegionCode: regionCode)?.uppercased() {
+                cell.unicodeName.text! += unicodeLabelSeparator + regionName
+            }
+        }
+        
         cell.unicodeName.textColor = colorScheme.unicodeNameTextColor
         cell.unicodeName.backgroundColor = colorScheme.unicodeNameBackgroundColor
         cell.unicodeName.font = .boldSystemFont(ofSize: characterFontSize/2)
+        
+        cell.unicodeName.frame.size.width += cell.unicodeName.font.pointSize/2
         
         cell.unicodeName.isHidden = isHiddenUnicodeNames
         

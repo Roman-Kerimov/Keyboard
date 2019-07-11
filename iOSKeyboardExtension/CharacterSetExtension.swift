@@ -6,17 +6,20 @@
 //
 //
 
-import Foundation
+import UIKit
 
 extension CharacterSet {
     
     static let printableASCII: CharacterSet = .init(
-        charactersIn: Range.init(
-            uncheckedBounds: (
-                lower: UnicodeScalar.init(0x20)!,
-                upper: UnicodeScalar.init(0x7F)!
-            )
-        )
+        charactersIn: ClosedRange.init(uncheckedBounds: (lower: " ", upper: "~"))
     )
+    
+    static let emoji: CharacterSet = UIFont.init(name: "Apple Color Emoji", size: 1)?.fontDescriptor.object(forKey: .characterSet) as! CharacterSet
+    
+    static let emoticons = CharacterSet.init(charactersIn: ClosedRange.init(uncheckedBounds: (lower: "😀", upper: "😷")))
+        .union(.init(charactersIn: ClosedRange.init(uncheckedBounds: (lower: "🙁", upper: "🙄"))))
+        .union(.init(charactersIn: ClosedRange.init(uncheckedBounds: (lower: "🤐", upper: "🤕"))))
+        .union(.init(charactersIn: ClosedRange.init(uncheckedBounds: (lower: "🤠", upper: "🤥"))))
+        .union(.init(charactersIn: "🤗🤧"))
     
 }

@@ -11,7 +11,23 @@ class LoadUnicodeDataFiles: Operation {
     let columnSeparator: Character = ";"
     let commentMarker: Character = "#"
     
+    private func collectFileGarbage() {
+        let fileGarbageURLs: [URL] = [
+            URL.applicationSupport.appendingPathComponent(UnicodeDataFile.derivedName.name),
+            URL.applicationSupport.appendingPathComponent(UnicodeDataFile.emojiTest.name),
+        ]
+        
+        fileGarbageURLs.forEach {try? FileManager.default.removeItem(at: $0)}
+    }
+    
     override func main() {
+        
+        collectFileGarbage()
+        
+        if Keyboard.default.cacheVersion != Bundle.main.version {
+            try? FileManager.default.removeItem(at: UnicodeTable.default.cacheURL)
+            Keyboard.default.cacheVersion = Bundle.main.version
+        }
         
         var processedStringCount = 0
         

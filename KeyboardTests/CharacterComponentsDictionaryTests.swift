@@ -26,21 +26,21 @@ class CharacterComponentsDictionaryTests: XCTestCase {
     
     func testDictionaryDoesNotContainDuplicateValues() {
         var dictionary: [String: Int] = .init()
-        for (character, characterComponents) in characterComponentsDictionary {
-            guard !characterComponents.isEmpty else {
+        for character in characterComponentsDictionary.keys {
+            guard !character.characterComponents.isEmpty, character.characterComponents != [.combined] else {
                 continue
             }
-            XCTAssertNil(dictionary[characterComponents.key], "Dictionary literal contains duplicate value for \"\(character)\"")
+            XCTAssertNil(dictionary[character.characterComponents.key], "Dictionary literal contains duplicate value for \"\(character)\"")
             
-            dictionary[characterComponents.key] = 1
+            dictionary[character.characterComponents.key] = 1
         }
     }
     
     func testExtraArrayMaxCount() {
         let maxExtraCount = 3
         
-        for (character, characterComponents) in characterComponentsDictionary {
-            XCTAssert(characterComponents.extraArray.count <= maxExtraCount, "Character \(character) has more than \(maxExtraCount) extra characters")
+        for character in characterComponentsDictionary.keys {
+            XCTAssert(character.characterComponents.extraArray.count <= maxExtraCount, "Character \(character) has more than \(maxExtraCount) extra characters")
         }
     }
 }

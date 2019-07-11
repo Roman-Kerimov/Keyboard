@@ -12,7 +12,7 @@ class VersionMenuItem: LocalizedMenuItem {
     override func updateLocalizedStrings() {
         super.updateLocalizedStrings()
         
-        title = Bundle.main.version
+        title = VERSION.string
     }
 
     override init() {

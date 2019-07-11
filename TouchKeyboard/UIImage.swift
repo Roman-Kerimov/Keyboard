@@ -9,8 +9,8 @@
 import UIKit
 
 public enum PDFExtension: String {
-    case pdf = "pdf"
-    case ai = "ai"
+    case pdf
+    case ai
 }
 
 extension UIImage {

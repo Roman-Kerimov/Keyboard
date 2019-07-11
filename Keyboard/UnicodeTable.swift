@@ -47,4 +47,17 @@ class UnicodeTable: NSObject {
         
         backgroudOperationQueue.addOperation( SearchUnicodeScalars.init(for: characterCollectionView) )
     }
+    
+    var cacheURL: URL {
+        let cacheDirectoryURL = URL.applicationSupport.appendingPathComponent("UDFCache")
+        var isDirectory: ObjCBool = false
+        FileManager.default.fileExists(atPath: cacheDirectoryURL.path, isDirectory: &isDirectory)
+        
+        if !isDirectory.boolValue {
+            try? FileManager.default.removeItem(at: cacheDirectoryURL)
+            try! FileManager.default.createDirectory(atPath: cacheDirectoryURL.path, withIntermediateDirectories: false, attributes: nil)
+        }
+        
+        return cacheDirectoryURL
+    }
 }

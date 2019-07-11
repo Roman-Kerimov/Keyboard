@@ -142,7 +142,7 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
             else {
                 cell.accessoryType = .none
             }
-	
+            
         case .boolSection:
             let cellSwitch = UISwitch()
             
@@ -182,7 +182,7 @@ internal class SettingsTableView: UITableView, UITableViewDelegate, UITableViewD
         KeyboardViewController.shared.keyAction(label: selectedSegmentTitle)
     }
     
-    func switchDidChange(sender: UISwitch) {
+    @objc func switchDidChange(sender: UISwitch) {
         switch BoolCell.list[indexPath(for: sender.superview as! UITableViewCell)!.row] {
         case .allowMultipleSpaces:
             KeyboardSettings.shared.allowMultipleSpaces = sender.isOn

@@ -31,9 +31,12 @@ class UnicodeCollectionView: CharacterCollectionView {
         super.init()
         
         layout.minimumLineSpacing = 0
+        clipsToBounds = false
         
         #if TARGET_INTERFACE_BUILDER
-            characters = "⌨🎹😀😇ǶÆ".characters.map {$0.description}
+            characters = .init("⌨🎹😀😇ǶÆ".characters)
+            
+            isHiddenUnicodeNames = false
         #endif
     }
     
@@ -44,10 +47,18 @@ class UnicodeCollectionView: CharacterCollectionView {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! CharacterCollectionViewCell
+        
+        let characterFontSize = 0.7 * layout.itemSize.width
+        cell.title.font = .systemFont(ofSize: characterFontSize)
+        
+        cell.unicodeName.text = characters[indexPath.item].unicodeName
+        cell.unicodeName.textColor = colorScheme.unicodeNameTextColor
+        cell.unicodeName.backgroundColor = colorScheme.unicodeNameBackgroundColor
+        cell.unicodeName.font = .boldSystemFont(ofSize: characterFontSize/2)
+        
+        cell.unicodeName.isHidden = isHiddenUnicodeNames
+        
         cell.configure()
-        
-        cell.title.font = UIFont.systemFont(ofSize: 0.7 * layout.itemSize.width)
-        
         return cell
     }
     
@@ -71,7 +82,7 @@ class UnicodeCollectionView: CharacterCollectionView {
         KeyboardSettings.shared.frequentlyUsedCharacters = .init( frequentlyUsedCharacters.suffix(100) )
         
         
-        KeyboardViewController.shared.keyAction(label: character)
+        KeyboardViewController.shared.keyAction(label: character.description)
         KeyboardViewController.shared.updateDocumentContext()
     }
     
@@ -81,5 +92,29 @@ class UnicodeCollectionView: CharacterCollectionView {
         textForSearch = text
         
         UnicodeTable.default.searchScalars(byName: text.replacingOccurrences(of: .reverseSolidus, with: ""), for: self)
+    }
+    
+    override func reloadData() {
+        super.reloadData()
+        
+        if numberOfItems(inSection: 0) > 0 {
+            self.scrollToItem(at: .init(row: 0, section: 0), at: .top, animated: false)
+        }
+    }
+    
+    public var isHiddenUnicodeNames: Bool = true {
+        didSet {
+            for cell in visibleCells as! [CharacterCollectionViewCell] {
+                cell.unicodeName.isHidden = isHiddenUnicodeNames
+            }
+        }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        isHiddenUnicodeNames = false
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        isHiddenUnicodeNames = false
     }
 }

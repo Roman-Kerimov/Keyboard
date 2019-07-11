@@ -18,7 +18,7 @@ internal class KeyboardView: UIView {
         didSet {
             let documentContextBeforeInput: String = documentContext.beforeInput ?? .init()
             
-            var characterSequence: [String] = .init()
+            var characterSequence: [Character] = .init()
             var spaceCount = 0
             
             characterSequenceView.characters = characterSequence
@@ -43,7 +43,7 @@ internal class KeyboardView: UIView {
                     break
                 }
                 
-                characterSequence = [character.description] + characterSequence
+                characterSequence = [character] + characterSequence
                 
                 if spaceCount == 1 && isNonspaceSequence {
                     break
@@ -121,7 +121,7 @@ internal class KeyboardView: UIView {
         return deleteRowView.characterSequence
     }
     
-    private var unicodeCollectionView: UnicodeCollectionView {
+    public var unicodeCollectionView: UnicodeCollectionView {
         return layoutView.unicodeCollectionView
     }
     
@@ -154,7 +154,7 @@ internal class KeyboardView: UIView {
         #if TARGET_INTERFACE_BUILDER
             return bounds.size
         #else
-        	let nativeSize = UIScreen.main.bounds.size
+            let nativeSize = UIScreen.main.bounds.size
             return CGSize(width: nativeSize.width * scaleFactor, height: nativeSize.height * scaleFactor)
         #endif
     }
@@ -305,8 +305,8 @@ internal class KeyboardView: UIView {
         }
         else {
             heightConstraint = heightAnchor.constraint(equalToConstant: size.height)
-            heightConstraint!.priority = 999
-            heightConstraint!.isActive = true
+            heightConstraint?.priority = .defaultHigh
+            heightConstraint?.isActive = true
         }
         
         backgroundView.frame.size = .init(width: bounds.width, height: size.height)

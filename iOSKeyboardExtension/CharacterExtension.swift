@@ -27,4 +27,13 @@ extension Character {
             || self == .return
             || self == .tab
     }
+    
+    var unicodeName: String {
+        var outputString = self.description.applyingTransform(.toUnicodeName, reverse: false) ?? ""
+        outputString = outputString.replacingOccurrences(of: "}\\N{", with: ", ")
+        outputString = outputString.replacingOccurrences(of: "\\N{", with: .space)
+        outputString = outputString.replacingOccurrences(of: "}", with: .space)
+        
+        return outputString
+    }
 }

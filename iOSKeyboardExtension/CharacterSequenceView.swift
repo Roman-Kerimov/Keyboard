@@ -32,7 +32,7 @@ class CharacterSequenceView: CharacterCollectionView {
         longPressGestureRecognizer.minimumPressDuration = 0
         
         #if TARGET_INTERFACE_BUILDER
-            characters = "keyboard".characters.map {$0.description}
+            characters = .init("keyboard".characters)
         #endif
     }
     
@@ -135,8 +135,6 @@ class CharacterSequenceView: CharacterCollectionView {
                 
                 KeyboardViewController.shared.keyAction(label: SpecialKey.delete.label, offset: activeIndexPath.item - characters.count + 1)
                 KeyboardViewController.shared.keyAction(label: activeCell.title.text!, offset: activeIndexPath.item - characters.count + 1)
-                
-                KeyboardViewController.shared.updateDocumentContext()
             }
             
             self.activeIndexPath = nil
@@ -155,18 +153,7 @@ class CharacterSequenceView: CharacterCollectionView {
             if characters[activeIndexPath!.item] == .space && activeIndexPath?.item == characters.count - 1 {
                 KeyboardViewController.shared.keyAction(label: SpecialKey.removeCharacter.label)
             }
-            
-            deleteKey.isHighlighted = false
-            
-            KeyboardViewController.shared.normalizeTextPosition()
-            KeyboardViewController.shared.updateDocumentContext()
         }
-    }
-    
-    override func cancelInteractiveMovement() {
-        super.cancelInteractiveMovement()
-        
-        deleteKey.isHighlighted = false
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -202,6 +189,8 @@ class CharacterSequenceView: CharacterCollectionView {
         if sourceCharacter == .space && destinationCharacter == .space {
             KeyboardViewController.shared.updateDocumentContext()
         }
+        
+        deleteKey.isHighlighted = false
     }
     
     internal var deleteKey: KeyView {

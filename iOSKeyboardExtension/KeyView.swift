@@ -8,7 +8,7 @@
 
 import UIKit
 
-class KeyView: UIButton {
+class KeyView: UIButton, ConfigurableView {
     
     override func addTarget(_ target: Any?, action: Selector, for controlEvents: UIControlEvents) {
         super.addTarget(target, action: action, for: controlEvents)
@@ -158,10 +158,17 @@ class KeyView: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(size: CGSize, labelFontSize: CGFloat) {
+    private var baseFontSize: CGFloat = 0
+    
+    public func configure() {
+        configure(size: frame.size, labelFontSize: baseFontSize)
+    }
+    
+    public func configure(size: CGSize, labelFontSize: CGFloat) {
         frame.size = size
+        baseFontSize = labelFontSize
         
-        mainLabelView.font = mainLabelView.font.withSize(labelFontSize)
+        mainLabelView.font = mainLabelView.font.withSize(baseFontSize)
         
         let shiftLabelFont = UIFont.systemFont(ofSize: labelFontSize/1.8)
         shiftUpLabelView.font = shiftLabelFont
@@ -228,7 +235,9 @@ class KeyView: UIButton {
     
     var autorepeatThread: Thread?
     
-    func longPressGestureAction(gesture: UIGestureRecognizer) {
+    @objc func longPressGestureAction(gesture: UIGestureRecognizer) {
+        
+        KeyboardViewController.shared.keyboardView.unicodeCollectionView.isHiddenUnicodeNames = true
         
         switch gesture.state {
             
@@ -260,7 +269,7 @@ class KeyView: UIButton {
                     Thread.exit()
                 })
                 
-            	autorepeatThread?.start()
+                autorepeatThread?.start()
             }
             
         case .ended:
@@ -352,6 +361,8 @@ class KeyView: UIButton {
             case .shiftRight:
                 mainLabelView.text = shiftRightLabelView.text
             }
+            
+            mainLabelView.center = backgroundView.center
         }
     }
 }

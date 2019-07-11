@@ -33,7 +33,7 @@ class UnicodeTable: NSObject {
         }
     }
     
-    internal var frequentlyUsedCharacters: [String] = KeyboardSettings.shared.frequentlyUsedCharacters
+    internal var frequentlyUsedCharacters: [Character] = KeyboardSettings.shared.frequentlyUsedCharacters
     
     public func searchScalars(byName text: String, for characterCollectionView: CharacterCollectionView) {
         if let searchUnicodeScalarsOperation = backgroudOperationQueue.operations.last as? SearchUnicodeScalars {
@@ -128,7 +128,15 @@ private class SearchUnicodeScalars: Operation {
             return
         }
         
-        var unicodeScalars: [String] = .init()
+        var unicodeScalars: [Character] = .init()
+        
+        func updateUnicodeCollectionView() {
+            if characterCollectionView.characters != unicodeScalars {
+                OperationQueue.main.addOperation {
+                    self.characterCollectionView.characters = unicodeScalars
+                }
+            }
+        }
         
         if text == "" {
             unicodeScalars = UnicodeTable.default.frequentlyUsedCharacters
@@ -137,32 +145,28 @@ private class SearchUnicodeScalars: Operation {
             unicodeScalars += UnicodeTable.default.unicodeNameIndex
                 .filter { $0.word.hasPrefix(text) }
                 .map {$0.stringWithUnicodeScalars}
-                .reduce(.init(), +)
-                .unicodeScalars.map {$0.description}
+                .joined()
+                .unicodeScalars.map {Character.init($0)}
         }
         
         guard !isCancelled else {
             return
         }
         
-        OperationQueue.main.addOperation {
-            self.characterCollectionView.characters = unicodeScalars
-        }
+        updateUnicodeCollectionView()
         
         if text != "" {
             unicodeScalars += UnicodeTable.default.unicodeNameIndex
                 .filter { $0.word.hasPrefix(text) == false && $0.word.contains(text) }
                 .map {$0.stringWithUnicodeScalars}
-                .reduce(.init(), +)
-                .unicodeScalars.map {$0.description}
+                .joined()
+                .unicodeScalars.map {Character.init($0)}
         }
         
         guard !isCancelled else {
             return
         }
         
-        OperationQueue.main.addOperation {
-            self.characterCollectionView.characters = unicodeScalars
-        }
+        updateUnicodeCollectionView()
     }
 }

@@ -23,6 +23,12 @@ class LabelView: UILabel {
             super.text = text
             
             frame.size = intrinsicContentSize
+            
+            for view in parentViews {
+                if let configureView = view as? ConfigurableView {
+                    configureView.configure()
+                }
+            }
         }
     }
     
@@ -38,8 +44,6 @@ class LabelView: UILabel {
         super.init(frame: CGRect())
         
         adjustsFontSizeToFitWidth = true
-        baselineAdjustment = .alignCenters
-        textAlignment = .center
     }
     
     required init(coder: NSCoder) {

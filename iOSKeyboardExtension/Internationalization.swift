@@ -85,15 +85,15 @@ private var loadedViewControllers: [UIViewController] = []
 
 extension UIViewController {
     
-    func proxy_viewDidLoad() {
+    @objc func proxy_viewDidLoad() {
         loadedViewControllers.append(self)
     }
     
-    func proxy_viewWillAppear(_ animated: Bool) {
+    @objc func proxy_viewWillAppear(_ animated: Bool) {
         updateLocalizedStrings()
     }
     
-    func proxy_viewWillDisappear(_ animated: Bool) {
+    @objc func proxy_viewWillDisappear(_ animated: Bool) {
         if self == KeyboardViewController.shared {
             loadedViewControllers.removeAll()
         }
@@ -106,11 +106,11 @@ extension UIViewController {
 
 extension UIView {
     
-    func proxy_didMoveToWindow() {
+    @objc func proxy_didMoveToWindow() {
         updateLocalizedStrings()
     }
     
-    func updateLocalizedStrings() {
+    @objc func updateLocalizedStrings() {
         for view in subviews {
             view.updateLocalizedStrings()
         }
@@ -143,8 +143,8 @@ struct Localization {
     
     private static func swapMethods(_ anyClass: AnyClass, _ originalSelector: Selector, _ newSelector: Selector) {
         
-        let originalMethod = class_getInstanceMethod(anyClass, originalSelector)
-        let newMethod = class_getInstanceMethod(anyClass, newSelector)
+        let originalMethod = class_getInstanceMethod(anyClass, originalSelector)!
+        let newMethod = class_getInstanceMethod(anyClass, newSelector)!
         
         let didAddMethod = class_addMethod(anyClass, originalSelector, method_getImplementation(newMethod), method_getTypeEncoding(newMethod))
         

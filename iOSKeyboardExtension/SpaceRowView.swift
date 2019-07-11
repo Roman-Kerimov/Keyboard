@@ -47,9 +47,27 @@ class SpaceRowView: RowView {
         
         let allParts = keys.map {$0.proportion} .reduce(0, +)
         
+        var freeSpace: CGFloat = 0
+        
         var originX: CGFloat = 0
         for (proportion, keyView) in keys {
-            let keyWidth = size.width * proportion/allParts
+            var keyWidth = size.width * proportion/allParts + freeSpace
+            freeSpace = 0
+            
+            #if !TARGET_INTERFACE_BUILDER
+                if #available(iOSApplicationExtension 11.0, *) {
+                    if keyView.mainLabel == SpecialKey.nextKeyboard.label
+                        && KeyboardViewController.shared.needsInputModeSwitchKey == false {
+                        
+                        freeSpace = keyWidth
+                        keyWidth = 0
+                        keyView.isHidden = true
+                    }
+                    else {
+                        keyView.isHidden = false
+                    }
+                }
+            #endif
             
             keyView.configure(size: .init(width: keyWidth, height: size.height), labelFontSize: labelFontSize)
             keyView.frame.origin.x = originX

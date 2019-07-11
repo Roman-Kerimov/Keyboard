@@ -64,10 +64,10 @@ extension String {
     }
     
     var hexToUInt32: UInt32? {
-        var output: UInt32 = 0
+        var output: UInt64 = 0
         
-        if Scanner.init(string: self).scanHexInt32(&output) {
-            return output
+        if Scanner.init(string: self).scanHexInt64(&output) {
+            return .init(output)
         }
         else {
             return nil

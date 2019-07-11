@@ -1,5 +1,5 @@
 //
-//  SpaceRowView.swift
+//  SpaceRowUIView.swift
 //  Keyboard
 //
 //  Created by Roman Kerimov on 2016-07-31.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SpaceRowView: UIView {
+class SpaceRowUIView: UIView {
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -18,7 +18,7 @@ class SpaceRowView: UIView {
     }
     */
     
-    var keys: [(proportion: CGFloat, view: KeyView)] {
+    var keys: [(proportion: CGFloat, view: KeyUIView)] {
         return [
             (5, settingsKey),
             (5, nextKeyboardKey),
@@ -28,11 +28,11 @@ class SpaceRowView: UIView {
         ]
     }
     
-    internal let settingsKey: KeyView = .init(key: .settings)
-    internal let nextKeyboardKey: KeyView = .init(key: .nextKeyboard)
-    internal let spaceKey: KeyView = .init(key: .space)
-    internal let enterKey: KeyView = .init(key: .enter)
-    internal let dismissKeyboardKey: KeyView = .init(key: .dismissKeyboard)
+    internal let settingsKey: KeyUIView = .init(key: .settings)
+    internal let nextKeyboardKey: KeyUIView = .init(key: .nextKeyboard)
+    internal let spaceKey: KeyUIView = .init(key: .space)
+    internal let enterKey: KeyUIView = .init(key: .enter)
+    internal let dismissKeyboardKey: KeyUIView = .init(key: .dismissKeyboard)
     
     init() {
         super.init(frame: .zero)

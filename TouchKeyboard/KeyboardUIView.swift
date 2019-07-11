@@ -1,5 +1,5 @@
 //
-//  KeyboardView.swift
+//  KeyboardUIView.swift
 //  Keyboard
 //
 //  Created by Roman Kerimov on 2016-07-09.
@@ -8,12 +8,7 @@
 
 import UIKit
 
-@IBDesignable
-internal class KeyboardView: UIView {
-    
-    @IBInspectable internal var text: String = .init()
-    @IBInspectable internal var darkAppearance: Bool = false
-    @IBInspectable internal var alternateLayoutMode: Bool = false
+internal class KeyboardUIView: UIView {
     
     enum State {
         case disappeared, disappearing, appearing, appeared
@@ -21,23 +16,23 @@ internal class KeyboardView: UIView {
     
     var state: State = .disappeared
     
-    internal var nextKeyboardKey: KeyView {
+    internal var nextKeyboardKey: KeyUIView {
         return spaceRowView.nextKeyboardKey
     }
     
-    internal var dismissKeyboardKey: KeyView {
+    internal var dismissKeyboardKey: KeyUIView {
         return spaceRowView.dismissKeyboardKey
     }
     
-    internal var deleteKey: KeyView {
+    internal var deleteKey: KeyUIView {
         return deleteRowView.deleteKey
     }
     
-    internal var enterKey: KeyView {
+    internal var enterKey: KeyUIView {
         return spaceRowView.enterKey
     }
     
-    internal var spaceKey: KeyView {
+    internal var spaceKey: KeyUIView {
         return spaceRowView.spaceKey
     }
 
@@ -49,9 +44,6 @@ internal class KeyboardView: UIView {
     }
     */
 
-    #if TARGET_INTERFACE_BUILDER
-    private var layoutMode: Keyboard.KeyboardLayoutMode = .default
-    #else
     private var layoutMode: Keyboard.KeyboardLayoutMode {
         get {
             return Keyboard.default.layoutMode
@@ -61,18 +53,17 @@ internal class KeyboardView: UIView {
             Keyboard.default.layoutMode = newValue
         }
     }
-    #endif
     
-    private var characterSequenceView: CharacterSequenceView {
+    private var characterSequenceView: CharacterSequenceUIView {
         return deleteRowView.characterSequence
     }
     
-    public var characterSearchView: CharacterSearchView {
+    public var characterSearchView: CharacterSearchUIView {
         return layoutView.characterSearchView
     }
     
-    private var keys: [KeyView] {
-        var keyViews: [KeyView] = []
+    private var keys: [KeyUIView] {
+        var keyViews: [KeyUIView] = []
         
         for row in layoutView.keyViews {
             keyViews += row
@@ -88,19 +79,9 @@ internal class KeyboardView: UIView {
     
     private let backgroundView: UIView = .init()
     
-    override internal func prepareForInterfaceBuilder() {
-        super.prepareForInterfaceBuilder()
-        
-        state = .appeared
-        
-        enterKey.isEnabled = false
-        
-        LoadUnicodeDataFiles.init().start()
-    }
-    
-    private let deleteRowView: DeleteRowView = .init()
-    private let layoutView: KeyboardLayoutView = .init()
-    private let spaceRowView: SpaceRowView = .init()
+    private let deleteRowView: DeleteRowUIView = .init()
+    private let layoutView: KeyboardLayoutUIView = .init()
+    private let spaceRowView: SpaceRowUIView = .init()
     
     override private init(frame: CGRect = .zero) {
         super.init(frame: frame)
@@ -125,23 +106,11 @@ internal class KeyboardView: UIView {
     
     override func layoutSubviews() {
         
-        #if TARGET_INTERFACE_BUILDER
-            Keyboard.default.delegate = self
-            
-            UIKeyboardAppearance.current = darkAppearance ? .dark : .default
-            
-            backgroundView.backgroundColor = .windowBackgroundColor
-            
-            NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
-            
-            SearchUnicodeScalars.init(for: characterSearchView).start()
-        #endif
-        
         guard state != .disappeared else {
             return
         }
         
-        let scaleFactor: CGFloat = Bundle.main.isInterfaceBuilder ? 1 : bounds.width / UIScreen.main.bounds.width
+        let scaleFactor: CGFloat = bounds.width / UIScreen.main.bounds.width
         
         let minimalScreenSize: CGSize = CGSize.init(width: 320, height: 480).applying(.init(scale: scaleFactor))
         
@@ -151,11 +120,7 @@ internal class KeyboardView: UIView {
             layoutMode = isPrefferedVerticalMode ? .vertical : .horizontal
         }
         
-        if alternateLayoutMode {
-            layoutMode = layoutMode == .vertical ? .horizontal : .vertical
-        }
-        
-        let screenSize: CGSize = Bundle.main.isInterfaceBuilder ? bounds.size : UIScreen.main.bounds.size.applying(.init(scale: scaleFactor))
+        let screenSize: CGSize = UIScreen.main.bounds.size.applying(.init(scale: scaleFactor))
         
         let isHorizontalMode = layoutMode == .horizontal || screenSize.height < minimalScreenSize.height
         
@@ -218,24 +183,19 @@ internal class KeyboardView: UIView {
             heightConstraint?.isActive = true
         }
         
-        if !Bundle.main.isInterfaceBuilder && !Bundle.main.isExtension {
+        if !Bundle.main.isExtension {
             frame = UIScreen.main.bounds
             frame.size.height = keyboardSize.height
         }
         
-        backgroundView.frame = .init(
-            x: 0,
-            y: Bundle.main.isInterfaceBuilder ? bounds.height - keyboardSize.height : 0,
-            width: bounds.width,
-            height:  keyboardSize.height
-        )
+        backgroundView.frame = .init(origin: .zero, size: .init(width: bounds.width, height:  keyboardSize.height)) 
         
         let deleteRowHeight: CGFloat = deleteRowHeightInKeys * keySize.height
         let spaceRowHeight: CGFloat = spaceRowHeightInKeys * keySize.height
         
-        KeyView.size = keySize
-        KeyView.spacing = deleteRowHeight * 0.1
-        KeyView.labelFontSize = min(spaceRowHeight * 0.5, 36)
+        KeyUIView.size = keySize
+        KeyUIView.spacing = deleteRowHeight * 0.1
+        KeyUIView.labelFontSize = min(spaceRowHeight * 0.5, 36)
         
         deleteRowView.frame = .init(origin: .zero, size: .init(width: keyboardSize.width, height: deleteRowHeight))
         
@@ -269,7 +229,7 @@ internal class KeyboardView: UIView {
         layoutView.layout = Keyboard.default.layout
     }
     
-    internal var settingsContainerView: SettingsContainerView = .init()
+    internal var settingsContainerView: SettingsContainerUIView = .init()
     
     private var settingsRightConstraint: NSLayoutConstraint!
     
@@ -318,17 +278,3 @@ internal class KeyboardView: UIView {
         }
     }
 }
-
-#if TARGET_INTERFACE_BUILDER
-extension KeyboardView: KeyboardDelegate {
-    
-    func delete() {}
-    func enter() {}
-    func settings() {}
-    func insert(text: String) {}
-    
-    var documentContext: DocumentContext {
-        return .init(beforeInput: text, afterInput: nil)
-    }
-}
-#endif

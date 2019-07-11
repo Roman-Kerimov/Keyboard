@@ -1,5 +1,5 @@
 //
-//  MainRowsView.swift
+//  KeyboardLayoutUIView.swift
 //  Keyboard
 //
 //  Created by Roman Kerimov on 2016-11-21.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class KeyboardLayoutView: UIView {
+class KeyboardLayoutUIView: UIView {
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -24,10 +24,10 @@ class KeyboardLayoutView: UIView {
         }
     }
     
-    var keyViews: [[KeyView]] = []
+    var keyViews: [[KeyUIView]] = []
     
     var halfKeyboards: [UIView] = .init()
-    internal let characterSearchView: CharacterSearchView = .init()
+    internal let characterSearchView: CharacterSearchUIView = .init()
     
     init() {
         super.init(frame: .zero)
@@ -58,7 +58,7 @@ class KeyboardLayoutView: UIView {
                 }
                 
                 if columnIndex == keyViews[rowIndex].count {
-                    let keyView = KeyView.init(key: key)
+                    let keyView = KeyUIView.init(key: key)
                     keyViews[rowIndex].append(keyView)
                     
                     let halfKeyboardIndex: Int
@@ -86,8 +86,8 @@ class KeyboardLayoutView: UIView {
         for (halfKeyboardIndex, halfKeyboard) in halfKeyboards.enumerated() {
             
             halfKeyboard.frame.size = .init(
-                width: KeyView.size.width * .init(Keyboard.default.layout.columnCount / 2),
-                height: KeyView.size.height * .init(Keyboard.default.layout.rowCount)
+                width: KeyUIView.size.width * .init(Keyboard.default.layout.columnCount / 2),
+                height: KeyUIView.size.height * .init(Keyboard.default.layout.rowCount)
             )
             
             if halfKeyboardIndex == 0 {
@@ -115,10 +115,10 @@ class KeyboardLayoutView: UIView {
                 
                 key.frame = .init(
                     origin: .init(
-                        x: KeyView.size.width * .init(keyIndex - row.count/2 * halfKeyboardIndex),
-                        y: KeyView.size.height * .init(rowIndex)
+                        x: KeyUIView.size.width * .init(keyIndex - row.count/2 * halfKeyboardIndex),
+                        y: KeyUIView.size.height * .init(rowIndex)
                     ),
-                    size: KeyView.size
+                    size: KeyUIView.size
                 )
             }
         }

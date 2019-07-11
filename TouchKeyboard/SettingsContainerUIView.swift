@@ -1,5 +1,5 @@
 //
-//  SettingsContainerView.swift
+//  SettingsContainerUIView.swift
 //  Keyboard
 //
 //  Created by Roman Kerimov on 2017-02-14.
@@ -8,10 +8,7 @@
 
 import UIKit
 
-@IBDesignable
-class SettingsContainerView: UIStackView {
-    
-    @IBInspectable var language: String = Language.en.rawValue
+class SettingsContainerUIView: UIStackView {
     
     override func updateLocalizedStrings() {
         super.updateLocalizedStrings()
@@ -27,17 +24,9 @@ class SettingsContainerView: UIStackView {
     let backButton = UIButton()
     
     let navigationController = UINavigationController()
-    let settingsViewController = ViewController <SettingsTableView> ()
+    let settingsViewController = ViewController <SettingsUIView> ()
     
     var widthConstraint: NSLayoutConstraint!
-
-    override func prepareForInterfaceBuilder() {
-        Language.current = Language(rawValue: language) ?? .en
-        
-        super.prepareForInterfaceBuilder()
-        
-        backButton.backgroundColor = shadeColor
-    }
     
     private let titleLabel: UILabel = .init()
     
@@ -49,7 +38,7 @@ class SettingsContainerView: UIStackView {
         axis = .horizontal
         distribution = .fill
         
-        translatesAutoresizingMaskIntoConstraints = Bundle.main.isInterfaceBuilder
+        translatesAutoresizingMaskIntoConstraints = false
         
         backButton.translatesAutoresizingMaskIntoConstraints = false
         

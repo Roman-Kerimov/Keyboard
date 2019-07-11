@@ -1,5 +1,5 @@
 //
-//  CharacterSequenceView.swift
+//  CharacterSequenceUIView.swift
 //  Keyboard
 //
 //  Created by Roman Kerimov on 2017-04-12.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CharacterSequenceView: CharacterCollectionView {
+class CharacterSequenceUIView: CharacterCollectionUIView {
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -39,11 +39,7 @@ class CharacterSequenceView: CharacterCollectionView {
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateCharacters), name: .CharacterSequenceDidChange, object: nil)
         
-        register(AutocompleteView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: AutocompleteView.reuseIdentifier)
-
-        if Bundle.main.isInterfaceBuilder {
-            characters = .init("keyboard😀")
-        }
+        register(AutocompleteUIView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: AutocompleteUIView.reuseIdentifier)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -60,7 +56,13 @@ class CharacterSequenceView: CharacterCollectionView {
         OperationQueue.main.addOperation {
             
             #if os(macOS)
-            self.window?.setContentSize(.init(width: min(self.layout.collectionViewContentSize.width, UIScreen.main.bounds.width - (self.window?.frame.origin.x ?? 0)), height: self.frame.height))
+            if self.layout.collectionViewContentSize.width == 0 {
+                self.window?.setIsVisible(false)
+            }
+            else {
+                self.window?.setContentSize(.init(width: min(self.layout.collectionViewContentSize.width, UIScreen.main.bounds.width - (self.window?.frame.origin.x ?? 0)), height: self.frame.height))
+                self.window?.setIsVisible(true)
+            }
             #endif
             
             if self.contentSize.width > self.frame.size.width {
@@ -72,7 +74,7 @@ class CharacterSequenceView: CharacterCollectionView {
     private var activeIndexPath: IndexPath? {
         willSet {
             if let newValue = newValue {
-                activeCell = cellForItem(at: newValue) as? CharacterCollectionViewCell
+                activeCell = cellForItem(at: newValue) as? CharacterCollectionUIViewCell
             }
         }
     }
@@ -85,7 +87,7 @@ class CharacterSequenceView: CharacterCollectionView {
         return characters[activeIndexPath.item]
     }
     
-    private var activeCell: CharacterCollectionViewCell!
+    private var activeCell: CharacterCollectionUIViewCell!
     
     private enum CharacterSequenceActionStage {
         case interactiveMovement, uppercase, lowercase
@@ -274,7 +276,7 @@ class CharacterSequenceView: CharacterCollectionView {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! CharacterCollectionViewCell
+        let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! CharacterCollectionUIViewCell
             
         cell.title.font = characterFont
         cell.backgroundColor = UIColor.labelColor.withAlphaComponent(0.05)
@@ -374,7 +376,7 @@ class CharacterSequenceView: CharacterCollectionView {
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AutocompleteView.reuseIdentifier, for: indexPath) as! AutocompleteView
+        let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AutocompleteUIView.reuseIdentifier, for: indexPath) as! AutocompleteUIView
         view.text = Keyboard.default.autocompleteLabel
         view.font = characterFont
         return view

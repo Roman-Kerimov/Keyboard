@@ -10,9 +10,9 @@ import UIKit
 class CharacterSequenceWindow: FloatingWindow {
     
     init() {
-        let characterSequenceView = CharacterSequenceView.init(deleteButton: nil)
+        let characterSequenceView = CharacterSequenceUIView.init(deleteButton: nil)
         characterSequenceView.frame.origin = .zero
-        characterSequenceView.frame.size = .init(width: 0, height: 40)
+        characterSequenceView.frame.size = .init(width: 1, height: 40)
         
         characterSequenceView.layout.itemSize = .init(
             width: 12,

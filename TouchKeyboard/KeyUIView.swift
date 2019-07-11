@@ -1,5 +1,5 @@
 //
-//  KeyView.swift
+//  KeyUIView.swift
 //  Keyboard
 //
 //  Created by Roman Kerimov on 2016-07-10.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class KeyView: UIButton {
+class KeyUIView: UIButton {
     
     static var size: CGSize = .zero
     static var spacing: CGFloat = 0
@@ -64,13 +64,13 @@ class KeyView: UIButton {
         return "Labels_\(key.label)"
     }
     
-    private let mainLabelView: LabelView = .init()
+    private let mainLabelView: LabelUIView = .init()
     private let imageLabelView: UIImageView = .init()
-    private let shiftUpLabelView: LabelView = .init()
-    private let shiftDownLabelView: LabelView = .init()
+    private let shiftUpLabelView: LabelUIView = .init()
+    private let shiftDownLabelView: LabelUIView = .init()
     
-    private let shiftLeftLabelView: LabelView = .init()
-    private let shiftRightLabelView: LabelView = .init()
+    private let shiftLeftLabelView: LabelUIView = .init()
+    private let shiftRightLabelView: LabelUIView = .init()
     
     private var backgroundView: UIView!
     
@@ -168,8 +168,8 @@ class KeyView: UIButton {
         shiftRightLabelView.isHidden = isHiddenShiftLabelView
         
         
-        let characterLabelFont: UIFont = .characterFont(ofSize: KeyView.labelFontSize)
-        let nameLabelFont: UIFont = .systemFont(ofSize: KeyView.labelFontSize/1.8)
+        let characterLabelFont: UIFont = .characterFont(ofSize: KeyUIView.labelFontSize)
+        let nameLabelFont: UIFont = .systemFont(ofSize: KeyUIView.labelFontSize/1.8)
         
         mainLabelView.font = [.space, .enter, .delete].contains(key) ? nameLabelFont : characterLabelFont
         
@@ -181,16 +181,16 @@ class KeyView: UIButton {
         shiftRightLabelView.font = nameLabelFont
         
         if imageLabelView.image != nil {
-            imageLabelView.image = UIImage.init(fromPDF: labelFileName, withExtension: .ai, withScale: KeyView.labelFontSize/24)?.withRenderingMode(.alwaysTemplate)
+            imageLabelView.image = UIImage.init(fromPDF: labelFileName, withExtension: .ai, withScale: KeyUIView.labelFontSize/24)?.withRenderingMode(.alwaysTemplate)
         }
         
-        backgroundView.layer.cornerRadius = KeyView.spacing
-        backgroundView.frame = CGRect.init(origin: .zero, size: frame.size).insetBy(scalar: KeyView.spacing/2)
+        backgroundView.layer.cornerRadius = KeyUIView.spacing
+        backgroundView.frame = CGRect.init(origin: .zero, size: frame.size).insetBy(scalar: KeyUIView.spacing/2)
         
-        let verticalShiftLabelIndent = KeyView.spacing * 2.2
-        let horizontalShiftLabelIndent = KeyView.spacing * 1.0
+        let verticalShiftLabelIndent = KeyUIView.spacing * 2.2
+        let horizontalShiftLabelIndent = KeyUIView.spacing * 1.0
         
-        mainLabelView.frame.size.width = frame.width - KeyView.spacing * 2
+        mainLabelView.frame.size.width = frame.width - KeyUIView.spacing * 2
         mainLabelView.center = backgroundView.center
         
         shiftUpLabelView.center.y = verticalShiftLabelIndent

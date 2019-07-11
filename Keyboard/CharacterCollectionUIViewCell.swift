@@ -1,5 +1,5 @@
 //
-//  CharacterCollectionViewCell.swift
+//  CharacterCollectionUIViewCell.swift
 //  Keyboard
 //
 //  Created by Roman Kerimov on 2017-04-12.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-class CharacterCollectionViewCell: UICollectionViewCell {
+class CharacterCollectionUIViewCell: UICollectionViewCell {
     
     let title: UILabel = .init()
     
-    let unicodeName: LabelView = .init()
+    let unicodeName: LabelUIView = .init()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

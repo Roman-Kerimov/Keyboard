@@ -1,5 +1,5 @@
 //
-//  AutocompleteView.swift
+//  AutocompleteUIView.swift
 //  Keyboard
 //
 //  Created by Roman Kerimov on 2018-11-30.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AutocompleteView: UICollectionReusableView {
+class AutocompleteUIView: UICollectionReusableView {
     
     var text: String {
         get {

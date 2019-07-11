@@ -1,5 +1,5 @@
 //
-//  GuideViewController.swift
+//  GuideUIViewController.swift
 //  iOSKeyboard
 //
 //  Created by Roman Kerimov on 2019-03-21.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-class GuideViewController: UISplitViewController {
+class GuideUIViewController: UISplitViewController {
     
-    let masterViewController = ViewController<GuideTableView>.init()
+    let masterViewController = ViewController<GuideTableUIView>.init()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +51,7 @@ class GuideViewController: UISplitViewController {
     }
 }
 
-extension GuideViewController: UISplitViewControllerDelegate {
+extension GuideUIViewController: UISplitViewControllerDelegate {
     
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
         

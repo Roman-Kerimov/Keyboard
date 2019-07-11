@@ -1,5 +1,5 @@
 //
-//  GuideTableView.swift
+//  GuideTableUIView.swift
 //  iOSKeyboard
 //
 //  Created by Roman Kerimov on 2019-03-21.
@@ -7,8 +7,7 @@
 
 import UIKit
 
-@IBDesignable
-class GuideTableView: UITableView {
+class GuideTableUIView: UITableView {
     
     override func updateLocalizedStrings() {
         reloadData()
@@ -17,14 +16,14 @@ class GuideTableView: UITableView {
     
     struct Section {
         
-        init(header: LocalizedString.Type? = nil, items: [LocalizedTableViewCell], footer: LocalizedString.Type? = nil) {
+        init(header: LocalizedString.Type? = nil, items: [LocalizedUIViewCell], footer: LocalizedString.Type? = nil) {
             self.header = header
             self.items = items
             self.footer = footer
         }
         
         let header: LocalizedString.Type?
-        let items: [LocalizedTableViewCell]
+        let items: [LocalizedUIViewCell]
         let footer: LocalizedString.Type?
     }
     
@@ -32,13 +31,13 @@ class GuideTableView: UITableView {
         Section.init(
             header: SETTINGS.self,
             items: [
-                IterfaceLanguageTableViewCell.init(),
+                IterfaceLanguageUIViewCell.init(),
             ]
         ),
         
         Section.init(
             header: ABOUT.self, items: [
-                LegalNoticesTableViewCell.init(),
+                LegalNoticesUIViewCell.init(),
             ],
             footer: VERSION.self
         )
@@ -76,7 +75,7 @@ class GuideTableView: UITableView {
     }
 }
 
-extension GuideTableView: UITableViewDataSource {
+extension GuideTableUIView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return sections[indexPath.section].items[indexPath.item]
@@ -99,7 +98,7 @@ extension GuideTableView: UITableViewDataSource {
     }
 }
 
-extension GuideTableView: UITableViewDelegate {
+extension GuideTableUIView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         selectedRowIndexPath = indexPath

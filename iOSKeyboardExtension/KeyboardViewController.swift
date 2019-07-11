@@ -186,28 +186,13 @@ class KeyboardViewController: UIInputViewController {
     
     var cancelNextNormalization = false
     
-    func keyAction(label: String, offset: Int = 0) {
-        
-        let offsetString: String
-        let utf16Offset: Int
-        
-        if offset < 0 {
-            offsetString = .init(textDocumentProxy.stringBeforeInput?.characters.suffix(-offset) ?? .init())
-            utf16Offset = -offsetString.utf16.count
-        }
-        else {
-            offsetString = .init(textDocumentProxy.stringAfterInput?.characters.prefix(offset) ?? .init())
-            utf16Offset = offsetString.utf16.count
-        }
-            
-        textDocumentProxy.adjustTextPosition(byCharacterOffset: utf16Offset)
+    func keyAction(label: String) {
         
         guard let specialKey = SpecialKey(rawValue: label) else {
             
             if textDocumentProxy.characterBeforeInput?.isSpaceReturnOrTab != false
                 && textDocumentProxy.characterAfterInput?.isSpaceReturnOrTab == false
-                && textDocumentProxy.characterAfterInput?.belongsTo(.punctuationCharacters) == false
-                && offset == 0 {
+                && textDocumentProxy.characterAfterInput?.belongsTo(.punctuationCharacters) == false {
                 
                 textDocumentProxy.insertText(.space)
                 textDocumentProxy.adjustTextPosition(byCharacterOffset: -1)
@@ -325,8 +310,6 @@ class KeyboardViewController: UIInputViewController {
             KeyboardSettings.shared.layoutMode = .vertical
             keyboardView.configure()
         }
-        
-        textDocumentProxy.adjustTextPosition(byCharacterOffset: -utf16Offset)
     }
 }
 

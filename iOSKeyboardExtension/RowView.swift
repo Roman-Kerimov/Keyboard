@@ -26,7 +26,7 @@ class RowView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(size: CGSize, labelFontSize: CGFloat) {
+    func configure(size: CGSize, keySpacing: CGFloat, labelFontSize: CGFloat) {
         frame.size = size
     }
 }

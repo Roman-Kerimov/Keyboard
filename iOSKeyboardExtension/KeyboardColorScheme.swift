@@ -11,6 +11,7 @@ import UIKit
 struct KeyboardColorScheme {
     
     let keyColor: UIColor
+    let serviceKeyColor: UIColor
     let labelColor: UIColor
     let shiftLabelColor: UIColor
     let settingsLabelColor: UIColor
@@ -20,14 +21,12 @@ struct KeyboardColorScheme {
     
     let fakeBackroundColorForInterfaceBuilder: UIColor
     
-    var borderColor: UIColor {
-        return .clear
-    }
-    
-    let activeLabelColor: UIColor = .white
+    let disabledKeyLabelColor: UIColor = #colorLiteral(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
+    let specialReturnLabelColor: UIColor = .white
 
     static let light = KeyboardColorScheme(
         keyColor: .white,
+        serviceKeyColor: #colorLiteral(red: 0.418971857, green: 0.4386817824, blue: 0.4612155331, alpha: 0.2007917366),
         labelColor: .black,
         shiftLabelColor: UIColor.black.withAlphaComponent(0.4),
         settingsLabelColor: .lightGray,
@@ -40,6 +39,7 @@ struct KeyboardColorScheme {
     
     static let dark = KeyboardColorScheme(
         keyColor: UIColor.white.withAlphaComponent(0.3),
+        serviceKeyColor: UIColor.white.withAlphaComponent(0.15),
         labelColor: .white,
         shiftLabelColor: UIColor.white.withAlphaComponent(0.5),
         settingsLabelColor: .lightGray,

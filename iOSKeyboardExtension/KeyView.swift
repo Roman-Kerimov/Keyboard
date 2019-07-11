@@ -10,6 +10,38 @@ import UIKit
 
 class KeyView: UIButton, ConfigurableView {
     
+    override func updateLocalizedStrings() {
+        super.updateLocalizedStrings()
+        
+        guard let returnKeyType = returnKeyType else {
+            return
+        }
+        
+        switch returnKeyType {
+            
+        case .default:
+            mainLabelView.text = SpecialKey.return.label
+        case .go:
+            mainLabelView.text = GO.string
+        case .join:
+            mainLabelView.text = JOIN.string
+        case .next:
+            mainLabelView.text = NEXT.string
+        case .route:
+            mainLabelView.text = ROUTE.string
+        case .search, .google, .yahoo:
+            mainLabelView.text = SEARCH.string
+        case .send:
+            mainLabelView.text = SEND.string
+        case .done:
+            mainLabelView.text = DONE.string
+        case .emergencyCall:
+            mainLabelView.text = EMERGENCY_CALL.string
+        case .continue:
+            mainLabelView.text = CONTINUE.string
+        }
+    }
+    
     override func addTarget(_ target: Any?, action: Selector, for controlEvents: UIControlEvents) {
         super.addTarget(target, action: action, for: controlEvents)
         
@@ -26,16 +58,13 @@ class KeyView: UIButton, ConfigurableView {
     
     var colorScheme: KeyboardColorScheme = .default {
         didSet {
-            backgroundView.backgroundColor = colorScheme.keyColor
-            
-            mainLabelView.textColor = colorScheme.labelColor
-            tintColor = colorScheme.labelColor
             shiftUpLabelView.textColor = colorScheme.shiftLabelColor
             shiftDownLabelView.textColor = colorScheme.shiftLabelColor
             shiftLeftLabelView.textColor = colorScheme.shiftLabelColor
             shiftRightLabelView.textColor = colorScheme.shiftLabelColor
             
-            backgroundView.layer.borderColor = colorScheme.borderColor.cgColor
+            updateLocalizedStrings()
+            isHighlighted = false
         }
     }
     
@@ -79,16 +108,46 @@ class KeyView: UIButton, ConfigurableView {
         }
     }
     
-    private var highlightColor: UIColor!
+    private var returnKeyType: UIReturnKeyType? {
+        if specialKey == .return {
+            #if TARGET_INTERFACE_BUILDER
+                return .default
+            #else
+                return KeyboardViewController.shared.textDocumentProxy.returnKeyType
+            #endif
+        }
+        else {
+            return nil
+        }
+    }
+    
+    private var isServiceKey: Bool {
+        return specialKey != nil && specialKey != .space && returnKeyType != .default
+    }
+    
+    private var isSpecialReturnType: Bool {
+        return specialKey == .return
+            && returnKeyType != .default
+            && returnKeyType != .next
+            && returnKeyType != .continue
+    }
     
     override internal var isHighlighted: Bool {
         didSet {
             super.isHighlighted = isHighlighted
             
-            if isHighlighted {
+            backgroundView.backgroundColor = colorScheme.serviceKeyColor
+            mainLabelView.textColor = colorScheme.labelColor
+            imageLabelView.tintColor = colorScheme.labelColor
+            
+            if isHighlighted != isServiceKey {
                 
-                backgroundView.backgroundColor = highlightColor
-                mainLabelView.textColor = colorScheme.activeLabelColor
+                if isSpecialReturnType {
+                    backgroundView.backgroundColor = tintColor
+                    mainLabelView.textColor = colorScheme.specialReturnLabelColor
+                    imageLabelView.tintColor = colorScheme.specialReturnLabelColor
+                }
+                
                 shiftUpLabelView.isHidden = true
                 shiftDownLabelView.isHidden = true
                 shiftLeftLabelView.isHidden = true
@@ -96,12 +155,29 @@ class KeyView: UIButton, ConfigurableView {
             }
             else {
                 
-                backgroundView.backgroundColor = colorScheme.keyColor
+                if !isSpecialReturnType {
+                    backgroundView.backgroundColor = colorScheme.keyColor
+                }
+                
                 mainLabelView.textColor = colorScheme.labelColor
+                imageLabelView.tintColor = colorScheme.labelColor
                 shiftUpLabelView.isHidden = false
                 shiftDownLabelView.isHidden = false
                 shiftLeftLabelView.isHidden = false
                 shiftRightLabelView.isHidden = false
+            }
+        }
+    }
+    
+    override var isEnabled: Bool {
+        didSet {
+            if isEnabled {
+                isHighlighted = false
+            }
+            else {
+                backgroundView.backgroundColor = colorScheme.serviceKeyColor
+                mainLabelView.textColor = colorScheme.disabledKeyLabelColor
+                imageLabelView.tintColor = colorScheme.disabledKeyLabelColor
             }
         }
     }
@@ -115,8 +191,6 @@ class KeyView: UIButton, ConfigurableView {
         // It is for activation of touch events
         backgroundColor = .touchableClear
         
-        highlightColor = tintColor
-        
         backgroundView = UIView()
         backgroundView.isUserInteractionEnabled = false
         backgroundView.isExclusiveTouch = false
@@ -124,6 +198,7 @@ class KeyView: UIButton, ConfigurableView {
         
         addSubview(mainLabelView)
         mainLabelView.text = mainLabel
+        mainLabelView.numberOfLines = 2
         
         addSubview(shiftUpLabelView)
         addSubview(shiftDownLabelView)
@@ -159,14 +234,16 @@ class KeyView: UIButton, ConfigurableView {
     }
     
     private var baseFontSize: CGFloat = 0
+    private var spacing: CGFloat = 0
     
     public func configure() {
-        configure(size: frame.size, labelFontSize: baseFontSize)
+        configure(size: frame.size, spacing: spacing, labelFontSize: baseFontSize)
     }
     
-    public func configure(size: CGSize, labelFontSize: CGFloat) {
+    public func configure(size: CGSize, spacing: CGFloat, labelFontSize: CGFloat) {
         frame.size = size
         baseFontSize = labelFontSize
+        self.spacing = spacing
         
         mainLabelView.font = mainLabelView.font.withSize(baseFontSize)
         
@@ -193,18 +270,17 @@ class KeyView: UIButton, ConfigurableView {
             }
         }
         
-        let keySpace = size.height * 0.1
+        backgroundView.layer.cornerRadius = spacing
         
-        backgroundView.layer.cornerRadius = keySpace
-        
-        let keyEdgeInset = keySpace / 2
+        let keyEdgeInset = spacing / 2
         
         backgroundView.frame = frame.insetBy(dx: keyEdgeInset, dy: keyEdgeInset)
         backgroundView.frame.origin = .init(x: keyEdgeInset, y: keyEdgeInset)
         
-        let verticalShiftLabelIndent = keySpace * 2.2
-        let horizontalShiftLabelIndent = keySpace * 0.5
+        let verticalShiftLabelIndent = spacing * 2.2
+        let horizontalShiftLabelIndent = spacing * 1.0
         
+        mainLabelView.frame.size.width = size.width - spacing * 2
         mainLabelView.center = backgroundView.center
         
         shiftUpLabelView.center.y = verticalShiftLabelIndent
@@ -229,11 +305,39 @@ class KeyView: UIButton, ConfigurableView {
         imageLabelView.center = backgroundView.center
     }
     
-    var longPressGestureRecognizer: UILongPressGestureRecognizer!
-
-    var gestureStartPoint: CGPoint!
+    private func input() {
+        if specialKey == .return {
+            KeyboardViewController.shared.keyAction(label: SpecialKey.return.label)
+        }
+        else {
+            KeyboardViewController.shared.keyAction(label: mainLabelView.text ?? "")
+        }
+        
+        KeyboardViewController.shared.updateDocumentContext()
+    }
     
-    var autorepeatThread: Thread?
+    private var autorepeatStartTimer: Timer?
+    private var repeatTimer: Timer?
+    
+    private func startAutorepeat() {
+        input()
+        
+        autorepeatStartTimer = .scheduledTimer(withTimeInterval: 0.5, repeats: false) {_ in
+            self.repeatTimer = .scheduledTimer(withTimeInterval: 0.1, repeats: true) {_ in
+                DispatchQueue.main.async {
+                    self.input()
+                }
+            }
+        }
+    }
+    
+    private func stopAutorepeat() {
+        autorepeatStartTimer?.invalidate()
+        repeatTimer?.invalidate()
+    }
+    
+    var longPressGestureRecognizer: UILongPressGestureRecognizer!
+    var gestureStartPoint: CGPoint!
     
     @objc func longPressGestureAction(gesture: UIGestureRecognizer) {
         
@@ -248,42 +352,19 @@ class KeyView: UIButton, ConfigurableView {
             gestureStartPoint = gesture.location(in: self)
             
             if specialKey == .delete {
-                KeyboardViewController.shared.keyAction(label: mainLabelView.text!)
-                KeyboardViewController.shared.updateDocumentContext()
-                
-                autorepeatThread = Thread(block: {
-                    let thread = self.autorepeatThread!
-                    
-                    Thread.sleep(forTimeInterval: 0.5)
-                    
-                    while thread.isCancelled == false {
-                        
-                        OperationQueue.main.addOperation {
-                            KeyboardViewController.shared.keyAction(label: self.mainLabelView.text!)
-                            KeyboardViewController.shared.updateDocumentContext()
-                        }
-                        
-                        Thread.sleep(forTimeInterval: 0.1)
-                    }
-                    
-                    Thread.exit()
-                })
-                
-                autorepeatThread?.start()
+                startAutorepeat()
             }
             
         case .ended:
             
-            autorepeatThread?.cancel()
-            
-            if specialKey != .delete {
-                KeyboardViewController.shared.keyAction(label: mainLabelView.text!)
-                KeyboardViewController.shared.updateDocumentContext()
+            if specialKey == .delete {
+                stopAutorepeat()
+            }
+            else {
+                input()
             }
             
-            isHighlighted = false
-            
-            mainLabelView.text = mainLabel
+            keyState = .default
             
         default:
             
@@ -323,11 +404,7 @@ class KeyView: UIButton, ConfigurableView {
     }
     
     var specialKey: SpecialKey? {
-        guard let label = mainLabelView.text else {
-            return nil
-        }
-        
-        return SpecialKey(rawValue: label)
+        return SpecialKey(rawValue: mainLabel)
     }
     
     var keyState: KeyState = .default {
@@ -337,9 +414,12 @@ class KeyView: UIButton, ConfigurableView {
             switch keyState {
             case .default:
                 mainLabelView.text = mainLabel
+                updateLocalizedStrings()
                 isHighlighted = false
+                
             case .tap:
                 mainLabelView.text = mainLabel
+                updateLocalizedStrings()
                 
             case .shiftUp:
                 if shiftUpLabelView.text != nil && shiftUpLabelView.text != "" {

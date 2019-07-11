@@ -25,8 +25,8 @@ class LabelView: UILabel {
             frame.size = intrinsicContentSize
             
             for view in parentViews {
-                if let configureView = view as? ConfigurableView {
-                    configureView.configure()
+                if let configurableView = view as? ConfigurableView {
+                    configurableView.configure()
                 }
             }
         }

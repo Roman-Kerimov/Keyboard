@@ -1,30 +1,25 @@
 //
-//  SettingsViewController.swift
+//  ViewController<UIView>.swift
 //  iOSKeyboard
 //
-//  Created by Roman Kerimov on 22.01.17.
+//  Created by Roman Kerimov on 07.02.17.
 //
 //
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+class ViewController<View: UIView>: UIViewController {
     
-    var settingsView: SettingsView {
-        return view as! SettingsView
-    }
+    let rootView = View()
     
     override func loadView() {
-        view = SettingsView()
+        view = rootView
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        settingsView.initialize()
-        settingsView.settingsViewController = self
     }
 
     override func didReceiveMemoryWarning() {

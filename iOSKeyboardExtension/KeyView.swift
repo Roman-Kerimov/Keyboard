@@ -34,12 +34,10 @@ class KeyView: UIView {
     
     var maxKeyWidth: CGFloat!
     
-    func configure(for keyboardView: KeyboardView) {
-        maxKeyWidth = keyboardView.maxKeyWidth
+    func configure(maxKeyWidth: CGFloat, keySize: CGSize, minimalScreenSize: CGSize, sizeInKeysForVerticalMode: CGSize) {
+        self.maxKeyWidth = maxKeyWidth
         
-        let width = keyboardView.keySize.width
-        
-        let keySpace = width * 0.1
+        let keySpace = keySize.width * 0.1
         
         backgroundView.layer.cornerRadius = keySpace
         
@@ -53,8 +51,8 @@ class KeyView: UIView {
         backgroundView.layoutMargins = UIEdgeInsets(top: verticalShiftLabelIndent, left: horizontalShiftLabelIndent, bottom: verticalShiftLabelIndent, right: horizontalShiftLabelIndent)
         
         let keyWidthForCalculateFontSize = max(
-            keyboardView.keySize.width,
-            keyboardView.minimalScreenSize.width / keyboardView.sizeInKeysForVerticalMode.width
+            keySize.width,
+            minimalScreenSize.width / sizeInKeysForVerticalMode.width
         )
         
         let labelFontSize = keyWidthForCalculateFontSize * 6/15
@@ -154,8 +152,6 @@ class KeyView: UIView {
         mainLabel = ""
         super.init(coder: aDecoder)
     }
-    
-    var action: ((String) -> Void)?
 
     var gestureStartPoint: CGPoint!
     
@@ -177,7 +173,7 @@ class KeyView: UIView {
             gestureStartPoint = gesture.location(in: self)
             
             if label.text == deleteLabel {
-                self.action?(self.label.text!)
+                KeyboardViewController.shared.keyAction(label: self.label.text!)
                 
                 autorepeatThread = Thread(block: {
                     let thread = self.autorepeatThread!
@@ -185,7 +181,7 @@ class KeyView: UIView {
                     Thread.sleep(forTimeInterval: 0.5)
                     
                     while thread.isCancelled == false {
-                        self.action?(self.label.text!)
+                        KeyboardViewController.shared.keyAction(label: self.label.text!)
                         Thread.sleep(forTimeInterval: 0.1)
                     }
                     
@@ -200,7 +196,7 @@ class KeyView: UIView {
             autorepeatThread?.cancel()
             
             if label.text != deleteLabel {
-                action?(label.text!)
+                KeyboardViewController.shared.keyAction(label: self.label.text!)
             }
             
             backgroundView.backgroundColor = colorScheme.keyColor
@@ -221,7 +217,7 @@ class KeyView: UIView {
                 y: gestureCurrentPoint.y - gestureStartPoint.y
             )
             
-            let threshold = CGPoint(x: maxKeyWidth / 2, y: bounds.size.height / 4)
+            let threshold = CGPoint(x: min(maxKeyWidth / 2, bounds.size.width / 4), y: bounds.size.height / 4)
             
             let isUpShift = offset.y < -threshold.y
             let isDownShift = offset.y > threshold.y

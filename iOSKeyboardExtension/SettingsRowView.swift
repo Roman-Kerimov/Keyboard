@@ -91,11 +91,6 @@ class SettingsRowView: UIStackView {
         
         settingsButton.setTitle("⚬⚬⚬", for: [])
         
-        Internationalize.setString {
-            self.conversionModeSegmentedControl.setTitle(NonConversionModeTitle.string, forSegmentAt: 0)
-            self.conversionModeSegmentedControl.setTitle(ConversionModeTitle.string, forSegmentAt: 1)
-        }
-        
         controls = [nextKeyboardButton, hideButton, layoutModeSegmentedControl, conversionModeSegmentedControl, settingsButton]
         
         for control in controls {
@@ -112,5 +107,12 @@ class SettingsRowView: UIStackView {
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func updateLocalizedStrings() {
+        super.updateLocalizedStrings()
+        
+        conversionModeSegmentedControl.setTitle(NonConversionModeTitle.string, forSegmentAt: 0)
+        conversionModeSegmentedControl.setTitle(ConversionModeTitle.string, forSegmentAt: 1)
     }
 }

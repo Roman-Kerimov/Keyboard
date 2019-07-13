@@ -19,6 +19,7 @@ class AppDelegate: NSObject {
     private var previousDocumentContext: DocumentContext = .init()
     static var preEnterDocumentContext: DocumentContext?
     
+    static let keyboardWindow: KeyboardWindow = .init()
     static let characterSearchWindow = CharacterSearchWindow.init()
     static let characterSequenceWindow: CharacterSequenceWindow = .init()
     

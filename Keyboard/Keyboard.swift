@@ -552,6 +552,7 @@ final class Keyboard: BindableObject {
             UserDefaults.standard.synchronize()
             
             didChange.send(self)
+            Key.keys.forEach {$0.didChange.send($0)}
         }
     }
     

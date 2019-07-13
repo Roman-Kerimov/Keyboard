@@ -5,9 +5,11 @@
 //  Created by Roman Kerimov on 2018-01-12.
 //
 
-import Foundation
+import SwiftUI
+import Combine
 
-final class Key {
+final class Key: BindableObject {
+    var didChange: PassthroughSubject<Key, Never> = .init()
     
     let keycode: Keycode
     
@@ -15,11 +17,11 @@ final class Key {
         self.keycode = keycode
     }
     
-    private static let keys: [Key] = (0..<Keycode.keycodeMaxCount).map {Key.init(keycode: $0)}
+    static let keys: [Key] = (0..<Keycode.keycodeMaxCount).map {Key.init(keycode: $0)}
     
     static func by(keycode: Keycode) -> Key {keys[keycode]}
     
-    static let keysByLabel: [String: Key] = .init(uniqueKeysWithValues: keys.filter {!$0.label.isEmpty} .map {($0.label, $0)})
+    static let keysByLabel: [String: Key] = .init(uniqueKeysWithValues: keys.filter {!$0.label.isEmpty && !Key.specialKeys.contains($0)} .map {($0.label, $0)})
     
     static func by(labelCharacter: Character) -> Key? {
         guard let key = keysByLabel[labelCharacter.description] else {
@@ -64,8 +66,30 @@ final class Key {
         switch self {
         case .delete:
             return "delete"
+        case .tab:
+            return "tab"
+        case .capsLock:
+            return "complete"
         case .enter:
             return "enter"
+        case .leftShift, .rightShift:
+            return "shift"
+        case .fn:
+            return "fn"
+        case .leftControl, .rightControl:
+            return "control"
+        case .leftOption, .rightOption:
+            return "option"
+        case .leftCommand, .rightCommand:
+            return "command"
+        case .leftArrow:
+            return "←"
+        case .upArrow:
+            return "↑"
+        case .downArrow:
+            return "↓"
+        case .rightArrow:
+            return "→"
         case .nextKeyboard:
             return "NextKeyboard"
         case .dismissKeyboard:
@@ -113,16 +137,19 @@ extension Key: Equatable {
 extension Key {
     
     static let board: [[Key]] = [
-        [.esc, .f1, .f2, .f3, .f4, .f5, .f6, .f7, .f8, .f9, .f10, .f11, .f12],
         [.grave, .one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .zero, .hyphenMinus, .equal, .delete],
         [.tab, .q, .w, .e, .r, .t, .y, .u, .i, .o, .p, .leftSquareBracket, .rightSquareBracket, .reverseSolidus],
         [.capsLock, .a, .s, .d, .f, .g, .h, .j, .k, .l, .semicolon, .apostrophe, .enter],
         [.leftShift, .z, .x, .c, .v, .b, .n, .m, .comma, .fullStop, .solidus, .rightShift],
-        [.fn, .leftControl, .leftOption, .leftCommand, .space, .rightCommand, .rightOption],
-        [.upArrow, .leftArrow, .downArrow, .rightArrow]
+        [.fn, .leftControl, .leftOption, .leftCommand, .space, .rightCommand, .rightOption, .leftArrow, .upArrow, .downArrow, .rightArrow]
     ]
     
-    static let layoutBoard: [[Key]] = board.dropFirst(2).prefix(3).map {.init($0.dropFirst(1).prefix(10))}
+    static let arrowKeys: [Key] = [.upArrow, .leftArrow, .downArrow, .rightArrow]
+    static let leftSpecialKeys: [Key] = [.tab, .capsLock, .leftShift, .fn, .leftControl, .leftOption, .leftCommand]
+    static let rightSpecialKeys: [Key] = [.delete, .enter, .rightShift, .rightControl, .rightOption, .rightCommand]
+    static let specialKeys: [Key] = leftSpecialKeys + rightSpecialKeys + arrowKeys
+    
+    static let layoutBoard: [[Key]] = board.dropFirst(1).prefix(3).map {.init($0.dropFirst(1).prefix(10))}
     static let layoutBoardRowCount = layoutBoard.count
     static let layoutBoardColumnCount = layoutBoard.first!.count
     
@@ -204,6 +231,7 @@ extension Key {
     static let space = keys[49]
     static let rightCommand = keys[54]
     static let rightOption = keys[61]
+    static let rightControl = keys[62]
     
     static let upArrow = keys[126]
     static let leftArrow = keys[123]

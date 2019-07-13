@@ -11,6 +11,7 @@ import SwiftUI
 extension String {
     static var legalTextFontName = "System Font Bold"
     static let characterFontName = "STIXGeneral"
+    static let specialKeyLabelFont = "System Font"
     
     static let space: String = Character.space.description
     static let `return`: String = Character.return.description

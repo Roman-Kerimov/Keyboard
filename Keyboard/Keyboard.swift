@@ -442,6 +442,7 @@ final class Keyboard: BindableObject {
     private init() {
         
         UserDefaults.standard.register(defaults: [layoutKey : KeyboardLayout.qwerty.name])
+        previewLayout = layout
         
         NotificationCenter.default.addObserver(self, selector: #selector(documentContextDidChange), name: .DocumentContextDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(search), name: .UnicodeDataFilesDidLoad, object: nil)

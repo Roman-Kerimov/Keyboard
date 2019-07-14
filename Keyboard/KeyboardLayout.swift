@@ -68,7 +68,7 @@ struct KeyboardLayout: Equatable {
 // MARK: - Layouts
 extension KeyboardLayout {
     
-    static let list: [KeyboardLayout] = [.qwerty, .dvorak, .colemak, .azerty, .qwertz]
+    static let list: [KeyboardLayout] = [.qwerty, .dvorak, .colemak, .azerty, .qwertz, .qzerty]
     
     static let qwerty = KeyboardLayout(
         name: "QWERTY",
@@ -118,6 +118,16 @@ extension KeyboardLayout {
             [ .y, .x, .c, .v, .b, .n, .m, .comma, .fullStop, .hyphen,       ],
         ],
         defaultInputSourceID: "com.apple.keylayout.ABC-QWERTZ"
+    )
+    
+    static let qzerty = KeyboardLayout(
+        name: "QZERTY",
+        rows: [
+            [ .q, .z, .e, .r, .t, .y, .u, .i,     .o,        .p,            ],
+            [ .a, .s, .d, .f, .g, .h, .j, .k,     .l,        .questionMark, ],
+            [ .w, .x, .c, .v, .b, .n, .m, .comma, .fullStop, .hyphen,       ],
+        ],
+        defaultInputSourceID: "com.apple.keylayout.Italian"
     )
 }
 

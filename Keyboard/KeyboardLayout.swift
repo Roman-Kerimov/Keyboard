@@ -23,8 +23,6 @@ struct KeyboardLayout: Equatable {
         .init(characterComponents + KeyboardLayout.option.characterComponents + KeyboardLayout.shiftUpDictionary.values + [.space])
     }
     
-    static let list: [KeyboardLayout] = [.qwerty, .dvorak, .colemak, .azerty, .qwertz]
-    
     private init(name: String = "", rows: [[CharacterComponent]] = .init(repeating: .init(repeating: .zero, count: Key.layoutBoardColumnCount), count: Key.layoutBoardRowCount), defaultInputSourceID: String = "") {
         self.name = name
         
@@ -50,7 +48,28 @@ struct KeyboardLayout: Equatable {
             [ .curlyBracket, .squareBracket, .leftParenthesis, .lessThanSign, .solidus, .zero,               .one,   .two,   .three, .equalsSign, ],
         ]
     )
+    
+    static let shiftUpDictionary: [CharacterComponent: CharacterComponent] = [
+        .fullStop: .colon,
+        .comma: .semicolon,
+        .questionMark: .exclamationMark,
+        .apostrophe: .quotationMark,
+        .hyphen: .lowLine,
+    ]
+    
+    static let shiftRightDictionary: [CharacterComponent: CharacterComponent] = [
+        .lessThanSign: .greaterThanSign,
+        .leftParenthesis: .rightParenthesis,
+    ]
+    
+    static let reversedShiftRightDictionary = Dictionary.init(uniqueKeysWithValues: shiftRightDictionary.map {($1, $0)})
+}
 
+// MARK: - Layouts
+extension KeyboardLayout {
+    
+    static let list: [KeyboardLayout] = [.qwerty, .dvorak, .colemak, .azerty, .qwertz]
+    
     static let qwerty = KeyboardLayout(
         name: "QWERTY",
         rows: [
@@ -100,21 +119,6 @@ struct KeyboardLayout: Equatable {
         ],
         defaultInputSourceID: "com.apple.keylayout.ABC-QWERTZ"
     )
-    
-    static let shiftUpDictionary: [CharacterComponent: CharacterComponent] = [
-        .fullStop: .colon,
-        .comma: .semicolon,
-        .questionMark: .exclamationMark,
-        .apostrophe: .quotationMark,
-        .hyphen: .lowLine,
-    ]
-    
-    static let shiftRightDictionary: [CharacterComponent: CharacterComponent] = [
-        .lessThanSign: .greaterThanSign,
-        .leftParenthesis: .rightParenthesis,
-    ]
-    
-    static let reversedShiftRightDictionary = Dictionary.init(uniqueKeysWithValues: shiftRightDictionary.map {($1, $0)})
 }
 
 extension Array where Element == KeyboardLayout {

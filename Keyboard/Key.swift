@@ -52,13 +52,13 @@ final class Key: BindableObject {
     }
     
     private var mainComponent: CharacterComponent {
-        return Keyboard.default.layout.characterComponent(fromKeycode: keycode)
+        return Keyboard.default.previewLayout.characterComponent(fromKeycode: keycode)
     }
     
     var label: String {
         
         #if canImport(Carbon)
-        if Keyboard.default.layout == .system {
+        if Keyboard.default.previewLayout == .system {
             return keycode.label(flags: [])
         }
         #endif

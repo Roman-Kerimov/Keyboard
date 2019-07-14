@@ -16,6 +16,7 @@ class StatusMenu: NSMenu {
     init() {
         super.init(title: .init())
         
+        delegate = self
         let controlText = "Kd"
         let controlTextFont: NSFont = .boldMenuFont
         
@@ -55,5 +56,26 @@ class StatusMenu: NSMenu {
     
     required init(coder decoder: NSCoder) {
         super.init(coder: decoder)
+    }
+}
+
+// MARK: - NSMenuDelegate
+extension StatusMenu: NSMenuDelegate {
+    
+    func menu(_ menu: NSMenu, willHighlight item: NSMenuItem?) {
+        DispatchQueue.main.async {
+            if let layoutItem = item as? LayoutMenuItem {
+                AppDelegate.keyboardWindow.setIsVisible(true)
+                Keyboard.default.previewLayout = layoutItem.layout
+            }
+            else {
+                AppDelegate.keyboardWindow.setIsVisible(false)
+                Keyboard.default.previewLayout = Keyboard.default.layout
+            }
+        }
+    }
+    
+    func menuDidClose(_ menu: NSMenu) {
+        AppDelegate.keyboardWindow.setIsVisible(false)
     }
 }

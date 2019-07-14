@@ -541,6 +541,12 @@ final class Keyboard: BindableObject {
     }
     
     
+    var previewLayout: KeyboardLayout = .system {
+        didSet {
+            Key.keys.forEach {$0.didChange.send($0)}
+        }
+    }
+    
     private let layoutKey = "LBPQsNPr8gJHi8Ds05etypaTVEiq8X1"
     var layout: KeyboardLayout {
         get {
@@ -551,8 +557,8 @@ final class Keyboard: BindableObject {
             UserDefaults.standard.set(newValue.name, forKey: layoutKey)
             UserDefaults.standard.synchronize()
             
+            previewLayout = newValue
             didChange.send(self)
-            Key.keys.forEach {$0.didChange.send($0)}
         }
     }
     

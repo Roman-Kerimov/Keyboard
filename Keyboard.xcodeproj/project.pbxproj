@@ -19,6 +19,7 @@
 		960F7E8222CD628B00419F62 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960F7E8022CD628B00419F62 /* UIFont.swift */; };
 		960F7E8422CD62FE00419F62 /* NSFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960F7E8322CD62FE00419F62 /* NSFont.swift */; };
 		960FEFEE203D37590099E449 /* AXAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960FEFED203D37590099E449 /* AXAttribute.swift */; };
+		96122C0622DBA18000125F65 /* LegalNoticesWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96122C0522DBA18000125F65 /* LegalNoticesWindow.swift */; };
 		96167F5122C7B5300004DC8D /* CharacterSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96167F5022C7B5300004DC8D /* CharacterSearch.swift */; };
 		96167F5222C7B5300004DC8D /* CharacterSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96167F5022C7B5300004DC8D /* CharacterSearch.swift */; };
 		96167F5322C7B5300004DC8D /* CharacterSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96167F5022C7B5300004DC8D /* CharacterSearch.swift */; };
@@ -410,6 +411,7 @@
 		960F7E8022CD628B00419F62 /* UIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIFont.swift; path = "Keyboard iOSExtension/UIFont.swift"; sourceTree = SOURCE_ROOT; };
 		960F7E8322CD62FE00419F62 /* NSFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSFont.swift; sourceTree = "<group>"; };
 		960FEFED203D37590099E449 /* AXAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AXAttribute.swift; sourceTree = "<group>"; };
+		96122C0522DBA18000125F65 /* LegalNoticesWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalNoticesWindow.swift; sourceTree = "<group>"; };
 		96167F5022C7B5300004DC8D /* CharacterSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSearch.swift; sourceTree = "<group>"; };
 		961CE9F621B0CCEA00E1A14D /* AutocompleteUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteUIView.swift; sourceTree = "<group>"; };
 		961CE9FE21B0D32800E1A14D /* ReuseIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReuseIdentifier.swift; sourceTree = "<group>"; };
@@ -795,6 +797,7 @@
 				96BE9C7020A8340400C2C03F /* CharacterSearchWindow.swift */,
 				963212B5217C61BB00E8A6B2 /* CharacterSequenceWindow.swift */,
 				963212B3217B820500E8A6B2 /* FloatingWindow.swift */,
+				96122C0522DBA18000125F65 /* LegalNoticesWindow.swift */,
 				96B8908A21E04EA800917CB2 /* GuideWindow.swift */,
 			);
 			path = Windows;
@@ -1474,6 +1477,7 @@
 				969450C220B3215100DD7EF3 /* URL.swift in Sources */,
 				960FEFEE203D37590099E449 /* AXAttribute.swift in Sources */,
 				9697F881202FA88C001EC50A /* Localization.swift in Sources */,
+				96122C0622DBA18000125F65 /* LegalNoticesWindow.swift in Sources */,
 				963A53F8214808D2001CAD75 /* codeScriptDictionary.swift in Sources */,
 				96F507DE22CD3F36008EECDA /* Double.swift in Sources */,
 				96E0340C2031567A0039E653 /* ROUTE.swift in Sources */,

@@ -13,7 +13,7 @@ final class CharacterSequenceWindow: FloatingWindow {
         super.init()
         
         contentView = NSHostingView.init(rootView: CharacterSequenceView().environmentObject(Keyboard.default.characterSequence))
-        setFrame(.init(origin: .zero, size: .init(width: 1, height: .characterSequenceDefaultHeight)), display: true)
+        setContentSize(.init(width: 1, height: .characterSequenceDefaultHeight))
     }
     
     func updateFrame(width: Length = 1) {

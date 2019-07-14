@@ -13,6 +13,6 @@ final class CharacterSearchWindow: FloatingWindow {
         super.init()
         
         contentView = NSHostingView(rootView: CharacterSearchView().environmentObject(Keyboard.default.characterSearch))
-        setFrame(.init(origin: .zero, size: .init(width: .characterSearchDefaultWidth, height: .characterSearchDefaultHeight)), display: true)
+        setContentSize(.init(width: .characterSearchDefaultWidth, height: .characterSearchDefaultHeight))
     }
 }

@@ -36,7 +36,7 @@ struct CharacterSearchView_Previews : PreviewProvider {
         LoadUnicodeDataFiles.init().start()
         
         return Group {
-            ForEach(["face", "keyboard", "thum", "ru"].identified(by: \.self)) { searchQuery in
+            ForEach(["face", "keyboard", "thum", "ru"], id: \.self) { searchQuery in
                 CharacterSearchView()
                     .environmentObject(CharacterSearch.init(query: searchQuery))
                     .previewDisplayName(searchQuery)

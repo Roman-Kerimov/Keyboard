@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 final class Key: BindableObject {
-    var didChange: PassthroughSubject<Key, Never> = .init()
+    var willChange: PassthroughSubject<Key, Never> = .init()
     
     let keycode: Keycode
     

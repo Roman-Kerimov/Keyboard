@@ -14,7 +14,7 @@ struct KeyboardView : View {
         VStack(alignment: .leading, spacing: 0) {
             ForEach(0..<Key.board.count) { rowIndex in
                 HStack(alignment: .bottom, spacing: 0) {
-                    ForEach(Key.board[rowIndex].identified(by: \.keycode)) { key in
+                    ForEach(Key.board[rowIndex], id: \.keycode) { key in
                         KeyView()
                             .environmentObject(key)
                     }

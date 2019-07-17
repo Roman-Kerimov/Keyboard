@@ -176,7 +176,7 @@ extension AppDelegate: NSApplicationDelegate {
         
         CFNotificationCenterAddObserver(CFNotificationCenterGetDistributedCenter(), nil, AppDelegate.synchronizeKeyboardLayoutNotificationCallback, kTISNotifySelectedKeyboardInputSourceChanged, nil, .deliverImmediately)
         
-        _ = Keyboard.default.didChange.sink { (keyboard) in
+        _ = Keyboard.default.willChange.sink { (keyboard) in
             let inputSource = TISInputSource.inputSourceList[keyboard.layout.inputSourceID]
             TISEnableInputSource(inputSource)
             TISSelectInputSource(inputSource)

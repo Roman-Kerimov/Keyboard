@@ -12,7 +12,7 @@ class FloatingWindow: NSWindow {
     init() {
         super.init(
             contentRect: .zero,
-            styleMask: [.titled, .fullSizeContentView],
+            styleMask: [.fullSizeContentView],
             backing: .buffered,
             defer: true
         )
@@ -20,7 +20,6 @@ class FloatingWindow: NSWindow {
         level = .floating
         collectionBehavior = .canJoinAllSpaces
         allowsToolTipsWhenApplicationIsInactive = true
-        titlebarAppearsTransparent = true
         titleVisibility = .hidden
         isMovable = false
         

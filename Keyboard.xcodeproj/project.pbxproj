@@ -174,12 +174,6 @@
 		9697C3E520BB514900FE3007 /* UnicodeDataFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9697C3E220BB514900FE3007 /* UnicodeDataFile.swift */; };
 		9697F881202FA88C001EC50A /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9694E23C1E29D72800ED3A85 /* Localization.swift */; };
 		9697F882202FA8A1001EC50A /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D2B8DC1E35538B006772A5 /* Languages.swift */; };
-		969C3BC422A8962D0070F0B7 /* Calculator in Frameworks */ = {isa = PBXBuildFile; productRef = 969C3BC322A8962D0070F0B7 /* Calculator */; };
-		969C3BC622A8962D0070F0B7 /* LinguisticKit in Frameworks */ = {isa = PBXBuildFile; productRef = 969C3BC522A8962D0070F0B7 /* LinguisticKit */; };
-		969C3BC822A896730070F0B7 /* Calculator in Frameworks */ = {isa = PBXBuildFile; productRef = 969C3BC722A896730070F0B7 /* Calculator */; };
-		969C3BCA22A896730070F0B7 /* LinguisticKit in Frameworks */ = {isa = PBXBuildFile; productRef = 969C3BC922A896730070F0B7 /* LinguisticKit */; };
-		969C3BCC22A896850070F0B7 /* Calculator in Frameworks */ = {isa = PBXBuildFile; productRef = 969C3BCB22A896850070F0B7 /* Calculator */; };
-		969C3BCE22A896850070F0B7 /* LinguisticKit in Frameworks */ = {isa = PBXBuildFile; productRef = 969C3BCD22A896850070F0B7 /* LinguisticKit */; };
 		969E83051EED842E009A1F2D /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969E83041EED842E009A1F2D /* UIView.swift */; };
 		969F15F51E549BD300C0DD7D /* ViewController<UIView>.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969F15F41E549BD300C0DD7D /* ViewController<UIView>.swift */; };
 		969F15F71E54EE3600C0DD7D /* LanguagesUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969F15F61E54EE3600C0DD7D /* LanguagesUIView.swift */; };
@@ -499,8 +493,6 @@
 		9697C3DC20BB180300FE3007 /* ReadMe.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
 		9697C3DD20BB180300FE3007 /* emoji-sequences.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "emoji-sequences.txt"; sourceTree = "<group>"; };
 		9697C3E220BB514900FE3007 /* UnicodeDataFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnicodeDataFile.swift; sourceTree = "<group>"; };
-		969C3BC022A895E10070F0B7 /* LinguisticKit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = LinguisticKit; sourceTree = "<group>"; };
-		969C3BC222A895EB0070F0B7 /* Calculator */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Calculator; sourceTree = "<group>"; };
 		969E83041EED842E009A1F2D /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		969F15F41E549BD300C0DD7D /* ViewController<UIView>.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController<UIView>.swift"; sourceTree = "<group>"; };
 		969F15F61E54EE3600C0DD7D /* LanguagesUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguagesUIView.swift; sourceTree = "<group>"; };
@@ -570,8 +562,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				969C3BC622A8962D0070F0B7 /* LinguisticKit in Frameworks */,
-				969C3BC422A8962D0070F0B7 /* Calculator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -579,8 +569,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				969C3BCA22A896730070F0B7 /* LinguisticKit in Frameworks */,
-				969C3BC822A896730070F0B7 /* Calculator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -595,8 +583,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				969C3BCC22A896850070F0B7 /* Calculator in Frameworks */,
-				969C3BCE22A896850070F0B7 /* LinguisticKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -712,8 +698,6 @@
 				9697C3D720BB180300FE3007 /* Emoji */,
 				964AB9321D1B6490004C827C /* Products */,
 				96DB1A77202FB80300B96D3C /* Frameworks */,
-				969C3BC222A895EB0070F0B7 /* Calculator */,
-				969C3BC022A895E10070F0B7 /* LinguisticKit */,
 			);
 			sourceTree = "<group>";
 		};
@@ -992,8 +976,6 @@
 			);
 			name = "Keyboard iOS";
 			packageProductDependencies = (
-				969C3BC322A8962D0070F0B7 /* Calculator */,
-				969C3BC522A8962D0070F0B7 /* LinguisticKit */,
 			);
 			productName = Keyboard_iOS;
 			productReference = 964AB9311D1B6490004C827C /* Keyboard.app */;
@@ -1013,8 +995,6 @@
 			);
 			name = "Keyboard iOSExtension";
 			packageProductDependencies = (
-				969C3BC722A896730070F0B7 /* Calculator */,
-				969C3BC922A896730070F0B7 /* LinguisticKit */,
 			);
 			productName = Keyboard_iOSExtension;
 			productReference = 964AB9671D1B6535004C827C /* KeyboardExtension.appex */;
@@ -1053,8 +1033,6 @@
 			);
 			name = "Keyboard macOS";
 			packageProductDependencies = (
-				969C3BCB22A896850070F0B7 /* Calculator */,
-				969C3BCD22A896850070F0B7 /* LinguisticKit */,
 			);
 			productName = Keyboard_macOS;
 			productReference = 96E354E72020DDBC00668374 /* Keyboard.app */;
@@ -1875,33 +1853,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		969C3BC322A8962D0070F0B7 /* Calculator */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Calculator;
-		};
-		969C3BC522A8962D0070F0B7 /* LinguisticKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = LinguisticKit;
-		};
-		969C3BC722A896730070F0B7 /* Calculator */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Calculator;
-		};
-		969C3BC922A896730070F0B7 /* LinguisticKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = LinguisticKit;
-		};
-		969C3BCB22A896850070F0B7 /* Calculator */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Calculator;
-		};
-		969C3BCD22A896850070F0B7 /* LinguisticKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = LinguisticKit;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 964AB9271D1B63C0004C827C /* Project object */;
 }

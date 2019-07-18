@@ -28,7 +28,7 @@ struct CharacterSequenceView : View {
         return GeometryReader { geometry in
             ScrollView(.horizontal, showsIndicators: true) {
                 HStack {
-                    ForEach(characterItems.identified(by: \.character)) { item in
+                    ForEach(characterItems, id: \.character ) { item in
                         Text(item.character)
                             .frame(width: item.width, height: geometry.size.height)
                             .font(.custom(.characterFontName, size: self.fontSize))

@@ -1,18 +1,11 @@
 //
-//  CombineBackwardCompatibility.swift
+//  NotificationCenter.swift
 //  Keyboard
 //
-//  Created by Roman Kerimov on 2019-07-01.
+//  Created by Roman Kerimov on 2019-07-18.
 //
 
 import Foundation
-
-protocol BindableObject {}
-class PassthroughSubject<Output, Failure> where Failure : Error {
-    func send(_ input: Output) {
-        NotificationCenter.default.post(input)
-    }
-}
 
 extension NotificationCenter {
     func post(_ input: Any) {

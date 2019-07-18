@@ -38,8 +38,8 @@
 		96200BEB208CDC8D002930D6 /* ENABLE_KEYBOARD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96200BE8208CDC8D002930D6 /* ENABLE_KEYBOARD.swift */; };
 		9620E748202B9EB1003FB02E /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9620E747202B9EB1003FB02E /* Bundle.swift */; };
 		9620E749202B9EB1003FB02E /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9620E747202B9EB1003FB02E /* Bundle.swift */; };
-		962A3E1F22C9655E0024D0AF /* CombineBackwardCompatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A3E1E22C9655E0024D0AF /* CombineBackwardCompatibility.swift */; };
-		962A3E2022C9655E0024D0AF /* CombineBackwardCompatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A3E1E22C9655E0024D0AF /* CombineBackwardCompatibility.swift */; };
+		962A3E1F22C9655E0024D0AF /* SwiftUICombineStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A3E1E22C9655E0024D0AF /* SwiftUICombineStub.swift */; };
+		962A3E2022C9655E0024D0AF /* SwiftUICombineStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A3E1E22C9655E0024D0AF /* SwiftUICombineStub.swift */; };
 		962A3E2322C96E1F0024D0AF /* LegalNoticesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A3E2222C96E1F0024D0AF /* LegalNoticesView.swift */; };
 		962A3E2D22C9F8140024D0AF /* CharacterSequenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A3E2C22C9F8140024D0AF /* CharacterSequenceView.swift */; };
 		962A3E3022C9F8B40024D0AF /* CharacterSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A3E2F22C9F8B40024D0AF /* CharacterSequence.swift */; };
@@ -185,6 +185,9 @@
 		969F15F71E54EE3600C0DD7D /* LanguagesUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969F15F61E54EE3600C0DD7D /* LanguagesUIView.swift */; };
 		96A15AD52243EE36008F0BE6 /* GuideTableUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A15AD42243EE36008F0BE6 /* GuideTableUIView.swift */; };
 		96A41BD122C22986009057F5 /* CharacterSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A41BCF22C22986009057F5 /* CharacterSearchView.swift */; };
+		96AAF02822DFE4C300F4DE7A /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AAF02722DFE4C300F4DE7A /* NotificationCenter.swift */; };
+		96AAF02922DFE4C300F4DE7A /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AAF02722DFE4C300F4DE7A /* NotificationCenter.swift */; };
+		96AAF02A22DFE4C300F4DE7A /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AAF02722DFE4C300F4DE7A /* NotificationCenter.swift */; };
 		96AC6CA3203C23B200555164 /* CGEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AC6CA2203C23B200555164 /* CGEvent.swift */; };
 		96ACD588205261EE007CFDCF /* NSPasteboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96ACD587205261EE007CFDCF /* NSPasteboard.swift */; };
 		96AE677B22DA6270009439E1 /* Length.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AE677A22DA6270009439E1 /* Length.swift */; };
@@ -420,7 +423,7 @@
 		961FC3301F3AE14B00ADB15D /* legalNotices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = legalNotices.swift; sourceTree = "<group>"; };
 		96200BE8208CDC8D002930D6 /* ENABLE_KEYBOARD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ENABLE_KEYBOARD.swift; sourceTree = "<group>"; };
 		9620E747202B9EB1003FB02E /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
-		962A3E1E22C9655E0024D0AF /* CombineBackwardCompatibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineBackwardCompatibility.swift; sourceTree = "<group>"; };
+		962A3E1E22C9655E0024D0AF /* SwiftUICombineStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUICombineStub.swift; sourceTree = "<group>"; };
 		962A3E2222C96E1F0024D0AF /* LegalNoticesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalNoticesView.swift; sourceTree = "<group>"; };
 		962A3E2C22C9F8140024D0AF /* CharacterSequenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSequenceView.swift; sourceTree = "<group>"; };
 		962A3E2F22C9F8B40024D0AF /* CharacterSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSequence.swift; sourceTree = "<group>"; };
@@ -503,6 +506,7 @@
 		969F15F61E54EE3600C0DD7D /* LanguagesUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguagesUIView.swift; sourceTree = "<group>"; };
 		96A15AD42243EE36008F0BE6 /* GuideTableUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideTableUIView.swift; sourceTree = "<group>"; };
 		96A41BCF22C22986009057F5 /* CharacterSearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterSearchView.swift; sourceTree = "<group>"; };
+		96AAF02722DFE4C300F4DE7A /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotificationCenter.swift; path = ../../../../../../System/Volumes/Data/Users/romankerimov/Documents/Xcode/Keyboard/Keyboard/NotificationCenter.swift; sourceTree = "<group>"; };
 		96AC6CA2203C23B200555164 /* CGEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGEvent.swift; sourceTree = "<group>"; };
 		96ACD587205261EE007CFDCF /* NSPasteboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSPasteboard.swift; sourceTree = "<group>"; };
 		96AE677A22DA6270009439E1 /* Length.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Length.swift; sourceTree = "<group>"; };
@@ -757,7 +761,6 @@
 				960F6E941EC9F7E600EFC7B7 /* CharacterSearchUIView.swift */,
 				9665F3751E9D847300850F97 /* CharacterSequenceUIView.swift */,
 				96F7FBE81FBB299400F7146C /* CollectionViewFlowLayout.swift */,
-				962A3E1E22C9655E0024D0AF /* CombineBackwardCompatibility.swift */,
 				9633A3C91E5DFE8D00DFA503 /* DeleteRowUIView.swift */,
 				966194D21DE2FCEF007FCF02 /* KeyboardLayoutUIView.swift */,
 				965D15C01D3146BB0098FA57 /* KeyboardUIView.swift */,
@@ -771,6 +774,7 @@
 				964ECA7D1E536FE8008E8757 /* SettingsContainerUIView.swift */,
 				96F8D1D01E26FAE0000D1DFC /* SettingsUIView.swift */,
 				9654DF791D4E1D0900DDB0EF /* SpaceRowUIView.swift */,
+				962A3E1E22C9655E0024D0AF /* SwiftUICombineStub.swift */,
 				968694C01EA0F3D100E6C9D0 /* UIColor.swift */,
 				960F7E8022CD628B00419F62 /* UIFont.swift */,
 				96EA39D61EAFDDDE00F3D804 /* UIImage.swift */,
@@ -881,6 +885,7 @@
 				967491B41EE16BDD00DC19E0 /* CharacterSet.swift */,
 				966F34ED22C2419D00147B72 /* CGFloat.swift */,
 				96F507DB22CD3F36008EECDA /* Double.swift */,
+				96AAF02722DFE4C300F4DE7A /* NotificationCenter.swift */,
 			);
 			path = Keyboard;
 			sourceTree = "<group>";
@@ -1229,7 +1234,7 @@
 				96BCF29122443C22001C87AF /* LegalNoticesUIViewCell.swift in Sources */,
 				962B5343218C91EA001C4914 /* CGRect.swift in Sources */,
 				96533A781F12938D00B07CA3 /* KeyboardUIViewController.swift in Sources */,
-				962A3E1F22C9655E0024D0AF /* CombineBackwardCompatibility.swift in Sources */,
+				962A3E1F22C9655E0024D0AF /* SwiftUICombineStub.swift in Sources */,
 				96533A871F12938D00B07CA3 /* LabelUIView.swift in Sources */,
 				96533A791F12938D00B07CA3 /* KeyboardUIView.swift in Sources */,
 				961CE9F821B0CD0100E1A14D /* AutocompleteUIView.swift in Sources */,
@@ -1297,6 +1302,7 @@
 				96E033EE203154660039E653 /* LANGUAGE.swift in Sources */,
 				96533A7C1F12938D00B07CA3 /* LanguagesUIView.swift in Sources */,
 				96533A761F12938D00B07CA3 /* KeyboardLayout.swift in Sources */,
+				96AAF02922DFE4C300F4DE7A /* NotificationCenter.swift in Sources */,
 				96E034022031562B0039E653 /* JOIN.swift in Sources */,
 				96533A881F12938D00B07CA3 /* Keyboard.swift in Sources */,
 				96BCF28F22443AAF001C87AF /* LocalizedUIViewCell.swift in Sources */,
@@ -1346,7 +1352,7 @@
 				969F15F71E54EE3600C0DD7D /* LanguagesUIView.swift in Sources */,
 				969F15F51E549BD300C0DD7D /* ViewController<UIView>.swift in Sources */,
 				96E033EB2031540A0039E653 /* KEYBOARD.swift in Sources */,
-				962A3E2022C9655E0024D0AF /* CombineBackwardCompatibility.swift in Sources */,
+				962A3E2022C9655E0024D0AF /* SwiftUICombineStub.swift in Sources */,
 				96E0340B2031567A0039E653 /* ROUTE.swift in Sources */,
 				961FC32F1F3ADD9B00ADB15D /* LegalNoticesUIView.swift in Sources */,
 				9637C6F220F2440200078395 /* UIKeyboardAppearance.swift in Sources */,
@@ -1369,6 +1375,7 @@
 				96E033FF2031560E0039E653 /* GO.swift in Sources */,
 				96443FC1208C9D12002FFA6B /* NSMutableAttributedString.swift in Sources */,
 				96F8D1D11E26FAE0000D1DFC /* SettingsUIView.swift in Sources */,
+				96AAF02A22DFE4C300F4DE7A /* NotificationCenter.swift in Sources */,
 				96F7FBEA1FBB299400F7146C /* CollectionViewFlowLayout.swift in Sources */,
 				960F6E931EC9ED0400EFC7B7 /* CharacterCollectionUIView.swift in Sources */,
 				96530D671DD1C9A9004E8BAA /* KeyboardLayout.swift in Sources */,
@@ -1440,6 +1447,7 @@
 				96E033F0203154660039E653 /* LANGUAGE.swift in Sources */,
 				96F28C182030205C0023313C /* Keyboard.swift in Sources */,
 				96E354EA2020DDBC00668374 /* AppDelegate.swift in Sources */,
+				96AAF02822DFE4C300F4DE7A /* NotificationCenter.swift in Sources */,
 				96E03408203156660039E653 /* NEXT.swift in Sources */,
 				96443FBC208BE94D002FFA6B /* AccessibilityMenuItem.swift in Sources */,
 				965A8B4820D3268F00E0260E /* NSWorkspace.swift in Sources */,

@@ -9,41 +9,69 @@ import SwiftUI
 import Combine
 
 class CharacterSequence: BindableObject {
-    var didChange: PassthroughSubject<CharacterSequence, Never> = .init()
+    var willChange: PassthroughSubject<CharacterSequence, Never> = .init()
     
     var characters: [Character] = .init() {
+        willSet {
+            willChange.send(self)
+        }
+        
         didSet {
-            didChange.send(self)
+            NotificationCenter.default.post(self)
         }
     }
     
     var autocompleteText: String = .init() {
+        willSet {
+            guard autocompleteText != newValue else {
+                return
+            }
+            
+            willChange.send(self)
+        }
+        
         didSet {
             guard autocompleteText != oldValue else {
                 return
             }
             
-            didChange.send(self)
+            NotificationCenter.default.post(self)
         }
     }
     
     var autocompleteLabel: String = .init() {
+        willSet {
+            guard autocompleteLabel != newValue else {
+                return
+            }
+            
+            willChange.send(self)
+        }
+        
         didSet {
             guard autocompleteLabel != oldValue else {
                 return
             }
             
-            didChange.send(self)
+            NotificationCenter.default.post(self)
         }
     }
     
     var autocompleteDeleteCount: Int = 0 {
+        willSet {
+            guard autocompleteDeleteCount != newValue else {
+                return
+            }
+            
+            willChange.send(self)
+        }
+        
         didSet {
             guard autocompleteDeleteCount != oldValue else {
                 return
             }
             
-            didChange.send(self)
+            NotificationCenter.default.post(self)
         }
     }
     

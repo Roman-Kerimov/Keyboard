@@ -11,7 +11,7 @@ import Combine
 import Calculator
 
 final class Keyboard: BindableObject {
-    var didChange: PassthroughSubject<Keyboard, Never> = .init()
+    var willChange: PassthroughSubject<Keyboard, Never> = .init()
     
     static let `default`: Keyboard = .init()
     var delegate: KeyboardDelegate?
@@ -543,8 +543,12 @@ final class Keyboard: BindableObject {
     
     
     var previewLayout: KeyboardLayout = .system {
+        willSet {
+            Key.keys.forEach {$0.willChange.send($0)}
+        }
+        
         didSet {
-            Key.keys.forEach {$0.didChange.send($0)}
+            Key.keys.forEach {NotificationCenter.default.post($0)}
         }
     }
     
@@ -558,8 +562,9 @@ final class Keyboard: BindableObject {
             UserDefaults.standard.set(newValue.name, forKey: layoutKey)
             UserDefaults.standard.synchronize()
             
+            willChange.send(self)
             previewLayout = newValue
-            didChange.send(self)
+            NotificationCenter.default.post(self)
         }
     }
     
@@ -573,7 +578,8 @@ final class Keyboard: BindableObject {
             UserDefaults.standard.set(newValue.rawValue, forKey: layoutModeKey)
             UserDefaults.standard.synchronize()
             
-            didChange.send(self)
+            willChange.send(self)
+            NotificationCenter.default.post(self)
         }
     }
 

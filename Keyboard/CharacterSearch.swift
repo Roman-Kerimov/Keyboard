@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 class CharacterSearch: BindableObject {
-    var didChange: PassthroughSubject<CharacterSearch, Never> = .init()
+    var willChange: PassthroughSubject<CharacterSearch, Never> = .init()
     
     convenience init(query: String) {
         self.init()
@@ -39,8 +39,12 @@ class CharacterSearch: BindableObject {
     }
     
     var foundCharacters: [Character] = [] {
+        willSet {
+            willChange.send(self)
+        }
+        
         didSet {
-            didChange.send(self)
+            NotificationCenter.default.post(self)
         }
     }
     

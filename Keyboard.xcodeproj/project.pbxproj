@@ -38,8 +38,8 @@
 		96200BEB208CDC8D002930D6 /* ENABLE_KEYBOARD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96200BE8208CDC8D002930D6 /* ENABLE_KEYBOARD.swift */; };
 		9620E748202B9EB1003FB02E /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9620E747202B9EB1003FB02E /* Bundle.swift */; };
 		9620E749202B9EB1003FB02E /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9620E747202B9EB1003FB02E /* Bundle.swift */; };
-		962A3E1F22C9655E0024D0AF /* CombineBackwardCompatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A3E1E22C9655E0024D0AF /* CombineBackwardCompatibility.swift */; };
-		962A3E2022C9655E0024D0AF /* CombineBackwardCompatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A3E1E22C9655E0024D0AF /* CombineBackwardCompatibility.swift */; };
+		962A3E1F22C9655E0024D0AF /* SwiftUICombineStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A3E1E22C9655E0024D0AF /* SwiftUICombineStub.swift */; };
+		962A3E2022C9655E0024D0AF /* SwiftUICombineStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A3E1E22C9655E0024D0AF /* SwiftUICombineStub.swift */; };
 		962A3E2322C96E1F0024D0AF /* LegalNoticesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A3E2222C96E1F0024D0AF /* LegalNoticesView.swift */; };
 		962A3E2D22C9F8140024D0AF /* CharacterSequenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A3E2C22C9F8140024D0AF /* CharacterSequenceView.swift */; };
 		962A3E3022C9F8B40024D0AF /* CharacterSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A3E2F22C9F8B40024D0AF /* CharacterSequence.swift */; };
@@ -423,7 +423,7 @@
 		961FC3301F3AE14B00ADB15D /* legalNotices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = legalNotices.swift; sourceTree = "<group>"; };
 		96200BE8208CDC8D002930D6 /* ENABLE_KEYBOARD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ENABLE_KEYBOARD.swift; sourceTree = "<group>"; };
 		9620E747202B9EB1003FB02E /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
-		962A3E1E22C9655E0024D0AF /* CombineBackwardCompatibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineBackwardCompatibility.swift; sourceTree = "<group>"; };
+		962A3E1E22C9655E0024D0AF /* SwiftUICombineStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUICombineStub.swift; sourceTree = "<group>"; };
 		962A3E2222C96E1F0024D0AF /* LegalNoticesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalNoticesView.swift; sourceTree = "<group>"; };
 		962A3E2C22C9F8140024D0AF /* CharacterSequenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSequenceView.swift; sourceTree = "<group>"; };
 		962A3E2F22C9F8B40024D0AF /* CharacterSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSequence.swift; sourceTree = "<group>"; };
@@ -761,7 +761,6 @@
 				960F6E941EC9F7E600EFC7B7 /* CharacterSearchUIView.swift */,
 				9665F3751E9D847300850F97 /* CharacterSequenceUIView.swift */,
 				96F7FBE81FBB299400F7146C /* CollectionViewFlowLayout.swift */,
-				962A3E1E22C9655E0024D0AF /* CombineBackwardCompatibility.swift */,
 				9633A3C91E5DFE8D00DFA503 /* DeleteRowUIView.swift */,
 				966194D21DE2FCEF007FCF02 /* KeyboardLayoutUIView.swift */,
 				965D15C01D3146BB0098FA57 /* KeyboardUIView.swift */,
@@ -775,6 +774,7 @@
 				964ECA7D1E536FE8008E8757 /* SettingsContainerUIView.swift */,
 				96F8D1D01E26FAE0000D1DFC /* SettingsUIView.swift */,
 				9654DF791D4E1D0900DDB0EF /* SpaceRowUIView.swift */,
+				962A3E1E22C9655E0024D0AF /* SwiftUICombineStub.swift */,
 				968694C01EA0F3D100E6C9D0 /* UIColor.swift */,
 				960F7E8022CD628B00419F62 /* UIFont.swift */,
 				96EA39D61EAFDDDE00F3D804 /* UIImage.swift */,
@@ -1234,7 +1234,7 @@
 				96BCF29122443C22001C87AF /* LegalNoticesUIViewCell.swift in Sources */,
 				962B5343218C91EA001C4914 /* CGRect.swift in Sources */,
 				96533A781F12938D00B07CA3 /* KeyboardUIViewController.swift in Sources */,
-				962A3E1F22C9655E0024D0AF /* CombineBackwardCompatibility.swift in Sources */,
+				962A3E1F22C9655E0024D0AF /* SwiftUICombineStub.swift in Sources */,
 				96533A871F12938D00B07CA3 /* LabelUIView.swift in Sources */,
 				96533A791F12938D00B07CA3 /* KeyboardUIView.swift in Sources */,
 				961CE9F821B0CD0100E1A14D /* AutocompleteUIView.swift in Sources */,
@@ -1352,7 +1352,7 @@
 				969F15F71E54EE3600C0DD7D /* LanguagesUIView.swift in Sources */,
 				969F15F51E549BD300C0DD7D /* ViewController<UIView>.swift in Sources */,
 				96E033EB2031540A0039E653 /* KEYBOARD.swift in Sources */,
-				962A3E2022C9655E0024D0AF /* CombineBackwardCompatibility.swift in Sources */,
+				962A3E2022C9655E0024D0AF /* SwiftUICombineStub.swift in Sources */,
 				96E0340B2031567A0039E653 /* ROUTE.swift in Sources */,
 				961FC32F1F3ADD9B00ADB15D /* LegalNoticesUIView.swift in Sources */,
 				9637C6F220F2440200078395 /* UIKeyboardAppearance.swift in Sources */,

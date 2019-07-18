@@ -1,5 +1,5 @@
 //
-//  CombineBackwardCompatibility.swift
+//  SwiftUICombineStub.swift
 //  Keyboard
 //
 //  Created by Roman Kerimov on 2019-07-01.

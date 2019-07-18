@@ -261,6 +261,12 @@
 		96E354EA2020DDBC00668374 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E354E92020DDBC00668374 /* AppDelegate.swift */; };
 		96E354EE2020DDBC00668374 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96E354ED2020DDBC00668374 /* Assets.xcassets */; };
 		96E354FD2020DDBD00668374 /* Keyboard_macOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E354FC2020DDBD00668374 /* Keyboard_macOSTests.swift */; };
+		96E92B4722E029E40019EC2F /* Calculator in Frameworks */ = {isa = PBXBuildFile; productRef = 96E92B4622E029E40019EC2F /* Calculator */; };
+		96E92B4A22E02A0A0019EC2F /* LinguisticKit in Frameworks */ = {isa = PBXBuildFile; productRef = 96E92B4922E02A0A0019EC2F /* LinguisticKit */; };
+		96E92B4C22E02A190019EC2F /* Calculator in Frameworks */ = {isa = PBXBuildFile; productRef = 96E92B4B22E02A190019EC2F /* Calculator */; };
+		96E92B4E22E02A1D0019EC2F /* LinguisticKit in Frameworks */ = {isa = PBXBuildFile; productRef = 96E92B4D22E02A1D0019EC2F /* LinguisticKit */; };
+		96E92B5022E02A250019EC2F /* Calculator in Frameworks */ = {isa = PBXBuildFile; productRef = 96E92B4F22E02A250019EC2F /* Calculator */; };
+		96E92B5222E02A2A0019EC2F /* LinguisticKit in Frameworks */ = {isa = PBXBuildFile; productRef = 96E92B5122E02A2A0019EC2F /* LinguisticKit */; };
 		96EA39D71EAFDDDE00F3D804 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EA39D61EAFDDDE00F3D804 /* UIImage.swift */; };
 		96EA39E21EB0EEDE00F3D804 /* Labels_HideKeyboard.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96EA39DF1EB0EEDD00F3D804 /* Labels_HideKeyboard.ai */; };
 		96EA39E31EB0EEDE00F3D804 /* Labels_NextKeyboard.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96EA39E01EB0EEDD00F3D804 /* Labels_NextKeyboard.ai */; };
@@ -562,6 +568,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96E92B4E22E02A1D0019EC2F /* LinguisticKit in Frameworks */,
+				96E92B4C22E02A190019EC2F /* Calculator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -569,6 +577,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96E92B5222E02A2A0019EC2F /* LinguisticKit in Frameworks */,
+				96E92B5022E02A250019EC2F /* Calculator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,6 +593,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96E92B4A22E02A0A0019EC2F /* LinguisticKit in Frameworks */,
+				96E92B4722E029E40019EC2F /* Calculator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -976,6 +988,8 @@
 			);
 			name = "Keyboard iOS";
 			packageProductDependencies = (
+				96E92B4B22E02A190019EC2F /* Calculator */,
+				96E92B4D22E02A1D0019EC2F /* LinguisticKit */,
 			);
 			productName = Keyboard_iOS;
 			productReference = 964AB9311D1B6490004C827C /* Keyboard.app */;
@@ -995,6 +1009,8 @@
 			);
 			name = "Keyboard iOSExtension";
 			packageProductDependencies = (
+				96E92B4F22E02A250019EC2F /* Calculator */,
+				96E92B5122E02A2A0019EC2F /* LinguisticKit */,
 			);
 			productName = Keyboard_iOSExtension;
 			productReference = 964AB9671D1B6535004C827C /* KeyboardExtension.appex */;
@@ -1033,6 +1049,8 @@
 			);
 			name = "Keyboard macOS";
 			packageProductDependencies = (
+				96E92B4622E029E40019EC2F /* Calculator */,
+				96E92B4922E02A0A0019EC2F /* LinguisticKit */,
 			);
 			productName = Keyboard_macOS;
 			productReference = 96E354E72020DDBC00668374 /* Keyboard.app */;
@@ -1113,6 +1131,10 @@
 				Base,
 			);
 			mainGroup = 964AB9261D1B63C0004C827C;
+			packageReferences = (
+				96E92B4522E029E40019EC2F /* XCRemoteSwiftPackageReference "Calculator" */,
+				96E92B4822E02A0A0019EC2F /* XCRemoteSwiftPackageReference "LinguisticKit" */,
+			);
 			productRefGroup = 964AB9321D1B6490004C827C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1853,6 +1875,58 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		96E92B4522E029E40019EC2F /* XCRemoteSwiftPackageReference "Calculator" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Roman-Kerimov/Calculator.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		96E92B4822E02A0A0019EC2F /* XCRemoteSwiftPackageReference "LinguisticKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Roman-Kerimov/LinguisticKit.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		96E92B4622E029E40019EC2F /* Calculator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 96E92B4522E029E40019EC2F /* XCRemoteSwiftPackageReference "Calculator" */;
+			productName = Calculator;
+		};
+		96E92B4922E02A0A0019EC2F /* LinguisticKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 96E92B4822E02A0A0019EC2F /* XCRemoteSwiftPackageReference "LinguisticKit" */;
+			productName = LinguisticKit;
+		};
+		96E92B4B22E02A190019EC2F /* Calculator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 96E92B4522E029E40019EC2F /* XCRemoteSwiftPackageReference "Calculator" */;
+			productName = Calculator;
+		};
+		96E92B4D22E02A1D0019EC2F /* LinguisticKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 96E92B4822E02A0A0019EC2F /* XCRemoteSwiftPackageReference "LinguisticKit" */;
+			productName = LinguisticKit;
+		};
+		96E92B4F22E02A250019EC2F /* Calculator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 96E92B4522E029E40019EC2F /* XCRemoteSwiftPackageReference "Calculator" */;
+			productName = Calculator;
+		};
+		96E92B5122E02A2A0019EC2F /* LinguisticKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 96E92B4822E02A0A0019EC2F /* XCRemoteSwiftPackageReference "LinguisticKit" */;
+			productName = LinguisticKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 964AB9271D1B63C0004C827C /* Project object */;
 }

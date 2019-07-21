@@ -10,12 +10,10 @@ import SwiftUI
 extension CGFloat {
     
     static var systemFontSize: Self {
-        #if canImport(AppKit)
-        return NSFont.systemFontSize
-        #endif
-        
         #if canImport(UIKit)
         return UIFont.systemFontSize
+        #elseif canImport(AppKit)
+        return NSFont.systemFontSize
         #endif
     }
     

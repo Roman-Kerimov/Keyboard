@@ -9,6 +9,12 @@
 import SwiftUI
 
 extension String {
+    
+    #if canImport(UIKit)
+    private typealias Font = UIFont
+    #elseif canImport(AppKit)
+    private typealias Font = NSFont
+    #endif
     static var legalTextFontName = "System Font Bold"
     static let characterFontName = "STIXGeneral"
     static let specialKeyLabelFont = "System Font"
@@ -64,15 +70,6 @@ extension String {
     }
     
     func size(fontName: String, fontSize: CGFloat) -> CGSize {
-        
-        #if canImport(AppKit)
-        typealias Font = NSFont
-        #endif
-        
-        #if canImport(UIKit)
-        typealias Font = UIFont
-        #endif
-        
         return (self as NSString).size(withAttributes: [.font: Font.init(name: fontName, size: fontSize)!])
     }
     
@@ -102,22 +99,21 @@ extension String {
     
     func textHeightFrom(width: CGFloat, fontName: String = "System Font", fontSize: CGFloat = .systemFontSize) -> CGFloat {
         
-        #if canImport(AppKit)
-        typealias Font = NSFont
-        let text: NSTextField = .init(string: self)
-        text.font = NSFont.init(name: fontName, size: fontSize)
-        #endif
-        
         #if canImport(UIKit)
-        typealias Font = UIFont
+        
         let text: UILabel = .init()
         text.text = self
         text.numberOfLines = 0
+        
+        #elseif canImport(AppKit)
+        
+        let text: NSTextField = .init(string: self)
+        text.font = NSFont.init(name: fontName, size: fontSize)
+        
         #endif
         
         text.font = Font.init(name: fontName, size: fontSize)
         text.lineBreakMode = .byWordWrapping
         return text.sizeThatFits(CGSize.init(width: width, height: .infinity)).height
-        
     }
 }

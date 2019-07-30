@@ -36,14 +36,13 @@ struct CharacterSequenceView : View {
                             .cornerRadius(.characterSequenceCornerRadiusFontSizeFactor * self.fontSize)
                         Spacer(minLength: spacing)
                     }
-                    Button(action: self.characterSequence.autocomplete) {
-                        Text(self.characterSequence.autocompleteLabel)
-                            .frame(width: autocompleteWidth, height: geometry.size.height)
-                            .font(.custom(.characterFontName, size: self.fontSize))
-                            .foregroundColor(.accentColor)
-                            .allowsTightening(true)
-                    }
-                    .buttonStyle(.plain)
+                    
+                    Text(self.characterSequence.autocompleteLabel)
+                        .frame(width: autocompleteWidth, height: geometry.size.height)
+                        .font(.custom(.characterFontName, size: self.fontSize))
+                        .foregroundColor(.accentColor)
+                        .allowsTightening(true)
+                        .tapAction(self.characterSequence.autocomplete)
                 }
             }
         }

@@ -437,6 +437,7 @@
 		963BA6621F3B1FD000BFE3A7 /* LegalTextUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalTextUIView.swift; sourceTree = "<group>"; };
 		963DE0AF202F00B60040A448 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		963DE0B1202F012B0040A448 /* StatusMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenu.swift; sourceTree = "<group>"; };
+		963E5CA222F04C4C00873C20 /* .xcode-version */ = {isa = PBXFileReference; lastKnownFileType = text; name = ".xcode-version"; path = "../../../../../System/Volumes/Data/Users/romankerimov/Documents/Xcode/Keyboard/.xcode-version"; sourceTree = "<group>"; };
 		96436BA020C1DA2D0065ED03 /* UnicodeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnicodeItem.swift; sourceTree = "<group>"; };
 		9643FC4C1F78F8D5004DA2C0 /* CharacterComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterComponent.swift; sourceTree = "<group>"; };
 		9643FC4F1F78F94B004DA2C0 /* characterComponentsDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = characterComponentsDictionary.swift; sourceTree = "<group>"; };
@@ -699,6 +700,7 @@
 		964AB9261D1B63C0004C827C = {
 			isa = PBXGroup;
 			children = (
+				963E5CA222F04C4C00873C20 /* .xcode-version */,
 				9697F880202FA868001EC50A /* Keyboard */,
 				96B6BC492031AD4C002509E4 /* KeyboardTests */,
 				96E354E82020DDBC00668374 /* Keyboard macOS */,

@@ -21,8 +21,9 @@ struct InterfaceLanguageRow: View {
                         Text(self.language.selfName)
                         
                         Text(self.language.localizedName)
-                            .font(Font.footnote)
-                    }
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    } 
                     .frame(width: geometry.size.width, height: geometry.size.height, alignment: .leading)
                 }
                 

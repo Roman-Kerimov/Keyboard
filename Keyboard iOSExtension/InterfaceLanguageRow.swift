@@ -16,14 +16,15 @@ struct InterfaceLanguageRow: View {
     var body: some View {
         Button(action: {self.locale.language = self.language}, label: {
             HStack {
-                VStack(alignment: .leading) {
-                    Text(language.selfName)
-                    
-                    Text(language.localizedName)
-                        .font(Font.footnote)
+                GeometryReader { geometry in
+                    VStack(alignment: .leading) {
+                        Text(self.language.selfName)
+                        
+                        Text(self.language.localizedName)
+                            .font(Font.footnote)
+                    }
+                    .frame(width: geometry.size.width, height: geometry.size.height, alignment: .leading)
                 }
-                
-                Spacer()
                 
                 language == locale.language ? Image.checkmark.foregroundColor(.accentColor) : nil
             }

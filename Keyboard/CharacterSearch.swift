@@ -8,8 +8,21 @@
 import Foundation
 import Combine
 
-class CharacterSearch: ObservableObject {
-    var objectWillChange: PassthroughSubject<CharacterSearch, Never> = .init()
+@available(iOS 13.0, *)
+extension CharacterSearch: ObservableObject {
+    typealias ObservableObjectPublisher = PassthroughSubject<CharacterSearch, Never>
+
+    var objectWillChange: ObservableObjectPublisher {
+        if _objectWillChange == nil {
+            _objectWillChange = ObservableObjectPublisher.init()
+        }
+
+        return _objectWillChange as! ObservableObjectPublisher
+    }
+}
+
+class CharacterSearch {
+    private var _objectWillChange: Any? = nil
     
     convenience init(query: String) {
         self.init()
@@ -40,7 +53,9 @@ class CharacterSearch: ObservableObject {
     
     var foundCharacters: [Character] = [] {
         willSet {
-            objectWillChange.send(self)
+            if #available(iOS 13.0, *) {
+                objectWillChange.send(self)
+            }
         }
         
         didSet {

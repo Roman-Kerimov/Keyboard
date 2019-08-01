@@ -8,8 +8,21 @@
 import Foundation
 import Combine
 
-final class Key: ObservableObject {
-    var objectWillChange: PassthroughSubject<Key, Never> = .init()
+@available(iOS 13.0, *)
+extension Key: ObservableObject {
+    typealias ObservableObjectPublisher = PassthroughSubject<Key, Never>
+    
+    var objectWillChange: ObservableObjectPublisher {
+        if _objectWillChange == nil {
+            _objectWillChange = ObservableObjectPublisher.init()
+        }
+
+        return _objectWillChange as! ObservableObjectPublisher
+    }
+}
+
+final class Key {
+    var _objectWillChange: Any? = nil
     
     let keycode: Keycode
     

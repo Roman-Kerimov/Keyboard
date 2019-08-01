@@ -8,12 +8,27 @@
 import Foundation
 import Combine
 
-class CharacterSequence: ObservableObject {
-    var objectWillChange: PassthroughSubject<CharacterSequence, Never> = .init()
+@available(iOS 13.0, *)
+extension CharacterSequence: ObservableObject {
+    typealias ObservableObjectPublisher = PassthroughSubject<CharacterSequence, Never>
+
+    var objectWillChange: ObservableObjectPublisher {
+        if _objectWillChange == nil {
+            _objectWillChange = ObservableObjectPublisher.init()
+        }
+
+        return _objectWillChange as! ObservableObjectPublisher
+    }
+}
+
+final class CharacterSequence {
+    var _objectWillChange: Any? = nil
     
     var characters: [Character] = .init() {
         willSet {
-            objectWillChange.send(self)
+            if #available(iOS 13.0, *) {
+                objectWillChange.send(self)
+            }
         }
         
         didSet {
@@ -27,7 +42,9 @@ class CharacterSequence: ObservableObject {
                 return
             }
             
-            objectWillChange.send(self)
+            if #available(iOS 13.0, *) {
+                objectWillChange.send(self)
+            }
         }
         
         didSet {
@@ -45,7 +62,9 @@ class CharacterSequence: ObservableObject {
                 return
             }
             
-            objectWillChange.send(self)
+            if #available(iOS 13.0, *) {
+                objectWillChange.send(self)
+            }
         }
         
         didSet {
@@ -63,7 +82,9 @@ class CharacterSequence: ObservableObject {
                 return
             }
             
-            objectWillChange.send(self)
+            if #available(iOS 13.0, *) {
+                objectWillChange.send(self)
+            }
         }
         
         didSet {

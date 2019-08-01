@@ -6,7 +6,7 @@
 //
 //
 
-import UIKit
+import SwiftUI
 
 internal class SettingsUIView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
@@ -19,6 +19,13 @@ internal class SettingsUIView: UITableView, UITableViewDelegate, UITableViewData
     }
     
     internal init() {
+        
+        if #available(iOS 13.0, *) {
+            languageTableViewController = UIHostingController.init(rootView: InterfaceLanguageList().localized())
+        } else {
+            languageTableViewController = ViewController<LanguagesUIView>.init()
+        }
+        
         super.init(frame: .zero, style: .grouped)
         
         delegate = self
@@ -39,7 +46,7 @@ internal class SettingsUIView: UITableView, UITableViewDelegate, UITableViewData
         case allowMultipleSpaces
     }
     
-    internal let languageTableViewController: ViewController<LanguagesUIView> = .init()
+    internal let languageTableViewController: UIViewController
     internal let legalNoticesViewController: ViewController<LegalNoticesUIView> = .init()
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -131,7 +138,7 @@ internal class SettingsUIView: UITableView, UITableViewDelegate, UITableViewData
         case .appLanguage:
             cell.textLabel?.text = LANGUAGE.string
             
-            cell.detailTextLabel?.text = Language.current.localizedName
+            cell.detailTextLabel?.text = Locale.current.language.localizedName
             
             cell.accessoryType = .disclosureIndicator
             

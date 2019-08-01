@@ -6,20 +6,50 @@
 //
 //
 
-import Foundation
+import SwiftUI
+import Combine
 
-extension Language {
-    private static let currentKey = "rrvfFT9eUMTqwVCEW4cbDo3c4TJsa1O"
-    static var current: Language {
-        get {
-            return Language(rawValue: UserDefaults.standard.string(forKey: currentKey) ?? "") ?? preferredList.first ?? .en
+@available(iOS 13.0, *)
+extension Locale: ObservableObject {
+    typealias ObservableObjectPublisher = PassthroughSubject<Locale, Never>
+
+    var objectWillChange: ObservableObjectPublisher {
+        if _objectWillChange == nil {
+            _objectWillChange = ObservableObjectPublisher.init()
+        }
+
+        return _objectWillChange as! ObservableObjectPublisher
+    }
+}
+
+final class Locale {
+    var _objectWillChange: Any? = nil
+    
+    static let current: Locale = .init()
+    
+    private init() {
+        language = Language(rawValue: UserDefaults.standard.string(forKey: currentLanguageKey) ?? "") ?? Language.preferredList.first ?? .en
+    }
+     
+    private let currentLanguageKey = "rrvfFT9eUMTqwVCEW4cbDo3c4TJsa1O"
+    var language: Language {
+        willSet {
+            if #available(iOS 13.0, *) {
+                objectWillChange.send(self)
+            }
         }
         
-        set {
-            UserDefaults.standard.set(newValue.rawValue, forKey: currentKey)
+        didSet {
+            UserDefaults.standard.set(language.rawValue, forKey: currentLanguageKey)
             
             NotificationCenter.default.post(name: .LocalizationDidChange, object: nil)
         }
+    }
+}
+
+extension Language: Identifiable {
+    var id: String {
+        return rawValue
     }
     
     static var preferredList: [Language] {
@@ -45,11 +75,11 @@ extension Language {
     }
     
     var selfName: String {
-        return Locale(identifier: rawValue).localizedString(forIdentifier: rawValue)?.applyingTransformIfNeeded(language: self) ?? .init()
+        return Foundation.Locale(identifier: rawValue).localizedString(forIdentifier: rawValue)?.applyingTransformIfNeeded(language: self) ?? .init()
     }
     
     var localizedName: String {
-        return Locale(identifier: Language.current.rawValue).localizedString(forIdentifier: rawValue)?.applyingTransformIfNeeded(language: .current) ?? .init()
+        return Foundation.Locale(identifier: Locale.current.language.rawValue).localizedString(forIdentifier: rawValue)?.applyingTransformIfNeeded(language: Locale.current.language) ?? .init()
     }
 }
 
@@ -68,6 +98,13 @@ extension NSObject {
     
     @objc func updateLocalizedStrings() {
         
+    }
+}
+
+@available(iOS 13.0, *)
+extension View {
+    func localized() -> some View {
+        return self.environmentObject(Locale.current)
     }
 }
 

@@ -61,11 +61,11 @@ class SearchUnicodeScalars: Operation {
             
             let regionCode = text.uppercased()
             
-            if Locale.regionCodes.contains(regionCode) {
+            if Foundation.Locale.regionCodes.contains(regionCode) {
                 foundCharacters.append(flag(fromRegionCode: regionCode))
                 
-                for localeIdentifier in (Locale.availableIdentifiers.filter { $0.hasSuffix(regionCode) } + ["en_\(regionCode)"]) {
-                    if let currencySymbol = Locale.init(identifier: localeIdentifier).currencySymbol {
+                for localeIdentifier in (Foundation.Locale.availableIdentifiers.filter { $0.hasSuffix(regionCode) } + ["en_\(regionCode)"]) {
+                    if let currencySymbol = Foundation.Locale.init(identifier: localeIdentifier).currencySymbol {
                         if currencySymbol.count == 1 {
                             foundCharacters.append(.init(currencySymbol))
                             break

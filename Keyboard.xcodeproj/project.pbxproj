@@ -38,8 +38,8 @@
 		96200BEB208CDC8D002930D6 /* ENABLE_KEYBOARD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96200BE8208CDC8D002930D6 /* ENABLE_KEYBOARD.swift */; };
 		9620E748202B9EB1003FB02E /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9620E747202B9EB1003FB02E /* Bundle.swift */; };
 		9620E749202B9EB1003FB02E /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9620E747202B9EB1003FB02E /* Bundle.swift */; };
-		962A3E1F22C9655E0024D0AF /* SwiftUICombineStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A3E1E22C9655E0024D0AF /* SwiftUICombineStub.swift */; };
-		962A3E2022C9655E0024D0AF /* SwiftUICombineStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A3E1E22C9655E0024D0AF /* SwiftUICombineStub.swift */; };
+		962A3E1F22C9655E0024D0AF /* CombineStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A3E1E22C9655E0024D0AF /* CombineStub.swift */; };
+		962A3E2022C9655E0024D0AF /* CombineStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A3E1E22C9655E0024D0AF /* CombineStub.swift */; };
 		962A3E2322C96E1F0024D0AF /* LegalNoticesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A3E2222C96E1F0024D0AF /* LegalNoticesView.swift */; };
 		962A3E2D22C9F8140024D0AF /* CharacterSequenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A3E2C22C9F8140024D0AF /* CharacterSequenceView.swift */; };
 		962A3E3022C9F8B40024D0AF /* CharacterSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A3E2F22C9F8B40024D0AF /* CharacterSequence.swift */; };
@@ -184,7 +184,6 @@
 		96AAF02A22DFE4C300F4DE7A /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AAF02722DFE4C300F4DE7A /* NotificationCenter.swift */; };
 		96AC6CA3203C23B200555164 /* CGEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AC6CA2203C23B200555164 /* CGEvent.swift */; };
 		96ACD588205261EE007CFDCF /* NSPasteboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96ACD587205261EE007CFDCF /* NSPasteboard.swift */; };
-		96AE677B22DA6270009439E1 /* Length.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AE677A22DA6270009439E1 /* Length.swift */; };
 		96AED32F203120DE00498A7E /* LayoutMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AED32E203120DE00498A7E /* LayoutMenuItem.swift */; };
 		96AED33120312AE600498A7E /* InterfaceLanguageMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AED33020312AE600498A7E /* InterfaceLanguageMenuItem.swift */; };
 		96AED33320312BA500498A7E /* LanguageMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AED33220312BA500498A7E /* LanguageMenuItem.swift */; };
@@ -423,7 +422,7 @@
 		961FC3301F3AE14B00ADB15D /* legalNotices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = legalNotices.swift; sourceTree = "<group>"; };
 		96200BE8208CDC8D002930D6 /* ENABLE_KEYBOARD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ENABLE_KEYBOARD.swift; sourceTree = "<group>"; };
 		9620E747202B9EB1003FB02E /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
-		962A3E1E22C9655E0024D0AF /* SwiftUICombineStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUICombineStub.swift; sourceTree = "<group>"; };
+		962A3E1E22C9655E0024D0AF /* CombineStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineStub.swift; sourceTree = "<group>"; };
 		962A3E2222C96E1F0024D0AF /* LegalNoticesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalNoticesView.swift; sourceTree = "<group>"; };
 		962A3E2C22C9F8140024D0AF /* CharacterSequenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSequenceView.swift; sourceTree = "<group>"; };
 		962A3E2F22C9F8B40024D0AF /* CharacterSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSequence.swift; sourceTree = "<group>"; };
@@ -508,7 +507,6 @@
 		96AAF02722DFE4C300F4DE7A /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotificationCenter.swift; path = ../../../../../../System/Volumes/Data/Users/romankerimov/Documents/Xcode/Keyboard/Keyboard/NotificationCenter.swift; sourceTree = "<group>"; };
 		96AC6CA2203C23B200555164 /* CGEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGEvent.swift; sourceTree = "<group>"; };
 		96ACD587205261EE007CFDCF /* NSPasteboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSPasteboard.swift; sourceTree = "<group>"; };
-		96AE677A22DA6270009439E1 /* Length.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Length.swift; sourceTree = "<group>"; };
 		96AED32E203120DE00498A7E /* LayoutMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutMenuItem.swift; sourceTree = "<group>"; };
 		96AED33020312AE600498A7E /* InterfaceLanguageMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceLanguageMenuItem.swift; sourceTree = "<group>"; };
 		96AED33220312BA500498A7E /* LanguageMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageMenuItem.swift; sourceTree = "<group>"; };
@@ -772,7 +770,7 @@
 				964ECA7D1E536FE8008E8757 /* SettingsContainerUIView.swift */,
 				96F8D1D01E26FAE0000D1DFC /* SettingsUIView.swift */,
 				9654DF791D4E1D0900DDB0EF /* SpaceRowUIView.swift */,
-				962A3E1E22C9655E0024D0AF /* SwiftUICombineStub.swift */,
+				962A3E1E22C9655E0024D0AF /* CombineStub.swift */,
 				968694C01EA0F3D100E6C9D0 /* UIColor.swift */,
 				960F7E8022CD628B00419F62 /* UIFont.swift */,
 				96EA39D61EAFDDDE00F3D804 /* UIImage.swift */,
@@ -953,7 +951,6 @@
 				96ACD587205261EE007CFDCF /* NSPasteboard.swift */,
 				965A8B4720D3268F00E0260E /* NSWorkspace.swift */,
 				960F7E8322CD62FE00419F62 /* NSFont.swift */,
-				96AE677A22DA6270009439E1 /* Length.swift */,
 				96E354ED2020DDBC00668374 /* Assets.xcassets */,
 				96E354F22020DDBD00668374 /* Info.plist */,
 				96E354F32020DDBD00668374 /* Keyboard_macOS.entitlements */,
@@ -1236,7 +1233,7 @@
 				96BCF29122443C22001C87AF /* LegalNoticesUIViewCell.swift in Sources */,
 				962B5343218C91EA001C4914 /* CGRect.swift in Sources */,
 				96533A781F12938D00B07CA3 /* KeyboardUIViewController.swift in Sources */,
-				962A3E1F22C9655E0024D0AF /* SwiftUICombineStub.swift in Sources */,
+				962A3E1F22C9655E0024D0AF /* CombineStub.swift in Sources */,
 				96533A871F12938D00B07CA3 /* LabelUIView.swift in Sources */,
 				96533A791F12938D00B07CA3 /* KeyboardUIView.swift in Sources */,
 				961CE9F821B0CD0100E1A14D /* AutocompleteUIView.swift in Sources */,
@@ -1354,7 +1351,7 @@
 				969F15F71E54EE3600C0DD7D /* LanguagesUIView.swift in Sources */,
 				969F15F51E549BD300C0DD7D /* ViewController<UIView>.swift in Sources */,
 				96E033EB2031540A0039E653 /* KEYBOARD.swift in Sources */,
-				962A3E2022C9655E0024D0AF /* SwiftUICombineStub.swift in Sources */,
+				962A3E2022C9655E0024D0AF /* CombineStub.swift in Sources */,
 				96E0340B2031567A0039E653 /* ROUTE.swift in Sources */,
 				961FC32F1F3ADD9B00ADB15D /* LegalNoticesUIView.swift in Sources */,
 				9637C6F220F2440200078395 /* UIKeyboardAppearance.swift in Sources */,
@@ -1429,7 +1426,6 @@
 				96AED33120312AE600498A7E /* InterfaceLanguageMenuItem.swift in Sources */,
 				967502542089E1D300FD6CED /* LaunchAgent.swift in Sources */,
 				96AED33320312BA500498A7E /* LanguageMenuItem.swift in Sources */,
-				96AE677B22DA6270009439E1 /* Length.swift in Sources */,
 				963DE0B0202F00B60040A448 /* main.swift in Sources */,
 				963212B4217B820500E8A6B2 /* FloatingWindow.swift in Sources */,
 				96E034042031562B0039E653 /* JOIN.swift in Sources */,

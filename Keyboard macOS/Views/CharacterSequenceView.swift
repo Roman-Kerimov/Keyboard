@@ -10,12 +10,12 @@ import SwiftUI
 struct CharacterSequenceView : View {
     @EnvironmentObject var characterSequence: CharacterSequence
     
-    let fontSize: Length = 22
+    let fontSize: CGFloat = 22
     var body: some View {
         
         let spacing = floor(.characterSequenceSpacingFontSizeFactor * self.fontSize)
         
-        typealias Item = (character: String, width: Length)
+        typealias Item = (character: String, width: CGFloat)
         
         let characterItems: [Item] = characterSequence.characters.map {($0.description, floor($0.description.size(fontName: .characterFontName, fontSize: self.fontSize).width + .characterSequenceItemWidthExtensionFontSizeFactor * self.fontSize))}
         
@@ -27,14 +27,13 @@ struct CharacterSequenceView : View {
         
         return GeometryReader { geometry in
             ScrollView(.horizontal, showsIndicators: true) {
-                HStack {
+                HStack(alignment: .center, spacing: spacing) {
                     ForEach(characterItems, id: \.character ) { item in
                         Text(item.character)
                             .frame(width: item.width, height: geometry.size.height)
                             .font(.custom(.characterFontName, size: self.fontSize))
                             .background(Color.primary.opacity(Double(.characterSequenceBackgroundOpacity)))
                             .cornerRadius(.characterSequenceCornerRadiusFontSizeFactor * self.fontSize)
-                        Spacer(minLength: spacing)
                     }
                     
                     Text(self.characterSequence.autocompleteLabel)
@@ -42,7 +41,7 @@ struct CharacterSequenceView : View {
                         .font(.custom(.characterFontName, size: self.fontSize))
                         .foregroundColor(.accentColor)
                         .allowsTightening(true)
-                        .tapAction(self.characterSequence.autocomplete)
+                        .onTapGesture(perform: self.characterSequence.autocomplete)
                 }
             }
         }

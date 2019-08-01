@@ -5,15 +5,15 @@
 //  Created by Roman Kerimov on 2019-07-01.
 //
 
-import SwiftUI
+import Foundation
 import Combine
 
-class CharacterSequence: BindableObject {
-    var willChange: PassthroughSubject<CharacterSequence, Never> = .init()
+class CharacterSequence: ObservableObject {
+    var objectWillChange: PassthroughSubject<CharacterSequence, Never> = .init()
     
     var characters: [Character] = .init() {
         willSet {
-            willChange.send(self)
+            objectWillChange.send(self)
         }
         
         didSet {
@@ -27,7 +27,7 @@ class CharacterSequence: BindableObject {
                 return
             }
             
-            willChange.send(self)
+            objectWillChange.send(self)
         }
         
         didSet {
@@ -45,7 +45,7 @@ class CharacterSequence: BindableObject {
                 return
             }
             
-            willChange.send(self)
+            objectWillChange.send(self)
         }
         
         didSet {
@@ -63,7 +63,7 @@ class CharacterSequence: BindableObject {
                 return
             }
             
-            willChange.send(self)
+            objectWillChange.send(self)
         }
         
         didSet {

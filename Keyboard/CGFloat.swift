@@ -28,4 +28,8 @@ extension CGFloat {
     static let characterSequenceItemWidthExtensionFontSizeFactor: Self = 0.2
     static let characterSequenceCornerRadiusFontSizeFactor: Self = 0.15
     static let characterSequenceSpacingFontSizeFactor: Self = 0.05
+    
+    static func keyboardGrid(_ value: Self) -> Self {
+        return value * 50
+    }
 }

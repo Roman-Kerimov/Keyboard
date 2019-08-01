@@ -16,7 +16,7 @@ final class CharacterSequenceWindow: FloatingWindow {
         setContentSize(.init(width: 1, height: .characterSequenceDefaultHeight))
     }
     
-    func updateFrame(width: Length = 1) {
+    func updateFrame(width: CGFloat = 1) {
         let boundingFrame = (NSScreen.main?.visibleFrame ?? .zero).insetBy(dx:  AppDelegate.characterSearchWindow.frame.width + 20, dy: 0)
         
         setFrame(

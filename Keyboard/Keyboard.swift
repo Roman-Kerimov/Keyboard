@@ -6,12 +6,12 @@
 //
 //
 
-import SwiftUI
+import Foundation
 import Combine
 import Calculator
 
-final class Keyboard: BindableObject {
-    var willChange: PassthroughSubject<Keyboard, Never> = .init()
+final class Keyboard: ObservableObject {
+    var objectWillChange: PassthroughSubject<Keyboard, Never> = .init()
     
     static let `default`: Keyboard = .init()
     var delegate: KeyboardDelegate?
@@ -544,7 +544,7 @@ final class Keyboard: BindableObject {
     
     var previewLayout: KeyboardLayout = .system {
         willSet {
-            Key.keys.forEach {$0.willChange.send($0)}
+            Key.keys.forEach {$0.objectWillChange.send($0)}
         }
         
         didSet {
@@ -562,7 +562,7 @@ final class Keyboard: BindableObject {
             UserDefaults.standard.set(newValue.name, forKey: layoutKey)
             UserDefaults.standard.synchronize()
             
-            willChange.send(self)
+            objectWillChange.send(self)
             previewLayout = newValue
             NotificationCenter.default.post(self)
         }
@@ -578,7 +578,7 @@ final class Keyboard: BindableObject {
             UserDefaults.standard.set(newValue.rawValue, forKey: layoutModeKey)
             UserDefaults.standard.synchronize()
             
-            willChange.send(self)
+            objectWillChange.send(self)
             NotificationCenter.default.post(self)
         }
     }

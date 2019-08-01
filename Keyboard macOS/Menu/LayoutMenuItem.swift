@@ -17,7 +17,7 @@ class LayoutMenuItem: LocalizedMenuItem {
         
         title = layout.name
         
-        _ = Keyboard.default.willChange.sink { (keyboard) in
+        _ = Keyboard.default.objectWillChange.sink { (keyboard) in
             self.state = self.layout.name == keyboard.layout.name ? .on : .off
         }
     }

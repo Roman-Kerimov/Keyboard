@@ -13,17 +13,17 @@ struct CharacterSearchView : View {
     var body: some View { 
         GeometryReader {geometry in
             ScrollView {
-                VStack {
-                    ForEach(0..<self.characterSearch.foundCharacters.count) {item in
+                VStack(alignment: .leading, spacing: 0) {
+                    ForEach(self.characterSearch.foundCharacters, id: \.description) {character in
                         HStack {
-                            Text(self.characterSearch.foundCharacters[item].description)
+                            Text(character.description)
                                 .frame(width: geometry.size.width, height: geometry.size.width, alignment: .center)
                                 .font(.system(size: geometry.size.width * .characterSearchViewFontSizeFactor))
-                                .tapAction {self.characterSearch.insert(item: item)}
-                            Spacer.init(minLength: 100)
+                                .onTapGesture {self.characterSearch.insert(character: character)}
                         }
                     }
                 }
+                .padding(.horizontal, 100)
             }
         }
     }

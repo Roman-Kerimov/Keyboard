@@ -5,11 +5,11 @@
 //  Created by Roman Kerimov on 2018-01-12.
 //
 
-import SwiftUI
+import Foundation
 import Combine
 
-final class Key: BindableObject {
-    var willChange: PassthroughSubject<Key, Never> = .init()
+final class Key: ObservableObject {
+    var objectWillChange: PassthroughSubject<Key, Never> = .init()
     
     let keycode: Keycode
     

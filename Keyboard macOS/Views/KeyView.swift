@@ -28,7 +28,7 @@ struct KeyView : View {
         .padding(.leading, key == .downArrow ? .keyboardGrid(-1) : 0)
     }
     
-    func width(for key: Key) -> Length {
+    func width(for key: Key) -> CGFloat {
         switch key {
         case .delete, .tab:
             return .keyboardGrid(1.5)

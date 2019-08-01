@@ -5,11 +5,11 @@
 //  Created by Roman Kerimov on 2019-06-29.
 //
 
-import SwiftUI
+import Foundation
 import Combine
 
-class CharacterSearch: BindableObject {
-    var willChange: PassthroughSubject<CharacterSearch, Never> = .init()
+class CharacterSearch: ObservableObject {
+    var objectWillChange: PassthroughSubject<CharacterSearch, Never> = .init()
     
     convenience init(query: String) {
         self.init()
@@ -40,7 +40,7 @@ class CharacterSearch: BindableObject {
     
     var foundCharacters: [Character] = [] {
         willSet {
-            willChange.send(self)
+            objectWillChange.send(self)
         }
         
         didSet {
@@ -55,15 +55,19 @@ class CharacterSearch: BindableObject {
             return
         }
         
-        let isScriptCodeItem: Bool = scriptCodeLength > 0 && item == 0
+        insert(character: foundCharacters[item])
+    }
+    
+    func insert(character: Character) {
+        
+        
+        let isScriptCodeItem: Bool = scriptCodeLength > 0 && character == foundCharacters.first
         
         let deleteCount = isScriptCodeItem ? scriptCodeLength + 1 : text.count
         
         for _ in 0..<deleteCount {
             Keyboard.default.delegate?.delete()
         }
-        
-        let character = foundCharacters[item]
         
         if !isScriptCodeItem {
             

@@ -22,8 +22,10 @@ internal class SettingsUIView: UITableView, UITableViewDelegate, UITableViewData
         
         if #available(iOS 13.0, *) {
             languageTableViewController = UIHostingController.init(rootView: InterfaceLanguageList().localized())
+            legalNoticesViewController = UIHostingController.init(rootView: LegalNoticesView().localized())
         } else {
             languageTableViewController = ViewController<LanguagesUIView>.init()
+            legalNoticesViewController = ViewController<LegalNoticesUIView>.init()
         }
         
         super.init(frame: .zero, style: .grouped)
@@ -47,7 +49,7 @@ internal class SettingsUIView: UITableView, UITableViewDelegate, UITableViewData
     }
     
     internal let languageTableViewController: UIViewController
-    internal let legalNoticesViewController: ViewController<LegalNoticesUIView> = .init()
+    internal let legalNoticesViewController: UIViewController
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)!

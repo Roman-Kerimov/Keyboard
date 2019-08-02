@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		96012B6622F3AD3B0095F445 /* LegalNoticesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A3E2222C96E1F0024D0AF /* LegalNoticesView.swift */; };
+		96012B6722F3AD3C0095F445 /* LegalNoticesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A3E2222C96E1F0024D0AF /* LegalNoticesView.swift */; };
+		96012B6922F3B8900095F445 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96012B6822F3B8900095F445 /* View.swift */; };
 		9608928220B00137007AA01E /* LoadUnicodeDataFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9608928120B00137007AA01E /* LoadUnicodeDataFiles.swift */; };
 		9608928320B00137007AA01E /* LoadUnicodeDataFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9608928120B00137007AA01E /* LoadUnicodeDataFiles.swift */; };
 		9608928420B00137007AA01E /* LoadUnicodeDataFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9608928120B00137007AA01E /* LoadUnicodeDataFiles.swift */; };
@@ -348,6 +351,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		96012B6822F3B8900095F445 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		9608923720AF4F98007AA01E /* BidiBrackets.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = BidiBrackets.txt; sourceTree = "<group>"; };
 		9608923820AF4F98007AA01E /* PropertyValueAliases.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = PropertyValueAliases.txt; sourceTree = "<group>"; };
 		9608923920AF4F98007AA01E /* PropertyAliases.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = PropertyAliases.txt; sourceTree = "<group>"; };
@@ -618,6 +622,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		96012B6522F3AC630095F445 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				962A3E2222C96E1F0024D0AF /* LegalNoticesView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		9608923620AF4F98007AA01E /* UCD */ = {
 			isa = PBXGroup;
 			children = (
@@ -823,7 +835,6 @@
 				96CB9A8322D8E2D7004CA972 /* KeyView.swift */,
 				962A3E2C22C9F8140024D0AF /* CharacterSequenceView.swift */,
 				96A41BCF22C22986009057F5 /* CharacterSearchView.swift */,
-				962A3E2222C96E1F0024D0AF /* LegalNoticesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -861,6 +872,7 @@
 		9697F880202FA868001EC50A /* Keyboard */ = {
 			isa = PBXGroup;
 			children = (
+				96012B6522F3AC630095F445 /* Views */,
 				9694E23C1E29D72800ED3A85 /* Localization.swift */,
 				96D2B8DC1E35538B006772A5 /* Languages.swift */,
 				96E033E4203151300039E653 /* LocalizedStrings */,
@@ -965,6 +977,7 @@
 				96ACD587205261EE007CFDCF /* NSPasteboard.swift */,
 				965A8B4720D3268F00E0260E /* NSWorkspace.swift */,
 				960F7E8322CD62FE00419F62 /* NSFont.swift */,
+				96012B6822F3B8900095F445 /* View.swift */,
 				96E354ED2020DDBC00668374 /* Assets.xcassets */,
 				96E354F22020DDBD00668374 /* Info.plist */,
 				96E354F32020DDBD00668374 /* Keyboard_macOS.entitlements */,
@@ -1236,6 +1249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96012B6622F3AD3B0095F445 /* LegalNoticesView.swift in Sources */,
 				96F7FBE91FBB299400F7146C /* CollectionViewFlowLayout.swift in Sources */,
 				968AFE422243E6EE00346636 /* GuideUIViewController.swift in Sources */,
 				9643FC4D1F78F8D5004DA2C0 /* CharacterComponent.swift in Sources */,
@@ -1398,6 +1412,7 @@
 				96530D671DD1C9A9004E8BAA /* KeyboardLayout.swift in Sources */,
 				968694C11EA0F3D100E6C9D0 /* UIColor.swift in Sources */,
 				96C49DC51EB7DF1F006F93ED /* Character.swift in Sources */,
+				96012B6722F3AD3C0095F445 /* LegalNoticesView.swift in Sources */,
 				9685BCFF1E06815700702C84 /* Keyboard.swift in Sources */,
 				9608928320B00137007AA01E /* LoadUnicodeDataFiles.swift in Sources */,
 				9643FC511F78F94B004DA2C0 /* characterComponentsDictionary.swift in Sources */,
@@ -1493,6 +1508,7 @@
 				968DEA8120CCDFA400750040 /* eventTapCallback.swift in Sources */,
 				96E03420203179F00039E653 /* CONTINUE.swift in Sources */,
 				96534193224727CD0097B522 /* Array<Equatable>.swift in Sources */,
+				96012B6922F3B8900095F445 /* View.swift in Sources */,
 				96E033F42031549C0039E653 /* ABOUT.swift in Sources */,
 				96B8908B21E04EA800917CB2 /* GuideWindow.swift in Sources */,
 				9608928820B001AD007AA01E /* SearchUnicodeScalars.swift in Sources */,

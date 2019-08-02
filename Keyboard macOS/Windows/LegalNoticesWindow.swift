@@ -16,7 +16,7 @@ final class LegalNoticesWindow: GuideWindow {
     override init() {
         super.init()
         
-        contentView = NSHostingView(rootView: LegalNoticesView())
+        contentView = NSHostingView(rootView: LegalNoticesView().localized())
         setContentSize(.init(width: 480, height: 500))
         backgroundColor = .textBackgroundColor
         center()

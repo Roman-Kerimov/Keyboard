@@ -83,6 +83,12 @@ extension Language: Identifiable {
     }
 }
 
+extension LocalizedString {
+    static var uppercasedString: String {
+        return string.uppercased(with: Foundation.Locale.init(identifier: Locale.current.language.rawValue))
+    }
+}
+
 fileprivate extension String {
     func applyingTransformIfNeeded(language: Language) -> String {
         switch language {

@@ -19,11 +19,7 @@ class LegalNoticesUIViewCell: LocalizedUIViewCell {
     override init() {
         super.init()
         
-        if #available(iOS 13.0, *) {
-            detailViewController = UIHostingController.init(rootView: LegalNoticesView().localized())
-        } else {
-            detailViewController = ViewController<LegalNoticesUIView>.init()
-        }
+        detailViewController = ViewController<LegalNoticesUIView>.init()
     }
     
     required init?(coder aDecoder: NSCoder) {

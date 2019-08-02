@@ -8,7 +8,6 @@
 import Foundation
 
 extension Bundle {
-    static let main: Bundle = .init(for: MainBundle.self)
     
     var isExtension: Bool {
         return bundlePath.hasSuffix(".appex")

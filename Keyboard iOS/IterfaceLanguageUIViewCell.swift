@@ -5,7 +5,7 @@
 //  Created by Roman Kerimov on 2019-03-22.
 //
 
-import SwiftUI
+import UIKit
 
 class IterfaceLanguageUIViewCell: LocalizedUIViewCell {
     
@@ -20,11 +20,7 @@ class IterfaceLanguageUIViewCell: LocalizedUIViewCell {
     override init() {
         super.init()
         
-        if #available(iOS 13.0, *) {
-            detailViewController = UIHostingController(rootView: InterfaceLanguageList().localized())
-        } else {
-            detailViewController = ViewController<LanguagesUIView>.init()
-        }
+        detailViewController = ViewController<LanguagesUIView>.init()
     }
     
     required init?(coder aDecoder: NSCoder) {

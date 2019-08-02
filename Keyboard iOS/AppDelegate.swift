@@ -6,7 +6,7 @@
 //
 //
 
-import UIKit
+import SwiftUI
 import CoreData
 
 @UIApplicationMain
@@ -23,7 +23,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             fatalError()
         }
         
-        window.rootViewController = GuideUIViewController.init()
+        if #available(iOS 13.0, *) {
+            window.rootViewController = UIHostingController.init(rootView: GuideNavigationView().localized())
+        } else {
+            window.rootViewController = GuideUIViewController.init()
+        }
+        
         window.makeKeyAndVisible()
 
         return true

@@ -270,6 +270,7 @@
 		96E354EA2020DDBC00668374 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E354E92020DDBC00668374 /* AppDelegate.swift */; };
 		96E354EE2020DDBC00668374 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96E354ED2020DDBC00668374 /* Assets.xcassets */; };
 		96E354FD2020DDBD00668374 /* Keyboard_macOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E354FC2020DDBD00668374 /* Keyboard_macOSTests.swift */; };
+		96E83D2C22F48E3F0014296D /* NavigationBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E83D2B22F48E3F0014296D /* NavigationBarItem.swift */; };
 		96E92B4722E029E40019EC2F /* Calculator in Frameworks */ = {isa = PBXBuildFile; productRef = 96E92B4622E029E40019EC2F /* Calculator */; };
 		96E92B4A22E02A0A0019EC2F /* LinguisticKit in Frameworks */ = {isa = PBXBuildFile; productRef = 96E92B4922E02A0A0019EC2F /* LinguisticKit */; };
 		96E92B4C22E02A190019EC2F /* Calculator in Frameworks */ = {isa = PBXBuildFile; productRef = 96E92B4B22E02A190019EC2F /* Calculator */; };
@@ -566,6 +567,7 @@
 		96E354F82020DDBD00668374 /* KeyboardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyboardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		96E354FC2020DDBD00668374 /* Keyboard_macOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard_macOSTests.swift; sourceTree = "<group>"; };
 		96E354FE2020DDBD00668374 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		96E83D2B22F48E3F0014296D /* NavigationBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarItem.swift; sourceTree = "<group>"; };
 		96EA39D61EAFDDDE00F3D804 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		96EA39DF1EB0EEDD00F3D804 /* Labels_HideKeyboard.ai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Labels_HideKeyboard.ai; sourceTree = "<group>"; };
 		96EA39E01EB0EEDD00F3D804 /* Labels_NextKeyboard.ai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Labels_NextKeyboard.ai; sourceTree = "<group>"; };
@@ -981,6 +983,7 @@
 				965A8B4720D3268F00E0260E /* NSWorkspace.swift */,
 				960F7E8322CD62FE00419F62 /* NSFont.swift */,
 				96012B6822F3B8900095F445 /* View.swift */,
+				96E83D2B22F48E3F0014296D /* NavigationBarItem.swift */,
 				96E354ED2020DDBC00668374 /* Assets.xcassets */,
 				96E354F22020DDBD00668374 /* Info.plist */,
 				96E354F32020DDBD00668374 /* Keyboard_macOS.entitlements */,
@@ -1474,6 +1477,7 @@
 				962D7CCA20CD75320047B8B9 /* NSRegularExpression.swift in Sources */,
 				96EBF2A8209CEBB900AE00E7 /* UnicodeTable.swift in Sources */,
 				96F28C21203021760023313C /* String.swift in Sources */,
+				96E83D2C22F48E3F0014296D /* NavigationBarItem.swift in Sources */,
 				96436BA320C1DA2D0065ED03 /* UnicodeItem.swift in Sources */,
 				965A8B3E20D2EDF800E0260E /* VisibilityMenuItem.swift in Sources */,
 				963DE0B2202F012B0040A448 /* StatusMenu.swift in Sources */,

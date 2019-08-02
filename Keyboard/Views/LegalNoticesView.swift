@@ -21,7 +21,7 @@ struct LegalNoticesView : View {
             }
         }
         .padding(.horizontal, 0.5 * .legalTextFontSize)
-        .navigationBarTitle(LEGAL_NOTICES.string)
+        .navigationBarTitle(Text(LEGAL_NOTICES.string), displayMode: .inline)
     }
 }
 

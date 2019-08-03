@@ -77,7 +77,7 @@ protocol LocalizedString {
 
 extension LocalizedString {
     static var string: String {
-        switch Language.current {
+        switch Locale.current.language {
             //case .az: return az
             //case .az_Cyrl: return az_Cyrl
             case .ca: return ca

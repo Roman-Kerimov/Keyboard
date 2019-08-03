@@ -5,7 +5,7 @@
 //  Created by Roman Kerimov on 2018-01-29.
 //
 
-import UIKit
+import SwiftUI
 
 protocol KeyboardDelegate {
     
@@ -17,16 +17,28 @@ protocol KeyboardDelegate {
     
     var documentContext: DocumentContext {get}
     
+    #if canImport(UIKit)
     var returnKeyType: UIReturnKeyType? {get}
+    #endif
+
     var needsInputModeSwitchKey: Bool {get}
+    
+    func prepareForPreview()
 }
 
 extension KeyboardDelegate {
-    var returnKeyType: UIReturnKeyType? {
-        return nil
+    
+    var needsReturn: Bool {
+        #if canImport(UIKit)
+        return Keyboard.default.delegate?.returnKeyType == .default
+        #else
+        return true
+        #endif
     }
     
     var needsInputModeSwitchKey: Bool {
         return false
     }
+    
+    func prepareForPreview() {}
 }

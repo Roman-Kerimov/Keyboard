@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Calculator",
+        "repositoryURL": "https://github.com/Roman-Kerimov/Calculator.git",
+        "state": {
+          "branch": "master",
+          "revision": "3a2ca1c15e911ae8d4ef6e3fb0abf1bf61903f8d",
+          "version": null
+        }
+      },
+      {
+        "package": "LinguisticKit",
+        "repositoryURL": "https://github.com/Roman-Kerimov/LinguisticKit.git",
+        "state": {
+          "branch": "master",
+          "revision": "3c0770c95313e4d0d9d194f2a882c2186f1ca3d7",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

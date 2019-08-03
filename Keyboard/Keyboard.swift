@@ -7,9 +7,24 @@
 //
 
 import Foundation
+import Combine
 import Calculator
 
-class Keyboard: NSObject {
+@available(iOS 13.0, *)
+extension Keyboard: ObservableObject {
+    typealias ObservableObjectPublisher = PassthroughSubject<Keyboard, Never>
+
+    var objectWillChange: ObservableObjectPublisher {
+        if _objectWillChange == nil {
+            _objectWillChange = ObservableObjectPublisher.init()
+        }
+
+        return _objectWillChange as! ObservableObjectPublisher
+    }
+}
+
+final class Keyboard {
+    var _objectWillChange: Any? = nil
     
     static let `default`: Keyboard = .init()
     var delegate: KeyboardDelegate?
@@ -61,35 +76,34 @@ class Keyboard: NSObject {
             input()
         }
         else {
-            let layout = Keyboard.default.layout
             let direction: ShiftDirection
             
             switch key {
                 
-            case layout.rows[0][1], layout.rows[0][6]:
+            case .w, .u:
                 direction = .upLeft
                 
-            case layout.rows[0][2], layout.rows[0][7]:
+            case .e, .i:
                 direction = .up
                 
-            case layout.rows[0][3], layout.rows[0][8]:
+            case .r, .o:
                 direction = .upRight
                 
                 
-            case layout.rows[1][1], layout.rows[1][6]:
+            case .s, .j:
                 direction = .left
                 
-            case layout.rows[1][3], layout.rows[1][8]:
+            case .f, .l:
                 direction = .right
                 
                 
-            case layout.rows[2][1], layout.rows[2][6]:
+            case .x, .m:
                 direction = .downLeft
                 
-            case layout.rows[2][2], layout.rows[2][7]:
+            case .c, .comma:
                 direction = .down
                 
-            case layout.rows[2][3], layout.rows[2][8]:
+            case .v, .fullStop:
                 direction = .downRight
                 
             default:
@@ -438,39 +452,22 @@ class Keyboard: NSObject {
         case `default`
     }
     
-    private override init() {
-        super.init()
+    private init() {
+        
+        UserDefaults.standard.register(defaults: [layoutKey : KeyboardLayout.qwerty.name])
+        previewLayout = layout
         
         NotificationCenter.default.addObserver(self, selector: #selector(documentContextDidChange), name: .DocumentContextDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(search), name: .UnicodeDataFilesDidLoad, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(search), name: .DocumentContextDidChange, object: nil)
     }
     
-    var characterSequence: [Character] = .init()
-    
-    var autocompleteText: String = .init()
-    var autocompleteLabel: String = .init()
-    var autocompleteDeleteCount: Int = 0
-    
-    @objc func autocomplete() {
-        for _ in 0..<autocompleteDeleteCount {
-            delegate?.delete()
-        }
-        
-        autocompleteDeleteCount = 0
-        
-        delegate?.insert(text: autocompleteText)
-        
-        autocompleteText = .init()
-        autocompleteLabel = .init()
-        
-        NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
-    }
+    let characterSequence: CharacterSequence = .init()
     
     @objc private func documentContextDidChange() {
         let documentContextBeforeInput: String = delegate?.documentContext.beforeInput ?? .init()
         
-        characterSequence = .init()
+        characterSequence.characters = .init()
         
         var spaceCount = 0
         
@@ -494,7 +491,7 @@ class Keyboard: NSObject {
                 break
             }
             
-            characterSequence = [character] + characterSequence
+            characterSequence.characters = [character] + characterSequence.characters
             
             if spaceCount == 1 && isNonspaceSequence {
                 break
@@ -503,83 +500,42 @@ class Keyboard: NSObject {
         
         if let scriptTransformation = documentContextBeforeInput.transformationByTargetScriptCode() {
             
-            autocompleteDeleteCount = scriptTransformation.sourceString.count
+            characterSequence.autocompleteDeleteCount = scriptTransformation.sourceString.count
             
-            autocompleteText = scriptTransformation.targetString
+            characterSequence.autocompleteText = scriptTransformation.targetString
             
             let labelLength = 10
-            autocompleteLabel = (autocompleteText.count > labelLength ? "..." : "") + autocompleteText.suffix(labelLength)
+            characterSequence.autocompleteLabel = (characterSequence.autocompleteText.count > labelLength ? "..." : "") + characterSequence.autocompleteText.suffix(labelLength)
         }
         else if let calculation = Calculator.default.evaluate(expressionFromString: documentContextBeforeInput) {
             
-            characterSequence = calculation.expression.map {$0}
+            characterSequence.characters = calculation.expression.map {$0}
             
             if calculation.expression.trimmingCharacters(in: .whitespaces) == calculation.result.trimmingCharacters(in: .whitespaces) {
-                autocompleteText = .init()
-                autocompleteLabel = .init()
-                autocompleteDeleteCount = 0
+                characterSequence.autocompleteText = .init()
+                characterSequence.autocompleteLabel = .init()
+                characterSequence.autocompleteDeleteCount = 0
             }
             else if calculation.expression.contains("=") {
-                autocompleteText = calculation.result
-                autocompleteLabel = calculation.result
-                autocompleteDeleteCount = 0
+                characterSequence.autocompleteText = calculation.result
+                characterSequence.autocompleteLabel = calculation.result
+                characterSequence.autocompleteDeleteCount = 0
             }
             else {
-                autocompleteText = calculation.result
-                autocompleteLabel =  " = " + calculation.result
-                autocompleteDeleteCount = calculation.expression.count
+                characterSequence.autocompleteText = calculation.result
+                characterSequence.autocompleteLabel =  " = " + calculation.result
+                characterSequence.autocompleteDeleteCount = calculation.expression.count
             }
             
         }
         else {
-            autocompleteText = .init()
-            autocompleteLabel = .init()
-            autocompleteDeleteCount = 0
-        }
-        
-        NotificationCenter.default.post(name: .CharacterSequenceDidChange, object: nil)
-    }
-    
-    var foundCharacters: [Character] = [] {
-        didSet {
-            NotificationCenter.default.post(name: .FoundCharactersDidChange, object: nil)
+            characterSequence.autocompleteText = .init()
+            characterSequence.autocompleteLabel = .init()
+            characterSequence.autocompleteDeleteCount = 0
         }
     }
     
-    func insert(item: Int) {
-        guard item < foundCharacters.count else {
-            return
-        }
-        
-        let scriptCodeLength = UnicodeTable.default.scriptCodeLength
-        
-        let isScriptCodeItem: Bool = scriptCodeLength > 0 && item == 0
-        
-        let deleteCount = isScriptCodeItem ? scriptCodeLength + 1 : textForSearch.count
-        
-        for _ in 0..<deleteCount {
-            Keyboard.default.delegate?.delete()
-        }
-        
-        let character = foundCharacters[item]
-        
-        if !isScriptCodeItem {
-            var frequentlyUsedCharacters = Keyboard.default.frequentlyUsedCharacters
-            
-            if let index = frequentlyUsedCharacters.firstIndex(of: character) {
-                frequentlyUsedCharacters.remove(at: index)
-            }
-            
-            frequentlyUsedCharacters = [character] + frequentlyUsedCharacters
-            
-            Keyboard.default.frequentlyUsedCharacters = .init( frequentlyUsedCharacters.prefix(100) )
-        }
-        
-        Keyboard.default.delegate?.insert(text: character.description)
-        NotificationCenter.default.post(.init(name: .DocumentContextDidChange))
-    }
-    
-    private var textForSearch: String = .init()
+    let characterSearch: CharacterSearch = .init()
     
     @objc private func search() {
         
@@ -595,23 +551,38 @@ class Keyboard: NSObject {
             textForSearch = .reverseSolidus + ( textForSearch.components(separatedBy: String.reverseSolidus).last ?? .init() )
         }
         
-        self.textForSearch = textForSearch
-        
-        UnicodeTable.default.searchScalars(byName: textForSearch.replacingOccurrences(of: String.reverseSolidus, with: ""))
+        characterSearch.search(textForSearch.replacingOccurrences(of: String.reverseSolidus, with: ""))
     }
     
+    
+    var previewLayout: KeyboardLayout = .system {
+        willSet {
+            if #available(iOS 13.0, *) {
+                Key.keys.forEach {$0.objectWillChange.send($0)}
+            }
+        }
+        
+        didSet {
+            Key.keys.forEach {NotificationCenter.default.post($0)}
+        }
+    }
     
     private let layoutKey = "LBPQsNPr8gJHi8Ds05etypaTVEiq8X1"
     var layout: KeyboardLayout {
         get {
-            return KeyboardLayout.list.filter { $0.name == (UserDefaults.standard.string(forKey: layoutKey) ?? "")}.first ?? .qwerty
+            return KeyboardLayout.list.filter { $0.name == (UserDefaults.standard.string(forKey: layoutKey) ?? "")}.first ?? .system
         }
         
         set {
             UserDefaults.standard.set(newValue.name, forKey: layoutKey)
             UserDefaults.standard.synchronize()
             
-            NotificationCenter.default.post(name: .LayoutDidChange, object: nil)
+            if #available(iOS 13.0, *) {
+                objectWillChange.send(self)
+            }
+            
+            previewLayout = newValue
+            NotificationCenter.default.post(self)
         }
     }
     
@@ -625,20 +596,11 @@ class Keyboard: NSObject {
             UserDefaults.standard.set(newValue.rawValue, forKey: layoutModeKey)
             UserDefaults.standard.synchronize()
             
-            NotificationCenter.default.post(name: .LayoutModeDidChange, object: nil)
-        }
-    }
-    
-    private let frequentlyUsedCharactersKey = "LBg6QhTolnUzmtHXeo960LT1ZNd3i07"
-    var frequentlyUsedCharacters: [Character] {
-        get {
-            let characterStrings = UserDefaults.standard.object(forKey: frequentlyUsedCharactersKey) as? [String] ?? .init()
-            return characterStrings.map {Character.init($0)}
-        }
-        
-        set {
-            UserDefaults.standard.set(newValue.map {$0.description}, forKey: frequentlyUsedCharactersKey)
-            UserDefaults.standard.synchronize()
+            if #available(iOS 13.0, *) {
+                objectWillChange.send(self)
+            }
+            
+            NotificationCenter.default.post(self)
         }
     }
 
@@ -660,12 +622,4 @@ extension NSNotification.Name {
     static let KeyboardStateDidChange: NSNotification.Name = .init("gw93Wf66S7t3GARlTiRirWIBvd4QiSM")
     
     static let DocumentContextDidChange: NSNotification.Name = .init("oDap18soqXQONnkeMJsCZSGmkexar2g")
-    
-    static let LayoutDidChange: NSNotification.Name = .init("DjG5zBrx84Y5CwuF858vXxznGIFNnQ5")
-    
-    static let LayoutModeDidChange: NSNotification.Name = .init("JkvFKpRydra3urZI47XVkMoMnd8bFhV")
-    
-    static let CharacterSequenceDidChange: NSNotification.Name = .init("c6nAy6MZmbxXz30pZpJDx1Okn6yce96")
-    
-    static let FoundCharactersDidChange: NSNotification.Name = .init("fpn2g0hSSEQtCeTBWHdxCrvxultcpkx")
 }

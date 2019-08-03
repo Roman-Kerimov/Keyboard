@@ -9,35 +9,35 @@ import Foundation
 
 struct VERSION: LocalizedString {
     private static let version = Bundle.main.version
-    static var az:        String {return ""}
-    static var az_Cyrl:   String {return ""}
-    static var ca:        String {return ""}
-    static var cs:        String {return ""}
-    static var da:        String {return ""}
-    static var de:        String {return ""}
-    static var el:        String {return ""}
-    static var en:        String {return "Version: \(version)"}
-    static var eo:        String {return ""}
-    static var es:        String {return ""}
-    static var es_MX:     String {return ""}
-    static var fi:        String {return ""}
-    static var fr:        String {return ""}
-    static var hr:        String {return ""}
-    static var hu:        String {return ""}
-    static var id:        String {return ""}
-    static var it:        String {return ""}
-    static var ms:        String {return ""}
-    static var nb:        String {return ""}
-    static var nl:        String {return ""}
-    static var pl:        String {return ""}
-    static var pt_PT:     String {return ""}
-    static var pt_BR:     String {return ""}
-    static var ro:        String {return ""}
-    static var ru:        String {return "Версия: \(version)"}
-    static var sk:        String {return ""}
-    static var sv:        String {return ""}
-    static var tr:        String {return ""}
-    static var uk:        String {return ""}
-    static var vi:        String {return ""}
+    static let az        = ""
+    static let az_Cyrl   = ""
+    static let ca        = ""
+    static let cs        = ""
+    static let da        = ""
+    static let de        = ""
+    static let el        = ""
+    static let en        = "Version: \(version)"
+    static let eo        = ""
+    static let es        = ""
+    static let es_MX     = ""
+    static let fi        = ""
+    static let fr        = ""
+    static let hr        = ""
+    static let hu        = ""
+    static let id        = ""
+    static let it        = ""
+    static let ms        = ""
+    static let nb        = ""
+    static let nl        = ""
+    static let pl        = ""
+    static let pt_PT     = ""
+    static let pt_BR     = ""
+    static let ro        = ""
+    static let ru        = "Версия: \(version)"
+    static let sk        = ""
+    static let sv        = ""
+    static let tr        = ""
+    static let uk        = ""
+    static let vi        = ""
 }
 

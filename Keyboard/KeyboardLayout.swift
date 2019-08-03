@@ -8,79 +8,68 @@
 
 import Foundation
 
-struct KeyboardLayout {
+struct KeyboardLayout: Equatable {
     
     let name: String
-    
-    let rows: [[Key]]
-    
     let inputSourceID: String
     
-    func key(code: Keycode) -> Key? {
-        return keycodeToKeyDictionary[code]
+    private var characterComponents: [CharacterComponent] = .init(repeating: .none, count: Keycode.keycodeMaxCount)
+    
+    func characterComponent(fromKeycode keycode: Keycode) -> CharacterComponent {characterComponents[keycode]}
+    
+    func contain(_ key: Key) -> Bool {characterComponents[key.keycode] != .none || key == .enter}
+    
+    var components: Set<CharacterComponent> {
+        .init(characterComponents + KeyboardLayout.option.characterComponents + KeyboardLayout.shiftUpDictionary.values + [.space])
     }
     
-    private var keycodeToKeyDictionary: [Keycode: Key] = [
-        .space: .space,
-        .enter: .enter,
-    ]
-    
-    var rowCount: Int {
-        return rows.count
-    }
-    
-    var columnCount: Int {
-        return rows.map { $0.count }.max()!
-    }
-    
-    let components: Set<CharacterComponent>
-    
-    static let list: [KeyboardLayout] = [.qwerty, .dvorak, .colemak, .azerty, .qwertz]
-    
-    init(name: String, rows: [[CharacterComponent]], defaultInputSourceID: String) {
+    private init(name: String = "", rows: [[CharacterComponent]] = .init(repeating: .init(repeating: .zero, count: Key.layoutBoardColumnCount), count: Key.layoutBoardRowCount), defaultInputSourceID: String = "") {
         self.name = name
         
-        let shiftDownRows: [[CharacterComponent]] = [
+        for (characterComponentRow, keyRow) in zip(rows, Key.layoutBoard) {
+            for (characterComponent, key) in zip(characterComponentRow, keyRow) {
+                characterComponents[key.keycode] = characterComponent
+            }
+        }
+        
+        characterComponents[Key.space.keycode] = .space
+        
+        self.inputSourceID = defaultInputSourceID
+    }
+    
+    static let system = KeyboardLayout(
+        name: "System"
+    )
+    
+    static let option = KeyboardLayout(
+        rows: [
             [ .asterisk,     .apostrophe,    .ampersand,       .verticalLine, .tilde,   .divisionSign,       .seven, .eight, .nine,  .minusSign,  ],
             [ .commercialAt, .numberSign,    .dollarSign,      .percentSign,  .caret,   .multiplicationSign, .four,  .five,  .six,   .plusSign,   ],
             [ .curlyBracket, .squareBracket, .leftParenthesis, .lessThanSign, .solidus, .zero,               .one,   .two,   .three, .equalsSign, ],
         ]
-        
-        let keycodeRows: [[Keycode]] = [
-            [ .q, .w, .e, .r, .t, .y, .u, .i,     .o,        .p,         ],
-            [ .a, .s, .d, .f, .g, .h, .j, .k,     .l,        .semicolon, ],
-            [ .z, .x, .c, .v, .b, .n, .m, .comma, .fullStop, .solidus,   ],
-        ]
-        
-        var keyRows: [[Key]] = []
-        for ((row, shiftDownRow), keycodeRow) in zip(zip(rows, shiftDownRows), keycodeRows) {
-            var keyRow: [Key] = []
-            for ((label, shiftDownCharacterComponent), keycode) in zip(zip(row, shiftDownRow), keycodeRow) {
-                let shiftUpLabel: String
-                
-                if let shiftUpComponent = KeyboardLayout.shiftUpDictionary[label] {
-                    shiftUpLabel = [shiftUpComponent].character
-                }
-                else {
-                    shiftUpLabel = .init()
-                }
-                
-                let shiftDownLabel = [shiftDownCharacterComponent].character + [shiftDownCharacterComponent].extraArray.filter {$0.contains(.extra0) || $0.contains(.extra1) || $0.contains(.extra2)} .map {$0.character} .joined()
-                
-                let key: Key = Key.init(label: [label].character, shiftDownLabel: shiftDownLabel, shiftUpLabel: shiftUpLabel)
-                keyRow.append(key)
-                keycodeToKeyDictionary[keycode] = key
-            }
-            
-            keyRows.append(keyRow)
-        }
-        
-        self.rows = keyRows
-        self.inputSourceID = defaultInputSourceID
-        
-        components = Set.init(.init(rows.joined()) + .init(shiftDownRows.joined()) + KeyboardLayout.shiftUpDictionary.values + [.space])
-    }
+    )
+    
+    static let shiftUpDictionary: [CharacterComponent: CharacterComponent] = [
+        .fullStop: .colon,
+        .comma: .semicolon,
+        .questionMark: .exclamationMark,
+        .apostrophe: .quotationMark,
+        .hyphen: .lowLine,
+    ]
+    
+    static let shiftRightDictionary: [CharacterComponent: CharacterComponent] = [
+        .lessThanSign: .greaterThanSign,
+        .leftParenthesis: .rightParenthesis,
+    ]
+    
+    static let reversedShiftRightDictionary = Dictionary.init(uniqueKeysWithValues: shiftRightDictionary.map {($1, $0)})
+}
 
+// MARK: - Layouts
+extension KeyboardLayout {
+    
+    static let list: [KeyboardLayout] = [.qwerty, .dvorak, .colemak, .azerty, .qwertz, .qzerty]
+    
     static let qwerty = KeyboardLayout(
         name: "QWERTY",
         rows: [
@@ -131,27 +120,22 @@ struct KeyboardLayout {
         defaultInputSourceID: "com.apple.keylayout.ABC-QWERTZ"
     )
     
-    static let shiftUpDictionary: [CharacterComponent: CharacterComponent] = [
-        .fullStop: .colon,
-        .comma: .semicolon,
-        .questionMark: .exclamationMark,
-        .apostrophe: .quotationMark,
-        .hyphen: .lowLine,
-    ]
-    
-    static let shiftRightDictionary: [CharacterComponent: CharacterComponent] = [
-        .lessThanSign: .greaterThanSign,
-        .leftParenthesis: .rightParenthesis,
-    ]
-    
-    static let reversedShiftRightDictionary = Dictionary.init(uniqueKeysWithValues: shiftRightDictionary.map {($1, $0)})
+    static let qzerty = KeyboardLayout(
+        name: "QZERTY",
+        rows: [
+            [ .q, .z, .e, .r, .t, .y, .u, .i,     .o,        .p,            ],
+            [ .a, .s, .d, .f, .g, .h, .j, .k,     .l,        .questionMark, ],
+            [ .w, .x, .c, .v, .b, .n, .m, .comma, .fullStop, .hyphen,       ],
+        ],
+        defaultInputSourceID: "com.apple.keylayout.Italian"
+    )
 }
 
 extension Array where Element == KeyboardLayout {
-    func element(inputSourceID: String) -> Element? {
+    func element(inputSourceID: String) -> Element {
         
         guard let index = self.map( {$0.inputSourceID} ).firstIndex(of: inputSourceID) else {
-            return nil
+            return .system
         }
         
         return self[index]

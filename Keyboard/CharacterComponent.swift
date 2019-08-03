@@ -256,6 +256,7 @@ enum CharacterComponent: String, CaseIterable {
     
     // Service components
     case combined
+    case none
 }
 
 private let ordinalNumbers: [CharacterComponent: Int] = .init(uniqueKeysWithValues: CharacterComponent.allCases.enumerated().map {($1, $0)} )

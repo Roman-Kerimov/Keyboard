@@ -10,7 +10,6 @@ import Combine
 
 @available(iOS 13.0, *)
 extension CharacterSequence: ObservableObject {
-    typealias ObservableObjectPublisher = PassthroughSubject<CharacterSequence, Never>
 
     var objectWillChange: ObservableObjectPublisher {
         if _objectWillChange == nil {
@@ -27,7 +26,7 @@ final class CharacterSequence {
     var characters: [Character] = .init() {
         willSet {
             if #available(iOS 13.0, *) {
-                objectWillChange.send(self)
+                objectWillChange.send()
             }
         }
         
@@ -43,7 +42,7 @@ final class CharacterSequence {
             }
             
             if #available(iOS 13.0, *) {
-                objectWillChange.send(self)
+                objectWillChange.send()
             }
         }
         
@@ -63,7 +62,7 @@ final class CharacterSequence {
             }
             
             if #available(iOS 13.0, *) {
-                objectWillChange.send(self)
+                objectWillChange.send()
             }
         }
         
@@ -83,7 +82,7 @@ final class CharacterSequence {
             }
             
             if #available(iOS 13.0, *) {
-                objectWillChange.send(self)
+                objectWillChange.send()
             }
         }
         

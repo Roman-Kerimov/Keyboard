@@ -11,7 +11,6 @@ import Combine
 
 @available(iOS 13.0, *)
 extension Locale: ObservableObject {
-    typealias ObservableObjectPublisher = PassthroughSubject<Locale, Never>
 
     var objectWillChange: ObservableObjectPublisher {
         if _objectWillChange == nil {
@@ -35,7 +34,7 @@ final class Locale {
     var language: Language {
         willSet {
             if #available(iOS 13.0, *) {
-                objectWillChange.send(self)
+                objectWillChange.send()
             }
         }
         

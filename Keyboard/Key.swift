@@ -10,7 +10,6 @@ import Combine
 
 @available(iOS 13.0, *)
 extension Key: ObservableObject {
-    typealias ObservableObjectPublisher = PassthroughSubject<Key, Never>
     
     var objectWillChange: ObservableObjectPublisher {
         if _objectWillChange == nil {

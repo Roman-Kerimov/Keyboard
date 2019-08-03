@@ -12,7 +12,6 @@ import Calculator
 
 @available(iOS 13.0, *)
 extension Keyboard: ObservableObject {
-    typealias ObservableObjectPublisher = PassthroughSubject<Keyboard, Never>
 
     var objectWillChange: ObservableObjectPublisher {
         if _objectWillChange == nil {
@@ -558,7 +557,7 @@ final class Keyboard {
     var previewLayout: KeyboardLayout = .system {
         willSet {
             if #available(iOS 13.0, *) {
-                Key.keys.forEach {$0.objectWillChange.send($0)}
+                Key.keys.forEach {$0.objectWillChange.send()}
             }
         }
         
@@ -578,7 +577,7 @@ final class Keyboard {
             UserDefaults.standard.synchronize()
             
             if #available(iOS 13.0, *) {
-                objectWillChange.send(self)
+                objectWillChange.send()
             }
             
             previewLayout = newValue
@@ -597,7 +596,7 @@ final class Keyboard {
             UserDefaults.standard.synchronize()
             
             if #available(iOS 13.0, *) {
-                objectWillChange.send(self)
+                objectWillChange.send()
             }
             
             NotificationCenter.default.post(self)

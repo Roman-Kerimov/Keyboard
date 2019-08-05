@@ -46,4 +46,13 @@ extension Character {
     func removing(characterComponents: Set<CharacterComponent>) -> String {
         return description.removing(characterComponents: characterComponents)
     }
+    
+    var previewDescription: String {
+        if unicodeScalars.count == 1 && unicodeName.contains("COMBINING") {
+            
+            return "◌" + description
+        }
+        
+        return description
+    }
 }

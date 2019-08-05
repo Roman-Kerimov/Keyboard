@@ -56,15 +56,7 @@ class CharacterCollectionUIView: UICollectionView, UICollectionViewDelegateFlowL
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCollectionUIViewCell.reuseIdentifier, for: indexPath) as! CharacterCollectionUIViewCell
         
-        var character = characters[indexPath.item]
-        
-        if character.unicodeScalars.count == 1
-            && character.unicodeName.contains("COMBINING") == true {
-            
-            character = .init("◌" + character.description)
-        }
-        
-        cell.title.text = character.description
+        cell.title.text = characters[indexPath.item].previewDescription
         cell.title.textColor = .labelColor
         
         return cell

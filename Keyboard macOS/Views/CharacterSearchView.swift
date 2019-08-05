@@ -16,7 +16,7 @@ struct CharacterSearchView : View {
                 VStack(alignment: .leading, spacing: 0) {
                     ForEach(self.characterSearch.foundCharacters, id: \.description) {character in
                         HStack {
-                            Text(character.description)
+                            Text(character.previewDescription)
                                 .frame(width: geometry.size.width, height: geometry.size.width, alignment: .center)
                                 .font(.system(size: geometry.size.width * .characterSearchViewFontSizeFactor))
                                 .onTapGesture {self.characterSearch.insert(character: character)}

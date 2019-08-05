@@ -755,13 +755,10 @@
 		964AB9331D1B6490004C827C /* Keyboard iOS */ = {
 			isa = PBXGroup;
 			children = (
+				9676ECBB22F8A429002AF981 /* Views */,
+				9676ECBA22F8A3D7002AF981 /* UIViews */,
 				964AB9341D1B6490004C827C /* AppDelegate.swift */,
-				96012B6A22F3C3D30095F445 /* GuideNavigationView.swift */,
 				968AFE412243E6EE00346636 /* GuideUIViewController.swift */,
-				96A15AD42243EE36008F0BE6 /* GuideTableUIView.swift */,
-				96BCF29222444CC7001C87AF /* IterfaceLanguageUIViewCell.swift */,
-				96BCF29022443C22001C87AF /* LegalNoticesUIViewCell.swift */,
-				96BCF28E22443AAF001C87AF /* LocalizedUIViewCell.swift */,
 				964AB93E1D1B6490004C827C /* Assets.xcassets */,
 				964AB9401D1B6490004C827C /* LaunchScreen.storyboard */,
 				964AB9431D1B6490004C827C /* Info.plist */,
@@ -778,29 +775,13 @@
 				96EA39DF1EB0EEDD00F3D804 /* Labels_HideKeyboard.ai */,
 				96EA39E01EB0EEDD00F3D804 /* Labels_NextKeyboard.ai */,
 				96767C241EB11E28004D847C /* Labels_Settings.ai */,
-				961CE9F621B0CCEA00E1A14D /* AutocompleteUIView.swift */,
+				9676ECB822F8A1A3002AF981 /* Views */,
+				9676ECB922F8A1CA002AF981 /* UIViews */,
 				962B5342218C91EA001C4914 /* CGRect.swift */,
-				960F6E921EC9ED0400EFC7B7 /* CharacterCollectionUIView.swift */,
-				9665F3771E9D921500850F97 /* CharacterCollectionUIViewCell.swift */,
-				960F6E941EC9F7E600EFC7B7 /* CharacterSearchUIView.swift */,
-				9665F3751E9D847300850F97 /* CharacterSequenceUIView.swift */,
 				96F7FBE81FBB299400F7146C /* CollectionViewFlowLayout.swift */,
-				9633A3C91E5DFE8D00DFA503 /* DeleteRowUIView.swift */,
 				962B6FB322F37B3800B831B1 /* Image.swift */,
-				962B6FB522F37D2F00B831B1 /* InterfaceLanguageList.swift */,
-				962B6FB622F37D2F00B831B1 /* InterfaceLanguageRow.swift */,
-				966194D21DE2FCEF007FCF02 /* KeyboardLayoutUIView.swift */,
-				965D15C01D3146BB0098FA57 /* KeyboardUIView.swift */,
 				964AB9691D1B6535004C827C /* KeyboardUIViewController.swift */,
-				965D15C81D32AE3B0098FA57 /* KeyUIView.swift */,
-				96BC5F551DEB961F002E0752 /* LabelUIView.swift */,
-				969F15F61E54EE3600C0DD7D /* LanguagesUIView.swift */,
-				961FC32D1F3ADD9B00ADB15D /* LegalNoticesUIView.swift */,
-				963BA6621F3B1FD000BFE3A7 /* LegalTextUIView.swift */,
 				961CE9FE21B0D32800E1A14D /* ReuseIdentifier.swift */,
-				964ECA7D1E536FE8008E8757 /* SettingsContainerUIView.swift */,
-				96F8D1D01E26FAE0000D1DFC /* SettingsUIView.swift */,
-				9654DF791D4E1D0900DDB0EF /* SpaceRowUIView.swift */,
 				968694C01EA0F3D100E6C9D0 /* UIColor.swift */,
 				960F7E8022CD628B00419F62 /* UIFont.swift */,
 				96EA39D61EAFDDDE00F3D804 /* UIImage.swift */,
@@ -859,6 +840,57 @@
 				96AFEBA8202FAB830099F70B /* LocalizedMenuItem.swift */,
 			);
 			path = Menu;
+			sourceTree = "<group>";
+		};
+		9676ECB822F8A1A3002AF981 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				962B6FB522F37D2F00B831B1 /* InterfaceLanguageList.swift */,
+				962B6FB622F37D2F00B831B1 /* InterfaceLanguageRow.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9676ECB922F8A1CA002AF981 /* UIViews */ = {
+			isa = PBXGroup;
+			children = (
+				961CE9F621B0CCEA00E1A14D /* AutocompleteUIView.swift */,
+				960F6E921EC9ED0400EFC7B7 /* CharacterCollectionUIView.swift */,
+				9665F3771E9D921500850F97 /* CharacterCollectionUIViewCell.swift */,
+				960F6E941EC9F7E600EFC7B7 /* CharacterSearchUIView.swift */,
+				9665F3751E9D847300850F97 /* CharacterSequenceUIView.swift */,
+				9633A3C91E5DFE8D00DFA503 /* DeleteRowUIView.swift */,
+				966194D21DE2FCEF007FCF02 /* KeyboardLayoutUIView.swift */,
+				965D15C01D3146BB0098FA57 /* KeyboardUIView.swift */,
+				965D15C81D32AE3B0098FA57 /* KeyUIView.swift */,
+				96BC5F551DEB961F002E0752 /* LabelUIView.swift */,
+				969F15F61E54EE3600C0DD7D /* LanguagesUIView.swift */,
+				961FC32D1F3ADD9B00ADB15D /* LegalNoticesUIView.swift */,
+				963BA6621F3B1FD000BFE3A7 /* LegalTextUIView.swift */,
+				964ECA7D1E536FE8008E8757 /* SettingsContainerUIView.swift */,
+				96F8D1D01E26FAE0000D1DFC /* SettingsUIView.swift */,
+				9654DF791D4E1D0900DDB0EF /* SpaceRowUIView.swift */,
+			);
+			path = UIViews;
+			sourceTree = "<group>";
+		};
+		9676ECBA22F8A3D7002AF981 /* UIViews */ = {
+			isa = PBXGroup;
+			children = (
+				96A15AD42243EE36008F0BE6 /* GuideTableUIView.swift */,
+				96BCF29222444CC7001C87AF /* IterfaceLanguageUIViewCell.swift */,
+				96BCF29022443C22001C87AF /* LegalNoticesUIViewCell.swift */,
+				96BCF28E22443AAF001C87AF /* LocalizedUIViewCell.swift */,
+			);
+			path = UIViews;
+			sourceTree = "<group>";
+		};
+		9676ECBB22F8A429002AF981 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				96012B6A22F3C3D30095F445 /* GuideNavigationView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		9697C3D720BB180300FE3007 /* Emoji */ = {

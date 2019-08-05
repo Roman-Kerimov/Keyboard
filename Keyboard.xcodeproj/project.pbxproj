@@ -160,6 +160,7 @@
 		967491B51EE16BDD00DC19E0 /* CharacterSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967491B41EE16BDD00DC19E0 /* CharacterSet.swift */; };
 		967502542089E1D300FD6CED /* LaunchAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967502532089E1D300FD6CED /* LaunchAgent.swift */; };
 		96767C251EB11E28004D847C /* Labels_Settings.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96767C241EB11E28004D847C /* Labels_Settings.ai */; };
+		9676ECBD22F8AEBE002AF981 /* CharacterSearchToolTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9676ECBC22F8AEBE002AF981 /* CharacterSearchToolTip.swift */; };
 		96848D9F1EE05F080009869A /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96848D9E1EE05F080009869A /* String.swift */; };
 		96848DA11EE0B64F0009869A /* UnicodeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96848DA01EE0B64F0009869A /* UnicodeTable.swift */; };
 		9685BCFF1E06815700702C84 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9685BCFE1E06815700702C84 /* Keyboard.swift */; };
@@ -495,6 +496,7 @@
 		967491B41EE16BDD00DC19E0 /* CharacterSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterSet.swift; sourceTree = "<group>"; };
 		967502532089E1D300FD6CED /* LaunchAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAgent.swift; sourceTree = "<group>"; };
 		96767C241EB11E28004D847C /* Labels_Settings.ai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Labels_Settings.ai; sourceTree = "<group>"; };
+		9676ECBC22F8AEBE002AF981 /* CharacterSearchToolTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSearchToolTip.swift; sourceTree = "<group>"; };
 		96848D9E1EE05F080009869A /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		96848DA01EE0B64F0009869A /* UnicodeTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnicodeTable.swift; sourceTree = "<group>"; };
 		9685BCFE1E06815700702C84 /* Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
@@ -821,6 +823,7 @@
 				96CB9A8322D8E2D7004CA972 /* KeyView.swift */,
 				962A3E2C22C9F8140024D0AF /* CharacterSequenceView.swift */,
 				96A41BCF22C22986009057F5 /* CharacterSearchView.swift */,
+				9676ECBC22F8AEBE002AF981 /* CharacterSearchToolTip.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1492,6 +1495,7 @@
 				9696CBC32031800B007CC94B /* Template.swift in Sources */,
 				966F34F022C2419D00147B72 /* CGFloat.swift in Sources */,
 				965A8B4620D317C100E0260E /* SHOW_FOR_APPLICATION.swift in Sources */,
+				9676ECBD22F8AEBE002AF981 /* CharacterSearchToolTip.swift in Sources */,
 				9697C3E520BB514900FE3007 /* UnicodeDataFile.swift in Sources */,
 				96ACD588205261EE007CFDCF /* NSPasteboard.swift in Sources */,
 				96E033FC203155A80039E653 /* VERSION.swift in Sources */,

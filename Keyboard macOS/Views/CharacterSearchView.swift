@@ -21,7 +21,7 @@ struct CharacterSearchView : View {
                             Text(character.previewDescription)
                                 .frame(width: geometry.size.width, height: geometry.size.width, alignment: .center)
                                 .font(.system(size: geometry.size.width * .characterSearchViewFontSizeFactor))
-                                .onTapGesture {self.characterSearch.insert(character: character)}
+                                .onTapGesture {self.characterSearch.insert(item: item)}
                             
                             CharacterSearchToolTip(characterSearch: self._characterSearch, item: item)
                                 .allowsHitTesting(false)

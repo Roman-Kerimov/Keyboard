@@ -15,7 +15,14 @@ struct GuideNavigationView: View {
         NavigationView {
             List {
                 Section(header: Text(SETTINGS.uppercasedString)) {
-                    NavigationLink(LANGUAGE.string, destination: InterfaceLanguageList())
+                    NavigationLink.init(destination: InterfaceLanguageList()) {
+                        HStack {
+                            Text(LANGUAGE.string)
+                            Spacer()
+                            Text(locale.language.selfName)
+                                .foregroundColor(.secondary)
+                        }
+                    }
                 }
                 
                 Section(header: Text(ABOUT.uppercasedString), footer: Text(VERSION.string)) {

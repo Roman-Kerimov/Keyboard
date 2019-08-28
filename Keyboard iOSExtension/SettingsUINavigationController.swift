@@ -23,7 +23,9 @@ class SettingsUINavigationController: UINavigationController {
     private let verticalModeLabel = "▝█▖"
     
     init() {
-        super.init(rootViewController: settingsViewController)
+        super.init(nibName: nil, bundle: nil)
+        
+        viewControllers = [settingsViewController]
         
         updateLocalizedStrings()
         NotificationCenter.default.addLocaleObserver(self)

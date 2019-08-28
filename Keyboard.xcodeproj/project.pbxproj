@@ -303,6 +303,8 @@
 		96F7FBE91FBB299400F7146C /* CollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F7FBE81FBB299400F7146C /* CollectionViewFlowLayout.swift */; };
 		96F7FBEA1FBB299400F7146C /* CollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F7FBE81FBB299400F7146C /* CollectionViewFlowLayout.swift */; };
 		96F8D1D11E26FAE0000D1DFC /* SettingsUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8D1D01E26FAE0000D1DFC /* SettingsUIView.swift */; };
+		96FD7DE02316D7D700037805 /* SettingsUINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD7DDF2316D7D700037805 /* SettingsUINavigationController.swift */; };
+		96FD7DE12316D7DD00037805 /* SettingsUINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD7DDF2316D7D700037805 /* SettingsUINavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -579,6 +581,7 @@
 		96F716B81F0438B6004A77C7 /* Foundation.Locale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Foundation.Locale.swift; sourceTree = "<group>"; };
 		96F7FBE81FBB299400F7146C /* CollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		96F8D1D01E26FAE0000D1DFC /* SettingsUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsUIView.swift; sourceTree = "<group>"; };
+		96FD7DDF2316D7D700037805 /* SettingsUINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUINavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -783,6 +786,7 @@
 				96F7FBE81FBB299400F7146C /* CollectionViewFlowLayout.swift */,
 				962B6FB322F37B3800B831B1 /* Image.swift */,
 				964AB9691D1B6535004C827C /* KeyboardUIViewController.swift */,
+				96FD7DDF2316D7D700037805 /* SettingsUINavigationController.swift */,
 				961CE9FE21B0D32800E1A14D /* UICollectionReusableView.swift */,
 				968694C01EA0F3D100E6C9D0 /* UIColor.swift */,
 				960F7E8022CD628B00419F62 /* UIFont.swift */,
@@ -1319,6 +1323,7 @@
 				96E03412203162BF0039E653 /* SEND.swift in Sources */,
 				9608928220B00137007AA01E /* LoadUnicodeDataFiles.swift in Sources */,
 				96E033E6203153100039E653 /* SETTINGS.swift in Sources */,
+				96FD7DE12316D7DD00037805 /* SettingsUINavigationController.swift in Sources */,
 				96012B6B22F3C3D30095F445 /* GuideNavigationView.swift in Sources */,
 				96533A8C1F1293A500B07CA3 /* UIImage.swift in Sources */,
 				966CB25420911C99005C7B5B /* CGAffineTransform.swift in Sources */,
@@ -1429,6 +1434,7 @@
 				9637C6F220F2440200078395 /* UIKeyboardAppearance.swift in Sources */,
 				96E03407203156660039E653 /* NEXT.swift in Sources */,
 				962B5344218C91EA001C4914 /* CGRect.swift in Sources */,
+				96FD7DE02316D7D700037805 /* SettingsUINavigationController.swift in Sources */,
 				9654DF7A1D4E1D0900DDB0EF /* SpaceRowUIView.swift in Sources */,
 				9688312B202008040071908B /* DocumentContext.swift in Sources */,
 				96498A40205F4A7D002B1071 /* Keycode.swift in Sources */,

@@ -14,8 +14,7 @@ struct KeyView : View {
         ZStack(alignment: Key.leftSpecialKeys.contains(key) ? .bottomLeading : Key.rightSpecialKeys.contains(key) ? .bottomTrailing : .center) {
             
             Rectangle()
-                .foregroundColor(.primary)
-                .colorInvert()
+                .foregroundColor(.init(.controlColor))
                 .cornerRadius(.keyboardGrid(1.5/19))
                 .padding(.keyboardGrid(1/19))
             

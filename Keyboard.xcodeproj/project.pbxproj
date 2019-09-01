@@ -68,6 +68,8 @@
 		963A53F6214808D2001CAD75 /* codeScriptDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963A53F5214808D2001CAD75 /* codeScriptDictionary.swift */; };
 		963A53F7214808D2001CAD75 /* codeScriptDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963A53F5214808D2001CAD75 /* codeScriptDictionary.swift */; };
 		963A53F8214808D2001CAD75 /* codeScriptDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963A53F5214808D2001CAD75 /* codeScriptDictionary.swift */; };
+		963B3CEB231A987800E67741 /* LayoutPickerSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963B3CEA231A987800E67741 /* LayoutPickerSection.swift */; };
+		963B3CEC231A987800E67741 /* LayoutPickerSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963B3CEA231A987800E67741 /* LayoutPickerSection.swift */; };
 		963BA6631F3B1FD000BFE3A7 /* LegalTextUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963BA6621F3B1FD000BFE3A7 /* LegalTextUIView.swift */; };
 		963BA6641F3B1FD000BFE3A7 /* LegalTextUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963BA6621F3B1FD000BFE3A7 /* LegalTextUIView.swift */; };
 		963DE0B0202F00B60040A448 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963DE0AF202F00B60040A448 /* main.swift */; };
@@ -189,6 +191,8 @@
 		969F15F51E549BD300C0DD7D /* ViewController<UIView>.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969F15F41E549BD300C0DD7D /* ViewController<UIView>.swift */; };
 		969F15F71E54EE3600C0DD7D /* LanguagesUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969F15F61E54EE3600C0DD7D /* LanguagesUIView.swift */; };
 		96A15AD52243EE36008F0BE6 /* GuideTableUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A15AD42243EE36008F0BE6 /* GuideTableUIView.swift */; };
+		96A3938A23172D7100CA6981 /* LayoutModePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A3938923172D7100CA6981 /* LayoutModePicker.swift */; };
+		96A3938B23172D7100CA6981 /* LayoutModePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A3938923172D7100CA6981 /* LayoutModePicker.swift */; };
 		96A41BD122C22986009057F5 /* CharacterSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A41BCF22C22986009057F5 /* CharacterSearchView.swift */; };
 		96AAF02822DFE4C300F4DE7A /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AAF02722DFE4C300F4DE7A /* NotificationCenter.swift */; };
 		96AAF02922DFE4C300F4DE7A /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AAF02722DFE4C300F4DE7A /* NotificationCenter.swift */; };
@@ -305,6 +309,12 @@
 		96F8D1D11E26FAE0000D1DFC /* SettingsUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8D1D01E26FAE0000D1DFC /* SettingsUIView.swift */; };
 		96FD7DE02316D7D700037805 /* SettingsUINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD7DDF2316D7D700037805 /* SettingsUINavigationController.swift */; };
 		96FD7DE12316D7DD00037805 /* SettingsUINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD7DDF2316D7D700037805 /* SettingsUINavigationController.swift */; };
+		96FD7DE62316DF1100037805 /* SettingsNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD7DE52316DF1000037805 /* SettingsNavigationView.swift */; };
+		96FD7DE72316DF1100037805 /* SettingsNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD7DE52316DF1000037805 /* SettingsNavigationView.swift */; };
+		96FD7DE92316E37500037805 /* InterfaceLanguagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD7DE82316E37500037805 /* InterfaceLanguagePicker.swift */; };
+		96FD7DEA2316E37500037805 /* InterfaceLanguagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD7DE82316E37500037805 /* InterfaceLanguagePicker.swift */; };
+		96FD7DEC2316E5FF00037805 /* AboutSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD7DEB2316E5FF00037805 /* AboutSection.swift */; };
+		96FD7DED2316E5FF00037805 /* AboutSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD7DEB2316E5FF00037805 /* AboutSection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -451,6 +461,7 @@
 		9633A3C91E5DFE8D00DFA503 /* DeleteRowUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteRowUIView.swift; sourceTree = "<group>"; };
 		9637C6F020F2440200078395 /* UIKeyboardAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKeyboardAppearance.swift; sourceTree = "<group>"; };
 		963A53F5214808D2001CAD75 /* codeScriptDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = codeScriptDictionary.swift; sourceTree = "<group>"; };
+		963B3CEA231A987800E67741 /* LayoutPickerSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutPickerSection.swift; sourceTree = "<group>"; };
 		963BA6621F3B1FD000BFE3A7 /* LegalTextUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalTextUIView.swift; sourceTree = "<group>"; };
 		963DE0AF202F00B60040A448 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		963DE0B1202F012B0040A448 /* StatusMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenu.swift; sourceTree = "<group>"; };
@@ -523,6 +534,7 @@
 		969F15F41E549BD300C0DD7D /* ViewController<UIView>.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController<UIView>.swift"; sourceTree = "<group>"; };
 		969F15F61E54EE3600C0DD7D /* LanguagesUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguagesUIView.swift; sourceTree = "<group>"; };
 		96A15AD42243EE36008F0BE6 /* GuideTableUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideTableUIView.swift; sourceTree = "<group>"; };
+		96A3938923172D7100CA6981 /* LayoutModePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutModePicker.swift; sourceTree = "<group>"; };
 		96A41BCF22C22986009057F5 /* CharacterSearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterSearchView.swift; sourceTree = "<group>"; };
 		96AAF02722DFE4C300F4DE7A /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		96AC6CA2203C23B200555164 /* CGEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGEvent.swift; sourceTree = "<group>"; };
@@ -582,6 +594,9 @@
 		96F7FBE81FBB299400F7146C /* CollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		96F8D1D01E26FAE0000D1DFC /* SettingsUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsUIView.swift; sourceTree = "<group>"; };
 		96FD7DDF2316D7D700037805 /* SettingsUINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUINavigationController.swift; sourceTree = "<group>"; };
+		96FD7DE52316DF1000037805 /* SettingsNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigationView.swift; sourceTree = "<group>"; };
+		96FD7DE82316E37500037805 /* InterfaceLanguagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceLanguagePicker.swift; sourceTree = "<group>"; };
+		96FD7DEB2316E5FF00037805 /* AboutSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutSection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -852,8 +867,13 @@
 		9676ECB822F8A1A3002AF981 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				96FD7DE52316DF1000037805 /* SettingsNavigationView.swift */,
+				963B3CEA231A987800E67741 /* LayoutPickerSection.swift */,
+				96FD7DE82316E37500037805 /* InterfaceLanguagePicker.swift */,
 				962B6FB522F37D2F00B831B1 /* InterfaceLanguageList.swift */,
 				962B6FB622F37D2F00B831B1 /* InterfaceLanguageRow.swift */,
+				96A3938923172D7100CA6981 /* LayoutModePicker.swift */,
+				96FD7DEB2316E5FF00037805 /* AboutSection.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1297,6 +1317,7 @@
 				96012B6622F3AD3B0095F445 /* LegalNoticesView.swift in Sources */,
 				96F7FBE91FBB299400F7146C /* CollectionViewFlowLayout.swift in Sources */,
 				968AFE422243E6EE00346636 /* GuideUIViewController.swift in Sources */,
+				96FD7DE62316DF1100037805 /* SettingsNavigationView.swift in Sources */,
 				9643FC4D1F78F8D5004DA2C0 /* CharacterComponent.swift in Sources */,
 				9688312A202008040071908B /* DocumentContext.swift in Sources */,
 				96533A901F1293A500B07CA3 /* UIView.swift in Sources */,
@@ -1304,9 +1325,11 @@
 				96E0341A203179C50039E653 /* EMERGENCY_CALL.swift in Sources */,
 				96A15AD52243EE36008F0BE6 /* GuideTableUIView.swift in Sources */,
 				96BCF29122443C22001C87AF /* LegalNoticesUIViewCell.swift in Sources */,
+				963B3CEB231A987800E67741 /* LayoutPickerSection.swift in Sources */,
 				962B5343218C91EA001C4914 /* CGRect.swift in Sources */,
 				96533A781F12938D00B07CA3 /* KeyboardUIViewController.swift in Sources */,
 				96533A871F12938D00B07CA3 /* LabelUIView.swift in Sources */,
+				96FD7DE92316E37500037805 /* InterfaceLanguagePicker.swift in Sources */,
 				96533A791F12938D00B07CA3 /* KeyboardUIView.swift in Sources */,
 				961CE9F821B0CD0100E1A14D /* AutocompleteUIView.swift in Sources */,
 				964AB9351D1B6490004C827C /* AppDelegate.swift in Sources */,
@@ -1329,6 +1352,8 @@
 				966CB25420911C99005C7B5B /* CGAffineTransform.swift in Sources */,
 				96B6B35B1F9764F400231AE6 /* Array<CharacterComponent>.swift in Sources */,
 				96F507DC22CD3F36008EECDA /* Double.swift in Sources */,
+				96FD7DEC2316E5FF00037805 /* AboutSection.swift in Sources */,
+				96A3938A23172D7100CA6981 /* LayoutModePicker.swift in Sources */,
 				96E033FE2031560E0039E653 /* GO.swift in Sources */,
 				96533A911F1293A500B07CA3 /* Foundation.Locale.swift in Sources */,
 				96533A831F12938D00B07CA3 /* CharacterCollectionUIViewCell.swift in Sources */,
@@ -1403,6 +1428,7 @@
 				960F6E951EC9F7E600EFC7B7 /* CharacterSearchUIView.swift in Sources */,
 				96EA39D71EAFDDDE00F3D804 /* UIImage.swift in Sources */,
 				964AB96A1D1B6535004C827C /* KeyboardUIViewController.swift in Sources */,
+				96FD7DE72316DF1100037805 /* SettingsNavigationView.swift in Sources */,
 				96E0341F203179F00039E653 /* CONTINUE.swift in Sources */,
 				96E0342320317A330039E653 /* QUIT.swift in Sources */,
 				96BC5F561DEB961F002E0752 /* LabelUIView.swift in Sources */,
@@ -1431,6 +1457,7 @@
 				96E033EB2031540A0039E653 /* KEYBOARD.swift in Sources */,
 				96E0340B2031567A0039E653 /* ROUTE.swift in Sources */,
 				961FC32F1F3ADD9B00ADB15D /* LegalNoticesUIView.swift in Sources */,
+				96FD7DEA2316E37500037805 /* InterfaceLanguagePicker.swift in Sources */,
 				9637C6F220F2440200078395 /* UIKeyboardAppearance.swift in Sources */,
 				96E03407203156660039E653 /* NEXT.swift in Sources */,
 				962B5344218C91EA001C4914 /* CGRect.swift in Sources */,
@@ -1448,8 +1475,11 @@
 				96E033F7203154FC0039E653 /* LEGAL_NOTICES.swift in Sources */,
 				963A53F7214808D2001CAD75 /* codeScriptDictionary.swift in Sources */,
 				9696CBC22031800B007CC94B /* Template.swift in Sources */,
+				963B3CEC231A987800E67741 /* LayoutPickerSection.swift in Sources */,
+				96A3938B23172D7100CA6981 /* LayoutModePicker.swift in Sources */,
 				9633A3CA1E5DFE8D00DFA503 /* DeleteRowUIView.swift in Sources */,
 				96E0341B203179C50039E653 /* EMERGENCY_CALL.swift in Sources */,
+				96FD7DED2316E5FF00037805 /* AboutSection.swift in Sources */,
 				96E033FF2031560E0039E653 /* GO.swift in Sources */,
 				96443FC1208C9D12002FFA6B /* NSMutableAttributedString.swift in Sources */,
 				96F8D1D11E26FAE0000D1DFC /* SettingsUIView.swift in Sources */,

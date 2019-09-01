@@ -6,7 +6,7 @@
 //
 //
 
-import UIKit
+import SwiftUI
 
 class SettingsContainerUIView: UIStackView {
     
@@ -14,11 +14,19 @@ class SettingsContainerUIView: UIStackView {
     
     let backButton = UIButton()
     
-    let navigationController = SettingsUINavigationController()
+    let navigationController: UIViewController
     
     var widthConstraint: NSLayoutConstraint!
     
     override init(frame: CGRect = .zero) {
+        
+        if #available(iOS 13.0, *) {
+            navigationController = UIHostingController(rootView: SettingsNavigationView().localized().environmentObject(Keyboard.default))
+        }
+        else {
+            navigationController = SettingsUINavigationController()
+        }
+        
         super.init(frame: frame)
         
         backButton.backgroundColor = UIColor.black.withAlphaComponent(0.01)

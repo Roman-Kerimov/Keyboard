@@ -18,6 +18,7 @@ extension CGFloat {
     }
     
     static var legalTextFontSize: Self {0.75 * systemFontSize}
+    static var settingsTitleFontSize: Self {1.8 * systemFontSize}
     
     static let characterSearchViewFontSizeFactor: Self = 0.7
     

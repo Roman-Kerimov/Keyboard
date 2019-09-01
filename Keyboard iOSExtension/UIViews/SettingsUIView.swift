@@ -6,7 +6,7 @@
 //
 //
 
-import SwiftUI
+import UIKit
 
 internal class SettingsUIView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
@@ -19,15 +19,6 @@ internal class SettingsUIView: UITableView, UITableViewDelegate, UITableViewData
     }
     
     internal init() {
-        
-        if #available(iOS 13.0, *) {
-            languageTableViewController = UIHostingController.init(rootView: InterfaceLanguageList().localized())
-            legalNoticesViewController = UIHostingController.init(rootView: LegalNoticesView().localized())
-        } else {
-            languageTableViewController = ViewController<LanguagesUIView>.init()
-            legalNoticesViewController = ViewController<LegalNoticesUIView>.init()
-        }
-        
         super.init(frame: .zero, style: .grouped)
         
         delegate = self
@@ -48,8 +39,8 @@ internal class SettingsUIView: UITableView, UITableViewDelegate, UITableViewData
         case allowMultipleSpaces
     }
     
-    internal let languageTableViewController: UIViewController
-    internal let legalNoticesViewController: UIViewController
+    internal let languageTableViewController: UIViewController = ViewController<LanguagesUIView>()
+    internal let legalNoticesViewController: UIViewController = ViewController<LegalNoticesUIView>()
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)!

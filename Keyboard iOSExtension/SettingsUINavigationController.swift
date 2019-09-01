@@ -19,9 +19,6 @@ class SettingsUINavigationController: UINavigationController {
     
     private let titleLabel: UILabel = .init()
     
-    private let horizontalModeLabel = "▄▄"
-    private let verticalModeLabel = "▝█▖"
-    
     init() {
         super.init(nibName: nil, bundle: nil)
         
@@ -33,22 +30,22 @@ class SettingsUINavigationController: UINavigationController {
         settingsViewController.navigationController?.view.layer.borderWidth = 1/UIScreen.main.scale
         settingsViewController.navigationController?.view.layer.borderColor = UIColor.lightGray.cgColor
         
-        titleLabel.font = .boldSystemFont(ofSize: UIFont.systemFontSize * 1.8)
+        titleLabel.font = UIFont(name: .settingsTitleFontName, size: .settingsTitleFontSize)
         titleLabel.sizeToFit()
         
         let titleItem: UIBarButtonItem = .init(customView: titleLabel)
         settingsViewController.navigationItem.leftBarButtonItem = titleItem
         settingsViewController.navigationItem.titleView = .init()
         
-        let layoutModeSegmentedControlItems = [horizontalModeLabel, verticalModeLabel]
+        let layoutModeSegmentedControlItems: [String] = [.horizontalModeLabel, .verticalModeLabel]
         let layoutModeSegmentedControl: UISegmentedControl = .init(items: layoutModeSegmentedControlItems)
 
         switch Keyboard.default.layoutMode {
         case .horizontal:
-            layoutModeSegmentedControl.selectedSegmentIndex = layoutModeSegmentedControlItems.firstIndex(of: horizontalModeLabel)!
+            layoutModeSegmentedControl.selectedSegmentIndex = layoutModeSegmentedControlItems.firstIndex(of: .horizontalModeLabel)!
 
         case .vertical:
-            layoutModeSegmentedControl.selectedSegmentIndex = layoutModeSegmentedControlItems.firstIndex(of: verticalModeLabel)!
+            layoutModeSegmentedControl.selectedSegmentIndex = layoutModeSegmentedControlItems.firstIndex(of: .verticalModeLabel)!
 
         case .default:
             layoutModeSegmentedControl.selectedSegmentIndex = 0
@@ -69,10 +66,10 @@ class SettingsUINavigationController: UINavigationController {
         let selectedSegmentTitle = layoutModeSegmentedControl.titleForSegment(at: selectedSegmentIndex)!
         
         switch selectedSegmentTitle {
-        case horizontalModeLabel:
+        case .horizontalModeLabel:
             Keyboard.default.layoutMode = .horizontal
             
-        case verticalModeLabel:
+        case .verticalModeLabel:
             Keyboard.default.layoutMode = .vertical
             
         default:

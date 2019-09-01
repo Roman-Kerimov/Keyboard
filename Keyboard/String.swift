@@ -16,8 +16,12 @@ extension String {
     private typealias Font = NSFont
     #endif
     static var legalTextFontName = "System Font Bold"
+    static let settingsTitleFontName = "System Font Bold"
     static let characterFontName = "STIXGeneral"
     static let specialKeyLabelFont = "System Font"
+    
+    static let horizontalModeLabel = "▄▄"
+    static let verticalModeLabel = "▝█▖"
     
     static let space: String = Character.space.description
     static let `return`: String = Character.return.description

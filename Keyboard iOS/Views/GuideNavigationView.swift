@@ -15,12 +15,10 @@ struct GuideNavigationView: View {
         NavigationView {
             List {
                 Section(header: Text(SETTINGS.uppercasedString)) {
-                    NavigationLink(LANGUAGE.string, destination: InterfaceLanguageList())
+                    InterfaceLanguagePicker()
                 }
                 
-                Section(header: Text(ABOUT.uppercasedString), footer: Text(VERSION.string)) {
-                    NavigationLink(LEGAL_NOTICES.string, destination: LegalNoticesView())
-                }
+                AboutSection()
             }
             .listStyle(GroupedListStyle())
             .navigationBarTitle(Bundle.main.productName)

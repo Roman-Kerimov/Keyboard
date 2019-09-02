@@ -1,5 +1,5 @@
 //
-//  ReuseIdentifier.swift
+//  UICollectionReusableView.swift
 //  Keyboard
 //
 //  Created by Roman Kerimov on 2018-11-30.

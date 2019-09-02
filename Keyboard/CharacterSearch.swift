@@ -69,19 +69,15 @@ class CharacterSearch {
             return
         }
         
-        insert(character: foundCharacters[item])
-    }
-    
-    func insert(character: Character) {
-        
-        
-        let isScriptCodeItem: Bool = scriptCodeLength > 0 && character == foundCharacters.first
+        let isScriptCodeItem: Bool = scriptCodeLength > 0 && item == 0
         
         let deleteCount = isScriptCodeItem ? scriptCodeLength + 1 : text.count
         
         for _ in 0..<deleteCount {
             Keyboard.default.delegate?.delete()
         }
+        
+        let character = foundCharacters[item]
         
         if !isScriptCodeItem {
             

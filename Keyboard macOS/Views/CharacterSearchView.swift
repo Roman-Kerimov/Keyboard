@@ -10,16 +10,21 @@ import SwiftUI
 struct CharacterSearchView : View {
     @EnvironmentObject var characterSearch: CharacterSearch
     
-    var body: some View { 
-        GeometryReader {geometry in
+    var body: some View {
+        let enumeratedFoundCharacters = self.characterSearch.foundCharacters.enumerated().map {($0, $1)}
+        
+        return GeometryReader {geometry in
             ScrollView {
                 VStack(alignment: .leading, spacing: 0) {
-                    ForEach(self.characterSearch.foundCharacters, id: \.description) {character in
-                        HStack {
-                            Text(character.description)
+                    ForEach(enumeratedFoundCharacters, id: \.0) {(item, character) in
+                        ZStack {
+                            Text(character.previewDescription)
                                 .frame(width: geometry.size.width, height: geometry.size.width, alignment: .center)
                                 .font(.system(size: geometry.size.width * .characterSearchViewFontSizeFactor))
-                                .onTapGesture {self.characterSearch.insert(character: character)}
+                                .onTapGesture {self.characterSearch.insert(item: item)}
+                            
+                            CharacterSearchToolTip(characterSearch: self._characterSearch, item: item)
+                                .allowsHitTesting(false)
                         }
                     }
                 }

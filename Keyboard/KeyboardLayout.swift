@@ -8,7 +8,10 @@
 
 import Foundation
 
-struct KeyboardLayout: Equatable {
+struct KeyboardLayout: Equatable, Identifiable {
+    var id: String {
+        return name
+    }
     
     let name: String
     let inputSourceID: String

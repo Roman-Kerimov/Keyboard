@@ -17,9 +17,7 @@ class LayoutMenuItem: LocalizedMenuItem {
         
         title = layout.name
         
-        _ = Keyboard.default.objectWillChange.sink {
-            self.state = self.layout.name == Keyboard.default.layout.name ? .on : .off
-        }
+        NotificationCenter.default.addObserver(self, selector: #selector(updateState), publisher: Keyboard.self)
     }
     
     required init(coder decoder: NSCoder) {
@@ -28,5 +26,9 @@ class LayoutMenuItem: LocalizedMenuItem {
     
     override func menuItemAction() {
         Keyboard.default.layout = layout
+    }
+    
+    @objc func updateState() {
+        self.state = self.layout.name == Keyboard.default.layout.name ? .on : .off
     }
 }

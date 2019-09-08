@@ -136,6 +136,7 @@ enum CharacterComponent: String, CaseIterable {
     case broken
     case archaic
     case vend
+    case anglicana
     
     static let scripts: Set<CharacterComponent> = [.cyrillic, .greek, .latin]
     

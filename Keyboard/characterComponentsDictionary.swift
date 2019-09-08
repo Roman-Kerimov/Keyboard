@@ -8464,6 +8464,39 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     //A7B9          ; LATIN SMALL LETTER U WITH STROKE
     "ꞹ": [.u, .diagonalStroke],
 
+    //A7BA          ; LATIN CAPITAL LETTER GLOTTAL A
+    "Ꞻ": [.egyptologialAlef, .a, .capital],
+
+    //A7BB          ; LATIN SMALL LETTER GLOTTAL A
+    "ꞻ": [.egyptologialAlef, .a],
+
+    //A7BC          ; LATIN CAPITAL LETTER GLOTTAL I
+    "Ꞽ": [.egyptologialAlef, .i, .capital],
+
+    //A7BD          ; LATIN SMALL LETTER GLOTTAL I
+    "ꞽ": [.egyptologialAlef, .i],
+
+    //A7BE          ; LATIN CAPITAL LETTER GLOTTAL U
+    "Ꞿ": [.egyptologialAlef, .u, .capital],
+
+    //A7BF          ; LATIN SMALL LETTER GLOTTAL U
+    "ꞿ": [.egyptologialAlef, .u],
+
+    //A7C2          ; LATIN CAPITAL LETTER ANGLICANA W
+    "Ꟃ": [.w, .capital, .anglicana],
+
+    //A7C3          ; LATIN SMALL LETTER ANGLICANA W
+    "ꟃ": [.w, .anglicana],
+
+    //A7C4          ; LATIN CAPITAL LETTER C WITH PALATAL HOOK
+    "Ꞔ": [.c, .capital, .palatalHook],
+
+    //A7C5          ; LATIN CAPITAL LETTER S WITH HOOK
+    "Ʂ": [.s, .capital, .retroflexHook],
+
+    //A7C6          ; LATIN CAPITAL LETTER Z WITH PALATAL HOOK
+    "Ᶎ": [.z, .capital, .palatalHook],
+
     //A7F7          ; LATIN EPIGRAPHIC LETTER SIDEWAYS I
     "ꟷ": [.i, .capital, .sideways],
 
@@ -8655,6 +8688,12 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
 
     //AB65          ; GREEK LETTER SMALL CAPITAL OMEGA
     "ꭥ": [.o, .o, .greek, .smallCapital],
+
+    //AB66          ; LATIN SMALL LETTER DZ DIGRAPH WITH RETROFLEX HOOK
+    "ꭦ": [.d, .z, .retroflexHook],
+
+    //AB67          ; LATIN SMALL LETTER TS DIGRAPH WITH RETROFLEX HOOK
+    "ꭧ": [.t, .s, .retroflexHook],
 
     
     // MARK: - FB00..FB4F; Alphabetic Presentation Forms

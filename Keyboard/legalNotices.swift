@@ -17,8 +17,8 @@ UNICODE, INC. LICENSE AGREEMENT - DATA FILES AND SOFTWARE
 
 COPYRIGHT AND PERMISSION NOTICE
 
-Copyright © 1991-2018 Unicode, Inc. All rights reserved.
-Distributed under the Terms of Use in http://www.unicode.org/copyright.html.
+Copyright © 1991-2019 Unicode, Inc. All rights reserved.
+Distributed under the Terms of Use in https://www.unicode.org/copyright.html.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of the Unicode data files and any associated documentation (the "Data Files") or Unicode software and any associated documentation (the "Software") to deal in the Data Files or Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, and/or sell copies of the Data Files or Software, and to permit persons to whom the Data Files or Software are furnished to do so, provided that either
 (a) this copyright and permission notice appear with all copies of the Data Files or Software, or

@@ -113,7 +113,7 @@
 		96533A7D1F12938D00B07CA3 /* KeyboardLayoutUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966194D21DE2FCEF007FCF02 /* KeyboardLayoutUIView.swift */; };
 		96533A7E1F12938D00B07CA3 /* DeleteRowUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9633A3C91E5DFE8D00DFA503 /* DeleteRowUIView.swift */; };
 		96533A801F12938D00B07CA3 /* CharacterSearchUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960F6E941EC9F7E600EFC7B7 /* CharacterSearchUIView.swift */; };
-		96533A811F12938D00B07CA3 /* UnicodeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96848DA01EE0B64F0009869A /* UnicodeTable.swift */; };
+		96533A811F12938D00B07CA3 /* UnicodeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96848DA01EE0B64F0009869A /* UnicodeData.swift */; };
 		96533A821F12938D00B07CA3 /* CharacterCollectionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960F6E921EC9ED0400EFC7B7 /* CharacterCollectionUIView.swift */; };
 		96533A831F12938D00B07CA3 /* CharacterCollectionUIViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665F3771E9D921500850F97 /* CharacterCollectionUIViewCell.swift */; };
 		96533A841F12938D00B07CA3 /* SpaceRowUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9654DF791D4E1D0900DDB0EF /* SpaceRowUIView.swift */; };
@@ -164,7 +164,7 @@
 		96767C251EB11E28004D847C /* Labels_Settings.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96767C241EB11E28004D847C /* Labels_Settings.ai */; };
 		9676ECBD22F8AEBE002AF981 /* CharacterSearchToolTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9676ECBC22F8AEBE002AF981 /* CharacterSearchToolTip.swift */; };
 		96848D9F1EE05F080009869A /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96848D9E1EE05F080009869A /* String.swift */; };
-		96848DA11EE0B64F0009869A /* UnicodeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96848DA01EE0B64F0009869A /* UnicodeTable.swift */; };
+		96848DA11EE0B64F0009869A /* UnicodeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96848DA01EE0B64F0009869A /* UnicodeData.swift */; };
 		9685BCFF1E06815700702C84 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9685BCFE1E06815700702C84 /* Keyboard.swift */; };
 		968694C11EA0F3D100E6C9D0 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968694C01EA0F3D100E6C9D0 /* UIColor.swift */; };
 		96883127201FB35B0071908B /* KeyboardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96883126201FB35B0071908B /* KeyboardDelegate.swift */; };
@@ -285,7 +285,7 @@
 		96EA39D71EAFDDDE00F3D804 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EA39D61EAFDDDE00F3D804 /* UIImage.swift */; };
 		96EA39E21EB0EEDE00F3D804 /* Labels_HideKeyboard.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96EA39DF1EB0EEDD00F3D804 /* Labels_HideKeyboard.ai */; };
 		96EA39E31EB0EEDE00F3D804 /* Labels_NextKeyboard.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96EA39E01EB0EEDD00F3D804 /* Labels_NextKeyboard.ai */; };
-		96EBF2A8209CEBB900AE00E7 /* UnicodeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96848DA01EE0B64F0009869A /* UnicodeTable.swift */; };
+		96EBF2A8209CEBB900AE00E7 /* UnicodeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96848DA01EE0B64F0009869A /* UnicodeData.swift */; };
 		96EBF2A9209CEBD900AE00E7 /* Foundation.Locale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F716B81F0438B6004A77C7 /* Foundation.Locale.swift */; };
 		96EBF2AA209D158D00AE00E7 /* CharacterSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967491B41EE16BDD00DC19E0 /* CharacterSet.swift */; };
 		96F28C182030205C0023313C /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9685BCFE1E06815700702C84 /* Keyboard.swift */; };
@@ -532,7 +532,7 @@
 		96767C241EB11E28004D847C /* Labels_Settings.ai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Labels_Settings.ai; sourceTree = "<group>"; };
 		9676ECBC22F8AEBE002AF981 /* CharacterSearchToolTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSearchToolTip.swift; sourceTree = "<group>"; };
 		96848D9E1EE05F080009869A /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		96848DA01EE0B64F0009869A /* UnicodeTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnicodeTable.swift; sourceTree = "<group>"; };
+		96848DA01EE0B64F0009869A /* UnicodeData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnicodeData.swift; sourceTree = "<group>"; };
 		9685BCFE1E06815700702C84 /* Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		968694C01EA0F3D100E6C9D0 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		96883126201FB35B0071908B /* KeyboardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDelegate.swift; sourceTree = "<group>"; };
@@ -1019,7 +1019,7 @@
 				961FC3301F3AE14B00ADB15D /* legalNotices.swift */,
 				962A3E2F22C9F8B40024D0AF /* CharacterSequence.swift */,
 				96167F5022C7B5300004DC8D /* CharacterSearch.swift */,
-				96848DA01EE0B64F0009869A /* UnicodeTable.swift */,
+				96848DA01EE0B64F0009869A /* UnicodeData.swift */,
 				96436BA020C1DA2D0065ED03 /* UnicodeItem.swift */,
 				9697C3E220BB514900FE3007 /* UnicodeDataFile.swift */,
 				9608928120B00137007AA01E /* LoadUnicodeDataFiles.swift */,
@@ -1399,7 +1399,7 @@
 				96533A841F12938D00B07CA3 /* SpaceRowUIView.swift in Sources */,
 				96533A8E1F1293A500B07CA3 /* String.swift in Sources */,
 				96534191224727CD0097B522 /* Array<Equatable>.swift in Sources */,
-				96533A811F12938D00B07CA3 /* UnicodeTable.swift in Sources */,
+				96533A811F12938D00B07CA3 /* UnicodeData.swift in Sources */,
 				96533A921F1293A500B07CA3 /* Localization.swift in Sources */,
 				960F7E8122CD628B00419F62 /* UIFont.swift in Sources */,
 				96E0340E203157030039E653 /* SEARCH.swift in Sources */,
@@ -1531,7 +1531,7 @@
 				96436BA220C1DA2D0065ED03 /* UnicodeItem.swift in Sources */,
 				9643FC4E1F78F8D5004DA2C0 /* CharacterComponent.swift in Sources */,
 				961D74922009003900BBC5FB /* Key.swift in Sources */,
-				96848DA11EE0B64F0009869A /* UnicodeTable.swift in Sources */,
+				96848DA11EE0B64F0009869A /* UnicodeData.swift in Sources */,
 				96E033F7203154FC0039E653 /* LEGAL_NOTICES.swift in Sources */,
 				963A53F7214808D2001CAD75 /* codeScriptDictionary.swift in Sources */,
 				9696CBC22031800B007CC94B /* Template.swift in Sources */,
@@ -1607,7 +1607,7 @@
 				9697F882202FA8A1001EC50A /* Languages.swift in Sources */,
 				96E0341C203179C50039E653 /* EMERGENCY_CALL.swift in Sources */,
 				962D7CCA20CD75320047B8B9 /* NSRegularExpression.swift in Sources */,
-				96EBF2A8209CEBB900AE00E7 /* UnicodeTable.swift in Sources */,
+				96EBF2A8209CEBB900AE00E7 /* UnicodeData.swift in Sources */,
 				96F28C21203021760023313C /* String.swift in Sources */,
 				96E83D2C22F48E3F0014296D /* NavigationBarItem.swift in Sources */,
 				96436BA320C1DA2D0065ED03 /* UnicodeItem.swift in Sources */,

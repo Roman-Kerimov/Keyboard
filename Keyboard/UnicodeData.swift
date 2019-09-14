@@ -1,5 +1,5 @@
 //
-//  UnicodeTable.swift
+//  UnicodeData.swift
 //  Keyboard
 //
 //  Created by Roman Kerimov on 2017-06-01.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-class UnicodeTable: NSObject {
+class UnicodeData: NSObject {
     
-    public static let `default`: UnicodeTable = .init()
+    public static let `default`: UnicodeData = .init()
     
     internal var codePointNames: [UInt32: String] = .init()
     internal var sequenceItems: [String: UnicodeItem] = .init()

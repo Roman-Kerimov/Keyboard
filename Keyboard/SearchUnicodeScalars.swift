@@ -97,7 +97,7 @@ class SearchUnicodeScalars: Operation {
             }
         }
         
-        let foundSequenceCharacters = UnicodeTable.default.sequenceItems
+        let foundSequenceCharacters = UnicodeData.default.sequenceItems
             .values
             .filter {!isCancelled && $0.isFullyQualified && $0.name.contains(searchRegularExpression) && $0.codePoints.count == 1}
             .map {Character.init($0.codePoints)}
@@ -106,7 +106,7 @@ class SearchUnicodeScalars: Operation {
             return
         }
         
-        let foundCodePointCharacters = UnicodeTable.default.codePointNames
+        let foundCodePointCharacters = UnicodeData.default.codePointNames
             .filter {!isCancelled && $0.value.contains(searchRegularExpression) && !CharacterSet.emoji.contains(Unicode.Scalar.init($0.key)!)}
             .map {Character.init(Unicode.Scalar.init($0.key)!)}
         
@@ -133,8 +133,8 @@ class SearchUnicodeScalars: Operation {
                 }
             }
             
-            let leftItem = UnicodeTable.default.sequenceItems[left.description]
-            let rightItem = UnicodeTable.default.sequenceItems[right.description]
+            let leftItem = UnicodeData.default.sequenceItems[left.description]
+            let rightItem = UnicodeData.default.sequenceItems[right.description]
             
             if let leftItem = leftItem, let rightItem = rightItem {
                 return leftItem < rightItem

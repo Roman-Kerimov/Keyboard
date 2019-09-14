@@ -32,11 +32,11 @@ extension Character {
     }
     
     var unicodeName: String {
-        if let name = UnicodeTable.default.sequenceItems[self.description]?.name {
+        if let name = UnicodeData.default.sequenceItems[self.description]?.name {
             return name
         }
         
-        return unicodeScalars.map {UnicodeTable.default.codePointNames[$0.value] ?? .init()}.joined(separator: unicodeNameSeparator)
+        return unicodeScalars.map {UnicodeData.default.codePointNames[$0.value] ?? .init()}.joined(separator: unicodeNameSeparator)
     }
     
     var characterComponents: [CharacterComponent] {

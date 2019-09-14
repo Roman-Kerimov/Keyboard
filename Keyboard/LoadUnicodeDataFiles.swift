@@ -25,7 +25,7 @@ class LoadUnicodeDataFiles: Operation {
         collectFileGarbage()
         
         if Keyboard.default.cacheVersion != Bundle.main.version {
-            try? FileManager.default.removeItem(at: UnicodeTable.default.cacheURL)
+            try? FileManager.default.removeItem(at: UnicodeData.default.cacheURL)
             Keyboard.default.cacheVersion = Bundle.main.version
         }
         
@@ -40,7 +40,7 @@ class LoadUnicodeDataFiles: Operation {
             switch dataFile {
                 
             case .derivedName:
-                parse(dataFile: dataFile, processedStringCount: &processedStringCount, output: &UnicodeTable.default.codePointNames) { (string, codePointNames) in
+                parse(dataFile: dataFile, processedStringCount: &processedStringCount, output: &UnicodeData.default.codePointNames) { (string, codePointNames) in
                     
                     let components = string.split(separator: columnSeparator).map {$0.trimmingCharacters(in: .whitespaces)}
                     
@@ -56,7 +56,7 @@ class LoadUnicodeDataFiles: Operation {
                 }
                 
             case .emojiTest:
-                parse(dataFile: dataFile, processedStringCount: &processedStringCount, output: &UnicodeTable.default.sequenceItems) { (string, sequenceItems) in
+                parse(dataFile: dataFile, processedStringCount: &processedStringCount, output: &UnicodeData.default.sequenceItems) { (string, sequenceItems) in
                     
                     let components = string.split(maxSplits: 2, omittingEmptySubsequences: false) { [columnSeparator, commentMarker].contains($0) } .map {$0.trimmingCharacters(in: .whitespaces)}
                     
@@ -68,7 +68,7 @@ class LoadUnicodeDataFiles: Operation {
                     sequenceItems[sequence] = UnicodeItem.init(codePoints: sequence, name: name, isFullyQualified: isFullyQualified)
                 }
                 
-                CharacterSet.emoji = CharacterSet.init(charactersIn: UnicodeTable.default.sequenceItems.keys.filter {$0.unicodeScalars.count == 1} .joined())
+                CharacterSet.emoji = CharacterSet.init(charactersIn: UnicodeData.default.sequenceItems.keys.filter {$0.unicodeScalars.count == 1} .joined())
             }
         }
         

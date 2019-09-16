@@ -20,6 +20,13 @@ class LoadUnicodeDataFiles: Operation {
         fileGarbageURLs.forEach {try? FileManager.default.removeItem(at: $0)}
     }
     
+    private var processedStringCount: Int = 0 {
+        didSet {
+            let progress: Float = .init(processedStringCount) / .init(UnicodeDataFile.totalStringCount)
+            NotificationCenter.default.post(name: .UnicodeDataFilesLoadingProgressDidChange, object: progress)
+        }
+    }
+    
     override func main() {
         
         collectFileGarbage()
@@ -28,8 +35,6 @@ class LoadUnicodeDataFiles: Operation {
             try? FileManager.default.removeItem(at: UnicodeData.default.cacheURL)
             Keyboard.default.cacheVersion = Bundle.main.version
         }
-        
-        var processedStringCount = 0
         
         for dataFile in UnicodeDataFile.allCases {
             
@@ -40,7 +45,7 @@ class LoadUnicodeDataFiles: Operation {
             switch dataFile {
                 
             case .derivedName:
-                parse(dataFile: dataFile, processedStringCount: &processedStringCount, output: &UnicodeData.default.codePointNames) { (string, codePointNames) in
+                parse(dataFile: dataFile, output: &UnicodeData.default.codePointNames) { (string, codePointNames) in
                     
                     let components = string.split(separator: columnSeparator).map {$0.trimmingCharacters(in: .whitespaces)}
                     
@@ -56,7 +61,7 @@ class LoadUnicodeDataFiles: Operation {
                 }
                 
             case .emojiTest:
-                parse(dataFile: dataFile, processedStringCount: &processedStringCount, output: &UnicodeData.default.sequenceItems) { (string, sequenceItems) in
+                parse(dataFile: dataFile, output: &UnicodeData.default.sequenceItems) { (string, sequenceItems) in
                     
                     let components = string.split(maxSplits: 2, omittingEmptySubsequences: false) { [columnSeparator, commentMarker].contains($0) } .map {$0.trimmingCharacters(in: .whitespaces)}
                     
@@ -75,18 +80,12 @@ class LoadUnicodeDataFiles: Operation {
         NotificationCenter.default.post(name: .UnicodeDataFilesDidLoad, object: nil)
     }
     
-    private func parse<Type: Codable>(dataFile: UnicodeDataFile, processedStringCount: inout Int, output: inout Type, parse: (String, inout Type) -> Void) {
-        
-        func updateProgress() {
-            let progress: Float = .init(processedStringCount) / .init(UnicodeDataFile.totalStringCount)
-            NotificationCenter.default.post(name: .UnicodeDataFilesLoadingProgressDidChange, object: progress)
-        }
+    private func parse<Type: Codable>(dataFile: UnicodeDataFile, output: inout Type, parse: (String, inout Type) -> Void) {
         
         if let outputObject = try? PropertyListDecoder.init().decode(Type.self, from: (try? Data.init(contentsOf: dataFile.cacheURL)) ?? .init()) {
             output = outputObject
             
             processedStringCount += dataFile.strings.count
-            updateProgress()
         }
         else {
             for string in dataFile.strings {
@@ -98,7 +97,6 @@ class LoadUnicodeDataFiles: Operation {
                 }
                 
                 processedStringCount += 1
-                updateProgress()
             }
             
             if let data = try? PropertyListEncoder.init().encode(output) {

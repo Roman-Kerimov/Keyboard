@@ -54,7 +54,7 @@ class KeyboardUIViewController: UIInputViewController, KeyboardDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Perform custom UI setup here
+        UnicodeData.default.loadIfNeeded()
         
         KeyboardUIViewController.shared = self
         Keyboard.default.delegate = self

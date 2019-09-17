@@ -26,7 +26,7 @@ class SearchUnicodeScalars: Operation {
         
         var foundCharacters: [Character] = .init()
         
-        func flag(fromRegionCode regionCode: String) -> Character {
+        func flag(fromRegionCode regionCode: String) -> String {
             var flag: String = .init()
             
             for unicodeScalar in regionCode.unicodeScalars {
@@ -36,7 +36,7 @@ class SearchUnicodeScalars: Operation {
                 flag.append(regionalIndicatorLetter.description)
             }
             
-            return .init(flag)
+            return flag
         }
         
         func updateUnicodeCollectionView() {
@@ -61,8 +61,8 @@ class SearchUnicodeScalars: Operation {
             
             let regionCode = text.uppercased()
             
-            if Foundation.Locale.regionCodes.contains(regionCode) {
-                foundCharacters.append(flag(fromRegionCode: regionCode))
+            if let flag = UnicodeData.default.sequenceItems[flag(fromRegionCode: regionCode)]?.codePoints {
+                foundCharacters.append(Character(flag))
                 
                 for localeIdentifier in (Foundation.Locale.availableIdentifiers.filter { $0.hasSuffix(regionCode) } + ["en_\(regionCode)"]) {
                     if let currencySymbol = Foundation.Locale.init(identifier: localeIdentifier).currencySymbol {

@@ -127,7 +127,6 @@
 		96533A8E1F1293A500B07CA3 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96848D9E1EE05F080009869A /* String.swift */; };
 		96533A8F1F1293A500B07CA3 /* CharacterSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967491B41EE16BDD00DC19E0 /* CharacterSet.swift */; };
 		96533A901F1293A500B07CA3 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969E83041EED842E009A1F2D /* UIView.swift */; };
-		96533A911F1293A500B07CA3 /* Foundation.Locale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F716B81F0438B6004A77C7 /* Foundation.Locale.swift */; };
 		96533A921F1293A500B07CA3 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9694E23C1E29D72800ED3A85 /* Localization.swift */; };
 		96533A931F1293A500B07CA3 /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D2B8DC1E35538B006772A5 /* Languages.swift */; };
 		96533A951F1293B000B07CA3 /* Labels_NextKeyboard.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96EA39E01EB0EEDD00F3D804 /* Labels_NextKeyboard.ai */; };
@@ -286,7 +285,6 @@
 		96EA39E21EB0EEDE00F3D804 /* Labels_HideKeyboard.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96EA39DF1EB0EEDD00F3D804 /* Labels_HideKeyboard.ai */; };
 		96EA39E31EB0EEDE00F3D804 /* Labels_NextKeyboard.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96EA39E01EB0EEDD00F3D804 /* Labels_NextKeyboard.ai */; };
 		96EBF2A8209CEBB900AE00E7 /* UnicodeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96848DA01EE0B64F0009869A /* UnicodeData.swift */; };
-		96EBF2A9209CEBD900AE00E7 /* Foundation.Locale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F716B81F0438B6004A77C7 /* Foundation.Locale.swift */; };
 		96EBF2AA209D158D00AE00E7 /* CharacterSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967491B41EE16BDD00DC19E0 /* CharacterSet.swift */; };
 		96F28C182030205C0023313C /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9685BCFE1E06815700702C84 /* Keyboard.swift */; };
 		96F28C192030205C0023313C /* KeyboardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96883126201FB35B0071908B /* KeyboardDelegate.swift */; };
@@ -303,7 +301,6 @@
 		96F507DC22CD3F36008EECDA /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F507DB22CD3F36008EECDA /* Double.swift */; };
 		96F507DD22CD3F36008EECDA /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F507DB22CD3F36008EECDA /* Double.swift */; };
 		96F507DE22CD3F36008EECDA /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F507DB22CD3F36008EECDA /* Double.swift */; };
-		96F716B91F0438B6004A77C7 /* Foundation.Locale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F716B81F0438B6004A77C7 /* Foundation.Locale.swift */; };
 		96F7FBE91FBB299400F7146C /* CollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F7FBE81FBB299400F7146C /* CollectionViewFlowLayout.swift */; };
 		96F7FBEA1FBB299400F7146C /* CollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F7FBE81FBB299400F7146C /* CollectionViewFlowLayout.swift */; };
 		96F8D1D11E26FAE0000D1DFC /* SettingsUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8D1D01E26FAE0000D1DFC /* SettingsUIView.swift */; };
@@ -612,7 +609,6 @@
 		96EA39E11EB0EEDD00F3D804 /* Labels.ai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Labels.ai; sourceTree = "<group>"; };
 		96F28C2320302AC00023313C /* VersionMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionMenuItem.swift; sourceTree = "<group>"; };
 		96F507DB22CD3F36008EECDA /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
-		96F716B81F0438B6004A77C7 /* Foundation.Locale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Foundation.Locale.swift; sourceTree = "<group>"; };
 		96F7FBE81FBB299400F7146C /* CollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		96F8D1D01E26FAE0000D1DFC /* SettingsUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsUIView.swift; sourceTree = "<group>"; };
 		96FD7DDF2316D7D700037805 /* SettingsUINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUINavigationController.swift; sourceTree = "<group>"; };
@@ -1026,7 +1022,6 @@
 				9608928520B001AD007AA01E /* SearchUnicodeScalars.swift */,
 				962D7CC720CD75320047B8B9 /* NSRegularExpression.swift */,
 				969450BF20B3215100DD7EF3 /* URL.swift */,
-				96F716B81F0438B6004A77C7 /* Foundation.Locale.swift */,
 				967491B41EE16BDD00DC19E0 /* CharacterSet.swift */,
 				966F34ED22C2419D00147B72 /* CGFloat.swift */,
 				96F507DB22CD3F36008EECDA /* Double.swift */,
@@ -1415,7 +1410,6 @@
 				96FD7DEC2316E5FF00037805 /* AboutSection.swift in Sources */,
 				96A3938A23172D7100CA6981 /* LayoutModePicker.swift in Sources */,
 				96E033FE2031560E0039E653 /* GO.swift in Sources */,
-				96533A911F1293A500B07CA3 /* Foundation.Locale.swift in Sources */,
 				96533A831F12938D00B07CA3 /* CharacterCollectionUIViewCell.swift in Sources */,
 				96E03416203162F30039E653 /* DONE.swift in Sources */,
 				96167F5122C7B5300004DC8D /* CharacterSearch.swift in Sources */,
@@ -1511,7 +1505,6 @@
 				966F34EF22C2419D00147B72 /* CGFloat.swift in Sources */,
 				96200BEA208CDC8D002930D6 /* ENABLE_KEYBOARD.swift in Sources */,
 				96E033F32031549C0039E653 /* ABOUT.swift in Sources */,
-				96F716B91F0438B6004A77C7 /* Foundation.Locale.swift in Sources */,
 				969F15F71E54EE3600C0DD7D /* LanguagesUIView.swift in Sources */,
 				969F15F51E549BD300C0DD7D /* ViewController<UIView>.swift in Sources */,
 				96E033EB2031540A0039E653 /* KEYBOARD.swift in Sources */,
@@ -1663,7 +1656,6 @@
 				96E0340C2031567A0039E653 /* ROUTE.swift in Sources */,
 				965A8B4220D315A000E0260E /* HIDE_FOR_APPLICATION.swift in Sources */,
 				96F28C1D2030205C0023313C /* CharacterComponent.swift in Sources */,
-				96EBF2A9209CEBD900AE00E7 /* Foundation.Locale.swift in Sources */,
 				96F28C1E2030205C0023313C /* Array<CharacterComponent>.swift in Sources */,
 				960F7E8422CD62FE00419F62 /* NSFont.swift in Sources */,
 				96F28C1F2030205C0023313C /* characterComponentsDictionary.swift in Sources */,

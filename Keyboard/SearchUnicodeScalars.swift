@@ -27,16 +27,7 @@ class SearchUnicodeScalars: Operation {
         var foundCharacters: [Character] = .init()
         
         func flag(fromRegionCode regionCode: String) -> String {
-            var flag: String = .init()
-            
-            for unicodeScalar in regionCode.unicodeScalars {
-                
-                let regionalIndicatorLetter: Unicode.Scalar = Unicode.Scalar.init(unicodeScalar.value + 0x1F1A5)!
-                
-                flag.append(regionalIndicatorLetter.description)
-            }
-            
-            return flag
+            return regionCode.unicodeScalars.map {Unicode.Scalar($0.value + 0x1F1A5)?.description ?? "_"} .joined()
         }
         
         func updateUnicodeCollectionView() {

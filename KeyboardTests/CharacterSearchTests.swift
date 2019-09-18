@@ -45,6 +45,15 @@ class CharacterSearchTests: XCTestCase {
         XCTAssertEqual(search("ru")[1], "₽")
     }
     
+    func testSubdivisionCurrencySearchByRegionCode() {
+        
+        let gbCurrency = search("gb")[1]
+        
+        XCTAssertEqual(search("gbeng")[1], gbCurrency)
+        XCTAssertEqual(search("gbsct")[1], gbCurrency)
+        XCTAssertEqual(search("gbwls")[1], gbCurrency)
+    }
+    
     func testSearchWithScriptCode() {
         XCTAssertEqual(search("fki").first, "ф")
     }

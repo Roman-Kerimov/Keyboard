@@ -40,7 +40,9 @@ class SearchUnicodeScalars: Operation {
         if let flag = UnicodeData.default.sequenceItems[flag(fromRegionCode: text)]?.codePoints {
             foundCharacters.append(Character(flag))
             
-            for localeIdentifier in (Foundation.Locale.availableIdentifiers.filter { $0.hasSuffix(text.uppercased()) } + ["en_\(text.uppercased())"]) {
+            let regionCode = text.prefix(2).uppercased()
+            
+            for localeIdentifier in (Foundation.Locale.availableIdentifiers.filter { $0.hasSuffix(regionCode) } + ["en_\(regionCode)"]) {
                 if let currencySymbol = Foundation.Locale.init(identifier: localeIdentifier).currencySymbol {
                     if currencySymbol.count == 1 {
                         foundCharacters.append(.init(currencySymbol))

@@ -29,7 +29,25 @@ class SearchUnicodeScalars: Operation {
         var foundCharacters: [Character] = .init()
         
         func flag(fromRegionCode regionCode: String) -> String {
-            return regionCode.unicodeScalars.map {Unicode.Scalar($0.value + 0x1F1A5)?.description ?? "_"} .joined()
+            if regionCode.count == 2 {
+                return regionCode.uppercased().unicodeScalars.map {Unicode.Scalar($0.value + 0x1F1A5)?.description ?? "_"} .joined()
+            }
+            else {
+                return "\u{1F3F4}" + regionCode.unicodeScalars.map {Unicode.Scalar($0.value + 0xE0000)?.description ?? "_"} .joined() + "\u{E007F}"
+            }
+        }
+        
+        if let flag = UnicodeData.default.sequenceItems[flag(fromRegionCode: text)]?.codePoints {
+            foundCharacters.append(Character(flag))
+            
+            for localeIdentifier in (Foundation.Locale.availableIdentifiers.filter { $0.hasSuffix(text.uppercased()) } + ["en_\(text.uppercased())"]) {
+                if let currencySymbol = Foundation.Locale.init(identifier: localeIdentifier).currencySymbol {
+                    if currencySymbol.count == 1 {
+                        foundCharacters.append(.init(currencySymbol))
+                        break
+                    }
+                }
+            }
         }
         
         func updateUnicodeCollectionView() {
@@ -49,21 +67,6 @@ class SearchUnicodeScalars: Operation {
             
         case 2:
             searchRegularExpression = .contains(word: text)
-            
-            let regionCode = text.uppercased()
-            
-            if let flag = UnicodeData.default.sequenceItems[flag(fromRegionCode: regionCode)]?.codePoints {
-                foundCharacters.append(Character(flag))
-                
-                for localeIdentifier in (Foundation.Locale.availableIdentifiers.filter { $0.hasSuffix(regionCode) } + ["en_\(regionCode)"]) {
-                    if let currencySymbol = Foundation.Locale.init(identifier: localeIdentifier).currencySymbol {
-                        if currencySymbol.count == 1 {
-                            foundCharacters.append(.init(currencySymbol))
-                            break
-                        }
-                    }
-                }
-            }
             
         default:
             searchRegularExpression = .contains(text)

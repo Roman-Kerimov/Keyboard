@@ -35,6 +35,12 @@ class CharacterSearchTests: XCTestCase {
         XCTAssertEqual(search("ru").first, "🇷🇺")
     }
     
+    func testSubdivisionFlagSearchByRegionCode() {
+        XCTAssertEqual(search("gbeng").first, "🏴󠁧󠁢󠁥󠁮󠁧󠁿")
+        XCTAssertEqual(search("gbsct").first, "🏴󠁧󠁢󠁳󠁣󠁴󠁿")
+        XCTAssertEqual(search("gbwls").first, "🏴󠁧󠁢󠁷󠁬󠁳󠁿")
+    }
+    
     func testCurrencySearchByRegionCode() {
         XCTAssertEqual(search("ru")[1], "₽")
     }

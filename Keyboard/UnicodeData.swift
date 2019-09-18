@@ -27,6 +27,8 @@ class UnicodeData: NSObject {
         backgroudOperationQueue.addOperation( LoadUnicodeDataFiles.init() )
     }
     
+    func loadIfNeeded() {}
+    
     var cacheURL: URL {
         let cacheDirectoryURL = URL.applicationSupport.appendingPathComponent("UDFCache")
         var isDirectory: ObjCBool = false

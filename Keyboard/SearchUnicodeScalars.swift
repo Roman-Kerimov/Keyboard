@@ -33,9 +33,7 @@ class SearchUnicodeScalars: Operation {
         }
         
         func updateUnicodeCollectionView() {
-            DispatchQueue.main.async {
-                self.characterSearch.foundCharacters = foundCharacters
-            }
+            characterSearch.foundCharacters = foundCharacters
         }
         
         let searchRegularExpression: NSRegularExpression

@@ -1,0 +1,46 @@
+//
+//  CharacterSearchTests.swift
+//  Keyboard
+//
+//  Created by Roman Kerimov on 2019-09-18.
+//
+
+import XCTest
+@testable import Keyboard
+
+class CharacterSearchTests: XCTestCase {
+
+    override func setUp() {
+        // Put setup code here. This method is called before the invocation of each test method in the class.
+    }
+
+    override func tearDown() {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    }
+    
+    func search(_ text: String) -> [Character] {
+        let characterSearch = CharacterSearch()
+        
+        characterSearch.search(text)
+        characterSearch.searchOperationQueue.waitUntilAllOperationsAreFinished()
+        
+        return characterSearch.foundCharacters
+    }
+    
+    func testSearch() {
+        XCTAssert(search("deg").contains("°"))
+    }
+
+    func testFlagSearchByRegionCode() {
+        XCTAssertEqual(search("ru").first, "🇷🇺")
+    }
+    
+    func testCurrencySearchByRegionCode() {
+        XCTAssertEqual(search("ru")[1], "₽")
+    }
+    
+    func testSearchWithScriptCode() {
+        XCTAssertEqual(search("fki").first, "ф")
+    }
+
+}

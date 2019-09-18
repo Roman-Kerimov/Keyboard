@@ -186,6 +186,8 @@
 		9697C3E520BB514900FE3007 /* UnicodeDataFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9697C3E220BB514900FE3007 /* UnicodeDataFile.swift */; };
 		9697F881202FA88C001EC50A /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9694E23C1E29D72800ED3A85 /* Localization.swift */; };
 		9697F882202FA8A1001EC50A /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D2B8DC1E35538B006772A5 /* Languages.swift */; };
+		969948A323322174002D282D /* CharacterSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969948A223322174002D282D /* CharacterSearchTests.swift */; };
+		969948A423322174002D282D /* CharacterSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969948A223322174002D282D /* CharacterSearchTests.swift */; };
 		969E83051EED842E009A1F2D /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969E83041EED842E009A1F2D /* UIView.swift */; };
 		969F15F51E549BD300C0DD7D /* ViewController<UIView>.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969F15F41E549BD300C0DD7D /* ViewController<UIView>.swift */; };
 		969F15F71E54EE3600C0DD7D /* LanguagesUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969F15F61E54EE3600C0DD7D /* LanguagesUIView.swift */; };
@@ -548,6 +550,7 @@
 		9697C3DC20BB180300FE3007 /* ReadMe.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
 		9697C3DD20BB180300FE3007 /* emoji-sequences.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "emoji-sequences.txt"; sourceTree = "<group>"; };
 		9697C3E220BB514900FE3007 /* UnicodeDataFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnicodeDataFile.swift; sourceTree = "<group>"; };
+		969948A223322174002D282D /* CharacterSearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSearchTests.swift; sourceTree = "<group>"; };
 		969E83041EED842E009A1F2D /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		969F15F41E549BD300C0DD7D /* ViewController<UIView>.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController<UIView>.swift"; sourceTree = "<group>"; };
 		969F15F61E54EE3600C0DD7D /* LanguagesUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguagesUIView.swift; sourceTree = "<group>"; };
@@ -1037,6 +1040,7 @@
 				96534194224727FD0097B522 /* Array<Equatable>Tests.swift */,
 				96B6B35D1F97660E00231AE6 /* Array<CharacterComponent>Tests.swift */,
 				965BFAD01F797BBB00B8F682 /* CharacterComponentsDictionaryTests.swift */,
+				969948A223322174002D282D /* CharacterSearchTests.swift */,
 				96D2356F224CC76B0018C266 /* StringTests.swift */,
 			);
 			path = KeyboardTests;
@@ -1567,6 +1571,7 @@
 				96B6B35E1F97660E00231AE6 /* Array<CharacterComponent>Tests.swift in Sources */,
 				96905E4720EF268C006F3DE9 /* KeyboardTests.swift in Sources */,
 				96D23570224CC76B0018C266 /* StringTests.swift in Sources */,
+				969948A423322174002D282D /* CharacterSearchTests.swift in Sources */,
 				965BFAC91F7979FA00B8F682 /* Keyboard_iOSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1676,6 +1681,7 @@
 				96E354FD2020DDBD00668374 /* Keyboard_macOSTests.swift in Sources */,
 				96905E4820EF268C006F3DE9 /* KeyboardTests.swift in Sources */,
 				96D23571224CC76B0018C266 /* StringTests.swift in Sources */,
+				969948A323322174002D282D /* CharacterSearchTests.swift in Sources */,
 				96B6BC4A2031ADB6002509E4 /* Array<CharacterComponent>Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -29,7 +29,7 @@ class CharacterSearch {
         search(query)
     }
     
-    private let searchOperationQueue: OperationQueue = .init()
+    let searchOperationQueue: OperationQueue = .init()
     
     var text: String = "" {
         didSet {

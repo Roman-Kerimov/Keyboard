@@ -9,7 +9,9 @@ import Foundation
 
 extension NotificationCenter {
     func post(_ input: Any) {
-        self.post(name: .init("\(type(of: input))"), object: input)
+        DispatchQueue.main.async {
+            self.post(name: .init("\(type(of: input))"), object: input)
+        }
     }
     
     func addObserver(_ observer: Any, selector aSelector: Selector, publisher: AnyClass) {

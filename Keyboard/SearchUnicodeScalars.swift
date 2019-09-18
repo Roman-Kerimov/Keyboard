@@ -66,10 +66,7 @@ class SearchUnicodeScalars: Operation {
             updateUnicodeCollectionView()
             return
             
-        case 1:
-            searchRegularExpression = .contains(word: text)
-            
-        case 2:
+        case 1, 2:
             searchRegularExpression = .contains(word: text)
             
         default:

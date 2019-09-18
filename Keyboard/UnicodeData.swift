@@ -17,6 +17,10 @@ class UnicodeData: NSObject {
     
     private let backgroudOperationQueue: OperationQueue = .init()
     
+    func waitUntilLoadingIsFinished() {
+        backgroudOperationQueue.waitUntilAllOperationsAreFinished()
+    }
+    
     private override init() {
         super.init()
         

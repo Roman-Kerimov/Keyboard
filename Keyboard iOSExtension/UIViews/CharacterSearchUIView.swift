@@ -8,7 +8,15 @@
 
 import UIKit
 
-class CharacterSearchUIView: CharacterCollectionUIView {
+class CharacterSearchUIView: UICollectionView, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+    
+    var characters: [Character] = .init() {
+        didSet {
+            reloadData()
+        }
+    }
+    
+    let layout: CollectionViewFlowLayout = .init()
 
     internal var size: CGSize = .zero {
         didSet {
@@ -19,8 +27,21 @@ class CharacterSearchUIView: CharacterCollectionUIView {
         }
     }
     
-    internal override init() {
-        super.init()
+    init() {
+        super.init(frame: .zero, collectionViewLayout: layout)
+        
+        dataSource = self
+        delegate = self
+        
+        register(CharacterCollectionUIViewCell.self, forCellWithReuseIdentifier: CharacterCollectionUIViewCell.reuseIdentifier)
+        
+        showsVerticalScrollIndicator = false
+        showsHorizontalScrollIndicator = false
+        
+        alwaysBounceVertical = true
+        backgroundColor = .touchableClear
+        
+        clipsToBounds = false
         
         let progressView: UIProgressView = .init()
         backgroundView = progressView
@@ -48,9 +69,16 @@ class CharacterSearchUIView: CharacterCollectionUIView {
         characters = Keyboard.default.characterSearch.foundCharacters
     }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return characters.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! CharacterCollectionUIViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCollectionUIViewCell.reuseIdentifier, for: indexPath) as! CharacterCollectionUIViewCell
+        
+        cell.title.text = characters[indexPath.item].previewDescription
+        cell.title.textColor = .labelColor
         
         let characterFontSize = layout.itemSize.width * .characterSearchViewFontSizeFactor
         cell.title.font = .systemFont(ofSize: characterFontSize)

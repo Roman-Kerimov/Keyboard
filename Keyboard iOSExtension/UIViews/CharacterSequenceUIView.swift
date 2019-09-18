@@ -8,15 +8,15 @@
 
 import UIKit
 
-class CharacterSequenceUIView: CharacterCollectionUIView {
+class CharacterSequenceUIView: UICollectionView, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    var characters: [Character] = .init() {
+        didSet {
+            reloadData()
+        }
     }
-    */
+    
+    let layout: CollectionViewFlowLayout = .init()
     
     private var longPressGestureRecognizer: UILongPressGestureRecognizer!
     
@@ -27,7 +27,15 @@ class CharacterSequenceUIView: CharacterCollectionUIView {
         
         self.deleteButton = deleteButton
         
-        super.init()
+        super.init(frame: .zero, collectionViewLayout: layout)
+        
+        dataSource = self
+        delegate = self
+        
+        showsVerticalScrollIndicator = false
+        showsHorizontalScrollIndicator = false
+        
+        backgroundColor = .touchableClear
         
         layout.scrollDirection = .horizontal
         
@@ -40,6 +48,7 @@ class CharacterSequenceUIView: CharacterCollectionUIView {
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateCharacters), publisher: CharacterSequence.self)
         
+        register(CharacterCollectionUIViewCell.self, forCellWithReuseIdentifier: CharacterCollectionUIViewCell.reuseIdentifier)
         register(AutocompleteUIView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: AutocompleteUIView.reuseIdentifier)
     }
     
@@ -265,9 +274,16 @@ class CharacterSequenceUIView: CharacterCollectionUIView {
         return UIFont(name: .characterFontName, size: fontSize)!
     }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return characters.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! CharacterCollectionUIViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCollectionUIViewCell.reuseIdentifier, for: indexPath) as! CharacterCollectionUIViewCell
+        
+        cell.title.text = characters[indexPath.item].previewDescription
+        cell.title.textColor = .labelColor
             
         cell.title.font = characterFont
         cell.backgroundColor = UIColor.labelColor.withAlphaComponent(CGFloat(Double.characterSequenceBackgroundOpacity))

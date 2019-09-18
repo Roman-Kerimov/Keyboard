@@ -17,7 +17,6 @@
 		9608928620B001AD007AA01E /* SearchUnicodeScalars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9608928520B001AD007AA01E /* SearchUnicodeScalars.swift */; };
 		9608928720B001AD007AA01E /* SearchUnicodeScalars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9608928520B001AD007AA01E /* SearchUnicodeScalars.swift */; };
 		9608928820B001AD007AA01E /* SearchUnicodeScalars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9608928520B001AD007AA01E /* SearchUnicodeScalars.swift */; };
-		960F6E931EC9ED0400EFC7B7 /* CharacterCollectionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960F6E921EC9ED0400EFC7B7 /* CharacterCollectionUIView.swift */; };
 		960F6E951EC9F7E600EFC7B7 /* CharacterSearchUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960F6E941EC9F7E600EFC7B7 /* CharacterSearchUIView.swift */; };
 		960F7E8122CD628B00419F62 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960F7E8022CD628B00419F62 /* UIFont.swift */; };
 		960F7E8222CD628B00419F62 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960F7E8022CD628B00419F62 /* UIFont.swift */; };
@@ -114,7 +113,6 @@
 		96533A7E1F12938D00B07CA3 /* DeleteRowUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9633A3C91E5DFE8D00DFA503 /* DeleteRowUIView.swift */; };
 		96533A801F12938D00B07CA3 /* CharacterSearchUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960F6E941EC9F7E600EFC7B7 /* CharacterSearchUIView.swift */; };
 		96533A811F12938D00B07CA3 /* UnicodeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96848DA01EE0B64F0009869A /* UnicodeData.swift */; };
-		96533A821F12938D00B07CA3 /* CharacterCollectionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960F6E921EC9ED0400EFC7B7 /* CharacterCollectionUIView.swift */; };
 		96533A831F12938D00B07CA3 /* CharacterCollectionUIViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665F3771E9D921500850F97 /* CharacterCollectionUIViewCell.swift */; };
 		96533A841F12938D00B07CA3 /* SpaceRowUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9654DF791D4E1D0900DDB0EF /* SpaceRowUIView.swift */; };
 		96533A861F12938D00B07CA3 /* KeyUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965D15C81D32AE3B0098FA57 /* KeyUIView.swift */; };
@@ -433,7 +431,6 @@
 		9608927820AF4F98007AA01E /* WordBreakTest.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = WordBreakTest.txt; sourceTree = "<group>"; };
 		9608928120B00137007AA01E /* LoadUnicodeDataFiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadUnicodeDataFiles.swift; sourceTree = "<group>"; };
 		9608928520B001AD007AA01E /* SearchUnicodeScalars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUnicodeScalars.swift; sourceTree = "<group>"; };
-		960F6E921EC9ED0400EFC7B7 /* CharacterCollectionUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterCollectionUIView.swift; sourceTree = "<group>"; };
 		960F6E941EC9F7E600EFC7B7 /* CharacterSearchUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterSearchUIView.swift; sourceTree = "<group>"; };
 		960F7E8022CD628B00419F62 /* UIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIFont.swift; path = "Keyboard iOSExtension/UIFont.swift"; sourceTree = SOURCE_ROOT; };
 		960F7E8322CD62FE00419F62 /* NSFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSFont.swift; sourceTree = "<group>"; };
@@ -941,7 +938,6 @@
 			isa = PBXGroup;
 			children = (
 				961CE9F621B0CCEA00E1A14D /* AutocompleteUIView.swift */,
-				960F6E921EC9ED0400EFC7B7 /* CharacterCollectionUIView.swift */,
 				9665F3771E9D921500850F97 /* CharacterCollectionUIViewCell.swift */,
 				960F6E941EC9F7E600EFC7B7 /* CharacterSearchUIView.swift */,
 				9665F3751E9D847300850F97 /* CharacterSequenceUIView.swift */,
@@ -1456,7 +1452,6 @@
 				9637C6F120F2440200078395 /* UIKeyboardAppearance.swift in Sources */,
 				96E03406203156660039E653 /* NEXT.swift in Sources */,
 				96E033F6203154FC0039E653 /* LEGAL_NOTICES.swift in Sources */,
-				96533A821F12938D00B07CA3 /* CharacterCollectionUIView.swift in Sources */,
 				961D74912009003900BBC5FB /* Key.swift in Sources */,
 				96E033EE203154660039E653 /* LANGUAGE.swift in Sources */,
 				96533A7C1F12938D00B07CA3 /* LanguagesUIView.swift in Sources */,
@@ -1543,7 +1538,6 @@
 				962B6FBA22F3874500B831B1 /* InterfaceLanguageList.swift in Sources */,
 				96AAF02A22DFE4C300F4DE7A /* NotificationCenter.swift in Sources */,
 				96F7FBEA1FBB299400F7146C /* CollectionViewFlowLayout.swift in Sources */,
-				960F6E931EC9ED0400EFC7B7 /* CharacterCollectionUIView.swift in Sources */,
 				96530D671DD1C9A9004E8BAA /* KeyboardLayout.swift in Sources */,
 				968694C11EA0F3D100E6C9D0 /* UIColor.swift in Sources */,
 				96C49DC51EB7DF1F006F93ED /* Character.swift in Sources */,

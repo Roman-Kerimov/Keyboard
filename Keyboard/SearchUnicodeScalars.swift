@@ -37,10 +37,6 @@ class SearchUnicodeScalars: Operation {
             }
         }
         
-        func updateUnicodeCollectionView() {
-            characterSearch.foundCharacters = foundCharacters
-        }
-        
         if let flag = UnicodeData.default.sequenceItems[flag(fromRegionCode: text)]?.codePoints {
             foundCharacters.append(Character(flag))
             
@@ -56,7 +52,9 @@ class SearchUnicodeScalars: Operation {
             }
         }
         
-        updateUnicodeCollectionView()
+        func updateUnicodeCollectionView() {
+            characterSearch.foundCharacters = foundCharacters
+        }
         
         let searchRegularExpression: NSRegularExpression
         

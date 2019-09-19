@@ -22,6 +22,10 @@ extension Bundle {
         let buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
         return "\(versionNumber) (\(buildNumber))"
     }
+    
+    var cacheVersion: String {
+        return Bundle.main.version + UnicodeDataFile.allCases.description
+    }
 }
 
 class MainBundle {}

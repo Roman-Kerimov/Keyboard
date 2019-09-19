@@ -10,7 +10,7 @@ import UIKit
 
 class CharacterSearchUIView: UICollectionView, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
-    var characters: [Character] = .init() {
+    var unicodeItems: [UnicodeItem] = .init() {
         didSet {
             reloadData()
         }
@@ -66,24 +66,24 @@ class CharacterSearchUIView: UICollectionView, UICollectionViewDelegateFlowLayou
     }
     
     @objc func updateCharacters() {
-        characters = Keyboard.default.characterSearch.foundCharacters
+        unicodeItems = Keyboard.default.characterSearch.foundUnicodeItems
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return characters.count
+        return unicodeItems.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCollectionUIViewCell.reuseIdentifier, for: indexPath) as! CharacterCollectionUIViewCell
         
-        cell.title.text = characters[indexPath.item].previewDescription
+        cell.title.text = unicodeItems[indexPath.item].codePoints.previewDescription
         cell.title.textColor = .labelColor
         
         let characterFontSize = layout.itemSize.width * .characterSearchViewFontSizeFactor
         cell.title.font = .systemFont(ofSize: characterFontSize)
         
-        cell.unicodeName.text = characters[indexPath.item].unicodeName
+        cell.unicodeName.text = unicodeItems[indexPath.item].name
         
         if cell.title.text?.first?.belongsTo(.regionalIndicatorSymbols) == true
             && cell.title.text?.unicodeScalars.count == 2 {

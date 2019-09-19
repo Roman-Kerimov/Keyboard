@@ -18,13 +18,13 @@ class CharacterSearchTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    func search(_ text: String) -> [Character] {
+    func search(_ text: String) -> [String] {
         let characterSearch = CharacterSearch()
         
         characterSearch.search(text)
         characterSearch.searchOperationQueue.waitUntilAllOperationsAreFinished()
         
-        return characterSearch.foundCharacters
+        return characterSearch.foundUnicodeItems.map {$0.codePoints}
     }
     
     func testSearch() {

@@ -12,8 +12,11 @@ class UnicodeData: NSObject {
     
     public static let `default`: UnicodeData = .init()
     
-    internal var codePointNames: [UInt32: String] = .init()
-    internal var sequenceItems: [String: UnicodeItem] = .init()
+    var items: [UnicodeItem] = []
+    
+    func item(byCodePoints codePoints: String) -> UnicodeItem? {
+        return items.last(where: {$0.codePoints == codePoints && $0.codePoints.unicodeScalars.map {$0.value} == codePoints.unicodeScalars.map {$0.value} })
+    }
     
     private let backgroudOperationQueue: OperationQueue = .init()
     
@@ -30,15 +33,14 @@ class UnicodeData: NSObject {
     func loadIfNeeded() {}
     
     var cacheURL: URL {
-        let cacheDirectoryURL = URL.applicationSupport.appendingPathComponent("UDFCache")
+        let cacheURL = URL.applicationSupport.appendingPathComponent("UDFCache")
         var isDirectory: ObjCBool = false
-        FileManager.default.fileExists(atPath: cacheDirectoryURL.path, isDirectory: &isDirectory)
+        FileManager.default.fileExists(atPath: cacheURL.path, isDirectory: &isDirectory)
         
-        if !isDirectory.boolValue {
-            try? FileManager.default.removeItem(at: cacheDirectoryURL)
-            try! FileManager.default.createDirectory(atPath: cacheDirectoryURL.path, withIntermediateDirectories: false, attributes: nil)
+        if isDirectory.boolValue {
+            try? FileManager.default.removeItem(at: cacheURL)
         }
         
-        return cacheDirectoryURL
+        return cacheURL
     }
 }

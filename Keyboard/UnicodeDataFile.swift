@@ -8,8 +8,8 @@
 import Foundation
 
 enum UnicodeDataFile: String, CaseIterable {
-    case derivedName = "DerivedName"
     case emojiTest = "emoji-test"
+    case derivedName = "DerivedName"
     
     var name: String {
         return rawValue
@@ -21,10 +21,6 @@ enum UnicodeDataFile: String, CaseIterable {
     
     var strings: [String] {
         return (try! String.init(contentsOf: fileURL)).split(separator: .return).map {String.init($0)}
-    }
-    
-    var cacheURL: URL {
-        return UnicodeData.default.cacheURL.appendingPathComponent(name)
     }
     
     static let totalStringCount = allCases.map {$0.strings.count}.reduce(0, +)

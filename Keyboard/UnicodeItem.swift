@@ -24,7 +24,7 @@ class UnicodeItem: Codable, Comparable {
     
     private static var count: Int = 0
     
-    init(codePoints: String, name: String, isFullyQualified: Bool) {
+    init(codePoints: String, name: String, isFullyQualified: Bool = true) {
         
         self.codePoints = codePoints
         self.isFullyQualified = isFullyQualified

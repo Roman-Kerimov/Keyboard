@@ -26,7 +26,7 @@ class SearchUnicodeScalars: Operation {
             return
         }
         
-        var foundCharacters: [Character] = .init()
+        var foundUnicodeItems: [UnicodeItem] = []
         
         func flag(fromRegionCode regionCode: String) -> String {
             if regionCode.count == 2 {
@@ -38,18 +38,18 @@ class SearchUnicodeScalars: Operation {
         }
         
         func updateUnicodeCollectionView() {
-            characterSearch.foundCharacters = foundCharacters
+            characterSearch.foundUnicodeItems = foundUnicodeItems
         }
         
-        if let flag = UnicodeData.default.sequenceItems[flag(fromRegionCode: text)]?.codePoints {
-            foundCharacters.append(Character(flag))
+        if let flagItem = UnicodeData.default.item(byCodePoints: flag(fromRegionCode: text)) {
+            foundUnicodeItems.append(flagItem)
             
             let regionCode = text.prefix(2).uppercased()
             
             for localeIdentifier in (Foundation.Locale.availableIdentifiers.filter { $0.hasSuffix(regionCode) } + ["en_\(regionCode)"]) {
                 if let currencySymbol = Foundation.Locale.init(identifier: localeIdentifier).currencySymbol {
-                    if currencySymbol.count == 1 {
-                        foundCharacters.append(.init(currencySymbol))
+                    if currencySymbol.count == 1, let currencyItem = UnicodeData.default.item(byCodePoints: currencySymbol) {
+                        foundUnicodeItems.append(currencyItem)
                         break
                     }
                 }
@@ -62,7 +62,7 @@ class SearchUnicodeScalars: Operation {
         
         switch text.count {
         case 0:
-            foundCharacters = characterSearch.currentFrequentlyUsedCharacters
+            foundUnicodeItems = characterSearch.currentFrequentlyUsedUnicodeItems
             updateUnicodeCollectionView()
             return
             
@@ -87,29 +87,12 @@ class SearchUnicodeScalars: Operation {
                     break
                 }
                 
-                foundCharacters.append(.init(targetLetter))
+                foundUnicodeItems.append(UnicodeData.default.item(byCodePoints: targetLetter)!)
                 characterSearch.scriptCodeLength = scriptCodeLength
             }
         }
         
-        let foundSequenceCharacters = UnicodeData.default.sequenceItems
-            .values
-            .filter {!isCancelled && $0.isFullyQualified && $0.name.contains(searchRegularExpression) && $0.codePoints.count == 1}
-            .map {Character.init($0.codePoints)}
-        
-        guard !isCancelled else {
-            return
-        }
-        
-        let foundCodePointCharacters = UnicodeData.default.codePointNames
-            .filter {!isCancelled && $0.value.contains(searchRegularExpression) && !CharacterSet.emoji.contains(Unicode.Scalar.init($0.key)!)}
-            .map {Character.init(Unicode.Scalar.init($0.key)!)}
-        
-        guard !isCancelled else {
-            return
-        }
-        
-        foundCharacters += (foundCodePointCharacters + foundSequenceCharacters).sorted { (left, right) -> Bool in
+        foundUnicodeItems += UnicodeData.default.items.filter {!isCancelled && $0.isFullyQualified && $0.name.contains(searchRegularExpression)} .sorted { (leftItem, rightItem) -> Bool in
             
             guard !isCancelled else {
                 return true
@@ -117,8 +100,8 @@ class SearchUnicodeScalars: Operation {
             
             for regularExpression: NSRegularExpression in [.contains(word: text), .containsWord(withPrefix: text)] {
                 
-                let leftBool = left.unicodeName.contains(regularExpression)
-                let rightBool = right.unicodeName.contains(regularExpression)
+                let leftBool = leftItem.name.contains(regularExpression)
+                let rightBool = rightItem.name.contains(regularExpression)
                 if  leftBool && !rightBool {
                     return true
                 }
@@ -128,20 +111,7 @@ class SearchUnicodeScalars: Operation {
                 }
             }
             
-            let leftItem = UnicodeData.default.sequenceItems[left.description]
-            let rightItem = UnicodeData.default.sequenceItems[right.description]
-            
-            if let leftItem = leftItem, let rightItem = rightItem {
-                return leftItem < rightItem
-            }
-            else if let _ = leftItem {
-                return true
-            }
-            else if let _ = rightItem {
-                return false
-            }
-            
-            return left < right
+            return leftItem < rightItem
         }
         
         guard !isCancelled else {

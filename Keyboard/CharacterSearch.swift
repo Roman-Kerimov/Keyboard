@@ -53,7 +53,9 @@ class CharacterSearch {
     var foundUnicodeItems: [UnicodeItem] = [] {
         willSet {
             if #available(iOS 13.0, *) {
-                objectWillChange.send()
+                DispatchQueue.main.async {
+                    self.objectWillChange.send()
+                }
             }
         }
         

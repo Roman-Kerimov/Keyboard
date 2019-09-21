@@ -90,7 +90,7 @@ class SearchUnicodeScalars: Operation {
             }
         }
         
-        foundUnicodeItems += UnicodeData.default.items.filter {!isCancelled && $0.isFullyQualified && $0.name.contains(searchRegularExpression)} .sorted { (leftItem, rightItem) -> Bool in
+        foundUnicodeItems += UnicodeData.default.items(regularExpression: searchRegularExpression).filter {!isCancelled && $0.isFullyQualified} .sorted { (leftItem, rightItem) -> Bool in
             
             guard !isCancelled else {
                 return true

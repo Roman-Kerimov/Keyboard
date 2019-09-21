@@ -6,17 +6,42 @@
 //
 //
 
-import Foundation
+import CoreData
 
-class UnicodeData: NSObject {
+class UnicodeData: NSPersistentContainer {
     
-    public static let `default`: UnicodeData = .init()
+    public static let `default`: UnicodeData = .init(name: "UnicodeData")
     
-    var items: [UnicodeItem] = []
+    lazy var backgroundContext = newBackgroundContext()
+    
+    func items(regularExpression: NSRegularExpression) -> [UnicodeItem] {
+        let fetchRequest: NSFetchRequest<ManagedUnicodeItem> = ManagedUnicodeItem.fetchRequest()
+        fetchRequest.predicate = .init(format: "name MATCHES [c] %@", ".*\(regularExpression.pattern).*")
+        
+        return (try! backgroundContext.fetch(fetchRequest)).map {.init(managed: $0)}
+    }
     
     func item(byCodePoints codePoints: String) -> UnicodeItem? {
-        return items.last(where: {$0.codePoints == codePoints && $0.codePoints.unicodeScalars.map {$0.value} == codePoints.unicodeScalars.map {$0.value} })
+        
+        let fetchRequest: NSFetchRequest<ManagedUnicodeItem> = ManagedUnicodeItem.fetchRequest()
+        fetchRequest.predicate = .init(format: "codePoints == %@", codePoints)
+        let items = (try! backgroundContext.fetch(fetchRequest)).map {UnicodeItem(managed: $0)}
+        
+        return items.first(where: {$0.codePoints.unicodeScalars.map {$0.value} == codePoints.unicodeScalars.map {$0.value}})
     }
+    
+    func addItem(codePoints: String, name: String, isFullyQualified: Bool = true) {
+        let item = ManagedUnicodeItem(context: backgroundContext)
+        
+        item.codePoints = codePoints
+        item.isFullyQualified = isFullyQualified
+        item.name = name
+        item.order = .init(itemCount)
+        
+        itemCount += 1
+    }
+    
+    lazy var itemCount: Int = try! backgroundContext.count(for: ManagedUnicodeItem.fetchRequest())
     
     private let backgroudOperationQueue: OperationQueue = .init()
     
@@ -24,23 +49,32 @@ class UnicodeData: NSObject {
         backgroudOperationQueue.waitUntilAllOperationsAreFinished()
     }
     
-    private override init() {
-        super.init()
+    private override init(name: String, managedObjectModel model: NSManagedObjectModel) {
+        super.init(name: name, managedObjectModel: model)
+        
+        loadPersistentStore()
         
         backgroudOperationQueue.addOperation( LoadUnicodeDataFiles.init() )
     }
     
     func loadIfNeeded() {}
     
-    var cacheURL: URL {
-        let cacheURL = URL.applicationSupport.appendingPathComponent("UDFCache")
-        var isDirectory: ObjCBool = false
-        FileManager.default.fileExists(atPath: cacheURL.path, isDirectory: &isDirectory)
+    private func loadPersistentStore() {
+        loadPersistentStores { description, error in
+            if let _ = error {
+                DispatchQueue.main.async {
+                    self.resetPersistentStore()
+                }
+            }
+        }
+    }
         
-        if isDirectory.boolValue {
-            try? FileManager.default.removeItem(at: cacheURL)
+    func resetPersistentStore() {
+        let storeURLs = persistentStoreCoordinator.persistentStores.compactMap {$0.url}
+        storeURLs.forEach { (storeURL) in
+            try? persistentStoreCoordinator.destroyPersistentStore(at: storeURL, ofType: NSSQLiteStoreType, options: nil)
         }
         
-        return cacheURL
+        loadPersistentStore()
     }
 }

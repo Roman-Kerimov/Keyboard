@@ -15,6 +15,7 @@ class LoadUnicodeDataFiles: Operation {
         let fileGarbageURLs: [URL] = [
             URL.applicationSupport.appendingPathComponent(UnicodeDataFile.derivedName.name),
             URL.applicationSupport.appendingPathComponent(UnicodeDataFile.emojiTest.name),
+            URL.applicationSupport.appendingPathComponent("UDFCache"),
         ]
         
         fileGarbageURLs.forEach {try? FileManager.default.removeItem(at: $0)}
@@ -32,13 +33,11 @@ class LoadUnicodeDataFiles: Operation {
         collectFileGarbage()
         
         if Keyboard.default.cacheVersion != Bundle.main.cacheVersion {
-            try? FileManager.default.removeItem(at: UnicodeData.default.cacheURL)
+            UnicodeData.default.resetPersistentStore()
             Keyboard.default.cacheVersion = Bundle.main.cacheVersion
         }
         
-        if let unicodeItems = try? PropertyListDecoder.init().decode([UnicodeItem].self, from: (try? Data.init(contentsOf: UnicodeData.default.cacheURL)) ?? .init()) {
-            UnicodeData.default.items = unicodeItems
-            
+        guard UnicodeData.default.itemCount == 0 else {
             NotificationCenter.default.post(name: .UnicodeDataFilesDidLoad, object: nil)
             return
         }
@@ -70,7 +69,7 @@ class LoadUnicodeDataFiles: Operation {
                         return
                     }
                     
-                    UnicodeData.default.items.append(.init(codePoints: unicodeScalar.description, name: components.last!))
+                    UnicodeData.default.addItem(codePoints: unicodeScalar.description, name: components.last!)
                 }
                 
             case .emojiTest:
@@ -87,14 +86,12 @@ class LoadUnicodeDataFiles: Operation {
                         emojiCharacterSet.insert(unicodeScalars.first!)
                     }
                     
-                    UnicodeData.default.items.append(.init(codePoints: sequence, name: name, isFullyQualified: isFullyQualified))
+                    UnicodeData.default.addItem(codePoints: sequence, name: name, isFullyQualified: isFullyQualified)
                 }
             }
         }
         
-        if let data = try? PropertyListEncoder.init().encode(UnicodeData.default.items) {
-            try! data.write(to: UnicodeData.default.cacheURL)
-        }
+        try! UnicodeData.default.backgroundContext.save()
         
         NotificationCenter.default.post(name: .UnicodeDataFilesDidLoad, object: nil)
     }

@@ -52,6 +52,23 @@ class LoadUnicodeDataFiles: Operation {
             
             switch dataFile {
                 
+            case .emojiTest:
+                parse(dataFile: dataFile) { (string) in
+                    
+                    let components = string.split(maxSplits: 2, omittingEmptySubsequences: false) { [columnSeparator, commentMarker].contains($0) } .map {$0.trimmingCharacters(in: .whitespaces)}
+                    
+                    let unicodeScalars = components[0].components(separatedBy: .whitespaces).map {$0.hexToUnicodeScalar!}
+                    let sequence: String = unicodeScalars.map {$0.description} .reduce(.init(), +)
+                    let isFullyQualified: Bool = components[1] == "fully-qualified"
+                    let name: String = components[2].drop {$0 != .space} .description.trimmingCharacters(in: .whitespaces)
+                    
+                    if unicodeScalars.count == 1 {
+                        emojiCharacterSet.insert(unicodeScalars.first!)
+                    }
+                    
+                    UnicodeData.default.addItem(codePoints: sequence, name: name, isFullyQualified: isFullyQualified)
+                }
+                
             case .derivedName:
                 parse(dataFile: dataFile) { (string) in
                     
@@ -70,23 +87,6 @@ class LoadUnicodeDataFiles: Operation {
                     }
                     
                     UnicodeData.default.addItem(codePoints: unicodeScalar.description, name: components.last!)
-                }
-                
-            case .emojiTest:
-                parse(dataFile: dataFile) { (string) in
-                    
-                    let components = string.split(maxSplits: 2, omittingEmptySubsequences: false) { [columnSeparator, commentMarker].contains($0) } .map {$0.trimmingCharacters(in: .whitespaces)}
-                    
-                    let unicodeScalars = components[0].components(separatedBy: .whitespaces).map {$0.hexToUnicodeScalar!}
-                    let sequence: String = unicodeScalars.map {$0.description} .reduce(.init(), +)
-                    let isFullyQualified: Bool = components[1] == "fully-qualified"
-                    let name: String = components[2].drop {$0 != .space} .description.trimmingCharacters(in: .whitespaces)
-                    
-                    if unicodeScalars.count == 1 {
-                        emojiCharacterSet.insert(unicodeScalars.first!)
-                    }
-                    
-                    UnicodeData.default.addItem(codePoints: sequence, name: name, isFullyQualified: isFullyQualified)
                 }
             }
         }

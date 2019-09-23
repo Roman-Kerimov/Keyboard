@@ -16,7 +16,7 @@ class UnicodeData: NSPersistentContainer {
     
     func items(regularExpression: NSRegularExpression) -> [UnicodeItem] {
         let fetchRequest: NSFetchRequest<ManagedUnicodeItem> = ManagedUnicodeItem.fetchRequest()
-        fetchRequest.predicate = .init(format: "name MATCHES [c] %@", ".*\(regularExpression.pattern).*")
+        fetchRequest.predicate = .init(format: "isFullyQualified == YES AND  name MATCHES [c] %@", ".*\(regularExpression.pattern).*")
         
         return (try! backgroundContext.fetch(fetchRequest)).map {.init(managed: $0)}
     }

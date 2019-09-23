@@ -16,7 +16,7 @@ extension NSRegularExpression {
         return try! .init(pattern: "\\b\(NSRegularExpression.escapedPattern(for: prefix))", options: .caseInsensitive)
     }
     
-    static func contains(_ text: String) -> NSRegularExpression {
-        return try! .init(pattern: NSRegularExpression.escapedPattern(for: text), options: .caseInsensitive)
+    static func contains(nonPrefix text: String) -> NSRegularExpression {
+        return try! .init(pattern: "\\B\(NSRegularExpression.escapedPattern(for: text))", options: .caseInsensitive)
     }
 }

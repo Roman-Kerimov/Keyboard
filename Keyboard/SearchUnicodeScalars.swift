@@ -56,8 +56,6 @@ class SearchUnicodeScalars: Operation {
             characterSearch.foundUnicodeItems = foundUnicodeItems
         }
         
-        let searchRegularExpression: NSRegularExpression
-        
         switch text.count {
         case 0:
             foundUnicodeItems = characterSearch.currentFrequentlyUsedUnicodeItems
@@ -65,10 +63,9 @@ class SearchUnicodeScalars: Operation {
             return
             
         case 1, 2:
-            searchRegularExpression = .contains(word: text)
+            foundUnicodeItems += UnicodeData.default.items(regularExpression: .contains(word: text))
             
         default:
-            searchRegularExpression = .contains(text)
             
             for scriptCodeLength in 2...3 {
                 let scriptCode: String = .init(text.suffix(scriptCodeLength).description.lowercased().flatMap {$0.removing(characterComponents: CharacterComponent.scripts)} )
@@ -88,28 +85,20 @@ class SearchUnicodeScalars: Operation {
                 foundUnicodeItems.append(UnicodeData.default.item(byCodePoints: targetLetter)!)
                 characterSearch.scriptCodeLength = scriptCodeLength
             }
-        }
-        
-        foundUnicodeItems += UnicodeData.default.items(regularExpression: searchRegularExpression).sorted { (leftItem, rightItem) -> Bool in
+            
+            foundUnicodeItems += UnicodeData.default.items(regularExpression: .contains(word: text))
             
             guard !isCancelled else {
-                return true
+                return
             }
             
-            for regularExpression: NSRegularExpression in [.contains(word: text), .containsWord(withPrefix: text)] {
-                
-                let leftBool = leftItem.name.contains(regularExpression)
-                let rightBool = rightItem.name.contains(regularExpression)
-                if  leftBool && !rightBool {
-                    return true
-                }
-                
-                if !leftBool && rightBool {
-                    return false
-                }
+            foundUnicodeItems += UnicodeData.default.items(regularExpression: .containsWord(withPrefix: text))
+            
+            guard !isCancelled else {
+                return
             }
             
-            return leftItem < rightItem
+            foundUnicodeItems += UnicodeData.default.items(regularExpression: .contains(nonPrefix: text))
         }
         
         guard !isCancelled else {

@@ -13,10 +13,10 @@ extension NSRegularExpression {
     }
     
     static func containsWord(withPrefix prefix: String) -> NSRegularExpression {
-        return try! .init(pattern: "\\b\(NSRegularExpression.escapedPattern(for: prefix))", options: .caseInsensitive)
+        return try! .init(pattern: "\\b\(NSRegularExpression.escapedPattern(for: prefix))\\w+", options: .caseInsensitive)
     }
     
     static func contains(nonPrefix text: String) -> NSRegularExpression {
-        return try! .init(pattern: "\\B\(NSRegularExpression.escapedPattern(for: text))", options: .caseInsensitive)
+        return try! .init(pattern: "\\w+\(NSRegularExpression.escapedPattern(for: text))\\w+", options: .caseInsensitive)
     }
 }

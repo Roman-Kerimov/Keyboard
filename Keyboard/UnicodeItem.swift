@@ -7,14 +7,10 @@
 
 import Foundation
 
-struct UnicodeItem: Comparable {
+struct UnicodeItem: Equatable {
     
     static func == (lhs: UnicodeItem, rhs: UnicodeItem) -> Bool {
         return lhs.order == rhs.order
-    }
-    
-    static func < (lhs: UnicodeItem, rhs: UnicodeItem) -> Bool {
-        return lhs.order < rhs.order
     }
     
     private let managed: ManagedUnicodeItem

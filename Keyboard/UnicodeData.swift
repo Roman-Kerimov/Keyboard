@@ -16,6 +16,7 @@ class UnicodeData: NSPersistentContainer {
     
     func items(regularExpression: NSRegularExpression) -> [UnicodeItem] {
         let fetchRequest: NSFetchRequest<ManagedUnicodeItem> = ManagedUnicodeItem.fetchRequest()
+        fetchRequest.fetchLimit = 200
         fetchRequest.predicate = .init(format: "isFullyQualified == YES AND  name MATCHES [c] %@", ".*\(regularExpression.pattern).*")
         fetchRequest.sortDescriptors = [.init(key: "order", ascending: true)]
         

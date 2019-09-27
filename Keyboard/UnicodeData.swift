@@ -43,6 +43,14 @@ class UnicodeData: NSPersistentContainer {
         itemCount += 1
     }
     
+    func addAnnotation(text: String, textToSpeech: String, language: String, codePoints: String) {
+        let annotation = ManagedAnnotation(context: backgroundContext)
+        annotation.text = text
+        annotation.textToSpeech = textToSpeech
+        annotation.language = language
+        annotation.codePoints = codePoints
+    }
+    
     lazy var itemCount: Int = try! backgroundContext.count(for: ManagedUnicodeItem.fetchRequest())
     
     private let backgroudOperationQueue: OperationQueue = .init()

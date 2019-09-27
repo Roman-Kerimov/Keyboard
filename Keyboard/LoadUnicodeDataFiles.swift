@@ -13,17 +13,17 @@ class LoadUnicodeDataFiles: Operation {
     
     private func collectFileGarbage() {
         let fileGarbageURLs: [URL] = [
-            URL.applicationSupport.appendingPathComponent(UnicodeDataFile.derivedName.name),
-            URL.applicationSupport.appendingPathComponent(UnicodeDataFile.emojiTest.name),
+            URL.applicationSupport.appendingPathComponent(String(UnicodeDataItem.derivedName.name.dropLast(4))),
+            URL.applicationSupport.appendingPathComponent(String(UnicodeDataItem.emojiTest.name.dropLast(4))),
             URL.applicationSupport.appendingPathComponent("UDFCache"),
         ]
         
         fileGarbageURLs.forEach {try? FileManager.default.removeItem(at: $0)}
     }
     
-    private var processedStringCount: Int = 0 {
+    private var processedFileCount: Int = 0 {
         didSet {
-            let progress: Float = .init(processedStringCount) / .init(UnicodeDataFile.totalStringCount)
+            let progress: Float = .init(processedFileCount) / .init(UnicodeDataItem.totalFileCount)
             NotificationCenter.default.post(name: .UnicodeDataFilesLoadingProgressDidChange, object: progress)
         }
     }
@@ -44,16 +44,16 @@ class LoadUnicodeDataFiles: Operation {
         
         var emojiCharacterSet: CharacterSet = .init()
         
-        for dataFile in UnicodeDataFile.allCases {
+        for dataItem in UnicodeDataItem.allCases {
             
             guard !isCancelled else {
                 return
             }
             
-            switch dataFile {
+            switch dataItem {
                 
             case .emojiTest:
-                parse(dataFile: dataFile) { (string) in
+                parse(dataItem: dataItem) { (string) in
                     
                     let components = string.split(maxSplits: 2, omittingEmptySubsequences: false) { [columnSeparator, commentMarker].contains($0) } .map {$0.trimmingCharacters(in: .whitespaces)}
                     
@@ -70,7 +70,7 @@ class LoadUnicodeDataFiles: Operation {
                 }
                 
             case .derivedName:
-                parse(dataFile: dataFile) { (string) in
+                parse(dataItem: dataItem) { (string) in
                     
                     let components = string.split(separator: columnSeparator).map {$0.trimmingCharacters(in: .whitespaces)}
                     
@@ -88,6 +88,9 @@ class LoadUnicodeDataFiles: Operation {
                     
                     UnicodeData.default.addItem(codePoints: unicodeScalar.description, name: components.last!)
                 }
+                
+            case .annotations, .annotationsDerived:
+                parse(dataItem: dataItem, using: AnnotationsXMLParser.self)
             }
         }
         
@@ -96,16 +99,26 @@ class LoadUnicodeDataFiles: Operation {
         NotificationCenter.default.post(name: .UnicodeDataFilesDidLoad, object: nil)
     }
     
-    private func parse(dataFile: UnicodeDataFile, parse: (String) -> Void) {
-        for string in dataFile.strings {
+    private func parse(dataItem: UnicodeDataItem, parse: (String) -> Void) {
+        for string in dataItem.strings {
             
             if string.isEmpty == false && string.hasPrefix(commentMarker.description) == false {
                 autoreleasepool {
                     parse(string)
                 }
             }
-            
-            processedStringCount += 1
+        }
+        
+        processedFileCount += 1
+    }
+    
+    private func parse(dataItem: UnicodeDataItem, using xmlParser: XMLParser.Type) {
+        dataItem.fileURLs.forEach { (fileURL) in
+            autoreleasepool {
+                xmlParser.init(contentsOf: fileURL)?.parse()
+                try! UnicodeData.default.backgroundContext.save()
+                processedFileCount += 1
+            }
         }
     }
 }

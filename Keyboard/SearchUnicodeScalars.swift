@@ -20,6 +20,8 @@ class SearchUnicodeScalars: Operation {
     override func main() {
         UnicodeData.default.waitUntilLoadingIsFinished()
         
+        usleep(600_000)
+        
         characterSearch.scriptCodeLength = 0
         
         guard !isCancelled else {

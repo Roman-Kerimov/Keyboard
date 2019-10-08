@@ -17,8 +17,14 @@ class SearchUnicodeScalars: Operation {
         self.text = text
     }
     
+    private func waitUntilTyping() {
+        usleep(600_000)
+    }
+    
     override func main() {
         UnicodeData.default.waitUntilLoadingIsFinished()
+        
+        waitUntilTyping()
         
         characterSearch.scriptCodeLength = 0
         

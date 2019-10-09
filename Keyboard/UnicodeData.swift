@@ -15,9 +15,16 @@ class UnicodeData: NSPersistentContainer {
     lazy var backgroundContext = newBackgroundContext()
     
     func items(regularExpression: NSRegularExpression) -> [UnicodeItem] {
+        let fetchLimit = 200
+        
+        let annotationsFetchRequest: NSFetchRequest<ManagedAnnotation> = ManagedAnnotation.fetchRequest()
+        annotationsFetchRequest.fetchLimit = fetchLimit
+        annotationsFetchRequest.predicate = .init(format: "text MATCHES [c] %@", ".*\(regularExpression.pattern).*")
+        let annotations = try! backgroundContext.fetch(annotationsFetchRequest)
+        
         let fetchRequest: NSFetchRequest<ManagedUnicodeItem> = ManagedUnicodeItem.fetchRequest()
-        fetchRequest.fetchLimit = 200
-        fetchRequest.predicate = .init(format: "isFullyQualified == YES AND  name MATCHES [c] %@", ".*\(regularExpression.pattern).*")
+        fetchRequest.fetchLimit = fetchLimit
+        fetchRequest.predicate = .init(format: "isFullyQualified == YES AND (name MATCHES [c] %@ OR codePoints IN %@)", ".*\(regularExpression.pattern).*", annotations.map {$0.codePoints!})
         fetchRequest.sortDescriptors = [.init(key: "order", ascending: true)]
         
         return (try! backgroundContext.fetch(fetchRequest)).map {.init(managed: $0)}

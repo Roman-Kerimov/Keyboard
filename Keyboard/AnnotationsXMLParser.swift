@@ -19,6 +19,8 @@ class AnnotationsXMLParser: XMLParser {
     private var isTTS: Bool = false
     private var annotation: String = ""
     private var ttsAnnotation: String = ""
+    
+    private var wordSet: Set<String> = .init()
 }
 
 extension AnnotationsXMLParser: XMLParserDelegate {
@@ -44,6 +46,8 @@ extension AnnotationsXMLParser: XMLParserDelegate {
             if isTTS {
                 
                 UnicodeData.default.addAnnotation(text: annotation, textToSpeech: ttsAnnotation, language: language, codePoints: codePoints!)
+                
+                wordSet.formUnion(annotation.components(separatedBy: .whitespaces))
 
                 isTTS = false
                 annotation = ""
@@ -67,6 +71,12 @@ extension AnnotationsXMLParser: XMLParserDelegate {
         }
         else {
             annotation.append(string)
+        }
+    }
+    
+    func parserDidEndDocument(_ parser: XMLParser) {
+        wordSet.forEach { (word) in
+            UnicodeData.default.addWord(word, language: language)
         }
     }
 }

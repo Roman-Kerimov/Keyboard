@@ -17,9 +17,13 @@ class UnicodeData: NSPersistentContainer {
     func items(regularExpression: NSRegularExpression) -> [UnicodeItem] {
         let fetchLimit = 200
         
+        let wordsFetchRequest: NSFetchRequest<ManagedWord> = ManagedWord.fetchRequest()
+        wordsFetchRequest.predicate = .init(format: "string MATCHES [c] %@", ".*\(regularExpression.pattern).*")
+        let words = try! backgroundContext.fetch(wordsFetchRequest)
+        
         let annotationsFetchRequest: NSFetchRequest<ManagedAnnotation> = ManagedAnnotation.fetchRequest()
         annotationsFetchRequest.fetchLimit = fetchLimit
-        annotationsFetchRequest.predicate = .init(format: "text MATCHES [c] %@", ".*\(regularExpression.pattern).*")
+        annotationsFetchRequest.predicate = .init(format: "language IN %@ AND text MATCHES [c] %@", Set(words.map {$0.language!}), ".*\(regularExpression.pattern).*")
         let annotations = try! backgroundContext.fetch(annotationsFetchRequest)
         
         let fetchRequest: NSFetchRequest<ManagedUnicodeItem> = ManagedUnicodeItem.fetchRequest()
@@ -56,6 +60,12 @@ class UnicodeData: NSPersistentContainer {
         annotation.textToSpeech = textToSpeech
         annotation.language = language
         annotation.codePoints = codePoints
+    }
+    
+    func addWord(_ string: String, language: String) {
+        let word = ManagedWord(context:backgroundContext)
+        word.string = string
+        word.language = language
     }
     
     lazy var itemCount: Int = try! backgroundContext.count(for: ManagedUnicodeItem.fetchRequest())

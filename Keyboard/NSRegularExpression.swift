@@ -17,6 +17,6 @@ extension NSRegularExpression {
     }
     
     static func contains(nonPrefix text: String) -> NSRegularExpression {
-        return try! .init(pattern: "\\w+\(NSRegularExpression.escapedPattern(for: text))\\w+", options: .caseInsensitive)
+        return try! .init(pattern: "\\w+\(NSRegularExpression.escapedPattern(for: text))", options: .caseInsensitive)
     }
 }

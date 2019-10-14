@@ -69,7 +69,7 @@ class SearchUnicodeScalars: Operation {
             return
             
         case 1, 2:
-            foundUnicodeItems += UnicodeData.default.items(regularExpression: .contains(word: text))
+            foundUnicodeItems += UnicodeData.default.items(regularExpression: .contains(word: text), exclude: foundUnicodeItems)
             
         default:
             
@@ -92,19 +92,23 @@ class SearchUnicodeScalars: Operation {
                 characterSearch.scriptCodeLength = scriptCodeLength
             }
             
-            foundUnicodeItems += UnicodeData.default.items(regularExpression: .contains(word: text))
+            foundUnicodeItems += UnicodeData.default.items(regularExpression: .contains(word: text), exclude: foundUnicodeItems)
+            
+            updateUnicodeCollectionView()
             
             guard !isCancelled else {
                 return
             }
             
-            foundUnicodeItems += UnicodeData.default.items(regularExpression: .containsWord(withPrefix: text))
+            foundUnicodeItems += UnicodeData.default.items(regularExpression: .containsWord(withPrefix: text), exclude: foundUnicodeItems)
+            
+            updateUnicodeCollectionView()
             
             guard !isCancelled else {
                 return
             }
             
-            foundUnicodeItems += UnicodeData.default.items(regularExpression: .contains(nonPrefix: text))
+            foundUnicodeItems += UnicodeData.default.items(regularExpression: .contains(nonPrefix: text), exclude: foundUnicodeItems)
         }
         
         guard !isCancelled else {

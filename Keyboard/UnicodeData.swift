@@ -14,10 +14,21 @@ class UnicodeData: NSPersistentContainer {
     
     lazy var backgroundContext = newBackgroundContext()
     
-    func items(regularExpression: NSRegularExpression) -> [UnicodeItem] {
+    func items(regularExpression: NSRegularExpression, exclude excludeItems: [UnicodeItem]) -> [UnicodeItem] {
+        let fetchLimit = 200
+        
+        let wordsFetchRequest: NSFetchRequest<ManagedWord> = ManagedWord.fetchRequest()
+        wordsFetchRequest.predicate = .init(format: "string MATCHES [c] %@", ".*\(regularExpression.pattern).*")
+        let words = try! backgroundContext.fetch(wordsFetchRequest)
+        
+        let annotationsFetchRequest: NSFetchRequest<ManagedAnnotation> = ManagedAnnotation.fetchRequest()
+        annotationsFetchRequest.fetchLimit = fetchLimit
+        annotationsFetchRequest.predicate = .init(format: "language IN %@ AND text MATCHES [c] %@", Set(words.map {$0.language!}), ".*\(regularExpression.pattern).*")
+        let annotations = try! backgroundContext.fetch(annotationsFetchRequest)
+        
         let fetchRequest: NSFetchRequest<ManagedUnicodeItem> = ManagedUnicodeItem.fetchRequest()
-        fetchRequest.fetchLimit = 200
-        fetchRequest.predicate = .init(format: "isFullyQualified == YES AND  name MATCHES [c] %@", ".*\(regularExpression.pattern).*")
+        fetchRequest.fetchLimit = fetchLimit
+        fetchRequest.predicate = .init(format: "isFullyQualified == YES AND !(codePoints IN %@) AND (name MATCHES [c] %@ OR codePoints IN %@)", excludeItems.map {$0.codePoints}, ".*\(regularExpression.pattern).*", annotations.map {$0.codePoints!})
         fetchRequest.sortDescriptors = [.init(key: "order", ascending: true)]
         
         return (try! backgroundContext.fetch(fetchRequest)).map {.init(managed: $0)}
@@ -41,6 +52,20 @@ class UnicodeData: NSPersistentContainer {
         item.order = .init(itemCount)
         
         itemCount += 1
+    }
+    
+    func addAnnotation(text: String, textToSpeech: String, language: String, codePoints: String) {
+        let annotation = ManagedAnnotation(context: backgroundContext)
+        annotation.text = text
+        annotation.textToSpeech = textToSpeech
+        annotation.language = language
+        annotation.codePoints = codePoints
+    }
+    
+    func addWord(_ string: String, language: String) {
+        let word = ManagedWord(context:backgroundContext)
+        word.string = string
+        word.language = language
     }
     
     lazy var itemCount: Int = try! backgroundContext.count(for: ManagedUnicodeItem.fetchRequest())

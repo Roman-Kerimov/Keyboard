@@ -24,7 +24,7 @@ extension Bundle {
     }
     
     var cacheVersion: String {
-        return Bundle.main.version + UnicodeDataFile.allCases.description
+        return Bundle.main.version + UnicodeDataItem.allCases.description
     }
 }
 

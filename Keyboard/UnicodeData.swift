@@ -14,7 +14,7 @@ class UnicodeData: NSPersistentContainer {
     
     lazy var backgroundContext = newBackgroundContext()
     
-    func items(regularExpression: NSRegularExpression) -> [UnicodeItem] {
+    func items(regularExpression: NSRegularExpression, exclude excludeItems: [UnicodeItem]) -> [UnicodeItem] {
         let fetchLimit = 200
         
         let wordsFetchRequest: NSFetchRequest<ManagedWord> = ManagedWord.fetchRequest()
@@ -28,7 +28,7 @@ class UnicodeData: NSPersistentContainer {
         
         let fetchRequest: NSFetchRequest<ManagedUnicodeItem> = ManagedUnicodeItem.fetchRequest()
         fetchRequest.fetchLimit = fetchLimit
-        fetchRequest.predicate = .init(format: "isFullyQualified == YES AND (name MATCHES [c] %@ OR codePoints IN %@)", ".*\(regularExpression.pattern).*", annotations.map {$0.codePoints!})
+        fetchRequest.predicate = .init(format: "isFullyQualified == YES AND !(codePoints IN %@) AND (name MATCHES [c] %@ OR codePoints IN %@)", excludeItems.map {$0.codePoints}, ".*\(regularExpression.pattern).*", annotations.map {$0.codePoints!})
         fetchRequest.sortDescriptors = [.init(key: "order", ascending: true)]
         
         return (try! backgroundContext.fetch(fetchRequest)).map {.init(managed: $0)}

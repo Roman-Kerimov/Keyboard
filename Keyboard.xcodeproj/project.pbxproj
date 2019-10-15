@@ -450,7 +450,6 @@
 		96122C0522DBA18000125F65 /* LegalNoticesWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalNoticesWindow.swift; sourceTree = "<group>"; };
 		96167F5022C7B5300004DC8D /* CharacterSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSearch.swift; sourceTree = "<group>"; };
 		9619B6C6232D038100AA83C3 /* readme.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = readme.html; sourceTree = "<group>"; };
-		9619B6C7232D038200AA83C3 /* tools */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tools; sourceTree = "<group>"; };
 		9619B6C8232D038200AA83C3 /* apache-license.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "apache-license.txt"; sourceTree = "<group>"; };
 		9619B6C9232D038200AA83C3 /* ICU-LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ICU-LICENSE"; sourceTree = "<group>"; };
 		9619B6CA232D038200AA83C3 /* keyboards */ = {isa = PBXFileReference; lastKnownFileType = folder; path = keyboards; sourceTree = "<group>"; };
@@ -781,7 +780,6 @@
 				9619B6C6232D038100AA83C3 /* readme.html */,
 				9619B6C5232D033500AA83C3 /* common */,
 				9619B6CA232D038200AA83C3 /* keyboards */,
-				9619B6C7232D038200AA83C3 /* tools */,
 				9619B6CB232D038200AA83C3 /* unicode-license.txt */,
 				9619B6C9232D038200AA83C3 /* ICU-LICENSE */,
 				9619B6C8232D038200AA83C3 /* apache-license.txt */,

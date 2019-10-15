@@ -34,7 +34,6 @@ class LoadUnicodeDataFiles: Operation {
         
         if Keyboard.default.cacheVersion != Bundle.main.cacheVersion {
             UnicodeData.default.resetPersistentStore()
-            Keyboard.default.cacheVersion = Bundle.main.cacheVersion
         }
         
         guard UnicodeData.default.itemCount == 0 else {
@@ -95,6 +94,8 @@ class LoadUnicodeDataFiles: Operation {
         }
         
         try! UnicodeData.default.backgroundContext.save()
+        
+        Keyboard.default.cacheVersion = Bundle.main.cacheVersion
         
         NotificationCenter.default.post(name: .UnicodeDataFilesDidLoad, object: nil)
     }

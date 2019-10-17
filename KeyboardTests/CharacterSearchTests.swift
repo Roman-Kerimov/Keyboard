@@ -30,7 +30,11 @@ class CharacterSearchTests: XCTestCase {
     func testSearch() {
         XCTAssert(search("deg").contains("°"))
     }
-
+    
+    func testSearchByAnnotations() {
+        XCTAssert(search("bulka").contains("🍞"))
+    }
+    
     func testFlagSearchByRegionCode() {
         XCTAssertEqual(search("ru").first, "🇷🇺")
     }

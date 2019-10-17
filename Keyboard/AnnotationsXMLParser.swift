@@ -15,7 +15,22 @@ class AnnotationsXMLParser: XMLParser {
     }
     private var language: String = ""
     
-    private var codePoints: String? = nil
+    private var codePoints: String? = nil {
+        willSet {
+            guard codePoints != newValue, let codePoints = codePoints else {
+                return
+            }
+            
+            UnicodeData.default.addAnnotation(text: annotation, textToSpeech: ttsAnnotation, language: language, codePoints: codePoints)
+            
+            wordSet.formUnion(annotation.components(separatedBy: .whitespaces))
+
+            isTTS = false
+            annotation = ""
+            ttsAnnotation = ""
+        }
+    }
+    
     private var isTTS: Bool = false
     private var annotation: String = ""
     private var ttsAnnotation: String = ""
@@ -40,27 +55,6 @@ extension AnnotationsXMLParser: XMLParserDelegate {
         }
     }
     
-    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-        switch elementName {
-        case "annotation":
-            if isTTS {
-                
-                UnicodeData.default.addAnnotation(text: annotation, textToSpeech: ttsAnnotation, language: language, codePoints: codePoints!)
-                
-                wordSet.formUnion(annotation.components(separatedBy: .whitespaces))
-
-                isTTS = false
-                annotation = ""
-                ttsAnnotation = ""
-            }
-            
-            codePoints = nil
-            
-        default:
-            break
-        }
-    }
-    
     func parser(_ parser: XMLParser, foundCharacters string: String) {
         guard codePoints != nil else {
             return
@@ -75,6 +69,8 @@ extension AnnotationsXMLParser: XMLParserDelegate {
     }
     
     func parserDidEndDocument(_ parser: XMLParser) {
+        codePoints = nil
+        
         wordSet.forEach { (word) in
             UnicodeData.default.addWord(word, language: language)
         }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import LinguisticKit
 
 class AnnotationsXMLParser: XMLParser {
     override init(data: Data) {
@@ -14,6 +15,7 @@ class AnnotationsXMLParser: XMLParser {
         delegate = self
     }
     private var language: String = ""
+    private lazy var language_Latn: String = "\(language)_Latn"
     
     private var codePoints: String? = nil {
         willSet {
@@ -28,6 +30,19 @@ class AnnotationsXMLParser: XMLParser {
             UnicodeData.default.addAnnotation(text: annotation, textToSpeech: ttsAnnotation, language: language, codePoints: codePoints)
             
             wordSet.formUnion(annotation.components(separatedBy: .whitespaces))
+            
+            switch language {
+                
+            case "ru":
+                UnicodeData.default.addAnnotation(
+                    text: annotation.applyingTransform(from: .Cyrl, to: .Latn, withTable: .ru),
+                    textToSpeech: ttsAnnotation.applyingTransform(from: .Cyrl, to: .Latn, withTable: .ru),
+                    language: language_Latn, codePoints: codePoints
+                )
+                
+            default:
+                break
+            }
 
             isTTS = false
             annotation = ""
@@ -77,6 +92,17 @@ extension AnnotationsXMLParser: XMLParserDelegate {
         
         wordSet.forEach { (word) in
             UnicodeData.default.addWord(word, language: language)
+        }
+        
+        switch language {
+            
+        case "ru":
+            wordSet.forEach { (word) in
+                UnicodeData.default.addWord(word.applyingTransform(from: .Cyrl, to: .Latn, withTable: .ru), language: language_Latn)
+            }
+            
+        default:
+            break
         }
     }
 }

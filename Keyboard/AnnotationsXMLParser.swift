@@ -21,6 +21,10 @@ class AnnotationsXMLParser: XMLParser {
                 return
             }
             
+            if annotation.count < ttsAnnotation.count {
+                annotation = "\(annotation) | \(ttsAnnotation)"
+            }
+            
             UnicodeData.default.addAnnotation(text: annotation, textToSpeech: ttsAnnotation, language: language, codePoints: codePoints)
             
             wordSet.formUnion(annotation.components(separatedBy: .whitespaces))

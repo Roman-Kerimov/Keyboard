@@ -34,6 +34,7 @@ class CharacterSearchTests: XCTestCase {
     func testSearchByAnnotations() {
         XCTAssert(search("bulka").contains("🍞"))
         XCTAssert(search("toddler").contains("🧒🏽"))
+        XCTAssert(search("Russland").contains("🇷🇺"))
     }
     
     func testFlagSearchByRegionCode() {

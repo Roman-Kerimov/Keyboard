@@ -39,5 +39,3 @@ extension Bundle {
         return Data(hash).base64EncodedString()
     }
 }
-
-class MainBundle {}

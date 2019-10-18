@@ -13,6 +13,16 @@ class CharacterSearchUIView: UICollectionView, UICollectionViewDelegateFlowLayou
     var unicodeItems: [UnicodeItem] = .init() {
         didSet {
             reloadData()
+            
+            let maxPrefixLength = 10
+            
+            guard oldValue.prefix(maxPrefixLength) != unicodeItems.prefix(maxPrefixLength) else {
+                return
+            }
+            
+            if numberOfItems(inSection: 0) > 0 {
+                self.scrollToItem(at: .init(item: 0, section: 0), at: .top, animated: false)
+            }
         }
     }
     
@@ -110,14 +120,6 @@ class CharacterSearchUIView: UICollectionView, UICollectionViewDelegateFlowLayou
         deselectItem(at: indexPath, animated: false)
         
         Keyboard.default.characterSearch.insert(item: indexPath.item)
-    }
-    
-    @objc override func reloadData() {
-        super.reloadData()
-        
-        if numberOfItems(inSection: 0) > 0 {
-            self.scrollToItem(at: .init(item: 0, section: 0), at: .top, animated: false)
-        }
     }
     
     private var isHiddenUnicodeNames: Bool = true {

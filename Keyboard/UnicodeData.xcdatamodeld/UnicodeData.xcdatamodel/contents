@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15400" systemVersion="19A583" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ManagedAnnotation" representedClassName="ManagedAnnotation" syncable="YES" codeGenerationType="class">
+        <attribute name="codePoints" optional="YES" attributeType="String"/>
+        <attribute name="language" optional="YES" attributeType="String"/>
+        <attribute name="text" optional="YES" attributeType="String"/>
+        <attribute name="textToSpeech" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="ManagedUnicodeItem" representedClassName="ManagedUnicodeItem" syncable="YES" codeGenerationType="class">
+        <attribute name="codePoints" attributeType="String"/>
+        <attribute name="isFullyQualified" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="order" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="ManagedWord" representedClassName="ManagedWord" syncable="YES" codeGenerationType="class">
+        <attribute name="language" optional="YES" attributeType="String"/>
+        <attribute name="string" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="ManagedAnnotation" positionX="-63" positionY="9" width="128" height="103"/>
+        <element name="ManagedUnicodeItem" positionX="-63" positionY="-18" width="128" height="103"/>
+        <element name="ManagedWord" positionX="-63" positionY="27" width="128" height="73"/>
+    </elements>
+</model>

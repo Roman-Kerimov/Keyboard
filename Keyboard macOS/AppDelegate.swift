@@ -133,6 +133,8 @@ extension AppDelegate: NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
+        UnicodeData.default.loadIfNeeded()
+        
         AppDelegate.synchronizeKeyboardLayout()
         
         NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)

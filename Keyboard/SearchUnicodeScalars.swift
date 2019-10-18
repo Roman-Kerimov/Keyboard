@@ -17,65 +17,61 @@ class SearchUnicodeScalars: Operation {
         self.text = text
     }
     
+    private func waitUntilTyping() {
+        usleep(600_000)
+    }
+    
     override func main() {
+        UnicodeData.default.waitUntilLoadingIsFinished()
+        
+        waitUntilTyping()
+        
         characterSearch.scriptCodeLength = 0
         
         guard !isCancelled else {
             return
         }
         
-        var foundCharacters: [Character] = .init()
+        var foundUnicodeItems: [UnicodeItem] = []
         
-        func flag(fromRegionCode regionCode: String) -> Character {
-            var flag: String = .init()
-            
-            for unicodeScalar in regionCode.unicodeScalars {
-                
-                let regionalIndicatorLetter: Unicode.Scalar = Unicode.Scalar.init(unicodeScalar.value + 0x1F1A5)!
-                
-                flag.append(regionalIndicatorLetter.description)
+        func flag(fromRegionCode regionCode: String) -> String {
+            if regionCode.count == 2 {
+                return regionCode.uppercased().unicodeScalars.map {Unicode.Scalar($0.value + 0x1F1A5)?.description ?? "_"} .joined()
             }
-            
-            return .init(flag)
-        }
-        
-        func updateUnicodeCollectionView() {
-            DispatchQueue.main.async {
-                self.characterSearch.foundCharacters = foundCharacters
+            else {
+                return "\u{1F3F4}" + regionCode.unicodeScalars.map {Unicode.Scalar($0.value + 0xE0000)?.description ?? "_"} .joined() + "\u{E007F}"
             }
         }
         
-        let searchRegularExpression: NSRegularExpression
-        
-        switch text.count {
-        case 0:
-            foundCharacters = characterSearch.currentFrequentlyUsedCharacters
-            updateUnicodeCollectionView()
-            return
+        if let flagItem = UnicodeData.default.item(byCodePoints: flag(fromRegionCode: text)) {
+            foundUnicodeItems.append(flagItem)
             
-        case 1:
-            searchRegularExpression = .contains(word: text)
+            let regionCode = text.prefix(2).uppercased()
             
-        case 2:
-            searchRegularExpression = .contains(word: text)
-            
-            let regionCode = text.uppercased()
-            
-            if Foundation.Locale.regionCodes.contains(regionCode) {
-                foundCharacters.append(flag(fromRegionCode: regionCode))
-                
-                for localeIdentifier in (Foundation.Locale.availableIdentifiers.filter { $0.hasSuffix(regionCode) } + ["en_\(regionCode)"]) {
-                    if let currencySymbol = Foundation.Locale.init(identifier: localeIdentifier).currencySymbol {
-                        if currencySymbol.count == 1 {
-                            foundCharacters.append(.init(currencySymbol))
-                            break
-                        }
+            for localeIdentifier in (Foundation.Locale.availableIdentifiers.filter { $0.hasSuffix(regionCode) } + ["en_\(regionCode)"]) {
+                if let currencySymbol = Foundation.Locale.init(identifier: localeIdentifier).currencySymbol {
+                    if currencySymbol.count == 1, let currencyItem = UnicodeData.default.item(byCodePoints: currencySymbol) {
+                        foundUnicodeItems.append(currencyItem)
+                        break
                     }
                 }
             }
+        }
+        
+        func updateUnicodeCollectionView() {
+            characterSearch.foundUnicodeItems = foundUnicodeItems
+        }
+        
+        switch text.count {
+        case 0:
+            foundUnicodeItems = characterSearch.currentFrequentlyUsedUnicodeItems
+            updateUnicodeCollectionView()
+            return
+            
+        case 1, 2:
+            foundUnicodeItems += UnicodeData.default.items(regularExpression: .contains(word: text), exclude: foundUnicodeItems)
             
         default:
-            searchRegularExpression = .contains(text)
             
             for scriptCodeLength in 2...3 {
                 let scriptCode: String = .init(text.suffix(scriptCodeLength).description.lowercased().flatMap {$0.removing(characterComponents: CharacterComponent.scripts)} )
@@ -92,61 +88,27 @@ class SearchUnicodeScalars: Operation {
                     break
                 }
                 
-                foundCharacters.append(.init(targetLetter))
+                foundUnicodeItems.append(UnicodeData.default.item(byCodePoints: targetLetter)!)
                 characterSearch.scriptCodeLength = scriptCodeLength
             }
-        }
-        
-        let foundSequenceCharacters = UnicodeTable.default.sequenceItems
-            .values
-            .filter {!isCancelled && $0.isFullyQualified && $0.name.contains(searchRegularExpression) && $0.codePoints.count == 1}
-            .map {Character.init($0.codePoints)}
-        
-        guard !isCancelled else {
-            return
-        }
-        
-        let foundCodePointCharacters = UnicodeTable.default.codePointNames
-            .filter {!isCancelled && $0.value.contains(searchRegularExpression) && !CharacterSet.emoji.contains(Unicode.Scalar.init($0.key)!)}
-            .map {Character.init(Unicode.Scalar.init($0.key)!)}
-        
-        guard !isCancelled else {
-            return
-        }
-        
-        foundCharacters += (foundCodePointCharacters + foundSequenceCharacters).sorted { (left, right) -> Bool in
+            
+            foundUnicodeItems += UnicodeData.default.items(regularExpression: .contains(word: text), exclude: foundUnicodeItems)
+            
+            updateUnicodeCollectionView()
             
             guard !isCancelled else {
-                return true
+                return
             }
             
-            for regularExpression: NSRegularExpression in [.contains(word: text), .containsWord(withPrefix: text)] {
-                
-                let leftBool = left.unicodeName.contains(regularExpression)
-                let rightBool = right.unicodeName.contains(regularExpression)
-                if  leftBool && !rightBool {
-                    return true
-                }
-                
-                if !leftBool && rightBool {
-                    return false
-                }
+            foundUnicodeItems += UnicodeData.default.items(regularExpression: .containsWord(withPrefix: text), exclude: foundUnicodeItems)
+            
+            updateUnicodeCollectionView()
+            
+            guard !isCancelled else {
+                return
             }
             
-            let leftItem = UnicodeTable.default.sequenceItems[left.description]
-            let rightItem = UnicodeTable.default.sequenceItems[right.description]
-            
-            if let leftItem = leftItem, let rightItem = rightItem {
-                return leftItem < rightItem
-            }
-            else if let _ = leftItem {
-                return true
-            }
-            else if let _ = rightItem {
-                return false
-            }
-            
-            return left < right
+            foundUnicodeItems += UnicodeData.default.items(regularExpression: .contains(nonPrefix: text), exclude: foundUnicodeItems)
         }
         
         guard !isCancelled else {

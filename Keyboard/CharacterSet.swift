@@ -10,6 +10,5 @@ import Foundation
 
 extension CharacterSet {
     
-    static var emoji: CharacterSet = .init()
     static let regionalIndicatorSymbols: CharacterSet = .init(charactersIn: "🇦"..."🇿")
 }

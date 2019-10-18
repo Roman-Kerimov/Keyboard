@@ -1,0 +1,3 @@
+[submodule "CLDR"]
+	path = CLDR
+	url = https://github.com/unicode-org/cldr.git

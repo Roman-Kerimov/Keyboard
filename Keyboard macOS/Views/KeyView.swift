@@ -24,7 +24,7 @@ struct KeyView : View {
         }
         .frame(width: self.width(for: key), height: .keyboardGrid(Key.arrowKeys.contains(key) ? 0.5 : 1))
         .offset(x: 0, y: key == .upArrow ? .keyboardGrid(-0.5) : 0)
-        .padding(.leading, key == .downArrow ? .keyboardGrid(-1) : 0)
+        .padding(.leading, key == .downArrow ? .keyboardGrid(-0.995) : 0)
     }
     
     func width(for key: Key) -> CGFloat {

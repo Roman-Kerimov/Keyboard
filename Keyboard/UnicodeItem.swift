@@ -7,30 +7,20 @@
 
 import Foundation
 
-class UnicodeItem: Codable, Comparable {
+struct UnicodeItem: Equatable {
     
     static func == (lhs: UnicodeItem, rhs: UnicodeItem) -> Bool {
         return lhs.order == rhs.order
     }
     
-    static func < (lhs: UnicodeItem, rhs: UnicodeItem) -> Bool {
-        return lhs.order < rhs.order
-    }
+    private let managed: ManagedUnicodeItem
     
-    let codePoints: String
-    let isFullyQualified: Bool
-    let name: String
-    private let order: Int
+    var codePoints: String {managed.codePoints!}
+    var isFullyQualified: Bool {managed.isFullyQualified}
+    var name: String {managed.name!}
+    private var order: Int {.init(managed.order)}
     
-    private static var count: Int = 0
-    
-    init(codePoints: String, name: String, isFullyQualified: Bool) {
-        
-        self.codePoints = codePoints
-        self.isFullyQualified = isFullyQualified
-        self.name = name
-        self.order = UnicodeItem.count
-        
-        UnicodeItem.count += 1
+    init(managed: ManagedUnicodeItem) {
+        self.managed = managed
     }
 }

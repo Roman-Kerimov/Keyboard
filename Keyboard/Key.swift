@@ -20,7 +20,9 @@ extension Key: ObservableObject {
     }
 }
 
-final class Key {
+final class Key: Identifiable {
+    var id: Keycode {keycode}
+    
     var _objectWillChange: Any? = nil
     
     let keycode: Keycode

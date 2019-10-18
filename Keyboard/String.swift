@@ -120,4 +120,13 @@ extension String {
         text.lineBreakMode = .byWordWrapping
         return text.sizeThatFits(CGSize.init(width: width, height: .infinity)).height
     }
+    
+    var previewDescription: String {
+        if unicodeScalars.first?.properties.isGraphemeExtend == true {
+            
+            return "◌" + self
+        }
+        
+        return self
+    }
 }

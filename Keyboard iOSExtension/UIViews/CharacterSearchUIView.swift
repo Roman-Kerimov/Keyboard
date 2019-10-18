@@ -8,7 +8,25 @@
 
 import UIKit
 
-class CharacterSearchUIView: CharacterCollectionUIView {
+class CharacterSearchUIView: UICollectionView, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+    
+    var unicodeItems: [UnicodeItem] = .init() {
+        didSet {
+            reloadData()
+            
+            let maxPrefixLength = 10
+            
+            guard oldValue.prefix(maxPrefixLength) != unicodeItems.prefix(maxPrefixLength) else {
+                return
+            }
+            
+            if numberOfItems(inSection: 0) > 0 {
+                self.scrollToItem(at: .init(item: 0, section: 0), at: .top, animated: false)
+            }
+        }
+    }
+    
+    let layout: CollectionViewFlowLayout = .init()
 
     internal var size: CGSize = .zero {
         didSet {
@@ -19,8 +37,21 @@ class CharacterSearchUIView: CharacterCollectionUIView {
         }
     }
     
-    internal override init() {
-        super.init()
+    init() {
+        super.init(frame: .zero, collectionViewLayout: layout)
+        
+        dataSource = self
+        delegate = self
+        
+        register(CharacterCollectionUIViewCell.self, forCellWithReuseIdentifier: CharacterCollectionUIViewCell.reuseIdentifier)
+        
+        showsVerticalScrollIndicator = false
+        showsHorizontalScrollIndicator = false
+        
+        alwaysBounceVertical = true
+        backgroundColor = .touchableClear
+        
+        clipsToBounds = false
         
         let progressView: UIProgressView = .init()
         backgroundView = progressView
@@ -45,17 +76,24 @@ class CharacterSearchUIView: CharacterCollectionUIView {
     }
     
     @objc func updateCharacters() {
-        characters = Keyboard.default.characterSearch.foundCharacters
+        unicodeItems = Keyboard.default.characterSearch.foundUnicodeItems
     }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return unicodeItems.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! CharacterCollectionUIViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCollectionUIViewCell.reuseIdentifier, for: indexPath) as! CharacterCollectionUIViewCell
+        
+        cell.title.text = unicodeItems[indexPath.item].codePoints.previewDescription
+        cell.title.textColor = .labelColor
         
         let characterFontSize = layout.itemSize.width * .characterSearchViewFontSizeFactor
         cell.title.font = .systemFont(ofSize: characterFontSize)
         
-        cell.unicodeName.text = characters[indexPath.item].unicodeName
+        cell.unicodeName.text = unicodeItems[indexPath.item].name
         
         if cell.title.text?.first?.belongsTo(.regionalIndicatorSymbols) == true
             && cell.title.text?.unicodeScalars.count == 2 {
@@ -82,14 +120,6 @@ class CharacterSearchUIView: CharacterCollectionUIView {
         deselectItem(at: indexPath, animated: false)
         
         Keyboard.default.characterSearch.insert(item: indexPath.item)
-    }
-    
-    @objc override func reloadData() {
-        super.reloadData()
-        
-        if numberOfItems(inSection: 0) > 0 {
-            self.scrollToItem(at: .init(item: 0, section: 0), at: .top, animated: false)
-        }
     }
     
     private var isHiddenUnicodeNames: Bool = true {

@@ -29,7 +29,7 @@ class CharacterSearch {
         search(query)
     }
     
-    private let searchOperationQueue: OperationQueue = .init()
+    let searchOperationQueue: OperationQueue = .init()
     
     var text: String = "" {
         didSet {
@@ -38,11 +38,11 @@ class CharacterSearch {
                 return
             }
             
-            currentFrequentlyUsedCharacters = frequentlyUsedCharacters
+            currentFrequentlyUsedUnicodeItems = frequentlyUsedUnicodeItems
         }
     }
     
-    lazy var currentFrequentlyUsedCharacters = frequentlyUsedCharacters
+    lazy var currentFrequentlyUsedUnicodeItems = frequentlyUsedUnicodeItems
     
     public func search(_ text: String) {
         self.text = text
@@ -50,10 +50,12 @@ class CharacterSearch {
         searchOperationQueue.addOperation( SearchUnicodeScalars.init(characterSearch: self, text: text) )
     }
     
-    var foundCharacters: [Character] = [] {
+    var foundUnicodeItems: [UnicodeItem] = [] {
         willSet {
             if #available(iOS 13.0, *) {
-                objectWillChange.send()
+                DispatchQueue.main.async {
+                    self.objectWillChange.send()
+                }
             }
         }
         
@@ -65,7 +67,7 @@ class CharacterSearch {
     internal var scriptCodeLength: Int = 0
     
     func insert(item: Int) {
-        guard item < foundCharacters.count else {
+        guard item < foundUnicodeItems.count else {
             return
         }
         
@@ -77,30 +79,30 @@ class CharacterSearch {
             Keyboard.default.delegate?.delete()
         }
         
-        let character = foundCharacters[item]
+        let unicodeItem = foundUnicodeItems[item]
         
         if !isScriptCodeItem {
             
-            if let index = frequentlyUsedCharacters.firstIndex(of: character) {
-                frequentlyUsedCharacters.remove(at: index)
+            if let index = frequentlyUsedUnicodeItems.firstIndex(of: unicodeItem) {
+                frequentlyUsedUnicodeItems.remove(at: index)
             }
             
-            frequentlyUsedCharacters = .init( ([character] + frequentlyUsedCharacters).prefix(100) )
+            frequentlyUsedUnicodeItems = .init( ([unicodeItem] + frequentlyUsedUnicodeItems).prefix(100) )
         }
         
-        Keyboard.default.delegate?.insert(text: character.description)
+        Keyboard.default.delegate?.insert(text: unicodeItem.codePoints)
         NotificationCenter.default.post(.init(name: .DocumentContextDidChange))
     }
     
-    private let frequentlyUsedCharactersKey = "LBg6QhTolnUzmtHXeo960LT1ZNd3i07"
-    var frequentlyUsedCharacters: [Character] {
+    private let frequentlyUsedUnicodeItemsKey = "LBg6QhTolnUzmtHXeo960LT1ZNd3i07"
+    var frequentlyUsedUnicodeItems: [UnicodeItem] {
         get {
-            let characterStrings = UserDefaults.standard.object(forKey: frequentlyUsedCharactersKey) as? [String] ?? .init()
-            return characterStrings.map {Character.init($0)}
+            let codePointsArray = UserDefaults.standard.object(forKey: frequentlyUsedUnicodeItemsKey) as? [String] ?? .init()
+            return codePointsArray.compactMap {UnicodeData.default.item(byCodePoints: $0)}
         }
         
         set {
-            UserDefaults.standard.set(newValue.map {$0.description}, forKey: frequentlyUsedCharactersKey)
+            UserDefaults.standard.set(newValue.map {$0.codePoints}, forKey: frequentlyUsedUnicodeItemsKey)
             UserDefaults.standard.synchronize()
         }
     }

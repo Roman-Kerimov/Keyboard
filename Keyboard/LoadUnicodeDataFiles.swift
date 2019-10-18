@@ -13,50 +13,46 @@ class LoadUnicodeDataFiles: Operation {
     
     private func collectFileGarbage() {
         let fileGarbageURLs: [URL] = [
-            URL.applicationSupport.appendingPathComponent(UnicodeDataFile.derivedName.name),
-            URL.applicationSupport.appendingPathComponent(UnicodeDataFile.emojiTest.name),
+            URL.applicationSupport.appendingPathComponent(String(UnicodeDataItem.derivedName.name.dropLast(4))),
+            URL.applicationSupport.appendingPathComponent(String(UnicodeDataItem.emojiTest.name.dropLast(4))),
+            URL.applicationSupport.appendingPathComponent("UDFCache"),
         ]
         
         fileGarbageURLs.forEach {try? FileManager.default.removeItem(at: $0)}
+    }
+    
+    private var processedFileCount: Int = 0 {
+        didSet {
+            let progress: Float = .init(processedFileCount) / .init(UnicodeDataItem.totalFileCount)
+            NotificationCenter.default.post(name: .UnicodeDataFilesLoadingProgressDidChange, object: progress)
+        }
     }
     
     override func main() {
         
         collectFileGarbage()
         
-        if Keyboard.default.cacheVersion != Bundle.main.version {
-            try? FileManager.default.removeItem(at: UnicodeTable.default.cacheURL)
-            Keyboard.default.cacheVersion = Bundle.main.version
+        if Keyboard.default.cacheVersion != Bundle.main.cacheVersion {
+            UnicodeData.default.resetPersistentStore()
         }
         
-        var processedStringCount = 0
+        guard UnicodeData.default.itemCount == 0 else {
+            NotificationCenter.default.post(name: .UnicodeDataFilesDidLoad, object: nil)
+            return
+        }
         
-        for dataFile in UnicodeDataFile.allCases {
+        var emojiCharacterSet: CharacterSet = .init()
+        
+        for dataItem in UnicodeDataItem.allCases {
             
             guard !isCancelled else {
                 return
             }
             
-            switch dataFile {
-                
-            case .derivedName:
-                parse(dataFile: dataFile, processedStringCount: &processedStringCount, output: &UnicodeTable.default.codePointNames) { (string, codePointNames) in
-                    
-                    let components = string.split(separator: columnSeparator).map {$0.trimmingCharacters(in: .whitespaces)}
-                    
-                    guard components.count == 2 else {
-                        return
-                    }
-                    
-                    guard let codePoint = components.first?.hexToUInt32 else {
-                        return
-                    }
-                    
-                    codePointNames[codePoint] = components.last!
-                }
+            switch dataItem {
                 
             case .emojiTest:
-                parse(dataFile: dataFile, processedStringCount: &processedStringCount, output: &UnicodeTable.default.sequenceItems) { (string, sequenceItems) in
+                parse(dataItem: dataItem) { (string) in
                     
                     let components = string.split(maxSplits: 2, omittingEmptySubsequences: false) { [columnSeparator, commentMarker].contains($0) } .map {$0.trimmingCharacters(in: .whitespaces)}
                     
@@ -65,44 +61,64 @@ class LoadUnicodeDataFiles: Operation {
                     let isFullyQualified: Bool = components[1] == "fully-qualified"
                     let name: String = components[2].drop {$0 != .space} .description.trimmingCharacters(in: .whitespaces)
                     
-                    sequenceItems[sequence] = UnicodeItem.init(codePoints: sequence, name: name, isFullyQualified: isFullyQualified)
+                    if unicodeScalars.count == 1 {
+                        emojiCharacterSet.insert(unicodeScalars.first!)
+                    }
+                    
+                    UnicodeData.default.addItem(codePoints: sequence, name: name, isFullyQualified: isFullyQualified)
                 }
                 
-                CharacterSet.emoji = CharacterSet.init(charactersIn: UnicodeTable.default.sequenceItems.keys.filter {$0.unicodeScalars.count == 1} .joined())
+            case .derivedName:
+                parse(dataItem: dataItem) { (string) in
+                    
+                    let components = string.split(separator: columnSeparator).map {$0.trimmingCharacters(in: .whitespaces)}
+                    
+                    guard components.count == 2 else {
+                        return
+                    }
+                    
+                    guard let unicodeScalar = components.first?.hexToUnicodeScalar else {
+                        return
+                    }
+                    
+                    guard !emojiCharacterSet.contains(unicodeScalar) else {
+                        return
+                    }
+                    
+                    UnicodeData.default.addItem(codePoints: unicodeScalar.description, name: components.last!)
+                }
+                
+            case .annotations, .annotationsDerived:
+                parse(dataItem: dataItem, using: AnnotationsXMLParser.self)
             }
         }
+        
+        try! UnicodeData.default.backgroundContext.save()
+        
+        Keyboard.default.cacheVersion = Bundle.main.cacheVersion
         
         NotificationCenter.default.post(name: .UnicodeDataFilesDidLoad, object: nil)
     }
     
-    private func parse<Type: Codable>(dataFile: UnicodeDataFile, processedStringCount: inout Int, output: inout Type, parse: (String, inout Type) -> Void) {
-        
-        func updateProgress() {
-            let progress: Float = .init(processedStringCount) / .init(UnicodeDataFile.totalStringCount)
-            NotificationCenter.default.post(name: .UnicodeDataFilesLoadingProgressDidChange, object: progress)
-        }
-        
-        if let outputObject = try? PropertyListDecoder.init().decode(Type.self, from: (try? Data.init(contentsOf: dataFile.cacheURL)) ?? .init()) {
-            output = outputObject
+    private func parse(dataItem: UnicodeDataItem, parse: (String) -> Void) {
+        for string in dataItem.strings {
             
-            processedStringCount += dataFile.strings.count
-            updateProgress()
-        }
-        else {
-            for string in dataFile.strings {
-                
-                if string.isEmpty == false && string.hasPrefix(commentMarker.description) == false {
-                    autoreleasepool {
-                        parse(string, &output)
-                    }
+            if string.isEmpty == false && string.hasPrefix(commentMarker.description) == false {
+                autoreleasepool {
+                    parse(string)
                 }
-                
-                processedStringCount += 1
-                updateProgress()
             }
-            
-            if let data = try? PropertyListEncoder.init().encode(output) {
-                try! data.write(to: dataFile.cacheURL)
+        }
+        
+        processedFileCount += 1
+    }
+    
+    private func parse(dataItem: UnicodeDataItem, using xmlParser: XMLParser.Type) {
+        dataItem.fileURLs.forEach { (fileURL) in
+            autoreleasepool {
+                xmlParser.init(contentsOf: fileURL)?.parse()
+                try! UnicodeData.default.backgroundContext.save()
+                processedFileCount += 1
             }
         }
     }

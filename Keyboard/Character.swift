@@ -31,14 +31,6 @@ extension Character {
             || self == .tab
     }
     
-    var unicodeName: String {
-        if let name = UnicodeTable.default.sequenceItems[self.description]?.name {
-            return name
-        }
-        
-        return unicodeScalars.map {UnicodeTable.default.codePointNames[$0.value] ?? .init()}.joined(separator: unicodeNameSeparator)
-    }
-    
     var characterComponents: [CharacterComponent] {
         return description.characterComponents
     }
@@ -48,11 +40,6 @@ extension Character {
     }
     
     var previewDescription: String {
-        if unicodeScalars.count == 1 && unicodeName.contains("COMBINING") {
-            
-            return "◌" + description
-        }
-        
-        return description
+        return description.previewDescription
     }
 }

@@ -64,8 +64,4 @@ class CharacterSearchTests: XCTestCase {
     func testSearchWithScriptCode() {
         XCTAssertEqual(search("fki").first, "ф")
     }
-    
-    func testSearchByWordSuffix() {
-        XCTAssert(search("apple").contains("🍍"))
-    }
 }

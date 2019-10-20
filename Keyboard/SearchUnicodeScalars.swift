@@ -101,14 +101,6 @@ class SearchUnicodeScalars: Operation {
             }
             
             foundUnicodeItems += UnicodeData.default.items(regularExpression: .containsWord(withPrefix: text), exclude: foundUnicodeItems)
-            
-            updateUnicodeCollectionView()
-            
-            guard !isCancelled else {
-                return
-            }
-            
-            foundUnicodeItems += UnicodeData.default.items(regularExpression: .contains(nonPrefix: text), exclude: foundUnicodeItems)
         }
         
         guard !isCancelled else {

@@ -64,13 +64,18 @@ class LoadUnicodeDataFiles: Operation {
                     
                     let codePoints: String = unicodeScalars.map {$0.description} .reduce(.init(), +)
                     
-                    guard components[1] == "fully-qualified" else {
-                        return
+                    switch components[1] {
+                    case "component", "fully-qualified":
+                        let name: String = components[2].drop {$0 != .space} .description.trimmingCharacters(in: .whitespaces)
+                        
+                        UnicodeData.default.addItem(codePoints: codePoints, name: name)
+                        
+                    case "minimally-qualified", "unqualified":
+                        break
+                        
+                    default:
+                        fatalError()
                     }
-                    
-                    let name: String = components[2].drop {$0 != .space} .description.trimmingCharacters(in: .whitespaces)
-                    
-                    UnicodeData.default.addItem(codePoints: codePoints, name: name)
                 }
                 
             case .derivedName:

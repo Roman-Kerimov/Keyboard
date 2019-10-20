@@ -42,6 +42,10 @@ class CharacterSearchTests: XCTestCase {
         XCTAssert(search("xhleb").contains("🍞"))
     }
     
+    func testComponentEmojiSearch() {
+        XCTAssert(search("hair").contains("🦰"))
+    }
+    
     func testFlagSearchByRegionCode() {
         XCTAssertEqual(search("ru").first, "🇷🇺")
     }

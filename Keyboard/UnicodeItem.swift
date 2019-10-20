@@ -16,7 +16,6 @@ struct UnicodeItem: Equatable {
     private let managed: ManagedUnicodeItem
     
     var codePoints: String {managed.codePoints!}
-    var isFullyQualified: Bool {managed.isFullyQualified}
     var name: String {managed.name!}
     private var order: Int {.init(managed.order)}
     

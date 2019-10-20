@@ -28,7 +28,7 @@ class UnicodeData: NSPersistentContainer {
         
         let fetchRequest: NSFetchRequest<ManagedUnicodeItem> = ManagedUnicodeItem.fetchRequest()
         fetchRequest.fetchLimit = fetchLimit
-        fetchRequest.predicate = .init(format: "isFullyQualified == YES AND !(codePoints IN %@) AND (name MATCHES [c] %@ OR codePoints IN %@)", excludeItems.map {$0.codePoints}, ".*\(regularExpression.pattern).*", annotations.map {$0.codePoints!})
+        fetchRequest.predicate = .init(format: "!(codePoints IN %@) AND (name MATCHES [c] %@ OR codePoints IN %@)", excludeItems.map {$0.codePoints}, ".*\(regularExpression.pattern).*", annotations.map {$0.codePoints!})
         fetchRequest.sortDescriptors = [.init(key: "order", ascending: true)]
         
         return (try! backgroundContext.fetch(fetchRequest)).map {.init(managed: $0)}
@@ -43,11 +43,10 @@ class UnicodeData: NSPersistentContainer {
         return items.first(where: {$0.codePoints.unicodeScalars.map {$0.value} == codePoints.unicodeScalars.map {$0.value}})
     }
     
-    func addItem(codePoints: String, name: String, isFullyQualified: Bool = true) {
+    func addItem(codePoints: String, name: String) {
         let item = ManagedUnicodeItem(context: backgroundContext)
         
         item.codePoints = codePoints
-        item.isFullyQualified = isFullyQualified
         item.name = name
         item.order = .init(itemCount)
         

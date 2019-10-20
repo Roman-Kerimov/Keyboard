@@ -58,14 +58,18 @@ class LoadUnicodeDataFiles: Operation {
                     
                     let unicodeScalars = components[0].components(separatedBy: .whitespaces).map {$0.hexToUnicodeScalar!}
                     let sequence: String = unicodeScalars.map {$0.description} .reduce(.init(), +)
-                    let isFullyQualified: Bool = components[1] == "fully-qualified"
+                    
+                    guard components[1] == "fully-qualified" else {
+                        return
+                    }
+                    
                     let name: String = components[2].drop {$0 != .space} .description.trimmingCharacters(in: .whitespaces)
                     
                     if unicodeScalars.count == 1 {
                         emojiCharacterSet.insert(unicodeScalars.first!)
                     }
                     
-                    UnicodeData.default.addItem(codePoints: sequence, name: name, isFullyQualified: isFullyQualified)
+                    UnicodeData.default.addItem(codePoints: sequence, name: name)
                 }
                 
             case .derivedName:

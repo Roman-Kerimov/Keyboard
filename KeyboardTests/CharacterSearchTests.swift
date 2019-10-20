@@ -31,6 +31,10 @@ class CharacterSearchTests: XCTestCase {
         XCTAssert(search("deg").contains("°"))
     }
     
+    func testUnqualifiedSearch() {
+        XCTAssertFalse(search("face").contains("☺"))
+    }
+    
     func testSearchByAnnotations() {
         XCTAssert(search("bulka").contains("🍞"))
         XCTAssert(search("toddler").contains("🧒🏽"))

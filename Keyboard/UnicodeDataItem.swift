@@ -37,4 +37,38 @@ enum UnicodeDataItem: String, CaseIterable {
     }
     
     static let totalFileCount = allCases.map {$0.fileURLs.count}.reduce(0, +)
+    
+    func parse(parse: (String) -> Void) {
+        for string in strings {
+            
+            if string.isEmpty == false && string.hasPrefix("#".description) == false {
+                autoreleasepool {
+                    parse(string)
+                }
+            }
+        }
+        
+        processedFileCount += 1
+    }
+    
+    func parse(using xmlParser: XMLParser.Type) {
+        fileURLs.forEach { (fileURL) in
+            autoreleasepool {
+                xmlParser.init(contentsOf: fileURL)?.parse()
+                try! UnicodeData.default.backgroundContext.save()
+                processedFileCount += 1
+            }
+        }
+    }
+}
+
+fileprivate var processedFileCount: Int = 0 {
+    didSet {
+        let progress: Float = .init(processedFileCount) / .init(UnicodeDataItem.totalFileCount)
+        NotificationCenter.default.post(name: .UnicodeDataFilesLoadingProgressDidChange, object: progress)
+    }
+}
+
+extension NSNotification.Name {
+    static let UnicodeDataFilesLoadingProgressDidChange: NSNotification.Name = .init("yyYaw81H3txGoDVoLuMIcxI9qcD2ZIb")
 }

@@ -21,13 +21,6 @@ class LoadUnicodeDataFiles: Operation {
         fileGarbageURLs.forEach {try? FileManager.default.removeItem(at: $0)}
     }
     
-    private var processedFileCount: Int = 0 {
-        didSet {
-            let progress: Float = .init(processedFileCount) / .init(UnicodeDataItem.totalFileCount)
-            NotificationCenter.default.post(name: .UnicodeDataFilesLoadingProgressDidChange, object: progress)
-        }
-    }
-    
     override func main() {
         
         collectFileGarbage()
@@ -53,7 +46,7 @@ class LoadUnicodeDataFiles: Operation {
             switch dataItem {
                 
             case .emojiTest:
-                parse(dataItem: dataItem) { (string) in
+                dataItem.parse { (string) in
                     
                     let components = string.split(maxSplits: 2, omittingEmptySubsequences: false) { [columnSeparator, commentMarker].contains($0) } .map {$0.trimmingCharacters(in: .whitespaces)}
                     
@@ -82,7 +75,7 @@ class LoadUnicodeDataFiles: Operation {
                 }
                 
             case .derivedName:
-                parse(dataItem: dataItem) { (string) in
+                dataItem.parse { (string) in
                     
                     let components = string.split(separator: columnSeparator).map {$0.trimmingCharacters(in: .whitespaces)}
                     
@@ -102,7 +95,7 @@ class LoadUnicodeDataFiles: Operation {
                 }
                 
             case .annotations, .annotationsDerived:
-                parse(dataItem: dataItem, using: AnnotationsXMLParser.self)
+                dataItem.parse(using: AnnotationsXMLParser.self)
             }
         }
         
@@ -114,33 +107,8 @@ class LoadUnicodeDataFiles: Operation {
         
         NotificationCenter.default.post(name: .UnicodeDataFilesDidLoad, object: nil)
     }
-    
-    private func parse(dataItem: UnicodeDataItem, parse: (String) -> Void) {
-        for string in dataItem.strings {
-            
-            if string.isEmpty == false && string.hasPrefix(commentMarker.description) == false {
-                autoreleasepool {
-                    parse(string)
-                }
-            }
-        }
-        
-        processedFileCount += 1
-    }
-    
-    private func parse(dataItem: UnicodeDataItem, using xmlParser: XMLParser.Type) {
-        dataItem.fileURLs.forEach { (fileURL) in
-            autoreleasepool {
-                xmlParser.init(contentsOf: fileURL)?.parse()
-                try! UnicodeData.default.backgroundContext.save()
-                processedFileCount += 1
-            }
-        }
-    }
 }
 
 extension NSNotification.Name {
-    static let UnicodeDataFilesLoadingProgressDidChange: NSNotification.Name = .init("yyYaw81H3txGoDVoLuMIcxI9qcD2ZIb")
-    
     static let UnicodeDataFilesDidLoad: NSNotification.Name = .init("KEKbzAcMuOVK4Tn46LFP3loanqNMAB9")
 }

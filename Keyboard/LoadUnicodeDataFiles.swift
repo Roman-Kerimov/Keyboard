@@ -42,6 +42,7 @@ class LoadUnicodeDataFiles: Operation {
         }
         
         var emojiCharacterSet: CharacterSet = .init()
+        var fullyQualifiedEmoji: String = ""
         
         for dataItem in UnicodeDataItem.allCases {
             
@@ -70,8 +71,10 @@ class LoadUnicodeDataFiles: Operation {
                         
                         UnicodeData.default.addItem(codePoints: codePoints, name: name)
                         
+                        fullyQualifiedEmoji = codePoints
+                        
                     case "minimally-qualified", "unqualified":
-                        break
+                        AnnotationsXMLParser.toFullyQualifiedDictionary[codePoints] = fullyQualifiedEmoji
                         
                     default:
                         fatalError()
@@ -102,6 +105,8 @@ class LoadUnicodeDataFiles: Operation {
                 parse(dataItem: dataItem, using: AnnotationsXMLParser.self)
             }
         }
+        
+        AnnotationsXMLParser.toFullyQualifiedDictionary = .init()
         
         try! UnicodeData.default.backgroundContext.save()
         

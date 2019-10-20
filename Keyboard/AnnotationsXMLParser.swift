@@ -55,6 +55,8 @@ class AnnotationsXMLParser: XMLParser {
     private var ttsAnnotation: String = ""
     
     private var wordSet: Set<String> = .init()
+    
+    static var toFullyQualifiedDictionary: [String: String] = .init()
 }
 
 extension AnnotationsXMLParser: XMLParserDelegate {
@@ -63,7 +65,8 @@ extension AnnotationsXMLParser: XMLParserDelegate {
         
         switch elementName {
         case "annotation":
-            codePoints = attributeDict["cp"]
+            let cp = attributeDict["cp"]!
+            codePoints = AnnotationsXMLParser.toFullyQualifiedDictionary[cp] ?? cp
             isTTS = attributeDict["type"] == "tts"
             
         case "language":

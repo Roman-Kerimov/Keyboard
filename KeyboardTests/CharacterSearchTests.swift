@@ -40,6 +40,7 @@ class CharacterSearchTests: XCTestCase {
         XCTAssert(search("toddler").contains("🧒🏽"))
         XCTAssert(search("Russland").contains("🇷🇺"))
         XCTAssert(search("xhleb").contains("🍞"))
+        XCTAssert(search("tajmer").contains("⏲️"))
     }
     
     func testComponentEmojiSearch() {

@@ -13,8 +13,8 @@ class LoadUnicodeDataFiles: Operation {
     
     private func collectFileGarbage() {
         let fileGarbageURLs: [URL] = [
-            URL.applicationSupport.appendingPathComponent(String(UnicodeDataItem.derivedName.name.dropLast(4))),
-            URL.applicationSupport.appendingPathComponent(String(UnicodeDataItem.emojiTest.name.dropLast(4))),
+            URL.applicationSupport.appendingPathComponent("DerivedName"),
+            URL.applicationSupport.appendingPathComponent("emoji-test"),
             URL.applicationSupport.appendingPathComponent("UDFCache"),
         ]
         

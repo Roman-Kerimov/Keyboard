@@ -60,7 +60,7 @@ class LoadUnicodeDataFiles: Operation {
                     
                     switch components[1] {
                     case "component", "fully-qualified":
-                        let name: String = components[2].drop {$0 != .space} .description.trimmingCharacters(in: .whitespaces)
+                        let name: String = components[2].components(separatedBy: String.space).dropFirst(2).joined(separator: .space).description.trimmingCharacters(in: .whitespaces)
                         
                         UnicodeData.default.addItem(codePoints: codePoints, name: name)
                         

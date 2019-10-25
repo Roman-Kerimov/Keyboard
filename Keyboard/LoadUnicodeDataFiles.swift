@@ -23,9 +23,8 @@ class LoadUnicodeDataFiles: Operation {
     
     override func main() {
         
-        collectFileGarbage()
-        
         if Keyboard.default.cacheVersion != Bundle.main.cacheVersion {
+            collectFileGarbage()
             UnicodeData.default.resetPersistentStore()
         }
         

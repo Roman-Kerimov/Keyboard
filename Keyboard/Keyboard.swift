@@ -457,7 +457,6 @@ final class Keyboard {
         previewLayout = layout
         
         NotificationCenter.default.addObserver(self, selector: #selector(documentContextDidChange), name: .DocumentContextDidChange, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(search), name: .UnicodeDataFilesDidLoad, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(search), name: .DocumentContextDidChange, object: nil)
     }
     

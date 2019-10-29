@@ -38,7 +38,6 @@ struct CharacterSearchView : View {
 struct CharacterSearchView_Previews : PreviewProvider {
     static var previews: some View {
         Keyboard.default.delegate?.prepareForPreview()
-        LoadUnicodeDataFiles.init().start()
         
         return Group {
             ForEach(["face", "keyboard", "thum", "ru"], id: \.self) { searchQuery in

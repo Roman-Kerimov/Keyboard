@@ -77,26 +77,6 @@ extension String {
         return (self as NSString).size(withAttributes: [.font: Font.init(name: fontName, size: fontSize)!])
     }
     
-    var hexToUInt32: UInt32? {
-        var output: UInt64 = 0
-        
-        if Scanner.init(string: self).scanHexInt64(&output) {
-            return .init(output)
-        }
-        else {
-            return nil
-        }
-    }
-    
-    var hexToUnicodeScalar: Unicode.Scalar? {
-        
-        guard let codePoint = hexToUInt32 else {
-            return nil
-        }
-        
-        return Unicode.Scalar.init(codePoint)
-    }
-    
     func contains(_ regularExpression: NSRegularExpression) -> Bool {
         return regularExpression.numberOfMatches(in: self, options: [], range: .init(location: 0, length: count)) != 0
     }

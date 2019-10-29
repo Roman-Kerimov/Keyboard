@@ -75,12 +75,30 @@ class UnicodeData: NSPersistentContainer {
         backgroudOperationQueue.waitUntilAllOperationsAreFinished()
     }
     
+    private lazy var sqLiteURL = Bundle.main.url(forResource: name, withExtension: "sqlite")
+    
     private override init(name: String, managedObjectModel model: NSManagedObjectModel) {
         super.init(name: name, managedObjectModel: model)
         
         loadPersistentStore()
         
-        backgroudOperationQueue.addOperation( LoadUnicodeDataFiles.init() )
+        if sqLiteURL != nil && loadedVersion != currentVersion {
+            resetPersistentStore()
+            
+            loadedVersion = currentVersion
+            
+            collectFileGarbage()
+        }
+    }
+    
+    private func collectFileGarbage() {
+        let fileGarbageURLs: [URL] = [
+            URL.applicationSupport.appendingPathComponent("DerivedName"),
+            URL.applicationSupport.appendingPathComponent("emoji-test"),
+            URL.applicationSupport.appendingPathComponent("UDFCache"),
+        ]
+        
+        fileGarbageURLs.forEach {try? FileManager.default.removeItem(at: $0)}
     }
     
     func loadIfNeeded() {}
@@ -99,8 +117,29 @@ class UnicodeData: NSPersistentContainer {
         let storeURLs = persistentStoreCoordinator.persistentStores.compactMap {$0.url}
         storeURLs.forEach { (storeURL) in
             try? persistentStoreCoordinator.destroyPersistentStore(at: storeURL, ofType: NSSQLiteStoreType, options: nil)
+            try? FileManager.default.removeItem(at: storeURL)
+        }
+        
+        if let sqLiteURL = sqLiteURL {
+            try! FileManager.default.copyItem(at: sqLiteURL, to: storeURLs.first!)
         }
         
         loadPersistentStore()
+    }
+    
+    private var currentVersion: String {
+        return sqLiteURL!.creationDate!.description
+    }
+    
+    private let loadedVersionKey = "t79Hx5H46r8PC2ftV0XUNhIDxwJXq8Y"
+    var loadedVersion: String {
+        get {
+            return UserDefaults.standard.object(forKey: loadedVersionKey) as? String ?? .init()
+        }
+        
+        set {
+            UserDefaults.standard.set(newValue, forKey: loadedVersionKey)
+            UserDefaults.standard.synchronize()
+        }
     }
 }

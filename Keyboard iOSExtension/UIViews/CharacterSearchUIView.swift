@@ -53,18 +53,6 @@ class CharacterSearchUIView: UICollectionView, UICollectionViewDelegateFlowLayou
         
         clipsToBounds = false
         
-        let progressView: UIProgressView = .init()
-        backgroundView = progressView
-        progressView.isHidden = true
-        
-        NotificationCenter.default.addObserver(forName: .UnicodeDataFilesLoadingProgressDidChange, object: nil, queue: nil) { (notification) in
-            DispatchQueue.main.async {
-                let progress = notification.object as! Float
-                progressView.isHidden = progress == 1
-                progressView.setProgress(progress, animated: true)
-            }
-        }
-        
         layout.minimumLineSpacing = 0
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateCharacters), publisher: CharacterSearch.self)

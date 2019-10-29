@@ -1,6 +1,6 @@
 //
 //  LoadUnicodeDataFiles.swift
-//  Keyboard
+//  LoadUnicodeDataFiles
 //
 //  Created by Roman Kerimov on 2018-05-19.
 //
@@ -11,25 +11,18 @@ class LoadUnicodeDataFiles: Operation {
     let columnSeparator: Character = ";"
     let commentMarker: Character = "#"
     
-    private func collectFileGarbage() {
-        let fileGarbageURLs: [URL] = [
-            URL.applicationSupport.appendingPathComponent("DerivedName"),
-            URL.applicationSupport.appendingPathComponent("emoji-test"),
-            URL.applicationSupport.appendingPathComponent("UDFCache"),
-        ]
-        
-        fileGarbageURLs.forEach {try? FileManager.default.removeItem(at: $0)}
-    }
-    
     override func main() {
         
-        if loadedVersion != currentVersion {
-            collectFileGarbage()
+        let sqLiteSourceURL = UnicodeData.default.persistentStoreCoordinator.persistentStores.first!.url!
+        
+        let sqLiteTargetURL = URL(fileURLWithPath: CommandLine.arguments[1])
+            .appendingPathComponent(UnicodeData.default.name).appendingPathExtension(sqLiteSourceURL.pathExtension)
+        
+        if loadedVersion != currentVersion || !FileManager.default.fileExists(atPath: sqLiteTargetURL.path) {
             UnicodeData.default.resetPersistentStore()
         }
         
         guard UnicodeData.default.itemCount == 0 else {
-            NotificationCenter.default.post(name: .UnicodeDataFilesDidLoad, object: nil)
             return
         }
         
@@ -102,9 +95,10 @@ class LoadUnicodeDataFiles: Operation {
         
         try! UnicodeData.default.backgroundContext.save()
         
-        loadedVersion = currentVersion
+        try? FileManager.default.removeItem(at: sqLiteTargetURL)
+        try! FileManager.default.copyItem(at: sqLiteSourceURL, to: sqLiteTargetURL)
         
-        NotificationCenter.default.post(name: .UnicodeDataFilesDidLoad, object: nil)
+        loadedVersion = currentVersion
     }
     
     private var currentVersion: String {
@@ -124,6 +118,26 @@ class LoadUnicodeDataFiles: Operation {
     }
 }
 
-extension NSNotification.Name {
-    static let UnicodeDataFilesDidLoad: NSNotification.Name = .init("KEKbzAcMuOVK4Tn46LFP3loanqNMAB9")
+extension String {
+    static let space = " "
+    
+    var hexToUInt32: UInt32? {
+        var output: UInt64 = 0
+        
+        if Scanner.init(string: self).scanHexInt64(&output) {
+            return .init(output)
+        }
+        else {
+            return nil
+        }
+    }
+    
+    var hexToUnicodeScalar: Unicode.Scalar? {
+        
+        guard let codePoint = hexToUInt32 else {
+            return nil
+        }
+        
+        return Unicode.Scalar.init(codePoint)
+    }
 }

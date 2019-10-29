@@ -1,6 +1,6 @@
 //
 //  UnicodeDataItem.swift
-//  Keyboard
+//  LoadUnicodeDataFiles
 //
 //  Created by Roman Kerimov on 2018-05-27.
 //
@@ -8,19 +8,17 @@
 import Foundation
 
 enum UnicodeDataItem: String, CaseIterable {
-    case emojiTest = "emoji-test.txt"
-    case derivedName = "DerivedName.txt"
-    case annotations
-    case annotationsDerived
+    case emojiTest = "Emoji/emoji-test.txt"
+    case derivedName = "UCD/extracted/DerivedName.txt"
+    case annotations = "CLDR/common/annotations"
+    case annotationsDerived = "CLDR/common/annotationsDerived"
     
-    var name: String {
+    var path: String {
         return rawValue
     }
     
     var fileURLs: [URL] {
-        guard let itemURL = Bundle.main.url(forResource: name, withExtension: nil) else {
-            fatalError("Unicode data item '\(name)' is not found")
-        }
+        let itemURL = URL(fileURLWithPath: path)
         
         if let urls = try? FileManager.default.contentsOfDirectory(at: itemURL, includingPropertiesForKeys: nil, options: []) {
             return urls
@@ -64,11 +62,11 @@ enum UnicodeDataItem: String, CaseIterable {
 
 fileprivate var processedFileCount: Int = 0 {
     didSet {
-        let progress: Float = .init(processedFileCount) / .init(UnicodeDataItem.totalFileCount)
-        NotificationCenter.default.post(name: .UnicodeDataFilesLoadingProgressDidChange, object: progress)
+        let progress: Float = (.init(processedFileCount) / .init(UnicodeDataItem.totalFileCount) * 100).rounded(.down)
+        print("\(processedFileCount)/\(UnicodeDataItem.totalFileCount)\t\(Int(progress)) %")
     }
 }
 
-extension NSNotification.Name {
-    static let UnicodeDataFilesLoadingProgressDidChange: NSNotification.Name = .init("yyYaw81H3txGoDVoLuMIcxI9qcD2ZIb")
+extension Character {
+    static let `return`: Self = "\n"
 }

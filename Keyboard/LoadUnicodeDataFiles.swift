@@ -23,7 +23,7 @@ class LoadUnicodeDataFiles: Operation {
     
     override func main() {
         
-        if Keyboard.default.cacheVersion != Bundle.main.cacheVersion {
+        if loadedVersion != currentVersion {
             collectFileGarbage()
             UnicodeData.default.resetPersistentStore()
         }
@@ -102,9 +102,25 @@ class LoadUnicodeDataFiles: Operation {
         
         try! UnicodeData.default.backgroundContext.save()
         
-        Keyboard.default.cacheVersion = Bundle.main.cacheVersion
+        loadedVersion = currentVersion
         
         NotificationCenter.default.post(name: .UnicodeDataFilesDidLoad, object: nil)
+    }
+    
+    private var currentVersion: String {
+        return Bundle.main.executableURL!.creationDate!.description
+    }
+    
+    private let loadedVersionKey = "rBNkEMNHcuYIU3bttg2lYblKGlClU7z"
+    var loadedVersion: String {
+        get {
+            return UserDefaults.standard.object(forKey: loadedVersionKey) as? String ?? .init()
+        }
+        
+        set {
+            UserDefaults.standard.set(newValue, forKey: loadedVersionKey)
+            UserDefaults.standard.synchronize()
+        }
     }
 }
 

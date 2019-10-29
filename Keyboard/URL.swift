@@ -18,4 +18,12 @@ extension URL {
         
         return applicationSupportURL
     }
+    
+    var attributes: [FileAttributeKey: Any]? {
+        return try? FileManager.default.attributesOfItem(atPath: self.path)
+    }
+    
+    var creationDate: Date? {
+        return attributes?[.creationDate] as? Date
+    }
 }

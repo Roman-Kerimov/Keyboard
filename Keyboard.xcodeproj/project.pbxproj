@@ -909,11 +909,11 @@
 		964AB9321D1B6490004C827C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				964AB9311D1B6490004C827C /* Keyboard.app */,
-				964AB9671D1B6535004C827C /* KeyboardExtension.appex */,
-				965BFAC61F7979FA00B8F682 /* KeyboardTests.xctest */,
 				96E354E72020DDBC00668374 /* Keyboard.app */,
 				96E354F82020DDBD00668374 /* KeyboardTests.xctest */,
+				964AB9311D1B6490004C827C /* Keyboard.app */,
+				965BFAC61F7979FA00B8F682 /* KeyboardTests.xctest */,
+				964AB9671D1B6535004C827C /* KeyboardExtension.appex */,
 				9622D3AF23687FDD00ED3665 /* UnicodeData.sqlite */,
 				9613E0212367CF5C0087CA57 /* LoadUnicodeDataFiles */,
 			);

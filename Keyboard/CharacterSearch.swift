@@ -97,7 +97,7 @@ class CharacterSearch {
     private let frequentlyUsedUnicodeItemsKey = "LBg6QhTolnUzmtHXeo960LT1ZNd3i07"
     var frequentlyUsedUnicodeItems: [UnicodeItem] {
         get {
-            let codePointsArray = UserDefaults.standard.object(forKey: frequentlyUsedUnicodeItemsKey) as? [String] ?? .init()
+            let codePointsArray = UserDefaults.standard.stringArray(forKey: frequentlyUsedUnicodeItemsKey) ?? []
             return codePointsArray.compactMap {UnicodeData.default.item(byCodePoints: $0)}
         }
         

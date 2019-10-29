@@ -134,7 +134,7 @@ class UnicodeData: NSPersistentContainer {
     private let loadedVersionKey = "t79Hx5H46r8PC2ftV0XUNhIDxwJXq8Y"
     var loadedVersion: String {
         get {
-            return UserDefaults.standard.object(forKey: loadedVersionKey) as? String ?? .init()
+            return UserDefaults.standard.string(forKey: loadedVersionKey) ?? .init()
         }
         
         set {

@@ -153,7 +153,7 @@ class KeyboardUIViewController: UIInputViewController, KeyboardDelegate {
         if #available(iOS 11.0, *) {
             return super.needsInputModeSwitchKey
         }
-        else if let installedKeyboards = UserDefaults.standard.object(forKey: "AppleKeyboards") as? [String] {
+        else if let installedKeyboards = UserDefaults.standard.stringArray(forKey: "AppleKeyboards") {
             return installedKeyboards.count > 1
         }
         else {

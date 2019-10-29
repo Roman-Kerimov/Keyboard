@@ -108,7 +108,7 @@ class LoadUnicodeDataFiles: Operation {
     private let loadedVersionKey = "rBNkEMNHcuYIU3bttg2lYblKGlClU7z"
     var loadedVersion: String {
         get {
-            return UserDefaults.standard.object(forKey: loadedVersionKey) as? String ?? .init()
+            return UserDefaults.standard.string(forKey: loadedVersionKey) ?? .init()
         }
         
         set {

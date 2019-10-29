@@ -19,6 +19,7 @@ struct InterfaceLanguageRow: View {
                 GeometryReader { geometry in
                     VStack(alignment: .leading) {
                         Text(self.language.selfName)
+                            .foregroundColor(.primary)
                         
                         Text(self.language.localizedName)
                             .font(.caption)
@@ -30,7 +31,6 @@ struct InterfaceLanguageRow: View {
                 language == locale.language ? Image.checkmark.foregroundColor(.accentColor) : nil
             }
         })
-        .buttonStyle(PlainButtonStyle())
         .previewDisplayName(language.id)
     }
 }

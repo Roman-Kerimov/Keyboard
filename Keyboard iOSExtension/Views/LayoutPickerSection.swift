@@ -18,6 +18,7 @@ struct LayoutPickerSection: View {
                 Button(action: {self.keyboard.layout = layout}) {
                     HStack {
                         Text(layout.name)
+                            .foregroundColor(.primary)
                         
                         Spacer()
 
@@ -26,7 +27,6 @@ struct LayoutPickerSection: View {
                         }
                     }
                 }
-                .buttonStyle(PlainButtonStyle())
             }
         }
     }

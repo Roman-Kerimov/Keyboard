@@ -435,21 +435,6 @@
 		9619B6C9232D038200AA83C3 /* ICU-LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ICU-LICENSE"; sourceTree = "<group>"; };
 		9619B6CA232D038200AA83C3 /* keyboards */ = {isa = PBXFileReference; lastKnownFileType = folder; path = keyboards; sourceTree = "<group>"; };
 		9619B6CB232D038200AA83C3 /* unicode-license.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "unicode-license.txt"; sourceTree = "<group>"; };
-		9619B6CC232D039400AA83C3 /* annotationsDerived */ = {isa = PBXFileReference; lastKnownFileType = folder; path = annotationsDerived; sourceTree = "<group>"; };
-		9619B6CD232D039400AA83C3 /* subdivisions */ = {isa = PBXFileReference; lastKnownFileType = folder; path = subdivisions; sourceTree = "<group>"; };
-		9619B6CE232D039400AA83C3 /* casing */ = {isa = PBXFileReference; lastKnownFileType = folder; path = casing; sourceTree = "<group>"; };
-		9619B6CF232D039400AA83C3 /* main */ = {isa = PBXFileReference; lastKnownFileType = folder; path = main; sourceTree = "<group>"; };
-		9619B6D0232D039500AA83C3 /* segments */ = {isa = PBXFileReference; lastKnownFileType = folder; path = segments; sourceTree = "<group>"; };
-		9619B6D1232D039500AA83C3 /* dtd */ = {isa = PBXFileReference; lastKnownFileType = folder; path = dtd; sourceTree = "<group>"; };
-		9619B6D2232D039500AA83C3 /* properties */ = {isa = PBXFileReference; lastKnownFileType = folder; path = properties; sourceTree = "<group>"; };
-		9619B6D3232D039500AA83C3 /* validity */ = {isa = PBXFileReference; lastKnownFileType = folder; path = validity; sourceTree = "<group>"; };
-		9619B6D4232D039600AA83C3 /* bcp47 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bcp47; sourceTree = "<group>"; };
-		9619B6D5232D039600AA83C3 /* collation */ = {isa = PBXFileReference; lastKnownFileType = folder; path = collation; sourceTree = "<group>"; };
-		9619B6D6232D039600AA83C3 /* rbnf */ = {isa = PBXFileReference; lastKnownFileType = folder; path = rbnf; sourceTree = "<group>"; };
-		9619B6D7232D039600AA83C3 /* uca */ = {isa = PBXFileReference; lastKnownFileType = folder; path = uca; sourceTree = "<group>"; };
-		9619B6D8232D039600AA83C3 /* supplemental */ = {isa = PBXFileReference; lastKnownFileType = folder; path = supplemental; sourceTree = "<group>"; };
-		9619B6D9232D039600AA83C3 /* transforms */ = {isa = PBXFileReference; lastKnownFileType = folder; path = transforms; sourceTree = "<group>"; };
-		9619B6DA232D039700AA83C3 /* annotations */ = {isa = PBXFileReference; lastKnownFileType = folder; path = annotations; sourceTree = "<group>"; };
 		961CE9F621B0CCEA00E1A14D /* AutocompleteUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteUIView.swift; sourceTree = "<group>"; };
 		961CE9FE21B0D32800E1A14D /* UICollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionReusableView.swift; sourceTree = "<group>"; };
 		961D74902009003900BBC5FB /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
@@ -527,6 +512,7 @@
 		968694C01EA0F3D100E6C9D0 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		9687050B2368E7DE0045D1AF /* UCD */ = {isa = PBXFileReference; lastKnownFileType = folder; path = UCD; sourceTree = "<group>"; };
 		9687050C2368E9970045D1AF /* Emoji */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Emoji; sourceTree = "<group>"; };
+		9687050D2368EA230045D1AF /* common */ = {isa = PBXFileReference; lastKnownFileType = folder; path = common; sourceTree = "<group>"; };
 		96883126201FB35B0071908B /* KeyboardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDelegate.swift; sourceTree = "<group>"; };
 		96883129202008030071908B /* DocumentContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentContext.swift; sourceTree = "<group>"; };
 		968AFE412243E6EE00346636 /* GuideUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuideUIViewController.swift; sourceTree = "<group>"; };
@@ -695,35 +681,13 @@
 			isa = PBXGroup;
 			children = (
 				9619B6C6232D038100AA83C3 /* readme.html */,
-				9619B6C5232D033500AA83C3 /* common */,
+				9687050D2368EA230045D1AF /* common */,
 				9619B6CA232D038200AA83C3 /* keyboards */,
 				9619B6CB232D038200AA83C3 /* unicode-license.txt */,
 				9619B6C9232D038200AA83C3 /* ICU-LICENSE */,
 				9619B6C8232D038200AA83C3 /* apache-license.txt */,
 			);
 			path = CLDR;
-			sourceTree = "<group>";
-		};
-		9619B6C5232D033500AA83C3 /* common */ = {
-			isa = PBXGroup;
-			children = (
-				9619B6DA232D039700AA83C3 /* annotations */,
-				9619B6CC232D039400AA83C3 /* annotationsDerived */,
-				9619B6D4232D039600AA83C3 /* bcp47 */,
-				9619B6CE232D039400AA83C3 /* casing */,
-				9619B6D5232D039600AA83C3 /* collation */,
-				9619B6D1232D039500AA83C3 /* dtd */,
-				9619B6CF232D039400AA83C3 /* main */,
-				9619B6D2232D039500AA83C3 /* properties */,
-				9619B6D6232D039600AA83C3 /* rbnf */,
-				9619B6D0232D039500AA83C3 /* segments */,
-				9619B6CD232D039400AA83C3 /* subdivisions */,
-				9619B6D8232D039600AA83C3 /* supplemental */,
-				9619B6D9232D039600AA83C3 /* transforms */,
-				9619B6D7232D039600AA83C3 /* uca */,
-				9619B6D3232D039500AA83C3 /* validity */,
-			);
-			path = common;
 			sourceTree = "<group>";
 		};
 		964AB9261D1B63C0004C827C = {

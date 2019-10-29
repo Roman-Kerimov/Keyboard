@@ -526,6 +526,7 @@
 		9685BCFE1E06815700702C84 /* Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		968694C01EA0F3D100E6C9D0 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		9687050B2368E7DE0045D1AF /* UCD */ = {isa = PBXFileReference; lastKnownFileType = folder; path = UCD; sourceTree = "<group>"; };
+		9687050C2368E9970045D1AF /* Emoji */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Emoji; sourceTree = "<group>"; };
 		96883126201FB35B0071908B /* KeyboardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDelegate.swift; sourceTree = "<group>"; };
 		96883129202008030071908B /* DocumentContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentContext.swift; sourceTree = "<group>"; };
 		968AFE412243E6EE00346636 /* GuideUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuideUIViewController.swift; sourceTree = "<group>"; };
@@ -534,12 +535,6 @@
 		969450BF20B3215100DD7EF3 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		9694E23C1E29D72800ED3A85 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		9696CBC02031800B007CC94B /* Template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
-		9697C3D820BB180300FE3007 /* emoji-test.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "emoji-test.txt"; sourceTree = "<group>"; };
-		9697C3D920BB180300FE3007 /* emoji-data.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "emoji-data.txt"; sourceTree = "<group>"; };
-		9697C3DA20BB180300FE3007 /* emoji-variation-sequences.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "emoji-variation-sequences.txt"; sourceTree = "<group>"; };
-		9697C3DB20BB180300FE3007 /* emoji-zwj-sequences.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "emoji-zwj-sequences.txt"; sourceTree = "<group>"; };
-		9697C3DC20BB180300FE3007 /* ReadMe.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
-		9697C3DD20BB180300FE3007 /* emoji-sequences.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "emoji-sequences.txt"; sourceTree = "<group>"; };
 		9697C3E220BB514900FE3007 /* UnicodeDataItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnicodeDataItem.swift; sourceTree = "<group>"; };
 		969948A223322174002D282D /* CharacterSearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSearchTests.swift; sourceTree = "<group>"; };
 		969E83041EED842E009A1F2D /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
@@ -743,7 +738,7 @@
 				965BFAC71F7979FA00B8F682 /* Keyboard iOSTests */,
 				964AB9681D1B6535004C827C /* Keyboard iOSExtension */,
 				9687050B2368E7DE0045D1AF /* UCD */,
-				9697C3D720BB180300FE3007 /* Emoji */,
+				9687050C2368E9970045D1AF /* Emoji */,
 				9619B6C4232D02F400AA83C3 /* CLDR */,
 				9613E0292367D03A0087CA57 /* UnicodeData */,
 				9613E0222367CF5C0087CA57 /* LoadUnicodeDataFiles */,
@@ -911,19 +906,6 @@
 				96012B6A22F3C3D30095F445 /* GuideNavigationView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		9697C3D720BB180300FE3007 /* Emoji */ = {
-			isa = PBXGroup;
-			children = (
-				9697C3D920BB180300FE3007 /* emoji-data.txt */,
-				9697C3DD20BB180300FE3007 /* emoji-sequences.txt */,
-				9697C3D820BB180300FE3007 /* emoji-test.txt */,
-				9697C3DA20BB180300FE3007 /* emoji-variation-sequences.txt */,
-				9697C3DB20BB180300FE3007 /* emoji-zwj-sequences.txt */,
-				9697C3DC20BB180300FE3007 /* ReadMe.txt */,
-			);
-			path = Emoji;
 			sourceTree = "<group>";
 		};
 		9697F880202FA868001EC50A /* Keyboard */ = {

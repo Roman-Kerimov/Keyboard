@@ -34,11 +34,16 @@ class CharacterSearch {
     var text: String = "" {
         didSet {
             
+            guard frequentlyUsedUnicodeItemsDidChange else {
+                return
+            }
+            
             if oldValue == "" && text == "" {
                 return
             }
             
             currentFrequentlyUsedUnicodeItems = frequentlyUsedUnicodeItems
+            frequentlyUsedUnicodeItemsDidChange = false
         }
     }
     
@@ -92,18 +97,15 @@ class CharacterSearch {
         
         Keyboard.default.delegate?.insert(text: unicodeItem.codePoints)
         NotificationCenter.default.post(.init(name: .DocumentContextDidChange))
+        
+        frequentlyUsedUnicodeItemsDidChange = true
+        
+        UserDefaults.standard.set(frequentlyUsedUnicodeItems.map {$0.codePoints}, forKey: frequentlyUsedUnicodeItemsKey)
+        UserDefaults.standard.synchronize()
     }
     
     private let frequentlyUsedUnicodeItemsKey = "LBg6QhTolnUzmtHXeo960LT1ZNd3i07"
-    var frequentlyUsedUnicodeItems: [UnicodeItem] {
-        get {
-            let codePointsArray = UserDefaults.standard.stringArray(forKey: frequentlyUsedUnicodeItemsKey) ?? []
-            return codePointsArray.compactMap {UnicodeData.default.item(byCodePoints: $0)}
-        }
-        
-        set {
-            UserDefaults.standard.set(newValue.map {$0.codePoints}, forKey: frequentlyUsedUnicodeItemsKey)
-            UserDefaults.standard.synchronize()
-        }
-    }
+    private lazy var frequentlyUsedUnicodeItems: [UnicodeItem] = UserDefaults.standard.stringArray(forKey: frequentlyUsedUnicodeItemsKey)?.compactMap {UnicodeData.default.item(byCodePoints: $0)} ?? []
+    
+    private var frequentlyUsedUnicodeItemsDidChange = true
 }

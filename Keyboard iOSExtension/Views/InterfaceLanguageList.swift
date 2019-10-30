@@ -29,10 +29,3 @@ struct InterfaceLanguageList: View {
         .navigationBarTitle(Text(LANGUAGE.string), displayMode: .inline)
     }
 }
-
-@available(iOS 13.0, *)
-struct InterfaceLanguagesView_Previews: PreviewProvider {
-    static var previews: some View {
-        InterfaceLanguageList().localized()
-    }
-}

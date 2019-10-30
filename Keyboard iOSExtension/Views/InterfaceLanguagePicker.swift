@@ -22,10 +22,3 @@ struct InterfaceLanguagePicker: View {
         }
     }
 }
-
-@available(iOS 13.0, *)
-struct SettingsSection_Previews: PreviewProvider {
-    static var previews: some View {
-        InterfaceLanguagePicker().localized()
-    }
-}

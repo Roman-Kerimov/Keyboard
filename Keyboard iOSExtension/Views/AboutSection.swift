@@ -17,10 +17,3 @@ struct AboutSection: View {
         }
     }
 }
-
-@available(iOS 13.0, *)
-struct AboutSection_Previews: PreviewProvider {
-    static var previews: some View {
-        AboutSection().localized()
-    }
-}

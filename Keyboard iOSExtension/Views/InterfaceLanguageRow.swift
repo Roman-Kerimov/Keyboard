@@ -33,18 +33,3 @@ struct InterfaceLanguageRow: View {
         .previewDisplayName(language.id)
     }
 }
-
-@available(iOS 13.0, *)
-struct InterfaceLanguageListRow_Previews: PreviewProvider {
-    static var previews: some View {
-        
-        Group {
-            InterfaceLanguageRow(language: Locale.current.language).localized()
-            
-            ForEach(Language.allCases) { language in
-                InterfaceLanguageRow(language: language).localized()
-            }
-        }
-        .previewLayout(.fixed(width: 300, height: 50))
-    }
-}

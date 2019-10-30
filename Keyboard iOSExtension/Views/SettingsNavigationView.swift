@@ -31,10 +31,3 @@ struct SettingsNavigationView: View {
         }
     }
 }
-
-@available(iOS 13.0, *)
-struct SettingsNavigationView_Previews: PreviewProvider {
-    static var previews: some View {
-        SettingsNavigationView().localized()
-    }
-}

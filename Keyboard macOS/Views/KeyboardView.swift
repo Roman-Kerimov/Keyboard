@@ -24,13 +24,3 @@ struct KeyboardView : View {
         .frame(width: .keyboardGrid(14.5), height: .keyboardGrid(5))
     }
 }
-
-struct KeyboardView_Previews : PreviewProvider {
-    static var previews: some View {
-        Keyboard.default.delegate?.prepareForPreview()
-        Keyboard.default.previewLayout = .option
-        
-        return KeyboardView()
-            .environmentObject(Keyboard.default)
-    }
-}

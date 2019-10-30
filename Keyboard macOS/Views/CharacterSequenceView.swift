@@ -47,17 +47,3 @@ struct CharacterSequenceView : View {
         }
     }
 }
-
-struct CharacterSequenceView_Previews : PreviewProvider {
-    static var previews: some View {
-        Keyboard.default.delegate?.prepareForPreview()
-        
-        let characterSequence: CharacterSequence = .init()
-        characterSequence.characters = "2+3".map {$0}
-        characterSequence.autocompleteLabel = "=5"
-        
-        return CharacterSequenceView()
-            .environmentObject(characterSequence)
-            .previewLayout(.fixed(width: 83, height: .characterSequenceDefaultHeight))
-    }
-}

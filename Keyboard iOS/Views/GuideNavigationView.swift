@@ -28,10 +28,3 @@ struct GuideNavigationView: View {
         .padding(1)
     }
 }
-
-@available(iOS 13.0, *)
-struct GuideNavigationView_Previews: PreviewProvider {
-    static var previews: some View {
-        GuideNavigationView().localized()
-    }
-}

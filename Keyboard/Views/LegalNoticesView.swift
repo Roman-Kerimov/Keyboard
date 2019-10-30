@@ -24,12 +24,3 @@ struct LegalNoticesView : View {
         .navigationBarTitle(Text(LEGAL_NOTICES.string), displayMode: .inline)
     }
 }
-
-@available(iOS 13.0, *)
-struct LegalNoticesView_Previews : PreviewProvider {
-    static var previews: some View {
-        Keyboard.default.delegate?.prepareForPreview()
-        
-        return LegalNoticesView().localized()
-    }
-}

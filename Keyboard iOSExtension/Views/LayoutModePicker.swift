@@ -19,10 +19,3 @@ struct LayoutModePicker: View {
         .pickerStyle(SegmentedPickerStyle())
     }
 }
-
-@available(iOS 13.0, *)
-struct LayoutModePicker_Previews: PreviewProvider {
-    static var previews: some View {
-        LayoutModePicker().environmentObject(Keyboard.default)
-    }
-}

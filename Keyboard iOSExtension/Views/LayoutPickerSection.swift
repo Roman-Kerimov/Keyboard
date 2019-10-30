@@ -31,10 +31,3 @@ struct LayoutPickerSection: View {
         }
     }
 }
-
-@available(iOS 13.0, *)
-struct LayoutPickerSection_Previews: PreviewProvider {
-    static var previews: some View {
-        LayoutPickerSection().localized().environmentObject(Keyboard.default)
-    }
-}

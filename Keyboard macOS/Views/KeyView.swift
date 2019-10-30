@@ -44,12 +44,3 @@ struct KeyView : View {
         }
     }
 }
-
-struct KeyView_Previews : PreviewProvider {
-    static var previews: some View {
-        Keyboard.default.delegate?.prepareForPreview()
-        
-        return KeyView()
-            .environmentObject(Key.a)
-    }
-}

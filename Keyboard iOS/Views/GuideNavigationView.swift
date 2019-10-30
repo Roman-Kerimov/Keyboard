@@ -29,11 +29,9 @@ struct GuideNavigationView: View {
     }
 }
 
-#if DEBUG
 @available(iOS 13.0, *)
 struct GuideNavigationView_Previews: PreviewProvider {
     static var previews: some View {
         GuideNavigationView().localized()
     }
 }
-#endif

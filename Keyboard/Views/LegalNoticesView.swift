@@ -25,7 +25,6 @@ struct LegalNoticesView : View {
     }
 }
 
-#if DEBUG
 @available(iOS 13.0, *)
 struct LegalNoticesView_Previews : PreviewProvider {
     static var previews: some View {
@@ -34,4 +33,3 @@ struct LegalNoticesView_Previews : PreviewProvider {
         return LegalNoticesView().localized()
     }
 }
-#endif

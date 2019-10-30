@@ -34,7 +34,6 @@ struct InterfaceLanguageRow: View {
     }
 }
 
-#if DEBUG
 @available(iOS 13.0, *)
 struct InterfaceLanguageListRow_Previews: PreviewProvider {
     static var previews: some View {
@@ -49,4 +48,3 @@ struct InterfaceLanguageListRow_Previews: PreviewProvider {
         .previewLayout(.fixed(width: 300, height: 50))
     }
 }
-#endif

@@ -45,7 +45,6 @@ struct KeyView : View {
     }
 }
 
-#if DEBUG
 struct KeyView_Previews : PreviewProvider {
     static var previews: some View {
         Keyboard.default.delegate?.prepareForPreview()
@@ -54,4 +53,3 @@ struct KeyView_Previews : PreviewProvider {
             .environmentObject(Key.a)
     }
 }
-#endif

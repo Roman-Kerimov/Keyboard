@@ -34,7 +34,6 @@ struct CharacterSearchView : View {
     }
 }
 
-#if DEBUG
 struct CharacterSearchView_Previews : PreviewProvider {
     static var previews: some View {
         Keyboard.default.delegate?.prepareForPreview()
@@ -49,4 +48,3 @@ struct CharacterSearchView_Previews : PreviewProvider {
         }
     }
 }
-#endif

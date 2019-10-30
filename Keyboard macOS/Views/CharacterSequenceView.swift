@@ -48,7 +48,6 @@ struct CharacterSequenceView : View {
     }
 }
 
-#if DEBUG
 struct CharacterSequenceView_Previews : PreviewProvider {
     static var previews: some View {
         Keyboard.default.delegate?.prepareForPreview()
@@ -62,4 +61,3 @@ struct CharacterSequenceView_Previews : PreviewProvider {
             .previewLayout(.fixed(width: 83, height: .characterSequenceDefaultHeight))
     }
 }
-#endif

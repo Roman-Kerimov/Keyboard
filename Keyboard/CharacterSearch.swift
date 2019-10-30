@@ -34,7 +34,7 @@ class CharacterSearch {
     var text: String = "" {
         didSet {
             
-            guard frequentlyUsedUnicodeItemsDidChange else {
+            guard lastUsedUnicodeItemsDidChange else {
                 return
             }
             
@@ -42,12 +42,12 @@ class CharacterSearch {
                 return
             }
             
-            currentFrequentlyUsedUnicodeItems = frequentlyUsedUnicodeItems
-            frequentlyUsedUnicodeItemsDidChange = false
+            currentLastUsedUnicodeItems = lastUsedUnicodeItems
+            lastUsedUnicodeItemsDidChange = false
         }
     }
     
-    lazy var currentFrequentlyUsedUnicodeItems = frequentlyUsedUnicodeItems
+    lazy var currentLastUsedUnicodeItems = lastUsedUnicodeItems
     
     public func search(_ text: String) {
         self.text = text
@@ -88,24 +88,24 @@ class CharacterSearch {
         
         if !isScriptCodeItem {
             
-            if let index = frequentlyUsedUnicodeItems.firstIndex(of: unicodeItem) {
-                frequentlyUsedUnicodeItems.remove(at: index)
+            if let index = lastUsedUnicodeItems.firstIndex(of: unicodeItem) {
+                lastUsedUnicodeItems.remove(at: index)
             }
             
-            frequentlyUsedUnicodeItems = .init( ([unicodeItem] + frequentlyUsedUnicodeItems).prefix(100) )
+            lastUsedUnicodeItems = .init( ([unicodeItem] + lastUsedUnicodeItems).prefix(100) )
         }
         
         Keyboard.default.delegate?.insert(text: unicodeItem.codePoints)
         NotificationCenter.default.post(.init(name: .DocumentContextDidChange))
         
-        frequentlyUsedUnicodeItemsDidChange = true
+        lastUsedUnicodeItemsDidChange = true
         
-        UserDefaults.standard.set(frequentlyUsedUnicodeItems.map {$0.codePoints}, forKey: frequentlyUsedUnicodeItemsKey)
+        UserDefaults.standard.set(lastUsedUnicodeItems.map {$0.codePoints}, forKey: lastUsedUnicodeItemsKey)
         UserDefaults.standard.synchronize()
     }
     
-    private let frequentlyUsedUnicodeItemsKey = "LBg6QhTolnUzmtHXeo960LT1ZNd3i07"
-    private lazy var frequentlyUsedUnicodeItems: [UnicodeItem] = UserDefaults.standard.stringArray(forKey: frequentlyUsedUnicodeItemsKey)?.compactMap {UnicodeData.default.item(byCodePoints: $0)} ?? []
+    private let lastUsedUnicodeItemsKey = "LBg6QhTolnUzmtHXeo960LT1ZNd3i07"
+    private lazy var lastUsedUnicodeItems: [UnicodeItem] = UserDefaults.standard.stringArray(forKey: lastUsedUnicodeItemsKey)?.compactMap {UnicodeData.default.item(byCodePoints: $0)} ?? []
     
-    private var frequentlyUsedUnicodeItemsDidChange = true
+    private var lastUsedUnicodeItemsDidChange = true
 }

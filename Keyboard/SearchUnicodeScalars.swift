@@ -64,7 +64,7 @@ class SearchUnicodeScalars: Operation {
         
         switch text.count {
         case 0:
-            foundUnicodeItems = characterSearch.currentFrequentlyUsedUnicodeItems
+            foundUnicodeItems = characterSearch.currentLastUsedUnicodeItems
             updateUnicodeCollectionView()
             return
             

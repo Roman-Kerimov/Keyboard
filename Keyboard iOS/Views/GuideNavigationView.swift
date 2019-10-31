@@ -11,6 +11,9 @@ import SwiftUI
 struct GuideNavigationView: View {
     @EnvironmentObject var locale: Locale
     
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @Environment(\.verticalSizeClass) var verticalSizeClass
+    
     var body: some View {
         NavigationView {
             List {
@@ -25,6 +28,6 @@ struct GuideNavigationView: View {
             
             InterfaceLanguageList()
         }
-        .padding(1)
+        .padding(.horizontal, (horizontalSizeClass, verticalSizeClass) == (.regular, .regular) ? 1 : 0)
     }
 }

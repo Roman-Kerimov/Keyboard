@@ -696,16 +696,16 @@
 				963E5CA222F04C4C00873C20 /* .xcode-version */,
 				9697F880202FA868001EC50A /* Keyboard */,
 				96B6BC492031AD4C002509E4 /* KeyboardTests */,
-				96E354E82020DDBC00668374 /* Keyboard macOS */,
-				96E354FB2020DDBD00668374 /* Keyboard macOSTests */,
 				964AB9331D1B6490004C827C /* Keyboard iOS */,
 				965BFAC71F7979FA00B8F682 /* Keyboard iOSTests */,
 				964AB9681D1B6535004C827C /* Keyboard iOSExtension */,
+				96E354E82020DDBC00668374 /* Keyboard macOS */,
+				96E354FB2020DDBD00668374 /* Keyboard macOSTests */,
+				9613E0222367CF5C0087CA57 /* LoadUnicodeDataFiles */,
+				9613E0292367D03A0087CA57 /* UnicodeData */,
 				9687050B2368E7DE0045D1AF /* UCD */,
 				9687050C2368E9970045D1AF /* Emoji */,
 				9619B6C4232D02F400AA83C3 /* CLDR */,
-				9613E0292367D03A0087CA57 /* UnicodeData */,
-				9613E0222367CF5C0087CA57 /* LoadUnicodeDataFiles */,
 				964AB9321D1B6490004C827C /* Products */,
 				96DB1A77202FB80300B96D3C /* Frameworks */,
 			);
@@ -714,13 +714,13 @@
 		964AB9321D1B6490004C827C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				96E354E72020DDBC00668374 /* Keyboard.app */,
-				96E354F82020DDBD00668374 /* KeyboardTests.xctest */,
 				964AB9311D1B6490004C827C /* Keyboard.app */,
 				965BFAC61F7979FA00B8F682 /* KeyboardTests.xctest */,
 				964AB9671D1B6535004C827C /* KeyboardExtension.appex */,
-				9622D3AF23687FDD00ED3665 /* UnicodeData.sqlite */,
+				96E354E72020DDBC00668374 /* Keyboard.app */,
+				96E354F82020DDBD00668374 /* KeyboardTests.xctest */,
 				9613E0212367CF5C0087CA57 /* LoadUnicodeDataFiles */,
+				9622D3AF23687FDD00ED3665 /* UnicodeData.sqlite */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1193,13 +1193,13 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				96E354E62020DDBC00668374 /* Keyboard macOS */,
-				96E354F72020DDBD00668374 /* Keyboard macOSTests */,
 				964AB9301D1B6490004C827C /* Keyboard iOS */,
 				965BFAC51F7979FA00B8F682 /* Keyboard iOSTests */,
 				964AB9661D1B6535004C827C /* Keyboard iOSExtension */,
-				9622C6C22368C28C008C6109 /* UnicodeData */,
+				96E354E62020DDBC00668374 /* Keyboard macOS */,
+				96E354F72020DDBD00668374 /* Keyboard macOSTests */,
 				9613E0202367CF5C0087CA57 /* LoadUnicodeDataFiles */,
+				9622C6C22368C28C008C6109 /* UnicodeData */,
 			);
 		};
 /* End PBXProject section */

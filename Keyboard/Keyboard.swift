@@ -457,7 +457,6 @@ final class Keyboard {
         previewLayout = layout
         
         NotificationCenter.default.addObserver(self, selector: #selector(documentContextDidChange), name: .DocumentContextDidChange, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(search), name: .UnicodeDataFilesDidLoad, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(search), name: .DocumentContextDidChange, object: nil)
     }
     
@@ -600,18 +599,6 @@ final class Keyboard {
             }
             
             NotificationCenter.default.post(self)
-        }
-    }
-
-    private let cacheVersionKey = "rBNkEMNHcuYIU3bttg2lYblKGlClU7z"
-    var cacheVersion: String {
-        get {
-            return UserDefaults.standard.object(forKey: cacheVersionKey) as? String ?? .init()
-        }
-        
-        set {
-            UserDefaults.standard.set(newValue, forKey: cacheVersionKey)
-            UserDefaults.standard.synchronize()
         }
     }
 }

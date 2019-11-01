@@ -31,11 +31,20 @@ class CharacterSearchTests: XCTestCase {
         XCTAssert(search("deg").contains("°"))
     }
     
+    func testUnqualifiedSearch() {
+        XCTAssertFalse(search("face").contains("☺"))
+    }
+    
     func testSearchByAnnotations() {
         XCTAssert(search("bulka").contains("🍞"))
         XCTAssert(search("toddler").contains("🧒🏽"))
         XCTAssert(search("Russland").contains("🇷🇺"))
         XCTAssert(search("xhleb").contains("🍞"))
+        XCTAssert(search("tajmer").contains("⏲️"))
+    }
+    
+    func testComponentEmojiSearch() {
+        XCTAssert(search("hair").contains("🦰"))
     }
     
     func testFlagSearchByRegionCode() {
@@ -63,9 +72,5 @@ class CharacterSearchTests: XCTestCase {
     
     func testSearchWithScriptCode() {
         XCTAssertEqual(search("fki").first, "ф")
-    }
-    
-    func testSearchByWordSuffix() {
-        XCTAssert(search("apple").contains("🍍"))
     }
 }

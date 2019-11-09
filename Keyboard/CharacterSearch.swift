@@ -96,12 +96,13 @@ class CharacterSearch {
         }
         
         Keyboard.default.delegate?.insert(text: unicodeItem.codePoints)
-        NotificationCenter.default.post(.init(name: .DocumentContextDidChange))
         
         lastUsedUnicodeItemsDidChange = true
         
         UserDefaults.standard.set(lastUsedUnicodeItems.map {$0.codePoints}, forKey: lastUsedUnicodeItemsKey)
         UserDefaults.standard.synchronize()
+        
+        NotificationCenter.default.post(.init(name: .DocumentContextDidChange))
     }
     
     private let lastUsedUnicodeItemsKey = "LBg6QhTolnUzmtHXeo960LT1ZNd3i07"

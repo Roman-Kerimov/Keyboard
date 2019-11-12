@@ -164,6 +164,9 @@
 		965D15C91D32AE3B0098FA57 /* KeyUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965D15C81D32AE3B0098FA57 /* KeyUIView.swift */; };
 		966194D31DE2FCEF007FCF02 /* KeyboardLayoutUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966194D21DE2FCEF007FCF02 /* KeyboardLayoutUIView.swift */; };
 		9665F3781E9D921500850F97 /* CharacterCollectionUIViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665F3771E9D921500850F97 /* CharacterCollectionUIViewCell.swift */; };
+		966B7694237A30F2004D299B /* unicode-license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9619B6CB232D038200AA83C3 /* unicode-license.txt */; };
+		966B7695237A30F9004D299B /* unicode-license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9619B6CB232D038200AA83C3 /* unicode-license.txt */; };
+		966B7696237A30FC004D299B /* unicode-license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9619B6CB232D038200AA83C3 /* unicode-license.txt */; };
 		966CB25420911C99005C7B5B /* CGAffineTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966CB25320911C99005C7B5B /* CGAffineTransform.swift */; };
 		966CB25520911C99005C7B5B /* CGAffineTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966CB25320911C99005C7B5B /* CGAffineTransform.swift */; };
 		966CB25620911C99005C7B5B /* CGAffineTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966CB25320911C99005C7B5B /* CGAffineTransform.swift */; };
@@ -1209,6 +1212,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				966B7694237A30F2004D299B /* unicode-license.txt in Resources */,
 				96533A951F1293B000B07CA3 /* Labels_NextKeyboard.ai in Resources */,
 				964AB9421D1B6490004C827C /* LaunchScreen.storyboard in Resources */,
 				96533A961F1293B000B07CA3 /* Labels_HideKeyboard.ai in Resources */,
@@ -1223,6 +1227,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				966B7695237A30F9004D299B /* unicode-license.txt in Resources */,
 				96767C251EB11E28004D847C /* Labels_Settings.ai in Resources */,
 				96EA39E31EB0EEDE00F3D804 /* Labels_NextKeyboard.ai in Resources */,
 				96EA39E21EB0EEDE00F3D804 /* Labels_HideKeyboard.ai in Resources */,
@@ -1241,6 +1246,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				966B7696237A30FC004D299B /* unicode-license.txt in Resources */,
 				96E354EE2020DDBC00668374 /* Assets.xcassets in Resources */,
 				9622D3B0236880DF00ED3665 /* UnicodeData.sqlite in Resources */,
 			);

@@ -33,6 +33,12 @@ class CharacterCollectionUIViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         title.frame.size = frame.size
         unicodeName.frame.origin = .init(x: frame.maxX, y: (frame.height - unicodeName.frame.height)/2)
+        
+        let unicodeNameMaxWidth = UIScreen.main.bounds.maxX - frame.maxX
+        
+        if unicodeName.intrinsicContentSize.width > unicodeNameMaxWidth {
+            unicodeName.frame.size.width = unicodeNameMaxWidth
+        }
     }
     
     private var maxUnicodeNameViewWidth: CGFloat {

@@ -29,5 +29,6 @@ struct SettingsNavigationView: View {
                 trailing: LayoutModePicker()
             )
         }
+        .environment(\.horizontalSizeClass, .compact)
     }
 }

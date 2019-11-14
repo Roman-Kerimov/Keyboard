@@ -54,17 +54,39 @@ class UnicodeData: NSPersistentContainer {
     }
     
     func addAnnotation(text: String, textToSpeech: String, language: String, codePoints: String) {
-        let annotation = ManagedAnnotation(context: backgroundContext)
-        annotation.text = text
-        annotation.textToSpeech = textToSpeech
-        annotation.language = language
-        annotation.codePoints = codePoints
+        languageScripts(fromLanguage: language).forEach { (language) in
+            let annotation = ManagedAnnotation(context: backgroundContext)
+            annotation.text = self.text(inLanguage: language, from: text)
+            annotation.textToSpeech = self.text(inLanguage: language, from: textToSpeech)
+            annotation.language = language
+            annotation.codePoints = codePoints
+        }
     }
     
     func addWord(_ string: String, language: String) {
-        let word = ManagedWord(context:backgroundContext)
-        word.string = string
-        word.language = language
+        languageScripts(fromLanguage: language).forEach { (language) in
+            let word = ManagedWord(context:backgroundContext)
+            word.string = text(inLanguage: language, from: string)
+            word.language = language
+        }
+    }
+    
+    private func languageScripts(fromLanguage language: String) -> [String] {
+        switch language {
+        case "ru":
+            return ["ru_Cyrl", "ru_Latn"]
+        default:
+            return [language]
+        }
+    }
+    
+    private func text(inLanguage language: String, from text: String) -> String {
+        switch language {
+        case "ru_Latn":
+            return text.applyingTransform(from: .Cyrl, to: .Latn, withTable: .ru)
+        default:
+            return text
+        }
     }
     
     lazy var itemCount: Int = try! backgroundContext.count(for: ManagedUnicodeItem.fetchRequest())

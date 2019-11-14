@@ -58,6 +58,9 @@ extension AnnotationsXMLParser: XMLParserDelegate {
         case "language":
             language = attributeDict["type"] ?? ""
             
+        case "script", "territory":
+            language = [language, attributeDict["type"]].compactMap({$0}).joined(separator: "_")
+            
         default:
             break
         }

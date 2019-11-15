@@ -136,7 +136,7 @@ class UnicodeData: NSPersistentContainer {
     }
         
     func resetPersistentStore() {
-        let storeURLs = persistentStoreCoordinator.persistentStores.compactMap {$0.url}
+        let storeURLs = persistentStoreDescriptions.compactMap {$0.url}
         storeURLs.forEach { (storeURL) in
             try? persistentStoreCoordinator.destroyPersistentStore(at: storeURL, ofType: NSSQLiteStoreType, options: nil)
             try? FileManager.default.removeItem(at: storeURL)

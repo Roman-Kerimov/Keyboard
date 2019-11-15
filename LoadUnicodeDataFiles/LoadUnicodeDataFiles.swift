@@ -13,7 +13,7 @@ class LoadUnicodeDataFiles: Operation {
     
     override func main() {
         
-        let sqLiteSourceURL = UnicodeData.default.persistentStoreCoordinator.persistentStores.first!.url!
+        let sqLiteSourceURL = UnicodeData.default.persistentStoreDescriptions.first!.url!
         
         let sqLiteTargetURL = URL(fileURLWithPath: CommandLine.arguments[1])
             .appendingPathComponent(UnicodeData.default.name).appendingPathExtension(sqLiteSourceURL.pathExtension)

@@ -106,7 +106,7 @@ class CharacterSearch {
     }
     
     private let lastUsedUnicodeItemsKey = "LBg6QhTolnUzmtHXeo960LT1ZNd3i07"
-    private lazy var lastUsedUnicodeItems: [UnicodeItem] = UserDefaults.standard.stringArray(forKey: lastUsedUnicodeItemsKey)?.compactMap {UnicodeData.default.item(byCodePoints: $0)} ?? []
+    private lazy var lastUsedUnicodeItems: [UnicodeItem] = UserDefaults.standard.stringArray(forKey: lastUsedUnicodeItemsKey)?.compactMap {UnicodeData.default.item(codePoints: $0)} ?? []
     
     private var lastUsedUnicodeItemsDidChange = true
 }

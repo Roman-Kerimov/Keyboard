@@ -34,7 +34,7 @@ class UnicodeData: NSPersistentContainer {
         return (try! backgroundContext.fetch(fetchRequest)).map {.init(managed: $0)}
     }
     
-    func item(byCodePoints codePoints: String) -> UnicodeItem? {
+    func item(codePoints: String) -> UnicodeItem? {
         
         let fetchRequest: NSFetchRequest<ManagedUnicodeItem> = ManagedUnicodeItem.fetchRequest()
         fetchRequest.predicate = .init(format: "codePoints == %@", codePoints)

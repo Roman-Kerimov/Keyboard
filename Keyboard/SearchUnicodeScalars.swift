@@ -43,14 +43,14 @@ class SearchUnicodeScalars: Operation {
             }
         }
         
-        if let flagItem = UnicodeData.default.item(byCodePoints: flag(fromRegionCode: text)) {
+        if let flagItem = UnicodeData.default.item(codePoints: flag(fromRegionCode: text)) {
             foundUnicodeItems.append(flagItem)
             
             let regionCode = text.prefix(2).uppercased()
             
             for localeIdentifier in (Foundation.Locale.availableIdentifiers.filter { $0.hasSuffix(regionCode) } + ["en_\(regionCode)"]) {
                 if let currencySymbol = Foundation.Locale.init(identifier: localeIdentifier).currencySymbol {
-                    if currencySymbol.count == 1, let currencyItem = UnicodeData.default.item(byCodePoints: currencySymbol) {
+                    if currencySymbol.count == 1, let currencyItem = UnicodeData.default.item(codePoints: currencySymbol) {
                         foundUnicodeItems.append(currencyItem)
                         break
                     }
@@ -88,7 +88,7 @@ class SearchUnicodeScalars: Operation {
                     break
                 }
                 
-                foundUnicodeItems.append(UnicodeData.default.item(byCodePoints: targetLetter)!)
+                foundUnicodeItems.append(UnicodeData.default.item(codePoints: targetLetter)!)
                 characterSearch.scriptCodeLength = scriptCodeLength
             }
             

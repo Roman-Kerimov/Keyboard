@@ -53,6 +53,26 @@ class UnicodeData: NSPersistentContainer {
         itemCount += 1
     }
     
+    func annotation(codePoints: String, language: String) -> ManagedAnnotation? {
+        let fetchRequest: NSFetchRequest<ManagedAnnotation> = ManagedAnnotation.fetchRequest()
+        
+        let locale = Foundation.Locale(identifier: language)
+        
+        let languageQuery: String = Set(
+            [[locale.languageCode, locale.scriptCode, locale.regionCode],
+            [locale.languageCode, locale.scriptCode],
+            [locale.languageCode, locale.regionCode],
+            [locale.languageCode]]
+               .map({$0.compactMap({$0})})
+               .map({$0.joined(separator: "_")})
+        )
+            .map({"(language == '\($0)')"})
+            .joined(separator: " OR ")
+        
+        fetchRequest.predicate = .init(format: "codePoints == %@ AND (\(languageQuery))", codePoints)
+        return try! backgroundContext.fetch(fetchRequest).max {$0.language!.count < $1.language!.count}
+    }
+    
     func addAnnotation(text: String, textToSpeech: String, language: String, codePoints: String) {
         languageScripts(fromLanguage: language).forEach { (language) in
             let annotation = ManagedAnnotation(context: backgroundContext)

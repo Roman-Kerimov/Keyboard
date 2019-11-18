@@ -24,11 +24,11 @@ class UnicodeData: NSPersistentContainer {
         let annotationItemsFetchRequest: NSFetchRequest<ManagedUnicodeItem> = ManagedUnicodeItem.fetchRequest()
         annotationItemsFetchRequest.fetchLimit = fetchLimit
         annotationItemsFetchRequest.predicate = .init(format: "language IN %@ AND annotation MATCHES [c] %@", Set(words.map {$0.language!}), ".*\(regularExpression.pattern).*")
-        let annotations = try! backgroundContext.fetch(annotationItemsFetchRequest)
+        let annotationItems = try! backgroundContext.fetch(annotationItemsFetchRequest)
         
         let fetchRequest: NSFetchRequest<ManagedUnicodeItem> = ManagedUnicodeItem.fetchRequest()
         fetchRequest.fetchLimit = fetchLimit
-        fetchRequest.predicate = .init(format: "language == nil AND !(codePoints IN %@) AND (name MATCHES [c] %@ OR codePoints IN %@)", excludeItems.map {$0.codePoints}, ".*\(regularExpression.pattern).*", annotations.map {$0.codePoints!})
+        fetchRequest.predicate = .init(format: "language == nil AND !(codePoints IN %@) AND (name MATCHES [c] %@ OR codePoints IN %@)", excludeItems.map {$0.codePoints}, ".*\(regularExpression.pattern).*", annotationItems.map {$0.codePoints!})
         fetchRequest.sortDescriptors = [.init(key: "order", ascending: true)]
         
         return (try! backgroundContext.fetch(fetchRequest)).map {.init(managed: $0)}

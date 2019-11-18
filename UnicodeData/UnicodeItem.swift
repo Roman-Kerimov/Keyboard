@@ -15,8 +15,12 @@ struct UnicodeItem: Equatable {
     
     private let managed: ManagedUnicodeItem
     
+    var language: String? {managed.language}
+    
     var codePoints: String {managed.codePoints!}
-    var name: String {managed.name!}
+    var name: String? {managed.name}
+    var annotation: String? {managed.annotation}
+    var ttsAnnotation: String? {managed.ttsAnnotation}
     private var order: Int {.init(managed.order)}
     
     init(managed: ManagedUnicodeItem) {

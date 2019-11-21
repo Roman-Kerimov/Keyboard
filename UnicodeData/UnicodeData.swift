@@ -17,13 +17,9 @@ class UnicodeData: NSPersistentContainer {
     func items(regularExpression: NSRegularExpression, exclude excludeItems: [UnicodeItem]) -> [UnicodeItem] {
         let fetchLimit = 200
         
-        let wordsFetchRequest: NSFetchRequest<ManagedWord> = ManagedWord.fetchRequest()
-        wordsFetchRequest.predicate = .init(format: "string MATCHES [c] %@", ".*\(regularExpression.pattern).*")
-        let words = try! backgroundContext.fetch(wordsFetchRequest)
-        
         let annotationItemsFetchRequest: NSFetchRequest<ManagedUnicodeItem> = ManagedUnicodeItem.fetchRequest()
         annotationItemsFetchRequest.fetchLimit = fetchLimit
-        annotationItemsFetchRequest.predicate = .init(format: "language IN %@ AND annotation MATCHES [c] %@", Set(words.map {$0.language!}), ".*\(regularExpression.pattern).*")
+        annotationItemsFetchRequest.predicate = .init(format: "language IN %@ AND annotation MATCHES [c] %@", languages(regularExpression: regularExpression), ".*\(regularExpression.pattern).*")
         let annotationItems = try! backgroundContext.fetch(annotationItemsFetchRequest)
         
         let fetchRequest: NSFetchRequest<ManagedUnicodeItem> = ManagedUnicodeItem.fetchRequest()
@@ -91,6 +87,14 @@ class UnicodeData: NSPersistentContainer {
             word.string = text(inLanguage: language, from: string)
             word.language = language
         }
+    }
+    
+    func languages(regularExpression: NSRegularExpression) -> Set<String> {
+        let wordsFetchRequest: NSFetchRequest<ManagedWord> = ManagedWord.fetchRequest()
+        wordsFetchRequest.predicate = .init(format: "string MATCHES [c] %@", ".*\(regularExpression.pattern).*")
+        let words = try! backgroundContext.fetch(wordsFetchRequest)
+        
+        return Set(words.map {$0.language!})
     }
     
     private func languageScripts(fromLanguage language: String?) -> [String?] {

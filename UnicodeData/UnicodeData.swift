@@ -25,7 +25,7 @@ class UnicodeData: NSPersistentContainer {
         return (try! backgroundContext.fetch(fetchRequest)).map {.init(managed: $0)}
     }
     
-    func addItem(codePoints: String, name: String? = nil, language: String = "", annotation: String? = nil, ttsAnnotation: String? = nil) {
+    func addItem(codePoints: String, name: String? = nil, language: String = "", annotation: String? = nil, ttsAnnotation: String? = nil, order: Int? = nil) {
         
         languageScripts(fromLanguage: language).forEach { (language) in
             let item = ManagedUnicodeItem(context: backgroundContext)
@@ -38,7 +38,12 @@ class UnicodeData: NSPersistentContainer {
                 item.ttsAnnotation = text(inLanguage: language, from: ttsAnnotation)
             }
             
-            item.order = .init(itemCount)
+            if let order = order {
+                item.order = .init(order)
+            }
+            else {
+                item.order = .init(itemCount)
+            }
             
             itemCount += 1
         }

@@ -25,5 +25,9 @@ class UnicodeDataTests: XCTestCase {
         XCTAssertEqual(UnicodeData.default.item(codePoints: "🤨", language: "en_001")?.ttsAnnotation, "face with raised eyebrow")
         XCTAssertEqual(UnicodeData.default.item(codePoints: "🐊", language: "ru_Cyrl")?.ttsAnnotation, "крокодил")
     }
+    
+    func testItemOrder() {
+        XCTAssertEqual(UnicodeData.default.item(codePoints: "🐊", language: "en"), UnicodeData.default.item(codePoints: "🐊", language: "ru_Cyrl"))
+    }
 
 }

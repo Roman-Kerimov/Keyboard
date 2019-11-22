@@ -23,6 +23,7 @@ class UnicodeDataTests: XCTestCase {
         XCTAssertEqual(UnicodeData.default.item(codePoints: "🗨️", language: "en_CA")?.ttsAnnotation, "left speech bubble")
         XCTAssertEqual(UnicodeData.default.item(codePoints: "🗨️", language: "en")?.ttsAnnotation, "left speech bubble")
         XCTAssertEqual(UnicodeData.default.item(codePoints: "🤨", language: "en_001")?.ttsAnnotation, "face with raised eyebrow")
+        XCTAssertEqual(UnicodeData.default.item(codePoints: "🐊", language: "ru_Cyrl")?.ttsAnnotation, "крокодил")
     }
 
 }

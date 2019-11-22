@@ -87,7 +87,7 @@ class UnicodeData: NSPersistentContainer {
     private func languageScripts(fromLanguage language: String?) -> [String?] {
         switch language {
         case "ru":
-            return ["ru_Cyrl", "ru_Latn"]
+            return [language, "ru_Latn"]
         default:
             return [language]
         }

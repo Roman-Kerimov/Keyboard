@@ -43,14 +43,14 @@ class SearchUnicodeScalars: Operation {
             }
         }
         
-        if let flagItem = UnicodeData.default.item(codePoints: flag(fromRegionCode: text)) {
+        if let flagItem = UnicodeData.default.item(codePoints: flag(fromRegionCode: text), language: Locale.current.language.rawValue) {
             foundUnicodeItems.append(flagItem)
             
             let regionCode = text.prefix(2).uppercased()
             
             for localeIdentifier in (Foundation.Locale.availableIdentifiers.filter { $0.hasSuffix(regionCode) } + ["en_\(regionCode)"]) {
                 if let currencySymbol = Foundation.Locale.init(identifier: localeIdentifier).currencySymbol {
-                    if currencySymbol.count == 1, let currencyItem = UnicodeData.default.item(codePoints: currencySymbol) {
+                    if currencySymbol.count == 1, let currencyItem = UnicodeData.default.item(codePoints: currencySymbol, language: Locale.current.language.rawValue) {
                         foundUnicodeItems.append(currencyItem)
                         break
                     }
@@ -62,6 +62,27 @@ class SearchUnicodeScalars: Operation {
             characterSearch.foundUnicodeItems = foundUnicodeItems
         }
         
+        func languages(regularExpression: NSRegularExpression) -> [String] {
+            var languages: [String] = []
+            
+            var languageSet = UnicodeData.default.languages(regularExpression: regularExpression)
+            
+            let currentLanguage = Locale.current.language.rawValue
+            
+            let prefferedLanguages = Language.preferredList.compactMap {$0.rawValue != currentLanguage ? $0.rawValue : nil}
+            
+            for language in [currentLanguage] + prefferedLanguages {
+                if languageSet.contains(language) {
+                    languages.append(language)
+                    languageSet.remove(language)
+                }
+            }
+            
+            languages.append(contentsOf: languageSet.sorted())
+            
+            return languages
+        }
+        
         switch text.count {
         case 0:
             foundUnicodeItems = characterSearch.currentLastUsedUnicodeItems
@@ -69,38 +90,56 @@ class SearchUnicodeScalars: Operation {
             return
             
         case 1, 2:
-            foundUnicodeItems += UnicodeData.default.items(regularExpression: .contains(word: text), exclude: foundUnicodeItems)
+            for language in languages(regularExpression: .contains(word: text)) {
+                
+                guard !isCancelled else {
+                    return
+                }
+                
+                foundUnicodeItems += UnicodeData.default.items(language: language, regularExpression: .contains(word: text), exclude: foundUnicodeItems)
+            }
             
         default:
             
-            for scriptCodeLength in 2...3 {
-                let scriptCode: String = .init(text.suffix(scriptCodeLength).description.lowercased().flatMap {$0.removing(characterComponents: CharacterComponent.scripts)} )
+            for language in languages(regularExpression: .containsWord(withPrefix: text)) {
                 
-                guard let scriptCharacterComponent = codeScriptDictionary[scriptCode] else {
-                    continue
+                guard !isCancelled else {
+                    return
                 }
                 
-                let letter = text.dropLast(scriptCodeLength).last!.description
-                
-                let targetLetter = letter.appending(characterComponent: scriptCharacterComponent)
-                
-                guard targetLetter != letter else {
-                    break
+                for scriptCodeLength in 2...3 {
+                    let scriptCode: String = .init(text.suffix(scriptCodeLength).description.lowercased().flatMap {$0.removing(characterComponents: CharacterComponent.scripts)} )
+                    
+                    guard let scriptCharacterComponent = codeScriptDictionary[scriptCode] else {
+                        continue
+                    }
+                    
+                    let letter = text.dropLast(scriptCodeLength).last!.description
+                    
+                    let targetLetter = letter.appending(characterComponent: scriptCharacterComponent)
+                    
+                    guard targetLetter != letter else {
+                        break
+                    }
+                    
+                    foundUnicodeItems.append(UnicodeData.default.item(codePoints: targetLetter, language: Locale.current.language.rawValue)!)
+                    characterSearch.scriptCodeLength = scriptCodeLength
                 }
                 
-                foundUnicodeItems.append(UnicodeData.default.item(codePoints: targetLetter)!)
-                characterSearch.scriptCodeLength = scriptCodeLength
+                guard !isCancelled else {
+                    return
+                }
+                
+                foundUnicodeItems += UnicodeData.default.items(language: language, regularExpression: .contains(word: text), exclude: foundUnicodeItems)
+                
+                updateUnicodeCollectionView()
+                
+                guard !isCancelled else {
+                    return
+                }
+                
+                foundUnicodeItems += UnicodeData.default.items(language: language, regularExpression: .containsWord(withPrefix: text), exclude: foundUnicodeItems)
             }
-            
-            foundUnicodeItems += UnicodeData.default.items(regularExpression: .contains(word: text), exclude: foundUnicodeItems)
-            
-            updateUnicodeCollectionView()
-            
-            guard !isCancelled else {
-                return
-            }
-            
-            foundUnicodeItems += UnicodeData.default.items(regularExpression: .containsWord(withPrefix: text), exclude: foundUnicodeItems)
         }
         
         guard !isCancelled else {

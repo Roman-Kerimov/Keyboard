@@ -14,32 +14,18 @@ class UnicodeData: NSPersistentContainer {
     
     lazy var backgroundContext = newBackgroundContext()
     
-    func items(regularExpression: NSRegularExpression, exclude excludeItems: [UnicodeItem]) -> [UnicodeItem] {
+    func items(language: String, regularExpression: NSRegularExpression, exclude excludeItems: [UnicodeItem]) -> [UnicodeItem] {
         let fetchLimit = 200
-        
-        let annotationItemsFetchRequest: NSFetchRequest<ManagedUnicodeItem> = ManagedUnicodeItem.fetchRequest()
-        annotationItemsFetchRequest.fetchLimit = fetchLimit
-        annotationItemsFetchRequest.predicate = .init(format: "language IN %@ AND annotation MATCHES [c] %@", languages(regularExpression: regularExpression), ".*\(regularExpression.pattern).*")
-        let annotationItems = try! backgroundContext.fetch(annotationItemsFetchRequest)
         
         let fetchRequest: NSFetchRequest<ManagedUnicodeItem> = ManagedUnicodeItem.fetchRequest()
         fetchRequest.fetchLimit = fetchLimit
-        fetchRequest.predicate = .init(format: "language == nil AND !(codePoints IN %@) AND (name MATCHES [c] %@ OR codePoints IN %@)", excludeItems.map {$0.codePoints}, ".*\(regularExpression.pattern).*", annotationItems.map {$0.codePoints!})
+        fetchRequest.predicate = .init(format: "language == %@ AND !(codePoints IN %@) AND \(language.isEmpty ? "name" : "annotation") MATCHES [c] %@", language, excludeItems.map {$0.codePoints}, ".*\(regularExpression.pattern).*")
         fetchRequest.sortDescriptors = [.init(key: "order", ascending: true)]
         
         return (try! backgroundContext.fetch(fetchRequest)).map {.init(managed: $0)}
     }
     
-    func item(codePoints: String) -> UnicodeItem? {
-        
-        let fetchRequest: NSFetchRequest<ManagedUnicodeItem> = ManagedUnicodeItem.fetchRequest()
-        fetchRequest.predicate = .init(format: "codePoints == %@", codePoints)
-        let items = (try! backgroundContext.fetch(fetchRequest)).map {UnicodeItem(managed: $0)}
-        
-        return items.first(where: {$0.codePoints.unicodeScalars.map {$0.value} == codePoints.unicodeScalars.map {$0.value}})
-    }
-    
-    func addItem(codePoints: String, name: String? = nil, language: String? = nil, annotation: String? = nil, ttsAnnotation: String? = nil) {
+    func addItem(codePoints: String, name: String? = nil, language: String = "", annotation: String? = nil, ttsAnnotation: String? = nil) {
         
         languageScripts(fromLanguage: language).forEach { (language) in
             let item = ManagedUnicodeItem(context: backgroundContext)
@@ -47,7 +33,7 @@ class UnicodeData: NSPersistentContainer {
             item.name = name
             item.language = language
             
-            if let language = language, let annotation = annotation, let ttsAnnotation = ttsAnnotation {
+            if let annotation = annotation, let ttsAnnotation = ttsAnnotation {
                 item.annotation = text(inLanguage: language, from: annotation)
                 item.ttsAnnotation = text(inLanguage: language, from: ttsAnnotation)
             }
@@ -67,7 +53,8 @@ class UnicodeData: NSPersistentContainer {
             [[locale.languageCode, locale.scriptCode, locale.regionCode],
             [locale.languageCode, locale.scriptCode],
             [locale.languageCode, locale.regionCode],
-            [locale.languageCode]]
+            [locale.languageCode],
+            [""]]
                .map({$0.compactMap({$0})})
                .map({$0.joined(separator: "_")})
         )
@@ -94,7 +81,7 @@ class UnicodeData: NSPersistentContainer {
         wordsFetchRequest.predicate = .init(format: "string MATCHES [c] %@", ".*\(regularExpression.pattern).*")
         let words = try! backgroundContext.fetch(wordsFetchRequest)
         
-        return Set(words.map {$0.language!})
+        return Set(words.map {$0.language!} + [""])
     }
     
     private func languageScripts(fromLanguage language: String?) -> [String?] {

@@ -81,7 +81,7 @@ class CharacterSearchUIView: UICollectionView, UICollectionViewDelegateFlowLayou
         let characterFontSize = layout.itemSize.width * .characterSearchViewFontSizeFactor
         cell.title.font = .systemFont(ofSize: characterFontSize)
         
-        cell.unicodeName.text = unicodeItems[indexPath.item].name
+        cell.unicodeName.text = unicodeItems[indexPath.item].localizedName
         
         if cell.title.text?.first?.belongsTo(.regionalIndicatorSymbols) == true
             && cell.title.text?.unicodeScalars.count == 2 {

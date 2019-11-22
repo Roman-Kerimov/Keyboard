@@ -23,6 +23,8 @@ struct UnicodeItem: Equatable {
     var ttsAnnotation: String? {managed.ttsAnnotation}
     private var order: Int {.init(managed.order)}
     
+    var localizedName: String {ttsAnnotation ?? annotation ?? managed.name!}
+    
     init(managed: ManagedUnicodeItem) {
         self.managed = managed
     }

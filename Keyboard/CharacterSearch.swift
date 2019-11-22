@@ -20,8 +20,20 @@ extension CharacterSearch: ObservableObject {
     }
 }
 
-class CharacterSearch {
+class CharacterSearch: NSObject {
     private var _objectWillChange: Any? = nil
+    
+    override func updateLocalizedStrings() {
+        lastUsedUnicodeItems = readLastUsedUnicodeItems()
+        currentLastUsedUnicodeItems = lastUsedUnicodeItems
+        search(text)
+    }
+    
+    override init() {
+        super.init()
+        
+        NotificationCenter.default.addLocaleObserver(self)
+    }
     
     convenience init(query: String) {
         self.init()
@@ -106,7 +118,11 @@ class CharacterSearch {
     }
     
     private let lastUsedUnicodeItemsKey = "LBg6QhTolnUzmtHXeo960LT1ZNd3i07"
-    private lazy var lastUsedUnicodeItems: [UnicodeItem] = UserDefaults.standard.stringArray(forKey: lastUsedUnicodeItemsKey)?.compactMap {UnicodeData.default.item(codePoints: $0, language: Locale.current.language.rawValue)} ?? []
+    private lazy var lastUsedUnicodeItems: [UnicodeItem] = readLastUsedUnicodeItems()
+    
+    private func readLastUsedUnicodeItems() -> [UnicodeItem] {
+        return UserDefaults.standard.stringArray(forKey: lastUsedUnicodeItemsKey)?.compactMap {UnicodeData.default.item(codePoints: $0, language: Locale.current.language.rawValue)} ?? []
+    }
     
     private var lastUsedUnicodeItemsDidChange = true
 }

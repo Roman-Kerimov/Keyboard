@@ -14,47 +14,42 @@ class UnicodeData: NSPersistentContainer {
     
     lazy var backgroundContext = newBackgroundContext()
     
-    func items(regularExpression: NSRegularExpression, exclude excludeItems: [UnicodeItem]) -> [UnicodeItem] {
-        let fetchLimit = 200
-        
-        let wordsFetchRequest: NSFetchRequest<ManagedWord> = ManagedWord.fetchRequest()
-        wordsFetchRequest.predicate = .init(format: "string MATCHES [c] %@", ".*\(regularExpression.pattern).*")
-        let words = try! backgroundContext.fetch(wordsFetchRequest)
-        
-        let annotationsFetchRequest: NSFetchRequest<ManagedAnnotation> = ManagedAnnotation.fetchRequest()
-        annotationsFetchRequest.fetchLimit = fetchLimit
-        annotationsFetchRequest.predicate = .init(format: "language IN %@ AND text MATCHES [c] %@", Set(words.map {$0.language!}), ".*\(regularExpression.pattern).*")
-        let annotations = try! backgroundContext.fetch(annotationsFetchRequest)
+    func items(language: String, regularExpression: NSRegularExpression, exclude excludeItems: [UnicodeItem], fetchLimit: Int) -> [UnicodeItem] {
         
         let fetchRequest: NSFetchRequest<ManagedUnicodeItem> = ManagedUnicodeItem.fetchRequest()
         fetchRequest.fetchLimit = fetchLimit
-        fetchRequest.predicate = .init(format: "!(codePoints IN %@) AND (name MATCHES [c] %@ OR codePoints IN %@)", excludeItems.map {$0.codePoints}, ".*\(regularExpression.pattern).*", annotations.map {$0.codePoints!})
+        fetchRequest.predicate = .init(format: "language == %@ AND !(codePoints IN %@) AND \(language.isEmpty ? "name" : "annotation") MATCHES [c] %@", language, excludeItems.map {$0.codePoints}, ".*\(regularExpression.pattern).*")
         fetchRequest.sortDescriptors = [.init(key: "order", ascending: true)]
         
         return (try! backgroundContext.fetch(fetchRequest)).map {.init(managed: $0)}
     }
     
-    func item(byCodePoints codePoints: String) -> UnicodeItem? {
+    func addItem(codePoints: String, name: String? = nil, language: String = "", annotation: String? = nil, ttsAnnotation: String? = nil, order: Int? = nil) {
         
+        languageScripts(fromLanguage: language).forEach { (language) in
+            let item = ManagedUnicodeItem(context: backgroundContext)
+            item.codePoints = codePoints
+            item.name = name
+            item.language = language
+            
+            if let annotation = annotation, let ttsAnnotation = ttsAnnotation {
+                item.annotation = text(inLanguage: language, from: annotation)
+                item.ttsAnnotation = text(inLanguage: language, from: ttsAnnotation)
+            }
+            
+            if let order = order {
+                item.order = .init(order)
+            }
+            else {
+                item.order = .init(itemCount)
+            }
+            
+            itemCount += 1
+        }
+    }
+    
+    func item(codePoints: String, language: String) -> UnicodeItem? {
         let fetchRequest: NSFetchRequest<ManagedUnicodeItem> = ManagedUnicodeItem.fetchRequest()
-        fetchRequest.predicate = .init(format: "codePoints == %@", codePoints)
-        let items = (try! backgroundContext.fetch(fetchRequest)).map {UnicodeItem(managed: $0)}
-        
-        return items.first(where: {$0.codePoints.unicodeScalars.map {$0.value} == codePoints.unicodeScalars.map {$0.value}})
-    }
-    
-    func addItem(codePoints: String, name: String) {
-        let item = ManagedUnicodeItem(context: backgroundContext)
-        
-        item.codePoints = codePoints
-        item.name = name
-        item.order = .init(itemCount)
-        
-        itemCount += 1
-    }
-    
-    func annotation(codePoints: String, language: String) -> ManagedAnnotation? {
-        let fetchRequest: NSFetchRequest<ManagedAnnotation> = ManagedAnnotation.fetchRequest()
         
         let locale = Foundation.Locale(identifier: language)
         
@@ -62,7 +57,8 @@ class UnicodeData: NSPersistentContainer {
             [[locale.languageCode, locale.scriptCode, locale.regionCode],
             [locale.languageCode, locale.scriptCode],
             [locale.languageCode, locale.regionCode],
-            [locale.languageCode]]
+            [locale.languageCode],
+            [""]]
                .map({$0.compactMap({$0})})
                .map({$0.joined(separator: "_")})
         )
@@ -70,17 +66,10 @@ class UnicodeData: NSPersistentContainer {
             .joined(separator: " OR ")
         
         fetchRequest.predicate = .init(format: "codePoints == %@ AND (\(languageQuery))", codePoints)
-        return try! backgroundContext.fetch(fetchRequest).max {$0.language!.count < $1.language!.count}
-    }
-    
-    func addAnnotation(text: String, textToSpeech: String, language: String, codePoints: String) {
-        languageScripts(fromLanguage: language).forEach { (language) in
-            let annotation = ManagedAnnotation(context: backgroundContext)
-            annotation.text = self.text(inLanguage: language, from: text)
-            annotation.textToSpeech = self.text(inLanguage: language, from: textToSpeech)
-            annotation.language = language
-            annotation.codePoints = codePoints
-        }
+        return try! backgroundContext.fetch(fetchRequest)
+            .map {UnicodeItem(managed: $0)}
+            .filter {$0.codePoints.unicodeScalars.map {$0.value} == codePoints.unicodeScalars.map {$0.value}}
+            .max {$0.language!.count < $1.language!.count}
     }
     
     func addWord(_ string: String, language: String) {
@@ -91,16 +80,24 @@ class UnicodeData: NSPersistentContainer {
         }
     }
     
-    private func languageScripts(fromLanguage language: String) -> [String] {
+    func languages(regularExpression: NSRegularExpression) -> Set<String> {
+        let wordsFetchRequest: NSFetchRequest<ManagedWord> = ManagedWord.fetchRequest()
+        wordsFetchRequest.predicate = .init(format: "string MATCHES [c] %@", ".*\(regularExpression.pattern).*")
+        let words = try! backgroundContext.fetch(wordsFetchRequest)
+        
+        return Set(words.map {$0.language!} + [""])
+    }
+    
+    private func languageScripts(fromLanguage language: String?) -> [String?] {
         switch language {
         case "ru":
-            return ["ru_Cyrl", "ru_Latn"]
+            return [language, "ru_Latn"]
         default:
             return [language]
         }
     }
     
-    private func text(inLanguage language: String, from text: String) -> String {
+    private func text(inLanguage language: String?, from text: String) -> String {
         switch language {
         case "ru_Latn":
             return text.applyingTransform(from: .Cyrl, to: .Latn, withTable: .ru)

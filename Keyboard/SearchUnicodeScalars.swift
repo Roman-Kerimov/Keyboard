@@ -36,6 +36,8 @@ class SearchUnicodeScalars: Operation {
         
         var foundUnicodeItems: [UnicodeItem] = [] {
             didSet {
+                characterSearch.foundUnicodeItems = foundUnicodeItems
+                
                 if foundUnicodeItems.count >= maxCount {
                     cancel()
                 }
@@ -64,10 +66,6 @@ class SearchUnicodeScalars: Operation {
                     }
                 }
             }
-        }
-        
-        func updateUnicodeCollectionView() {
-            characterSearch.foundUnicodeItems = foundUnicodeItems
         }
         
         func languages(regularExpression: NSRegularExpression) -> [String] {
@@ -102,7 +100,7 @@ class SearchUnicodeScalars: Operation {
                 characterSearch.lastUsedUnicodeItemsCache[$0] = item
                 return item
             }
-            updateUnicodeCollectionView()
+            
             return
             
         case 1, 2:
@@ -148,8 +146,6 @@ class SearchUnicodeScalars: Operation {
                 
                 foundUnicodeItems += UnicodeData.default.items(language: language, regularExpression: .contains(word: text), exclude: foundUnicodeItems, fetchLimit: maxCount)
                 
-                updateUnicodeCollectionView()
-                
                 guard !isCancelled else {
                     return
                 }
@@ -158,10 +154,5 @@ class SearchUnicodeScalars: Operation {
             }
         }
         
-        guard !isCancelled else {
-            return
-        }
-        
-        updateUnicodeCollectionView()
     }
 }

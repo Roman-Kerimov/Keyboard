@@ -29,6 +29,7 @@ class CharacterSearchTests: XCTestCase {
     
     func testSearch() {
         XCTAssert(search("deg").contains("°"))
+        XCTAssert(search("o").contains("o"))
     }
     
     func testUnqualifiedSearch() {

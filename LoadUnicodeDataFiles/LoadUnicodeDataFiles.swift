@@ -11,9 +11,11 @@ class LoadUnicodeDataFiles: Operation {
     let columnSeparator: Character = ";"
     let commentMarker: Character = "#"
     
+    static var ordersByCodePoints: [String: Int] = [:]
+    
     override func main() {
         
-        let sqLiteSourceURL = UnicodeData.default.persistentStoreCoordinator.persistentStores.first!.url!
+        let sqLiteSourceURL = UnicodeData.default.persistentStoreDescriptions.first!.url!
         
         let sqLiteTargetURL = URL(fileURLWithPath: CommandLine.arguments[1])
             .appendingPathComponent(UnicodeData.default.name).appendingPathExtension(sqLiteSourceURL.pathExtension)
@@ -55,6 +57,7 @@ class LoadUnicodeDataFiles: Operation {
                         let name: String = components[2].components(separatedBy: String.space).dropFirst(2).joined(separator: .space).description.trimmingCharacters(in: .whitespaces)
                         
                         UnicodeData.default.addItem(codePoints: codePoints, name: name)
+                        LoadUnicodeDataFiles.ordersByCodePoints[codePoints] = UnicodeData.default.itemCount
                         
                         fullyQualifiedEmoji = codePoints
                         

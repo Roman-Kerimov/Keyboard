@@ -117,6 +117,8 @@
 		964AB9421D1B6490004C827C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 964AB9401D1B6490004C827C /* LaunchScreen.storyboard */; };
 		964AB96A1D1B6535004C827C /* KeyboardUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964AB9691D1B6535004C827C /* KeyboardUIViewController.swift */; };
 		964AB96E1D1B6535004C827C /* KeyboardExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 964AB9671D1B6535004C827C /* KeyboardExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		964EA726237EC5F700CA1D83 /* UnicodeDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964EA725237EC5F700CA1D83 /* UnicodeDataTests.swift */; };
+		964EA727237EC5F700CA1D83 /* UnicodeDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964EA725237EC5F700CA1D83 /* UnicodeDataTests.swift */; };
 		964ECA7E1E536FE8008E8757 /* SettingsContainerUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964ECA7D1E536FE8008E8757 /* SettingsContainerUIView.swift */; };
 		9651D95522F3602A00FD1EE9 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9651D95422F3602900FD1EE9 /* SwiftUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9651D95622F3603B00FD1EE9 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9651D95422F3602900FD1EE9 /* SwiftUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -480,6 +482,7 @@
 		964AB9671D1B6535004C827C /* KeyboardExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = KeyboardExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		964AB9691D1B6535004C827C /* KeyboardUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardUIViewController.swift; sourceTree = "<group>"; };
 		964AB96B1D1B6535004C827C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		964EA725237EC5F700CA1D83 /* UnicodeDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnicodeDataTests.swift; sourceTree = "<group>"; };
 		964ECA7D1E536FE8008E8757 /* SettingsContainerUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsContainerUIView.swift; sourceTree = "<group>"; };
 		9651D95422F3602900FD1EE9 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		96530D661DD1C9A9004E8BAA /* KeyboardLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardLayout.swift; sourceTree = "<group>"; };
@@ -706,6 +709,7 @@
 				96E354FB2020DDBD00668374 /* Keyboard_macOSTests */,
 				9613E0222367CF5C0087CA57 /* LoadUnicodeDataFiles */,
 				9613E0292367D03A0087CA57 /* UnicodeData */,
+				964EA724237EC59000CA1D83 /* UnicodeDataTests */,
 				9687050B2368E7DE0045D1AF /* UCD */,
 				9687050C2368E9970045D1AF /* Emoji */,
 				9619B6C4232D02F400AA83C3 /* CLDR */,
@@ -767,6 +771,14 @@
 				969F15F41E549BD300C0DD7D /* ViewController<UIView>.swift */,
 			);
 			path = Keyboard_iOSExtension;
+			sourceTree = "<group>";
+		};
+		964EA724237EC59000CA1D83 /* UnicodeDataTests */ = {
+			isa = PBXGroup;
+			children = (
+				964EA725237EC5F700CA1D83 /* UnicodeDataTests.swift */,
+			);
+			path = UnicodeDataTests;
 			sourceTree = "<group>";
 		};
 		965BFAC71F7979FA00B8F682 /* Keyboard_iOSTests */ = {
@@ -1508,6 +1520,7 @@
 				96B6B35E1F97660E00231AE6 /* Array<CharacterComponent>Tests.swift in Sources */,
 				96905E4720EF268C006F3DE9 /* KeyboardTests.swift in Sources */,
 				96D23570224CC76B0018C266 /* StringTests.swift in Sources */,
+				964EA726237EC5F700CA1D83 /* UnicodeDataTests.swift in Sources */,
 				969948A423322174002D282D /* CharacterSearchTests.swift in Sources */,
 				965BFAC91F7979FA00B8F682 /* Keyboard_iOSTests.swift in Sources */,
 			);
@@ -1617,6 +1630,7 @@
 				96E354FD2020DDBD00668374 /* Keyboard_macOSTests.swift in Sources */,
 				96905E4820EF268C006F3DE9 /* KeyboardTests.swift in Sources */,
 				96D23571224CC76B0018C266 /* StringTests.swift in Sources */,
+				964EA727237EC5F700CA1D83 /* UnicodeDataTests.swift in Sources */,
 				969948A323322174002D282D /* CharacterSearchTests.swift in Sources */,
 				96B6BC4A2031ADB6002509E4 /* Array<CharacterComponent>Tests.swift in Sources */,
 			);
@@ -1763,7 +1777,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 43;
+				CURRENT_PROJECT_VERSION = 44;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = W9KRA79GNJ;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1826,7 +1840,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 43;
+				CURRENT_PROJECT_VERSION = 44;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = W9KRA79GNJ;
 				ENABLE_NS_ASSERTIONS = NO;

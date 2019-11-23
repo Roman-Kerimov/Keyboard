@@ -5522,6 +5522,12 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ₜ": [.t, .subscript],
 
     
+    // MARK: - 20A0..20CF; Currency Symbols
+    
+    //20BF          ; BITCOIN SIGN
+    "₿": [.dollarSign, .extra0],
+    
+    
     // MARK: - 20D0..20FF; Combining Diacritical Marks for Symbols
     
     //20D0          ; COMBINING LEFT HARPOON ABOVE

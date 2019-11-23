@@ -14,8 +14,18 @@ class AnnotationsXMLParser: XMLParser {
         
         delegate = self
     }
+    
+    private static var baseLanguage: String = "" {
+        didSet {
+            if oldValue != baseLanguage {
+                annotationTable = .init()
+            }
+        }
+    }
+    
+    private static var annotationTable: [String: String] = .init()
+    
     private var language: String = ""
-    private lazy var language_Latn: String = "\(language)_Latn"
     
     private var codePoints: String? = nil {
         willSet {
@@ -23,26 +33,43 @@ class AnnotationsXMLParser: XMLParser {
                 return
             }
             
+            let languageComponents = language.components(separatedBy: "_")
+            
+            func annotationKey(languageComponents: [String], isTTS: Bool) -> String {
+                return "\(codePoints)\(languageComponents.joined(separator: "_"))\(isTTS)"
+            }
+            
+            func normalize(text: inout String, isTTS: Bool) {
+                text = text.trimmingCharacters(in: .whitespacesAndNewlines)
+                
+                if ["↑↑↑", ""].contains(text) {
+                    var baseLanguageComponents = languageComponents
+                    baseLanguageComponents.removeLast()
+                    
+                    while !baseLanguageComponents.isEmpty {
+                        if let annotation = AnnotationsXMLParser.annotationTable[annotationKey(languageComponents: baseLanguageComponents, isTTS: isTTS)] {
+                            text = annotation
+                            break
+                        }
+                        
+                        baseLanguageComponents.removeLast()
+                    }
+                }
+            }
+            
+            normalize(text: &annotation, isTTS: false)
+            normalize(text: &ttsAnnotation, isTTS: true)
+            
             if annotation.count < ttsAnnotation.count {
                 annotation = "\(annotation) | \(ttsAnnotation)"
             }
             
-            UnicodeData.default.addAnnotation(text: annotation, textToSpeech: ttsAnnotation, language: language, codePoints: codePoints)
+            UnicodeData.default.addItem(codePoints: codePoints, language: language, annotation: annotation, ttsAnnotation: ttsAnnotation, order: LoadUnicodeDataFiles.ordersByCodePoints[codePoints])
+            
+            AnnotationsXMLParser.annotationTable[annotationKey(languageComponents: languageComponents, isTTS: false)] = annotation
+            AnnotationsXMLParser.annotationTable[annotationKey(languageComponents: languageComponents, isTTS: true)] = ttsAnnotation
             
             wordSet.formUnion(annotation.components(separatedBy: .whitespaces))
-            
-            switch language {
-                
-            case "ru":
-                UnicodeData.default.addAnnotation(
-                    text: annotation.applyingTransform(from: .Cyrl, to: .Latn, withTable: .ru),
-                    textToSpeech: ttsAnnotation.applyingTransform(from: .Cyrl, to: .Latn, withTable: .ru),
-                    language: language_Latn, codePoints: codePoints
-                )
-                
-            default:
-                break
-            }
 
             isTTS = false
             annotation = ""
@@ -71,6 +98,10 @@ extension AnnotationsXMLParser: XMLParserDelegate {
             
         case "language":
             language = attributeDict["type"] ?? ""
+            AnnotationsXMLParser.baseLanguage = language.components(separatedBy: "_").first!
+            
+        case "script", "territory":
+            language = [language, attributeDict["type"]].compactMap({$0}).joined(separator: "_")
             
         default:
             break
@@ -95,17 +126,6 @@ extension AnnotationsXMLParser: XMLParserDelegate {
         
         wordSet.forEach { (word) in
             UnicodeData.default.addWord(word, language: language)
-        }
-        
-        switch language {
-            
-        case "ru":
-            wordSet.forEach { (word) in
-                UnicodeData.default.addWord(word.applyingTransform(from: .Cyrl, to: .Latn, withTable: .ru), language: language_Latn)
-            }
-            
-        default:
-            break
         }
     }
 }

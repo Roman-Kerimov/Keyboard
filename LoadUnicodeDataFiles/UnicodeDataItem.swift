@@ -21,7 +21,7 @@ enum UnicodeDataItem: String, CaseIterable {
         let itemURL = URL(fileURLWithPath: path)
         
         if let urls = try? FileManager.default.contentsOfDirectory(at: itemURL, includingPropertiesForKeys: nil, options: []) {
-            return urls
+            return urls.sorted {$0.path < $1.path}
         }
         else {
             return [itemURL]

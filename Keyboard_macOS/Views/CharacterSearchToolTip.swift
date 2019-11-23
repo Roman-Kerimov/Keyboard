@@ -17,6 +17,6 @@ struct CharacterSearchToolTip: NSViewRepresentable {
     }
     
     func updateNSView(_ nsView: NSView, context: NSViewRepresentableContext<CharacterSearchToolTip>) {
-        nsView.toolTip = characterSearch.foundUnicodeItems[item].name
+        nsView.toolTip = characterSearch.foundUnicodeItems[item].localizedName
     }
 }

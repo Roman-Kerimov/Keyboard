@@ -24,8 +24,7 @@ class CharacterSearch: NSObject {
     private var _objectWillChange: Any? = nil
     
     override func updateLocalizedStrings() {
-        lastUsedUnicodeItems = readLastUsedUnicodeItems()
-        currentLastUsedUnicodeItems = lastUsedUnicodeItems
+        lastUsedUnicodeItemsCache = [:]
         search(text)
     }
     
@@ -46,7 +45,7 @@ class CharacterSearch: NSObject {
     var text: String = "" {
         didSet {
             
-            guard lastUsedUnicodeItemsDidChange else {
+            guard lastUsedCharactersDidChange else {
                 return
             }
             
@@ -54,12 +53,12 @@ class CharacterSearch: NSObject {
                 return
             }
             
-            currentLastUsedUnicodeItems = lastUsedUnicodeItems
-            lastUsedUnicodeItemsDidChange = false
+            currentLastUsedCharacters = lastUsedCharacters
+            lastUsedCharactersDidChange = false
         }
     }
     
-    lazy var currentLastUsedUnicodeItems = lastUsedUnicodeItems
+    lazy var currentLastUsedCharacters = lastUsedCharacters
     
     public func search(_ text: String) {
         self.text = text
@@ -100,29 +99,31 @@ class CharacterSearch: NSObject {
         
         if !isScriptCodeItem {
             
-            if let index = lastUsedUnicodeItems.firstIndex(of: unicodeItem) {
-                lastUsedUnicodeItems.remove(at: index)
+            if let index = lastUsedCharacters.firstIndex(of: unicodeItem.codePoints) {
+                lastUsedCharacters.remove(at: index)
             }
             
-            lastUsedUnicodeItems = .init( ([unicodeItem] + lastUsedUnicodeItems).prefix(100) )
+            lastUsedCharacters = [unicodeItem.codePoints] + lastUsedCharacters
+            
+            if lastUsedCharacters.count > 100 {
+                lastUsedUnicodeItemsCache[lastUsedCharacters.removeLast()] = nil
+            }
         }
         
         Keyboard.default.delegate?.insert(text: unicodeItem.codePoints)
         
-        lastUsedUnicodeItemsDidChange = true
+        lastUsedCharactersDidChange = true
         
-        UserDefaults.standard.set(lastUsedUnicodeItems.map {$0.codePoints}, forKey: lastUsedUnicodeItemsKey)
+        UserDefaults.standard.set(lastUsedCharacters, forKey: lastUsedCharactersKey)
         UserDefaults.standard.synchronize()
         
         NotificationCenter.default.post(.init(name: .DocumentContextDidChange))
     }
     
-    private let lastUsedUnicodeItemsKey = "LBg6QhTolnUzmtHXeo960LT1ZNd3i07"
-    private lazy var lastUsedUnicodeItems: [UnicodeItem] = readLastUsedUnicodeItems()
+    private let lastUsedCharactersKey = "LBg6QhTolnUzmtHXeo960LT1ZNd3i07"
+    private lazy var lastUsedCharacters: [String] = UserDefaults.standard.stringArray(forKey: lastUsedCharactersKey) ?? []
     
-    private func readLastUsedUnicodeItems() -> [UnicodeItem] {
-        return UserDefaults.standard.stringArray(forKey: lastUsedUnicodeItemsKey)?.compactMap {UnicodeData.default.item(codePoints: $0, language: Locale.current.language.rawValue)} ?? []
-    }
+    private var lastUsedCharactersDidChange = true
     
-    private var lastUsedUnicodeItemsDidChange = true
+    var lastUsedUnicodeItemsCache: [String: UnicodeItem] = [:]
 }

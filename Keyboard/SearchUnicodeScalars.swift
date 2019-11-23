@@ -85,7 +85,15 @@ class SearchUnicodeScalars: Operation {
         
         switch text.count {
         case 0:
-            foundUnicodeItems = characterSearch.currentLastUsedUnicodeItems
+            foundUnicodeItems = characterSearch.currentLastUsedCharacters.compactMap {
+                if let item = characterSearch.lastUsedUnicodeItemsCache[$0] {
+                    return item
+                }
+                
+                let item = UnicodeData.default.item(codePoints: $0, language: Locale.current.language.rawValue)
+                characterSearch.lastUsedUnicodeItemsCache[$0] = item
+                return item
+            }
             updateUnicodeCollectionView()
             return
             

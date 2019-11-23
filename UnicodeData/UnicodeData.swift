@@ -14,8 +14,7 @@ class UnicodeData: NSPersistentContainer {
     
     lazy var backgroundContext = newBackgroundContext()
     
-    func items(language: String, regularExpression: NSRegularExpression, exclude excludeItems: [UnicodeItem]) -> [UnicodeItem] {
-        let fetchLimit = 200
+    func items(language: String, regularExpression: NSRegularExpression, exclude excludeItems: [UnicodeItem], fetchLimit: Int) -> [UnicodeItem] {
         
         let fetchRequest: NSFetchRequest<ManagedUnicodeItem> = ManagedUnicodeItem.fetchRequest()
         fetchRequest.fetchLimit = fetchLimit

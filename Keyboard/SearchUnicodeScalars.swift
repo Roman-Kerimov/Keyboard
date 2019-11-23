@@ -32,7 +32,15 @@ class SearchUnicodeScalars: Operation {
             return
         }
         
-        var foundUnicodeItems: [UnicodeItem] = []
+        let maxCount = 200
+        
+        var foundUnicodeItems: [UnicodeItem] = [] {
+            didSet {
+                if foundUnicodeItems.count >= maxCount {
+                    cancel()
+                }
+            }
+        }
         
         func flag(fromRegionCode regionCode: String) -> String {
             if regionCode.count == 2 {
@@ -104,7 +112,7 @@ class SearchUnicodeScalars: Operation {
                     return
                 }
                 
-                foundUnicodeItems += UnicodeData.default.items(language: language, regularExpression: .contains(word: text), exclude: foundUnicodeItems)
+                foundUnicodeItems += UnicodeData.default.items(language: language, regularExpression: .contains(word: text), exclude: foundUnicodeItems, fetchLimit: maxCount)
             }
             
         default:
@@ -138,7 +146,7 @@ class SearchUnicodeScalars: Operation {
                     return
                 }
                 
-                foundUnicodeItems += UnicodeData.default.items(language: language, regularExpression: .contains(word: text), exclude: foundUnicodeItems)
+                foundUnicodeItems += UnicodeData.default.items(language: language, regularExpression: .contains(word: text), exclude: foundUnicodeItems, fetchLimit: maxCount)
                 
                 updateUnicodeCollectionView()
                 
@@ -146,7 +154,7 @@ class SearchUnicodeScalars: Operation {
                     return
                 }
                 
-                foundUnicodeItems += UnicodeData.default.items(language: language, regularExpression: .containsWord(withPrefix: text), exclude: foundUnicodeItems)
+                foundUnicodeItems += UnicodeData.default.items(language: language, regularExpression: .containsWord(withPrefix: text), exclude: foundUnicodeItems, fetchLimit: maxCount)
             }
         }
         

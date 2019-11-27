@@ -23,9 +23,31 @@ struct UnicodeItem: Equatable {
     var ttsAnnotation: String? {managed.ttsAnnotation}
     private var order: Int {.init(managed.order)}
     
-    var localizedName: String {ttsAnnotation ?? annotation ?? managed.name!}
+    var localizedName: String {[regionCode, ttsAnnotation ?? annotation ?? managed.name].compactMap({$0}).joined(separator: " | ")}
     
     init(managed: ManagedUnicodeItem) {
         self.managed = managed
+    }
+    
+    var regionCode: String? {
+        let unicodeScalars = codePoints.unicodeScalars
+        
+        if unicodeScalars.count == 2, unicodeScalars.reduce(true, {$0 && CharacterSet(charactersIn: "🇦"..."🇿").contains($1)}) {
+            return unicodeScalars.map {Unicode.Scalar($0.value - 0x1F1A5)!.description} .joined()
+        }
+        else if unicodeScalars.count > 4, unicodeScalars.first == "\u{1F3F4}", unicodeScalars.last == "\u{E007F}" {
+            var subdivisionCode: String = unicodeScalars.dropFirst().dropLast().map {Unicode.Scalar($0.value - 0xE0000)?.description ?? "_"} .joined()
+            
+            guard subdivisionCode.unicodeScalars.reduce(true, {$0 && $1.isASCII && ($1.properties.isLowercase || $1.properties.generalCategory == .decimalNumber)}) else {
+                return nil
+            }
+            
+            subdivisionCode.insert("‐", at: subdivisionCode.index(subdivisionCode.startIndex, offsetBy: 2))
+            
+            return subdivisionCode.uppercased()
+        }
+        else {
+            return nil
+        }
     }
 }

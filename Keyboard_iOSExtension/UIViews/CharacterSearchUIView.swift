@@ -83,16 +83,6 @@ class CharacterSearchUIView: UICollectionView, UICollectionViewDelegateFlowLayou
         
         cell.unicodeName.text = unicodeItems[indexPath.item].localizedName
         
-        if cell.title.text?.first?.belongsTo(.regionalIndicatorSymbols) == true
-            && cell.title.text?.unicodeScalars.count == 2 {
-            
-            let regionCode = cell.title.text!.unicodeScalars.map {Unicode.Scalar.init($0.value - 0x1F1A5)!.description} .joined()
-            
-            let unicodeLabelSeparator = " | "
-            
-            cell.unicodeName.text = regionCode + unicodeLabelSeparator + cell.unicodeName.text!
-        }
-        
         cell.unicodeName.textColor = .unemphasizedSelectedTextColor
         cell.unicodeName.backgroundColor = .unemphasizedSelectedTextBackgroundColor
         cell.unicodeName.font = .boldSystemFont(ofSize: characterFontSize/2)

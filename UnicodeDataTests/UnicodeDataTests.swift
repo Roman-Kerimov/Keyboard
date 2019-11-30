@@ -7,6 +7,7 @@
 
 import XCTest
 @testable import Keyboard
+import CoreData
 
 class UnicodeDataTests: XCTestCase {
 
@@ -29,5 +30,11 @@ class UnicodeDataTests: XCTestCase {
     func testItemOrder() {
         XCTAssertEqual(UnicodeData.default.item(codePoints: "🐊", language: "en"), UnicodeData.default.item(codePoints: "🐊", language: "ru_Cyrl"))
     }
-
+    
+    func testWords() {
+        let request: NSFetchRequest<ManagedWord> = ManagedWord.fetchRequest()
+        request.predicate = .init(format: "string MATCHES %@", "\\B.*\\B")
+        
+        XCTAssertEqual(try! UnicodeData.default.backgroundContext.count(for: request), 0)
+    }
 }

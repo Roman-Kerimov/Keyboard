@@ -70,8 +70,7 @@ class AnnotationsXMLParser: XMLParser {
             AnnotationsXMLParser.annotationTable[annotationKey(languageComponents: languageComponents, isTTS: true)] = ttsAnnotation
             
             wordSet.formUnion(
-                annotation
-                    .components(separatedBy: .whitespaces)
+                annotation.components(separatedBy: .whitespaces)
                     .map {$0.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)}
                     .filter {!$0.isEmpty}
             )

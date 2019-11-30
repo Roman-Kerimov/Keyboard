@@ -64,16 +64,31 @@ class AnnotationsXMLParser: XMLParser {
                 annotation = "\(annotation) | \(ttsAnnotation)"
             }
             
+            var words = annotation.components(separatedBy: .whitespaces).map {$0.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)}.filter {!$0.isEmpty}
+            
+            if language == "ru" {
+                words.enumerated().forEach { (offset, word) in
+                    guard let yoficatedWord = yoficationTable[word] else {
+                        return
+                    }
+                    
+                    words[offset] = yoficatedWord
+                    
+                    func yotificate(text: inout String) {
+                        text = try! NSRegularExpression(pattern: "\\b\(NSRegularExpression.escapedPattern(for: word))\\b", options: []).stringByReplacingMatches(in: text, options: [], range: .init(location: 0, length: text.count), withTemplate: yoficatedWord)
+                    }
+                    
+                    yotificate(text: &annotation)
+                    yotificate(text: &ttsAnnotation)
+                }
+            }
+            
             UnicodeData.default.addItem(codePoints: codePoints, language: language, annotation: annotation, ttsAnnotation: ttsAnnotation, order: LoadUnicodeDataFiles.ordersByCodePoints[codePoints])
             
             AnnotationsXMLParser.annotationTable[annotationKey(languageComponents: languageComponents, isTTS: false)] = annotation
             AnnotationsXMLParser.annotationTable[annotationKey(languageComponents: languageComponents, isTTS: true)] = ttsAnnotation
             
-            wordSet.formUnion(
-                annotation.components(separatedBy: .whitespaces)
-                    .map {$0.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)}
-                    .filter {!$0.isEmpty}
-            )
+            wordSet.formUnion(words)
 
             isTTS = false
             annotation = ""

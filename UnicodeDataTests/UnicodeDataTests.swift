@@ -43,4 +43,9 @@ class UnicodeDataTests: XCTestCase {
         
         XCTAssertEqual(words.count, Set(words).count)
     }
+    
+    func testYofication() {
+        XCTAssertEqual(UnicodeData.default.words(language: "ru").filter {$0.contains("ё")}.count, 156)
+        XCTAssertEqual(UnicodeData.default.items(language: "ru_Latn", regularExpression: .contains(word: "vse"), exclude: [], fetchLimit: 0).map {$0.codePoints}, [])
+    }
 }

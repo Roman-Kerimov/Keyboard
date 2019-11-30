@@ -100,6 +100,7 @@
 		96436BA120C1DA2D0065ED03 /* UnicodeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96436BA020C1DA2D0065ED03 /* UnicodeItem.swift */; };
 		96436BA220C1DA2D0065ED03 /* UnicodeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96436BA020C1DA2D0065ED03 /* UnicodeItem.swift */; };
 		96436BA320C1DA2D0065ED03 /* UnicodeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96436BA020C1DA2D0065ED03 /* UnicodeItem.swift */; };
+		9643C98F2392B625003DF2B2 /* yoficationTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9643C98E2392B625003DF2B2 /* yoficationTable.swift */; };
 		9643FC4D1F78F8D5004DA2C0 /* CharacterComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9643FC4C1F78F8D5004DA2C0 /* CharacterComponent.swift */; };
 		9643FC4E1F78F8D5004DA2C0 /* CharacterComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9643FC4C1F78F8D5004DA2C0 /* CharacterComponent.swift */; };
 		9643FC501F78F94B004DA2C0 /* characterComponentsDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9643FC4F1F78F94B004DA2C0 /* characterComponentsDictionary.swift */; };
@@ -468,6 +469,7 @@
 		963DE0B1202F012B0040A448 /* StatusMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenu.swift; sourceTree = "<group>"; };
 		963E5CA222F04C4C00873C20 /* .xcode-version */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".xcode-version"; sourceTree = "<group>"; };
 		96436BA020C1DA2D0065ED03 /* UnicodeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnicodeItem.swift; sourceTree = "<group>"; };
+		9643C98E2392B625003DF2B2 /* yoficationTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = yoficationTable.swift; sourceTree = "<group>"; };
 		9643FC4C1F78F8D5004DA2C0 /* CharacterComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterComponent.swift; sourceTree = "<group>"; };
 		9643FC4F1F78F94B004DA2C0 /* characterComponentsDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = characterComponentsDictionary.swift; sourceTree = "<group>"; };
 		96443FBB208BE94D002FFA6B /* AccessibilityMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityMenuItem.swift; sourceTree = "<group>"; };
@@ -668,6 +670,7 @@
 				9608928120B00137007AA01E /* LoadUnicodeDataFiles.swift */,
 				9697C3E220BB514900FE3007 /* UnicodeDataItem.swift */,
 				9639EE08233C152900474A06 /* AnnotationsXMLParser.swift */,
+				9643C98E2392B625003DF2B2 /* yoficationTable.swift */,
 			);
 			path = LoadUnicodeDataFiles;
 			sourceTree = "<group>";
@@ -1315,6 +1318,7 @@
 				9613E02C2367D0F50087CA57 /* URL.swift in Sources */,
 				9613E0242367CF5C0087CA57 /* main.swift in Sources */,
 				9613E0312367D1890087CA57 /* UnicodeItem.swift in Sources */,
+				9643C98F2392B625003DF2B2 /* yoficationTable.swift in Sources */,
 				9613E02D2367D1110087CA57 /* UnicodeDataItem.swift in Sources */,
 				9613E02B2367D0D80087CA57 /* UnicodeData.xcdatamodeld in Sources */,
 				9613E0282367CFB70087CA57 /* LoadUnicodeDataFiles.swift in Sources */,

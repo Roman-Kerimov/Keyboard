@@ -426,6 +426,7 @@
 		96012B6A22F3C3D30095F445 /* GuideNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideNavigationView.swift; sourceTree = "<group>"; };
 		9608928120B00137007AA01E /* LoadUnicodeDataFiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadUnicodeDataFiles.swift; sourceTree = "<group>"; };
 		9608928520B001AD007AA01E /* SearchUnicodeScalars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUnicodeScalars.swift; sourceTree = "<group>"; };
+		96094C3C23920A6B00D29C7D /* Package.resolved */ = {isa = PBXFileReference; lastKnownFileType = text; name = Package.resolved; path = Keyboard.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved; sourceTree = "<group>"; };
 		960F6E941EC9F7E600EFC7B7 /* CharacterSearchUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterSearchUIView.swift; sourceTree = "<group>"; };
 		960F7E8022CD628B00419F62 /* UIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIFont.swift; path = Keyboard_iOSExtension/UIFont.swift; sourceTree = SOURCE_ROOT; };
 		960F7E8322CD62FE00419F62 /* NSFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSFont.swift; sourceTree = "<group>"; };
@@ -714,6 +715,7 @@
 				9619B6C4232D02F400AA83C3 /* CLDR */,
 				964AB9321D1B6490004C827C /* Products */,
 				96DB1A77202FB80300B96D3C /* Frameworks */,
+				96094C3C23920A6B00D29C7D /* Package.resolved */,
 			);
 			sourceTree = "<group>";
 		};

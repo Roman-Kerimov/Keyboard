@@ -37,4 +37,10 @@ class UnicodeDataTests: XCTestCase {
         
         XCTAssertEqual(try! UnicodeData.default.backgroundContext.count(for: request), 0)
     }
+    
+    func testWordsForDuplicates() {
+        let words = UnicodeData.default.words(language: "ru")
+        
+        XCTAssertEqual(words.count, Set(words).count)
+    }
 }

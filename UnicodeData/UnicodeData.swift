@@ -80,6 +80,13 @@ class UnicodeData: NSPersistentContainer {
         }
     }
     
+    func words(language: String) -> [String] {
+        let fetchRequest: NSFetchRequest<ManagedWord> = ManagedWord.fetchRequest()
+        fetchRequest.predicate = .init(format: "language == %@", language)
+        
+        return try! backgroundContext.fetch(fetchRequest).map {$0.string!}
+    }
+    
     func languages(regularExpression: NSRegularExpression) -> Set<String> {
         let wordsFetchRequest: NSFetchRequest<ManagedWord> = ManagedWord.fetchRequest()
         wordsFetchRequest.predicate = .init(format: "string MATCHES [c] %@", ".*\(regularExpression.pattern).*")

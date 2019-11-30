@@ -128,6 +128,8 @@ extension AnnotationsXMLParser: XMLParserDelegate {
     func parserDidEndDocument(_ parser: XMLParser) {
         codePoints = nil
         
+        wordSet.subtract(UnicodeData.default.words(language: language))
+        
         wordSet.forEach { (word) in
             UnicodeData.default.addWord(word, language: language)
         }

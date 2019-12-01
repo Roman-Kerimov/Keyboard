@@ -14,16 +14,6 @@ class UnicodeData: NSPersistentContainer {
     
     lazy var backgroundContext = newBackgroundContext()
     
-    func items(language: String, regularExpression: NSRegularExpression, exclude excludeItems: [UnicodeItem], fetchLimit: Int) -> [UnicodeItem] {
-        
-        let fetchRequest: NSFetchRequest<ManagedUnicodeItem> = ManagedUnicodeItem.fetchRequest()
-        fetchRequest.fetchLimit = fetchLimit
-        fetchRequest.predicate = .init(format: "language == %@ AND !(codePoints IN %@) AND \(language.isEmpty ? "name" : "annotation") MATCHES [c] %@", language, excludeItems.map {$0.codePoints}, ".*\(regularExpression.pattern).*")
-        fetchRequest.sortDescriptors = [.init(key: "order", ascending: true)]
-        
-        return (try! backgroundContext.fetch(fetchRequest)).map {.init(managed: $0)}
-    }
-    
     func addItem(codePoints: String, name: String? = nil, language: String = "", annotation: String? = nil, ttsAnnotation: String? = nil, order: Int? = nil) {
         
         languageScripts(fromLanguage: language).forEach { (language) in
@@ -70,6 +60,16 @@ class UnicodeData: NSPersistentContainer {
             .map {UnicodeItem(managed: $0)}
             .filter {$0.codePoints.unicodeScalars.map {$0.value} == codePoints.unicodeScalars.map {$0.value}}
             .max {$0.language!.count < $1.language!.count}
+    }
+    
+    func items(language: String, regularExpression: NSRegularExpression, exclude excludeItems: [UnicodeItem], fetchLimit: Int) -> [UnicodeItem] {
+        
+        let fetchRequest: NSFetchRequest<ManagedUnicodeItem> = ManagedUnicodeItem.fetchRequest()
+        fetchRequest.fetchLimit = fetchLimit
+        fetchRequest.predicate = .init(format: "language == %@ AND !(codePoints IN %@) AND \(language.isEmpty ? "name" : "annotation") MATCHES [c] %@", language, excludeItems.map {$0.codePoints}, ".*\(regularExpression.pattern).*")
+        fetchRequest.sortDescriptors = [.init(key: "order", ascending: true)]
+        
+        return (try! backgroundContext.fetch(fetchRequest)).map {.init(managed: $0)}
     }
     
     func addWord(_ string: String, language: String) {

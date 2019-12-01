@@ -105,7 +105,7 @@ class LoadUnicodeDataFiles: Operation {
     }
     
     private var currentVersion: String {
-        return Bundle.main.executableURL!.creationDate!.description
+        return Bundle.main.executableHash
     }
     
     private let loadedVersionKey = "rBNkEMNHcuYIU3bttg2lYblKGlClU7z"

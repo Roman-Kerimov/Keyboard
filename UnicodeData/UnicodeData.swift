@@ -174,7 +174,7 @@ class UnicodeData: NSPersistentContainer {
     }
     
     private var currentVersion: String {
-        return sqLiteURL!.creationDate!.description
+        return Bundle.main.executableHash
     }
     
     private let loadedVersionKey = "t79Hx5H46r8PC2ftV0XUNhIDxwJXq8Y"

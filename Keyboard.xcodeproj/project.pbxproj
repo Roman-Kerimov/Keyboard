@@ -168,6 +168,7 @@
 		965D15C91D32AE3B0098FA57 /* KeyUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965D15C81D32AE3B0098FA57 /* KeyUIView.swift */; };
 		966194D31DE2FCEF007FCF02 /* KeyboardLayoutUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966194D21DE2FCEF007FCF02 /* KeyboardLayoutUIView.swift */; };
 		9665F3781E9D921500850F97 /* CharacterCollectionUIViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665F3771E9D921500850F97 /* CharacterCollectionUIViewCell.swift */; };
+		9668800E2393663E00D2F4C1 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9620E747202B9EB1003FB02E /* Bundle.swift */; };
 		966B7694237A30F2004D299B /* unicode-license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9619B6CB232D038200AA83C3 /* unicode-license.txt */; };
 		966B7695237A30F9004D299B /* unicode-license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9619B6CB232D038200AA83C3 /* unicode-license.txt */; };
 		966B7696237A30FC004D299B /* unicode-license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9619B6CB232D038200AA83C3 /* unicode-license.txt */; };
@@ -682,6 +683,7 @@
 				96CBE43423353B2C00BB396F /* UnicodeData.xcdatamodeld */,
 				96436BA020C1DA2D0065ED03 /* UnicodeItem.swift */,
 				969450BF20B3215100DD7EF3 /* URL.swift */,
+				9620E747202B9EB1003FB02E /* Bundle.swift */,
 			);
 			path = UnicodeData;
 			sourceTree = "<group>";
@@ -913,7 +915,6 @@
 				96C49DC41EB7DF1F006F93ED /* Character.swift */,
 				96848D9E1EE05F080009869A /* String.swift */,
 				96443FBF208C9D12002FFA6B /* NSMutableAttributedString.swift */,
-				9620E747202B9EB1003FB02E /* Bundle.swift */,
 				966CB25320911C99005C7B5B /* CGAffineTransform.swift */,
 				961FC3301F3AE14B00ADB15D /* legalNotices.swift */,
 				962A3E2F22C9F8B40024D0AF /* CharacterSequence.swift */,
@@ -1318,6 +1319,7 @@
 				9613E02C2367D0F50087CA57 /* URL.swift in Sources */,
 				9613E0242367CF5C0087CA57 /* main.swift in Sources */,
 				9613E0312367D1890087CA57 /* UnicodeItem.swift in Sources */,
+				9668800E2393663E00D2F4C1 /* Bundle.swift in Sources */,
 				9643C98F2392B625003DF2B2 /* yoficationTable.swift in Sources */,
 				9613E02D2367D1110087CA57 /* UnicodeDataItem.swift in Sources */,
 				9613E02B2367D0D80087CA57 /* UnicodeData.xcdatamodeld in Sources */,

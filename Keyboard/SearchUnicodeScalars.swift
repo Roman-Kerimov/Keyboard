@@ -15,6 +15,12 @@ class SearchUnicodeScalars: Operation {
     init(characterSearch: CharacterSearch, text: String) {
         self.characterSearch = characterSearch
         self.text = text
+        
+        super.init()
+        
+        self.completionBlock = {
+            characterSearch.isSearching = false
+        }
     }
     
     private func waitUntilTyping() {
@@ -31,6 +37,8 @@ class SearchUnicodeScalars: Operation {
         guard !isCancelled else {
             return
         }
+        
+        characterSearch.isSearching = true
         
         let maxCount = 200
         

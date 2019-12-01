@@ -66,6 +66,20 @@ class CharacterSearch: NSObject {
         searchOperationQueue.addOperation( SearchUnicodeScalars.init(characterSearch: self, text: text) )
     }
     
+    var isSearching: Bool = false {
+        willSet {
+            if #available(iOS 13.0, *) {
+                DispatchQueue.main.async {
+                    self.objectWillChange.send()
+                }
+            }
+        }
+        
+        didSet {
+            NotificationCenter.default.post(self)
+        }
+    }
+    
     var foundUnicodeItems: [UnicodeItem] = [] {
         willSet {
             if #available(iOS 13.0, *) {

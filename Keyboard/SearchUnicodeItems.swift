@@ -133,25 +133,6 @@ class SearchUnicodeItems: Operation {
                     return
                 }
                 
-                for scriptCodeLength in 2...3 {
-                    let scriptCode: String = .init(text.suffix(scriptCodeLength).description.lowercased().flatMap {$0.removing(characterComponents: CharacterComponent.scripts)} )
-                    
-                    guard let scriptCharacterComponent = codeScriptDictionary[scriptCode] else {
-                        continue
-                    }
-                    
-                    let letter = text.dropLast(scriptCodeLength).last!.description
-                    
-                    let targetLetter = letter.appending(characterComponent: scriptCharacterComponent)
-                    
-                    guard targetLetter != letter else {
-                        break
-                    }
-                    
-                    foundUnicodeItems.append(UnicodeData.default.item(codePoints: targetLetter, language: Locale.current.language.rawValue)!)
-                    characterSearch.scriptCodeLength = scriptCodeLength
-                }
-                
                 guard !isCancelled else {
                     return
                 }

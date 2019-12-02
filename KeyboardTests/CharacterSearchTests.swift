@@ -70,8 +70,4 @@ class CharacterSearchTests: XCTestCase {
         XCTAssertEqual(search("gbsct")[1], gbCurrency)
         XCTAssertEqual(search("gbwls")[1], gbCurrency)
     }
-    
-    func testSearchWithScriptCode() {
-        XCTAssertEqual(search("fki").first, "ф")
-    }
 }

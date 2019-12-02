@@ -52,16 +52,7 @@ class SearchUnicodeItems: Operation {
             }
         }
         
-        func flag(fromRegionCode regionCode: String) -> String {
-            if regionCode.count == 2 {
-                return regionCode.uppercased().unicodeScalars.map {Unicode.Scalar($0.value + 0x1F1A5)?.description ?? "_"} .joined()
-            }
-            else {
-                return "\u{1F3F4}" + regionCode.unicodeScalars.map {Unicode.Scalar($0.value + 0xE0000)?.description ?? "_"} .joined() + "\u{E007F}"
-            }
-        }
-        
-        if let flagItem = UnicodeData.default.item(codePoints: flag(fromRegionCode: text), language: Locale.current.language.rawValue) {
+        if let flagItem = UnicodeData.default.flagItem(regionCode: text, language: Locale.current.language.rawValue) {
             foundUnicodeItems.append(flagItem)
             
             let regionCode = text.prefix(2).uppercased()

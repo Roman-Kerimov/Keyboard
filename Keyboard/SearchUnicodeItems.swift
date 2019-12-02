@@ -104,6 +104,7 @@ class SearchUnicodeItems: Operation {
                     return item
                 }
                 else if let item = UnicodeData.default.item(codePoints: $0, language: Locale.current.language.rawValue) {
+                    foundUnicodeItems.append(item)
                     characterSearch.lastUsedUnicodeItemsCache[$0] = item
                     return item
                 }

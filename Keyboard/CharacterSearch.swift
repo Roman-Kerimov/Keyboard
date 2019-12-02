@@ -31,6 +31,8 @@ class CharacterSearch: NSObject {
     override init() {
         super.init()
         
+        searchOperationQueue.maxConcurrentOperationCount = 1
+        
         NotificationCenter.default.addLocaleObserver(self)
     }
     

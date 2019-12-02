@@ -63,7 +63,7 @@ class CharacterSearch: NSObject {
     public func search(_ text: String) {
         self.text = text
         searchOperationQueue.cancelAllOperations()
-        searchOperationQueue.addOperation( SearchUnicodeScalars.init(characterSearch: self, text: text) )
+        searchOperationQueue.addOperation( SearchUnicodeItems.init(characterSearch: self, text: text) )
     }
     
     var isSearching: Bool = false {

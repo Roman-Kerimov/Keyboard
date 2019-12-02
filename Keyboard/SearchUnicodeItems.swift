@@ -1,5 +1,5 @@
 //
-//  SearchUnicodeScalars.swift
+//  SearchUnicodeItems.swift
 //  Keyboard
 //
 //  Created by Roman Kerimov on 2018-05-19.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SearchUnicodeScalars: Operation {
+class SearchUnicodeItems: Operation {
     
     let characterSearch: CharacterSearch
     let text: String

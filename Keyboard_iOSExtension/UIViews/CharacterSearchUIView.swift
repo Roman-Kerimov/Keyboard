@@ -37,6 +37,8 @@ class CharacterSearchUIView: UICollectionView, UICollectionViewDelegateFlowLayou
         }
     }
     
+    let activityIndicatorView = UIActivityIndicatorView()
+    
     init() {
         super.init(frame: .zero, collectionViewLayout: layout)
         
@@ -44,6 +46,7 @@ class CharacterSearchUIView: UICollectionView, UICollectionViewDelegateFlowLayou
         delegate = self
         
         register(CharacterCollectionUIViewCell.self, forCellWithReuseIdentifier: CharacterCollectionUIViewCell.reuseIdentifier)
+        register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: UICollectionReusableView.description())
         
         showsVerticalScrollIndicator = false
         showsHorizontalScrollIndicator = false
@@ -92,6 +95,25 @@ class CharacterSearchUIView: UICollectionView, UICollectionViewDelegateFlowLayou
         cell.unicodeName.isHidden = isHiddenUnicodeNames
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: UICollectionReusableView.description(), for: indexPath)
+        
+        if activityIndicatorView.superview == nil {
+            view.addSubview(activityIndicatorView)
+            activityIndicatorView.frame.size = layout.itemSize
+            activityIndicatorView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            activityIndicatorView.startAnimating()
+        }
+        
+        return view
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        
+        return Keyboard.default.characterSearch.isSearching ? layout.itemSize : .zero
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

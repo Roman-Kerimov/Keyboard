@@ -1,5 +1,5 @@
 //
-//  SearchUnicodeScalars.swift
+//  SearchUnicodeItems.swift
 //  Keyboard
 //
 //  Created by Roman Kerimov on 2018-05-19.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SearchUnicodeScalars: Operation {
+class SearchUnicodeItems: Operation {
     
     let characterSearch: CharacterSearch
     let text: String
@@ -15,6 +15,12 @@ class SearchUnicodeScalars: Operation {
     init(characterSearch: CharacterSearch, text: String) {
         self.characterSearch = characterSearch
         self.text = text
+        
+        super.init()
+        
+        self.completionBlock = {
+            characterSearch.isSearching = false
+        }
     }
     
     private func waitUntilTyping() {
@@ -32,6 +38,8 @@ class SearchUnicodeScalars: Operation {
             return
         }
         
+        characterSearch.isSearching = true
+        
         let maxCount = 200
         
         var foundUnicodeItems: [UnicodeItem] = [] {
@@ -44,16 +52,7 @@ class SearchUnicodeScalars: Operation {
             }
         }
         
-        func flag(fromRegionCode regionCode: String) -> String {
-            if regionCode.count == 2 {
-                return regionCode.uppercased().unicodeScalars.map {Unicode.Scalar($0.value + 0x1F1A5)?.description ?? "_"} .joined()
-            }
-            else {
-                return "\u{1F3F4}" + regionCode.unicodeScalars.map {Unicode.Scalar($0.value + 0xE0000)?.description ?? "_"} .joined() + "\u{E007F}"
-            }
-        }
-        
-        if let flagItem = UnicodeData.default.item(codePoints: flag(fromRegionCode: text), language: Locale.current.language.rawValue) {
+        if let flagItem = UnicodeData.default.flagItem(regionCode: text, language: Locale.current.language.rawValue) {
             foundUnicodeItems.append(flagItem)
             
             let regionCode = text.prefix(2).uppercased()
@@ -95,10 +94,14 @@ class SearchUnicodeScalars: Operation {
                 if let item = characterSearch.lastUsedUnicodeItemsCache[$0] {
                     return item
                 }
-                
-                let item = UnicodeData.default.item(codePoints: $0, language: Locale.current.language.rawValue)
-                characterSearch.lastUsedUnicodeItemsCache[$0] = item
-                return item
+                else if let item = UnicodeData.default.item(codePoints: $0, language: Locale.current.language.rawValue) {
+                    foundUnicodeItems.append(item)
+                    characterSearch.lastUsedUnicodeItemsCache[$0] = item
+                    return item
+                }
+                else {
+                    return nil
+                }
             }
             
             return
@@ -119,25 +122,6 @@ class SearchUnicodeScalars: Operation {
                 
                 guard !isCancelled else {
                     return
-                }
-                
-                for scriptCodeLength in 2...3 {
-                    let scriptCode: String = .init(text.suffix(scriptCodeLength).description.lowercased().flatMap {$0.removing(characterComponents: CharacterComponent.scripts)} )
-                    
-                    guard let scriptCharacterComponent = codeScriptDictionary[scriptCode] else {
-                        continue
-                    }
-                    
-                    let letter = text.dropLast(scriptCodeLength).last!.description
-                    
-                    let targetLetter = letter.appending(characterComponent: scriptCharacterComponent)
-                    
-                    guard targetLetter != letter else {
-                        break
-                    }
-                    
-                    foundUnicodeItems.append(UnicodeData.default.item(codePoints: targetLetter, language: Locale.current.language.rawValue)!)
-                    characterSearch.scriptCodeLength = scriptCodeLength
                 }
                 
                 guard !isCancelled else {

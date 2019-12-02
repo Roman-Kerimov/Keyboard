@@ -27,6 +27,10 @@ struct CharacterSearchView : View {
                                 .allowsHitTesting(false)
                         }
                     }
+                    
+                    if self.characterSearch.isSearching {
+                        ActivityView().frame(width: geometry.size.width, height: geometry.size.width)
+                    }
                 }
                 .padding(.horizontal, 100)
             }

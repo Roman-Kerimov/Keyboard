@@ -31,6 +31,8 @@ class CharacterSearch: NSObject {
     override init() {
         super.init()
         
+        searchOperationQueue.maxConcurrentOperationCount = 1
+        
         NotificationCenter.default.addLocaleObserver(self)
     }
     
@@ -63,7 +65,21 @@ class CharacterSearch: NSObject {
     public func search(_ text: String) {
         self.text = text
         searchOperationQueue.cancelAllOperations()
-        searchOperationQueue.addOperation( SearchUnicodeScalars.init(characterSearch: self, text: text) )
+        searchOperationQueue.addOperation( SearchUnicodeItems.init(characterSearch: self, text: text) )
+    }
+    
+    var isSearching: Bool = false {
+        willSet {
+            if #available(iOS 13.0, *) {
+                DispatchQueue.main.async {
+                    self.objectWillChange.send()
+                }
+            }
+        }
+        
+        didSet {
+            NotificationCenter.default.post(self)
+        }
     }
     
     var foundUnicodeItems: [UnicodeItem] = [] {

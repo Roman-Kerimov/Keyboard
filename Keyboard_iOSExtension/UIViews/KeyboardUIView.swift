@@ -124,7 +124,7 @@ internal class KeyboardUIView: UIView {
         
         let isHorizontalMode = layoutMode == .horizontal || screenSize.height < minimalScreenSize.height
         
-        let horizontalIndentInKeys: CGFloat = layoutMode == .horizontal && isPrefferedVerticalMode ? 1 : 0.5
+        let horizontalIndentInKeys: CGFloat = layoutMode == .vertical && isPrefferedVerticalMode ? 0.75 : layoutMode == .horizontal && isPrefferedVerticalMode ? 1 : 0.5
         
         let coefficientOfIncreaseForMainButtons: CGFloat = layoutMode == .horizontal && isPrefferedVerticalMode ? 1.2 : 1
         

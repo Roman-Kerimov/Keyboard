@@ -25,12 +25,6 @@ extension Character {
         return characterSet.contains(self.unicodeScalars.first!)
     }
     
-    var isSpaceReturnOrTab: Bool {
-        return self == .space
-            || self == .return
-            || self == .tab
-    }
-    
     var characterComponents: [CharacterComponent] {
         return description.characterComponents
     }

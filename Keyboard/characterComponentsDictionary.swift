@@ -2570,7 +2570,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "Ψ": [.p, .s, .capital, .greek],
 
     //03A9          ; GREEK CAPITAL LETTER OMEGA
-    "Ω": [.o, .o, .capital, .greek],
+    //"Ω": [.o, .o, .capital, .greek],
 
     //03AA          ; GREEK CAPITAL LETTER IOTA WITH DIALYTIKA
     //03AB          ; GREEK CAPITAL LETTER UPSILON WITH DIALYTIKA
@@ -5747,10 +5747,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "℥": [],
 
     //2126          ; OHM SIGN
-    //"Ω": [],
+    "Ω": [.o, .capital, .m],
 
     //2127          ; INVERTED OHM SIGN
-    "℧": [],
+    "℧": [.o, .capital, .m, .inverted],
 
     //2128          ; BLACK-LETTER CAPITAL Z
     "ℨ": [.z, .capital, .fraktur],

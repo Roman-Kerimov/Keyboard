@@ -56,6 +56,8 @@ class CharacterSearchTests: XCTestCase {
         XCTAssertEqual(search("gbeng").first, "🏴󠁧󠁢󠁥󠁮󠁧󠁿")
         XCTAssertEqual(search("gbsct").first, "🏴󠁧󠁢󠁳󠁣󠁴󠁿")
         XCTAssertEqual(search("gbwls").first, "🏴󠁧󠁢󠁷󠁬󠁳󠁿")
+        XCTAssertEqual(search("usca").first, "🏴󠁵󠁳󠁣󠁡󠁿")
+        XCTAssertEqual(search("rukda").first, "🏴󠁲󠁵󠁫󠁤󠁡󠁿")
     }
     
     func testCurrencySearchByRegionCode() {

@@ -15,6 +15,8 @@ class AnnotationsXMLParser: XMLParser {
         delegate = self
     }
     
+    static var unicodeDataItem: UnicodeDataItem? = nil
+    
     private static var baseLanguage: String = "" {
         didSet {
             if oldValue != baseLanguage {
@@ -24,7 +26,9 @@ class AnnotationsXMLParser: XMLParser {
     }
     
     private static var annotationTable: [String: String] = .init()
+    private static var flagTemplates: [String: (flag: UnicodeItem, placeholder: String)] = .init()
     
+    private var isIdentity = false
     private var language: String = ""
     
     private var codePoints: String? = nil {
@@ -96,6 +100,8 @@ class AnnotationsXMLParser: XMLParser {
         }
     }
     
+    private var subdivision: String = ""
+    
     private var isTTS: Bool = false
     private var annotation: String = ""
     private var ttsAnnotation: String = ""
@@ -115,11 +121,26 @@ extension AnnotationsXMLParser: XMLParserDelegate {
             codePoints = AnnotationsXMLParser.toFullyQualifiedDictionary[cp] ?? cp
             isTTS = attributeDict["type"] == "tts"
             
+        case "subdivision":
+            subdivision = attributeDict["type"]!
+            codePoints = UnicodeData.default.flagCodePoints(regionCode: subdivision)
+            
+        case "identity":
+            isIdentity = true
+            
         case "language":
+            guard isIdentity else {
+                return
+            }
+            
             language = attributeDict["type"] ?? ""
             AnnotationsXMLParser.baseLanguage = language.components(separatedBy: "_").first!
             
         case "script", "territory":
+            guard isIdentity else {
+                return
+            }
+            
             language = [language, attributeDict["type"]].compactMap({$0}).joined(separator: "_")
             
         default:
@@ -137,6 +158,37 @@ extension AnnotationsXMLParser: XMLParserDelegate {
         }
         else {
             annotation.append(string)
+        }
+    }
+    
+    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+        switch elementName {
+        case "subdivision":
+            
+            if AnnotationsXMLParser.unicodeDataItem == .main, let flagItem = UnicodeData.default.flagItem(regionCode: subdivision, language: language) {
+                AnnotationsXMLParser.flagTemplates[language] = (flagItem, placeholder: annotation)
+                abortParsing()
+                return
+            }
+            
+            guard let template = AnnotationsXMLParser.flagTemplates[language] ?? AnnotationsXMLParser.flagTemplates[language.components(separatedBy: "_").dropLast().joined(separator: "_")] else {
+                return
+            }
+            
+            let subdivisionName = annotation
+            
+            annotation = template.flag.annotation?.replacingOccurrences(of: template.placeholder, with: subdivisionName) ?? ""
+            
+            ttsAnnotation = template.flag.ttsAnnotation?.replacingOccurrences(of: template.placeholder, with: subdivisionName) ?? ""
+            
+        case "subdivisions":
+            abortParsing()
+            
+        case "identity":
+            isIdentity = false
+            
+        default:
+            break
         }
     }
     

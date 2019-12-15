@@ -12,6 +12,8 @@ enum UnicodeDataItem: String, CaseIterable {
     case derivedName = "UCD/extracted/DerivedName.txt"
     case annotations = "CLDR/common/annotations"
     case annotationsDerived = "CLDR/common/annotationsDerived"
+    case main = "CLDR/common/main"
+    case subdivisions = "CLDR/common/subdivisions"
     
     var path: String {
         return rawValue

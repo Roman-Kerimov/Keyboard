@@ -20,6 +20,9 @@ class UnicodeItemTests: XCTestCase {
 
     func testLocalizedName() {
         XCTAssertEqual(UnicodeData.default.item(codePoints: "🇷🇺", language: "ru_Latn")?.localizedName, "RU | flag: Rossiya")
+        XCTAssertEqual(UnicodeData.default.flagItem(regionCode: "rukda", language: "ru_Cyrl")?.localizedName, "RU‐KDA | флаг: Краснодарский край")
+        XCTAssertEqual(UnicodeData.default.flagItem(regionCode: "rukda", language: "ru_Latn")?.localizedName, "RU‐KDA | flag: Krasnodarskij kraj")
+        XCTAssertEqual(UnicodeData.default.flagItem(regionCode: "usca", language: "en")?.localizedName, "US‐CA | flag: California")
     }
     
     func testRegionCode() {

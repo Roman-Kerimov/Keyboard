@@ -89,7 +89,8 @@ class LoadUnicodeDataFiles: Operation {
                     UnicodeData.default.addItem(codePoints: unicodeScalar.description, name: components.last!)
                 }
                 
-            case .annotations, .annotationsDerived:
+            case .annotations, .annotationsDerived, .main, .subdivisions:
+                AnnotationsXMLParser.unicodeDataItem = dataItem
                 dataItem.parse(using: AnnotationsXMLParser.self)
             }
         }

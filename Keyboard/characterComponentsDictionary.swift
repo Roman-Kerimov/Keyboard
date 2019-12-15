@@ -363,7 +363,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "´": [],
 
     //00B5          ; MICRO SIGN
-    "µ": [],
+    "µ": [.m, .h],
 
     //00B6          ; PILCROW SIGN
     "¶": [],

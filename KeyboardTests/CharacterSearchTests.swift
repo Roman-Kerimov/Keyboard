@@ -40,6 +40,8 @@ class CharacterSearchTests: XCTestCase {
         XCTAssert(search("bulka").contains("🍞"))
         XCTAssert(search("toddler").contains("🧒🏽"))
         XCTAssert(search("Russland").contains("🇷🇺"))
+        XCTAssert(search("Krasnodarskij").contains("🏴󠁲󠁵󠁫󠁤󠁡󠁿"))
+        XCTAssert(search("California").contains("🏴󠁵󠁳󠁣󠁡󠁿"))
         XCTAssert(search("xhleb").contains("🍞"))
         XCTAssert(search("tajmer").contains("⏲️"))
     }

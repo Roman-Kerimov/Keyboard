@@ -181,7 +181,15 @@ extension AnnotationsXMLParser: XMLParserDelegate {
             
             ttsAnnotation = template.flag.ttsAnnotation?.replacingOccurrences(of: template.placeholder, with: subdivisionName) ?? ""
             
-        case "subdivisions":
+        case "annotations", "subdivisions":
+            codePoints = nil
+            
+            wordSet.subtract(UnicodeData.default.words(language: language))
+            
+            wordSet.forEach { (word) in
+                UnicodeData.default.addWord(word, language: language)
+            }
+            
             abortParsing()
             
         case "identity":
@@ -189,16 +197,6 @@ extension AnnotationsXMLParser: XMLParserDelegate {
             
         default:
             break
-        }
-    }
-    
-    func parserDidEndDocument(_ parser: XMLParser) {
-        codePoints = nil
-        
-        wordSet.subtract(UnicodeData.default.words(language: language))
-        
-        wordSet.forEach { (word) in
-            UnicodeData.default.addWord(word, language: language)
         }
     }
 }

@@ -35,7 +35,7 @@ class UnicodeDataTests: XCTestCase {
         let request: NSFetchRequest<ManagedWord> = ManagedWord.fetchRequest()
         request.predicate = .init(format: "string MATCHES %@", "\\B.*\\B")
         
-        XCTAssertEqual(try! UnicodeData.default.backgroundContext.count(for: request), 0)
+        XCTAssertEqual(try! UnicodeData.default.backgroundContext.count(for: request), 2)
     }
     
     func testWordsForDuplicates() {
@@ -45,7 +45,7 @@ class UnicodeDataTests: XCTestCase {
     }
     
     func testYofication() {
-        XCTAssertEqual(UnicodeData.default.words(language: "ru").filter {$0.contains("ё")}.count, 156)
+        XCTAssertEqual(UnicodeData.default.words(language: "ru").filter {$0.contains("ё")}.count, 193)
         XCTAssertEqual(UnicodeData.default.items(language: "ru_Latn", regularExpression: .contains(word: "vse"), exclude: [], fetchLimit: 0).map {$0.codePoints}, [])
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CryptoKit
 
 class LoadUnicodeDataFiles: Operation {
     let columnSeparator: Character = ";"
@@ -13,12 +14,10 @@ class LoadUnicodeDataFiles: Operation {
     
     static var ordersByCodePoints: [String: Int] = [:]
     
+    private lazy var sqLiteSourceURL = UnicodeData.default.persistentStoreDescriptions.first!.url!
+    private lazy var sqLiteTargetURL = URL(fileURLWithPath: CommandLine.arguments[1]).appendingPathComponent(UnicodeData.default.name).appendingPathExtension(sqLiteSourceURL.pathExtension)
+    
     override func main() {
-        
-        let sqLiteSourceURL = UnicodeData.default.persistentStoreDescriptions.first!.url!
-        
-        let sqLiteTargetURL = URL(fileURLWithPath: CommandLine.arguments[1])
-            .appendingPathComponent(UnicodeData.default.name).appendingPathExtension(sqLiteSourceURL.pathExtension)
         
         if loadedVersion != currentVersion || !FileManager.default.fileExists(atPath: sqLiteTargetURL.path) {
             UnicodeData.default.resetPersistentStore()
@@ -106,7 +105,27 @@ class LoadUnicodeDataFiles: Operation {
     }
     
     private var currentVersion: String {
-        return Bundle.main.executableHash
+        func hash(url: URL) -> String {
+            autoreleasepool {
+                if let urls = try? FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: []) {
+                    return urls.sorted {$0.path < $1.path} .map {hash(url: $0)} .joined()
+                }
+                else if let data = try? Data(contentsOf: url) {
+                    return SHA256.hash(data: data).description
+                }
+                else {
+                    return ""
+                }
+            }
+        }
+        
+        let dependencies = UnicodeDataItem.allCases.map {$0.rawValue} + [
+            Bundle.main.executableURL!.lastPathComponent,
+            UnicodeData.default.name,
+            sqLiteTargetURL.path,
+        ]
+        
+        return dependencies.map {hash(url: URL(fileURLWithPath: $0))} .joined()
     }
     
     private let loadedVersionKey = "rBNkEMNHcuYIU3bttg2lYblKGlClU7z"

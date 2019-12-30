@@ -40,8 +40,7 @@ class UnicodeDataTests: XCTestCase {
     func testWords() {
         let request: NSFetchRequest<ManagedWord> = ManagedWord.fetchRequest()
         request.predicate = .init(format: "string MATCHES %@", "\\B.*\\B")
-        
-        XCTAssertEqual(try! UnicodeData.default.backgroundContext.count(for: request), 2)
+        XCTAssertEqual(try! UnicodeData.default.backgroundContext.fetch(request).map{$0.string!}.sorted(), ["్", "್"])
     }
     
     func testWordsForDuplicates() {

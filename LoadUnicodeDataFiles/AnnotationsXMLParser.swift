@@ -68,7 +68,7 @@ class AnnotationsXMLParser: XMLParser {
                 annotation = "\(annotation) | \(ttsAnnotation)"
             }
             
-            var words = annotation.components(separatedBy: .whitespaces).map {$0.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)}.filter {!$0.isEmpty}
+            var words = annotation.words
             
             if language == "ru" {
                 words.enumerated().forEach { (offset, word) in

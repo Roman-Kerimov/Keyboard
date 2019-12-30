@@ -121,6 +121,7 @@
 		964EA726237EC5F700CA1D83 /* UnicodeDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964EA725237EC5F700CA1D83 /* UnicodeDataTests.swift */; };
 		964EA727237EC5F700CA1D83 /* UnicodeDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964EA725237EC5F700CA1D83 /* UnicodeDataTests.swift */; };
 		964ECA7E1E536FE8008E8757 /* SettingsContainerUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964ECA7D1E536FE8008E8757 /* SettingsContainerUIView.swift */; };
+		9651A7DB23BA974C002F22EA /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9651A7DA23BA974C002F22EA /* String.swift */; };
 		9651D95522F3602A00FD1EE9 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9651D95422F3602900FD1EE9 /* SwiftUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9651D95622F3603B00FD1EE9 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9651D95422F3602900FD1EE9 /* SwiftUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		96530D671DD1C9A9004E8BAA /* KeyboardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96530D661DD1C9A9004E8BAA /* KeyboardLayout.swift */; };
@@ -486,6 +487,7 @@
 		964AB96B1D1B6535004C827C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		964EA725237EC5F700CA1D83 /* UnicodeDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnicodeDataTests.swift; sourceTree = "<group>"; };
 		964ECA7D1E536FE8008E8757 /* SettingsContainerUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsContainerUIView.swift; sourceTree = "<group>"; };
+		9651A7DA23BA974C002F22EA /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		9651D95422F3602900FD1EE9 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		96530D661DD1C9A9004E8BAA /* KeyboardLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardLayout.swift; sourceTree = "<group>"; };
 		96534190224727CD0097B522 /* Array<Equatable>.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array<Equatable>.swift"; sourceTree = "<group>"; };
@@ -670,6 +672,7 @@
 				9697C3E220BB514900FE3007 /* UnicodeDataItem.swift */,
 				9639EE08233C152900474A06 /* AnnotationsXMLParser.swift */,
 				9643C98E2392B625003DF2B2 /* yoficationTable.swift */,
+				9651A7DA23BA974C002F22EA /* String.swift */,
 			);
 			path = LoadUnicodeDataFiles;
 			sourceTree = "<group>";
@@ -1315,6 +1318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9613E02C2367D0F50087CA57 /* URL.swift in Sources */,
+				9651A7DB23BA974C002F22EA /* String.swift in Sources */,
 				9613E0242367CF5C0087CA57 /* main.swift in Sources */,
 				9613E0312367D1890087CA57 /* UnicodeItem.swift in Sources */,
 				9668800E2393663E00D2F4C1 /* Bundle.swift in Sources */,

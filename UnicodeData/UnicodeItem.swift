@@ -23,10 +23,20 @@ struct UnicodeItem: Equatable {
     var ttsAnnotation: String? {managed.ttsAnnotation}
     private var order: Int {.init(managed.order)}
     
-    var localizedName: String {[regionCode, ttsAnnotation ?? annotation ?? managed.name].compactMap({$0}).joined(separator: " | ")}
+    static let nameSeparator = " | "
+    
+    var localizedName: String {[regionCode, ttsAnnotation ?? annotation ?? managed.name].compactMap({$0}).joined(separator: UnicodeItem.nameSeparator)}
     
     init(managed: ManagedUnicodeItem) {
         self.managed = managed
+    }
+    
+    func set(language: String) {
+        managed.language = language
+    }
+    
+    func set(annotation: String) {
+        managed.annotation = annotation
     }
     
     var regionCode: String? {

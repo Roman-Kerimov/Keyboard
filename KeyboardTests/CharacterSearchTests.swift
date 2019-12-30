@@ -46,6 +46,11 @@ class CharacterSearchTests: XCTestCase {
         XCTAssert(search("tajmer").contains("⏲️"))
     }
     
+    func testSearchByAliases() {
+        XCTAssert(search("gha").contains("ƣ"))
+        XCTAssert(search("zwj").contains("\u{200D}"))
+    }
+    
     func testComponentEmojiSearch() {
         XCTAssert(search("hair").contains("🦰"))
     }

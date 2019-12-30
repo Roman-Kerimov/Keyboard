@@ -88,6 +88,71 @@ class LoadUnicodeDataFiles: Operation {
                     UnicodeData.default.addItem(codePoints: unicodeScalar.description, name: components.last!)
                 }
                 
+            case .nameAliases:
+                
+                let language = "en"
+                
+                var wordSet: Set<String> = []
+                
+                var aliases: [String] = []
+                
+                var unicodeItem: UnicodeItem? = nil {
+                    willSet {
+                        if unicodeItem != newValue {
+                            unicodeItem?.set(language: language)
+                            
+                            aliases.sort {
+                                if $0.first == $1.first {
+                                    return $0.count < $1.count
+                                }
+                                else {
+                                    return $0.first! < $1.first!
+                                }
+                            }
+                            
+                            let annotation = aliases.joined(separator: UnicodeItem.nameSeparator)
+                            unicodeItem?.set(annotation: annotation)
+                            wordSet.formUnion(annotation.words)
+                            
+                            aliases = [newValue!.name!]
+                        }
+                    }
+                }
+                
+                dataItem.parse { (string) in
+                    let fields = string.components(separatedBy: columnSeparator.description)
+                    
+                    let codePoint = fields[0].hexToUnicodeScalar!.description
+                    let alias = fields[1]
+                    let type = fields[2]
+                    
+                    guard let item = UnicodeData.default.item(codePoints: codePoint, language: "") else {
+                        return
+                    }
+                    
+                    unicodeItem = item
+                    
+                    switch type {
+                    case "correction":
+                        aliases = [alias]
+                        
+                    case "alternate", "abbreviation":
+                        aliases.append(alias)
+                        
+                    case "control", "figment":
+                        break
+                        
+                    default:
+                        break
+                    }
+                }
+                
+                wordSet.subtract(UnicodeData.default.words(language: language))
+                
+                wordSet.forEach { (word) in
+                    UnicodeData.default.addWord(word, language: language)
+                }
+                
             case .annotations, .annotationsDerived, .main, .subdivisions:
                 AnnotationsXMLParser.unicodeDataItem = dataItem
                 dataItem.parse(using: AnnotationsXMLParser.self)

@@ -5,7 +5,7 @@
 //  Created by Roman Kerimov on 2017-09-25.
 //
 
-// This file uses data from UCD/Blocks.txt and UCD/extracted/DerivedName.txt
+// This file uses data from UCD/Blocks.txt, UCD/extracted/DerivedName.txt, and UCD/NameAliases.txt
 
 let characterComponentsDictionary: [String: [CharacterComponent]] = [
     
@@ -1081,10 +1081,12 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ơ": [.combined],
 
     //01A2          ; LATIN CAPITAL LETTER OI
-    "Ƣ": [.o, .i, .capital],
+    //01A2;LATIN CAPITAL LETTER GHA;correction
+    "Ƣ": [.g, .extraH, .capital, .extra0],
 
     //01A3          ; LATIN SMALL LETTER OI
-    "ƣ": [.o, .i],
+    //01A3;LATIN SMALL LETTER GHA;correction
+    "ƣ": [.g, .extraH, .extra0],
 
     //01A4          ; LATIN CAPITAL LETTER P WITH HOOK
     "Ƥ": [.p, .hook, .capital],
@@ -5705,7 +5707,8 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "℗": [],
 
     //2118          ; SCRIPT CAPITAL P
-    "℘": [.p, .capital, .letterScript],
+    //2118;WEIERSTRASS ELLIPTIC FUNCTION;correction
+    "℘": [],
 
     //2119          ; DOUBLE-STRUCK CAPITAL P
     "ℙ": [.p, .capital, .doubleStruck],

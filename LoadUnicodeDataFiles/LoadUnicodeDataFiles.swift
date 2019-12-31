@@ -124,7 +124,7 @@ class LoadUnicodeDataFiles: Operation {
                     
                     let codePoint = fields[0].hexToUnicodeScalar!.description
                     let alias = fields[1]
-                    let type = fields[2]
+                    let type = NameAliasType(rawValue: fields[2])!
                     
                     guard let item = UnicodeData.default.item(codePoints: codePoint, language: "") else {
                         return
@@ -133,16 +133,13 @@ class LoadUnicodeDataFiles: Operation {
                     unicodeItem = item
                     
                     switch type {
-                    case "correction":
+                    case .correction:
                         aliases = [alias]
                         
-                    case "alternate", "abbreviation":
+                    case .alternate, .abbreviation:
                         aliases.append(alias)
                         
-                    case "control", "figment":
-                        break
-                        
-                    default:
+                    case .control, .figment:
                         break
                     }
                 }

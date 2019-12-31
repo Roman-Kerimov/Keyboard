@@ -62,12 +62,20 @@ class UnicodeData: NSPersistentContainer {
             .max {$0.language!.count < $1.language!.count}
     }
     
-    func flagItem(regionCode: String, language: String) -> UnicodeItem? {
-        let flag: String = regionCode.count == 2
+    func item(name: String) -> UnicodeItem? {
+        let fetchRequest: NSFetchRequest<ManagedUnicodeItem> = ManagedUnicodeItem.fetchRequest()
+        fetchRequest.predicate = .init(format: "name == %@", name)
+        return try! backgroundContext.fetch(fetchRequest).map {UnicodeItem(managed: $0)}.first
+    }
+    
+    func flagCodePoints(regionCode: String) -> String {
+        return regionCode.count == 2
             ? regionCode.uppercased().unicodeScalars.map {Unicode.Scalar($0.value + 0x1F1A5)?.description ?? "_"} .joined()
             : "\u{1F3F4}" + regionCode.unicodeScalars.map {Unicode.Scalar($0.value + 0xE0000)?.description ?? "_"} .joined() + "\u{E007F}"
-        
-        return item(codePoints: flag, language: language)
+    }
+    
+    func flagItem(regionCode: String, language: String) -> UnicodeItem? {
+        return item(codePoints: flagCodePoints(regionCode: regionCode), language: language)
     }
     
     func items(language: String, regularExpression: NSRegularExpression, exclude excludeItems: [UnicodeItem], fetchLimit: Int) -> [UnicodeItem] {

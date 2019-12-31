@@ -5,7 +5,7 @@
 //  Created by Roman Kerimov on 2017-09-25.
 //
 
-// This file uses data from UCD/Blocks.txt and UCD/extracted/DerivedName.txt
+// This file uses data from UCD/Blocks.txt, UCD/extracted/DerivedName.txt, and UCD/NameAliases.txt
 
 let characterComponentsDictionary: [String: [CharacterComponent]] = [
     
@@ -363,7 +363,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "´": [],
 
     //00B5          ; MICRO SIGN
-    "µ": [],
+    "µ": [.m, .extraH],
 
     //00B6          ; PILCROW SIGN
     "¶": [],
@@ -1081,10 +1081,12 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ơ": [.combined],
 
     //01A2          ; LATIN CAPITAL LETTER OI
-    "Ƣ": [.o, .i, .capital],
+    //01A2;LATIN CAPITAL LETTER GHA;correction
+    "Ƣ": [.g, .extraH, .capital, .extra0],
 
     //01A3          ; LATIN SMALL LETTER OI
-    "ƣ": [.o, .i],
+    //01A3;LATIN SMALL LETTER GHA;correction
+    "ƣ": [.g, .extraH, .extra0],
 
     //01A4          ; LATIN CAPITAL LETTER P WITH HOOK
     "Ƥ": [.p, .hook, .capital],
@@ -2570,7 +2572,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "Ψ": [.p, .s, .capital, .greek],
 
     //03A9          ; GREEK CAPITAL LETTER OMEGA
-    "Ω": [.o, .o, .capital, .greek],
+    //"Ω": [.o, .o, .capital, .greek],
 
     //03AA          ; GREEK CAPITAL LETTER IOTA WITH DIALYTIKA
     //03AB          ; GREEK CAPITAL LETTER UPSILON WITH DIALYTIKA
@@ -5705,7 +5707,8 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "℗": [],
 
     //2118          ; SCRIPT CAPITAL P
-    "℘": [.p, .capital, .letterScript],
+    //2118;WEIERSTRASS ELLIPTIC FUNCTION;correction
+    "℘": [],
 
     //2119          ; DOUBLE-STRUCK CAPITAL P
     "ℙ": [.p, .capital, .doubleStruck],
@@ -5747,10 +5750,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "℥": [],
 
     //2126          ; OHM SIGN
-    //"Ω": [],
+    "Ω": [.o, .capital, .m],
 
     //2127          ; INVERTED OHM SIGN
-    "℧": [],
+    "℧": [.o, .capital, .m, .inverted],
 
     //2128          ; BLACK-LETTER CAPITAL Z
     "ℨ": [.z, .capital, .fraktur],

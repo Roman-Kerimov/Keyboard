@@ -10,8 +10,11 @@ import Foundation
 enum UnicodeDataItem: String, CaseIterable {
     case emojiTest = "Emoji/emoji-test.txt"
     case derivedName = "UCD/extracted/DerivedName.txt"
+    case nameAliases = "UCD/NameAliases.txt"
     case annotations = "CLDR/common/annotations"
     case annotationsDerived = "CLDR/common/annotationsDerived"
+    case main = "CLDR/common/main"
+    case subdivisions = "CLDR/common/subdivisions"
     
     var path: String {
         return rawValue

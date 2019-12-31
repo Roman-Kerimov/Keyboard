@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CryptoKit
 
 class LoadUnicodeDataFiles: Operation {
     let columnSeparator: Character = ";"
@@ -13,12 +14,10 @@ class LoadUnicodeDataFiles: Operation {
     
     static var ordersByCodePoints: [String: Int] = [:]
     
+    private lazy var sqLiteSourceURL = UnicodeData.default.persistentStoreDescriptions.first!.url!
+    private lazy var sqLiteTargetURL = URL(fileURLWithPath: CommandLine.arguments[1]).appendingPathComponent(UnicodeData.default.name).appendingPathExtension(sqLiteSourceURL.pathExtension)
+    
     override func main() {
-        
-        let sqLiteSourceURL = UnicodeData.default.persistentStoreDescriptions.first!.url!
-        
-        let sqLiteTargetURL = URL(fileURLWithPath: CommandLine.arguments[1])
-            .appendingPathComponent(UnicodeData.default.name).appendingPathExtension(sqLiteSourceURL.pathExtension)
         
         if loadedVersion != currentVersion || !FileManager.default.fileExists(atPath: sqLiteTargetURL.path) {
             UnicodeData.default.resetPersistentStore()
@@ -89,7 +88,73 @@ class LoadUnicodeDataFiles: Operation {
                     UnicodeData.default.addItem(codePoints: unicodeScalar.description, name: components.last!)
                 }
                 
-            case .annotations, .annotationsDerived:
+            case .nameAliases:
+                
+                let language = "en"
+                
+                var wordSet: Set<String> = []
+                
+                var aliases: [String] = []
+                
+                var unicodeItem: UnicodeItem? = nil {
+                    willSet {
+                        if unicodeItem != newValue {
+                            unicodeItem?.set(language: language)
+                            
+                            aliases.sort {
+                                if $0.first == $1.first {
+                                    return $0.count < $1.count
+                                }
+                                else {
+                                    return $0.first! < $1.first!
+                                }
+                            }
+                            
+                            let annotation = aliases.joined(separator: UnicodeItem.nameSeparator)
+                            unicodeItem?.set(annotation: annotation)
+                            wordSet.formUnion(annotation.words)
+                            
+                            aliases = [newValue!.name!]
+                        }
+                    }
+                }
+                
+                dataItem.parse { (string) in
+                    let fields = string.components(separatedBy: columnSeparator.description)
+                    
+                    let codePoint = fields[0].hexToUnicodeScalar!.description
+                    let alias = fields[1]
+                    let type = fields[2]
+                    
+                    guard let item = UnicodeData.default.item(codePoints: codePoint, language: "") else {
+                        return
+                    }
+                    
+                    unicodeItem = item
+                    
+                    switch type {
+                    case "correction":
+                        aliases = [alias]
+                        
+                    case "alternate", "abbreviation":
+                        aliases.append(alias)
+                        
+                    case "control", "figment":
+                        break
+                        
+                    default:
+                        break
+                    }
+                }
+                
+                wordSet.subtract(UnicodeData.default.words(language: language))
+                
+                wordSet.forEach { (word) in
+                    UnicodeData.default.addWord(word, language: language)
+                }
+                
+            case .annotations, .annotationsDerived, .main, .subdivisions:
+                AnnotationsXMLParser.unicodeDataItem = dataItem
                 dataItem.parse(using: AnnotationsXMLParser.self)
             }
         }
@@ -105,7 +170,27 @@ class LoadUnicodeDataFiles: Operation {
     }
     
     private var currentVersion: String {
-        return Bundle.main.executableHash
+        func hash(url: URL) -> String {
+            autoreleasepool {
+                if let urls = try? FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: []) {
+                    return urls.sorted {$0.path < $1.path} .map {hash(url: $0)} .joined()
+                }
+                else if let data = try? Data(contentsOf: url) {
+                    return SHA256.hash(data: data).description
+                }
+                else {
+                    return ""
+                }
+            }
+        }
+        
+        let dependencies = UnicodeDataItem.allCases.map {$0.rawValue} + [
+            Bundle.main.executableURL!.lastPathComponent,
+            UnicodeData.default.name,
+            sqLiteTargetURL.path,
+        ]
+        
+        return dependencies.map {hash(url: URL(fileURLWithPath: $0))} .joined()
     }
     
     private let loadedVersionKey = "rBNkEMNHcuYIU3bttg2lYblKGlClU7z"

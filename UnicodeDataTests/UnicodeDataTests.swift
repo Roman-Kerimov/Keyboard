@@ -27,6 +27,12 @@ class UnicodeDataTests: XCTestCase {
         XCTAssertEqual(UnicodeData.default.item(codePoints: "🐊", language: "ru_Cyrl")?.ttsAnnotation, "крокодил")
     }
     
+    func testNameAliases() {
+        XCTAssertEqual(UnicodeData.default.item(name: "LATIN CAPITAL LETTER OI")?.localizedName, "LATIN CAPITAL LETTER GHA")
+        XCTAssertEqual(UnicodeData.default.item(name: "ZERO WIDTH NO-BREAK SPACE")?.localizedName, "BOM | BYTE ORDER MARK | ZWNBSP | ZERO WIDTH NO-BREAK SPACE")
+        XCTAssertEqual(UnicodeData.default.item(name: "VARIATION SELECTOR-17")?.localizedName, "VS17 | VARIATION SELECTOR-17")
+    }
+    
     func testItemOrder() {
         XCTAssertEqual(UnicodeData.default.item(codePoints: "🐊", language: "en"), UnicodeData.default.item(codePoints: "🐊", language: "ru_Cyrl"))
     }
@@ -34,8 +40,7 @@ class UnicodeDataTests: XCTestCase {
     func testWords() {
         let request: NSFetchRequest<ManagedWord> = ManagedWord.fetchRequest()
         request.predicate = .init(format: "string MATCHES %@", "\\B.*\\B")
-        
-        XCTAssertEqual(try! UnicodeData.default.backgroundContext.count(for: request), 0)
+        XCTAssertEqual(try! UnicodeData.default.backgroundContext.fetch(request).map{$0.string!}.sorted(), ["్", "್"])
     }
     
     func testWordsForDuplicates() {
@@ -45,7 +50,7 @@ class UnicodeDataTests: XCTestCase {
     }
     
     func testYofication() {
-        XCTAssertEqual(UnicodeData.default.words(language: "ru").filter {$0.contains("ё")}.count, 156)
+        XCTAssertEqual(UnicodeData.default.words(language: "ru").filter {$0.contains("ё")}.count, 193)
         XCTAssertEqual(UnicodeData.default.items(language: "ru_Latn", regularExpression: .contains(word: "vse"), exclude: [], fetchLimit: 0).map {$0.codePoints}, [])
     }
 }

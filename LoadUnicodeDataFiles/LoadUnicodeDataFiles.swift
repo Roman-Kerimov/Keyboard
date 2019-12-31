@@ -51,8 +51,8 @@ class LoadUnicodeDataFiles: Operation {
                     
                     let codePoints: String = unicodeScalars.map {$0.description} .reduce(.init(), +)
                     
-                    switch components[1] {
-                    case "component", "fully-qualified":
+                    switch EmojiStatus(rawValue: components[1])! {
+                    case .component, .fullyQualified:
                         let name: String = components[2].components(separatedBy: String.space).dropFirst(2).joined(separator: .space).description.trimmingCharacters(in: .whitespaces)
                         
                         UnicodeData.default.addItem(codePoints: codePoints, name: name)
@@ -60,11 +60,8 @@ class LoadUnicodeDataFiles: Operation {
                         
                         fullyQualifiedEmoji = codePoints
                         
-                    case "minimally-qualified", "unqualified":
+                    case .minimallyQualified, .unqualified:
                         AnnotationsXMLParser.toFullyQualifiedDictionary[codePoints] = fullyQualifiedEmoji
-                        
-                    default:
-                        fatalError()
                     }
                 }
                 

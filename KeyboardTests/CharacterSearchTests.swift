@@ -85,4 +85,9 @@ class CharacterSearchTests: XCTestCase {
         XCTAssert(search("hǎo").contains("好"))
         XCTAssert(search("你hǎo").contains("好"))
     }
+    
+    func testUnihanSortByTotalStrokes() {
+        let searchResult = search("nǐ")
+        XCTAssert(searchResult.firstIndex(of: "你")! < searchResult.firstIndex(of: "䕥")!)
+    }
 }

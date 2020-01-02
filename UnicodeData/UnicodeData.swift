@@ -14,7 +14,7 @@ class UnicodeData: NSPersistentContainer {
     
     lazy var backgroundContext = newBackgroundContext()
     
-    func addItem(codePoints: String, name: String? = nil, language: String = "", annotation: String? = nil, ttsAnnotation: String? = nil, order: Int? = nil) {
+    func addItem(codePoints: String, name: String? = nil, language: String = "", annotation: String? = nil, ttsAnnotation: String? = nil, order: Int? = nil, totalStrokes: Int? = nil) {
         
         languageScripts(fromLanguage: language).forEach { (language) in
             let item = ManagedUnicodeItem(context: backgroundContext)
@@ -35,6 +35,10 @@ class UnicodeData: NSPersistentContainer {
             }
             else {
                 item.order = .init(itemCount)
+            }
+            
+            if let totalStrokes = totalStrokes {
+                item.totalStrokes = .init(totalStrokes)
             }
             
             itemCount += 1
@@ -86,7 +90,10 @@ class UnicodeData: NSPersistentContainer {
         let fetchRequest: NSFetchRequest<ManagedUnicodeItem> = ManagedUnicodeItem.fetchRequest()
         fetchRequest.fetchLimit = fetchLimit
         fetchRequest.predicate = .init(format: "language == %@ AND !(codePoints IN %@) AND \(language.isEmpty ? "name" : "annotation") MATCHES [c] %@", language, excludeItems.map {$0.codePoints}, ".*\(regularExpression.pattern).*")
-        fetchRequest.sortDescriptors = [.init(key: "order", ascending: true)]
+        fetchRequest.sortDescriptors = [
+            .init(key: "totalStrokes", ascending: true),
+            .init(key: "order", ascending: true),
+        ]
         
         return (try! backgroundContext.fetch(fetchRequest)).map {.init(managed: $0)}
     }

@@ -29,6 +29,7 @@ class LoadUnicodeDataFiles: Operation {
         
         var emojiCharacterSet: CharacterSet = .init()
         var fullyQualifiedEmoji: String = ""
+        var totalStrokes: [String: Int] = [:]
         
         for dataItem in UnicodeDataItem.allCases {
             
@@ -147,7 +148,7 @@ class LoadUnicodeDataFiles: Operation {
                     UnicodeData.default.addWord(word, language: language)
                 }
                 
-            case .unihanReadings:
+            case .unihanDictionaryLikeData, .unihanReadings:
                 
                 var wordSets: [String: Set<String>] = [:]
 
@@ -167,13 +168,18 @@ class LoadUnicodeDataFiles: Operation {
                     let value = components[2]
 
                     switch fieldType {
+                    
+                    // DictionaryLikeData
+                        
+                    case .totalStrokes:
+                        totalStrokes[codePoint] = Int(value.words.first!)!
 
                     // Readings
 
                     case .mandarin:
                         language = "zh"
                         wordSets[language]!.formUnion(value.words)
-                        UnicodeData.default.addItem(codePoints: codePoint, language: language, annotation: value)
+                        UnicodeData.default.addItem(codePoints: codePoint, language: language, annotation: value, totalStrokes: totalStrokes[codePoint]!)
 
                     default:
                         return

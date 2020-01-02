@@ -90,4 +90,9 @@ class CharacterSearchTests: XCTestCase {
         let searchResult = search("nǐ")
         XCTAssert(searchResult.firstIndex(of: "你")! < searchResult.firstIndex(of: "䕥")!)
     }
+    
+    func testUnihanSortByFrequency() {
+        let searchResult = search("nǐ")
+        XCTAssert(searchResult.firstIndex(of: "你")! < searchResult.firstIndex(of: "伱")!)
+    }
 }

@@ -83,5 +83,6 @@ class CharacterSearchTests: XCTestCase {
     func testIdeographSearch() {
         XCTAssert(search("nǐ").contains("你"))
         XCTAssert(search("hǎo").contains("好"))
+        XCTAssert(search("你hǎo").contains("好"))
     }
 }

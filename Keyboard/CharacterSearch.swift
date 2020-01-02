@@ -66,6 +66,7 @@ class CharacterSearch: NSObject {
         
         var textForSearch: String = .init(
             textBeforeInput
+                .split(whereSeparator: {$0.unicodeScalars.first!.properties.isIdeographic}).last?
                 .components(separatedBy: .whitespacesAndNewlines).last?
                 .split {$0.belongsTo(.symbols)} .last ?? .init()
         )

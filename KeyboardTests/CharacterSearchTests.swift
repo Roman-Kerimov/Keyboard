@@ -21,7 +21,7 @@ class CharacterSearchTests: XCTestCase {
     func search(_ text: String) -> [String] {
         let characterSearch = CharacterSearch()
         
-        characterSearch.search(text)
+        characterSearch.search(textBeforeInput: text)
         characterSearch.searchOperationQueue.waitUntilAllOperationsAreFinished()
         
         return characterSearch.foundUnicodeItems.map {$0.codePoints}

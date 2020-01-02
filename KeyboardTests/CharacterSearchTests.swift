@@ -79,4 +79,9 @@ class CharacterSearchTests: XCTestCase {
         XCTAssertEqual(search("gbsct")[1], gbCurrency)
         XCTAssertEqual(search("gbwls")[1], gbCurrency)
     }
+    
+    func testIdeographSearch() {
+        XCTAssert(search("nǐ").contains("你"))
+        XCTAssert(search("hǎo").contains("好"))
+    }
 }

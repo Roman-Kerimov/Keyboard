@@ -147,6 +147,45 @@ class LoadUnicodeDataFiles: Operation {
                     UnicodeData.default.addWord(word, language: language)
                 }
                 
+            case .unihanReadings:
+                
+                var wordSets: [String: Set<String>] = [:]
+
+                var language: String = "" {
+                    didSet {
+                        if wordSets[language] == nil {
+                            wordSets[language] = []
+                        }
+                    }
+                }
+
+                dataItem.parse { (string) in
+                    let components = string.components(separatedBy: "\t")
+
+                    let codePoint = components[0].components(separatedBy: "+").last!.hexToUnicodeScalar!.description
+                    let fieldType = UnihanFieldType(rawValue: components[1])!
+                    let value = components[2]
+
+                    switch fieldType {
+
+                    // Readings
+
+                    case .mandarin:
+                        language = "zh"
+                        wordSets[language]!.formUnion(value.words)
+                        UnicodeData.default.addItem(codePoints: codePoint, language: language, annotation: value)
+
+                    default:
+                        return
+                    }
+                }
+
+                wordSets.forEach { (language, wordSet) in
+                    wordSet.subtracting(UnicodeData.default.words(language: language)).forEach { (word) in
+                        UnicodeData.default.addWord(word, language: language)
+                    }
+                }
+                
             case .annotations, .annotationsDerived, .main, .subdivisions:
                 AnnotationsXMLParser.unicodeDataItem = dataItem
                 dataItem.parse(using: AnnotationsXMLParser.self)

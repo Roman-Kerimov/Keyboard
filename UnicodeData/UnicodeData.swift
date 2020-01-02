@@ -22,8 +22,11 @@ class UnicodeData: NSPersistentContainer {
             item.name = name
             item.language = language
             
-            if let annotation = annotation, let ttsAnnotation = ttsAnnotation {
+            if let annotation = annotation {
                 item.annotation = text(inLanguage: language, from: annotation)
+            }
+            
+            if let ttsAnnotation = ttsAnnotation {
                 item.ttsAnnotation = text(inLanguage: language, from: ttsAnnotation)
             }
             

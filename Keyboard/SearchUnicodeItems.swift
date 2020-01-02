@@ -74,12 +74,13 @@ class SearchUnicodeItems: Operation {
             
             let currentLanguage = Locale.current.language.rawValue
             
-            let prefferedLanguages = Language.preferredList.compactMap {$0.rawValue != currentLanguage ? $0.rawValue : nil}
-            
-            for language in [currentLanguage] + prefferedLanguages {
-                if languageSet.contains(language) {
-                    languages.append(language)
-                    languageSet.remove(language)
+            for language in [currentLanguage] + Foundation.Locale.preferredLanguages {
+                
+                for identifier in Foundation.Locale(identifier: language).compatibleIdentifiers {
+                    if languageSet.contains(identifier) {
+                        languages.append(identifier)
+                        languageSet.remove(identifier)
+                    }
                 }
             }
             

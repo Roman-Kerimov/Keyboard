@@ -37,10 +37,10 @@ class AnnotationsXMLParser: XMLParser {
                 return
             }
             
-            let languageComponents = language.components(separatedBy: "_")
+            let languageComponents = language.components(separatedBy: Foundation.Locale.componentSeparator)
             
             func annotationKey(languageComponents: [String], isTTS: Bool) -> String {
-                return "\(codePoints)\(languageComponents.joined(separator: "_"))\(isTTS)"
+                return "\(codePoints)\(languageComponents.joined(separator: Foundation.Locale.componentSeparator))\(isTTS)"
             }
             
             func normalize(text: inout String, isTTS: Bool) {
@@ -134,14 +134,14 @@ extension AnnotationsXMLParser: XMLParserDelegate {
             }
             
             language = attributeDict["type"] ?? ""
-            AnnotationsXMLParser.baseLanguage = language.components(separatedBy: "_").first!
+            AnnotationsXMLParser.baseLanguage = language.components(separatedBy: Foundation.Locale.componentSeparator).first!
             
         case "script", "territory":
             guard isIdentity else {
                 return
             }
             
-            language = [language, attributeDict["type"]].compactMap({$0}).joined(separator: "_")
+            language = [language, attributeDict["type"]].compactMap({$0}).joined(separator: Foundation.Locale.componentSeparator)
             
         default:
             break
@@ -171,7 +171,7 @@ extension AnnotationsXMLParser: XMLParserDelegate {
                 return
             }
             
-            guard let template = AnnotationsXMLParser.flagTemplates[language] ?? AnnotationsXMLParser.flagTemplates[language.components(separatedBy: "_").dropLast().joined(separator: "_")] else {
+            guard let template = AnnotationsXMLParser.flagTemplates[language] ?? AnnotationsXMLParser.flagTemplates[language.components(separatedBy: Foundation.Locale.componentSeparator).dropLast().joined(separator: Foundation.Locale.componentSeparator)] else {
                 return
             }
             

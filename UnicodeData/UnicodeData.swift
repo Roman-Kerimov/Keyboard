@@ -49,24 +49,18 @@ class UnicodeData: NSPersistentContainer {
         }
     }
     
+    private func languageQuery(language: String) -> String {
+        let locale = Foundation.Locale(identifier: language)
+        
+        let languageQuery: String = (locale.compatibleIdentifiers + [""]).map({"(language == '\($0)')"}).joined(separator: " OR ")
+        
+        return "(\(languageQuery))"
+    }
+    
     func item(codePoints: String, language: String) -> UnicodeItem? {
         let fetchRequest: NSFetchRequest<ManagedUnicodeItem> = ManagedUnicodeItem.fetchRequest()
         
-        let locale = Foundation.Locale(identifier: language)
-        
-        let languageQuery: String = Set(
-            [[locale.languageCode, locale.scriptCode, locale.regionCode],
-            [locale.languageCode, locale.scriptCode],
-            [locale.languageCode, locale.regionCode],
-            [locale.languageCode],
-            [""]]
-               .map({$0.compactMap({$0})})
-               .map({$0.joined(separator: "_")})
-        )
-            .map({"(language == '\($0)')"})
-            .joined(separator: " OR ")
-        
-        fetchRequest.predicate = .init(format: "codePoints == %@ AND (\(languageQuery))", codePoints)
+        fetchRequest.predicate = .init(format: "codePoints == %@ AND \(languageQuery(language: language))", codePoints)
         return try! backgroundContext.fetch(fetchRequest)
             .map {UnicodeItem(managed: $0)}
             .filter {$0.codePoints.unicodeScalars.map {$0.value} == codePoints.unicodeScalars.map {$0.value}}
@@ -93,7 +87,7 @@ class UnicodeData: NSPersistentContainer {
         
         let fetchRequest: NSFetchRequest<ManagedUnicodeItem> = ManagedUnicodeItem.fetchRequest()
         fetchRequest.fetchLimit = fetchLimit
-        fetchRequest.predicate = .init(format: "language == %@ AND !(codePoints IN %@) AND \(language.isEmpty ? "name" : "annotation") MATCHES [c] %@", language, excludeItems.map {$0.codePoints}, ".*\(regularExpression.pattern).*")
+        fetchRequest.predicate = .init(format: "\(languageQuery(language: language)) AND !(codePoints IN %@) AND \(language.isEmpty ? "name" : "annotation") MATCHES [c] %@", excludeItems.map {$0.codePoints}, ".*\(regularExpression.pattern).*")
         fetchRequest.sortDescriptors = [
             .init(key: "frequency", ascending: true),
             .init(key: "totalStrokes", ascending: true),
@@ -127,17 +121,17 @@ class UnicodeData: NSPersistentContainer {
     }
     
     private func languageScripts(fromLanguage language: String?) -> [String?] {
-        switch language {
-        case "ru":
-            return [language, "ru_Latn"]
-        default:
-            return [language]
+        if let language = language {
+            return Foundation.Locale.extendedIdentifiers(fromIdentifiers: [language])
+        }
+        else {
+            return [nil]
         }
     }
     
     private func text(inLanguage language: String?, from text: String) -> String {
         switch language {
-        case "ru_Latn":
+        case "ru-Latn":
             return text.applyingTransform(from: .Cyrl, to: .Latn, withTable: .ru)
         default:
             return text

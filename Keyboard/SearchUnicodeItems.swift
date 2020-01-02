@@ -24,7 +24,7 @@ class SearchUnicodeItems: Operation {
     }
     
     private func waitUntilTyping() {
-        usleep(600_000)
+        usleep(0)
     }
     
     override func main() {

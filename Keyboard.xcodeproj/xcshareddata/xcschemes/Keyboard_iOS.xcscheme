@@ -47,16 +47,6 @@
                ReferencedContainer = "container:Keyboard.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "964AB9521D1B6490004C827C"
-               BuildableName = "iOSKeyboardUITests.xctest"
-               BlueprintName = "iOSKeyboardUITests"
-               ReferencedContainer = "container:Keyboard.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

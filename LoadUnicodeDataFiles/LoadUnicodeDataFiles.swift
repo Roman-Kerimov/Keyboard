@@ -29,6 +29,8 @@ class LoadUnicodeDataFiles: Operation {
         
         var emojiCharacterSet: CharacterSet = .init()
         var fullyQualifiedEmoji: String = ""
+        var totalStrokes: [String: Int] = [:]
+        var frequencies: [String: Int] = [:]
         
         for dataItem in UnicodeDataItem.allCases {
             
@@ -51,8 +53,8 @@ class LoadUnicodeDataFiles: Operation {
                     
                     let codePoints: String = unicodeScalars.map {$0.description} .reduce(.init(), +)
                     
-                    switch components[1] {
-                    case "component", "fully-qualified":
+                    switch EmojiStatus(rawValue: components[1])! {
+                    case .component, .fullyQualified:
                         let name: String = components[2].components(separatedBy: String.space).dropFirst(2).joined(separator: .space).description.trimmingCharacters(in: .whitespaces)
                         
                         UnicodeData.default.addItem(codePoints: codePoints, name: name)
@@ -60,11 +62,8 @@ class LoadUnicodeDataFiles: Operation {
                         
                         fullyQualifiedEmoji = codePoints
                         
-                    case "minimally-qualified", "unqualified":
+                    case .minimallyQualified, .unqualified:
                         AnnotationsXMLParser.toFullyQualifiedDictionary[codePoints] = fullyQualifiedEmoji
-                        
-                    default:
-                        fatalError()
                     }
                 }
                 
@@ -124,7 +123,7 @@ class LoadUnicodeDataFiles: Operation {
                     
                     let codePoint = fields[0].hexToUnicodeScalar!.description
                     let alias = fields[1]
-                    let type = fields[2]
+                    let type = NameAliasType(rawValue: fields[2])!
                     
                     guard let item = UnicodeData.default.item(codePoints: codePoint, language: "") else {
                         return
@@ -133,16 +132,13 @@ class LoadUnicodeDataFiles: Operation {
                     unicodeItem = item
                     
                     switch type {
-                    case "correction":
+                    case .correction:
                         aliases = [alias]
                         
-                    case "alternate", "abbreviation":
+                    case .alternate, .abbreviation:
                         aliases.append(alias)
                         
-                    case "control", "figment":
-                        break
-                        
-                    default:
+                    case .control, .figment:
                         break
                     }
                 }
@@ -151,6 +147,53 @@ class LoadUnicodeDataFiles: Operation {
                 
                 wordSet.forEach { (word) in
                     UnicodeData.default.addWord(word, language: language)
+                }
+                
+            case .unihanDictionaryLikeData, .unihanReadings:
+                
+                var wordSets: [String: Set<String>] = [:]
+
+                var language: String = "" {
+                    didSet {
+                        if wordSets[language] == nil {
+                            wordSets[language] = []
+                        }
+                    }
+                }
+
+                dataItem.parse { (string) in
+                    let components = string.components(separatedBy: "\t")
+
+                    let codePoint = components[0].components(separatedBy: "+").last!.hexToUnicodeScalar!.description
+                    let fieldType = UnihanFieldType(rawValue: components[1])!
+                    let value = components[2]
+
+                    switch fieldType {
+                    
+                    // DictionaryLikeData
+                    
+                    case .frequency:
+                        frequencies[codePoint] = Int(value)!
+                        
+                    case .totalStrokes:
+                        totalStrokes[codePoint] = Int(value.words.first!)!
+
+                    // Readings
+
+                    case .mandarin:
+                        language = "zh"
+                        wordSets[language]!.formUnion(value.words)
+                        UnicodeData.default.addItem(codePoints: codePoint, language: language, annotation: value, totalStrokes: totalStrokes[codePoint]!, frequency: frequencies[codePoint])
+
+                    default:
+                        return
+                    }
+                }
+
+                wordSets.forEach { (language, wordSet) in
+                    wordSet.subtracting(UnicodeData.default.words(language: language)).forEach { (word) in
+                        UnicodeData.default.addWord(word, language: language)
+                    }
                 }
                 
             case .annotations, .annotationsDerived, .main, .subdivisions:

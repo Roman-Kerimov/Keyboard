@@ -536,20 +536,7 @@ final class Keyboard {
     let characterSearch: CharacterSearch = .init()
     
     @objc private func search() {
-        
-        let documentContextBeforeInput = Keyboard.default.delegate?.documentContext.beforeInput ?? .init()
-        
-        var textForSearch: String = .init(
-            documentContextBeforeInput
-                .components(separatedBy: .whitespacesAndNewlines).last?
-                .split {$0.belongsTo(.symbols)} .last ?? .init()
-        )
-        
-        if textForSearch.contains(.reverseSolidus) {
-            textForSearch = .reverseSolidus + ( textForSearch.components(separatedBy: String.reverseSolidus).last ?? .init() )
-        }
-        
-        characterSearch.search(textForSearch.replacingOccurrences(of: String.reverseSolidus, with: ""))
+        characterSearch.search(textBeforeInput: Keyboard.default.delegate?.documentContext.beforeInput ?? .init())
     }
     
     

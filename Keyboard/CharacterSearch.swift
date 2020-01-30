@@ -25,7 +25,7 @@ class CharacterSearch: NSObject {
     
     override func updateLocalizedStrings() {
         lastUsedUnicodeItemsCache = [:]
-        search(text)
+        search(textBeforeInput: text)
     }
     
     override init() {
@@ -39,7 +39,7 @@ class CharacterSearch: NSObject {
     convenience init(query: String) {
         self.init()
         
-        search(query)
+        search(textBeforeInput: query)
     }
     
     let searchOperationQueue: OperationQueue = .init()
@@ -62,8 +62,20 @@ class CharacterSearch: NSObject {
     
     lazy var currentLastUsedCharacters = lastUsedCharacters
     
-    public func search(_ text: String) {
-        self.text = text
+    public func search(textBeforeInput: String) {
+        
+        var textForSearch: String = .init(
+            textBeforeInput
+                .split(whereSeparator: {$0.unicodeScalars.first!.properties.isIdeographic}).last?
+                .components(separatedBy: .whitespacesAndNewlines).last?
+                .split {$0.belongsTo(.symbols)} .last ?? .init()
+        )
+        
+        if textForSearch.contains(.reverseSolidus) {
+            textForSearch = .reverseSolidus + ( textForSearch.components(separatedBy: String.reverseSolidus).last ?? .init() )
+        }
+        
+        text = textForSearch.replacingOccurrences(of: String.reverseSolidus, with: "")
         searchOperationQueue.cancelAllOperations()
         searchOperationQueue.addOperation( SearchUnicodeItems.init(characterSearch: self, text: text) )
     }

@@ -27,6 +27,11 @@ class UnicodeDataTests: XCTestCase {
         XCTAssertEqual(UnicodeData.default.item(codePoints: "🐊", language: "ru_Cyrl")?.ttsAnnotation, "крокодил")
     }
     
+    func testMandarinReadings() {
+        XCTAssertEqual(UnicodeData.default.item(codePoints: "你", language: "zh")?.annotation, "nǐ")
+        XCTAssertEqual(UnicodeData.default.item(codePoints: "好", language: "zh")?.annotation, "hǎo")
+    }
+    
     func testNameAliases() {
         XCTAssertEqual(UnicodeData.default.item(name: "LATIN CAPITAL LETTER OI")?.localizedName, "LATIN CAPITAL LETTER GHA")
         XCTAssertEqual(UnicodeData.default.item(name: "ZERO WIDTH NO-BREAK SPACE")?.localizedName, "BOM | BYTE ORDER MARK | ZWNBSP | ZERO WIDTH NO-BREAK SPACE")

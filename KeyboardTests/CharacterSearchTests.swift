@@ -21,7 +21,7 @@ class CharacterSearchTests: XCTestCase {
     func search(_ text: String) -> [String] {
         let characterSearch = CharacterSearch()
         
-        characterSearch.search(text)
+        characterSearch.search(textBeforeInput: text)
         characterSearch.searchOperationQueue.waitUntilAllOperationsAreFinished()
         
         return characterSearch.foundUnicodeItems.map {$0.codePoints}
@@ -78,5 +78,21 @@ class CharacterSearchTests: XCTestCase {
         XCTAssertEqual(search("gbeng")[1], gbCurrency)
         XCTAssertEqual(search("gbsct")[1], gbCurrency)
         XCTAssertEqual(search("gbwls")[1], gbCurrency)
+    }
+    
+    func testIdeographSearch() {
+        XCTAssert(search("nǐ").contains("你"))
+        XCTAssert(search("hǎo").contains("好"))
+        XCTAssert(search("你hǎo").contains("好"))
+    }
+    
+    func testUnihanSortByTotalStrokes() {
+        let searchResult = search("nǐ")
+        XCTAssert(searchResult.firstIndex(of: "你")! < searchResult.firstIndex(of: "䕥")!)
+    }
+    
+    func testUnihanSortByFrequency() {
+        let searchResult = search("nǐ")
+        XCTAssert(searchResult.firstIndex(of: "你")! < searchResult.firstIndex(of: "伱")!)
     }
 }

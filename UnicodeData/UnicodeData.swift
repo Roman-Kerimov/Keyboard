@@ -138,6 +138,49 @@ class UnicodeData: NSPersistentContainer {
         }
     }
     
+    func addCharacterCollection(language: String, keyboardIntersection: [String]) {
+        let characterCollection = ManagedCharacterCollection(context: backgroundContext)
+        characterCollection.language = language
+        characterCollection.keyboardIntersection = keyboardIntersection
+    }
+    
+    private func characterCollection(language: String) -> CharacterCollection? {
+        let fetchRequest: NSFetchRequest<ManagedCharacterCollection> = ManagedCharacterCollection.fetchRequest()
+        
+        fetchRequest.predicate = .init(format: languageQuery(language: language))
+        return try! backgroundContext.fetch(fetchRequest)
+            .map {CharacterCollection(managed: $0)}
+            .max {$0.id.count < $1.id.count}
+    }
+    
+    func characterCollections() -> [CharacterCollection] {
+        let fetchRequest: NSFetchRequest<ManagedCharacterCollection> = ManagedCharacterCollection.fetchRequest()
+        fetchRequest.sortDescriptors = [.init(key: "language", ascending: true)]
+
+        return try! backgroundContext.fetch(fetchRequest).map({CharacterCollection(managed: $0)}).filter {!$0.keyboardIntersectionWithoutASCII.isEmpty}
+    }
+    
+    func preferredCharacterCollections(maxCount: Int = 100) -> [CharacterCollection] {
+
+        var preferredCharacterCollections: [CharacterCollection] = []
+
+        for language in Foundation.Locale.preferredLanguages {
+            guard let characterCollection = characterCollection(language: language), !characterCollection.keyboardIntersectionWithoutASCII.isEmpty else {
+                continue
+            }
+
+            if !preferredCharacterCollections.contains(characterCollection) {
+                preferredCharacterCollections.append(characterCollection)
+            }
+
+            if preferredCharacterCollections.count == maxCount {
+                break
+            }
+        }
+
+        return preferredCharacterCollections
+    }
+    
     lazy var itemCount: Int = try! backgroundContext.count(for: ManagedUnicodeItem.fetchRequest())
     
     private let backgroudOperationQueue: OperationQueue = .init()
@@ -185,14 +228,18 @@ class UnicodeData: NSPersistentContainer {
     }
         
     func resetPersistentStore() {
+        let wal = "-wal"
+        
         let storeURLs = persistentStoreDescriptions.compactMap {$0.url}
         storeURLs.forEach { (storeURL) in
             try? persistentStoreCoordinator.destroyPersistentStore(at: storeURL, ofType: NSSQLiteStoreType, options: nil)
             try? FileManager.default.removeItem(at: storeURL)
+            try? FileManager.default.removeItem(atPath: storeURL.path + wal)
         }
         
         if let sqLiteURL = sqLiteURL {
             try! FileManager.default.copyItem(at: sqLiteURL, to: storeURLs.first!)
+            try! FileManager.default.copyItem(atPath: sqLiteURL.path + wal, toPath: storeURLs.first!.path + wal)
         }
         
         loadPersistentStore()

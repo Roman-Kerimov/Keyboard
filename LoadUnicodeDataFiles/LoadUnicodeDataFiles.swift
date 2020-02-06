@@ -199,6 +199,29 @@ class LoadUnicodeDataFiles: Operation {
             case .annotations, .annotationsDerived, .main, .subdivisions:
                 AnnotationsXMLParser.unicodeDataItem = dataItem
                 dataItem.parse(using: AnnotationsXMLParser.self)
+                
+            case .keyboards:
+                dataItem.parse(using: KeyboardXMLParser.self)
+                
+                for (language, keyboardIntersectionSet) in KeyboardXMLParser.keyboardIntersectionSets {
+                    let locale = Locale(identifier: language)
+                    
+                    UnicodeData.default.addCharacterCollection(
+                        language: language,
+                        keyboardIntersection: keyboardIntersectionSet.sorted {
+                            switch $0.compare($1, options: [.caseInsensitive], range: nil, locale: locale) {
+                            case .orderedAscending:
+                                return true
+                                
+                            case .orderedDescending:
+                                return false
+                                
+                            case .orderedSame:
+                                return $0.first?.isUppercase == true
+                            }
+                        }
+                    )
+                }
             }
         }
         
@@ -209,8 +232,13 @@ class LoadUnicodeDataFiles: Operation {
         try? FileManager.default.removeItem(at: sqLiteTargetURL)
         try! FileManager.default.copyItem(at: sqLiteSourceURL, to: sqLiteTargetURL)
         
+        try? FileManager.default.removeItem(atPath: sqLiteTargetURL.path + wal)
+        try! FileManager.default.copyItem(atPath: sqLiteSourceURL.path + wal, toPath: sqLiteTargetURL.path + wal)
+        
         loadedVersion = currentVersion
     }
+    
+    private let wal = "-wal"
     
     private var currentVersion: String {
         func hash(url: URL) -> String {
@@ -231,6 +259,7 @@ class LoadUnicodeDataFiles: Operation {
             Bundle.main.executableURL!.lastPathComponent,
             UnicodeData.default.name,
             sqLiteTargetURL.path,
+            sqLiteTargetURL.path + wal,
         ]
         
         return dependencies.map {hash(url: URL(fileURLWithPath: $0))} .joined()

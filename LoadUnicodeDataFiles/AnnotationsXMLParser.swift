@@ -15,8 +15,6 @@ class AnnotationsXMLParser: XMLParser {
         delegate = self
     }
     
-    static var unicodeDataItem: UnicodeDataItem? = nil
-    
     private static var baseLanguage: String = "" {
         didSet {
             if oldValue != baseLanguage {
@@ -26,9 +24,8 @@ class AnnotationsXMLParser: XMLParser {
     }
     
     private static var annotationTable: [String: String] = .init()
-    private static var flagTemplates: [String: (flag: UnicodeItem, placeholder: String)] = .init()
+    private static var flagTemplates: [String: (annotation: String, ttsAnnotation: String, placeholder: String)] = .init()
     
-    private var isIdentity = false
     private var language: String = ""
     
     private var codePoints: String? = nil {
@@ -92,6 +89,14 @@ class AnnotationsXMLParser: XMLParser {
             AnnotationsXMLParser.annotationTable[annotationKey(languageComponents: languageComponents, isTTS: false)] = annotation
             AnnotationsXMLParser.annotationTable[annotationKey(languageComponents: languageComponents, isTTS: true)] = ttsAnnotation
             
+            if AnnotationsXMLParser.flagTemplates[language] == nil,
+                let regionCode = UnicodeData.default.regionCode(flagCodePoints: codePoints),
+                regionCode == regionCode.lowercased(),
+                let subdivisionName = MainXMLParser.subdivisions[language]?[regionCode] {
+                
+                AnnotationsXMLParser.flagTemplates[language] = (annotation: annotation, ttsAnnotation: ttsAnnotation, placeholder: subdivisionName)
+            }
+            
             wordSet.formUnion(words)
 
             isTTS = false
@@ -125,22 +130,11 @@ extension AnnotationsXMLParser: XMLParserDelegate {
             subdivision = attributeDict["type"]!
             codePoints = UnicodeData.default.flagCodePoints(regionCode: subdivision)
             
-        case "identity":
-            isIdentity = true
-            
         case "language":
-            guard isIdentity else {
-                return
-            }
-            
             language = attributeDict["type"] ?? ""
             AnnotationsXMLParser.baseLanguage = language.components(separatedBy: Foundation.Locale.componentSeparator).first!
             
         case "script", "territory":
-            guard isIdentity else {
-                return
-            }
-            
             language = [language, attributeDict["type"]].compactMap({$0}).joined(separator: Foundation.Locale.componentSeparator)
             
         default:
@@ -164,22 +158,15 @@ extension AnnotationsXMLParser: XMLParserDelegate {
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         switch elementName {
         case "subdivision":
-            
-            if AnnotationsXMLParser.unicodeDataItem == .main, let flagItem = UnicodeData.default.flagItem(regionCode: subdivision, language: language) {
-                AnnotationsXMLParser.flagTemplates[language] = (flagItem, placeholder: annotation)
-                abortParsing()
-                return
-            }
-            
             guard let template = AnnotationsXMLParser.flagTemplates[language] ?? AnnotationsXMLParser.flagTemplates[language.components(separatedBy: Foundation.Locale.componentSeparator).dropLast().joined(separator: Foundation.Locale.componentSeparator)] else {
                 return
             }
             
             let subdivisionName = annotation
             
-            annotation = template.flag.annotation?.replacingOccurrences(of: template.placeholder, with: subdivisionName) ?? ""
+            annotation = template.annotation.replacingOccurrences(of: template.placeholder, with: subdivisionName)
             
-            ttsAnnotation = template.flag.ttsAnnotation?.replacingOccurrences(of: template.placeholder, with: subdivisionName) ?? ""
+            ttsAnnotation = template.ttsAnnotation.replacingOccurrences(of: template.placeholder, with: subdivisionName)
             
         case "annotations", "subdivisions":
             codePoints = nil
@@ -191,9 +178,6 @@ extension AnnotationsXMLParser: XMLParserDelegate {
             }
             
             abortParsing()
-            
-        case "identity":
-            isIdentity = false
             
         default:
             break

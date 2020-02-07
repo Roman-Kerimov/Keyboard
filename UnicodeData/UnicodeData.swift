@@ -79,6 +79,23 @@ class UnicodeData: NSPersistentContainer {
             : "\u{1F3F4}" + regionCode.unicodeScalars.map {Unicode.Scalar($0.value + 0xE0000)?.description ?? "_"} .joined() + "\u{E007F}"
     }
     
+    func regionCode(flagCodePoints: String) -> String? {
+        let unicodeScalars = flagCodePoints.unicodeScalars
+        
+        if unicodeScalars.count == 2, unicodeScalars.reduce(true, {$0 && CharacterSet(charactersIn: "🇦"..."🇿").contains($1)}) {
+            return unicodeScalars.map {Unicode.Scalar($0.value - 0x1F1A5)!.description} .joined()
+        }
+        else if unicodeScalars.count > 4, unicodeScalars.first == "\u{1F3F4}", unicodeScalars.last == "\u{E007F}" {
+            let subdivisionCode: String = unicodeScalars.dropFirst().dropLast().map {Unicode.Scalar($0.value - 0xE0000)?.description ?? "_"} .joined()
+            
+            if subdivisionCode.unicodeScalars.reduce(true, {$0 && $1.isASCII && ($1.properties.isLowercase || $1.properties.generalCategory == .decimalNumber)}) {
+                return subdivisionCode
+            }
+        }
+        
+        return nil
+    }
+    
     func flagItem(regionCode: String, language: String) -> UnicodeItem? {
         return item(codePoints: flagCodePoints(regionCode: regionCode), language: language)
     }

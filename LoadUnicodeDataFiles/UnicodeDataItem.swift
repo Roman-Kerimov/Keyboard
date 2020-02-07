@@ -13,9 +13,9 @@ enum UnicodeDataItem: String, CaseIterable {
     case nameAliases = "UCD/NameAliases.txt"
     case unihanDictionaryLikeData = "Unihan/Unihan_DictionaryLikeData.txt"
     case unihanReadings = "Unihan/Unihan_Readings.txt"
+    case main = "CLDR/common/main"
     case annotations = "CLDR/common/annotations"
     case annotationsDerived = "CLDR/common/annotationsDerived"
-    case main = "CLDR/common/main"
     case subdivisions = "CLDR/common/subdivisions"
     case keyboards = "CLDR/keyboards"
     

@@ -207,6 +207,7 @@
 		969102B823EBBC9600E9BE0D /* UnicodeData.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 969102B723EBBC9600E9BE0D /* UnicodeData.sqlite-wal */; };
 		969102B923EBBC9600E9BE0D /* UnicodeData.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 969102B723EBBC9600E9BE0D /* UnicodeData.sqlite-wal */; };
 		969102BA23EBBC9600E9BE0D /* UnicodeData.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 969102B723EBBC9600E9BE0D /* UnicodeData.sqlite-wal */; };
+		969102C223ECCDE500E9BE0D /* MainXMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969102C123ECCDE500E9BE0D /* MainXMLParser.swift */; };
 		9692F12D23BB58C300236707 /* NameAliasType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9692F12C23BB58C300236707 /* NameAliasType.swift */; };
 		9692F12F23BB5E4000236707 /* EmojiStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9692F12E23BB5E4000236707 /* EmojiStatus.swift */; };
 		9692F13123BBB0D200236707 /* UnihanFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9692F13023BBB0D200236707 /* UnihanFieldType.swift */; };
@@ -555,6 +556,7 @@
 		968E3E4F23EB312300BB0EFE /* OTHER_LANGUAGES.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTHER_LANGUAGES.swift; sourceTree = "<group>"; };
 		96905E4620EF268C006F3DE9 /* KeyboardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardTests.swift; sourceTree = "<group>"; };
 		969102B723EBBC9600E9BE0D /* UnicodeData.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; name = "UnicodeData.sqlite-wal"; path = "../UnicodeData.sqlite-wal"; sourceTree = BUILT_PRODUCTS_DIR; };
+		969102C123ECCDE500E9BE0D /* MainXMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainXMLParser.swift; sourceTree = "<group>"; };
 		9692F12C23BB58C300236707 /* NameAliasType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameAliasType.swift; sourceTree = "<group>"; };
 		9692F12E23BB5E4000236707 /* EmojiStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiStatus.swift; sourceTree = "<group>"; };
 		9692F13023BBB0D200236707 /* UnihanFieldType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnihanFieldType.swift; sourceTree = "<group>"; };
@@ -708,6 +710,7 @@
 				9692F12E23BB5E4000236707 /* EmojiStatus.swift */,
 				9692F12C23BB58C300236707 /* NameAliasType.swift */,
 				9692F13023BBB0D200236707 /* UnihanFieldType.swift */,
+				969102C123ECCDE500E9BE0D /* MainXMLParser.swift */,
 				9639EE08233C152900474A06 /* AnnotationsXMLParser.swift */,
 				962A71F323E46E3800BCB2D7 /* KeyboardXMLParser.swift */,
 				9643C98E2392B625003DF2B2 /* yoficationTable.swift */,
@@ -1370,6 +1373,7 @@
 				9613E02C2367D0F50087CA57 /* URL.swift in Sources */,
 				962A71F423E46E3800BCB2D7 /* KeyboardXMLParser.swift in Sources */,
 				9692F12F23BB5E4000236707 /* EmojiStatus.swift in Sources */,
+				969102C223ECCDE500E9BE0D /* MainXMLParser.swift in Sources */,
 				9651A7DB23BA974C002F22EA /* String.swift in Sources */,
 				9613E0242367CF5C0087CA57 /* main.swift in Sources */,
 				9692F12D23BB58C300236707 /* NameAliasType.swift in Sources */,

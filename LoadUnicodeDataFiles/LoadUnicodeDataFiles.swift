@@ -196,8 +196,10 @@ class LoadUnicodeDataFiles: Operation {
                     }
                 }
                 
-            case .annotations, .annotationsDerived, .main, .subdivisions:
-                AnnotationsXMLParser.unicodeDataItem = dataItem
+            case .main:
+                dataItem.parse(using: MainXMLParser.self)
+                
+            case .annotations, .annotationsDerived, .subdivisions:
                 dataItem.parse(using: AnnotationsXMLParser.self)
                 
             case .keyboards:

@@ -208,6 +208,8 @@
 		969102B923EBBC9600E9BE0D /* UnicodeData.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 969102B723EBBC9600E9BE0D /* UnicodeData.sqlite-wal */; };
 		969102BA23EBBC9600E9BE0D /* UnicodeData.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 969102B723EBBC9600E9BE0D /* UnicodeData.sqlite-wal */; };
 		969102C223ECCDE500E9BE0D /* MainXMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969102C123ECCDE500E9BE0D /* MainXMLParser.swift */; };
+		969102CA23EEAEB000E9BE0D /* CharacterGestureList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969102C923EEAEB000E9BE0D /* CharacterGestureList.swift */; };
+		969102CC23EEB51B00E9BE0D /* CharacterGestureRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969102CB23EEB51B00E9BE0D /* CharacterGestureRow.swift */; };
 		9692F12D23BB58C300236707 /* NameAliasType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9692F12C23BB58C300236707 /* NameAliasType.swift */; };
 		9692F12F23BB5E4000236707 /* EmojiStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9692F12E23BB5E4000236707 /* EmojiStatus.swift */; };
 		9692F13123BBB0D200236707 /* UnihanFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9692F13023BBB0D200236707 /* UnihanFieldType.swift */; };
@@ -557,6 +559,8 @@
 		96905E4620EF268C006F3DE9 /* KeyboardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardTests.swift; sourceTree = "<group>"; };
 		969102B723EBBC9600E9BE0D /* UnicodeData.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; name = "UnicodeData.sqlite-wal"; path = "../UnicodeData.sqlite-wal"; sourceTree = BUILT_PRODUCTS_DIR; };
 		969102C123ECCDE500E9BE0D /* MainXMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainXMLParser.swift; sourceTree = "<group>"; };
+		969102C923EEAEB000E9BE0D /* CharacterGestureList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterGestureList.swift; sourceTree = "<group>"; };
+		969102CB23EEB51B00E9BE0D /* CharacterGestureRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterGestureRow.swift; sourceTree = "<group>"; };
 		9692F12C23BB58C300236707 /* NameAliasType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameAliasType.swift; sourceTree = "<group>"; };
 		9692F12E23BB5E4000236707 /* EmojiStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiStatus.swift; sourceTree = "<group>"; };
 		9692F13023BBB0D200236707 /* UnihanFieldType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnihanFieldType.swift; sourceTree = "<group>"; };
@@ -940,6 +944,8 @@
 				96012B6A22F3C3D30095F445 /* GuideNavigationView.swift */,
 				96D2270F23E8BB3800A3474F /* LanguageCharactersList.swift */,
 				96D1E2B323E996EB00625269 /* LanguageCharactersRow.swift */,
+				969102C923EEAEB000E9BE0D /* CharacterGestureList.swift */,
+				969102CB23EEB51B00E9BE0D /* CharacterGestureRow.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1450,6 +1456,7 @@
 				96200BE9208CDC8D002930D6 /* ENABLE_KEYBOARD.swift in Sources */,
 				96E0341E203179F00039E653 /* CONTINUE.swift in Sources */,
 				96533A7E1F12938D00B07CA3 /* DeleteRowUIView.swift in Sources */,
+				969102CC23EEB51B00E9BE0D /* CharacterGestureRow.swift in Sources */,
 				962B6FB722F37D2F00B831B1 /* InterfaceLanguageList.swift in Sources */,
 				9643FC501F78F94B004DA2C0 /* characterComponentsDictionary.swift in Sources */,
 				96533A801F12938D00B07CA3 /* CharacterSearchUIView.swift in Sources */,
@@ -1469,6 +1476,7 @@
 				96533A861F12938D00B07CA3 /* KeyUIView.swift in Sources */,
 				96533A931F1293A500B07CA3 /* Languages.swift in Sources */,
 				9620E748202B9EB1003FB02E /* Bundle.swift in Sources */,
+				969102CA23EEAEB000E9BE0D /* CharacterGestureList.swift in Sources */,
 				96533A8B1F1293A500B07CA3 /* UIColor.swift in Sources */,
 				962B6FB422F37B3800B831B1 /* Image.swift in Sources */,
 				96533A7D1F12938D00B07CA3 /* KeyboardLayoutUIView.swift in Sources */,

@@ -18,34 +18,37 @@ struct LanguageCharactersRow: View {
     }
     
     var body: some View {
-        HStack(alignment: .top) {
+        NavigationLink(destination: CharacterGestureList(characters: characterCollection.keyboardIntersectionWithoutASCII).navigationBarTitle(characterCollection.localizedLanguage(locale: locale))) {
             
-            VStack(alignment: .leading, spacing: 8) {
-                Text(characterCollection.locale.languageCode!.appending(" ").prefix(3))
-                    .font(.system(.largeTitle, design: .monospaced))
+            HStack(alignment: .top) {
                 
-                if !localeComponents.isEmpty {
-                    Text(localeComponents.joined(separator: .return))
-                        .font(.system(.body, design: .monospaced))
-                        .padding(.leading, 2)
+                VStack(alignment: .leading, spacing: 8) {
+                    Text(characterCollection.locale.languageCode!.appending(" ").prefix(3))
+                        .font(.system(.largeTitle, design: .monospaced))
+                    
+                    if !localeComponents.isEmpty {
+                        Text(localeComponents.joined(separator: .return))
+                            .font(.system(.body, design: .monospaced))
+                            .padding(.leading, 2)
+                    }
+                        
+                    Spacer()
                 }
                     
-                Spacer()
-            }
                 
-            
-            VStack(alignment: .leading) {
-                Text(characterCollection.localizedLanguage(locale: locale))
-                    .foregroundColor(.primary)
-                    .padding(.vertical, 12)
+                VStack(alignment: .leading) {
+                    Text(characterCollection.localizedLanguage(locale: locale))
+                        .foregroundColor(.primary)
+                        .padding(.vertical, 12)
+                        
                     
+                    Text(self.characterCollection.keyboardIntersectionWithoutASCII.joined())
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                        .padding(.bottom, 8)
+                }
                 
-                Text(self.characterCollection.keyboardIntersectionWithoutASCII.joined())
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-                    .padding(.bottom, 8)
             }
-            
         }
     }
 }

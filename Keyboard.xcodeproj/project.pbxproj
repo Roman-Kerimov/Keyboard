@@ -88,6 +88,7 @@
 		963212B4217B820500E8A6B2 /* FloatingWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963212B3217B820500E8A6B2 /* FloatingWindow.swift */; };
 		963212B6217C61BC00E8A6B2 /* CharacterSequenceWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963212B5217C61BB00E8A6B2 /* CharacterSequenceWindow.swift */; };
 		9633A3CA1E5DFE8D00DFA503 /* DeleteRowUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9633A3C91E5DFE8D00DFA503 /* DeleteRowUIView.swift */; };
+		96348F2C23F1A3E50006AC22 /* SoftwareKeyboardSupportViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96348F2B23F1A3E50006AC22 /* SoftwareKeyboardSupportViewModifier.swift */; };
 		9637C6F120F2440200078395 /* UIKeyboardAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637C6F020F2440200078395 /* UIKeyboardAppearance.swift */; };
 		9637C6F220F2440200078395 /* UIKeyboardAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637C6F020F2440200078395 /* UIKeyboardAppearance.swift */; };
 		963B3CEB231A987800E67741 /* LayoutPickerSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963B3CEA231A987800E67741 /* LayoutPickerSection.swift */; };
@@ -488,6 +489,7 @@
 		963212B3217B820500E8A6B2 /* FloatingWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingWindow.swift; sourceTree = "<group>"; };
 		963212B5217C61BB00E8A6B2 /* CharacterSequenceWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSequenceWindow.swift; sourceTree = "<group>"; };
 		9633A3C91E5DFE8D00DFA503 /* DeleteRowUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteRowUIView.swift; sourceTree = "<group>"; };
+		96348F2B23F1A3E50006AC22 /* SoftwareKeyboardSupportViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftwareKeyboardSupportViewModifier.swift; sourceTree = "<group>"; };
 		9637C6F020F2440200078395 /* UIKeyboardAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKeyboardAppearance.swift; sourceTree = "<group>"; };
 		9639EE08233C152900474A06 /* AnnotationsXMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotationsXMLParser.swift; sourceTree = "<group>"; };
 		963B3CEA231A987800E67741 /* LayoutPickerSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutPickerSection.swift; sourceTree = "<group>"; };
@@ -750,6 +752,14 @@
 			path = CLDR;
 			sourceTree = "<group>";
 		};
+		96348F2A23F1A3220006AC22 /* ViewModifiers */ = {
+			isa = PBXGroup;
+			children = (
+				96348F2B23F1A3E50006AC22 /* SoftwareKeyboardSupportViewModifier.swift */,
+			);
+			path = ViewModifiers;
+			sourceTree = "<group>";
+		};
 		964AB9261D1B63C0004C827C = {
 			isa = PBXGroup;
 			children = (
@@ -793,6 +803,7 @@
 			isa = PBXGroup;
 			children = (
 				9676ECBB22F8A429002AF981 /* Views */,
+				96348F2A23F1A3220006AC22 /* ViewModifiers */,
 				9676ECBA22F8A3D7002AF981 /* UIViews */,
 				964AB9341D1B6490004C827C /* AppDelegate.swift */,
 				968AFE412243E6EE00346636 /* GuideUIViewController.swift */,
@@ -1426,6 +1437,7 @@
 				96E033EA2031540A0039E653 /* KEYBOARD.swift in Sources */,
 				9696CBC12031800B007CC94B /* Template.swift in Sources */,
 				962D7CC820CD75320047B8B9 /* NSRegularExpression.swift in Sources */,
+				96348F2C23F1A3E50006AC22 /* SoftwareKeyboardSupportViewModifier.swift in Sources */,
 				96533A841F12938D00B07CA3 /* SpaceRowUIView.swift in Sources */,
 				96533A8E1F1293A500B07CA3 /* String.swift in Sources */,
 				96534191224727CD0097B522 /* Array<Equatable>.swift in Sources */,

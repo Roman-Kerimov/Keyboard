@@ -15,5 +15,6 @@ struct CharacterGestureList: View {
         List(characters, id: \.self) { (character) in
             CharacterGestureRow(character: character).id(character)
         }
+        .modifier(SoftwareKeyboardSupportViewModifier())
     }
 }

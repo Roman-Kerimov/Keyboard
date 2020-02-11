@@ -181,7 +181,7 @@ class UnicodeData: NSPersistentContainer {
 
         var preferredCharacterCollections: [CharacterCollection] = []
 
-        for language in Foundation.Locale.preferredLanguages {
+        for language in Foundation.Locale.preferredLanguages + ["es", "fr", "de"] {
             guard let characterCollection = characterCollection(language: language), !characterCollection.keyboardIntersectionWithoutASCII.isEmpty else {
                 continue
             }

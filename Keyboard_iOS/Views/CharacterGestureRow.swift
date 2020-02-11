@@ -11,7 +11,16 @@ import SwiftUI
 struct CharacterGestureRow: View {
     let character: String
     
-    @State var text: String = ""
+    var textKey: String {
+        character.applyingTransform(.init("Any-Hex/Perl"), reverse: false)!
+    }
+    
+    var textBinding: Binding<String> {
+        .init(
+            get: {UserDefaults.characterFields.string(forKey: self.textKey) ?? ""},
+            set: {UserDefaults.characterFields.set($0, forKey: self.textKey)}
+        )
+    }
     
     var body: some View {
         HStack {
@@ -22,7 +31,7 @@ struct CharacterGestureRow: View {
                 .foregroundColor(.secondary)
                 .frame(width: 70, alignment: .leading)
             
-            TextField("", text: $text)
+            TextField("", text: textBinding)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
         }
     }

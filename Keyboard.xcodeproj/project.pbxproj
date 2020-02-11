@@ -97,6 +97,7 @@
 		963BA6641F3B1FD000BFE3A7 /* LegalTextUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963BA6621F3B1FD000BFE3A7 /* LegalTextUIView.swift */; };
 		963DE0B0202F00B60040A448 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963DE0AF202F00B60040A448 /* main.swift */; };
 		963DE0B2202F012B0040A448 /* StatusMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963DE0B1202F012B0040A448 /* StatusMenu.swift */; };
+		9640167423F1EB9E004FFB2F /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9640167323F1EB9E004FFB2F /* UserDefaults.swift */; };
 		96436BA120C1DA2D0065ED03 /* UnicodeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96436BA020C1DA2D0065ED03 /* UnicodeItem.swift */; };
 		96436BA220C1DA2D0065ED03 /* UnicodeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96436BA020C1DA2D0065ED03 /* UnicodeItem.swift */; };
 		96436BA320C1DA2D0065ED03 /* UnicodeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96436BA020C1DA2D0065ED03 /* UnicodeItem.swift */; };
@@ -497,6 +498,7 @@
 		963DE0AF202F00B60040A448 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		963DE0B1202F012B0040A448 /* StatusMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenu.swift; sourceTree = "<group>"; };
 		963E5CA222F04C4C00873C20 /* .xcode-version */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".xcode-version"; sourceTree = "<group>"; };
+		9640167323F1EB9E004FFB2F /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		96436BA020C1DA2D0065ED03 /* UnicodeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnicodeItem.swift; sourceTree = "<group>"; };
 		9643C98E2392B625003DF2B2 /* yoficationTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = yoficationTable.swift; sourceTree = "<group>"; };
 		9643FC4C1F78F8D5004DA2C0 /* CharacterComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterComponent.swift; sourceTree = "<group>"; };
@@ -807,6 +809,7 @@
 				9676ECBA22F8A3D7002AF981 /* UIViews */,
 				964AB9341D1B6490004C827C /* AppDelegate.swift */,
 				968AFE412243E6EE00346636 /* GuideUIViewController.swift */,
+				9640167323F1EB9E004FFB2F /* UserDefaults.swift */,
 				964AB93E1D1B6490004C827C /* Assets.xcassets */,
 				964AB9401D1B6490004C827C /* LaunchScreen.storyboard */,
 				964AB9431D1B6490004C827C /* Info.plist */,
@@ -1426,6 +1429,7 @@
 				96E0341A203179C50039E653 /* EMERGENCY_CALL.swift in Sources */,
 				96A15AD52243EE36008F0BE6 /* GuideTableUIView.swift in Sources */,
 				96BCF29122443C22001C87AF /* LegalNoticesUIViewCell.swift in Sources */,
+				9640167423F1EB9E004FFB2F /* UserDefaults.swift in Sources */,
 				963B3CEB231A987800E67741 /* LayoutPickerSection.swift in Sources */,
 				962B5343218C91EA001C4914 /* CGRect.swift in Sources */,
 				96533A781F12938D00B07CA3 /* KeyboardUIViewController.swift in Sources */,

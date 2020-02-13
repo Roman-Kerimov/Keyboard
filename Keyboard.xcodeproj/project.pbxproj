@@ -26,6 +26,7 @@
 		96012B6722F3AD3C0095F445 /* LegalNoticesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A3E2222C96E1F0024D0AF /* LegalNoticesView.swift */; };
 		96012B6922F3B8900095F445 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96012B6822F3B8900095F445 /* View.swift */; };
 		96012B6B22F3C3D30095F445 /* GuideNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96012B6A22F3C3D30095F445 /* GuideNavigationView.swift */; };
+		96020EFA23F5894F00251A4A /* CharactersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96020EF923F5894F00251A4A /* CharactersView.swift */; };
 		9605D58C239483D800933F8E /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9605D58B239483D800933F8E /* ActivityView.swift */; };
 		9608928620B001AD007AA01E /* SearchUnicodeItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9608928520B001AD007AA01E /* SearchUnicodeItems.swift */; };
 		9608928720B001AD007AA01E /* SearchUnicodeItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9608928520B001AD007AA01E /* SearchUnicodeItems.swift */; };
@@ -453,6 +454,7 @@
 /* Begin PBXFileReference section */
 		96012B6822F3B8900095F445 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		96012B6A22F3C3D30095F445 /* GuideNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideNavigationView.swift; sourceTree = "<group>"; };
+		96020EF923F5894F00251A4A /* CharactersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersView.swift; sourceTree = "<group>"; };
 		9605D58B239483D800933F8E /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		9608928120B00137007AA01E /* LoadUnicodeDataFiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadUnicodeDataFiles.swift; sourceTree = "<group>"; };
 		9608928520B001AD007AA01E /* SearchUnicodeItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUnicodeItems.swift; sourceTree = "<group>"; };
@@ -958,6 +960,7 @@
 				96012B6A22F3C3D30095F445 /* GuideNavigationView.swift */,
 				96D2270F23E8BB3800A3474F /* LanguageCharactersList.swift */,
 				96D1E2B323E996EB00625269 /* LanguageCharactersRow.swift */,
+				96020EF923F5894F00251A4A /* CharactersView.swift */,
 				969102C923EEAEB000E9BE0D /* CharacterGestureList.swift */,
 				969102CB23EEB51B00E9BE0D /* CharacterGestureRow.swift */,
 			);
@@ -1441,6 +1444,7 @@
 				96E033EA2031540A0039E653 /* KEYBOARD.swift in Sources */,
 				9696CBC12031800B007CC94B /* Template.swift in Sources */,
 				962D7CC820CD75320047B8B9 /* NSRegularExpression.swift in Sources */,
+				96020EFA23F5894F00251A4A /* CharactersView.swift in Sources */,
 				96348F2C23F1A3E50006AC22 /* SoftwareKeyboardSupportViewModifier.swift in Sources */,
 				96533A841F12938D00B07CA3 /* SpaceRowUIView.swift in Sources */,
 				96533A8E1F1293A500B07CA3 /* String.swift in Sources */,

@@ -42,9 +42,10 @@ struct LanguageCharactersRow: View {
                         .padding(.vertical, 12)
                         
                     
-                    Text(self.characterCollection.keyboardIntersectionWithoutASCII.joined())
+                    self.characterCollection.keyboardIntersectionWithoutASCII
+                        .map {Text($0).foregroundColor($0.defaultShiftGesture == nil ? .red : .secondary)}
+                        .reduce(Text(""), +)
                         .font(.caption)
-                        .foregroundColor(.secondary)
                         .padding(.bottom, 8)
                 }
                 

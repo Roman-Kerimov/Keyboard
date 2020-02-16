@@ -33,6 +33,10 @@ extension String {
     static let v: String = Character.v.description
     static let z: String = Character.z.description
     
+    func typingDescription(languageCode: String) -> String? {
+        return applyingReverseTransform(transformationCode: languageCode)?.map {$0.description.defaultShiftGesture ?? $0.description} .joined() ?? defaultShiftGesture
+    }
+    
     var defaultShiftGesture: String? {
         
         let decomposedUnicodeScalars = decomposedStringWithCanonicalMapping.unicodeScalars

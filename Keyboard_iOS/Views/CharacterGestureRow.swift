@@ -37,19 +37,6 @@ struct CharacterGestureRow: View {
     }
     
     var characterTypingDescriptionText: Text {
-        character.applyingReverseTransform(transformationCode: languageCode)?.map {
-            if let defaultShiftGesture = $0.description.defaultShiftGesture {
-                return Text(defaultShiftGesture)
-                    .foregroundColor(.secondary)
-            }
-            else {
-                return Text($0.description)
-                    .foregroundColor(.red)
-            }
-        }
-        .reduce(Text(""), +)
-        ??
-        Text(character.defaultShiftGesture ?? "")
-            .foregroundColor(.secondary)
+        character.typingDescription(languageCode: languageCode)?.map {Text($0.description).foregroundColor($0.description.defaultShiftGesture == nil ? .red : .secondary)} .reduce(Text(""), +) ?? Text("")
     }
 }

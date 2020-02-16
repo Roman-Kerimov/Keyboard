@@ -10,10 +10,11 @@ import SwiftUI
 @available(iOS 13.0, *)
 struct CharactersView: View {
     let characters: [String]
+    let languageCode: String
     
     var body: some View {
         characters
-            .map {Text($0).foregroundColor($0.defaultShiftGesture == nil ? .red : .secondary)}
+            .map {Text($0).foregroundColor($0.applyingReverseTransform(transformationCode: languageCode) == nil && $0.defaultShiftGesture == nil ? .red : .secondary)}
             .reduce(Text(""), +)
             .font(.caption)
     }

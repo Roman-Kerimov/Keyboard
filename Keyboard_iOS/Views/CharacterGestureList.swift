@@ -10,10 +10,11 @@ import SwiftUI
 @available(iOS 13.0, *)
 struct CharacterGestureList: View {
     let characters: [String]
+    let languageCode: String
     
     var body: some View {
         List(characters, id: \.self) { (character) in
-            CharacterGestureRow(character: character).id(character)
+            CharacterGestureRow(character: character, languageCode: self.languageCode).id(character)
         }
         .modifier(SoftwareKeyboardSupportViewModifier())
     }

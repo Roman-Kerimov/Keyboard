@@ -422,8 +422,10 @@ final class Keyboard {
             }
         }
         
-        if delegate?.documentContext.beforeInput?.last?.description == previousLabel {
-            delegate?.delete()
+        if  previousLabel.hasSuffix(delegate?.documentContext.beforeInput?.last?.description ?? "") {
+            previousLabel.forEach { (_) in
+                delegate?.delete()
+            }
         }
         
         input()

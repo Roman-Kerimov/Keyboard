@@ -137,6 +137,20 @@ class KeyboardTests: XCTestCase, KeyboardDelegate {
         XCTAssertEqual(document, "ǌ")
     }
     
+    func testĿL() {
+        let l: Key = .by(labelCharacter:"l")!
+        Keyboard.default.down(key: l)
+        Keyboard.default.shift(direction: .up)
+        Keyboard.default.up(key: l)
+        
+        Keyboard.default.down(key: l)
+        Keyboard.default.shift(direction: .left)
+        Keyboard.default.shift(direction: .up)
+        Keyboard.default.up(key: l)
+        
+        XCTAssertEqual(document, "ĿL")
+    }
+    
     func testCharactersWithRingComponent() {
         let x: Key = .by(labelCharacter:"x")!
         Keyboard.default.down(key: x)

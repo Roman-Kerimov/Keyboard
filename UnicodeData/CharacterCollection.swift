@@ -26,7 +26,7 @@ struct CharacterCollection: Identifiable, Equatable {
     
     var keyboardIntersection: [String] {managed.keyboardIntersection!}
     
-    var keyboardIntersectionWithoutASCII: [String] {
+    var characters: [String] {
         return keyboardIntersection.filter({$0.count != 1 || !Character($0).isASCII})
     }
 }

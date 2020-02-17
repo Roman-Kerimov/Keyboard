@@ -18,7 +18,7 @@ struct LanguageCharactersRow: View {
     }
     
     var body: some View {
-        NavigationLink(destination: CharacterGestureList(characters: characterCollection.keyboardIntersectionWithoutASCII, languageCode: characterCollection.locale.languageCode!).navigationBarTitle(characterCollection.localizedLanguage(locale: locale))) {
+        NavigationLink(destination: CharacterGestureList(characters: characterCollection.characters, languageCode: characterCollection.locale.languageCode!).navigationBarTitle(characterCollection.localizedLanguage(locale: locale))) {
             
             HStack(alignment: .top) {
                 
@@ -41,7 +41,7 @@ struct LanguageCharactersRow: View {
                         .foregroundColor(.primary)
                         .padding(.vertical, 12)
                         
-                    CharactersView(characters: self.characterCollection.keyboardIntersectionWithoutASCII, languageCode: self.characterCollection.locale.languageCode!)
+                    CharactersView(characters: self.characterCollection.characters, languageCode: self.characterCollection.locale.languageCode!)
                         .padding(.bottom, 8)
                 }
                 

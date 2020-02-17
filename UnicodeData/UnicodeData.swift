@@ -174,7 +174,7 @@ class UnicodeData: NSPersistentContainer {
         let fetchRequest: NSFetchRequest<ManagedCharacterCollection> = ManagedCharacterCollection.fetchRequest()
         fetchRequest.sortDescriptors = [.init(key: "language", ascending: true)]
 
-        return try! backgroundContext.fetch(fetchRequest).map({CharacterCollection(managed: $0)}).filter {!$0.keyboardIntersectionWithoutASCII.isEmpty}
+        return try! backgroundContext.fetch(fetchRequest).map({CharacterCollection(managed: $0)}).filter {!$0.characters.isEmpty}
     }
     
     func preferredCharacterCollections(maxCount: Int = 100) -> [CharacterCollection] {
@@ -182,7 +182,7 @@ class UnicodeData: NSPersistentContainer {
         var preferredCharacterCollections: [CharacterCollection] = []
 
         for language in Foundation.Locale.preferredLanguages + ["es", "fr", "de"] {
-            guard let characterCollection = characterCollection(language: language), !characterCollection.keyboardIntersectionWithoutASCII.isEmpty else {
+            guard let characterCollection = characterCollection(language: language), !characterCollection.characters.isEmpty else {
                 continue
             }
 

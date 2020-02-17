@@ -43,4 +43,9 @@ class StringTests: XCTestCase {
         XCTAssertEqual("Я".typingDescription(languageCode: "ru"), "y↑a ru")
         XCTAssertEqual("ß".typingDescription(languageCode: "ru"), "ss←")
     }
+    
+    func testDefaultShiftGestureForCharactersWithSomeUnicodeScalars() {
+        XCTAssertEqual("↖︎".defaultShiftGesture, "/→<←")
+        XCTAssertEqual("ŀl".defaultShiftGesture, "ll←")
+    }
 }

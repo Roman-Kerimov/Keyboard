@@ -39,15 +39,30 @@ extension String {
     
     var defaultShiftGesture: String? {
         
-        let decomposedUnicodeScalars = decomposedStringWithCanonicalMapping.unicodeScalars
+        var decomposedUnicodeScalars = decomposedStringWithCanonicalMapping.unicodeScalars
         
-        let shiftGestures = decomposedUnicodeScalars.compactMap {$0.description.characterComponents.defaultShiftGesture}
+        var shiftGesture = ""
         
-        if shiftGestures.count != decomposedUnicodeScalars.count {
-            return nil
+        while !decomposedUnicodeScalars.isEmpty {
+            var element = decomposedUnicodeScalars.prefix(characterComponentsDictionaryMaxUnicodeScalarCount)
+            
+            while true {
+                guard !element.isEmpty else {
+                    return nil
+                }
+                
+                if let elementDefaultShiftGesture = String(element).characterComponents.defaultShiftGesture {
+                    shiftGesture += elementDefaultShiftGesture
+                    decomposedUnicodeScalars.removeFirst(element.count)
+                    break
+                }
+                else {
+                    element.removeLast()
+                }
+            }
         }
         
-        return shiftGestures.joined()
+        return shiftGesture
     }
     
     var characterComponents: [CharacterComponent] {

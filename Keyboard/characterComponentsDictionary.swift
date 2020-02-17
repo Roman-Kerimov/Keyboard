@@ -7,6 +7,8 @@
 
 // This file uses data from UCD/Blocks.txt, UCD/extracted/DerivedName.txt, and UCD/NameAliases.txt
 
+let characterComponentsDictionaryMaxUnicodeScalarCount: Int = characterComponentsDictionary.keys.map {$0.decomposedStringWithCanonicalMapping.unicodeScalars.count} .max() ?? 0
+
 let characterComponentsDictionary: [String: [CharacterComponent]] = [
     
     // MARK: - 0000..007F; Basic Latin

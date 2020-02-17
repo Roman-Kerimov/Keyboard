@@ -110,4 +110,9 @@ class Array_CharacterComponent_Tests: XCTestCase {
     func testDefaultShiftGestureForCyrillicLetters() {
         XCTAssertEqual("Я".characterComponents.defaultShiftGesture, nil)
     }
+    
+    func testDefaultShiftGestureForĿL() {
+        XCTAssertEqual("Ŀl".characterComponents.defaultShiftGesture, "l↑l←")
+        XCTAssertEqual("ĿL".characterComponents.defaultShiftGesture, "l↑l←↑")
+    }
 }

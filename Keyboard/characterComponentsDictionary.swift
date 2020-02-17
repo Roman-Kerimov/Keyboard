@@ -780,8 +780,8 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ľ": [.combined],
 
     //013F          ; LATIN CAPITAL LETTER L WITH MIDDLE DOT
-    "ĿL": [.l, .l, .capital, .capital],
-    "Ŀl": [.l, .l, .capital],
+    "ĿL": [.l, .capital, .l, .capital],
+    "Ŀl": [.l, .capital, .l],
 
     //0140          ; LATIN SMALL LETTER L WITH MIDDLE DOT
     "ŀl": [.l, .l],

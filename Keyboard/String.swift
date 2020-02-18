@@ -100,26 +100,6 @@ extension String {
         return regularExpression.numberOfMatches(in: self, options: [], range: .init(location: 0, length: count)) != 0
     }
     
-    func textHeightFrom(width: CGFloat, fontName: String = "System Font", fontSize: CGFloat = .systemFontSize) -> CGFloat {
-        
-        #if canImport(UIKit)
-        
-        let text: UILabel = .init()
-        text.text = self
-        text.numberOfLines = 0
-        
-        #elseif canImport(AppKit)
-        
-        let text: NSTextField = .init(string: self)
-        text.font = NSFont.init(name: fontName, size: fontSize)
-        
-        #endif
-        
-        text.font = Font.init(name: fontName, size: fontSize)
-        text.lineBreakMode = .byWordWrapping
-        return text.sizeThatFits(CGSize.init(width: width, height: .infinity)).height
-    }
-    
     var previewDescription: String {
         if unicodeScalars.first?.properties.isGraphemeExtend == true {
             

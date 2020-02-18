@@ -36,8 +36,6 @@ struct GuideNavigationView: View {
             }
             .listStyle(GroupedListStyle())
             .navigationBarTitle(Bundle.main.productName)
-            
-            InterfaceLanguageList()
         }
         .padding(.horizontal, (horizontalSizeClass, verticalSizeClass) == (.regular, .regular) ? 1 : 0)
     }

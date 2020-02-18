@@ -155,10 +155,11 @@ class UnicodeData: NSPersistentContainer {
         }
     }
     
-    func addCharacterCollection(language: String, keyboardIntersection: [String]) {
+    func createCharacterCollection(language: String) -> ManagedCharacterCollection {
         let characterCollection = ManagedCharacterCollection(context: backgroundContext)
         characterCollection.language = language
-        characterCollection.keyboardIntersection = keyboardIntersection
+
+        return characterCollection
     }
     
     private func characterCollection(language: String) -> CharacterCollection? {

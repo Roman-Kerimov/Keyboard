@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="ManagedCharacterCollection" representedClassName="ManagedCharacterCollection" syncable="YES" codeGenerationType="class">
+        <attribute name="auxiliary" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="[String]"/>
+        <attribute name="index" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="[String]"/>
         <attribute name="keyboardIntersection" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="[String]"/>
         <attribute name="language" optional="YES" attributeType="String"/>
+        <attribute name="main" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="[String]"/>
+        <attribute name="numbers" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="[String]"/>
+        <attribute name="punctuation" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="[String]"/>
     </entity>
     <entity name="ManagedUnicodeItem" representedClassName="ManagedUnicodeItem" syncable="YES" codeGenerationType="class">
         <attribute name="annotation" optional="YES" attributeType="String"/>
@@ -19,7 +24,7 @@
         <attribute name="string" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="ManagedCharacterCollection" positionX="160" positionY="192" width="128" height="73"/>
+        <element name="ManagedCharacterCollection" positionX="160" positionY="192" width="128" height="148"/>
         <element name="ManagedUnicodeItem" positionX="-63" positionY="-18" width="128" height="163"/>
         <element name="ManagedWord" positionX="-63" positionY="27" width="128" height="73"/>
     </elements>

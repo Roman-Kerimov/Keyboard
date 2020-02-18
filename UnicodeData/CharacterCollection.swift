@@ -24,9 +24,10 @@ struct CharacterCollection: Identifiable, Equatable {
         locale.localizedString(forIdentifier: language) ?? language
     }
     
-    var keyboardIntersection: [String] {managed.keyboardIntersection!}
+    var main: [String]? {managed.main}
+    var keyboardIntersection: [String]? {managed.keyboardIntersection}
     
     var characters: [String] {
-        return keyboardIntersection.filter({$0.count != 1 || !Character($0).isASCII})
+        return (main ?? keyboardIntersection ?? []).filter({$0.count != 1 || !Character($0).isASCII})
     }
 }

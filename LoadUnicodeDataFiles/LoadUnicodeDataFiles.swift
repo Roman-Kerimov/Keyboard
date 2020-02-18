@@ -13,6 +13,7 @@ class LoadUnicodeDataFiles: Operation {
     let commentMarker: Character = "#"
     
     static var ordersByCodePoints: [String: Int] = [:]
+    static var characterCollectionsByLocale: [String: ManagedCharacterCollection] = [:]
     
     private lazy var sqLiteSourceURL = UnicodeData.default.persistentStoreDescriptions.first!.url!
     private lazy var sqLiteTargetURL = URL(fileURLWithPath: CommandLine.arguments[1]).appendingPathComponent(UnicodeData.default.name).appendingPathExtension(sqLiteSourceURL.pathExtension)
@@ -208,21 +209,22 @@ class LoadUnicodeDataFiles: Operation {
                 for (language, keyboardIntersectionSet) in KeyboardXMLParser.keyboardIntersectionSets {
                     let locale = Locale(identifier: language)
                     
-                    UnicodeData.default.addCharacterCollection(
-                        language: language,
-                        keyboardIntersection: keyboardIntersectionSet.sorted {
-                            switch $0.compare($1, options: [.caseInsensitive], range: nil, locale: locale) {
-                            case .orderedAscending:
-                                return true
-                                
-                            case .orderedDescending:
-                                return false
-                                
-                            case .orderedSame:
-                                return $0.first?.isUppercase == true
-                            }
+                    if LoadUnicodeDataFiles.characterCollectionsByLocale[language] == nil {
+                        LoadUnicodeDataFiles.characterCollectionsByLocale[language] = UnicodeData.default.createCharacterCollection(language: language)
+                    }
+                    
+                    LoadUnicodeDataFiles.characterCollectionsByLocale[language]?.keyboardIntersection = keyboardIntersectionSet.sorted {
+                        switch $0.compare($1, options: [.caseInsensitive], range: nil, locale: locale) {
+                        case .orderedAscending:
+                            return true
+                            
+                        case .orderedDescending:
+                            return false
+                            
+                        case .orderedSame:
+                            return $0.first?.isUppercase == true
                         }
-                    )
+                    }
                 }
             }
         }

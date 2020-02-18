@@ -22,6 +22,9 @@ class MainXMLParser: XMLParser {
     private var subdivision: String = ""
     private var subdivisionNames: [String: String] = [:]
     static var subdivisions: [String: [String: String]] = [:]
+    
+    private var exemplarCharactersType: String = ""
+    private var charactersDictionary: [String: [String]] = [:]
 }
 
 extension MainXMLParser: XMLParserDelegate {
@@ -33,6 +36,9 @@ extension MainXMLParser: XMLParserDelegate {
         switch elementName {
         case "subdivision":
             subdivision = attributeDict["type"]!
+            
+        case "exemplarCharacters":
+            exemplarCharactersType = attributeDict["type"] ?? "main"
             
         case "identity":
             isIdentity = true
@@ -69,6 +75,52 @@ extension MainXMLParser: XMLParserDelegate {
             
         case "subdivisions":
             Self.subdivisions[locale] = subdivisionNames
+            
+        case "exemplarCharacters":
+            
+            func removeCurlyBracket1(text: String) -> String {
+                var letter = text
+                
+                if letter.hasPrefix("{") {
+                    letter.removeFirst()
+                    
+                    if let index = letter.firstIndex(of: "}") {
+                        letter.remove(at: index)
+                    }
+                }
+                
+                return letter
+            }
+            
+            func removeCurlyBracket2(text: String) -> String {
+                var letter = text
+
+                if letter.hasSuffix("}") {
+                    letter.removeLast()
+
+                    if let index = letter.lastIndex(of: "{") {
+                        letter.remove(at: index)
+                    }
+                }
+
+                return letter
+            }
+            
+            charactersDictionary[exemplarCharactersType] = text.dropFirst().dropLast()
+                .components(separatedBy: .whitespaces)
+                .map(removeCurlyBracket1(text:))
+                .map(removeCurlyBracket2(text:))
+                .map {$0.applyingTransform(.init("Hex-Any"), reverse: false)!}
+                .map {$0.hasPrefix("\\") ? String($0.dropFirst()) : $0}
+            
+        case "characters":
+            let characterCollection = UnicodeData.default.createCharacterCollection(language: locale)
+            
+            charactersDictionary.forEach { (type, characters) in
+                characterCollection.setValue(characters, forKey: type)
+            }
+            
+            LoadUnicodeDataFiles.characterCollectionsByLocale[locale] = characterCollection
             
         case "identity":
             isIdentity = false

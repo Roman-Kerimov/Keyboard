@@ -323,7 +323,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "¦": [.verticalLine, .broken],
 
     //00A7          ; SECTION SIGN
-    "§": [],
+    "§": [.s, .s, .extraDown],
 
     //00A8          ; DIAERESIS
     "¨": [.diaeresis, .superscript],

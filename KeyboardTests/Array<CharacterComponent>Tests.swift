@@ -115,4 +115,8 @@ class Array_CharacterComponent_Tests: XCTestCase {
         XCTAssertEqual("Ŀl".characterComponents.defaultShiftGesture, "l↑l←")
         XCTAssertEqual("ĿL".characterComponents.defaultShiftGesture, "l↑l←↑")
     }
+    
+    func testExtraDownShiftGesture() {
+        XCTAssertEqual("§".characterComponents.defaultShiftGesture, "ss←↓")
+    }
 }

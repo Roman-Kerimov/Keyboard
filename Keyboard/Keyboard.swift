@@ -257,6 +257,8 @@ final class Keyboard {
         else {
             characterComponents = .init(characterComponents.split(separator: .capital, maxSplits: 1, omittingEmptySubsequences: false).joined(separator: [.smallCapital]))
         }
+        
+        characterComponents += [.extraDown]
     }
     
     internal func shift(direction: ShiftDirection) {

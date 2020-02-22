@@ -131,7 +131,6 @@ extension Array where Element == CharacterComponent {
                 shiftGestureComponent = "↑↓"
                 
             case .superscript, .extraUpRight:
-                
                 shiftGestureComponent = "↗︎"
                 
             case .extraRight:
@@ -146,9 +145,7 @@ extension Array where Element == CharacterComponent {
             case .extraDownLeft:
                 shiftGestureComponent = "↙︎"
                 
-                
             case .extraLeft:
-                
                 shiftGestureComponent = "←"
                 
             case .extraUpLeft:

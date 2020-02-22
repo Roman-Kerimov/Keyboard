@@ -33,6 +33,7 @@ struct CharacterGestureRow: View {
             
             TextField("", text: textBinding)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
+                .id(character)
         }
     }
     

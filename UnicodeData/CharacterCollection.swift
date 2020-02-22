@@ -25,9 +25,16 @@ struct CharacterCollection: Identifiable, Equatable {
     }
     
     var main: [String]? {managed.main}
+    var punctuation: [String]? {managed.punctuation}
     var keyboardIntersection: [String]? {managed.keyboardIntersection}
     
-    var characters: [String] {
-        return (main ?? keyboardIntersection ?? []).filter({$0.count != 1 || !Character($0).isASCII})
+    var characterSections: [[String]] {
+        return [
+            main ?? keyboardIntersection,
+            punctuation,
+        ]
+        .compactMap {$0}
+        .map { $0.filter({$0.count != 1 || !Character($0).isASCII}) }
+        .filter {!$0.isEmpty}
     }
 }

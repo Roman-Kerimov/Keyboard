@@ -9,13 +9,20 @@ import SwiftUI
  
 @available(iOS 13.0, *)
 struct CharacterGestureList: View {
-    let characters: [String]
+    let characterSections: [[String]]
     let languageCode: String
     
     var body: some View {
-        List(characters, id: \.self) { (character) in
-            CharacterGestureRow(character: character, languageCode: self.languageCode).id(character)
+        List {
+            ForEach(characterSections, id: \.self) { (characters) in
+                Section {
+                    ForEach(characters, id: \.self) { (character) in
+                        CharacterGestureRow(character: character, languageCode: self.languageCode)
+                    }
+                }
+            }
         }
+        .listStyle(GroupedListStyle())
         .modifier(SoftwareKeyboardSupportViewModifier())
     }
 }

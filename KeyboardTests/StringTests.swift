@@ -48,4 +48,8 @@ class StringTests: XCTestCase {
         XCTAssertEqual("↖︎".defaultShiftGesture, "/→<←")
         XCTAssertEqual("ŀl".defaultShiftGesture, "ll←")
     }
+    
+    func testPreviewDescription() {
+        XCTAssertEqual("̈".previewDescription, "◌̈")
+    }
 }

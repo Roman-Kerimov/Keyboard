@@ -191,7 +191,12 @@ extension Array where Element == CharacterComponent {
                 }
             }
             
-            shiftGesture.append(shiftGestureComponent)
+            if shiftGesture.hasSuffix("←") && component == .capital {
+                shiftGesture.insert(contentsOf: shiftGestureComponent, at: shiftGesture.lastIndex(of: "←")!)
+            }
+            else {
+                shiftGesture.append(shiftGestureComponent)
+            }
         }
         
         return shiftGesture

@@ -21,6 +21,12 @@ class KeyTests: XCTestCase {
     func testShiftDownLabel() {
         XCTAssertEqual(Key.by(shiftDownLabelCharacter: "#")?.shiftDownLabel, "#№")
         XCTAssertEqual(Key.by(shiftDownLabelCharacter: "$")?.shiftDownLabel, "$₿")
+        
+        XCTAssertEqual(Key.by(shiftDownLabelCharacter: "{")?.shiftDownLabel, "{}")
+        XCTAssertEqual(Key.by(shiftDownLabelCharacter: "[")?.shiftDownLabel, "[]")
+        XCTAssertEqual(Key.by(shiftDownLabelCharacter: "(")?.shiftDownLabel, "()")
+        XCTAssertEqual(Key.by(shiftDownLabelCharacter: "<")?.shiftDownLabel, "<>")
+        XCTAssertEqual(Key.by(shiftDownLabelCharacter: "/")?.shiftDownLabel, "/\\")
     }
 
 }

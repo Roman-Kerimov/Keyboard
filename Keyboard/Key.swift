@@ -118,8 +118,9 @@ final class Key: Identifiable {
     var shiftDownLabel: String {
         
         let shiftDownCharacterComponent = KeyboardLayout.option.characterComponent(fromKeycode: keycode)
+        let extraRightCharacter = [KeyboardLayout.shiftRightDictionary[shiftDownCharacterComponent]].compactMap({$0}).character
         
-        return [shiftDownCharacterComponent].character + [shiftDownCharacterComponent].extraArray.filter {$0.contains(.extra0) || $0.contains(.extra1) || $0.contains(.extra2)} .map {$0.character} .joined()
+        return [shiftDownCharacterComponent].character + extraRightCharacter + [shiftDownCharacterComponent].extraArray.filter {$0.contains(.extra0) || $0.contains(.extra1) || $0.contains(.extra2) || $0.contains(.reversed)} .map {$0.character} .joined()
     }
     
     var shiftUpLabel: String {

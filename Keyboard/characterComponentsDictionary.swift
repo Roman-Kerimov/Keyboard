@@ -350,7 +350,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "¯": [],
 
     //00B0          ; DEGREE SIGN
-    "°": [],
+    "°": [.degree],
 
     //00B1          ; PLUS-MINUS SIGN
     "±": [.plusSign, .minusSign],
@@ -5646,7 +5646,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ℂ": [.c, .capital, .doubleStruck],
 
     //2103          ; DEGREE CELSIUS
-    "℃": [],
+    "℃": [.degree, .c, .capital],
 
     //2104          ; CENTRE LINE SYMBOL
     "℄": [],
@@ -5664,7 +5664,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "℈": [],
 
     //2109          ; DEGREE FAHRENHEIT
-    "℉": [],
+    "℉": [.degree, .f, .capital],
 
     //210A          ; SCRIPT SMALL G
     "ℊ": [.g, .script],

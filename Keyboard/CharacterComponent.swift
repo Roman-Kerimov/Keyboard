@@ -39,6 +39,7 @@ enum CharacterComponent: String, CaseIterable {
     case multiplicationSign
     case divisionSign
     
+    case degree
     case egyptologialAlef, egyptologicalAin
     case glottalStop, ain, saltillo, sinologicalDot
     case interrobang

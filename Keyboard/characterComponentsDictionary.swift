@@ -5234,22 +5234,22 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "‱": [.percentSign, .percentSign, .percentSign],
 
     //2032          ; PRIME
-    "′": [],
+    "′": [.prime],
 
     //2033          ; DOUBLE PRIME
-    "″": [],
+    "″": [.prime, .doubled],
 
     //2034          ; TRIPLE PRIME
-    "‴": [],
+    "‴": [.prime, .tripled],
 
     //2035          ; REVERSED PRIME
-    "‵": [],
+    "‵": [.prime, .reversed],
 
     //2036          ; REVERSED DOUBLE PRIME
-    "‶": [],
+    "‶": [.prime, .doubled, .reversed],
 
     //2037          ; REVERSED TRIPLE PRIME
-    "‷": [],
+    "‷": [.prime, .tripled, .reversed],
 
     //2038          ; CARET
     "‸": [.caret, .subscript],
@@ -5345,7 +5345,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⁖": [],
 
     //2057          ; QUADRUPLE PRIME
-    "⁗": [],
+    "⁗": [.prime, .quadrupled],
 
     //2058          ; FOUR DOT PUNCTUATION
     "⁘": [],

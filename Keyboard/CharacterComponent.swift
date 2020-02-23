@@ -126,8 +126,9 @@ enum CharacterComponent: String, CaseIterable {
         .tilde: .space,
     ]
     
-    static let replaces: [CharacterComponent: CharacterComponent] = [
-        .closed: .ring,
+    static let replaces: [CharacterComponent: [CharacterComponent]] = [
+        .closed: [.ring],
+        .interrobang: [.exclamationMark, .extraDown],
     ]
     
     case letterScript

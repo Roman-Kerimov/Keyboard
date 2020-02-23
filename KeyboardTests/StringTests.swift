@@ -39,6 +39,11 @@ class StringTests: XCTestCase {
         XCTAssertEqual("≬".defaultShiftGesture, "((→←")
     }
     
+    func testDefaultShiftGesturesForInterrobang() {
+        XCTAssertEqual("‽".defaultShiftGesture, "!↓")
+        XCTAssertEqual("⸘".defaultShiftGesture, "!↓→")
+    }
+    
     func testTypingDescription() {
         XCTAssertEqual("Я".typingDescription(languageCode: "ru"), "y↑a ru")
         XCTAssertEqual("ß".typingDescription(languageCode: "ru"), "ss←")

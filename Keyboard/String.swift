@@ -66,7 +66,7 @@ extension String {
     }
     
     var characterComponents: [CharacterComponent] {
-        return characterComponentsDictionary[self]?.map {CharacterComponent.replaces[$0] ?? $0} ?? .init()
+        return characterComponentsDictionary[self]?.flatMap {CharacterComponent.replaces[$0] ?? [$0]} ?? .init()
     }
     
     func removing(characterComponents: Set<CharacterComponent>) -> String {

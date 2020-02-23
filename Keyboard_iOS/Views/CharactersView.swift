@@ -14,7 +14,7 @@ struct CharactersView: View {
     
     var body: some View {
         characters
-            .map {Text($0).foregroundColor($0.typingDescription(languageCode: languageCode) == nil ? .red : .secondary)}
+            .map {Text($0.previewDescription).foregroundColor($0.typingDescription(languageCode: languageCode) == nil ? .red : .secondary)}
             .map {$0 + Text(" ")}
             .reduce(Text(""), +)
             .font(.caption)

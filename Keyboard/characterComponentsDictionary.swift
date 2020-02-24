@@ -7876,7 +7876,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⹂": [.quotationMark, .extraDownLeft, .reversed],
 
     //2E43          ; DASH WITH LEFT UPTURN
-    "⹃": [],
+    "⹃": [.hyphen, .m, .extra0],
 
     //2E44          ; DOUBLE SUSPENSION MARK
     "⹄": [],

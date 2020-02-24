@@ -121,6 +121,7 @@ enum CharacterComponent: String, CaseIterable {
         .n: .tilde,
         .comma: .ejective,
         .fullStop: .dot,
+        .w: .nonBreaking,
         
         // block tilde diacritic from tilde
         .tilde: .space,

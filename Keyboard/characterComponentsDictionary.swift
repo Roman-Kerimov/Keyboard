@@ -7867,7 +7867,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⸿": [],
 
     //2E40          ; DOUBLE HYPHEN
-    "⹀": [.hyphen, .doubled],
+    "⹀": [.hyphen, .hyphen],
 
     //2E41          ; REVERSED COMMA
     "⹁": [.comma, .reversed],

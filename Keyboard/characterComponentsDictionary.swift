@@ -7852,7 +7852,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⸺": [.hyphen, .m, .doubled],
 
     //2E3B          ; THREE-EM DASH
-    "⸻": [.hyphen, .m, .doubled, .m],
+    "⸻": [.hyphen, .m, .tripled],
 
     //2E3C          ; STENOGRAPHIC FULL STOP
     "⸼": [],

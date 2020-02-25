@@ -134,6 +134,7 @@ enum CharacterComponent: String, CaseIterable {
         .prime: [.solidus, .extraUpRight],
         .ellipsis: [.fullStop, .fullStop],
         .middle: [.extra0],
+        .raised: [.extra1],
     ]
     
     case letterScript

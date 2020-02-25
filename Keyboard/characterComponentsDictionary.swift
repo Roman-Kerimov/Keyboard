@@ -371,7 +371,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "¶": [],
 
     //00B7          ; MIDDLE DOT
-    "·": [.dot, .middle],
+    "·": [.fullStop, .middle],
 
     //00B8          ; CEDILLA
     "¸": [.cedilla],
@@ -7828,7 +7828,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⸲": [.comma, .turned],
 
     //2E33          ; RAISED DOT
-    "⸳": [.dot, .raised],
+    "⸳": [.fullStop, .raised],
 
     //2E34          ; RAISED COMMA
     "⸴": [.comma, .raised],

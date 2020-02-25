@@ -62,6 +62,11 @@ class StringTests: XCTestCase {
         XCTAssertEqual("⋱".defaultShiftGesture, "..←→↓←→")
     }
     
+    func testDefaultShiftGestureForMiddleAndRaisedDots() {
+        XCTAssertEqual("·".defaultShiftGesture, ".→")
+        XCTAssertEqual("⸳".defaultShiftGesture, ".→↓")
+    }
+    
     func testPreviewDescription() {
         XCTAssertEqual("̈".previewDescription, "◌̈")
     }

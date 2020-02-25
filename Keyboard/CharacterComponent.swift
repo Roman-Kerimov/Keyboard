@@ -8,7 +8,7 @@
 import Foundation
 
 enum CharacterComponent: String, CaseIterable {
-    private static let commutative: Set<CharacterComponent> = Set.init([.capital, .smallCapital, .superscript, .subscript, .above, .below, .extraUpLeft, .extraLeft, .extraDownLeft, .extraUpRight, .extraRight, .extraDownRight, .extraDown] + extraComponents + letterToMixingComponentDictionary.values.filter {![.extraH, .tilde, .ring].contains($0)}).union(scripts)
+    private static let commutative: Set<CharacterComponent> = Set.init([.capital, .smallCapital, .superscript, .subscript, .above, .below] + extraComponents + letterToMixingComponentDictionary.values.filter {![.extraH, .tilde, .ring].contains($0)}).union(scripts)
     
     public var isCommutative: Bool {
         return CharacterComponent.commutative.contains(self)
@@ -41,6 +41,7 @@ enum CharacterComponent: String, CaseIterable {
     
     case degree
     case prime
+    case ellipsis
     case egyptologialAlef, egyptologicalAin
     case glottalStop, ain, saltillo, sinologicalDot
     case interrobang
@@ -131,6 +132,7 @@ enum CharacterComponent: String, CaseIterable {
         .closed: [.ring],
         .interrobang: [.exclamationMark, .extraDown],
         .prime: [.solidus, .extraUpRight],
+        .ellipsis: [.fullStop, .fullStop],
     ]
     
     case letterScript

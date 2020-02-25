@@ -5211,7 +5211,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "‥": [],
 
     //2026          ; HORIZONTAL ELLIPSIS
-    "…": [],
+    "…": [.ellipsis],
 
     //2027          ; HYPHENATION POINT
     "‧": [.hyphen, .fullStop],
@@ -6748,16 +6748,16 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⋭": [.combined],
 
     //22EE          ; VERTICAL ELLIPSIS
-    "⋮": [],
+    "⋮": [.ellipsis, .extra1],
 
     //22EF          ; MIDLINE HORIZONTAL ELLIPSIS
-    "⋯": [],
+    "⋯": [.ellipsis, .extra0],
 
     //22F0          ; UP RIGHT DIAGONAL ELLIPSIS
-    "⋰": [],
+    "⋰": [.ellipsis, .extra2],
 
     //22F1          ; DOWN RIGHT DIAGONAL ELLIPSIS
-    "⋱": [],
+    "⋱": [.ellipsis, .extra2, .extraRight],
 
     //22F2          ; ELEMENT OF WITH LONG HORIZONTAL STROKE
     "⋲": [],

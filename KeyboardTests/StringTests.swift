@@ -54,6 +54,14 @@ class StringTests: XCTestCase {
         XCTAssertEqual("ŀl".defaultShiftGesture, "ll←")
     }
     
+    func testDefaultShiftGesturesForEllipsisCharacters() {
+        XCTAssertEqual("…".defaultShiftGesture, "..←")
+        XCTAssertEqual("⋯".defaultShiftGesture, "..←→")
+        XCTAssertEqual("⋮".defaultShiftGesture, "..←→↓")
+        XCTAssertEqual("⋰".defaultShiftGesture, "..←→↓←")
+        XCTAssertEqual("⋱".defaultShiftGesture, "..←→↓←→")
+    }
+    
     func testPreviewDescription() {
         XCTAssertEqual("̈".previewDescription, "◌̈")
     }

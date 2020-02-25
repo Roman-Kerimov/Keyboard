@@ -133,6 +133,7 @@ enum CharacterComponent: String, CaseIterable {
         .interrobang: [.exclamationMark, .extraDown],
         .prime: [.solidus, .extraUpRight],
         .ellipsis: [.fullStop, .fullStop],
+        .middle: [.extra0],
     ]
     
     case letterScript

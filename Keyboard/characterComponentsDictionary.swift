@@ -5282,7 +5282,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⁁": [.caret, .diagonalStroke, .subscript],
 
     //2042          ; ASTERISM
-    "⁂": [],
+    "⁂": [.asterisk, .tripled],
 
     //2043          ; HYPHEN BULLET
     "⁃": [],

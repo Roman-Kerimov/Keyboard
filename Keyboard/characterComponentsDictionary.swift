@@ -2087,7 +2087,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "˭": [.unaspirated, .superscript],
 
     //02EE          ; MODIFIER LETTER DOUBLE APOSTROPHE
-    "ˮ": [.comma, .doubled, .superscript],
+    "ˮ": [.comma, .superscript, .doubled],
 
     //02EF          ; MODIFIER LETTER LOW DOWN ARROWHEAD
     "˯": [.arrowhead, .down, .subscript],
@@ -7240,10 +7240,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⪐": [.greaterThanSign, .tilde, .lessThanSign],
 
     //2A91          ; LESS-THAN ABOVE GREATER-THAN ABOVE DOUBLE-LINE EQUAL
-    "⪑": [.lessThanSign, .greaterThanSign, .equalsSign, .doubled],
+    "⪑": [.lessThanSign, .greaterThanSign, .equalsSign],
 
     //2A92          ; GREATER-THAN ABOVE LESS-THAN ABOVE DOUBLE-LINE EQUAL
-    "⪒": [.greaterThanSign, .lessThanSign, .equalsSign, .doubled],
+    "⪒": [.greaterThanSign, .lessThanSign, .equalsSign],
 
     //2A93          ; LESS-THAN ABOVE SLANTED EQUAL ABOVE GREATER-THAN ABOVE SLANTED EQUAL
     "⪓": [.lessThanSign, .equalsSign, .greaterThanSign, .equalsSign],
@@ -7282,10 +7282,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⪞": [.tilde, .greaterThanSign],
 
     //2A9F          ; SIMILAR ABOVE LESS-THAN ABOVE EQUALS SIGN
-    "⪟": [.tilde, .lessThanSign, .equalsSign, .doubled],
+    "⪟": [.tilde, .lessThanSign, .equalsSign],
 
     //2AA0          ; SIMILAR ABOVE GREATER-THAN ABOVE EQUALS SIGN
-    "⪠": [.tilde, .greaterThanSign, .equalsSign, .doubled],
+    "⪠": [.tilde, .greaterThanSign, .equalsSign],
 
     //2AA1          ; DOUBLE NESTED LESS-THAN
     "⪡": [.lessThanSign, .doubled],

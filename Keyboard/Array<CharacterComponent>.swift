@@ -124,7 +124,7 @@ extension Array where Element == CharacterComponent {
             let shiftGestureComponent: String
             
             switch component {
-            case .capital:
+            case .capital, .doubled:
                 shiftGestureComponent = "↑"
                 
             case .smallCapital:

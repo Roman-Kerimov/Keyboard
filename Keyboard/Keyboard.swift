@@ -235,7 +235,11 @@ final class Keyboard {
             currentLabel = key.shiftUpLabel
         }
         else {
-            characterComponents += [.capital]
+            characterComponents += [.doubled]
+            
+            if !characterComponents.contains(.doubled) {
+                characterComponents += [.capital]
+            }
             
             if characterComponents.count == 1 {
                 if let shiftUpCharacterComponent = KeyboardLayout.shiftUpDictionary[characterComponents.first!] {

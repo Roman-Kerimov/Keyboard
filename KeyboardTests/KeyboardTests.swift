@@ -195,6 +195,20 @@ class KeyboardTests: XCTestCase, KeyboardDelegate {
         
         XCTAssertEqual(document, "≍")
     }
+    
+    func testOhmSign() {
+        let o: Key = .by(labelCharacter: "o")!
+        Keyboard.default.down(key: o)
+        Keyboard.default.shift(direction: .up)
+        Keyboard.default.up(key: o)
+        
+        let m: Key = .by(labelCharacter: "m")!
+        Keyboard.default.down(key: m)
+        Keyboard.default.shift(direction: .left)
+        Keyboard.default.up(key: m)
+        
+        XCTAssertEqual(document.unicodeScalars.first?.value, 0x2126)
+    }
 
     func testScriptTransformation() {
         let cyrillicText = "Съешь же ещё этих мягких французских булок, да выпей чаю."

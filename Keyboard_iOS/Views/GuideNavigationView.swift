@@ -17,6 +17,17 @@ struct GuideNavigationView: View {
     var body: some View {
         NavigationView {
             List {
+                Section(header: Text(LANGUAGES.uppercasedString)) {
+                    ForEach(UnicodeData.default.preferredCharacterCollections(maxCount: 3)) { (characterCollection) in
+                        LanguageCharactersRow(characterCollection: characterCollection)
+                    }
+                    
+                    NavigationLink(destination: LanguageCharactersList()) {
+                        Text(OTHER_LANGUAGES.string)
+                            .foregroundColor(.accentColor)
+                    }
+                }
+                
                 Section(header: Text(SETTINGS.uppercasedString)) {
                     InterfaceLanguagePicker()
                 }
@@ -25,8 +36,6 @@ struct GuideNavigationView: View {
             }
             .listStyle(GroupedListStyle())
             .navigationBarTitle(Bundle.main.productName)
-            
-            InterfaceLanguageList()
         }
         .padding(.horizontal, (horizontalSizeClass, verticalSizeClass) == (.regular, .regular) ? 1 : 0)
     }

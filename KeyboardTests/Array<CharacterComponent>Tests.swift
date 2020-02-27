@@ -80,7 +80,8 @@ class Array_CharacterComponent_Tests: XCTestCase {
         XCTAssertEqual("ₐ".characterComponents.defaultShiftGesture, "a↘︎")
         XCTAssertEqual("æ".characterComponents.defaultShiftGesture, "ae←")
         XCTAssertEqual("ǈ".characterComponents.defaultShiftGesture, "l↑j←")
-        XCTAssertEqual("Ǉ".characterComponents.defaultShiftGesture, "l↑j←↑")
+        XCTAssertEqual("Ǉ".characterComponents.defaultShiftGesture, "l↑j↑←")
+        XCTAssertEqual("℃".characterComponents.defaultShiftGesture, "@→c↑←")
         XCTAssertEqual("ꟹ".characterComponents.defaultShiftGesture, "oe←↗︎")
         XCTAssertEqual("ʂ".characterComponents.defaultShiftGesture, "st←")
         XCTAssertEqual("ﬆ".characterComponents.defaultShiftGesture, "st←→")
@@ -109,5 +110,14 @@ class Array_CharacterComponent_Tests: XCTestCase {
     
     func testDefaultShiftGestureForCyrillicLetters() {
         XCTAssertEqual("Я".characterComponents.defaultShiftGesture, nil)
+    }
+    
+    func testDefaultShiftGestureForĿL() {
+        XCTAssertEqual("Ŀl".characterComponents.defaultShiftGesture, "l↑l←")
+        XCTAssertEqual("ĿL".characterComponents.defaultShiftGesture, "l↑l↑←")
+    }
+    
+    func testExtraDownShiftGesture() {
+        XCTAssertEqual("§".characterComponents.defaultShiftGesture, "ss←↓")
     }
 }

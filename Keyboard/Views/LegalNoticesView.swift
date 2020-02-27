@@ -12,13 +12,9 @@ struct LegalNoticesView : View {
     @EnvironmentObject var locale: Locale
     
     var body: some View {
-        GeometryReader { geometry in
-            ScrollView {
-                Text(legalNotices)
-                    .lineLimit(nil)
-                    .font(.custom(.legalTextFontName, size: .legalTextFontSize))
-                    .frame(width: geometry.size.width, height: legalNotices.textHeightFrom(width: geometry.size.width, fontName: .legalTextFontName, fontSize: .legalTextFontSize))
-            }
+        ScrollView {
+            Text(legalNotices)
+                .font(.custom(.legalTextFontName, size: .legalTextFontSize))
         }
         .padding(.horizontal, 0.5 * .legalTextFontSize)
         .navigationBarTitle(Text(LEGAL_NOTICES.string), displayMode: .inline)

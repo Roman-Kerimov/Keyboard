@@ -79,6 +79,23 @@ class UnicodeData: NSPersistentContainer {
             : "\u{1F3F4}" + regionCode.unicodeScalars.map {Unicode.Scalar($0.value + 0xE0000)?.description ?? "_"} .joined() + "\u{E007F}"
     }
     
+    func regionCode(flagCodePoints: String) -> String? {
+        let unicodeScalars = flagCodePoints.unicodeScalars
+        
+        if unicodeScalars.count == 2, unicodeScalars.reduce(true, {$0 && CharacterSet(charactersIn: "🇦"..."🇿").contains($1)}) {
+            return unicodeScalars.map {Unicode.Scalar($0.value - 0x1F1A5)!.description} .joined()
+        }
+        else if unicodeScalars.count > 4, unicodeScalars.first == "\u{1F3F4}", unicodeScalars.last == "\u{E007F}" {
+            let subdivisionCode: String = unicodeScalars.dropFirst().dropLast().map {Unicode.Scalar($0.value - 0xE0000)?.description ?? "_"} .joined()
+            
+            if subdivisionCode.unicodeScalars.reduce(true, {$0 && $1.isASCII && ($1.properties.isLowercase || $1.properties.generalCategory == .decimalNumber)}) {
+                return subdivisionCode
+            }
+        }
+        
+        return nil
+    }
+    
     func flagItem(regionCode: String, language: String) -> UnicodeItem? {
         return item(codePoints: flagCodePoints(regionCode: regionCode), language: language)
     }
@@ -138,6 +155,50 @@ class UnicodeData: NSPersistentContainer {
         }
     }
     
+    func createCharacterCollection(language: String) -> ManagedCharacterCollection {
+        let characterCollection = ManagedCharacterCollection(context: backgroundContext)
+        characterCollection.language = language
+
+        return characterCollection
+    }
+    
+    private func characterCollection(language: String) -> CharacterCollection? {
+        let fetchRequest: NSFetchRequest<ManagedCharacterCollection> = ManagedCharacterCollection.fetchRequest()
+        
+        fetchRequest.predicate = .init(format: languageQuery(language: language))
+        return try! backgroundContext.fetch(fetchRequest)
+            .map {CharacterCollection(managed: $0)}
+            .max {$0.id.count < $1.id.count}
+    }
+    
+    func characterCollections() -> [CharacterCollection] {
+        let fetchRequest: NSFetchRequest<ManagedCharacterCollection> = ManagedCharacterCollection.fetchRequest()
+        fetchRequest.sortDescriptors = [.init(key: "language", ascending: true)]
+
+        return try! backgroundContext.fetch(fetchRequest).map({CharacterCollection(managed: $0)}).filter {!$0.characterSections.isEmpty}
+    }
+    
+    func preferredCharacterCollections(maxCount: Int = 100) -> [CharacterCollection] {
+
+        var preferredCharacterCollections: [CharacterCollection] = []
+
+        for language in Foundation.Locale.preferredLanguages + ["es", "fr", "de"] {
+            guard let characterCollection = characterCollection(language: language), !characterCollection.characterSections.isEmpty else {
+                continue
+            }
+
+            if !preferredCharacterCollections.contains(characterCollection) {
+                preferredCharacterCollections.append(characterCollection)
+            }
+
+            if preferredCharacterCollections.count == maxCount {
+                break
+            }
+        }
+
+        return preferredCharacterCollections
+    }
+    
     lazy var itemCount: Int = try! backgroundContext.count(for: ManagedUnicodeItem.fetchRequest())
     
     private let backgroudOperationQueue: OperationQueue = .init()
@@ -185,14 +246,18 @@ class UnicodeData: NSPersistentContainer {
     }
         
     func resetPersistentStore() {
+        let wal = "-wal"
+        
         let storeURLs = persistentStoreDescriptions.compactMap {$0.url}
         storeURLs.forEach { (storeURL) in
             try? persistentStoreCoordinator.destroyPersistentStore(at: storeURL, ofType: NSSQLiteStoreType, options: nil)
             try? FileManager.default.removeItem(at: storeURL)
+            try? FileManager.default.removeItem(atPath: storeURL.path + wal)
         }
         
         if let sqLiteURL = sqLiteURL {
             try! FileManager.default.copyItem(at: sqLiteURL, to: storeURLs.first!)
+            try! FileManager.default.copyItem(atPath: sqLiteURL.path + wal, toPath: storeURLs.first!.path + wal)
         }
         
         loadPersistentStore()

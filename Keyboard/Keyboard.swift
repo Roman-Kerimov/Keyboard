@@ -235,7 +235,11 @@ final class Keyboard {
             currentLabel = key.shiftUpLabel
         }
         else {
-            characterComponents += [.capital]
+            characterComponents += [.doubled]
+            
+            if !characterComponents.contains(.doubled) {
+                characterComponents += [.capital]
+            }
             
             if characterComponents.count == 1 {
                 if let shiftUpCharacterComponent = KeyboardLayout.shiftUpDictionary[characterComponents.first!] {
@@ -257,6 +261,8 @@ final class Keyboard {
         else {
             characterComponents = .init(characterComponents.split(separator: .capital, maxSplits: 1, omittingEmptySubsequences: false).joined(separator: [.smallCapital]))
         }
+        
+        characterComponents += [.extraDown]
     }
     
     internal func shift(direction: ShiftDirection) {
@@ -422,8 +428,10 @@ final class Keyboard {
             }
         }
         
-        if delegate?.documentContext.beforeInput?.last?.description == previousLabel {
-            delegate?.delete()
+        if  previousLabel.hasSuffix(delegate?.documentContext.beforeInput?.last?.description ?? "") {
+            previousLabel.forEach { (_) in
+                delegate?.delete()
+            }
         }
         
         input()

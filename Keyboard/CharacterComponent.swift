@@ -8,7 +8,7 @@
 import Foundation
 
 enum CharacterComponent: String, CaseIterable {
-    private static let commutative: Set<CharacterComponent> = Set.init([.capital, .smallCapital, .superscript, .subscript, .above, .below, .extraUpLeft, .extraLeft, .extraDownLeft, .extraUpRight, .extraRight, .extraDownRight] + extraComponents + letterToMixingComponentDictionary.values.filter {![.extraH, .tilde, .ring].contains($0)}).union(scripts)
+    private static let commutative: Set<CharacterComponent> = Set.init([.capital, .smallCapital, .superscript, .subscript, .above, .below] + extraComponents + letterToMixingComponentDictionary.values.filter {![.extraH, .tilde, .ring].contains($0)}).union(scripts)
     
     public var isCommutative: Bool {
         return CharacterComponent.commutative.contains(self)
@@ -39,13 +39,16 @@ enum CharacterComponent: String, CaseIterable {
     case multiplicationSign
     case divisionSign
     
+    case degree
+    case prime
+    case ellipsis
     case egyptologialAlef, egyptologicalAin
     case glottalStop, ain, saltillo, sinologicalDot
     case interrobang
     
     case smallCapital
     case capital
-    case extraLeft, extraUpLeft, extraDownLeft, extraRight, extraUpRight, extraDownRight
+    case extraLeft, extraUpLeft, extraDownLeft, extraRight, extraUpRight, extraDownRight, extraDown
     case extra0, turned, reversed, inverted, sideways, extra1, extra2
     case superscript, `subscript`, middle, raised
     
@@ -119,13 +122,19 @@ enum CharacterComponent: String, CaseIterable {
         .n: .tilde,
         .comma: .ejective,
         .fullStop: .dot,
+        .w: .nonBreaking,
         
         // block tilde diacritic from tilde
         .tilde: .space,
     ]
     
-    static let replaces: [CharacterComponent: CharacterComponent] = [
-        .closed: .ring,
+    static let replaces: [CharacterComponent: [CharacterComponent]] = [
+        .closed: [.ring],
+        .interrobang: [.exclamationMark, .extraDown],
+        .prime: [.solidus, .extraUpRight],
+        .ellipsis: [.fullStop, .fullStop],
+        .middle: [.extra0],
+        .raised: [.extra1],
     ]
     
     case letterScript
@@ -215,6 +224,7 @@ enum CharacterComponent: String, CaseIterable {
     
     case doubled
     case tripled
+    case quadrupled
     
     case double
     

@@ -44,6 +44,14 @@ final class Locale {
             NotificationCenter.default.post(name: .LocalizationDidChange, object: nil)
         }
     }
+    
+    var foundationLocale: Foundation.Locale {
+        return Foundation.Locale(identifier: language.rawValue)
+    }
+    
+    func localizedString(forIdentifier identifier: String) -> String? {
+        return foundationLocale.localizedString(forIdentifier: identifier)?.applyingTransformIfNeeded(language: Locale.current.language)
+    }
 }
 
 extension Language: Identifiable {

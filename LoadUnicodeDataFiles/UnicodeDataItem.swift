@@ -13,10 +13,11 @@ enum UnicodeDataItem: String, CaseIterable {
     case nameAliases = "UCD/NameAliases.txt"
     case unihanDictionaryLikeData = "Unihan/Unihan_DictionaryLikeData.txt"
     case unihanReadings = "Unihan/Unihan_Readings.txt"
+    case main = "CLDR/common/main"
     case annotations = "CLDR/common/annotations"
     case annotationsDerived = "CLDR/common/annotationsDerived"
-    case main = "CLDR/common/main"
     case subdivisions = "CLDR/common/subdivisions"
+    case keyboards = "CLDR/keyboards"
     
     var path: String {
         return rawValue
@@ -25,11 +26,15 @@ enum UnicodeDataItem: String, CaseIterable {
     var fileURLs: [URL] {
         let itemURL = URL(fileURLWithPath: path)
         
-        if let urls = try? FileManager.default.contentsOfDirectory(at: itemURL, includingPropertiesForKeys: nil, options: []) {
-            return urls.sorted {$0.path < $1.path}
+        return fileURLs(url: itemURL).sorted {$0.path < $1.path}
+    }
+    
+    private func fileURLs(url: URL) -> [URL] {
+        if let urls = try? FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: []) {
+            return urls.flatMap {fileURLs(url: $0)}
         }
         else {
-            return [itemURL]
+            return [url]
         }
     }
     

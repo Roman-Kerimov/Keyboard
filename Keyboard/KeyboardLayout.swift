@@ -63,6 +63,7 @@ struct KeyboardLayout: Equatable, Identifiable {
     static let shiftRightDictionary: [CharacterComponent: CharacterComponent] = [
         .lessThanSign: .greaterThanSign,
         .leftParenthesis: .rightParenthesis,
+        .commercialAt: .degree,
     ]
     
     static let reversedShiftRightDictionary = Dictionary.init(uniqueKeysWithValues: shiftRightDictionary.map {($1, $0)})

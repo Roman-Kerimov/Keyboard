@@ -7,6 +7,8 @@
 
 // This file uses data from UCD/Blocks.txt, UCD/extracted/DerivedName.txt, and UCD/NameAliases.txt
 
+let characterComponentsDictionaryMaxUnicodeScalarCount: Int = characterComponentsDictionary.keys.map {$0.decomposedStringWithCanonicalMapping.unicodeScalars.count} .max() ?? 0
+
 let characterComponentsDictionary: [String: [CharacterComponent]] = [
     
     // MARK: - 0000..007F; Basic Latin
@@ -321,7 +323,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "¦": [.verticalLine, .broken],
 
     //00A7          ; SECTION SIGN
-    "§": [],
+    "§": [.s, .s, .extraDown],
 
     //00A8          ; DIAERESIS
     "¨": [.diaeresis, .superscript],
@@ -348,7 +350,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "¯": [],
 
     //00B0          ; DEGREE SIGN
-    "°": [],
+    "°": [.degree],
 
     //00B1          ; PLUS-MINUS SIGN
     "±": [.plusSign, .minusSign],
@@ -369,7 +371,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "¶": [],
 
     //00B7          ; MIDDLE DOT
-    "·": [.dot, .middle],
+    "·": [.fullStop, .middle],
 
     //00B8          ; CEDILLA
     "¸": [.cedilla],
@@ -780,8 +782,8 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ľ": [.combined],
 
     //013F          ; LATIN CAPITAL LETTER L WITH MIDDLE DOT
-    "ĿL": [.l, .l, .capital, .capital],
-    "Ŀl": [.l, .l, .capital],
+    "ĿL": [.l, .capital, .l, .capital],
+    "Ŀl": [.l, .capital, .l],
 
     //0140          ; LATIN SMALL LETTER L WITH MIDDLE DOT
     "ŀl": [.l, .l],
@@ -2085,7 +2087,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "˭": [.unaspirated, .superscript],
 
     //02EE          ; MODIFIER LETTER DOUBLE APOSTROPHE
-    "ˮ": [.comma, .doubled, .superscript],
+    "ˮ": [.comma, .superscript, .doubled],
 
     //02EF          ; MODIFIER LETTER LOW DOWN ARROWHEAD
     "˯": [.arrowhead, .down, .subscript],
@@ -5209,7 +5211,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "‥": [],
 
     //2026          ; HORIZONTAL ELLIPSIS
-    "…": [],
+    "…": [.ellipsis],
 
     //2027          ; HYPHENATION POINT
     "‧": [.hyphen, .fullStop],
@@ -5232,22 +5234,22 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "‱": [.percentSign, .percentSign, .percentSign],
 
     //2032          ; PRIME
-    "′": [],
+    "′": [.prime],
 
     //2033          ; DOUBLE PRIME
-    "″": [],
+    "″": [.prime, .doubled],
 
     //2034          ; TRIPLE PRIME
-    "‴": [],
+    "‴": [.prime, .tripled],
 
     //2035          ; REVERSED PRIME
-    "‵": [],
+    "‵": [.prime, .reversed],
 
     //2036          ; REVERSED DOUBLE PRIME
-    "‶": [],
+    "‶": [.prime, .doubled, .reversed],
 
     //2037          ; REVERSED TRIPLE PRIME
-    "‷": [],
+    "‷": [.prime, .tripled, .reversed],
 
     //2038          ; CARET
     "‸": [.caret, .subscript],
@@ -5280,7 +5282,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⁁": [.caret, .diagonalStroke, .subscript],
 
     //2042          ; ASTERISM
-    "⁂": [],
+    "⁂": [.asterisk, .tripled],
 
     //2043          ; HYPHEN BULLET
     "⁃": [],
@@ -5343,7 +5345,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⁖": [],
 
     //2057          ; QUADRUPLE PRIME
-    "⁗": [],
+    "⁗": [.prime, .quadrupled],
 
     //2058          ; FOUR DOT PUNCTUATION
     "⁘": [],
@@ -5644,7 +5646,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ℂ": [.c, .capital, .doubleStruck],
 
     //2103          ; DEGREE CELSIUS
-    "℃": [],
+    "℃": [.degree, .c, .capital],
 
     //2104          ; CENTRE LINE SYMBOL
     "℄": [],
@@ -5662,7 +5664,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "℈": [],
 
     //2109          ; DEGREE FAHRENHEIT
-    "℉": [],
+    "℉": [.degree, .f, .capital],
 
     //210A          ; SCRIPT SMALL G
     "ℊ": [.g, .script],
@@ -6746,16 +6748,16 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⋭": [.combined],
 
     //22EE          ; VERTICAL ELLIPSIS
-    "⋮": [],
+    "⋮": [.ellipsis, .extra1],
 
     //22EF          ; MIDLINE HORIZONTAL ELLIPSIS
-    "⋯": [],
+    "⋯": [.ellipsis, .extra0],
 
     //22F0          ; UP RIGHT DIAGONAL ELLIPSIS
-    "⋰": [],
+    "⋰": [.ellipsis, .extra2],
 
     //22F1          ; DOWN RIGHT DIAGONAL ELLIPSIS
-    "⋱": [],
+    "⋱": [.ellipsis, .extra2, .extraRight],
 
     //22F2          ; ELEMENT OF WITH LONG HORIZONTAL STROKE
     "⋲": [],
@@ -7238,10 +7240,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⪐": [.greaterThanSign, .tilde, .lessThanSign],
 
     //2A91          ; LESS-THAN ABOVE GREATER-THAN ABOVE DOUBLE-LINE EQUAL
-    "⪑": [.lessThanSign, .greaterThanSign, .equalsSign, .doubled],
+    "⪑": [.lessThanSign, .greaterThanSign, .equalsSign],
 
     //2A92          ; GREATER-THAN ABOVE LESS-THAN ABOVE DOUBLE-LINE EQUAL
-    "⪒": [.greaterThanSign, .lessThanSign, .equalsSign, .doubled],
+    "⪒": [.greaterThanSign, .lessThanSign, .equalsSign],
 
     //2A93          ; LESS-THAN ABOVE SLANTED EQUAL ABOVE GREATER-THAN ABOVE SLANTED EQUAL
     "⪓": [.lessThanSign, .equalsSign, .greaterThanSign, .equalsSign],
@@ -7280,10 +7282,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⪞": [.tilde, .greaterThanSign],
 
     //2A9F          ; SIMILAR ABOVE LESS-THAN ABOVE EQUALS SIGN
-    "⪟": [.tilde, .lessThanSign, .equalsSign, .doubled],
+    "⪟": [.tilde, .lessThanSign, .equalsSign],
 
     //2AA0          ; SIMILAR ABOVE GREATER-THAN ABOVE EQUALS SIGN
-    "⪠": [.tilde, .greaterThanSign, .equalsSign, .doubled],
+    "⪠": [.tilde, .greaterThanSign, .equalsSign],
 
     //2AA1          ; DOUBLE NESTED LESS-THAN
     "⪡": [.lessThanSign, .doubled],
@@ -7826,7 +7828,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⸲": [.comma, .turned],
 
     //2E33          ; RAISED DOT
-    "⸳": [.dot, .raised],
+    "⸳": [.fullStop, .raised],
 
     //2E34          ; RAISED COMMA
     "⸴": [.comma, .raised],
@@ -7850,7 +7852,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⸺": [.hyphen, .m, .doubled],
 
     //2E3B          ; THREE-EM DASH
-    "⸻": [.hyphen, .m, .doubled, .m],
+    "⸻": [.hyphen, .m, .tripled],
 
     //2E3C          ; STENOGRAPHIC FULL STOP
     "⸼": [],
@@ -7865,7 +7867,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⸿": [],
 
     //2E40          ; DOUBLE HYPHEN
-    "⹀": [.hyphen, .doubled],
+    "⹀": [.hyphen, .hyphen],
 
     //2E41          ; REVERSED COMMA
     "⹁": [.comma, .reversed],
@@ -7874,7 +7876,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "⹂": [.quotationMark, .extraDownLeft, .reversed],
 
     //2E43          ; DASH WITH LEFT UPTURN
-    "⹃": [],
+    "⹃": [.hyphen, .m, .extra0],
 
     //2E44          ; DOUBLE SUSPENSION MARK
     "⹄": [],

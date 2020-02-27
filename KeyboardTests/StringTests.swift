@@ -38,4 +38,40 @@ class StringTests: XCTestCase {
         XCTAssertEqual(">".defaultShiftGesture, "<→")
         XCTAssertEqual("≬".defaultShiftGesture, "((→←")
     }
+    
+    func testDefaultShiftGesturesForInterrobang() {
+        XCTAssertEqual("‽".defaultShiftGesture, "!↓")
+        XCTAssertEqual("⸘".defaultShiftGesture, "!↓→")
+    }
+    
+    func testTypingDescription() {
+        XCTAssertEqual("Я".typingDescription(languageCode: "ru"), "y↑a ru")
+        XCTAssertEqual("ß".typingDescription(languageCode: "ru"), "ss←")
+    }
+    
+    func testDefaultShiftGestureForCharactersWithSomeUnicodeScalars() {
+        XCTAssertEqual("↖︎".defaultShiftGesture, "/→<←")
+        XCTAssertEqual("ŀl".defaultShiftGesture, "ll←")
+    }
+    
+    func testDefaultShiftGesturesForEllipsisCharacters() {
+        XCTAssertEqual("…".defaultShiftGesture, "..←")
+        XCTAssertEqual("⋯".defaultShiftGesture, "..←→")
+        XCTAssertEqual("⋮".defaultShiftGesture, "..←→↓")
+        XCTAssertEqual("⋰".defaultShiftGesture, "..←→↓←")
+        XCTAssertEqual("⋱".defaultShiftGesture, "..←→↓←→")
+    }
+    
+    func testDefaultShiftGestureForMiddleAndRaisedDots() {
+        XCTAssertEqual("·".defaultShiftGesture, ".→")
+        XCTAssertEqual("⸳".defaultShiftGesture, ".→↓")
+    }
+    
+    func testDefaultShiftGesturesForDoubledComponent() {
+        XCTAssertEqual("‡".defaultShiftGesture, "*→↑")
+    }
+    
+    func testPreviewDescription() {
+        XCTAssertEqual("̈".previewDescription, "◌̈")
+    }
 }

@@ -13,6 +13,7 @@ class LoadUnicodeDataFiles: Operation {
     let commentMarker: Character = "#"
     
     static var ordersByCodePoints: [String: Int] = [:]
+    static var characterCollectionsByLocale: [String: ManagedCharacterCollection] = [:]
     
     private lazy var sqLiteSourceURL = UnicodeData.default.persistentStoreDescriptions.first!.url!
     private lazy var sqLiteTargetURL = URL(fileURLWithPath: CommandLine.arguments[1]).appendingPathComponent(UnicodeData.default.name).appendingPathExtension(sqLiteSourceURL.pathExtension)
@@ -196,9 +197,35 @@ class LoadUnicodeDataFiles: Operation {
                     }
                 }
                 
-            case .annotations, .annotationsDerived, .main, .subdivisions:
-                AnnotationsXMLParser.unicodeDataItem = dataItem
+            case .main:
+                dataItem.parse(using: MainXMLParser.self)
+                
+            case .annotations, .annotationsDerived, .subdivisions:
                 dataItem.parse(using: AnnotationsXMLParser.self)
+                
+            case .keyboards:
+                dataItem.parse(using: KeyboardXMLParser.self)
+                
+                for (language, keyboardIntersectionSet) in KeyboardXMLParser.keyboardIntersectionSets {
+                    let locale = Locale(identifier: language)
+                    
+                    if LoadUnicodeDataFiles.characterCollectionsByLocale[language] == nil {
+                        LoadUnicodeDataFiles.characterCollectionsByLocale[language] = UnicodeData.default.createCharacterCollection(language: language)
+                    }
+                    
+                    LoadUnicodeDataFiles.characterCollectionsByLocale[language]?.keyboardIntersection = keyboardIntersectionSet.sorted {
+                        switch $0.compare($1, options: [.caseInsensitive], range: nil, locale: locale) {
+                        case .orderedAscending:
+                            return true
+                            
+                        case .orderedDescending:
+                            return false
+                            
+                        case .orderedSame:
+                            return $0.first?.isUppercase == true
+                        }
+                    }
+                }
             }
         }
         
@@ -209,8 +236,13 @@ class LoadUnicodeDataFiles: Operation {
         try? FileManager.default.removeItem(at: sqLiteTargetURL)
         try! FileManager.default.copyItem(at: sqLiteSourceURL, to: sqLiteTargetURL)
         
+        try? FileManager.default.removeItem(atPath: sqLiteTargetURL.path + wal)
+        try! FileManager.default.copyItem(atPath: sqLiteSourceURL.path + wal, toPath: sqLiteTargetURL.path + wal)
+        
         loadedVersion = currentVersion
     }
+    
+    private let wal = "-wal"
     
     private var currentVersion: String {
         func hash(url: URL) -> String {
@@ -231,6 +263,7 @@ class LoadUnicodeDataFiles: Operation {
             Bundle.main.executableURL!.lastPathComponent,
             UnicodeData.default.name,
             sqLiteTargetURL.path,
+            sqLiteTargetURL.path + wal,
         ]
         
         return dependencies.map {hash(url: URL(fileURLWithPath: $0))} .joined()

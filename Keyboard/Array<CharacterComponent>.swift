@@ -14,7 +14,7 @@ extension Array where Element == CharacterComponent {
     )
     
     var key: String {
-        return normalized.map {CharacterComponent.replaces[$0]?.description ?? $0.description} .joined(separator: .comma + .space)
+        return normalized.flatMap {CharacterComponent.replaces[$0] ?? [$0]} .map {$0.description} .joined(separator: .comma + .space)
     }
     
     var character: String {
@@ -124,14 +124,13 @@ extension Array where Element == CharacterComponent {
             let shiftGestureComponent: String
             
             switch component {
-            case .capital:
+            case .capital, .doubled:
                 shiftGestureComponent = "↑"
                 
             case .smallCapital:
                 shiftGestureComponent = "↑↓"
                 
             case .superscript, .extraUpRight:
-                
                 shiftGestureComponent = "↗︎"
                 
             case .extraRight:
@@ -140,12 +139,13 @@ extension Array where Element == CharacterComponent {
             case .subscript, .extraDownRight:
                 shiftGestureComponent = "↘︎"
                 
+            case .extraDown:
+                shiftGestureComponent = "↓"
+                
             case .extraDownLeft:
                 shiftGestureComponent = "↙︎"
                 
-                
             case .extraLeft:
-                
                 shiftGestureComponent = "←"
                 
             case .extraUpLeft:
@@ -191,7 +191,12 @@ extension Array where Element == CharacterComponent {
                 }
             }
             
-            shiftGesture.append(shiftGestureComponent)
+            if shiftGesture.hasSuffix("←") && component == .capital {
+                shiftGesture.insert(contentsOf: shiftGestureComponent, at: shiftGesture.lastIndex(of: "←")!)
+            }
+            else {
+                shiftGesture.append(shiftGestureComponent)
+            }
         }
         
         return shiftGesture

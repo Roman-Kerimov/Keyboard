@@ -137,6 +137,20 @@ class KeyboardTests: XCTestCase, KeyboardDelegate {
         XCTAssertEqual(document, "ǌ")
     }
     
+    func testĿL() {
+        let l: Key = .by(labelCharacter:"l")!
+        Keyboard.default.down(key: l)
+        Keyboard.default.shift(direction: .up)
+        Keyboard.default.up(key: l)
+        
+        Keyboard.default.down(key: l)
+        Keyboard.default.shift(direction: .left)
+        Keyboard.default.shift(direction: .up)
+        Keyboard.default.up(key: l)
+        
+        XCTAssertEqual(document, "ĿL")
+    }
+    
     func testCharactersWithRingComponent() {
         let x: Key = .by(labelCharacter:"x")!
         Keyboard.default.down(key: x)
@@ -180,6 +194,20 @@ class KeyboardTests: XCTestCase, KeyboardDelegate {
         Keyboard.default.up(key: u)
         
         XCTAssertEqual(document, "≍")
+    }
+    
+    func testOhmSign() {
+        let o: Key = .by(labelCharacter: "o")!
+        Keyboard.default.down(key: o)
+        Keyboard.default.shift(direction: .up)
+        Keyboard.default.up(key: o)
+        
+        let m: Key = .by(labelCharacter: "m")!
+        Keyboard.default.down(key: m)
+        Keyboard.default.shift(direction: .left)
+        Keyboard.default.up(key: m)
+        
+        XCTAssertEqual(document.unicodeScalars.first?.value, 0x2126)
     }
 
     func testScriptTransformation() {

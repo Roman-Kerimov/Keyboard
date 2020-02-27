@@ -33,21 +33,40 @@ extension String {
     static let v: String = Character.v.description
     static let z: String = Character.z.description
     
+    func typingDescription(languageCode: String) -> String? {
+        return applyingReverseTransform(transformationCode: languageCode)?.map {$0.description.defaultShiftGesture ?? $0.description} .joined() ?? defaultShiftGesture
+    }
+    
     var defaultShiftGesture: String? {
         
-        let decomposedUnicodeScalars = decomposedStringWithCanonicalMapping.unicodeScalars
+        var decomposedUnicodeScalars = decomposedStringWithCanonicalMapping.unicodeScalars
         
-        let shiftGestures = decomposedUnicodeScalars.compactMap {$0.description.characterComponents.defaultShiftGesture}
+        var shiftGesture = ""
         
-        if shiftGestures.count != decomposedUnicodeScalars.count {
-            return nil
+        while !decomposedUnicodeScalars.isEmpty {
+            var element = decomposedUnicodeScalars.prefix(characterComponentsDictionaryMaxUnicodeScalarCount)
+            
+            while true {
+                guard !element.isEmpty else {
+                    return nil
+                }
+                
+                if let elementDefaultShiftGesture = String(element).characterComponents.defaultShiftGesture {
+                    shiftGesture += elementDefaultShiftGesture
+                    decomposedUnicodeScalars.removeFirst(element.count)
+                    break
+                }
+                else {
+                    element.removeLast()
+                }
+            }
         }
         
-        return shiftGestures.joined()
+        return shiftGesture
     }
     
     var characterComponents: [CharacterComponent] {
-        return characterComponentsDictionary[self]?.map {CharacterComponent.replaces[$0] ?? $0} ?? .init()
+        return characterComponentsDictionary[self]?.flatMap {CharacterComponent.replaces[$0] ?? [$0]} ?? .init()
     }
     
     func removing(characterComponents: Set<CharacterComponent>) -> String {
@@ -79,26 +98,6 @@ extension String {
     
     func contains(_ regularExpression: NSRegularExpression) -> Bool {
         return regularExpression.numberOfMatches(in: self, options: [], range: .init(location: 0, length: count)) != 0
-    }
-    
-    func textHeightFrom(width: CGFloat, fontName: String = "System Font", fontSize: CGFloat = .systemFontSize) -> CGFloat {
-        
-        #if canImport(UIKit)
-        
-        let text: UILabel = .init()
-        text.text = self
-        text.numberOfLines = 0
-        
-        #elseif canImport(AppKit)
-        
-        let text: NSTextField = .init(string: self)
-        text.font = NSFont.init(name: fontName, size: fontSize)
-        
-        #endif
-        
-        text.font = Font.init(name: fontName, size: fontSize)
-        text.lineBreakMode = .byWordWrapping
-        return text.sizeThatFits(CGSize.init(width: width, height: .infinity)).height
     }
     
     var previewDescription: String {

@@ -1275,10 +1275,9 @@
 			};
 			buildConfigurationList = 964AB92A1D1B63C0004C827C /* Build configuration list for PBXProject "Keyboard" */;
 			compatibilityVersion = "Xcode 11.0";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);

@@ -3557,6 +3557,12 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     //1ABE          ; COMBINING PARENTHESES OVERLAY
     "᪾": [.parentheses, .combining],
     
+    //1ABF          ; COMBINING LATIN SMALL LETTER W BELOW
+    "ᪿ": [.w, .below],
+    
+    //1AC0          ; COMBINING LATIN SMALL LETTER TURNED W BELOW
+    "ᫀ": [.w, .turned, .below],
+    
     
     // MARK: - 1D00..1D7F; Phonetic Extensions
     
@@ -8508,6 +8514,24 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     //A7C6          ; LATIN CAPITAL LETTER Z WITH PALATAL HOOK
     "Ᶎ": [.z, .capital, .palatalHook],
 
+    //A7C7          ; LATIN CAPITAL LETTER D WITH SHORT STROKE OVERLAY
+    "Ꟈ": [.d, .capital, .shortStroke],
+    
+    //A7C8          ; LATIN SMALL LETTER D WITH SHORT STROKE OVERLAY
+    "ꟈ": [.d, .shortStroke],
+    
+    //A7C9          ; LATIN CAPITAL LETTER S WITH SHORT STROKE OVERLAY
+    "Ꟊ": [.s, .capital, .shortStroke],
+    
+    //A7CA          ; LATIN SMALL LETTER S WITH SHORT STROKE OVERLAY
+    "ꟊ": [.s, .shortStroke],
+    
+    //A7F5          ; LATIN CAPITAL LETTER REVERSED HALF H
+    "Ꟶ": [.h, .capital, .rightHalf],
+    
+    //A7F6          ; LATIN SMALL LETTER REVERSED HALF H
+    "ꟶ": [.h, .rightHalf],
+    
     //A7F7          ; LATIN EPIGRAPHIC LETTER SIDEWAYS I
     "ꟷ": [.i, .capital, .sideways],
 
@@ -8705,6 +8729,18 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
 
     //AB67          ; LATIN SMALL LETTER TS DIGRAPH WITH RETROFLEX HOOK
     "ꭧ": [.t, .s, .retroflexHook],
+    
+    //AB68          ; LATIN SMALL LETTER TURNED R WITH MIDDLE TILDE
+    "ꭨ": [.r, .turned, .tilde],
+    
+    //AB69          ; MODIFIER LETTER SMALL TURNED W
+    "ꭩ": [.w, .turned, .superscript],
+    
+    //AB6A          ; MODIFIER LETTER LEFT TACK
+    "꭪": [.tack, .left, .superscript],
+    
+    //AB6B          ; MODIFIER LETTER RIGHT TACK
+    "꭫": [.tack, .right, .superscript],
 
     
     // MARK: - FB00..FB4F; Alphabetic Presentation Forms

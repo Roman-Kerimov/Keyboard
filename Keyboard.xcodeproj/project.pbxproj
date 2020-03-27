@@ -44,7 +44,6 @@
 		9613E02C2367D0F50087CA57 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969450BF20B3215100DD7EF3 /* URL.swift */; };
 		9613E02D2367D1110087CA57 /* UnicodeDataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9697C3E220BB514900FE3007 /* UnicodeDataItem.swift */; };
 		9613E02E2367D1480087CA57 /* AnnotationsXMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9639EE08233C152900474A06 /* AnnotationsXMLParser.swift */; };
-		9613E0302367D1650087CA57 /* LinguisticKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9613E02F2367D1650087CA57 /* LinguisticKit */; };
 		9613E0312367D1890087CA57 /* UnicodeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96436BA020C1DA2D0065ED03 /* UnicodeItem.swift */; };
 		96167F5122C7B5300004DC8D /* CharacterSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96167F5022C7B5300004DC8D /* CharacterSearch.swift */; };
 		96167F5222C7B5300004DC8D /* CharacterSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96167F5022C7B5300004DC8D /* CharacterSearch.swift */; };
@@ -263,6 +262,7 @@
 		96BE9C7120A8340400C2C03F /* CharacterSearchWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BE9C7020A8340400C2C03F /* CharacterSearchWindow.swift */; };
 		96C1EC2E205131EC00AC27CB /* CGEventFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C1EC2D205131EC00AC27CB /* CGEventFlags.swift */; };
 		96C49DC51EB7DF1F006F93ED /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C49DC41EB7DF1F006F93ED /* Character.swift */; };
+		96CA0151242E28F700B466E8 /* LinguisticKit.static in Frameworks */ = {isa = PBXBuildFile; productRef = 96CA0150242E28F700B466E8 /* LinguisticKit.static */; };
 		96CB9A8422D8E2D7004CA972 /* KeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CB9A8322D8E2D7004CA972 /* KeyView.swift */; };
 		96CBE43623353B2C00BB396F /* UnicodeData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 96CBE43423353B2C00BB396F /* UnicodeData.xcdatamodeld */; };
 		96CBE43723353B2C00BB396F /* UnicodeData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 96CBE43423353B2C00BB396F /* UnicodeData.xcdatamodeld */; };
@@ -656,7 +656,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9613E0302367D1650087CA57 /* LinguisticKit in Frameworks */,
+				96CA0151242E28F700B466E8 /* LinguisticKit.static in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1108,7 +1108,7 @@
 			);
 			name = LoadUnicodeDataFiles;
 			packageProductDependencies = (
-				9613E02F2367D1650087CA57 /* LinguisticKit */,
+				96CA0150242E28F700B466E8 /* LinguisticKit.static */,
 			);
 			productName = LoadUnicodeDataFiles;
 			productReference = 9613E0212367CF5C0087CA57 /* LoadUnicodeDataFiles */;
@@ -2225,10 +2225,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		9613E02F2367D1650087CA57 /* LinguisticKit */ = {
+		96CA0150242E28F700B466E8 /* LinguisticKit.static */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 96E92B4822E02A0A0019EC2F /* XCRemoteSwiftPackageReference "LinguisticKit" */;
-			productName = LinguisticKit;
+			productName = LinguisticKit.static;
 		};
 		96E92B4622E029E40019EC2F /* Calculator */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -170,6 +170,12 @@
 		965BFAD11F797BBB00B8F682 /* CharacterComponentsDictionaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965BFAD01F797BBB00B8F682 /* CharacterComponentsDictionaryTests.swift */; };
 		965D15C11D3146BB0098FA57 /* KeyboardUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965D15C01D3146BB0098FA57 /* KeyboardUIView.swift */; };
 		965D15C91D32AE3B0098FA57 /* KeyUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965D15C81D32AE3B0098FA57 /* KeyUIView.swift */; };
+		96615729243AEF4900E1D32A /* Calculator in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 96E92B4622E029E40019EC2F /* Calculator */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		9661572B243AEF4B00E1D32A /* LinguisticKit in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 96E92B4922E02A0A0019EC2F /* LinguisticKit */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		9661572C243AEF5700E1D32A /* Calculator in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 96E92B4F22E02A250019EC2F /* Calculator */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		9661572E243AEF5900E1D32A /* LinguisticKit in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 96E92B5122E02A2A0019EC2F /* LinguisticKit */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		9661572F243AEF6300E1D32A /* Calculator in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 96E92B4B22E02A190019EC2F /* Calculator */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		96615730243AEF6600E1D32A /* LinguisticKit in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 96E92B4D22E02A1D0019EC2F /* LinguisticKit */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		966194D31DE2FCEF007FCF02 /* KeyboardLayoutUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966194D21DE2FCEF007FCF02 /* KeyboardLayoutUIView.swift */; };
 		9665F3781E9D921500850F97 /* CharacterCollectionUIViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665F3771E9D921500850F97 /* CharacterCollectionUIViewCell.swift */; };
 		9668800E2393663E00D2F4C1 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9620E747202B9EB1003FB02E /* Bundle.swift */; };
@@ -441,12 +447,38 @@
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9661572A243AEF4900E1D32A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9661572B243AEF4B00E1D32A /* LinguisticKit in Embed Frameworks */,
+				96615729243AEF4900E1D32A /* Calculator in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9661572D243AEF5700E1D32A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9661572E243AEF5900E1D32A /* LinguisticKit in Embed Frameworks */,
+				9661572C243AEF5700E1D32A /* Calculator in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		96A8EB0621AEC49000941FA0 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				96615730243AEF6600E1D32A /* LinguisticKit in Embed Frameworks */,
+				9661572F243AEF6300E1D32A /* Calculator in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1146,6 +1178,7 @@
 				964AB9631D1B6535004C827C /* Sources */,
 				964AB9641D1B6535004C827C /* Frameworks */,
 				964AB9651D1B6535004C827C /* Resources */,
+				9661572D243AEF5700E1D32A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1187,6 +1220,7 @@
 				96E354E42020DDBC00668374 /* Frameworks */,
 				96E354E52020DDBC00668374 /* Resources */,
 				96F2FB02208A6DA8001AB286 /* ShellScript */,
+				9661572A243AEF4900E1D32A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

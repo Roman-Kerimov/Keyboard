@@ -99,6 +99,7 @@
 		963BA6641F3B1FD000BFE3A7 /* LegalTextUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963BA6621F3B1FD000BFE3A7 /* LegalTextUIView.swift */; };
 		963DE0B0202F00B60040A448 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963DE0AF202F00B60040A448 /* main.swift */; };
 		963DE0B2202F012B0040A448 /* StatusMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963DE0B1202F012B0040A448 /* StatusMenu.swift */; };
+		963E9C0C243AD5EA001C144E /* ToolTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963E9C0B243AD5EA001C144E /* ToolTipView.swift */; };
 		9640167423F1EB9E004FFB2F /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9640167323F1EB9E004FFB2F /* UserDefaults.swift */; };
 		96436BA120C1DA2D0065ED03 /* UnicodeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96436BA020C1DA2D0065ED03 /* UnicodeItem.swift */; };
 		96436BA220C1DA2D0065ED03 /* UnicodeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96436BA020C1DA2D0065ED03 /* UnicodeItem.swift */; };
@@ -194,7 +195,6 @@
 		9673CAD8203282490030E2CA /* AXUIElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9673CAD7203282490030E2CA /* AXUIElement.swift */; };
 		967502542089E1D300FD6CED /* LaunchAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967502532089E1D300FD6CED /* LaunchAgent.swift */; };
 		96767C251EB11E28004D847C /* Labels_Settings.ai in Resources */ = {isa = PBXBuildFile; fileRef = 96767C241EB11E28004D847C /* Labels_Settings.ai */; };
-		9676ECBD22F8AEBE002AF981 /* CharacterSearchToolTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9676ECBC22F8AEBE002AF981 /* CharacterSearchToolTip.swift */; };
 		96848D9F1EE05F080009869A /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96848D9E1EE05F080009869A /* String.swift */; };
 		96848DA11EE0B64F0009869A /* UnicodeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96848DA01EE0B64F0009869A /* UnicodeData.swift */; };
 		9685BCFF1E06815700702C84 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9685BCFE1E06815700702C84 /* Keyboard.swift */; };
@@ -535,6 +535,7 @@
 		963DE0AF202F00B60040A448 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		963DE0B1202F012B0040A448 /* StatusMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenu.swift; sourceTree = "<group>"; };
 		963E5CA222F04C4C00873C20 /* .xcode-version */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".xcode-version"; sourceTree = "<group>"; };
+		963E9C0B243AD5EA001C144E /* ToolTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipView.swift; sourceTree = "<group>"; };
 		9640167323F1EB9E004FFB2F /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		96436BA020C1DA2D0065ED03 /* UnicodeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnicodeItem.swift; sourceTree = "<group>"; };
 		9643C98E2392B625003DF2B2 /* yoficationTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = yoficationTable.swift; sourceTree = "<group>"; };
@@ -583,7 +584,6 @@
 		9673CAD7203282490030E2CA /* AXUIElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AXUIElement.swift; sourceTree = "<group>"; };
 		967502532089E1D300FD6CED /* LaunchAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAgent.swift; sourceTree = "<group>"; };
 		96767C241EB11E28004D847C /* Labels_Settings.ai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Labels_Settings.ai; sourceTree = "<group>"; };
-		9676ECBC22F8AEBE002AF981 /* CharacterSearchToolTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSearchToolTip.swift; sourceTree = "<group>"; };
 		96848D9E1EE05F080009869A /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		96848DA01EE0B64F0009869A /* UnicodeData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnicodeData.swift; sourceTree = "<group>"; };
 		9685BCFE1E06815700702C84 /* Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
@@ -919,8 +919,8 @@
 				96CB9A8322D8E2D7004CA972 /* KeyView.swift */,
 				962A3E2C22C9F8140024D0AF /* CharacterSequenceView.swift */,
 				96A41BCF22C22986009057F5 /* CharacterSearchView.swift */,
-				9676ECBC22F8AEBE002AF981 /* CharacterSearchToolTip.swift */,
 				9605D58B239483D800933F8E /* ActivityView.swift */,
+				963E9C0B243AD5EA001C144E /* ToolTipView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1682,7 +1682,6 @@
 				968E3E4E23EB301F00BB0EFE /* LANGUAGES.swift in Sources */,
 				966F34F022C2419D00147B72 /* CGFloat.swift in Sources */,
 				965A8B4620D317C100E0260E /* SHOW_FOR_APPLICATION.swift in Sources */,
-				9676ECBD22F8AEBE002AF981 /* CharacterSearchToolTip.swift in Sources */,
 				96ACD588205261EE007CFDCF /* NSPasteboard.swift in Sources */,
 				96E033FC203155A80039E653 /* VERSION.swift in Sources */,
 				96D2270D23E8915C00A3474F /* CharacterCollection.swift in Sources */,
@@ -1739,6 +1738,7 @@
 				96F28C192030205C0023313C /* KeyboardDelegate.swift in Sources */,
 				968DEA8120CCDFA400750040 /* eventTapCallback.swift in Sources */,
 				96E03420203179F00039E653 /* CONTINUE.swift in Sources */,
+				963E9C0C243AD5EA001C144E /* ToolTipView.swift in Sources */,
 				96534193224727CD0097B522 /* Array<Equatable>.swift in Sources */,
 				96012B6922F3B8900095F445 /* View.swift in Sources */,
 				96E033F42031549C0039E653 /* ABOUT.swift in Sources */,

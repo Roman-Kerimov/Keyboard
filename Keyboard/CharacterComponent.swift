@@ -97,7 +97,8 @@ enum CharacterComponent: String, CaseIterable {
     internal static let letterToMixingComponentDictionary: [CharacterComponent: CharacterComponent] = [
         //.highStroke
         //.topbar
-        .hyphen: .stroke, //.diagonalStroke
+        .hyphen: .stroke,
+        .x: .diagonalStroke,
         //.lightCentralizationStroke
         //.obliqueStroke
         //.lowStroke

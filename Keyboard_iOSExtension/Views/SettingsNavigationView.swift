@@ -10,6 +10,7 @@ import SwiftUI
 @available(iOS 13.0, *)
 struct SettingsNavigationView: View {
     @EnvironmentObject var locale: Locale
+    @EnvironmentObject var keyboard: Keyboard
     
     var body: some View {
         NavigationView {
@@ -26,7 +27,7 @@ struct SettingsNavigationView: View {
             .navigationBarTitle(Text(""), displayMode: .inline)
             .navigationBarItems(
                 leading: Text(SETTINGS.string).font(.custom(.settingsTitleFontName, size: .settingsTitleFontSize)),
-                trailing: LayoutModePicker()
+                trailing: LayoutModePicker().environmentObject(keyboard)
             )
         }
         .environment(\.horizontalSizeClass, .compact)

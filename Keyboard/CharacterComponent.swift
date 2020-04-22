@@ -54,7 +54,7 @@ enum CharacterComponent: String, CaseIterable {
     
     case dotless
     case highStroke, topbar
-    case stroke, lightCentralizationStroke, obliqueStroke, verticalStroke
+    case stroke, lightCentralizationStroke, strongCentralizationStroke, obliqueStroke, verticalStroke
     case lowStroke
     case diagonalStroke
     case longLeg
@@ -100,6 +100,7 @@ enum CharacterComponent: String, CaseIterable {
         .hyphen: .stroke,
         .x: .diagonalStroke,
         //.lightCentralizationStroke
+        //.strongCentralizationStroke
         //.obliqueStroke
         //.lowStroke
         .l: .longLeg,

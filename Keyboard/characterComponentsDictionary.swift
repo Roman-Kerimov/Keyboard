@@ -3540,10 +3540,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "᪸": [.open, .doubled, .below],
 
     //1AB9          ; COMBINING LIGHT CENTRALIZATION STROKE BELOW
-    "᪹": [.diagonalStroke, .below],
+    "᪹": [.lightCentralizationStroke, .below],
 
     //1ABA          ; COMBINING STRONG CENTRALIZATION STROKE BELOW
-    "᪺": [.diagonalStroke, .dot, .below],
+    "᪺": [.strongCentralizationStroke, .below],
 
     //1ABB          ; COMBINING PARENTHESES ABOVE
     "᪻": [.parentheses, .above],

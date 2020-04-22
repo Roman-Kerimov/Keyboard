@@ -38,10 +38,10 @@ class LanguagesUIView: UITableView, UITableViewDelegate, UITableViewDataSource {
         switch Section.allCases[indexPath.section] {
             
         case .preferredLanguages:
-            Locale.current.language = preferredLanguages[indexPath.row]
+            Settings.current.language = preferredLanguages[indexPath.row]
 
         case .allLanguages:
-            Locale.current.language = Language.allCases[indexPath.row]
+            Settings.current.language = Language.allCases[indexPath.row]
         }
     }
     
@@ -80,7 +80,7 @@ class LanguagesUIView: UITableView, UITableViewDelegate, UITableViewDataSource {
         
         cell.textLabel?.text = language.selfName
         cell.detailTextLabel?.text = language.localizedName
-        cell.accessoryType = language == Locale.current.language ? .checkmark : .none
+        cell.accessoryType = language == Settings.current.language ? .checkmark : .none
         
         return cell
     }

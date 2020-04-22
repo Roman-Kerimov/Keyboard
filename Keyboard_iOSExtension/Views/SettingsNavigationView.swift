@@ -9,7 +9,7 @@ import SwiftUI
 
 @available(iOS 13.0, *)
 struct SettingsNavigationView: View {
-    @EnvironmentObject var locale: Locale
+    @EnvironmentObject var settings: Settings
     @EnvironmentObject var keyboard: Keyboard
     
     var body: some View {

@@ -9,14 +9,14 @@ import SwiftUI
 
 @available(iOS 13.0, *)
 struct InterfaceLanguagePicker: View {
-    @EnvironmentObject var locale: Locale
+    @EnvironmentObject var settings: Settings
     
     var body: some View {
         NavigationLink(destination: InterfaceLanguageList()) {
             HStack {
                 Text(LANGUAGE.string)
                 Spacer()
-                Text(locale.language.selfName)
+                Text(settings.language.selfName)
                     .foregroundColor(.secondary)
             }
         }

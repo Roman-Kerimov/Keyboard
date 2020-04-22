@@ -9,7 +9,7 @@ import SwiftUI
 
 @available(iOS 13.0, *)
 struct LanguageCharactersList: View {
-    @EnvironmentObject var locale: Locale
+    @EnvironmentObject var settings: Settings
     
     var body: some View {
         List {

@@ -13,7 +13,7 @@ class IterfaceLanguageUIViewCell: LocalizedUIViewCell {
         super.updateLocalizedStrings()
         
         textLabel?.text = LANGUAGE.string
-        detailTextLabel?.text = Locale.current.language.localizedName
+        detailTextLabel?.text = Settings.current.language.localizedName
         accessoryType = .disclosureIndicator
     }
     

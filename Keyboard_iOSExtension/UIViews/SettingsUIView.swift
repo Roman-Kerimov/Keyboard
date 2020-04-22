@@ -131,7 +131,7 @@ internal class SettingsUIView: UITableView, UITableViewDelegate, UITableViewData
         case .appLanguage:
             cell.textLabel?.text = LANGUAGE.string
             
-            cell.detailTextLabel?.text = Locale.current.language.localizedName
+            cell.detailTextLabel?.text = Settings.current.language.localizedName
             
             cell.accessoryType = .disclosureIndicator
             

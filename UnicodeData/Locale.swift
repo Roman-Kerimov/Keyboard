@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Foundation.Locale {
+extension Locale {
     static let componentSeparator = "-"
     
     var compatibleIdentifiers: [String] {
@@ -16,7 +16,7 @@ extension Foundation.Locale {
             [languageCode, scriptCode],
             [languageCode, regionCode],
             [languageCode],
-        ].compactMap({$0.contains(nil) ? nil : $0.compactMap {$0}}).map({$0.joined(separator: Foundation.Locale.componentSeparator)})
+        ].compactMap({$0.contains(nil) ? nil : $0.compactMap {$0}}).map({$0.joined(separator: Locale.componentSeparator)})
     }
     
     static var preferredLanguages: [String] {

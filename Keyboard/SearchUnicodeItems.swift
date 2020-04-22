@@ -52,14 +52,14 @@ class SearchUnicodeItems: Operation {
             }
         }
         
-        if let flagItem = UnicodeData.default.flagItem(regionCode: text, language: Locale.current.language.rawValue) {
+        if let flagItem = UnicodeData.default.flagItem(regionCode: text, language: Settings.current.language.rawValue) {
             foundUnicodeItems.append(flagItem)
             
             let regionCode = text.prefix(2).uppercased()
             
-            for localeIdentifier in (Foundation.Locale.availableIdentifiers.filter { $0.hasSuffix(regionCode) } + ["en_\(regionCode)"]) {
-                if let currencySymbol = Foundation.Locale.init(identifier: localeIdentifier).currencySymbol {
-                    if currencySymbol.count == 1, let currencyItem = UnicodeData.default.item(codePoints: currencySymbol, language: Locale.current.language.rawValue) {
+            for localeIdentifier in (Locale.availableIdentifiers.filter { $0.hasSuffix(regionCode) } + ["en_\(regionCode)"]) {
+                if let currencySymbol = Locale.init(identifier: localeIdentifier).currencySymbol {
+                    if currencySymbol.count == 1, let currencyItem = UnicodeData.default.item(codePoints: currencySymbol, language: Settings.current.language.rawValue) {
                         foundUnicodeItems.append(currencyItem)
                         break
                     }
@@ -72,11 +72,11 @@ class SearchUnicodeItems: Operation {
             
             var languageSet = UnicodeData.default.languages(regularExpression: regularExpression)
             
-            let currentLanguage = Locale.current.language.rawValue
+            let currentLanguage = Settings.current.language.rawValue
             
-            for language in [currentLanguage] + Foundation.Locale.preferredLanguages {
+            for language in [currentLanguage] + Locale.preferredLanguages {
                 
-                for identifier in Foundation.Locale(identifier: language).compatibleIdentifiers {
+                for identifier in Locale(identifier: language).compatibleIdentifiers {
                     if languageSet.contains(identifier) {
                         languages.append(identifier)
                         languageSet.remove(identifier)
@@ -95,7 +95,7 @@ class SearchUnicodeItems: Operation {
                 if let item = characterSearch.lastUsedUnicodeItemsCache[$0] {
                     return item
                 }
-                else if let item = UnicodeData.default.item(codePoints: $0, language: Locale.current.language.rawValue) {
+                else if let item = UnicodeData.default.item(codePoints: $0, language: Settings.current.language.rawValue) {
                     foundUnicodeItems.append(item)
                     characterSearch.lastUsedUnicodeItemsCache[$0] = item
                     return item

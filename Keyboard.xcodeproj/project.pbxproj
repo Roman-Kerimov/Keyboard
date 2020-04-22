@@ -204,6 +204,9 @@
 		9688312A202008040071908B /* DocumentContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96883129202008030071908B /* DocumentContext.swift */; };
 		9688312B202008040071908B /* DocumentContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96883129202008030071908B /* DocumentContext.swift */; };
 		968AFE422243E6EE00346636 /* GuideUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968AFE412243E6EE00346636 /* GuideUIViewController.swift */; };
+		968B2462244FBC22009B987F /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968B2461244FBC22009B987F /* Settings.swift */; };
+		968B2464244FBC5F009B987F /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968B2461244FBC22009B987F /* Settings.swift */; };
+		968B2465244FBC61009B987F /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968B2461244FBC22009B987F /* Settings.swift */; };
 		968DEA8120CCDFA400750040 /* eventTapCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968DEA8020CCDFA400750040 /* eventTapCallback.swift */; };
 		968E3E4A23EB285700BB0EFE /* CharacterCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D2270A23E8915C00A3474F /* CharacterCollection.swift */; };
 		968E3E4C23EB301F00BB0EFE /* LANGUAGES.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968E3E4B23EB301F00BB0EFE /* LANGUAGES.swift */; };
@@ -594,6 +597,7 @@
 		96883126201FB35B0071908B /* KeyboardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDelegate.swift; sourceTree = "<group>"; };
 		96883129202008030071908B /* DocumentContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentContext.swift; sourceTree = "<group>"; };
 		968AFE412243E6EE00346636 /* GuideUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuideUIViewController.swift; sourceTree = "<group>"; };
+		968B2461244FBC22009B987F /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		968DEA8020CCDFA400750040 /* eventTapCallback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = eventTapCallback.swift; sourceTree = "<group>"; };
 		968E3E4B23EB301F00BB0EFE /* LANGUAGES.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LANGUAGES.swift; sourceTree = "<group>"; };
 		968E3E4F23EB312300BB0EFE /* OTHER_LANGUAGES.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTHER_LANGUAGES.swift; sourceTree = "<group>"; };
@@ -1008,6 +1012,7 @@
 				96012B6522F3AC630095F445 /* Views */,
 				9694E23C1E29D72800ED3A85 /* Localization.swift */,
 				96D2B8DC1E35538B006772A5 /* Languages.swift */,
+				968B2461244FBC22009B987F /* Settings.swift */,
 				96E033E4203151300039E653 /* LocalizedStrings */,
 				9685BCFE1E06815700702C84 /* Keyboard.swift */,
 				96883126201FB35B0071908B /* KeyboardDelegate.swift */,
@@ -1515,6 +1520,7 @@
 				96533A7E1F12938D00B07CA3 /* DeleteRowUIView.swift in Sources */,
 				969102CC23EEB51B00E9BE0D /* CharacterGestureRow.swift in Sources */,
 				962B6FB722F37D2F00B831B1 /* InterfaceLanguageList.swift in Sources */,
+				968B2462244FBC22009B987F /* Settings.swift in Sources */,
 				9643FC501F78F94B004DA2C0 /* characterComponentsDictionary.swift in Sources */,
 				96533A801F12938D00B07CA3 /* CharacterSearchUIView.swift in Sources */,
 				96E0340A2031567A0039E653 /* ROUTE.swift in Sources */,
@@ -1562,6 +1568,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				968B2464244FBC5F009B987F /* Settings.swift in Sources */,
 				969E83051EED842E009A1F2D /* UIView.swift in Sources */,
 				966CB25520911C99005C7B5B /* CGAffineTransform.swift in Sources */,
 				96B6B35C1F9764F400231AE6 /* Array<CharacterComponent>.swift in Sources */,
@@ -1726,6 +1733,7 @@
 				966E4A9B22D4CC0F00A44D87 /* KeyboardWindow.swift in Sources */,
 				96A41BD122C22986009057F5 /* CharacterSearchView.swift in Sources */,
 				96C1EC2E205131EC00AC27CB /* CGEventFlags.swift in Sources */,
+				968B2465244FBC61009B987F /* Settings.swift in Sources */,
 				96DBC14B205EBD8700910E7A /* TISInputSource.swift in Sources */,
 				966CB25620911C99005C7B5B /* CGAffineTransform.swift in Sources */,
 				96BCAC2E23BD4CBA00A4257D /* Locale.swift in Sources */,

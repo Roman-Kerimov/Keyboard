@@ -9,7 +9,7 @@ import SwiftUI
 
 @available(iOS 13.0, *)
 struct GuideNavigationView: View {
-    @EnvironmentObject var locale: Locale
+    @EnvironmentObject var settings: Settings
     
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @Environment(\.verticalSizeClass) var verticalSizeClass

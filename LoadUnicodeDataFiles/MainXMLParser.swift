@@ -55,7 +55,7 @@ extension MainXMLParser: XMLParserDelegate {
                 return
             }
             
-            locale = [locale, attributeDict["type"]].compactMap({$0}).joined(separator: Foundation.Locale.componentSeparator)
+            locale = [locale, attributeDict["type"]].compactMap({$0}).joined(separator: Locale.componentSeparator)
             
         default:
             break

@@ -9,12 +9,12 @@ import SwiftUI
 
 @available(iOS 13.0, *)
 struct InterfaceLanguageRow: View {
-    @EnvironmentObject var locale: Locale
+    @EnvironmentObject var settings: Settings
     
     let language: Language
     
     var body: some View {
-        Button(action: {self.locale.language = self.language}, label: {
+        Button(action: {self.settings.language = self.language}, label: {
             HStack {
                 VStack(alignment: .leading) {
                     Text(self.language.selfName)
@@ -27,7 +27,7 @@ struct InterfaceLanguageRow: View {
                 
                 Spacer()
                 
-                language == locale.language ? Image.checkmark.foregroundColor(.accentColor) : nil
+                language == settings.language ? Image.checkmark.foregroundColor(.accentColor) : nil
             }
         })
         .previewDisplayName(language.id)

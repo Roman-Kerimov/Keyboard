@@ -149,7 +149,7 @@ class UnicodeData: NSPersistentContainer {
     private func text(inLanguage language: String?, from text: String) -> String {
         switch language {
         case "ru-Latn":
-            return text.applyingTransform(from: .Cyrl, to: .Latn, withTable: .ru)
+            return text.applyingTransform(from: .Cyrl, to: .Latn, withTable: .ru)!
         default:
             return text
         }

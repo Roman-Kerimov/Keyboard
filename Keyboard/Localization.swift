@@ -55,7 +55,7 @@ fileprivate extension String {
     func applyingTransformIfNeeded(language: Language) -> String {
         switch language {
         case .ru_Latn:
-            return self.applyingTransform(from: .Cyrl, to: .Latn, withTable: .ru)
+            return self.applyingTransform(from: .Cyrl, to: .Latn, withTable: .ru)!
         default:
            return self
         }

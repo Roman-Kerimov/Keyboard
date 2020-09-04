@@ -10,7 +10,16 @@ import CoreData
 
 class UnicodeData: NSPersistentContainer {
     
-    public static let `default`: UnicodeData = .init(name: "UnicodeData")
+    public static let `default`: UnicodeData = {
+        let model = NSManagedObjectModel()
+        model.entities = [
+            ManagedUnicodeItem.entityDescription(),
+            ManagedWord.entityDescription(),
+            ManagedCharacterCollection.entityDescription(),
+        ]
+
+        return UnicodeData(name: String(describing: UnicodeData.self), managedObjectModel: model)
+    }()
     
     lazy var backgroundContext = newBackgroundContext()
     

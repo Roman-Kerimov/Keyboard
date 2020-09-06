@@ -7,6 +7,7 @@
 
 import Foundation
 import CryptoKit
+import UnicodeData
 
 class LoadUnicodeDataFiles: Operation {
     let columnSeparator: Character = ";"
@@ -16,9 +17,11 @@ class LoadUnicodeDataFiles: Operation {
     static var characterCollectionsByLocale: [String: ManagedCharacterCollection] = [:]
     
     private lazy var sqLiteSourceURL = UnicodeData.default.persistentStoreDescriptions.first!.url!
-    private lazy var sqLiteTargetURL = URL(fileURLWithPath: CommandLine.arguments[1]).appendingPathComponent(UnicodeData.default.name).appendingPathExtension(sqLiteSourceURL.pathExtension)
+    private lazy var sqLiteTargetURL = URL(fileURLWithPath: CommandLine.arguments[2]).appendingPathComponent(UnicodeData.default.name).appendingPathExtension(sqLiteSourceURL.pathExtension)
     
     override func main() {
+        
+        FileManager.default.changeCurrentDirectoryPath(CommandLine.arguments[1])
         
         if loadedVersion != currentVersion || !FileManager.default.fileExists(atPath: sqLiteTargetURL.path) {
             UnicodeData.default.resetPersistentStore()
@@ -260,7 +263,6 @@ class LoadUnicodeDataFiles: Operation {
         }
         
         let dependencies = UnicodeDataItem.allCases.map {$0.rawValue} + [
-            Bundle.main.executableURL!.lastPathComponent,
             UnicodeData.default.name,
             sqLiteTargetURL.path,
             sqLiteTargetURL.path + wal,

@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import UnicodeData
 
 @available(iOS 13.0, *)
 extension CharacterSearch: ObservableObject {

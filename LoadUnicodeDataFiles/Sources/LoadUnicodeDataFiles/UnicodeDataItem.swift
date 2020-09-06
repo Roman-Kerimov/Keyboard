@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UnicodeData
 
 enum UnicodeDataItem: String, CaseIterable {
     case emojiTest = "Emoji/emoji-test.txt"
@@ -64,7 +65,6 @@ enum UnicodeDataItem: String, CaseIterable {
         fileURLs.forEach { (fileURL) in
             autoreleasepool {
                 xmlParser.init(contentsOf: fileURL)?.parse()
-                try! UnicodeData.default.backgroundContext.save()
                 processedFileCount += 1
             }
         }

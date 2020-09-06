@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UnicodeData
 
 class MainXMLParser: XMLParser {
     override init(data: Data) {

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UnicodeData
 
 struct VERSION: LocalizedString {
     private static let version = Bundle.main.version

@@ -8,6 +8,7 @@
 
 import SwiftUI
 import CoreData
+import UnicodeData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

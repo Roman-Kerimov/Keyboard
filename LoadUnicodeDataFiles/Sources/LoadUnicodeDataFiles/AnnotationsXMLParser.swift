@@ -7,6 +7,7 @@
 
 import Foundation
 import LinguisticKit
+import UnicodeData
 
 class AnnotationsXMLParser: XMLParser {
     override init(data: Data) {

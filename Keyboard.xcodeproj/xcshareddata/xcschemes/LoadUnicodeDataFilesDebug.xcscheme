@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9622C6C22368C28C008C6109"
-               BuildableName = "UnicodeData"
-               BlueprintName = "UnicodeData"
+               BlueprintIdentifier = "9613E0202367CF5C0087CA57"
+               BuildableName = "LoadUnicodeDataFilesDebug"
+               BlueprintName = "LoadUnicodeDataFilesDebug"
                ReferencedContainer = "container:Keyboard.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -40,6 +40,26 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "9613E0202367CF5C0087CA57"
+            BuildableName = "LoadUnicodeDataFilesDebug"
+            BlueprintName = "LoadUnicodeDataFilesDebug"
+            ReferencedContainer = "container:Keyboard.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "${PROJECT_DIR}"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "${BUILD_DIR}"
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -47,15 +67,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9622C6C22368C28C008C6109"
-            BuildableName = "UnicodeData"
-            BlueprintName = "UnicodeData"
+            BlueprintIdentifier = "9613E0202367CF5C0087CA57"
+            BuildableName = "LoadUnicodeDataFilesDebug"
+            BlueprintName = "LoadUnicodeDataFilesDebug"
             ReferencedContainer = "container:Keyboard.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

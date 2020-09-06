@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct UnicodeItem: Equatable {
+public struct UnicodeItem: Equatable {
     
-    static func == (lhs: UnicodeItem, rhs: UnicodeItem) -> Bool {
+    public static func == (lhs: UnicodeItem, rhs: UnicodeItem) -> Bool {
         return lhs.order == rhs.order
     }
     
@@ -17,25 +17,25 @@ struct UnicodeItem: Equatable {
     
     var language: String? {managed.language}
     
-    var codePoints: String {managed.codePoints!}
-    var name: String? {managed.name}
+    public var codePoints: String {managed.codePoints!}
+    public var name: String? {managed.name}
     var annotation: String? {managed.annotation}
     var ttsAnnotation: String? {managed.ttsAnnotation}
     private var order: Int {.init(managed.order)}
     
-    static let nameSeparator = " | "
+    public static let nameSeparator = " | "
     
-    var localizedName: String {[regionCode, ttsAnnotation ?? annotation ?? managed.name].compactMap({$0}).joined(separator: UnicodeItem.nameSeparator)}
+    public var localizedName: String {[regionCode, ttsAnnotation ?? annotation ?? managed.name].compactMap({$0}).joined(separator: UnicodeItem.nameSeparator)}
     
     init(managed: ManagedUnicodeItem) {
         self.managed = managed
     }
     
-    func set(language: String) {
+    public func set(language: String) {
         managed.language = language
     }
     
-    func set(annotation: String) {
+    public func set(annotation: String) {
         managed.annotation = annotation
     }
     

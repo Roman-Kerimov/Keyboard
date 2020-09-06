@@ -8,9 +8,9 @@
 import Foundation
 
 extension Locale {
-    static let componentSeparator = "-"
+    public static let componentSeparator = "-"
     
-    var compatibleIdentifiers: [String] {
+    public var compatibleIdentifiers: [String] {
         return [
             [languageCode, scriptCode, regionCode],
             [languageCode, scriptCode],

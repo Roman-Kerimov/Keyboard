@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UnicodeData
 
 enum UnicodeDataItem: String, CaseIterable {
     case emojiTest = "Emoji/emoji-test.txt"

@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct CharacterCollection: Identifiable, Equatable {
-    var id: String {language}
+public struct CharacterCollection: Identifiable, Equatable {
+    public var id: String {language}
     
     private let managed: ManagedCharacterCollection
     
@@ -18,9 +18,9 @@ struct CharacterCollection: Identifiable, Equatable {
     
     private var language: String {managed.language!}
     
-    var locale: Locale {.init(identifier: language)}
+    public var locale: Locale {.init(identifier: language)}
     
-    func localizedLanguage(locale: Locale) -> String {
+    public func localizedLanguage(locale: Locale) -> String {
         locale.localizedString(forIdentifier: language) ?? language
     }
     
@@ -28,7 +28,7 @@ struct CharacterCollection: Identifiable, Equatable {
     var punctuation: [String]? {managed.punctuation}
     var keyboardIntersection: [String]? {managed.keyboardIntersection}
     
-    var characterSections: [[String]] {
+    public var characterSections: [[String]] {
         return [
             main ?? keyboardIntersection,
             punctuation,

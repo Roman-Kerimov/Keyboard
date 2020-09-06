@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UnicodeData
 
 @available(iOS 13.0, *)
 struct LanguageCharactersList: View {

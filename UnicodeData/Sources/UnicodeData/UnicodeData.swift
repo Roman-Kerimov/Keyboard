@@ -7,8 +7,9 @@
 //
 
 import CoreData
+import LinguisticKit
 
-class UnicodeData: NSPersistentContainer {
+public class UnicodeData: NSPersistentContainer {
     
     public static let `default`: UnicodeData = {
         let model = NSManagedObjectModel()
@@ -21,9 +22,9 @@ class UnicodeData: NSPersistentContainer {
         return UnicodeData(name: String(describing: UnicodeData.self), managedObjectModel: model)
     }()
     
-    lazy var backgroundContext = newBackgroundContext()
+    public lazy var backgroundContext = newBackgroundContext()
     
-    func addItem(codePoints: String, name: String? = nil, language: String = "", annotation: String? = nil, ttsAnnotation: String? = nil, order: Int? = nil, totalStrokes: Int? = nil, frequency: Int? = nil) {
+    public func addItem(codePoints: String, name: String? = nil, language: String = "", annotation: String? = nil, ttsAnnotation: String? = nil, order: Int? = nil, totalStrokes: Int? = nil, frequency: Int? = nil) {
         
         languageScripts(fromLanguage: language).forEach { (language) in
             let item = ManagedUnicodeItem(context: backgroundContext)
@@ -66,7 +67,7 @@ class UnicodeData: NSPersistentContainer {
         return "(\(languageQuery))"
     }
     
-    func item(codePoints: String, language: String) -> UnicodeItem? {
+    public func item(codePoints: String, language: String) -> UnicodeItem? {
         let fetchRequest: NSFetchRequest<ManagedUnicodeItem> = ManagedUnicodeItem.fetchRequest()
         
         fetchRequest.predicate = .init(format: "codePoints == %@ AND \(languageQuery(language: language))", codePoints)
@@ -82,13 +83,13 @@ class UnicodeData: NSPersistentContainer {
         return try! backgroundContext.fetch(fetchRequest).map {UnicodeItem(managed: $0)}.first
     }
     
-    func flagCodePoints(regionCode: String) -> String {
+    public func flagCodePoints(regionCode: String) -> String {
         return regionCode.count == 2
             ? regionCode.uppercased().unicodeScalars.map {Unicode.Scalar($0.value + 0x1F1A5)?.description ?? "_"} .joined()
             : "\u{1F3F4}" + regionCode.unicodeScalars.map {Unicode.Scalar($0.value + 0xE0000)?.description ?? "_"} .joined() + "\u{E007F}"
     }
     
-    func regionCode(flagCodePoints: String) -> String? {
+    public func regionCode(flagCodePoints: String) -> String? {
         let unicodeScalars = flagCodePoints.unicodeScalars
         
         if unicodeScalars.count == 2, unicodeScalars.reduce(true, {$0 && CharacterSet(charactersIn: "🇦"..."🇿").contains($1)}) {
@@ -105,11 +106,11 @@ class UnicodeData: NSPersistentContainer {
         return nil
     }
     
-    func flagItem(regionCode: String, language: String) -> UnicodeItem? {
+    public func flagItem(regionCode: String, language: String) -> UnicodeItem? {
         return item(codePoints: flagCodePoints(regionCode: regionCode), language: language)
     }
     
-    func items(language: String, regularExpression: NSRegularExpression, exclude excludeItems: [UnicodeItem], fetchLimit: Int) -> [UnicodeItem] {
+    public func items(language: String, regularExpression: NSRegularExpression, exclude excludeItems: [UnicodeItem], fetchLimit: Int) -> [UnicodeItem] {
         
         let fetchRequest: NSFetchRequest<ManagedUnicodeItem> = ManagedUnicodeItem.fetchRequest()
         fetchRequest.fetchLimit = fetchLimit
@@ -123,7 +124,7 @@ class UnicodeData: NSPersistentContainer {
         return (try! backgroundContext.fetch(fetchRequest)).map {.init(managed: $0)}
     }
     
-    func addWord(_ string: String, language: String) {
+    public func addWord(_ string: String, language: String) {
         languageScripts(fromLanguage: language).forEach { (language) in
             let word = ManagedWord(context:backgroundContext)
             word.string = text(inLanguage: language, from: string)
@@ -131,14 +132,14 @@ class UnicodeData: NSPersistentContainer {
         }
     }
     
-    func words(language: String) -> [String] {
+    public func words(language: String) -> [String] {
         let fetchRequest: NSFetchRequest<ManagedWord> = ManagedWord.fetchRequest()
         fetchRequest.predicate = .init(format: "language == %@", language)
         
         return try! backgroundContext.fetch(fetchRequest).map {$0.string!}
     }
     
-    func languages(regularExpression: NSRegularExpression) -> Set<String> {
+    public func languages(regularExpression: NSRegularExpression) -> Set<String> {
         let wordsFetchRequest: NSFetchRequest<ManagedWord> = ManagedWord.fetchRequest()
         wordsFetchRequest.predicate = .init(format: "string MATCHES [c] %@", ".*\(regularExpression.pattern).*")
         let words = try! backgroundContext.fetch(wordsFetchRequest)
@@ -164,7 +165,7 @@ class UnicodeData: NSPersistentContainer {
         }
     }
     
-    func createCharacterCollection(language: String) -> ManagedCharacterCollection {
+    public func createCharacterCollection(language: String) -> ManagedCharacterCollection {
         let characterCollection = ManagedCharacterCollection(context: backgroundContext)
         characterCollection.language = language
 
@@ -180,14 +181,14 @@ class UnicodeData: NSPersistentContainer {
             .max {$0.id.count < $1.id.count}
     }
     
-    func characterCollections() -> [CharacterCollection] {
+    public func characterCollections() -> [CharacterCollection] {
         let fetchRequest: NSFetchRequest<ManagedCharacterCollection> = ManagedCharacterCollection.fetchRequest()
         fetchRequest.sortDescriptors = [.init(key: "language", ascending: true)]
 
         return try! backgroundContext.fetch(fetchRequest).map({CharacterCollection(managed: $0)}).filter {!$0.characterSections.isEmpty}
     }
     
-    func preferredCharacterCollections(maxCount: Int = 100) -> [CharacterCollection] {
+    public func preferredCharacterCollections(maxCount: Int = 100) -> [CharacterCollection] {
 
         var preferredCharacterCollections: [CharacterCollection] = []
 
@@ -208,11 +209,11 @@ class UnicodeData: NSPersistentContainer {
         return preferredCharacterCollections
     }
     
-    lazy var itemCount: Int = try! backgroundContext.count(for: ManagedUnicodeItem.fetchRequest())
+    public lazy var itemCount: Int = try! backgroundContext.count(for: ManagedUnicodeItem.fetchRequest())
     
     private let backgroudOperationQueue: OperationQueue = .init()
     
-    func waitUntilLoadingIsFinished() {
+    public func waitUntilLoadingIsFinished() {
         backgroudOperationQueue.waitUntilAllOperationsAreFinished()
     }
     
@@ -242,7 +243,7 @@ class UnicodeData: NSPersistentContainer {
         fileGarbageURLs.forEach {try? FileManager.default.removeItem(at: $0)}
     }
     
-    func loadIfNeeded() {}
+    public func loadIfNeeded() {}
     
     private func loadPersistentStore() {
         loadPersistentStores { description, error in
@@ -254,7 +255,7 @@ class UnicodeData: NSPersistentContainer {
         }
     }
         
-    func resetPersistentStore() {
+    public func resetPersistentStore() {
         let wal = "-wal"
         
         let storeURLs = persistentStoreDescriptions.compactMap {$0.url}

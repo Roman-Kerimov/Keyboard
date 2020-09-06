@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UnicodeData
 
 extension UIView {
     open override var inputViewController: UIInputViewController? {

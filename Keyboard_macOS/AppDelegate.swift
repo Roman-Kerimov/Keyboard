@@ -7,6 +7,7 @@
 
 import AppKit
 import Carbon
+import UnicodeData
 
 class AppDelegate: NSObject {
     

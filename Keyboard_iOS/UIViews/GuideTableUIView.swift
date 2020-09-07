@@ -32,7 +32,7 @@ class GuideTableUIView: UITableView {
         Section.init(
             header: SETTINGS.self,
             items: [
-                IterfaceLanguageUIViewCell.init(),
+                InterfaceLanguageUIViewCell.init(),
             ]
         ),
         

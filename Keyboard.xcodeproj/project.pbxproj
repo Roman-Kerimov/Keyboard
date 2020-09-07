@@ -181,7 +181,7 @@
 		96BC5F561DEB961F002E0752 /* LabelUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BC5F551DEB961F002E0752 /* LabelUIView.swift */; };
 		96BCF28F22443AAF001C87AF /* LocalizedUIViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BCF28E22443AAF001C87AF /* LocalizedUIViewCell.swift */; };
 		96BCF29122443C22001C87AF /* LegalNoticesUIViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BCF29022443C22001C87AF /* LegalNoticesUIViewCell.swift */; };
-		96BCF29322444CC7001C87AF /* IterfaceLanguageUIViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BCF29222444CC7001C87AF /* IterfaceLanguageUIViewCell.swift */; };
+		96BCF29322444CC7001C87AF /* InterfaceLanguageUIViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BCF29222444CC7001C87AF /* InterfaceLanguageUIViewCell.swift */; };
 		96BE9C7120A8340400C2C03F /* CharacterSearchWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BE9C7020A8340400C2C03F /* CharacterSearchWindow.swift */; };
 		96CB9A8422D8E2D7004CA972 /* KeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CB9A8322D8E2D7004CA972 /* KeyView.swift */; };
 		96CEDF4725045A0200BDCA0E /* UnicodeDataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CEDF3C25045A0200BDCA0E /* UnicodeDataItem.swift */; };
@@ -482,7 +482,7 @@
 		96BC5F551DEB961F002E0752 /* LabelUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelUIView.swift; sourceTree = "<group>"; };
 		96BCF28E22443AAF001C87AF /* LocalizedUIViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedUIViewCell.swift; sourceTree = "<group>"; };
 		96BCF29022443C22001C87AF /* LegalNoticesUIViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalNoticesUIViewCell.swift; sourceTree = "<group>"; };
-		96BCF29222444CC7001C87AF /* IterfaceLanguageUIViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IterfaceLanguageUIViewCell.swift; sourceTree = "<group>"; };
+		96BCF29222444CC7001C87AF /* InterfaceLanguageUIViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceLanguageUIViewCell.swift; sourceTree = "<group>"; };
 		96BE9C7020A8340400C2C03F /* CharacterSearchWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSearchWindow.swift; sourceTree = "<group>"; };
 		96CB9A8322D8E2D7004CA972 /* KeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyView.swift; sourceTree = "<group>"; };
 		96CEDF3C25045A0200BDCA0E /* UnicodeDataItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnicodeDataItem.swift; sourceTree = "<group>"; };
@@ -820,7 +820,7 @@
 			isa = PBXGroup;
 			children = (
 				96A15AD42243EE36008F0BE6 /* GuideTableUIView.swift */,
-				96BCF29222444CC7001C87AF /* IterfaceLanguageUIViewCell.swift */,
+				96BCF29222444CC7001C87AF /* InterfaceLanguageUIViewCell.swift */,
 				96BCF29022443C22001C87AF /* LegalNoticesUIViewCell.swift */,
 				96BCF28E22443AAF001C87AF /* LocalizedUIViewCell.swift */,
 			);
@@ -1372,7 +1372,7 @@
 				961CE9FF21B0D32800E1A14D /* UICollectionReusableView.swift in Sources */,
 				96533A7A1F12938D00B07CA3 /* SettingsContainerUIView.swift in Sources */,
 				96D1E2B423E996EB00625269 /* LanguageCharactersRow.swift in Sources */,
-				96BCF29322444CC7001C87AF /* IterfaceLanguageUIViewCell.swift in Sources */,
+				96BCF29322444CC7001C87AF /* InterfaceLanguageUIViewCell.swift in Sources */,
 				9637C6F120F2440200078395 /* UIKeyboardAppearance.swift in Sources */,
 				96533A7C1F12938D00B07CA3 /* LanguagesUIView.swift in Sources */,
 				96BCF28F22443AAF001C87AF /* LocalizedUIViewCell.swift in Sources */,

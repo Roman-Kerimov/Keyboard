@@ -1,5 +1,5 @@
 //
-//  IterfaceLanguageUIViewCell.swift
+//  InterfaceLanguageUIViewCell.swift
 //  Keyboard_iOS
 //
 //  Created by Roman Kerimov on 2019-03-22.
@@ -8,7 +8,7 @@
 import UIKit
 import KeyboardModule
 
-class IterfaceLanguageUIViewCell: LocalizedUIViewCell {
+class InterfaceLanguageUIViewCell: LocalizedUIViewCell {
     
     override func updateLocalizedStrings() {
         super.updateLocalizedStrings()

@@ -3,7 +3,7 @@
     "pins": [
       {
         "package": "LinguisticKit",
-        "repositoryURL": "https://github.com/Roman-Kerimov/LinguisticKit",
+        "repositoryURL": "https://github.com/Roman-Kerimov/LinguisticKit.git",
         "state": {
           "branch": "master",
           "revision": "e6c5bd56bd77333f1137b66a3fe561643168f36f",

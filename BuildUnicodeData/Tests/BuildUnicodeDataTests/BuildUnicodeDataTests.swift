@@ -1,7 +1,7 @@
 import XCTest
-@testable import LoadUnicodeDataFiles
+@testable import BuildUnicodeData
 
-final class LoadUnicodeDataFilesTests: XCTestCase {
+final class BuildUnicodeDataTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct

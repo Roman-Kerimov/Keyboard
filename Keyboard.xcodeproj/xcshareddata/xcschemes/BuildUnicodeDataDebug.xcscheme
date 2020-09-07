@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9613E0202367CF5C0087CA57"
-               BuildableName = "LoadUnicodeDataFilesDebug"
-               BlueprintName = "LoadUnicodeDataFilesDebug"
+               BuildableName = "BuildUnicodeDataDebug"
+               BlueprintName = "BuildUnicodeDataDebug"
                ReferencedContainer = "container:Keyboard.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,8 +45,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9613E0202367CF5C0087CA57"
-            BuildableName = "LoadUnicodeDataFilesDebug"
-            BlueprintName = "LoadUnicodeDataFilesDebug"
+            BuildableName = "BuildUnicodeDataDebug"
+            BlueprintName = "BuildUnicodeDataDebug"
             ReferencedContainer = "container:Keyboard.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -72,8 +72,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9613E0202367CF5C0087CA57"
-            BuildableName = "LoadUnicodeDataFilesDebug"
-            BlueprintName = "LoadUnicodeDataFilesDebug"
+            BuildableName = "BuildUnicodeDataDebug"
+            BlueprintName = "BuildUnicodeDataDebug"
             ReferencedContainer = "container:Keyboard.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

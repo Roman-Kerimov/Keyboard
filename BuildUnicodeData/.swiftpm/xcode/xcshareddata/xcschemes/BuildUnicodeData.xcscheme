@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "LoadUnicodeDataFiles"
-               BuildableName = "LoadUnicodeDataFiles"
-               BlueprintName = "LoadUnicodeDataFiles"
+               BlueprintIdentifier = "BuildUnicodeData"
+               BuildableName = "BuildUnicodeData"
+               BlueprintName = "BuildUnicodeData"
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "LoadUnicodeDataFilesTests"
-               BuildableName = "LoadUnicodeDataFilesTests"
-               BlueprintName = "LoadUnicodeDataFilesTests"
+               BlueprintIdentifier = "BuildUnicodeDataTests"
+               BuildableName = "BuildUnicodeDataTests"
+               BlueprintName = "BuildUnicodeDataTests"
                ReferencedContainer = "container:">
             </BuildableReference>
          </TestableReference>
@@ -54,9 +54,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "LoadUnicodeDataFiles"
-            BuildableName = "LoadUnicodeDataFiles"
-            BlueprintName = "LoadUnicodeDataFiles"
+            BlueprintIdentifier = "BuildUnicodeData"
+            BuildableName = "BuildUnicodeData"
+            BlueprintName = "BuildUnicodeData"
             ReferencedContainer = "container:">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -81,9 +81,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "LoadUnicodeDataFiles"
-            BuildableName = "LoadUnicodeDataFiles"
-            BlueprintName = "LoadUnicodeDataFiles"
+            BlueprintIdentifier = "BuildUnicodeData"
+            BuildableName = "BuildUnicodeData"
+            BlueprintName = "BuildUnicodeData"
             ReferencedContainer = "container:">
          </BuildableReference>
       </BuildableProductRunnable>

@@ -1,6 +1,6 @@
 //
 //  AnnotationsXMLParser.swift
-//  LoadUnicodeDataFiles
+//  BuildUnicodeData
 //
 //  Created by Roman Kerimov on 2019-09-14.
 //
@@ -85,7 +85,7 @@ class AnnotationsXMLParser: XMLParser {
                 }
             }
             
-            UnicodeData.default.addItem(codePoints: codePoints, language: language, annotation: annotation, ttsAnnotation: ttsAnnotation, order: LoadUnicodeDataFiles.ordersByCodePoints[codePoints])
+            UnicodeData.default.addItem(codePoints: codePoints, language: language, annotation: annotation, ttsAnnotation: ttsAnnotation, order: BuildUnicodeData.ordersByCodePoints[codePoints])
             
             AnnotationsXMLParser.annotationTable[annotationKey(languageComponents: languageComponents, isTTS: false)] = annotation
             AnnotationsXMLParser.annotationTable[annotationKey(languageComponents: languageComponents, isTTS: true)] = ttsAnnotation

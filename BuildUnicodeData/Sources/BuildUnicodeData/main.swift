@@ -1,10 +1,10 @@
 //
 //  main.swift
-//  LoadUnicodeDataFiles
+//  BuildUnicodeData
 //
 //  Created by Roman Kerimov on 2019-10-29.
 //
 
 import Foundation
 
-LoadUnicodeDataFiles().start()
+BuildUnicodeData().start()

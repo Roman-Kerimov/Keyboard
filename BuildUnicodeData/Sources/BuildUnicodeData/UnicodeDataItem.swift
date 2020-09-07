@@ -1,6 +1,6 @@
 //
 //  UnicodeDataItem.swift
-//  LoadUnicodeDataFiles
+//  BuildUnicodeData
 //
 //  Created by Roman Kerimov on 2018-05-27.
 //

@@ -1,6 +1,6 @@
 //
-//  LoadUnicodeDataFiles.swift
-//  LoadUnicodeDataFiles
+//  BuildUnicodeData.swift
+//  BuildUnicodeData
 //
 //  Created by Roman Kerimov on 2018-05-19.
 //
@@ -9,7 +9,7 @@ import Foundation
 import CryptoKit
 import UnicodeData
 
-class LoadUnicodeDataFiles: Operation {
+class BuildUnicodeData: Operation {
     let columnSeparator: Character = ";"
     let commentMarker: Character = "#"
     
@@ -62,7 +62,7 @@ class LoadUnicodeDataFiles: Operation {
                         let name: String = components[2].components(separatedBy: String.space).dropFirst(2).joined(separator: .space).description.trimmingCharacters(in: .whitespaces)
                         
                         UnicodeData.default.addItem(codePoints: codePoints, name: name)
-                        LoadUnicodeDataFiles.ordersByCodePoints[codePoints] = UnicodeData.default.itemCount
+                        BuildUnicodeData.ordersByCodePoints[codePoints] = UnicodeData.default.itemCount
                         
                         fullyQualifiedEmoji = codePoints
                         
@@ -212,11 +212,11 @@ class LoadUnicodeDataFiles: Operation {
                 for (language, keyboardIntersectionSet) in KeyboardXMLParser.keyboardIntersectionSets {
                     let locale = Locale(identifier: language)
                     
-                    if LoadUnicodeDataFiles.characterCollectionsByLocale[language] == nil {
-                        LoadUnicodeDataFiles.characterCollectionsByLocale[language] = UnicodeData.default.createCharacterCollection(language: language)
+                    if BuildUnicodeData.characterCollectionsByLocale[language] == nil {
+                        BuildUnicodeData.characterCollectionsByLocale[language] = UnicodeData.default.createCharacterCollection(language: language)
                     }
                     
-                    LoadUnicodeDataFiles.characterCollectionsByLocale[language]?.keyboardIntersection = keyboardIntersectionSet.sorted {
+                    BuildUnicodeData.characterCollectionsByLocale[language]?.keyboardIntersection = keyboardIntersectionSet.sorted {
                         switch $0.compare($1, options: [.caseInsensitive], range: nil, locale: locale) {
                         case .orderedAscending:
                             return true

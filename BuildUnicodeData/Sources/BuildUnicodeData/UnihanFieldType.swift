@@ -1,6 +1,6 @@
 //
 //  UnihanFieldType.swift
-//  LoadUnicodeDataFiles
+//  BuildUnicodeData
 //
 //  Created by Roman Kerimov on 2019-12-31.
 //

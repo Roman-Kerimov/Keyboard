@@ -1,6 +1,6 @@
 //
 //  MainXMLParser.swift
-//  LoadUnicodeDataFiles
+//  BuildUnicodeData
 //
 //  Created by Roman Kerimov on 2020-02-07.
 //
@@ -121,7 +121,7 @@ extension MainXMLParser: XMLParserDelegate {
                 characterCollection.setValue(characters, forKey: type)
             }
             
-            LoadUnicodeDataFiles.characterCollectionsByLocale[locale] = characterCollection
+            BuildUnicodeData.characterCollectionsByLocale[locale] = characterCollection
             
         case "identity":
             isIdentity = false

@@ -1,6 +1,6 @@
 //
 //  KeyboardXMLParser.swift
-//  LoadUnicodeDataFiles
+//  BuildUnicodeData
 //
 //  Created by Roman Kerimov on 2020-01-31.
 //

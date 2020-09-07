@@ -6,6 +6,7 @@
 //
 
 import AppKit
+import KeyboardModule
 
 class VisibilityMenuItem: LocalizedMenuItem {
     override func updateLocalizedStrings() {

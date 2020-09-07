@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import KeyboardModule
 
 class LayoutMenuItem: LocalizedMenuItem {
     

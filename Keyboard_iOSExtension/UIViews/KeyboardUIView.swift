@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KeyboardModule
 
 internal class KeyboardUIView: UIView {
     

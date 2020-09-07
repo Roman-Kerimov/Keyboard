@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KeyboardModule
 
 class LanguagesUIView: UITableView, UITableViewDelegate, UITableViewDataSource {
     

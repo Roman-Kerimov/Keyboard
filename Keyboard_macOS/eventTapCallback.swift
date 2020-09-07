@@ -6,6 +6,7 @@
 //
 
 import AppKit
+import KeyboardModule
 import Carbon
 
 func eventTapCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent, refcon: UnsafeMutableRawPointer?) -> Unmanaged<CGEvent>? {

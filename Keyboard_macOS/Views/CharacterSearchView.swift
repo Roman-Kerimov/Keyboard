@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import KeyboardModule
 
 struct CharacterSearchView : View {
     @EnvironmentObject var characterSearch: CharacterSearch

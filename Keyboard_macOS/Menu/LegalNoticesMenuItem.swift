@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import KeyboardModule
 
 class LegalNoticesMenuItem: LocalizedMenuItem {
     

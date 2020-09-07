@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KeyboardModule
 import UnicodeData
 
 class CharacterSearchUIView: UICollectionView, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {

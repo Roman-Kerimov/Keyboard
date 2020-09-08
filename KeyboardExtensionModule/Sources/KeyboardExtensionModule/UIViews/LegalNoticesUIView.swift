@@ -8,9 +8,9 @@
 import UIKit
 import KeyboardModule
 
-class LegalNoticesUIView: LegalTextUIView {
+public class LegalNoticesUIView: LegalTextUIView {
     
-    override func updateLocalizedStrings() {
+    public override func updateLocalizedStrings() {
         super.updateLocalizedStrings()
         
         controller?.title = LEGAL_NOTICES.string

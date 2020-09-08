@@ -14,9 +14,9 @@ public enum PDFExtension: String {
 }
 
 extension UIImage {
-    public convenience init?(fromPDF pdfName: String, withExtension pdfExtension: PDFExtension, withScale scale: CGFloat) {
+    public convenience init?(fromPDF path: String, withExtension pdfExtension: PDFExtension, withScale scale: CGFloat) {
         
-        guard let pdfURL = Bundle.main.url(forResource: pdfName, withExtension: pdfExtension.rawValue) else {
+        guard let pdfURL = Bundle.module.url(forResource: path, withExtension: pdfExtension.rawValue) else {
             return nil
         }
         

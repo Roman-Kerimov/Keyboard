@@ -57,8 +57,8 @@ class KeyUIView: UIButton {
     
     let key: Key
     
-    private var labelFileName: String {
-        return "Labels_\(key.label)"
+    private var labelPath: String {
+        return "Images/Labels_\(key.label)"
     }
     
     private let mainLabelView: LabelUIView = .init()
@@ -116,7 +116,7 @@ class KeyUIView: UIButton {
         
         addSubview(imageLabelView)
         
-        if let imageLabel: UIImage = UIImage.init(fromPDF: labelFileName, withExtension: .ai, withScale: 1) {
+        if let imageLabel: UIImage = UIImage.init(fromPDF: labelPath, withExtension: .ai, withScale: 1) {
             imageLabelView.image = imageLabel
             mainLabelView.isHidden = true
         }
@@ -179,7 +179,7 @@ class KeyUIView: UIButton {
         shiftRightLabelView.font = nameLabelFont
         
         if imageLabelView.image != nil {
-            imageLabelView.image = UIImage.init(fromPDF: labelFileName, withExtension: .ai, withScale: KeyUIView.labelFontSize/24)?.withRenderingMode(.alwaysTemplate)
+            imageLabelView.image = UIImage.init(fromPDF: labelPath, withExtension: .ai, withScale: KeyUIView.labelFontSize/24)?.withRenderingMode(.alwaysTemplate)
         }
         
         backgroundView.layer.cornerRadius = KeyUIView.spacing

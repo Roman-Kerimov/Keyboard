@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import KeyboardExtensionModule
 
 class GuideUIViewController: UISplitViewController {
     

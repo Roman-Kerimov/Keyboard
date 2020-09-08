@@ -7,6 +7,7 @@
 
 import SwiftUI
 import KeyboardModule
+import KeyboardExtensionModule
 
 class LegalNoticesUIViewCell: LocalizedUIViewCell {
     

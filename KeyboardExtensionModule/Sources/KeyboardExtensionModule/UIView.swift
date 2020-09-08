@@ -9,7 +9,7 @@ import UIKit
 
 extension UIView {
     
-    var controller: UIViewController? {
+    public var controller: UIViewController? {
         return next as? UIViewController
     }
     
@@ -23,7 +23,7 @@ extension UIView {
         }
     }
     
-    @objc func willAppear(_ animated: Bool) {
+    @objc open func willAppear(_ animated: Bool) {
         
     }
 }

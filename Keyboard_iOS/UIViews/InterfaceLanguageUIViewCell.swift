@@ -7,6 +7,7 @@
 
 import UIKit
 import KeyboardModule
+import KeyboardExtensionModule
 
 class InterfaceLanguageUIViewCell: LocalizedUIViewCell {
     

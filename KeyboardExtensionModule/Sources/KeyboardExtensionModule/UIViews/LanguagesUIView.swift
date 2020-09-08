@@ -9,9 +9,9 @@
 import UIKit
 import KeyboardModule
 
-class LanguagesUIView: UITableView, UITableViewDelegate, UITableViewDataSource {
+public class LanguagesUIView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
-    override func updateLocalizedStrings() {
+    public override func updateLocalizedStrings() {
         preferredLanguages = Language.preferredList
         reloadData()
         
@@ -35,7 +35,7 @@ class LanguagesUIView: UITableView, UITableViewDelegate, UITableViewDataSource {
         case preferredLanguages, allLanguages
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch Section.allCases[indexPath.section] {
             
         case .preferredLanguages:
@@ -46,11 +46,11 @@ class LanguagesUIView: UITableView, UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    public func numberOfSections(in tableView: UITableView) -> Int {
         return Section.allCases.count
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         switch Section.allCases[section] {
             
@@ -64,7 +64,7 @@ class LanguagesUIView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
     private var preferredLanguages: [Language] = [.en, .ru_Cyrl]
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let language: Language
         

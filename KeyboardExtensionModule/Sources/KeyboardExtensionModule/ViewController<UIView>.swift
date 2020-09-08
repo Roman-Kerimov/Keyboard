@@ -8,28 +8,28 @@
 
 import UIKit
 
-class ViewController<View: UIView>: UIViewController {
+public class ViewController<View: UIView>: UIViewController {
     
-    let rootView = View()
+    public let rootView = View()
     
-    override func loadView() {
+    public override func loadView() {
         view = rootView
     }
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         view.updateLocalizedStrings()
     }
 
-    override func didReceiveMemoryWarning() {
+    public override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
 
-    override func viewWillAppear(_ animated: Bool) {
+    public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         view.willAppear(animated)

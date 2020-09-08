@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LegalTextUIView: UITextView {
+public class LegalTextUIView: UITextView {
     
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)

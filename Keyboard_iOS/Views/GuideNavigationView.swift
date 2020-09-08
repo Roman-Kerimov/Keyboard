@@ -7,6 +7,7 @@
 
 import SwiftUI
 import KeyboardModule
+import KeyboardExtensionModule
 import UnicodeData
 
 @available(iOS 13.0, *)

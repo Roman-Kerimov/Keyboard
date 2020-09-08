@@ -9,10 +9,12 @@ import SwiftUI
 import KeyboardModule
 
 @available(iOS 13.0, *)
-struct InterfaceLanguagePicker: View {
+public struct InterfaceLanguagePicker: View {
     @EnvironmentObject var settings: Settings
     
-    var body: some View {
+    public init() {}
+    
+    public var body: some View {
         NavigationLink(destination: InterfaceLanguageList()) {
             HStack {
                 Text(LANGUAGE.string)

@@ -68,13 +68,15 @@ class KeyboardUIViewController: UIInputViewController, KeyboardDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateDocumentContext), name: .DocumentContextDidChange, object: nil)
         
-        // Hack for working of the keyboard height constraint
-        let hiddenView: UILabel = .init()
-        hiddenView.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(hiddenView)
-        hiddenView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-        hiddenView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-        hiddenView.isHidden = true
+        if Bundle.main.isExtension {
+            // Hack for working of the keyboard height constraint
+            let hiddenView: UILabel = .init()
+            hiddenView.translatesAutoresizingMaskIntoConstraints = false
+            self.view.addSubview(hiddenView)
+            hiddenView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+            hiddenView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+            hiddenView.isHidden = true
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

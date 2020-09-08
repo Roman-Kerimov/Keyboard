@@ -9,21 +9,6 @@ import Foundation
 import CommonCrypto
 
 extension Bundle {
-    
-    public var isExtension: Bool {
-        return bundlePath.hasSuffix(".appex")
-    }
-    
-    public var productName: String {
-        return infoDictionary?[kCFBundleNameKey as String] as? String ?? .init()
-    }
-    
-    public var version: String {
-        let versionNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
-        let buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
-        return "\(versionNumber) (\(buildNumber))"
-    }
-    
     var executableHash: String {
         let data = try! Data.init(contentsOf: executableURL!)
         

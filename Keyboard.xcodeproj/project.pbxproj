@@ -53,14 +53,11 @@
 		964AB96E1D1B6535004C827C /* KeyboardExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 964AB9671D1B6535004C827C /* KeyboardExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		964EA726237EC5F700CA1D83 /* UnicodeDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964EA725237EC5F700CA1D83 /* UnicodeDataTests.swift */; };
 		964EA727237EC5F700CA1D83 /* UnicodeDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964EA725237EC5F700CA1D83 /* UnicodeDataTests.swift */; };
-		9651D95522F3602A00FD1EE9 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9651D95422F3602900FD1EE9 /* SwiftUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9651D95622F3603B00FD1EE9 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9651D95422F3602900FD1EE9 /* SwiftUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		965A8B3E20D2EDF800E0260E /* VisibilityMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965A8B3D20D2EDF800E0260E /* VisibilityMenuItem.swift */; };
 		965BFAC91F7979FA00B8F682 /* Keyboard_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965BFAC81F7979FA00B8F682 /* Keyboard_iOSTests.swift */; };
 		96615729243AEF4900E1D32A /* Calculator in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 96E92B4622E029E40019EC2F /* Calculator */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		9661572B243AEF4B00E1D32A /* LinguisticKit in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 96E92B4922E02A0A0019EC2F /* LinguisticKit */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		9661572C243AEF5700E1D32A /* Calculator in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 96E92B4F22E02A250019EC2F /* Calculator */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		9661572E243AEF5900E1D32A /* LinguisticKit in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 96E92B5122E02A2A0019EC2F /* LinguisticKit */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		9661572F243AEF6300E1D32A /* Calculator in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 96E92B4B22E02A190019EC2F /* Calculator */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		96615730243AEF6600E1D32A /* LinguisticKit in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 96E92B4D22E02A1D0019EC2F /* LinguisticKit */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		966B7694237A30F2004D299B /* unicode-license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9619B6CB232D038200AA83C3 /* unicode-license.txt */; };
@@ -71,8 +68,6 @@
 		966EB96D202FC0D3007718F2 /* LegalNoticesMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966EB96C202FC0D3007718F2 /* LegalNoticesMenuItem.swift */; };
 		9672E28425043E94003D5886 /* UnicodeData in Frameworks */ = {isa = PBXBuildFile; productRef = 9672E28325043E94003D5886 /* UnicodeData */; };
 		9672E28525043E94003D5886 /* UnicodeData in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 9672E28325043E94003D5886 /* UnicodeData */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		9672E28725043E9F003D5886 /* UnicodeData in Frameworks */ = {isa = PBXBuildFile; productRef = 9672E28625043E9F003D5886 /* UnicodeData */; };
-		9672E28825043E9F003D5886 /* UnicodeData in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 9672E28625043E9F003D5886 /* UnicodeData */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		9672E28A25043EAD003D5886 /* UnicodeData in Frameworks */ = {isa = PBXBuildFile; productRef = 9672E28925043EAD003D5886 /* UnicodeData */; };
 		9672E28B25043EAD003D5886 /* UnicodeData in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 9672E28925043EAD003D5886 /* UnicodeData */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		9672E29125044221003D5886 /* UnicodeData in Frameworks */ = {isa = PBXBuildFile; productRef = 9672E29025044221003D5886 /* UnicodeData */; };
@@ -96,7 +91,6 @@
 		968A72182506F1CB0059014B /* CharacterComponentsDictionaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968A72092506F1CB0059014B /* CharacterComponentsDictionaryTests.swift */; };
 		968A72192506F1CB0059014B /* CharacterComponentsDictionaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968A72092506F1CB0059014B /* CharacterComponentsDictionaryTests.swift */; };
 		968A721B2506F2BA0059014B /* KeyboardModule in Frameworks */ = {isa = PBXBuildFile; productRef = 968A721A2506F2BA0059014B /* KeyboardModule */; };
-		968A721D2506F2D10059014B /* KeyboardModule in Frameworks */ = {isa = PBXBuildFile; productRef = 968A721C2506F2D10059014B /* KeyboardModule */; };
 		968A721F2506F2FC0059014B /* KeyboardModule in Frameworks */ = {isa = PBXBuildFile; productRef = 968A721E2506F2FC0059014B /* KeyboardModule */; };
 		968DEA8120CCDFA400750040 /* eventTapCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968DEA8020CCDFA400750040 /* eventTapCallback.swift */; };
 		969102B823EBBC9600E9BE0D /* UnicodeData.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 969102B723EBBC9600E9BE0D /* UnicodeData.sqlite-wal */; };
@@ -135,8 +129,6 @@
 		96E92B4A22E02A0A0019EC2F /* LinguisticKit in Frameworks */ = {isa = PBXBuildFile; productRef = 96E92B4922E02A0A0019EC2F /* LinguisticKit */; };
 		96E92B4C22E02A190019EC2F /* Calculator in Frameworks */ = {isa = PBXBuildFile; productRef = 96E92B4B22E02A190019EC2F /* Calculator */; };
 		96E92B4E22E02A1D0019EC2F /* LinguisticKit in Frameworks */ = {isa = PBXBuildFile; productRef = 96E92B4D22E02A1D0019EC2F /* LinguisticKit */; };
-		96E92B5022E02A250019EC2F /* Calculator in Frameworks */ = {isa = PBXBuildFile; productRef = 96E92B4F22E02A250019EC2F /* Calculator */; };
-		96E92B5222E02A2A0019EC2F /* LinguisticKit in Frameworks */ = {isa = PBXBuildFile; productRef = 96E92B5122E02A2A0019EC2F /* LinguisticKit */; };
 		96F28C2420302AC00023313C /* VersionMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F28C2320302AC00023313C /* VersionMenuItem.swift */; };
 /* End PBXBuildFile section */
 
@@ -237,9 +229,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				9672E28825043E9F003D5886 /* UnicodeData in Embed Frameworks */,
-				9661572E243AEF5900E1D32A /* LinguisticKit in Embed Frameworks */,
-				9661572C243AEF5700E1D32A /* Calculator in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -417,12 +406,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9672E28725043E9F003D5886 /* UnicodeData in Frameworks */,
-				9651D95522F3602A00FD1EE9 /* SwiftUI.framework in Frameworks */,
-				968A721D2506F2D10059014B /* KeyboardModule in Frameworks */,
 				9641FF562507057100600D5D /* KeyboardExtensionModule in Frameworks */,
-				96E92B5222E02A2A0019EC2F /* LinguisticKit in Frameworks */,
-				96E92B5022E02A250019EC2F /* Calculator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -798,10 +782,6 @@
 			);
 			name = Keyboard_iOSExtension;
 			packageProductDependencies = (
-				96E92B4F22E02A250019EC2F /* Calculator */,
-				96E92B5122E02A2A0019EC2F /* LinguisticKit */,
-				9672E28625043E9F003D5886 /* UnicodeData */,
-				968A721C2506F2D10059014B /* KeyboardModule */,
 				9641FF552507057100600D5D /* KeyboardExtensionModule */,
 			);
 			productName = Keyboard_iOSExtension;
@@ -1746,10 +1726,6 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = UnicodeData;
 		};
-		9672E28625043E9F003D5886 /* UnicodeData */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = UnicodeData;
-		};
 		9672E28925043EAD003D5886 /* UnicodeData */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = UnicodeData;
@@ -1763,10 +1739,6 @@
 			productName = UnicodeData;
 		};
 		968A721A2506F2BA0059014B /* KeyboardModule */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = KeyboardModule;
-		};
-		968A721C2506F2D10059014B /* KeyboardModule */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = KeyboardModule;
 		};
@@ -1794,16 +1766,6 @@
 			productName = Calculator;
 		};
 		96E92B4D22E02A1D0019EC2F /* LinguisticKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 96E92B4822E02A0A0019EC2F /* XCRemoteSwiftPackageReference "LinguisticKit" */;
-			productName = LinguisticKit;
-		};
-		96E92B4F22E02A250019EC2F /* Calculator */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 96E92B4522E029E40019EC2F /* XCRemoteSwiftPackageReference "Calculator" */;
-			productName = Calculator;
-		};
-		96E92B5122E02A2A0019EC2F /* LinguisticKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 96E92B4822E02A0A0019EC2F /* XCRemoteSwiftPackageReference "LinguisticKit" */;
 			productName = LinguisticKit;

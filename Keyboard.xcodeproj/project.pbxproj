@@ -22,7 +22,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		9605D58C239483D800933F8E /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9605D58B239483D800933F8E /* ActivityView.swift */; };
 		960ECB5A25044F1300787C22 /* LinguisticKit in Frameworks */ = {isa = PBXBuildFile; productRef = 960ECB5925044F1300787C22 /* LinguisticKit */; };
 		960ECB5B25044F1300787C22 /* LinguisticKit in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 960ECB5925044F1300787C22 /* LinguisticKit */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		960ECB5E25044F1A00787C22 /* UnicodeData in Frameworks */ = {isa = PBXBuildFile; productRef = 960ECB5D25044F1A00787C22 /* UnicodeData */; };
@@ -279,7 +278,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		9605D58B239483D800933F8E /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		96094C3C23920A6B00D29C7D /* Package.resolved */ = {isa = PBXFileReference; lastKnownFileType = text; name = Package.resolved; path = Keyboard.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved; sourceTree = "<group>"; };
 		960ECB6025044F3B00787C22 /* BuildUnicodeDataDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BuildUnicodeDataDebug.entitlements; sourceTree = "<group>"; };
 		960F7E8322CD62FE00419F62 /* NSFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSFont.swift; sourceTree = "<group>"; };
@@ -580,7 +578,6 @@
 				96CB9A8322D8E2D7004CA972 /* KeyView.swift */,
 				962A3E2C22C9F8140024D0AF /* CharacterSequenceView.swift */,
 				96A41BCF22C22986009057F5 /* CharacterSearchView.swift */,
-				9605D58B239483D800933F8E /* ActivityView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1151,7 +1148,6 @@
 				96B8908B21E04EA800917CB2 /* GuideWindow.swift in Sources */,
 				960FEFEE203D37590099E449 /* AXAttribute.swift in Sources */,
 				96122C0622DBA18000125F65 /* LegalNoticesWindow.swift in Sources */,
-				9605D58C239483D800933F8E /* ActivityView.swift in Sources */,
 				960F7E8422CD62FE00419F62 /* NSFont.swift in Sources */,
 				96AED32F203120DE00498A7E /* LayoutMenuItem.swift in Sources */,
 				963212B6217C61BC00E8A6B2 /* CharacterSequenceWindow.swift in Sources */,

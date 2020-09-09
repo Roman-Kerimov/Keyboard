@@ -26,7 +26,7 @@ struct CharacterSearchView : View {
                     }
                     
                     if self.characterSearch.isSearching {
-                        ActivityView().frame(width: geometry.size.width, height: geometry.size.width)
+                        ProgressView()
                     }
                 }
             }

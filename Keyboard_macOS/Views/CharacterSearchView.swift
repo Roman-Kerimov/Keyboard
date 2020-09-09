@@ -22,7 +22,7 @@ struct CharacterSearchView : View {
                             .frame(width: geometry.size.width, height: geometry.size.width, alignment: .center)
                             .font(.system(size: geometry.size.width * .characterSearchViewFontSizeFactor))
                             .onTapGesture {self.characterSearch.insert(item: item)}
-                            .toolTip(unicodeItem.localizedName)
+                            .help(unicodeItem.localizedName)
                     }
                     
                     if self.characterSearch.isSearching {

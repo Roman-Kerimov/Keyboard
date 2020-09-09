@@ -40,7 +40,6 @@
 		963212B6217C61BC00E8A6B2 /* CharacterSequenceWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963212B5217C61BB00E8A6B2 /* CharacterSequenceWindow.swift */; };
 		963DE0B0202F00B60040A448 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963DE0AF202F00B60040A448 /* main.swift */; };
 		963DE0B2202F012B0040A448 /* StatusMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963DE0B1202F012B0040A448 /* StatusMenu.swift */; };
-		963E9C0C243AD5EA001C144E /* ToolTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963E9C0B243AD5EA001C144E /* ToolTipView.swift */; };
 		9641FF562507057100600D5D /* KeyboardExtensionModule in Frameworks */ = {isa = PBXBuildFile; productRef = 9641FF552507057100600D5D /* KeyboardExtensionModule */; };
 		9641FF58250705B100600D5D /* KeyboardExtensionModule in Frameworks */ = {isa = PBXBuildFile; productRef = 9641FF57250705B100600D5D /* KeyboardExtensionModule */; };
 		96443FBC208BE94D002FFA6B /* AccessibilityMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96443FBB208BE94D002FFA6B /* AccessibilityMenuItem.swift */; };
@@ -301,7 +300,6 @@
 		963DE0AF202F00B60040A448 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		963DE0B1202F012B0040A448 /* StatusMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenu.swift; sourceTree = "<group>"; };
 		963E5CA222F04C4C00873C20 /* BuildEnvironment */ = {isa = PBXFileReference; lastKnownFileType = text; path = BuildEnvironment; sourceTree = "<group>"; };
-		963E9C0B243AD5EA001C144E /* ToolTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipView.swift; sourceTree = "<group>"; };
 		96419C672508E17100E2BC9D /* KeyboardGuide */ = {isa = PBXFileReference; lastKnownFileType = folder; path = KeyboardGuide; sourceTree = "<group>"; };
 		9641FF54250704AD00600D5D /* KeyboardExtensionModule */ = {isa = PBXFileReference; lastKnownFileType = folder; path = KeyboardExtensionModule; sourceTree = "<group>"; };
 		96443FBB208BE94D002FFA6B /* AccessibilityMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityMenuItem.swift; sourceTree = "<group>"; };
@@ -583,7 +581,6 @@
 				962A3E2C22C9F8140024D0AF /* CharacterSequenceView.swift */,
 				96A41BCF22C22986009057F5 /* CharacterSearchView.swift */,
 				9605D58B239483D800933F8E /* ActivityView.swift */,
-				963E9C0B243AD5EA001C144E /* ToolTipView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1151,7 +1148,6 @@
 				9673CAD8203282490030E2CA /* AXUIElement.swift in Sources */,
 				96CB9A8422D8E2D7004CA972 /* KeyView.swift in Sources */,
 				968DEA8120CCDFA400750040 /* eventTapCallback.swift in Sources */,
-				963E9C0C243AD5EA001C144E /* ToolTipView.swift in Sources */,
 				96B8908B21E04EA800917CB2 /* GuideWindow.swift in Sources */,
 				960FEFEE203D37590099E449 /* AXAttribute.swift in Sources */,
 				96122C0622DBA18000125F65 /* LegalNoticesWindow.swift in Sources */,

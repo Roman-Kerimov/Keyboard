@@ -8,11 +8,11 @@
 import UIKit
 import KeyboardExtensionModule
 
-class GuideUIViewController: UISplitViewController {
+public class GuideUIViewController: UISplitViewController {
     
     let masterViewController = ViewController<GuideTableUIView>.init()
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         
         masterViewController.title = Bundle.main.productName
@@ -32,7 +32,7 @@ class GuideUIViewController: UISplitViewController {
         return masterViewController.rootView.selectedRowIndexPath
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         if !isCollapsed {
@@ -40,7 +40,7 @@ class GuideUIViewController: UISplitViewController {
         }
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    public override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         coordinator.animate(alongsideTransition: nil) { _ in
             if self.isCollapsed {
                 self.masterViewController.rootView.deselectRow(at: self.selectedRowIndexPath, animated: true)
@@ -54,7 +54,7 @@ class GuideUIViewController: UISplitViewController {
 
 extension GuideUIViewController: UISplitViewControllerDelegate {
     
-    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
+    public func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
         
         return true
     }

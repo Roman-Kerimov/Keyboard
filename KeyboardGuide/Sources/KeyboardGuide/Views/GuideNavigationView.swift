@@ -11,13 +11,15 @@ import KeyboardExtensionModule
 import UnicodeData
 
 @available(iOS 13.0, *)
-struct GuideNavigationView: View {
+public struct GuideNavigationView: View {
     @EnvironmentObject var settings: Settings
     
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @Environment(\.verticalSizeClass) var verticalSizeClass
     
-    var body: some View {
+    public init() {}
+    
+    public var body: some View {
         NavigationView {
             List {
                 Section(header: Text(LANGUAGES.uppercasedString)) {

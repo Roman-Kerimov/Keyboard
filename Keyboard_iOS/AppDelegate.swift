@@ -9,6 +9,7 @@
 import SwiftUI
 import CoreData
 import UnicodeData
+import KeyboardGuide
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

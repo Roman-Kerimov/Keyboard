@@ -15,8 +15,8 @@ struct CharacterSearchView : View {
         let enumeratedFoundUnicodeItems = self.characterSearch.foundUnicodeItems.enumerated().map {($0, $1)}
         
         return GeometryReader {geometry in
-            ScrollView {
-                VStack(alignment: .leading, spacing: 0) {
+            ScrollView(showsIndicators: false) {
+                VStack {
                     ForEach(enumeratedFoundUnicodeItems, id: \.0) {(item, unicodeItem) in
                         Text(unicodeItem.codePoints.previewDescription)
                             .frame(width: geometry.size.width, height: geometry.size.width, alignment: .center)
@@ -29,7 +29,6 @@ struct CharacterSearchView : View {
                         ActivityView().frame(width: geometry.size.width, height: geometry.size.width)
                     }
                 }
-                .padding(.horizontal, 100)
             }
         }
     }

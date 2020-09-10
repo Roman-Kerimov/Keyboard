@@ -16,34 +16,6 @@ internal class KeyboardUIView: UIView {
     }
     
     var state: State = .disappeared
-    
-    internal var nextKeyboardKey: KeyUIView {
-        return spaceRowView.nextKeyboardKey
-    }
-    
-    internal var dismissKeyboardKey: KeyUIView {
-        return spaceRowView.dismissKeyboardKey
-    }
-    
-    internal var deleteKey: KeyUIView {
-        return deleteRowView.deleteKey
-    }
-    
-    internal var enterKey: KeyUIView {
-        return spaceRowView.enterKey
-    }
-    
-    internal var spaceKey: KeyUIView {
-        return spaceRowView.spaceKey
-    }
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
 
     private var layoutMode: Keyboard.KeyboardLayoutMode {
         get {
@@ -53,27 +25,6 @@ internal class KeyboardUIView: UIView {
         set {
             Keyboard.default.layoutMode = newValue
         }
-    }
-    
-    private var characterSequenceView: CharacterSequenceUIView {
-        return deleteRowView.characterSequence
-    }
-    
-    public var characterSearchView: CharacterSearchUIView {
-        return layoutView.characterSearchView
-    }
-    
-    private var keys: [KeyUIView] {
-        var keyViews: [KeyUIView] = []
-        
-        for row in layoutView.keyViews {
-            keyViews += row
-        }
-        
-        keyViews.append(deleteRowView.deleteKey)
-        keyViews += spaceRowView.keys.map {$0.view}
-        
-        return keyViews
     }
     
     private var heightConstraint: NSLayoutConstraint?
@@ -230,7 +181,7 @@ internal class KeyboardUIView: UIView {
         layoutView.layout = Keyboard.default.layout
     }
     
-    internal var settingsContainerView: SettingsContainerUIView = .init()
+    private var settingsContainerView: SettingsContainerUIView = .init()
     
     private var settingsRightConstraint: NSLayoutConstraint!
     

@@ -49,12 +49,6 @@ class KeyUIView: UIButton {
         }
     }
     
-    override func addTarget(_ target: Any?, action: Selector, for controlEvents: UIControl.Event) {
-        super.addTarget(target, action: action, for: controlEvents)
-        
-        removeGestureRecognizer(longPressGestureRecognizer)
-    }
-    
     let key: Key
     
     private var labelPath: String {
@@ -87,10 +81,16 @@ class KeyUIView: UIButton {
     }
     
     override var isEnabled: Bool {
-        didSet {
-            if isEnabled {
+        get {
+            key.isEnabled
+        }
+        
+        set {
+            if newValue {
                 isHighlighted = false
             }
+            
+            key.isEnabled = newValue
         }
     }
     
@@ -121,17 +121,31 @@ class KeyUIView: UIButton {
             mainLabelView.isHidden = true
         }
         
-        longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressGestureAction(gesture:)))
-        addGestureRecognizer(longPressGestureRecognizer)
+        switch key {
+        case .nextKeyboard:
+            addTarget(self, action: #selector(Self.handleInputModeList(from:with:)), for: .allTouchEvents)
+            
+        case .dismissKeyboard:
+            addTarget(self, action: #selector(Self.dismissKeyboard), for: .allTouchEvents)
+            
+        default:
+            let longPressGestureRecognizer = UILongPressGestureRecognizer(
+                target: self,
+                action: #selector(longPressGestureAction(gesture:))
+            )
+            
+            addGestureRecognizer(longPressGestureRecognizer)
+            
+            longPressGestureRecognizer.minimumPressDuration = 0
+        }
         
-        longPressGestureRecognizer.minimumPressDuration = 0
-    
         NotificationCenter.default.addLocaleObserver(self)
         
         NotificationCenter.default.addObserver(self, selector: #selector(setNeedsLayout), name: .KeyboardStateDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(setNeedsLayout), name: .KeyboardAppearanceDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(setNeedsLayout), name: .DocumentContextDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(setNeedsLayout), publisher: Keyboard.self)
+        NotificationCenter.default.addObserver(self, selector: #selector(setNeedsLayout), publisher: Key.self)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -213,7 +227,16 @@ class KeyUIView: UIButton {
         imageLabelView.center = backgroundView.center
     }
     
-    private var longPressGestureRecognizer: UILongPressGestureRecognizer!
+    private var inputController: UIInputViewController? {
+        Keyboard.default.delegate as? UIInputViewController
+    }
+    
+    @objc private func handleInputModeList(from view: UIView, with event: UIEvent) {
+        inputController?.handleInputModeList(from: view, with: event)
+    }
+    @objc private func dismissKeyboard() {
+        inputController?.dismissKeyboard()
+    }
     
     private var gestureStartPoint: CGPoint!
     private var startPointSpeed: CGFloat = 0

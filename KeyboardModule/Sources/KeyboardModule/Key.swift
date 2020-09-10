@@ -31,6 +31,18 @@ public final class Key: Identifiable {
         self.keycode = keycode
     }
     
+    public var isEnabled: Bool = true {
+        willSet {
+            if #available(iOS 13.0, *) {
+                objectWillChange.send()
+            }
+        }
+        
+        didSet {
+            NotificationCenter.default.post(self)
+        }
+    }
+    
     static let keys: [Key] = (0..<Keycode.keycodeMaxCount).map {Key.init(keycode: $0)}
     
     public static func by(keycode: Keycode) -> Key {keys[keycode]}

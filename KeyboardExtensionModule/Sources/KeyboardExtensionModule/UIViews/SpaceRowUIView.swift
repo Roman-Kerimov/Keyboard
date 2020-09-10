@@ -10,30 +10,14 @@ import UIKit
 import KeyboardModule
 
 class SpaceRowUIView: UIView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
     
-    var keys: [(proportion: CGFloat, view: KeyUIView)] {
-        return [
-            (5, settingsKey),
-            (5, nextKeyboardKey),
-            (17, spaceKey),
-            (8, enterKey),
-            (5, dismissKeyboardKey),
-        ]
-    }
-    
-    internal let settingsKey: KeyUIView = .init(key: .settings)
-    internal let nextKeyboardKey: KeyUIView = .init(key: .nextKeyboard)
-    internal let spaceKey: KeyUIView = .init(key: .space)
-    internal let enterKey: KeyUIView = .init(key: .enter)
-    internal let dismissKeyboardKey: KeyUIView = .init(key: .dismissKeyboard)
+    private lazy var keys: [(proportion: CGFloat, view: KeyUIView)] = [
+        (5, .init(key: .settings)),
+        (5, .init(key: .nextKeyboard)),
+        (17, .init(key: .space)),
+        (8, .init(key: .enter)),
+        (5, .init(key: .dismissKeyboard)),
+    ]
     
     init() {
         super.init(frame: .zero)

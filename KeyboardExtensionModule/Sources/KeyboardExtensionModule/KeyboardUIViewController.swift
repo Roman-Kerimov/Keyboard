@@ -34,17 +34,22 @@ class KeyboardUIViewController: UIInputViewController, KeyboardDelegate {
     @objc private func updateDocumentContext() {
         
         if textDocumentProxy.enablesReturnKeyAutomatically == true {
-            keyboardView.enterKey.isEnabled = textDocumentProxy.hasText && textDocumentProxy.returnKeyType != .default
+            Key.enter.isEnabled = textDocumentProxy.hasText && textDocumentProxy.returnKeyType != .default
         }
         else {
-            keyboardView.enterKey.isEnabled = textDocumentProxy.returnKeyType != .default
+            Key.enter.isEnabled = textDocumentProxy.returnKeyType != .default
         }
     }
     
-    let keyboardView = KeyboardUIView()
+    private let keyboardUIView: KeyboardUIView? = KeyboardUIView()
     
     override func loadView() {
-        view = keyboardView
+        if let keyboardUIView = keyboardUIView {
+            view = keyboardUIView
+        }
+        else {
+            view = UIView()
+        }
     }
     
     override func updateViewConstraints() {
@@ -61,10 +66,7 @@ class KeyboardUIViewController: UIInputViewController, KeyboardDelegate {
         KeyboardUIViewController.shared = self
         Keyboard.default.delegate = self
         
-        keyboardView.frame = UIScreen.main.bounds
-        
-        keyboardView.nextKeyboardKey.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
-        keyboardView.dismissKeyboardKey.addTarget(self, action: #selector(dismissKeyboard), for: .allTouchEvents)
+        keyboardUIView?.frame = UIScreen.main.bounds
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateDocumentContext), name: .DocumentContextDidChange, object: nil)
         
@@ -82,26 +84,26 @@ class KeyboardUIViewController: UIInputViewController, KeyboardDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        keyboardView.state = .appearing
-        keyboardView.setNeedsLayout()
+        keyboardUIView?.state = .appearing
+        keyboardUIView?.setNeedsLayout()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        keyboardView.state = .appeared
+        keyboardUIView?.state = .appeared
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        keyboardView.state = .disappearing
+        keyboardUIView?.state = .disappearing
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        keyboardView.state = .disappeared
+        keyboardUIView?.state = .disappeared
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -128,7 +130,7 @@ class KeyboardUIViewController: UIInputViewController, KeyboardDelegate {
     override func textDidChange(_ textInput: UITextInput?) {
         // The app has just changed the document's contents, the document context has been updated.
         
-        if keyboardView.state != .appeared {
+        if let keyboardUIView = keyboardUIView, keyboardUIView.state != .appeared {
             UIKeyboardAppearance.current = self.textDocumentProxy.keyboardAppearance ?? .default
             NotificationCenter.default.post(name: .KeyboardAppearanceDidChange, object: nil)
         }
@@ -171,7 +173,7 @@ class KeyboardUIViewController: UIInputViewController, KeyboardDelegate {
     }
     
     func settings() {
-        keyboardView.showSettings()
+        keyboardUIView?.showSettings()
     }
     
     func insert(text: String) {

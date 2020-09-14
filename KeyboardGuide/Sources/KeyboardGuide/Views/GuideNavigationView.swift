@@ -10,7 +10,7 @@ import KeyboardModule
 import KeyboardExtensionModule
 import UnicodeData
 
-@available(iOS 13.0, *)
+@available(iOS 14.0, *)
 public struct GuideNavigationView: View {
     @EnvironmentObject var settings: Settings
     

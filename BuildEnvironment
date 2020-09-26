@@ -1,11 +1,11 @@
 xcodebuild -version
 
-Xcode 12.0
-Build version 12A8189n
+Xcode 12.2
+Build version 12B5018i
 
 
 sw_vers
 
 ProductName:	macOS
 ProductVersion:	11.0
-BuildVersion:	20A5364e
+BuildVersion:	20A5374i

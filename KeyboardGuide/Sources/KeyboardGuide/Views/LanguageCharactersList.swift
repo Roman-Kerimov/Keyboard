@@ -55,19 +55,25 @@ struct LanguageCharactersList: View {
         }
         .listStyle(GroupedListStyle())
         .navigationBarTitle(LANGUAGES.string)
-        .navigationBarItems(
-            trailing: Picker(selection: $languageFilter, label: EmptyView()) {
-                Image(systemName: "circle.fill")
-                    .tag(LanguageFilter.supported)
+        .toolbar {
+            ToolbarItemGroup(placement: .bottomBar) {
+                Picker(selection: $languageFilter, label: EmptyView()) {
+                    Image(systemName: "circle.fill")
+                        .tag(LanguageFilter.supported)
+                    
+                    Image(systemName: "circle.lefthalf.fill")
+                        .tag(LanguageFilter.all)
+                    
+                    Image(systemName: "circle")
+                        .tag(LanguageFilter.unsupported)
+                }
+                .pickerStyle(SegmentedPickerStyle())
                 
-                Image(systemName: "circle.lefthalf.fill")
-                    .tag(LanguageFilter.all)
+                Spacer()
                 
-                Image(systemName: "circle")
-                    .tag(LanguageFilter.unsupported)
+                Text(filtered(UnicodeData.default.characterCollections()).count.description)
             }
-            .pickerStyle(SegmentedPickerStyle())
-        )
+        }
     }
 }
 

@@ -26,7 +26,7 @@ public struct KeyboardLayout: Equatable, Identifiable {
         .init(characterComponents + KeyboardLayout.option.characterComponents + KeyboardLayout.shiftUpDictionary.values + [.space])
     }
     
-    private init(name: String = "", rows: [[CharacterComponent]] = .init(repeating: .init(repeating: .zero, count: Key.layoutBoardColumnCount), count: Key.layoutBoardRowCount), defaultInputSourceID: String = "") {
+    init(name: String = "", rows: [[CharacterComponent]] = .init(repeating: .init(repeating: .zero, count: Key.layoutBoardColumnCount), count: Key.layoutBoardRowCount), defaultInputSourceID: String = "") {
         self.name = name
         
         for (characterComponentRow, keyRow) in zip(rows, Key.layoutBoard) {
@@ -67,72 +67,6 @@ public struct KeyboardLayout: Equatable, Identifiable {
     ]
     
     static let reversedShiftRightDictionary = Dictionary.init(uniqueKeysWithValues: shiftRightDictionary.map {($1, $0)})
-}
-
-// MARK: - Layouts
-extension KeyboardLayout {
-    
-    public static let list: [KeyboardLayout] = [.qwerty, .dvorak, .colemak, .azerty, .qwertz, .qzerty]
-    
-    static let qwerty = KeyboardLayout(
-        name: "QWERTY",
-        rows: [
-            [ .q, .w, .e, .r, .t, .y, .u, .i,     .o,        .p,            ],
-            [ .a, .s, .d, .f, .g, .h, .j, .k,     .l,        .questionMark, ],
-            [ .z, .x, .c, .v, .b, .n, .m, .comma, .fullStop, .hyphen,       ],
-        ],
-        defaultInputSourceID: "com.apple.keylayout.ABC"
-    )
-    
-    static let dvorak = KeyboardLayout(
-        name: "Dvorak",
-        rows: [
-            [ .questionMark, .comma, .fullStop, .p, .y, .f, .g, .c, .r, .l, ],
-            [ .a,            .o,     .e,        .u, .i, .d, .h, .t, .n, .s, ],
-            [ .hyphen,       .q,     .j,        .k, .x, .b, .m, .w, .v, .z, ],
-        ],
-        defaultInputSourceID: "com.apple.keylayout.DVORAK-QWERTYCMD"
-    )
-    
-    static let colemak = KeyboardLayout(
-        name: "Colemak",
-        rows: [
-            [ .q, .w, .f, .p, .g, .j, .l, .u,     .y,        .hyphen,       ],
-            [ .a, .r, .s, .t, .d, .h, .n, .e,     .i,        .o,            ],
-            [ .z, .x, .c, .v, .b, .k, .m, .comma, .fullStop, .questionMark, ],
-        ],
-        defaultInputSourceID: "com.apple.keylayout.Colemak"
-    )
-    
-    static let azerty = KeyboardLayout(
-        name: "AZERTY",
-        rows: [
-            [ .a, .z, .e, .r, .t, .y, .u,     .i,        .o,            .p,      ],
-            [ .q, .s, .d, .f, .g, .h, .j,     .k,        .l,            .m,      ],
-            [ .w, .x, .c, .v, .b, .n, .comma, .fullStop, .questionMark, .hyphen, ],
-        ],
-        defaultInputSourceID: "com.apple.keylayout.ABC-AZERTY"
-    )
-    
-    static let qwertz = KeyboardLayout(
-        name: "QWERTZ",
-        rows: [
-            [ .q, .w, .e, .r, .t, .z, .u, .i,     .o,        .p,            ],
-            [ .a, .s, .d, .f, .g, .h, .j, .k,     .l,        .questionMark, ],
-            [ .y, .x, .c, .v, .b, .n, .m, .comma, .fullStop, .hyphen,       ],
-        ],
-        defaultInputSourceID: "com.apple.keylayout.ABC-QWERTZ"
-    )
-    
-    static let qzerty = KeyboardLayout(
-        name: "QZERTY",
-        rows: [
-            [ .q, .z, .e, .r, .t, .y, .u, .i,     .o,        .p,            ],
-            [ .a, .s, .d, .f, .g, .h, .j, .k,     .l,        .questionMark, ],
-            [ .w, .x, .c, .v, .b, .n, .m, .comma, .fullStop, .hyphen,       ],
-        ],
-        defaultInputSourceID: "com.apple.keylayout.Italian"
-    )
 }
 
 public extension Array where Element == KeyboardLayout {

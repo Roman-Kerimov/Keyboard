@@ -15,7 +15,7 @@ struct LayoutPickerSection: View {
     
     var body: some View {
         Section(header: Text(KEYBOARD.uppercasedString)) {
-            ForEach(KeyboardLayout.list) { layout in
+            ForEach(KeyboardLayout.allLayouts) { layout in
                 Button(action: {self.keyboard.layout = layout}) {
                     HStack {
                         Text(layout.name)

@@ -563,7 +563,7 @@ public final class Keyboard {
     private let layoutKey = "LBPQsNPr8gJHi8Ds05etypaTVEiq8X1"
     public var layout: KeyboardLayout {
         get {
-            return KeyboardLayout.list.filter { $0.name == (UserDefaults.standard.string(forKey: layoutKey) ?? "")}.first ?? .system
+            return KeyboardLayout.allLayouts.filter { $0.name == (UserDefaults.standard.string(forKey: layoutKey) ?? "")}.first ?? .system
         }
         
         set {

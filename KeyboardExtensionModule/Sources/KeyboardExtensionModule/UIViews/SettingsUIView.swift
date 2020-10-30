@@ -55,7 +55,7 @@ internal class SettingsUIView: UITableView, UITableViewDelegate, UITableViewData
             
             cell.accessoryType = .checkmark
             
-            Keyboard.default.layout = KeyboardLayout.list[indexPath.row]
+            Keyboard.default.layout = KeyboardLayout.allLayouts[indexPath.row]
             
         case .appLanguage:
             controller?.navigationController?.pushViewController(languageTableViewController, animated: true)
@@ -80,7 +80,7 @@ internal class SettingsUIView: UITableView, UITableViewDelegate, UITableViewData
         switch Section.allCases[section] {
             
         case .keyboardLayouts:
-            return KeyboardLayout.list.count
+            return KeyboardLayout.allLayouts.count
             
         default:
             return 1
@@ -118,7 +118,7 @@ internal class SettingsUIView: UITableView, UITableViewDelegate, UITableViewData
         switch Section.allCases[indexPath.section] {
             
         case .keyboardLayouts:
-            let layout = KeyboardLayout.list[indexPath.row]
+            let layout = KeyboardLayout.allLayouts[indexPath.row]
             
             cell.textLabel?.text = layout.name
             

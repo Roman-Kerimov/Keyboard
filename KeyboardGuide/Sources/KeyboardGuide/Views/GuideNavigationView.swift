@@ -10,12 +10,24 @@ import KeyboardModule
 import KeyboardExtensionModule
 import UnicodeData
 
-@available(iOS 13.0, *)
+@available(iOS 14.0, *)
 public struct GuideNavigationView: View {
     @EnvironmentObject var settings: Settings
     
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @Environment(\.verticalSizeClass) var verticalSizeClass
+    
+    @State var isSetUpView = false
+    
+    func updateIsSetUpView() {
+        let appleKeyboards = UserDefaults.standard.object(forKey: "AppleKeyboards") as! [String]
+        isSetUpView = !appleKeyboards.contains(where: {$0.hasPrefix(Bundle.main.bundleIdentifier!)})
+        if !isSetUpView {
+            isSetUpViewPresented = false
+        }
+    }
+    
+    @State var isSetUpViewPresented = false
     
     public init() {}
     
@@ -41,6 +53,33 @@ public struct GuideNavigationView: View {
             }
             .listStyle(GroupedListStyle())
             .navigationBarTitle(Bundle.main.productName)
+            .onAppear {
+                updateIsSetUpView()
+            }
+            .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+                updateIsSetUpView()
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) { () -> AnyView in
+                    if isSetUpView {
+                        return AnyView(
+                            Button(SET_UP.string) {
+                                isSetUpViewPresented = true
+                            }
+                        )
+                    }
+                    else {
+                        return AnyView(
+                            Link(destination: URL(string: UIApplication.openSettingsURLString)!) {
+                                Image(systemName: "gear")
+                            }
+                        )
+                    }
+                }
+            }
+            .sheet(isPresented: $isSetUpViewPresented) {
+                SetUpView()
+            }
         }
         .padding(.horizontal, (horizontalSizeClass, verticalSizeClass) == (.regular, .regular) ? 1 : 0)
     }

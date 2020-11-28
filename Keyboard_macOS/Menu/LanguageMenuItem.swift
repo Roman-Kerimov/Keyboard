@@ -10,7 +10,7 @@ import AppKit
 class LanguageMenuItem: LocalizedMenuItem {
     
     override func updateLocalizedStrings() {
-        state = language == Locale.current.language ? .on : .off
+        state = language == Settings.current.language ? .on : .off
     }
     
     let language: Language
@@ -27,6 +27,6 @@ class LanguageMenuItem: LocalizedMenuItem {
     }
     
     override func menuItemAction() {
-        Locale.current.language = language
+        Settings.current.language = language
     }
 }

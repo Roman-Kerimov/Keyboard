@@ -34,10 +34,10 @@ class AnnotationsXMLParser: XMLParser {
                 return
             }
             
-            let languageComponents = language.components(separatedBy: Foundation.Locale.componentSeparator)
+            let languageComponents = language.components(separatedBy: Locale.componentSeparator)
             
             func annotationKey(languageComponents: [String], isTTS: Bool) -> String {
-                return "\(codePoints)\(languageComponents.joined(separator: Foundation.Locale.componentSeparator))\(isTTS)"
+                return "\(codePoints)\(languageComponents.joined(separator: Locale.componentSeparator))\(isTTS)"
             }
             
             func normalize(text: inout String, isTTS: Bool) {
@@ -132,10 +132,10 @@ extension AnnotationsXMLParser: XMLParserDelegate {
             
         case "language":
             language = attributeDict["type"] ?? ""
-            AnnotationsXMLParser.baseLanguage = language.components(separatedBy: Foundation.Locale.componentSeparator).first!
+            AnnotationsXMLParser.baseLanguage = language.components(separatedBy: Locale.componentSeparator).first!
             
         case "script", "territory":
-            language = [language, attributeDict["type"]].compactMap({$0}).joined(separator: Foundation.Locale.componentSeparator)
+            language = [language, attributeDict["type"]].compactMap({$0}).joined(separator: Locale.componentSeparator)
             
         default:
             break
@@ -158,7 +158,7 @@ extension AnnotationsXMLParser: XMLParserDelegate {
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         switch elementName {
         case "subdivision":
-            guard let template = AnnotationsXMLParser.flagTemplates[language] ?? AnnotationsXMLParser.flagTemplates[language.components(separatedBy: Foundation.Locale.componentSeparator).dropLast().joined(separator: Foundation.Locale.componentSeparator)] else {
+            guard let template = AnnotationsXMLParser.flagTemplates[language] ?? AnnotationsXMLParser.flagTemplates[language.components(separatedBy: Locale.componentSeparator).dropLast().joined(separator: Locale.componentSeparator)] else {
                 return
             }
             

@@ -50,7 +50,7 @@ class UnicodeData: NSPersistentContainer {
     }
     
     private func languageQuery(language: String) -> String {
-        let locale = Foundation.Locale(identifier: language)
+        let locale = Locale(identifier: language)
         
         let languageQuery: String = (locale.compatibleIdentifiers + [""]).map({"(language == '\($0)')"}).joined(separator: " OR ")
         
@@ -139,7 +139,7 @@ class UnicodeData: NSPersistentContainer {
     
     private func languageScripts(fromLanguage language: String?) -> [String?] {
         if let language = language {
-            return Foundation.Locale.extendedIdentifiers(fromIdentifiers: [language])
+            return Locale.extendedIdentifiers(fromIdentifiers: [language])
         }
         else {
             return [nil]
@@ -149,7 +149,7 @@ class UnicodeData: NSPersistentContainer {
     private func text(inLanguage language: String?, from text: String) -> String {
         switch language {
         case "ru-Latn":
-            return text.applyingTransform(from: .Cyrl, to: .Latn, withTable: .ru)
+            return text.applyingTransform(from: .Cyrl, to: .Latn, withTable: .ru)!
         default:
             return text
         }
@@ -182,7 +182,7 @@ class UnicodeData: NSPersistentContainer {
 
         var preferredCharacterCollections: [CharacterCollection] = []
 
-        for language in Foundation.Locale.preferredLanguages + ["es", "fr", "de"] {
+        for language in Locale.preferredLanguages + ["es", "fr", "de"] {
             guard let characterCollection = characterCollection(language: language), !characterCollection.characterSections.isEmpty else {
                 continue
             }

@@ -17,15 +17,11 @@ struct CharacterSearchView : View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 0) {
                     ForEach(enumeratedFoundUnicodeItems, id: \.0) {(item, unicodeItem) in
-                        ZStack {
-                            Text(unicodeItem.codePoints.previewDescription)
-                                .frame(width: geometry.size.width, height: geometry.size.width, alignment: .center)
-                                .font(.system(size: geometry.size.width * .characterSearchViewFontSizeFactor))
-                                .onTapGesture {self.characterSearch.insert(item: item)}
-                            
-                            CharacterSearchToolTip(characterSearch: self._characterSearch, item: item)
-                                .allowsHitTesting(false)
-                        }
+                        Text(unicodeItem.codePoints.previewDescription)
+                            .frame(width: geometry.size.width, height: geometry.size.width, alignment: .center)
+                            .font(.system(size: geometry.size.width * .characterSearchViewFontSizeFactor))
+                            .onTapGesture {self.characterSearch.insert(item: item)}
+                            .toolTip(unicodeItem.localizedName)
                     }
                     
                     if self.characterSearch.isSearching {

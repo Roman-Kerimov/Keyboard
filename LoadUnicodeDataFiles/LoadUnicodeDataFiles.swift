@@ -150,7 +150,7 @@ class LoadUnicodeDataFiles: Operation {
                     UnicodeData.default.addWord(word, language: language)
                 }
                 
-            case .unihanDictionaryLikeData, .unihanReadings:
+            case .unihanDictionaryLikeData, .unihanIRGSources, .unihanReadings:
                 
                 var wordSets: [String: Set<String>] = [:]
 

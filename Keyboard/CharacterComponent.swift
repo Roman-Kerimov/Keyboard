@@ -54,7 +54,7 @@ enum CharacterComponent: String, CaseIterable {
     
     case dotless
     case highStroke, topbar
-    case stroke, lightCentralizationStroke, obliqueStroke, verticalStroke
+    case stroke, lightCentralizationStroke, strongCentralizationStroke, obliqueStroke, verticalStroke
     case lowStroke
     case diagonalStroke
     case longLeg
@@ -97,8 +97,10 @@ enum CharacterComponent: String, CaseIterable {
     internal static let letterToMixingComponentDictionary: [CharacterComponent: CharacterComponent] = [
         //.highStroke
         //.topbar
-        .hyphen: .stroke, //.diagonalStroke
+        .hyphen: .stroke,
+        .x: .diagonalStroke,
         //.lightCentralizationStroke
+        //.strongCentralizationStroke
         //.obliqueStroke
         //.lowStroke
         .l: .longLeg,

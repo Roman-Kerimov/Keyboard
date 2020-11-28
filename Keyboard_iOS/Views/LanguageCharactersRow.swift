@@ -9,7 +9,7 @@ import SwiftUI
 
 @available(iOS 13.0, *)
 struct LanguageCharactersRow: View {
-    @EnvironmentObject var locale: Locale
+    @EnvironmentObject var settings: Settings
     
     let characterCollection: CharacterCollection
     
@@ -18,7 +18,7 @@ struct LanguageCharactersRow: View {
     }
     
     var body: some View {
-        NavigationLink(destination: CharacterGestureList(characterSections: characterCollection.characterSections, languageCode: characterCollection.locale.languageCode!).navigationBarTitle(characterCollection.localizedLanguage(locale: locale))) {
+        NavigationLink(destination: CharacterGestureList(characterSections: characterCollection.characterSections, languageCode: characterCollection.locale.languageCode!).navigationBarTitle(characterCollection.localizedLanguage(locale: Locale(identifier: settings.language.rawValue)))) {
             
             HStack(alignment: .top) {
                 
@@ -37,7 +37,7 @@ struct LanguageCharactersRow: View {
                     
                 
                 VStack(alignment: .leading) {
-                    Text(characterCollection.localizedLanguage(locale: locale))
+                    Text(characterCollection.localizedLanguage(locale: Locale(identifier: settings.language.rawValue)))
                         .foregroundColor(.primary)
                         .padding(.vertical, 12)
                     

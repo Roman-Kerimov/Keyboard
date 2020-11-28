@@ -77,7 +77,7 @@ protocol LocalizedString {
 
 extension LocalizedString {
     static var string: String {
-        switch Locale.current.language {
+        switch Settings.current.language {
             //case .az: return az
             //case .az_Cyrl: return az_Cyrl
             case .ca: return ca
@@ -103,7 +103,7 @@ extension LocalizedString {
             case .pt_BR: return pt_BR
             case .ro: return ro
             case .ru_Cyrl: return ru
-            case .ru_Latn: return ru.applyingTransform(from: .Cyrl, to: .Latn, withTable: .ru)
+            case .ru_Latn: return ru.applyingTransform(from: .Cyrl, to: .Latn, withTable: .ru)!
             case .sk: return sk
             case .sv: return sv
             case .tr: return tr

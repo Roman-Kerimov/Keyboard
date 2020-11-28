@@ -1,11 +1,11 @@
 xcodebuild -version
 
 Xcode 12.2
-Build version 12B5035g
+Build version 12B45b
 
 
 sw_vers
 
 ProductName:	macOS
 ProductVersion:	11.0.1
-BuildVersion:	20B5012d
+BuildVersion:	20B29

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import KeyboardModule
 
 struct CharacterSequenceView : View {
     @EnvironmentObject var characterSequence: CharacterSequence

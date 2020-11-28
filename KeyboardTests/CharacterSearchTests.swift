@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import Keyboard
+@testable import KeyboardModule
 
 class CharacterSearchTests: XCTestCase {
 

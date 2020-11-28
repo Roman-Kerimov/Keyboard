@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import KeyboardModule
 
 final class CharacterSearchWindow: FloatingWindow {
     

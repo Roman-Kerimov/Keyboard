@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import KeyboardModule
 
 extension CGEvent {
     var keycode: Keycode {

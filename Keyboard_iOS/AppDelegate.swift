@@ -8,6 +8,8 @@
 
 import SwiftUI
 import CoreData
+import UnicodeData
+import KeyboardGuide
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             fatalError()
         }
         
-        if #available(iOS 13.0, *) {
+        if #available(iOS 14.0, *) {
             window.rootViewController = UIHostingController.init(rootView: GuideNavigationView().localized())
         } else {
             window.rootViewController = GuideUIViewController.init()

@@ -6,6 +6,7 @@
 //
 
 import AppKit
+import KeyboardModule
 
 class StatusMenu: NSMenu {
     
@@ -40,7 +41,7 @@ class StatusMenu: NSMenu {
             addItem(.separator())
         }
         
-        for layout in KeyboardLayout.list {
+        for layout in KeyboardLayout.allLayouts {
             addItem(LayoutMenuItem.init(layout: layout))
         }
         addItem(.separator())

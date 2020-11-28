@@ -6,7 +6,8 @@
 //
 
 import XCTest
-@testable import Keyboard
+@testable import KeyboardModule
+@testable import UnicodeData
 import CoreData
 
 class UnicodeDataTests: XCTestCase {

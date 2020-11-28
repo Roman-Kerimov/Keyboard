@@ -7,6 +7,8 @@
 
 import AppKit
 import Carbon
+import KeyboardModule
+import UnicodeData
 
 class AppDelegate: NSObject {
     
@@ -33,7 +35,7 @@ class AppDelegate: NSObject {
     }
     
     static func synchronizeKeyboardLayout() {
-        Keyboard.default.layout = KeyboardLayout.list.element(inputSourceID: TISInputSource.currentKeyboardLayout.id)
+        Keyboard.default.layout = KeyboardLayout.allLayouts.element(inputSourceID: TISInputSource.currentKeyboardLayout.id)
     }
     
     static var synchronizeKeyboardLayoutNotificationCallback: CFNotificationCallback = { (center, observer, name, object, userInfo) in

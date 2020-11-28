@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import KeyboardModule
 
 struct CharacterSearchView : View {
     @EnvironmentObject var characterSearch: CharacterSearch
@@ -14,21 +15,20 @@ struct CharacterSearchView : View {
         let enumeratedFoundUnicodeItems = self.characterSearch.foundUnicodeItems.enumerated().map {($0, $1)}
         
         return GeometryReader {geometry in
-            ScrollView {
-                VStack(alignment: .leading, spacing: 0) {
+            ScrollView(showsIndicators: false) {
+                VStack {
                     ForEach(enumeratedFoundUnicodeItems, id: \.0) {(item, unicodeItem) in
                         Text(unicodeItem.codePoints.previewDescription)
                             .frame(width: geometry.size.width, height: geometry.size.width, alignment: .center)
                             .font(.system(size: geometry.size.width * .characterSearchViewFontSizeFactor))
                             .onTapGesture {self.characterSearch.insert(item: item)}
-                            .toolTip(unicodeItem.localizedName)
+                            .help(unicodeItem.localizedName)
                     }
                     
                     if self.characterSearch.isSearching {
-                        ActivityView().frame(width: geometry.size.width, height: geometry.size.width)
+                        ProgressView()
                     }
                 }
-                .padding(.horizontal, 100)
             }
         }
     }

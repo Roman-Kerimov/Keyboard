@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import KeyboardModule
 
 struct KeyView : View {
     @EnvironmentObject var key: Key

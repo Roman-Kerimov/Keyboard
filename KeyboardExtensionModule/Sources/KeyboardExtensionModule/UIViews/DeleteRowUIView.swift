@@ -28,10 +28,18 @@ class DeleteRowUIView: UIView {
     }
     
     override func layoutSubviews() {
+        let keyboardViewController = KeyboardUIViewController.shared
         
-        let deleteKeyWidth = frame.width / 5
-        deleteKey.frame = .init(origin: .init(x: frame.width - deleteKeyWidth, y: 0), size: .init(width: deleteKeyWidth, height: frame.height))
+        deleteKey.frame = .init(
+            x: keyboardViewController.characterSequenceWidth,
+            y: 0,
+            width: keyboardViewController.deleteKeyWidth,
+            height: frame.height
+        )
         
-        characterSequence.frame.size = .init(width: frame.width - deleteKeyWidth, height: frame.height)
+        characterSequence.frame.size = .init(
+            width: keyboardViewController.characterSequenceWidth,
+            height: frame.height
+        )
     }
 }

@@ -15,19 +15,25 @@ class SettingsContainerUIView: UIStackView {
     
     let backButton = UIButton()
     
-    let navigationController: UIViewController
-    
-    var widthConstraint: NSLayoutConstraint!
-    
-    override init(frame: CGRect = .zero) {
-        
+    let navigationController: UIViewController = {
         if #available(iOS 13.0, *) {
-            navigationController = UIHostingController(rootView: SettingsNavigationView().localized().environmentObject(Keyboard.default))
+            return UIHostingController(rootView: SettingsNavigationView().localized().environmentObject(Keyboard.default))
         }
         else {
-            navigationController = SettingsUINavigationController()
+            return SettingsUINavigationController()
         }
+    }()
+    
+    lazy var widthConstraint: NSLayoutConstraint = {
+        let widthConstraint = navigationController.view.widthAnchor.constraint(
+            equalToConstant: KeyboardUIViewController.shared.settingsWidth
+        )
+        widthConstraint.isActive = true
         
+        return widthConstraint
+    }()
+    
+    override init(frame: CGRect = .zero) {
         super.init(frame: frame)
         
         backButton.backgroundColor = UIColor.black.withAlphaComponent(0.01)
@@ -41,9 +47,6 @@ class SettingsContainerUIView: UIStackView {
         
         addArrangedSubview(backButton)
         addArrangedSubview(navigationController.view)
-        
-        widthConstraint = navigationController.view.widthAnchor.constraint(equalToConstant: 280)
-        widthConstraint.isActive = true
     }
     
     required init(coder: NSCoder) {

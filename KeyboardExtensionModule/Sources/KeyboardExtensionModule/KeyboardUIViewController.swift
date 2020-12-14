@@ -29,7 +29,189 @@ extension UIApplication {
 }
 
 class KeyboardUIViewController: UIInputViewController, KeyboardDelegate {
-    fileprivate static var shared: KeyboardUIViewController = .init()
+    static var shared: KeyboardUIViewController = .init()
+    
+    enum State {
+        case disappeared, disappearing, appearing, appeared
+    }
+    
+    var state: State = .disappeared
+    
+    private var layoutMode: Keyboard.KeyboardLayoutMode {
+        get {
+            return Keyboard.default.layoutMode
+        }
+        
+        set {
+            Keyboard.default.layoutMode = newValue
+        }
+    }
+    
+    var isHorizontalMode = false
+    
+    private var heightConstraint: NSLayoutConstraint?
+    
+    var keySize: CGSize = .zero
+    var keyCornerRadius: CGFloat = .zero
+    var keySpacing: CGFloat = .zero
+    var keyLabelFontSize: CGFloat = 1
+    var keyNameLabelFontSize: CGFloat = 1
+    var horizontalMainLabelIndent: CGFloat = .zero
+    var verticalShiftLabelIndent: CGFloat = .zero
+    var horizontalShiftLabelIndent: CGFloat = .zero
+    
+    var keyboardSize: CGSize = .zero
+    
+    var deleteRowHeight: CGFloat = .zero
+    var characterSequenceWidth: CGFloat = .zero
+    var characterSequenceItemSize: CGSize = .zero
+    var characterSequenceFontSize: CGFloat = 1
+    var deleteKeyWidth: CGFloat = .zero
+    
+    var layoutHeight: CGFloat = .zero
+    var horizontalIndent: CGFloat = .zero
+    
+    var spaceRowHeight: CGFloat = .zero
+    var spaceRowKeyDescriptions: [SpaceRowKeyDescription] {SpaceRowKeyDescription.allCases}
+    
+    class SpaceRowKeyDescription: CaseIterable {
+        
+        let key: Key
+        let proportion: CGFloat
+        
+        var width: CGFloat = .zero
+        
+        init(key: Key, proportion: CGFloat) {
+            self.key = key
+            self.proportion = proportion
+        }
+        
+        static let settings = SpaceRowKeyDescription(key: .settings, proportion: 5)
+        static let nextKeyboard = SpaceRowKeyDescription(key: .nextKeyboard, proportion: 5)
+        static let space = SpaceRowKeyDescription(key: .space, proportion: 17)
+        static let enter = SpaceRowKeyDescription(key: .enter, proportion: 8)
+        static let dismissKeyboard = SpaceRowKeyDescription(key: .dismissKeyboard, proportion: 5)
+        
+        static let allCases: [SpaceRowKeyDescription] = [.settings, .nextKeyboard, .space, .enter, .dismissKeyboard]
+    }
+    
+    let settingsWidth: CGFloat = 280
+    let settingsAnimationDuration: Float64 = 0.3
+    
+    func updateSizes() {
+        let scaleFactor: CGFloat = view.bounds.width / UIScreen.main.bounds.width
+        
+        let minimalScreenSize: CGSize = CGSize.init(width: 320, height: 480).applying(.init(scale: scaleFactor))
+        
+        let isPrefferedVerticalMode: Bool = view.bounds.width < minimalScreenSize.height
+        
+        if layoutMode == .default {
+            layoutMode = isPrefferedVerticalMode ? .vertical : .horizontal
+        }
+        
+        let screenSize: CGSize = UIScreen.main.bounds.size.applying(.init(scale: scaleFactor))
+        
+        isHorizontalMode = layoutMode == .horizontal || screenSize.height < minimalScreenSize.height
+        
+        let horizontalIndentInKeys: CGFloat = layoutMode == .vertical && isPrefferedVerticalMode ? 0.75 : layoutMode == .horizontal && isPrefferedVerticalMode ? 1 : 0.5
+        
+        let coefficientOfIncreaseForMainButtons: CGFloat = layoutMode == .horizontal && isPrefferedVerticalMode ? 1.2 : 1
+        
+        let deleteRowHeightInKeys: CGFloat = 1 / coefficientOfIncreaseForMainButtons
+        let spaceRowHeightInKeys: CGFloat = deleteRowHeightInKeys
+        
+        let sizeInKeysForVerticalMode: CGSize = .init(
+            width: CGFloat(Key.layoutBoardColumnCount / 2) + 0.2 + horizontalIndentInKeys*2,
+            height: deleteRowHeightInKeys + CGFloat(Key.layoutBoardRowCount * 2) + spaceRowHeightInKeys
+        )
+        
+        let sizeInKeysForHorizontalMode: CGSize = .init(
+            width: CGFloat(Key.layoutBoardColumnCount) + horizontalIndentInKeys*2,
+            height: deleteRowHeightInKeys + CGFloat(Key.layoutBoardRowCount) + spaceRowHeightInKeys
+        )
+        
+        let keyboardSizeInKeys = isHorizontalMode ? sizeInKeysForHorizontalMode : sizeInKeysForVerticalMode
+        
+        let maxKeyWidth: CGFloat = 1024/sizeInKeysForHorizontalMode.width * scaleFactor
+        
+        func maxKeyHeight(fromWidth width: CGFloat) -> CGFloat {
+            return width * 0.94
+        }
+        
+        let keyWidth = min(maxKeyWidth, screenSize.width / keyboardSizeInKeys.width)
+        
+        let maxKeyboardHeightRatio: CGFloat = 0.59
+        let maxKeyboardHeight = (screenSize.height * maxKeyboardHeightRatio)
+        
+        keySize = .init(
+            width: keyWidth,
+            height: min(
+                max(
+                    min(
+                        maxKeyboardHeight / sizeInKeysForVerticalMode.height * coefficientOfIncreaseForMainButtons,
+                        maxKeyHeight(fromWidth: maxKeyWidth)
+                    ),
+                    maxKeyHeight(fromWidth: keyWidth)
+                ),
+                
+                maxKeyboardHeight / keyboardSizeInKeys.height
+            )
+        )
+        
+        keyboardSize = .init(
+            width: keySize.width * keyboardSizeInKeys.width,
+            height: keySize.height * keyboardSizeInKeys.height
+        )
+        
+        if heightConstraint != nil {
+            heightConstraint?.constant = keyboardSize.height
+        }
+        else {
+            heightConstraint = view.heightAnchor.constraint(equalToConstant: keyboardSize.height)
+            heightConstraint?.priority = .defaultHigh
+            heightConstraint?.isActive = true
+        }
+        
+        if !Bundle.main.isExtension {
+            view.frame = UIScreen.main.bounds
+            view.frame.size.height = keyboardSize.height
+        }
+        
+        deleteRowHeight = deleteRowHeightInKeys * keySize.height
+        
+        deleteKeyWidth = keyboardSize.width / 5
+        
+        characterSequenceWidth = keyboardSize.width - deleteKeyWidth
+        
+        characterSequenceItemSize = .init(
+            width: floor(max(keySize.width, minimalScreenSize.width/5.5)/4),
+            height: deleteRowHeight
+        )
+        
+        characterSequenceFontSize = 1.8 * characterSequenceItemSize.width
+        
+        spaceRowHeight = spaceRowHeightInKeys * keySize.height
+        
+        spaceRowKeyDescriptions.forEach { spaceRowKeyDescription in
+            spaceRowKeyDescription.width = keyboardSize.width * spaceRowKeyDescription.proportion / spaceRowKeyDescriptions.map(\.proportion).reduce(0, +)
+        }
+        
+        if needsInputModeSwitchKey == false {
+            SpaceRowKeyDescription.space.width += SpaceRowKeyDescription.nextKeyboard.width
+            SpaceRowKeyDescription.nextKeyboard.width = 0
+        }
+        
+        keySpacing = deleteRowHeight * 0.1
+        keyCornerRadius = keySpacing
+        keyLabelFontSize = min(spaceRowHeight * 0.5, 36)
+        keyNameLabelFontSize = keyLabelFontSize / 1.8
+        horizontalMainLabelIndent = keySpacing
+        verticalShiftLabelIndent = keySpacing * 2.2
+        horizontalShiftLabelIndent = keySpacing * 1.0
+        
+        layoutHeight = keyboardSize.height - deleteRowHeight - spaceRowHeight
+        horizontalIndent = horizontalIndentInKeys * keySize.width
+    }
     
     @objc private func updateDocumentContext() {
         
@@ -84,26 +266,26 @@ class KeyboardUIViewController: UIInputViewController, KeyboardDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        keyboardUIView?.state = .appearing
+        state = .appearing
         keyboardUIView?.setNeedsLayout()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        keyboardUIView?.state = .appeared
+        state = .appeared
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        keyboardUIView?.state = .disappearing
+        state = .disappearing
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        keyboardUIView?.state = .disappeared
+        state = .disappeared
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -130,7 +312,7 @@ class KeyboardUIViewController: UIInputViewController, KeyboardDelegate {
     override func textDidChange(_ textInput: UITextInput?) {
         // The app has just changed the document's contents, the document context has been updated.
         
-        if let keyboardUIView = keyboardUIView, keyboardUIView.state != .appeared {
+        if keyboardUIView != nil, state != .appeared {
             UIKeyboardAppearance.current = self.textDocumentProxy.keyboardAppearance ?? .default
             NotificationCenter.default.post(name: .KeyboardAppearanceDidChange, object: nil)
         }

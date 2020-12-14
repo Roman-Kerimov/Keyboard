@@ -60,15 +60,16 @@ class KeyboardLayoutUIView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    var horizontalIndent: CGFloat = 0
-    
     override func layoutSubviews() {
+        
+        let keySize = KeyboardUIViewController.shared.keySize
+        let horizontalIndent = KeyboardUIViewController.shared.horizontalIndent
         
         for (halfKeyboardIndex, halfKeyboard) in halfKeyboards.enumerated() {
             
             halfKeyboard.frame.size = .init(
-                width: KeyUIView.size.width * .init(Key.layoutBoardColumnCount / 2),
-                height: KeyUIView.size.height * .init(Key.layoutBoardRowCount)
+                width: keySize.width * .init(Key.layoutBoardColumnCount / 2),
+                height: keySize.height * .init(Key.layoutBoardRowCount)
             )
             
             if halfKeyboardIndex == 0 {
@@ -96,10 +97,10 @@ class KeyboardLayoutUIView: UIView {
                 
                 key.frame = .init(
                     origin: .init(
-                        x: KeyUIView.size.width * .init(keyIndex - row.count/2 * halfKeyboardIndex),
-                        y: KeyUIView.size.height * .init(rowIndex)
+                        x: keySize.width * .init(keyIndex - row.count/2 * halfKeyboardIndex),
+                        y: keySize.height * .init(rowIndex)
                     ),
-                    size: KeyUIView.size
+                    size: keySize
                 )
             }
         }

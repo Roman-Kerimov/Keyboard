@@ -10,11 +10,6 @@ import UIKit
 import KeyboardModule
 
 class KeyUIView: UIButton {
-    
-    static var size: CGSize = .zero
-    static var spacing: CGFloat = 0
-    static var labelFontSize: CGFloat = 1
-    
     override func updateLocalizedStrings() {
         super.updateLocalizedStrings()
         
@@ -152,6 +147,8 @@ class KeyUIView: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
+    var keyboardViewController: KeyboardUIViewController {.shared}
+    
     override func layoutSubviews() {
         
         mainLabelView.text = Keyboard.default.currentKey == key ? Keyboard.default.currentLabel : key.label
@@ -179,9 +176,8 @@ class KeyUIView: UIButton {
         shiftLeftLabelView.isHidden = isHiddenShiftLabelView
         shiftRightLabelView.isHidden = isHiddenShiftLabelView
         
-        
-        let characterLabelFont = UIFont(name: .characterFontName, size: KeyUIView.labelFontSize)!
-        let nameLabelFont: UIFont = .systemFont(ofSize: KeyUIView.labelFontSize/1.8)
+        let characterLabelFont = UIFont(name: .characterFontName, size: keyboardViewController.keyLabelFontSize)!
+        let nameLabelFont: UIFont = .systemFont(ofSize: keyboardViewController.keyNameLabelFontSize)
         
         mainLabelView.font = [.space, .enter, .delete].contains(key) ? nameLabelFont : characterLabelFont
         
@@ -193,21 +189,27 @@ class KeyUIView: UIButton {
         shiftRightLabelView.font = nameLabelFont
         
         if imageLabelView.image != nil {
-            imageLabelView.image = UIImage.init(fromPDF: labelPath, withExtension: .ai, withScale: KeyUIView.labelFontSize/24)?.withRenderingMode(.alwaysTemplate)
+            imageLabelView.image = UIImage(
+                fromPDF: labelPath,
+                withExtension: .ai,
+                withScale: keyboardViewController.keyLabelFontSize/24
+            )?.withRenderingMode(.alwaysTemplate)
         }
         
-        backgroundView.layer.cornerRadius = KeyUIView.spacing
-        backgroundView.frame = CGRect.init(origin: .zero, size: frame.size).insetBy(scalar: KeyUIView.spacing/2)
+        backgroundView.layer.cornerRadius = keyboardViewController.keyCornerRadius
+        backgroundView.frame = CGRect.init(origin: .zero, size: frame.size)
+            .insetBy(scalar: keyboardViewController.keySpacing/2)
         
-        let verticalShiftLabelIndent = KeyUIView.spacing * 2.2
-        let horizontalShiftLabelIndent = KeyUIView.spacing * 1.0
-        
-        mainLabelView.frame.size.width = frame.width - KeyUIView.spacing * 2
+        let horizontalMainLabelIndent = keyboardViewController.horizontalMainLabelIndent
+        mainLabelView.frame.size.width = frame.width - horizontalMainLabelIndent * 2
         mainLabelView.center = backgroundView.center
         
+        let verticalShiftLabelIndent = keyboardViewController.verticalShiftLabelIndent
         shiftUpLabelView.center.y = verticalShiftLabelIndent
         shiftDownLabelView.center.y = frame.height - verticalShiftLabelIndent
-
+        
+        let horizontalShiftLabelIndent = keyboardViewController.horizontalShiftLabelIndent
+        
         if key == .space {
             shiftUpLabelView.center.x = backgroundView.center.x
             shiftDownLabelView.center.x = backgroundView.center.x

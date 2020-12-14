@@ -21,7 +21,7 @@ class CharacterSequenceUIView: UICollectionView, UICollectionViewDelegateFlowLay
     
     private var longPressGestureRecognizer: UILongPressGestureRecognizer!
     
-    private var fontSize: CGFloat {1.8 * layout.itemSize.width}
+    private var fontSize: CGFloat {KeyboardUIViewController.shared.characterSequenceFontSize}
     private let deleteButton: UIButton?
     
     init(deleteButton: UIButton?) {

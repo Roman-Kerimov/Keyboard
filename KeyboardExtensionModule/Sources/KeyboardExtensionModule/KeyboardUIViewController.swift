@@ -64,7 +64,13 @@ class KeyboardUIViewController: UIInputViewController, KeyboardDelegate {
     
     var isHorizontalMode = false
     
-    private var heightConstraint: NSLayoutConstraint?
+    private lazy var heightConstraint: NSLayoutConstraint = {
+        let heightConstraint = view.heightAnchor.constraint(equalToConstant: keyboardSize.height)
+        heightConstraint.priority = .defaultHigh
+        heightConstraint.isActive = true
+        
+        return heightConstraint
+    }()
     
     var keySize: CGSize = .zero
     var keyCornerRadius: CGFloat = .zero
@@ -181,14 +187,7 @@ class KeyboardUIViewController: UIInputViewController, KeyboardDelegate {
             height: keySize.height * keyboardSizeInKeys.height
         )
         
-        if heightConstraint != nil {
-            heightConstraint?.constant = keyboardSize.height
-        }
-        else {
-            heightConstraint = view.heightAnchor.constraint(equalToConstant: keyboardSize.height)
-            heightConstraint?.priority = .defaultHigh
-            heightConstraint?.isActive = true
-        }
+        heightConstraint.constant = keyboardSize.height
         
         if !Bundle.main.isExtension {
             view.frame = UIScreen.main.bounds

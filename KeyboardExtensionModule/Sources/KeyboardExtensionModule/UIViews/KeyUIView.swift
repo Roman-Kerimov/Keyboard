@@ -157,7 +157,7 @@ class KeyUIView: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    var keyboardViewController: KeyboardUIViewController {.shared}
+    var keyboardViewController: KeyboardViewController {.shared}
     
     override func layoutSubviews() {
         

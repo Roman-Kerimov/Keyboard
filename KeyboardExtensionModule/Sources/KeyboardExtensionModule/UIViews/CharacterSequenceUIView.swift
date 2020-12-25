@@ -21,7 +21,7 @@ class CharacterSequenceUIView: UICollectionView, UICollectionViewDelegateFlowLay
     
     private var longPressGestureRecognizer: UILongPressGestureRecognizer!
     
-    private var fontSize: CGFloat {KeyboardUIViewController.shared.characterSequenceFontSize}
+    private var fontSize: CGFloat {KeyboardViewController.shared.characterSequenceFontSize}
     
     init() {
         super.init(frame: .zero, collectionViewLayout: layout)

@@ -13,7 +13,7 @@ struct CharacterSearchView: UIViewRepresentable {
     }
     
     func updateUIView(_ characterSearchUIView: CharacterSearchUIView, context: Context) {
-        let controller = KeyboardUIViewController.shared
+        let controller = KeyboardViewController.shared
         characterSearchUIView.size = CGSize(width: controller.horizontalIndent, height: controller.layoutHeight)
     }
 }

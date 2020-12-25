@@ -19,7 +19,7 @@ class SettingsContainerUIView: UIStackView {
     
     lazy var widthConstraint: NSLayoutConstraint = {
         let widthConstraint = navigationController.view.widthAnchor.constraint(
-            equalToConstant: KeyboardUIViewController.shared.settingsWidth
+            equalToConstant: KeyboardViewController.shared.settingsWidth
         )
         widthConstraint.isActive = true
         

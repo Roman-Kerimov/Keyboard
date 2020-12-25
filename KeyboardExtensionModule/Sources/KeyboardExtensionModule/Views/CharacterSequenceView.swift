@@ -13,7 +13,7 @@ struct CharacterSequenceView: UIViewRepresentable {
     }
     
     func updateUIView(_ characterSequenceUIView: CharacterSequenceUIView, context: Context) {
-        characterSequenceUIView.layout.itemSize = KeyboardUIViewController.shared.characterSequenceItemSize
+        characterSequenceUIView.layout.itemSize = KeyboardViewController.shared.characterSequenceItemSize
         characterSequenceUIView.reloadData()
     }
 }

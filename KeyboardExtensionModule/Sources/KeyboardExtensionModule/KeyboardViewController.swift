@@ -1,5 +1,5 @@
 //
-//  KeyboardUIViewController.swift
+//  KeyboardViewController.swift
 //  Keyboard
 //
 //  Created by Roman Kerimov on 2016-06-23.
@@ -13,24 +13,24 @@ import UnicodeData
 
 extension UIView {
     open override var inputViewController: UIInputViewController? {
-        return KeyboardUIViewController.shared
+        return KeyboardViewController.shared
     }
 }
 
 extension UIViewController {
     open override var inputViewController: UIInputViewController? {
-        return KeyboardUIViewController.shared
+        return KeyboardViewController.shared
     }
 }
 
 extension UIApplication {
     open override var inputViewController: UIInputViewController? {
-        return KeyboardUIViewController.shared
+        return KeyboardViewController.shared
     }
 }
 
 @available(iOS 13.0, *)
-extension KeyboardUIViewController: ObservableObject {
+extension KeyboardViewController: ObservableObject {
 
     public var objectWillChange: ObservableObjectPublisher {
         if _objectWillChange == nil {
@@ -41,8 +41,8 @@ extension KeyboardUIViewController: ObservableObject {
     }
 }
 
-class KeyboardUIViewController: UIInputViewController, KeyboardDelegate {
-    static var shared: KeyboardUIViewController = .init()
+class KeyboardViewController: UIInputViewController, KeyboardDelegate {
+    static var shared: KeyboardViewController = .init()
     
     enum State {
         case disappeared, disappearing, appearing, appeared
@@ -283,7 +283,7 @@ class KeyboardUIViewController: UIInputViewController, KeyboardDelegate {
         
         UnicodeData.default.loadIfNeeded()
         
-        KeyboardUIViewController.shared = self
+        KeyboardViewController.shared = self
         Keyboard.default.delegate = self
         
         view.frame = UIScreen.main.bounds

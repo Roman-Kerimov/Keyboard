@@ -38,7 +38,7 @@ internal class KeyboardUIView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    var keyboardViewControler: KeyboardUIViewController {.shared}
+    var keyboardViewControler: KeyboardViewController {.shared}
     
     override func layoutSubviews() {
         

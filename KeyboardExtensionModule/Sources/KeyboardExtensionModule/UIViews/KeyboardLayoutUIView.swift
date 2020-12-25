@@ -62,8 +62,8 @@ class KeyboardLayoutUIView: UIView {
     
     override func layoutSubviews() {
         
-        let keySize = KeyboardUIViewController.shared.keySize
-        let horizontalIndent = KeyboardUIViewController.shared.horizontalIndent
+        let keySize = KeyboardViewController.shared.keySize
+        let horizontalIndent = KeyboardViewController.shared.horizontalIndent
         
         for (halfKeyboardIndex, halfKeyboard) in halfKeyboards.enumerated() {
             

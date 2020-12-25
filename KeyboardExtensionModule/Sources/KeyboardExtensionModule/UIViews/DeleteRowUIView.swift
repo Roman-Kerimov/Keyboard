@@ -25,7 +25,7 @@ class DeleteRowUIView: UIView {
     }
     
     override func layoutSubviews() {
-        let keyboardViewController = KeyboardUIViewController.shared
+        let keyboardViewController = KeyboardViewController.shared
         
         deleteKey.frame = .init(
             x: keyboardViewController.characterSequenceWidth,

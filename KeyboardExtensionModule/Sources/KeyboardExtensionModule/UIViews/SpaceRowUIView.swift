@@ -14,7 +14,7 @@ class SpaceRowUIView: UIView {
     
     override func layoutSubviews() {
         
-        let keyboardViewController = KeyboardUIViewController.shared
+        let keyboardViewController = KeyboardViewController.shared
         
         if keyViews.isEmpty {
             keyViews = keyboardViewController.spaceRowKeyDescriptions.map {KeyUIView(key: $0.key)}

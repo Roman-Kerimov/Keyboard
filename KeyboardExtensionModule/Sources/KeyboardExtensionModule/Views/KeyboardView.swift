@@ -10,7 +10,7 @@ import KeyboardModule
 
 @available(iOS 14.0, *)
 struct KeyboardView: View {
-    @EnvironmentObject var controller: KeyboardUIViewController
+    @EnvironmentObject var controller: KeyboardViewController
     @EnvironmentObject var keyboard: Keyboard
     
     @Environment(\.colorScheme) var colorScheme

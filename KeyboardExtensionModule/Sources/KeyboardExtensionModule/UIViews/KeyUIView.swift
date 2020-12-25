@@ -10,11 +10,6 @@ import UIKit
 import KeyboardModule
 
 class KeyUIView: UIButton {
-    
-    static var size: CGSize = .zero
-    static var spacing: CGFloat = 0
-    static var labelFontSize: CGFloat = 1
-    
     override func updateLocalizedStrings() {
         super.updateLocalizedStrings()
         
@@ -49,12 +44,6 @@ class KeyUIView: UIButton {
         }
     }
     
-    override func addTarget(_ target: Any?, action: Selector, for controlEvents: UIControl.Event) {
-        super.addTarget(target, action: action, for: controlEvents)
-        
-        removeGestureRecognizer(longPressGestureRecognizer)
-    }
-    
     let key: Key
     
     private var labelPath: String {
@@ -87,10 +76,26 @@ class KeyUIView: UIButton {
     }
     
     override var isEnabled: Bool {
-        didSet {
-            if isEnabled {
+        get {
+            key.isEnabled
+        }
+        
+        set {
+            if newValue {
                 isHighlighted = false
             }
+            
+            key.isEnabled = newValue
+        }
+    }
+    
+    override var isHighlighted: Bool {
+        get {
+            key.isHighlighted
+        }
+        
+        set {
+            key.isHighlighted = newValue
         }
     }
     
@@ -121,22 +126,38 @@ class KeyUIView: UIButton {
             mainLabelView.isHidden = true
         }
         
-        longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressGestureAction(gesture:)))
-        addGestureRecognizer(longPressGestureRecognizer)
+        switch key {
+        case .nextKeyboard:
+            addTarget(self, action: #selector(Self.handleInputModeList(from:with:)), for: .allTouchEvents)
+            
+        case .dismissKeyboard:
+            addTarget(self, action: #selector(Self.dismissKeyboard), for: .allTouchEvents)
+            
+        default:
+            let longPressGestureRecognizer = UILongPressGestureRecognizer(
+                target: self,
+                action: #selector(longPressGestureAction(gesture:))
+            )
+            
+            addGestureRecognizer(longPressGestureRecognizer)
+            
+            longPressGestureRecognizer.minimumPressDuration = 0
+        }
         
-        longPressGestureRecognizer.minimumPressDuration = 0
-    
         NotificationCenter.default.addLocaleObserver(self)
         
         NotificationCenter.default.addObserver(self, selector: #selector(setNeedsLayout), name: .KeyboardStateDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(setNeedsLayout), name: .KeyboardAppearanceDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(setNeedsLayout), name: .DocumentContextDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(setNeedsLayout), publisher: Keyboard.self)
+        NotificationCenter.default.addObserver(self, selector: #selector(setNeedsLayout), publisher: Key.self)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    var keyboardViewController: KeyboardViewController {.shared}
     
     override func layoutSubviews() {
         
@@ -165,9 +186,8 @@ class KeyUIView: UIButton {
         shiftLeftLabelView.isHidden = isHiddenShiftLabelView
         shiftRightLabelView.isHidden = isHiddenShiftLabelView
         
-        
-        let characterLabelFont = UIFont(name: .characterFontName, size: KeyUIView.labelFontSize)!
-        let nameLabelFont: UIFont = .systemFont(ofSize: KeyUIView.labelFontSize/1.8)
+        let characterLabelFont = UIFont(name: .characterFontName, size: keyboardViewController.keyLabelFontSize)!
+        let nameLabelFont: UIFont = .systemFont(ofSize: keyboardViewController.keyNameLabelFontSize)
         
         mainLabelView.font = [.space, .enter, .delete].contains(key) ? nameLabelFont : characterLabelFont
         
@@ -179,21 +199,27 @@ class KeyUIView: UIButton {
         shiftRightLabelView.font = nameLabelFont
         
         if imageLabelView.image != nil {
-            imageLabelView.image = UIImage.init(fromPDF: labelPath, withExtension: .ai, withScale: KeyUIView.labelFontSize/24)?.withRenderingMode(.alwaysTemplate)
+            imageLabelView.image = UIImage(
+                fromPDF: labelPath,
+                withExtension: .ai,
+                withScale: keyboardViewController.keyLabelFontSize/24
+            )?.withRenderingMode(.alwaysTemplate)
         }
         
-        backgroundView.layer.cornerRadius = KeyUIView.spacing
-        backgroundView.frame = CGRect.init(origin: .zero, size: frame.size).insetBy(scalar: KeyUIView.spacing/2)
+        backgroundView.layer.cornerRadius = keyboardViewController.keyCornerRadius
+        backgroundView.frame = CGRect.init(origin: .zero, size: frame.size)
+            .insetBy(scalar: keyboardViewController.keySpacing/2)
         
-        let verticalShiftLabelIndent = KeyUIView.spacing * 2.2
-        let horizontalShiftLabelIndent = KeyUIView.spacing * 1.0
-        
-        mainLabelView.frame.size.width = frame.width - KeyUIView.spacing * 2
+        let horizontalMainLabelIndent = keyboardViewController.horizontalMainLabelIndent
+        mainLabelView.frame.size.width = frame.width - horizontalMainLabelIndent * 2
         mainLabelView.center = backgroundView.center
         
+        let verticalShiftLabelIndent = keyboardViewController.verticalShiftLabelIndent
         shiftUpLabelView.center.y = verticalShiftLabelIndent
         shiftDownLabelView.center.y = frame.height - verticalShiftLabelIndent
-
+        
+        let horizontalShiftLabelIndent = keyboardViewController.horizontalShiftLabelIndent
+        
         if key == .space {
             shiftUpLabelView.center.x = backgroundView.center.x
             shiftDownLabelView.center.x = backgroundView.center.x
@@ -213,7 +239,16 @@ class KeyUIView: UIButton {
         imageLabelView.center = backgroundView.center
     }
     
-    private var longPressGestureRecognizer: UILongPressGestureRecognizer!
+    private var inputController: UIInputViewController? {
+        Keyboard.default.delegate as? UIInputViewController
+    }
+    
+    @objc private func handleInputModeList(from view: UIView, with event: UIEvent) {
+        inputController?.handleInputModeList(from: view, with: event)
+    }
+    @objc private func dismissKeyboard() {
+        inputController?.dismissKeyboard()
+    }
     
     private var gestureStartPoint: CGPoint!
     private var startPointSpeed: CGFloat = 0

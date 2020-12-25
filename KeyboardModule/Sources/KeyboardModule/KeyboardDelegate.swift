@@ -20,8 +20,6 @@ public protocol KeyboardDelegate {
     #if canImport(UIKit)
     var returnKeyType: UIReturnKeyType? {get}
     #endif
-
-    var needsInputModeSwitchKey: Bool {get}
     
     func prepareForPreview()
 }
@@ -34,10 +32,6 @@ public extension KeyboardDelegate {
         #else
         return true
         #endif
-    }
-    
-    var needsInputModeSwitchKey: Bool {
-        return false
     }
     
     func prepareForPreview() {}

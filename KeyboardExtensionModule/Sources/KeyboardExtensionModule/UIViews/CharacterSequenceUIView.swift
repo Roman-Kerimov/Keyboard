@@ -21,13 +21,9 @@ class CharacterSequenceUIView: UICollectionView, UICollectionViewDelegateFlowLay
     
     private var longPressGestureRecognizer: UILongPressGestureRecognizer!
     
-    private var fontSize: CGFloat {1.8 * layout.itemSize.width}
-    private let deleteButton: UIButton?
+    private var fontSize: CGFloat {KeyboardViewController.shared.characterSequenceFontSize}
     
-    init(deleteButton: UIButton?) {
-        
-        self.deleteButton = deleteButton
-        
+    init() {
         super.init(frame: .zero, collectionViewLayout: layout)
         
         dataSource = self
@@ -41,6 +37,8 @@ class CharacterSequenceUIView: UICollectionView, UICollectionViewDelegateFlowLay
         layout.scrollDirection = .horizontal
         
         alwaysBounceVertical = false
+        
+        contentInsetAdjustmentBehavior = .never
         
         longPressGestureRecognizer = UILongPressGestureRecognizer.init(target: self, action: #selector(handleLongPressGesture(from:)))
         longPressGestureRecognizer.cancelsTouchesInView = false
@@ -115,9 +113,7 @@ class CharacterSequenceUIView: UICollectionView, UICollectionViewDelegateFlowLay
                 
                 updateInteractiveMovementTargetPosition(targetPosition)
                 
-                if let deleteButton = deleteButton {
-                    deleteButton.isHighlighted = longPressGestureRecognizer.location(in: deleteButton).x > 0
-                }
+                Key.delete.isHighlighted = longPressGestureRecognizer.location(in: self).x > frame.width
             }
             else if isUppercase && isChangeStage {
                 cancelInteractiveMovement()
@@ -197,7 +193,7 @@ class CharacterSequenceUIView: UICollectionView, UICollectionViewDelegateFlowLay
         
         disableAtimations()
         
-        if deleteButton?.isHighlighted == true {
+        if Key.delete.isHighlighted == true {
             cancelInteractiveMovement()
             
             performBatchUpdates({
@@ -215,7 +211,7 @@ class CharacterSequenceUIView: UICollectionView, UICollectionViewDelegateFlowLay
                 NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
             })
             
-            deleteButton?.isHighlighted = false
+            Key.delete.isHighlighted = false
             return
         }
         

@@ -6,7 +6,8 @@
 //
 //
 
-import UIKit
+import SwiftUI
+import Combine
 import KeyboardModule
 import UnicodeData
 
@@ -28,6 +29,18 @@ extension UIApplication {
     }
 }
 
+@available(iOS 13.0, *)
+extension KeyboardUIViewController: ObservableObject {
+
+    public var objectWillChange: ObservableObjectPublisher {
+        if _objectWillChange == nil {
+            _objectWillChange = ObservableObjectPublisher.init()
+        }
+
+        return _objectWillChange as! ObservableObjectPublisher
+    }
+}
+
 class KeyboardUIViewController: UIInputViewController, KeyboardDelegate {
     static var shared: KeyboardUIViewController = .init()
     
@@ -36,6 +49,8 @@ class KeyboardUIViewController: UIInputViewController, KeyboardDelegate {
     }
     
     var state: State = .disappeared
+    
+    var _objectWillChange: Any? = nil
     
     private var layoutMode: Keyboard.KeyboardLayoutMode {
         get {
@@ -74,7 +89,10 @@ class KeyboardUIViewController: UIInputViewController, KeyboardDelegate {
     var spaceRowHeight: CGFloat = .zero
     var spaceRowKeyDescriptions: [SpaceRowKeyDescription] {SpaceRowKeyDescription.allCases}
     
-    class SpaceRowKeyDescription: CaseIterable {
+    class SpaceRowKeyDescription: CaseIterable, Identifiable {
+        var id: Keycode {
+            key.id
+        }
         
         let key: Key
         let proportion: CGFloat
@@ -98,12 +116,12 @@ class KeyboardUIViewController: UIInputViewController, KeyboardDelegate {
     let settingsWidth: CGFloat = 280
     let settingsAnimationDuration: Float64 = 0.3
     
-    func updateSizes() {
-        let scaleFactor: CGFloat = view.bounds.width / UIScreen.main.bounds.width
+    func updateSizes(keyboardViewMaxWidth: CGFloat) {
+        let scaleFactor: CGFloat = keyboardViewMaxWidth / UIScreen.main.bounds.width
         
         let minimalScreenSize: CGSize = CGSize.init(width: 320, height: 480).applying(.init(scale: scaleFactor))
         
-        let isPrefferedVerticalMode: Bool = view.bounds.width < minimalScreenSize.height
+        let isPrefferedVerticalMode: Bool = keyboardViewMaxWidth < minimalScreenSize.height
         
         if layoutMode == .default {
             layoutMode = isPrefferedVerticalMode ? .vertical : .horizontal
@@ -223,14 +241,35 @@ class KeyboardUIViewController: UIInputViewController, KeyboardDelegate {
         }
     }
     
-    private let keyboardUIView: KeyboardUIView? = KeyboardUIView()
+    private var keyboardUIView: KeyboardUIView? = nil
     
     override func loadView() {
-        if let keyboardUIView = keyboardUIView {
-            view = keyboardUIView
+        
+        if #available(iOS 14.0, *) {
+            view = UIView()
+            
+            let hostingController = UIHostingController(
+                rootView: KeyboardView()
+                    .environmentObject(self)
+                    .environmentObject(Keyboard.default)
+                    .environmentObject(Settings.current)
+            )
+             
+            hostingController.view.backgroundColor = .clear
+            
+            addChild(hostingController)
+            view.addSubview(hostingController.view)
+            
+            hostingController.view.translatesAutoresizingMaskIntoConstraints = false
+            
+            hostingController.view.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+            hostingController.view.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+            hostingController.view.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+            hostingController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         }
         else {
-            view = UIView()
+            keyboardUIView = KeyboardUIView()
+            view = keyboardUIView
         }
     }
     
@@ -248,11 +287,11 @@ class KeyboardUIViewController: UIInputViewController, KeyboardDelegate {
         KeyboardUIViewController.shared = self
         Keyboard.default.delegate = self
         
-        keyboardUIView?.frame = UIScreen.main.bounds
+        view.frame = UIScreen.main.bounds
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateDocumentContext), name: .DocumentContextDidChange, object: nil)
         
-        if Bundle.main.isExtension {
+        if Bundle.main.isExtension, keyboardUIView != nil {
             // Hack for working of the keyboard height constraint
             let hiddenView: UILabel = .init()
             hiddenView.translatesAutoresizingMaskIntoConstraints = false
@@ -290,6 +329,10 @@ class KeyboardUIViewController: UIInputViewController, KeyboardDelegate {
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
+        
+        if #available(iOS 13.0, *) {
+            objectWillChange.send()
+        }
         
         if Bundle.main.isExtension {
             UIView.setAnimationsEnabled(false)
@@ -356,6 +399,15 @@ class KeyboardUIViewController: UIInputViewController, KeyboardDelegate {
     
     func settings() {
         keyboardUIView?.showSettings()
+        isSettingViewPresented = true
+    }
+    
+    var isSettingViewPresented = false {
+        willSet {
+            if #available(iOS 13.0, *) {
+                objectWillChange.send()
+            }
+        }
     }
     
     func insert(text: String) {

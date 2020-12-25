@@ -43,6 +43,18 @@ public final class Key: Identifiable {
         }
     }
     
+    public var isHighlighted: Bool = false {
+        willSet {
+            if #available(iOS 13.0, *) {
+                objectWillChange.send()
+            }
+        }
+        
+        didSet {
+            NotificationCenter.default.post(self)
+        }
+    }
+    
     static let keys: [Key] = (0..<Keycode.keycodeMaxCount).map {Key.init(keycode: $0)}
     
     public static func by(keycode: Keycode) -> Key {keys[keycode]}
@@ -177,6 +189,8 @@ public extension Key {
     static let specialKeys: [Key] = leftSpecialKeys + rightSpecialKeys + arrowKeys
     
     static let layoutBoard: [[Key]] = board.dropFirst(1).prefix(3).map {.init($0.dropFirst(1).prefix(10))}
+    static let leftLayoutBoard: [[Key]] = layoutBoard.map {.init($0.prefix($0.count/2))}
+    static let rightLayoutBoard: [[Key]] = layoutBoard.map {.init($0.suffix($0.count/2))}
     static let layoutBoardRowCount = layoutBoard.count
     static let layoutBoardColumnCount = layoutBoard.first!.count
     

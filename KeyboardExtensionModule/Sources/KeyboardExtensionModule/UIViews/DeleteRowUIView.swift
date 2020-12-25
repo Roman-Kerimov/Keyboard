@@ -11,12 +11,9 @@ import UIKit
 class DeleteRowUIView: UIView {
     
     let deleteKey = KeyUIView(key: .delete)
-    internal let characterSequence: CharacterSequenceUIView
+    internal let characterSequence = CharacterSequenceUIView()
     
     init() {
-        
-        characterSequence = .init(deleteButton: deleteKey)
-        
         super.init(frame: .zero)
         
         addSubview(deleteKey)

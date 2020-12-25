@@ -6,7 +6,7 @@
 //
 //
 
-import SwiftUI
+import UIKit
 import KeyboardModule
 
 class SettingsContainerUIView: UIStackView {
@@ -15,14 +15,7 @@ class SettingsContainerUIView: UIStackView {
     
     let backButton = UIButton()
     
-    let navigationController: UIViewController = {
-        if #available(iOS 13.0, *) {
-            return UIHostingController(rootView: SettingsNavigationView().localized().environmentObject(Keyboard.default))
-        }
-        else {
-            return SettingsUINavigationController()
-        }
-    }()
+    let navigationController = SettingsUINavigationController()
     
     lazy var widthConstraint: NSLayoutConstraint = {
         let widthConstraint = navigationController.view.widthAnchor.constraint(

@@ -89,6 +89,16 @@ class KeyUIView: UIButton {
         }
     }
     
+    override var isHighlighted: Bool {
+        get {
+            key.isHighlighted
+        }
+        
+        set {
+            key.isHighlighted = newValue
+        }
+    }
+    
     init(key: Key) {
         self.key = key
         super.init(frame: CGRect())

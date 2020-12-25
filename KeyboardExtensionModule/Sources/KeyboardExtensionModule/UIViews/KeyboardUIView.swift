@@ -46,7 +46,7 @@ internal class KeyboardUIView: UIView {
             return
         }
         
-        keyboardViewControler.updateSizes()
+        keyboardViewControler.updateSizes(keyboardViewMaxWidth: bounds.width)
         
         backgroundView.frame = .init(
             origin: .zero,

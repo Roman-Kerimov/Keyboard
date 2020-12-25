@@ -349,6 +349,11 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
     
     override func textWillChange(_ textInput: UITextInput?) {
         // The app is about to change the document's contents. Perform any preparation here.
+        
+        // For input mode switch key
+        if #available(iOS 13.0, *) {
+            objectWillChange.send()
+        }
     }
     
     override func textDidChange(_ textInput: UITextInput?) {

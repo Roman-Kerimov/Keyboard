@@ -65,6 +65,7 @@ struct KeyboardView: View {
             
             HStack(spacing: 0) {
                 CharacterSearchView()
+                    .id(UUID()) // Fix abnormal disappearance after first dismissing of keyboard extension on iPhone
                     .frame(width: controller.horizontalIndent)
                     .zIndex(1)
                 
@@ -97,6 +98,7 @@ struct KeyboardView: View {
     var deleteRowView: some View {
         HStack(spacing: 0) {
             CharacterSequenceView()
+                .id(UUID()) // Fix abnormal disappearance after first dismissing of keyboard extension on iPhone
                 .frame(width: controller.characterSequenceWidth)
             
             KeyView(key: .delete)

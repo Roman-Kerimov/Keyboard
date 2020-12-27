@@ -34,66 +34,71 @@ struct KeyboardView: View {
                 UIKeyboardAppearance.current = .default
             }
             
-            return AnyView(keyboardView)
+            return AnyView(
+                ZStack(alignment: .trailing) {
+                    keyboardView
+                        .frame(width: geometry.size.width)
+                    
+                    Rectangle()
+                        .foregroundColor(isSettingViewPresented ? Color.black.opacity(0.1) : .clear)
+                        .onTapGesture {
+                            controller.isSettingViewPresented = false
+                        }
+                    
+                    SettingsNavigationView()
+                        .frame(width: controller.settingsWidth)
+                        .offset(x: isSettingViewPresented ? 0 : controller.settingsWidth)
+                }
+                .onChange(of: controller.isSettingViewPresented) { value in
+                    withAnimation(.easeInOut(duration: controller.settingsAnimationDuration)) {
+                        isSettingViewPresented = value
+                    }
+                }
+            )
         }
         .ignoresSafeArea()
     }
     
     var keyboardView: some View {
-        ZStack(alignment: .trailing) {
-            VStack(spacing: 0) {
-                deleteRowView
+        VStack(spacing: 0) {
+            deleteRowView
+            
+            HStack(spacing: 0) {
+                CharacterSearchView()
+                    .id(UUID()) // Fix abnormal disappearance after first dismissing of keyboard extension on iPhone
+                    .frame(width: controller.horizontalIndent)
+                    .zIndex(1)
                 
-                HStack(spacing: 0) {
-                    CharacterSearchView()
-                        .frame(width: controller.horizontalIndent)
-                        .zIndex(1)
-                    
-                    if controller.isHorizontalMode {
-                        layoutView(keyRows: Key.layoutBoard)
-                    }
-                    else {
-                        VStack(spacing: 0) {
-                            HStack(spacing: 0) {
-                                layoutView(keyRows: Key.leftLayoutBoard)
-                                Spacer()
-                            }
-                            
-                            HStack(spacing: 0) {
-                                Spacer()
-                                layoutView(keyRows: Key.rightLayoutBoard)
-                            }
+                if controller.isHorizontalMode {
+                    layoutView(keyRows: Key.layoutBoard)
+                }
+                else {
+                    VStack(spacing: 0) {
+                        HStack(spacing: 0) {
+                            layoutView(keyRows: Key.leftLayoutBoard)
+                            Spacer()
+                        }
+                        
+                        HStack(spacing: 0) {
+                            Spacer()
+                            layoutView(keyRows: Key.rightLayoutBoard)
                         }
                     }
-                    
-                    Spacer(minLength: controller.horizontalIndent)
                 }
-                .clipped()
                 
-                spaceRowView
+                Spacer(minLength: controller.horizontalIndent)
             }
-            .frame(width: controller.keyboardSize.width, height: controller.keyboardSize.height)
+            .clipped()
             
-            Rectangle()
-                .foregroundColor(isSettingViewPresented ? Color.black.opacity(0.1) : .clear)
-                .onTapGesture {
-                    controller.isSettingViewPresented = false
-                }
-            
-            SettingsNavigationView()
-                .frame(width: controller.settingsWidth)
-                .offset(x: isSettingViewPresented ? 0 : controller.settingsWidth)
+            spaceRowView
         }
-        .onChange(of: controller.isSettingViewPresented) { value in
-            withAnimation(.easeInOut(duration: controller.settingsAnimationDuration)) {
-                isSettingViewPresented = value
-            }
-        }
+        .frame(width: controller.keyboardSize.width, height: controller.keyboardSize.height)
     }
     
     var deleteRowView: some View {
         HStack(spacing: 0) {
             CharacterSequenceView()
+                .id(UUID()) // Fix abnormal disappearance after first dismissing of keyboard extension on iPhone
                 .frame(width: controller.characterSequenceWidth)
             
             KeyView(key: .delete)

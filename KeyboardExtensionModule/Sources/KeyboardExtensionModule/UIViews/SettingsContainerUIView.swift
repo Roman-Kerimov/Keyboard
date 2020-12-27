@@ -6,7 +6,7 @@
 //
 //
 
-import SwiftUI
+import UIKit
 import KeyboardModule
 
 class SettingsContainerUIView: UIStackView {
@@ -15,19 +15,18 @@ class SettingsContainerUIView: UIStackView {
     
     let backButton = UIButton()
     
-    let navigationController: UIViewController
+    let navigationController = SettingsUINavigationController()
     
-    var widthConstraint: NSLayoutConstraint!
+    lazy var widthConstraint: NSLayoutConstraint = {
+        let widthConstraint = navigationController.view.widthAnchor.constraint(
+            equalToConstant: KeyboardViewController.shared.settingsWidth
+        )
+        widthConstraint.isActive = true
+        
+        return widthConstraint
+    }()
     
     override init(frame: CGRect = .zero) {
-        
-        if #available(iOS 13.0, *) {
-            navigationController = UIHostingController(rootView: SettingsNavigationView().localized().environmentObject(Keyboard.default))
-        }
-        else {
-            navigationController = SettingsUINavigationController()
-        }
-        
         super.init(frame: frame)
         
         backButton.backgroundColor = UIColor.black.withAlphaComponent(0.01)
@@ -41,9 +40,6 @@ class SettingsContainerUIView: UIStackView {
         
         addArrangedSubview(backButton)
         addArrangedSubview(navigationController.view)
-        
-        widthConstraint = navigationController.view.widthAnchor.constraint(equalToConstant: 280)
-        widthConstraint.isActive = true
     }
     
     required init(coder: NSCoder) {

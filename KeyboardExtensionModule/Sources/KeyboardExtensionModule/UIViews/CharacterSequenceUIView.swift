@@ -49,6 +49,8 @@ class CharacterSequenceUIView: UICollectionView, UICollectionViewDelegateFlowLay
         
         register(CharacterCollectionUIViewCell.self, forCellWithReuseIdentifier: CharacterCollectionUIViewCell.reuseIdentifier)
         register(AutocompleteUIView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: AutocompleteUIView.reuseIdentifier)
+        
+        updateCharacters()
     }
     
     required init?(coder aDecoder: NSCoder) {

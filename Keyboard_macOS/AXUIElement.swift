@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import ApplicationServices
 
 extension AXUIElement {
     static let systemWide = AXUIElementCreateSystemWide()

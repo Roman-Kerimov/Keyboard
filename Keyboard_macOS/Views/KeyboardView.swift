@@ -13,7 +13,7 @@ struct KeyboardView : View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            ForEach(0..<Key.board.count) { rowIndex in
+            ForEach(0..<Key.board.count, id: \.self) { rowIndex in
                 HStack(alignment: .bottom, spacing: 0) {
                     ForEach(Key.board[rowIndex]) { key in
                         KeyView()

@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 13.0, *)
 struct CharacterSearchView: UIViewRepresentable {
     func makeUIView(context: Context) -> CharacterSearchUIView {
         CharacterSearchUIView()

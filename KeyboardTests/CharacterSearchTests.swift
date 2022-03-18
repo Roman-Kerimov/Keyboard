@@ -42,7 +42,7 @@ class CharacterSearchTests: XCTestCase {
         XCTAssert(search("Russland").contains("🇷🇺"))
         XCTAssert(search("Krasnodarskij").contains("🏴󠁲󠁵󠁫󠁤󠁡󠁿"))
         XCTAssert(search("California").contains("🏴󠁵󠁳󠁣󠁡󠁿"))
-        XCTAssert(search("xhleb").contains("🍞"))
+        XCTAssert(search("khleb").contains("🍞"))
         XCTAssert(search("tajmer").contains("⏲️"))
     }
     

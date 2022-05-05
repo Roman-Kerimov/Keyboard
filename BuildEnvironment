@@ -1,7 +1,7 @@
 xcodebuild -version
 
-Xcode 13.3
-Build version 13E113
+Xcode 13.3.1
+Build version 13E500a
 
 
 sw_vers

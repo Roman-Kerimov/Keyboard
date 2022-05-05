@@ -6,24 +6,9 @@
 //
 
 import Foundation
-import Combine
 
-@available(iOS 13.0, *)
-extension Key: ObservableObject {
-    
-    public var objectWillChange: ObservableObjectPublisher {
-        if _objectWillChange == nil {
-            _objectWillChange = ObservableObjectPublisher.init()
-        }
-
-        return _objectWillChange as! ObservableObjectPublisher
-    }
-}
-
-public final class Key: Identifiable {
+public final class Key: Identifiable, ObservableObject {
     public var id: Keycode {keycode}
-    
-    var _objectWillChange: Any? = nil
     
     public let keycode: Keycode
     
@@ -33,9 +18,7 @@ public final class Key: Identifiable {
     
     public var isEnabled: Bool = true {
         willSet {
-            if #available(iOS 13.0, *) {
-                objectWillChange.send()
-            }
+            objectWillChange.send()
         }
         
         didSet {
@@ -45,9 +28,7 @@ public final class Key: Identifiable {
     
     public var isHighlighted: Bool = false {
         willSet {
-            if #available(iOS 13.0, *) {
-                objectWillChange.send()
-            }
+            objectWillChange.send()
         }
         
         didSet {

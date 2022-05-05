@@ -6,28 +6,12 @@
 //
 
 import Foundation
-import Combine
 
-@available(iOS 13.0, *)
-extension CharacterSequence: ObservableObject {
-
-    public var objectWillChange: ObservableObjectPublisher {
-        if _objectWillChange == nil {
-            _objectWillChange = ObservableObjectPublisher.init()
-        }
-
-        return _objectWillChange as! ObservableObjectPublisher
-    }
-}
-
-public final class CharacterSequence {
-    var _objectWillChange: Any? = nil
+public final class CharacterSequence: ObservableObject {
     
     public var characters: [Character] = .init() {
         willSet {
-            if #available(iOS 13.0, *) {
-                objectWillChange.send()
-            }
+            objectWillChange.send()
         }
         
         didSet {
@@ -41,9 +25,7 @@ public final class CharacterSequence {
                 return
             }
             
-            if #available(iOS 13.0, *) {
-                objectWillChange.send()
-            }
+            objectWillChange.send()
         }
         
         didSet {
@@ -61,9 +43,7 @@ public final class CharacterSequence {
                 return
             }
             
-            if #available(iOS 13.0, *) {
-                objectWillChange.send()
-            }
+            objectWillChange.send()
         }
         
         didSet {
@@ -81,9 +61,7 @@ public final class CharacterSequence {
                 return
             }
             
-            if #available(iOS 13.0, *) {
-                objectWillChange.send()
-            }
+            objectWillChange.send()
         }
         
         didSet {

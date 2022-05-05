@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import Combine
 
 extension Language: Identifiable {
     public var id: String {
@@ -69,7 +68,6 @@ extension NSObject {
     }
 }
 
-@available(iOS 13.0, *)
 public extension View {
     func localized() -> some View {
         return self.environmentObject(Settings.current)

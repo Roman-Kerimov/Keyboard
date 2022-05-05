@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-@available(iOS 13.0, *)
 extension Image {
     static let checkmark: Self = .init(systemName: "checkmark")
 }

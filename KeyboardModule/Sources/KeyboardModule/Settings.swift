@@ -6,22 +6,8 @@
 //
 
 import SwiftUI
-import Combine
 
-@available(iOS 13.0, *)
-extension Settings: ObservableObject {
-
-    public var objectWillChange: ObservableObjectPublisher {
-        if _objectWillChange == nil {
-            _objectWillChange = ObservableObjectPublisher.init()
-        }
-
-        return _objectWillChange as! ObservableObjectPublisher
-    }
-}
-
-public final class Settings {
-    var _objectWillChange: Any? = nil
+public final class Settings: ObservableObject {
     
     public static let current: Settings = .init()
     
@@ -32,9 +18,7 @@ public final class Settings {
     private let currentLanguageKey = "rrvfFT9eUMTqwVCEW4cbDo3c4TJsa1O"
     public var language: Language {
         willSet {
-            if #available(iOS 13.0, *) {
-                objectWillChange.send()
-            }
+            objectWillChange.send()
         }
         
         didSet {

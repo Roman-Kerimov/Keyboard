@@ -7,23 +7,9 @@
 //
 
 import Foundation
-import Combine
 import Calculator
 
-@available(iOS 13.0, *)
-extension Keyboard: ObservableObject {
-
-    public var objectWillChange: ObservableObjectPublisher {
-        if _objectWillChange == nil {
-            _objectWillChange = ObservableObjectPublisher.init()
-        }
-
-        return _objectWillChange as! ObservableObjectPublisher
-    }
-}
-
-public final class Keyboard {
-    var _objectWillChange: Any? = nil
+public final class Keyboard: ObservableObject {
     
     public static let `default`: Keyboard = .init()
     public var delegate: KeyboardDelegate?
@@ -550,9 +536,7 @@ public final class Keyboard {
     
     public var previewLayout: KeyboardLayout = .system {
         willSet {
-            if #available(iOS 13.0, *) {
-                Key.keys.forEach {$0.objectWillChange.send()}
-            }
+            Key.keys.forEach {$0.objectWillChange.send()}
         }
         
         didSet {
@@ -570,9 +554,7 @@ public final class Keyboard {
             UserDefaults.standard.set(newValue.name, forKey: layoutKey)
             UserDefaults.standard.synchronize()
             
-            if #available(iOS 13.0, *) {
-                objectWillChange.send()
-            }
+            objectWillChange.send()
             
             previewLayout = newValue
             NotificationCenter.default.post(self)
@@ -589,9 +571,7 @@ public final class Keyboard {
             UserDefaults.standard.set(newValue.rawValue, forKey: layoutModeKey)
             UserDefaults.standard.synchronize()
             
-            if #available(iOS 13.0, *) {
-                objectWillChange.send()
-            }
+            objectWillChange.send()
             
             NotificationCenter.default.post(self)
         }

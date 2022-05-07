@@ -67,29 +67,8 @@ public class CharacterSearch: NSObject, ObservableObject {
         searchOperationQueue.addOperation( SearchUnicodeItems.init(characterSearch: self, text: text) )
     }
     
-    public var isSearching: Bool = false {
-        willSet {
-            DispatchQueue.main.async {
-                self.objectWillChange.send()
-            }
-        }
-        
-        didSet {
-            NotificationCenter.default.post(self)
-        }
-    }
-    
-    public var foundUnicodeItems: [UnicodeItem] = [] {
-        willSet {
-            DispatchQueue.main.async {
-                self.objectWillChange.send()
-            }
-        }
-        
-        didSet {
-            NotificationCenter.default.post(self)
-        }
-    }
+    @Published public var isSearching: Bool = false
+    @Published public var foundUnicodeItems: [UnicodeItem] = []
     
     internal var scriptCodeLength: Int = 0
     

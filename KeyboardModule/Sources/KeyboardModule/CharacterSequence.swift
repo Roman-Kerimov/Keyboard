@@ -9,69 +9,11 @@ import Foundation
 
 public final class CharacterSequence: ObservableObject {
     
-    public var characters: [Character] = .init() {
-        willSet {
-            objectWillChange.send()
-        }
-        
-        didSet {
-            NotificationCenter.default.post(self)
-        }
-    }
+    @Published public var characters: [Character] = []
     
-    public var autocompleteText: String = .init() {
-        willSet {
-            guard autocompleteText != newValue else {
-                return
-            }
-            
-            objectWillChange.send()
-        }
-        
-        didSet {
-            guard autocompleteText != oldValue else {
-                return
-            }
-            
-            NotificationCenter.default.post(self)
-        }
-    }
-    
-    public var autocompleteLabel: String = .init() {
-        willSet {
-            guard autocompleteLabel != newValue else {
-                return
-            }
-            
-            objectWillChange.send()
-        }
-        
-        didSet {
-            guard autocompleteLabel != oldValue else {
-                return
-            }
-            
-            NotificationCenter.default.post(self)
-        }
-    }
-    
-    var autocompleteDeleteCount: Int = 0 {
-        willSet {
-            guard autocompleteDeleteCount != newValue else {
-                return
-            }
-            
-            objectWillChange.send()
-        }
-        
-        didSet {
-            guard autocompleteDeleteCount != oldValue else {
-                return
-            }
-            
-            NotificationCenter.default.post(self)
-        }
-    }
+    @Published public var autocompleteText = ""
+    @Published public var autocompleteLabel = ""
+    @Published var autocompleteDeleteCount = 0
     
     @objc public func autocomplete() {
         for _ in 0..<autocompleteDeleteCount {

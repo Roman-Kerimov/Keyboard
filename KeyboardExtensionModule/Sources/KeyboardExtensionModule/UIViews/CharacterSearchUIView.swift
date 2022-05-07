@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Combine
 import KeyboardModule
 import UnicodeData
 
@@ -41,6 +42,8 @@ class CharacterSearchUIView: UICollectionView, UICollectionViewDelegateFlowLayou
     
     let activityIndicatorView = UIActivityIndicatorView()
     
+    private var anyCancellables: [AnyCancellable] = []
+    
     init() {
         super.init(frame: .zero, collectionViewLayout: layout)
         
@@ -60,16 +63,15 @@ class CharacterSearchUIView: UICollectionView, UICollectionViewDelegateFlowLayou
         
         layout.minimumLineSpacing = 0
         
-        NotificationCenter.default.addObserver(self, selector: #selector(updateCharacters), publisher: CharacterSearch.self)
+        Keyboard.default.characterSearch.$foundUnicodeItems
+            .assign(to: \.unicodeItems, on: self)
+            .store(in: &anyCancellables)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(hideUnicodeNames), name: .KeyboardStateDidChange, object: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    @objc func updateCharacters() {
-        unicodeItems = Keyboard.default.characterSearch.foundUnicodeItems
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

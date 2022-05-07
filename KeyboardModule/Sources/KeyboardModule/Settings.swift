@@ -9,21 +9,11 @@ import SwiftUI
 
 public final class Settings: ObservableObject {
     
-    public static let current: Settings = .init()
-    
-    private init() {
-        language = Language(rawValue: UserDefaults.standard.string(forKey: currentLanguageKey) ?? "") ?? Language.preferredList.first ?? .en
-    }
+    public static let current = Settings()
      
-    private let currentLanguageKey = "rrvfFT9eUMTqwVCEW4cbDo3c4TJsa1O"
-    public var language: Language {
-        willSet {
-            objectWillChange.send()
-        }
-        
+    @Published("rrvfFT9eUMTqwVCEW4cbDo3c4TJsa1O")
+    public var language: Language = .en {
         didSet {
-            UserDefaults.standard.set(language.rawValue, forKey: currentLanguageKey)
-            
             NotificationCenter.default.post(name: .LocalizationDidChange, object: nil)
         }
     }

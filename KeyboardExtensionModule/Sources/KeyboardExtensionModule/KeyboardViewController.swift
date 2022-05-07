@@ -385,11 +385,7 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate, Observabl
         isSettingViewPresented = true
     }
     
-    var isSettingViewPresented = false {
-        willSet {
-            objectWillChange.send()
-        }
-    }
+    @Published var isSettingViewPresented = false
     
     func insert(text: String) {
         textDocumentProxy.insertText(text)

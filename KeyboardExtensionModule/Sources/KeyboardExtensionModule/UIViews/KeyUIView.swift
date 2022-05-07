@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Combine
 import KeyboardModule
 
 class KeyUIView: UIButton {
@@ -99,6 +100,8 @@ class KeyUIView: UIButton {
         }
     }
     
+    private var anyCancellable: [AnyCancellable] = []
+    
     init(key: Key) {
         self.key = key
         super.init(frame: CGRect())
@@ -149,8 +152,18 @@ class KeyUIView: UIButton {
         NotificationCenter.default.addObserver(self, selector: #selector(setNeedsLayout), name: .KeyboardStateDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(setNeedsLayout), name: .KeyboardAppearanceDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(setNeedsLayout), name: .DocumentContextDidChange, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(setNeedsLayout), publisher: Keyboard.self)
-        NotificationCenter.default.addObserver(self, selector: #selector(setNeedsLayout), publisher: Key.self)
+        
+        Keyboard.default.objectWillChange
+            .sink { [weak self] in
+                self?.setNeedsLayout()
+            }
+            .store(in: &anyCancellable)
+        
+        key.objectWillChange
+            .sink { [weak self] in
+                self?.setNeedsLayout()
+            }
+            .store(in: &anyCancellable)
     }
     
     required init?(coder aDecoder: NSCoder) {

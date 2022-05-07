@@ -16,25 +16,8 @@ public final class Key: Identifiable, ObservableObject {
         self.keycode = keycode
     }
     
-    public var isEnabled: Bool = true {
-        willSet {
-            objectWillChange.send()
-        }
-        
-        didSet {
-            NotificationCenter.default.post(self)
-        }
-    }
-    
-    public var isHighlighted: Bool = false {
-        willSet {
-            objectWillChange.send()
-        }
-        
-        didSet {
-            NotificationCenter.default.post(self)
-        }
-    }
+    @Published public var isEnabled = true
+    @Published public var isHighlighted = false
     
     static let keys: [Key] = (0..<Keycode.keycodeMaxCount).map {Key.init(keycode: $0)}
     

@@ -39,13 +39,17 @@ class SearchUnicodeItems: Operation {
             return
         }
         
-        characterSearch.isSearching = true
+        DispatchQueue.main.async {
+            self.characterSearch.isSearching = true
+        }
         
         let maxCount = 200
         
         var foundUnicodeItems: [UnicodeItem] = [] {
             didSet {
-                characterSearch.foundUnicodeItems = foundUnicodeItems
+                DispatchQueue.main.async {
+                    self.characterSearch.foundUnicodeItems = foundUnicodeItems
+                }
                 
                 if foundUnicodeItems.count >= maxCount {
                     cancel()

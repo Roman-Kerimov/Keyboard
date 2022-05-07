@@ -8,7 +8,6 @@
 import SwiftUI
 import Combine
 
-@available(iOS 13.0, *)
 struct SoftwareKeyboardSupportViewModifier: ViewModifier {
     
     @State var height: CGFloat = 0

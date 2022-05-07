@@ -8,7 +8,6 @@
 import SwiftUI
 import KeyboardModule
 
-@available(iOS 13.0, *)
 struct KeyView: UIViewRepresentable {
     let key: Key
     

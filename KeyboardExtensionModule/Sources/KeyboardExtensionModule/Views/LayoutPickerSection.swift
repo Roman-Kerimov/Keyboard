@@ -8,7 +8,6 @@
 import SwiftUI
 import KeyboardModule
 
-@available(iOS 13.0, *)
 struct LayoutPickerSection: View {
     @EnvironmentObject var settings: Settings
     @EnvironmentObject var keyboard: Keyboard

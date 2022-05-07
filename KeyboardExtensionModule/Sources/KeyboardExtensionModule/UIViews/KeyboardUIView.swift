@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Combine
 import KeyboardModule
 
 internal class KeyboardUIView: UIView {
@@ -16,6 +17,8 @@ internal class KeyboardUIView: UIView {
     private let deleteRowView: DeleteRowUIView = .init()
     private let layoutView: KeyboardLayoutUIView = .init()
     private let spaceRowView: SpaceRowUIView = .init()
+    
+    private var anyCancellables: [AnyCancellable] = []
     
     override private init(frame: CGRect = .zero) {
         super.init(frame: frame)
@@ -30,8 +33,15 @@ internal class KeyboardUIView: UIView {
         
         settingsContainerView.backButton.addTarget(self, action: #selector(hideSettings), for: .allTouchEvents)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(setLayout), publisher: Keyboard.self)
-        NotificationCenter.default.addObserver(self, selector: #selector(setNeedsLayout), publisher: Keyboard.self)
+        Keyboard.default.$layout
+            .assign(to: \.layoutView.layout, on: self)
+            .store(in: &anyCancellables)
+        
+        Keyboard.default.objectWillChange
+            .sink { [weak self] in
+                self?.setNeedsLayout()
+            }
+            .store(in: &anyCancellables)
     }
     
     required internal init?(coder aDecoder: NSCoder) {
@@ -92,10 +102,6 @@ internal class KeyboardUIView: UIView {
         
         deleteRowView.characterSequence.layout.itemSize = keyboardViewControler.characterSequenceItemSize
         deleteRowView.characterSequence.reloadData()
-    }
-    
-    @objc private func setLayout() {
-        layoutView.layout = Keyboard.default.layout
     }
     
     private var settingsContainerView: SettingsContainerUIView = .init()

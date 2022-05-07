@@ -9,7 +9,6 @@ import SwiftUI
 import KeyboardModule
 import UnicodeData
 
-@available(iOS 13.0, *)
 struct LanguageCharactersRow: View {
     @EnvironmentObject var settings: Settings
     

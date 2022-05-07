@@ -7,23 +7,9 @@
 //
 
 import Foundation
-import Combine
 import Calculator
 
-@available(iOS 13.0, *)
-extension Keyboard: ObservableObject {
-
-    public var objectWillChange: ObservableObjectPublisher {
-        if _objectWillChange == nil {
-            _objectWillChange = ObservableObjectPublisher.init()
-        }
-
-        return _objectWillChange as! ObservableObjectPublisher
-    }
-}
-
-public final class Keyboard {
-    var _objectWillChange: Any? = nil
+public final class Keyboard: ObservableObject {
     
     public static let `default`: Keyboard = .init()
     public var delegate: KeyboardDelegate?
@@ -460,8 +446,6 @@ public final class Keyboard {
     }
     
     private init() {
-        
-        UserDefaults.standard.register(defaults: [layoutKey : KeyboardLayout.qwerty.name])
         previewLayout = layout
         
         NotificationCenter.default.addObserver(self, selector: #selector(documentContextDidChange), name: .DocumentContextDidChange, object: nil)
@@ -548,54 +532,21 @@ public final class Keyboard {
     }
     
     
-    public var previewLayout: KeyboardLayout = .system {
+    @Published public var previewLayout: KeyboardLayout = .system {
         willSet {
-            if #available(iOS 13.0, *) {
-                Key.keys.forEach {$0.objectWillChange.send()}
-            }
+            Key.keys.forEach {$0.objectWillChange.send()}
         }
-        
+    }
+    
+    @Published("LBPQsNPr8gJHi8Ds05etypaTVEiq8X1")
+    public var layout: KeyboardLayout = .qwerty {
         didSet {
-            Key.keys.forEach {NotificationCenter.default.post($0)}
+            previewLayout = layout
         }
     }
     
-    private let layoutKey = "LBPQsNPr8gJHi8Ds05etypaTVEiq8X1"
-    public var layout: KeyboardLayout {
-        get {
-            return KeyboardLayout.allLayouts.filter { $0.name == (UserDefaults.standard.string(forKey: layoutKey) ?? "")}.first ?? .system
-        }
-        
-        set {
-            UserDefaults.standard.set(newValue.name, forKey: layoutKey)
-            UserDefaults.standard.synchronize()
-            
-            if #available(iOS 13.0, *) {
-                objectWillChange.send()
-            }
-            
-            previewLayout = newValue
-            NotificationCenter.default.post(self)
-        }
-    }
-    
-    private let layoutModeKey = "PPlmVhk2uT98JemxOJdtAS88aRi3qv9"
-    public var layoutMode: KeyboardLayoutMode {
-        get {
-            return KeyboardLayoutMode(rawValue: UserDefaults.standard.string(forKey: layoutModeKey) ?? "") ?? .default
-        }
-        
-        set {
-            UserDefaults.standard.set(newValue.rawValue, forKey: layoutModeKey)
-            UserDefaults.standard.synchronize()
-            
-            if #available(iOS 13.0, *) {
-                objectWillChange.send()
-            }
-            
-            NotificationCenter.default.post(self)
-        }
-    }
+    @Published("PPlmVhk2uT98JemxOJdtAS88aRi3qv9")
+    public var layoutMode: KeyboardLayoutMode = .default
 }
 
 public extension NSNotification.Name {

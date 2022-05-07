@@ -6,23 +6,9 @@
 //
 
 import Foundation
-import Combine
 import UnicodeData
 
-@available(iOS 13.0, *)
-extension CharacterSearch: ObservableObject {
-
-    public var objectWillChange: ObservableObjectPublisher {
-        if _objectWillChange == nil {
-            _objectWillChange = ObservableObjectPublisher.init()
-        }
-
-        return _objectWillChange as! ObservableObjectPublisher
-    }
-}
-
-public class CharacterSearch: NSObject {
-    private var _objectWillChange: Any? = nil
+public class CharacterSearch: NSObject, ObservableObject {
     
     public override func updateLocalizedStrings() {
         lastUsedUnicodeItemsCache = [:]
@@ -81,33 +67,8 @@ public class CharacterSearch: NSObject {
         searchOperationQueue.addOperation( SearchUnicodeItems.init(characterSearch: self, text: text) )
     }
     
-    public var isSearching: Bool = false {
-        willSet {
-            if #available(iOS 13.0, *) {
-                DispatchQueue.main.async {
-                    self.objectWillChange.send()
-                }
-            }
-        }
-        
-        didSet {
-            NotificationCenter.default.post(self)
-        }
-    }
-    
-    public var foundUnicodeItems: [UnicodeItem] = [] {
-        willSet {
-            if #available(iOS 13.0, *) {
-                DispatchQueue.main.async {
-                    self.objectWillChange.send()
-                }
-            }
-        }
-        
-        didSet {
-            NotificationCenter.default.post(self)
-        }
-    }
+    @Published public var isSearching: Bool = false
+    @Published public var foundUnicodeItems: [UnicodeItem] = []
     
     internal var scriptCodeLength: Int = 0
     

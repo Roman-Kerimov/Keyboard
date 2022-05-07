@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import Combine
 import KeyboardModule
 import UnicodeData
 
@@ -29,19 +28,7 @@ extension UIApplication {
     }
 }
 
-@available(iOS 13.0, *)
-extension KeyboardViewController: ObservableObject {
-
-    public var objectWillChange: ObservableObjectPublisher {
-        if _objectWillChange == nil {
-            _objectWillChange = ObservableObjectPublisher.init()
-        }
-
-        return _objectWillChange as! ObservableObjectPublisher
-    }
-}
-
-class KeyboardViewController: UIInputViewController, KeyboardDelegate {
+class KeyboardViewController: UIInputViewController, KeyboardDelegate, ObservableObject {
     static var shared: KeyboardViewController = .init()
     
     enum State {
@@ -49,8 +36,6 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
     }
     
     var state: State = .disappeared
-    
-    var _objectWillChange: Any? = nil
     
     private var layoutMode: Keyboard.KeyboardLayoutMode {
         get {
@@ -329,9 +314,7 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         
-        if #available(iOS 13.0, *) {
-            objectWillChange.send()
-        }
+        objectWillChange.send()
         
         if Bundle.main.isExtension {
             UIView.setAnimationsEnabled(false)
@@ -351,9 +334,7 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
         // The app is about to change the document's contents. Perform any preparation here.
         
         // For input mode switch key
-        if #available(iOS 13.0, *) {
-            objectWillChange.send()
-        }
+        objectWillChange.send()
     }
     
     override func textDidChange(_ textInput: UITextInput?) {
@@ -370,10 +351,8 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         
-        if #available(iOS 13.0, *) {
-            UIKeyboardAppearance.current = UITraitCollection.current.userInterfaceStyle == .dark ? .dark : .light
-            NotificationCenter.default.post(name: .KeyboardAppearanceDidChange, object: nil)
-        }
+        UIKeyboardAppearance.current = UITraitCollection.current.userInterfaceStyle == .dark ? .dark : .light
+        NotificationCenter.default.post(name: .KeyboardAppearanceDidChange, object: nil)
     }
     
     override var needsInputModeSwitchKey: Bool {
@@ -406,13 +385,7 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
         isSettingViewPresented = true
     }
     
-    var isSettingViewPresented = false {
-        willSet {
-            if #available(iOS 13.0, *) {
-                objectWillChange.send()
-            }
-        }
-    }
+    @Published var isSettingViewPresented = false
     
     func insert(text: String) {
         textDocumentProxy.insertText(text)

@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-@available(iOS 13.0, *)
 struct CharacterSequenceView: UIViewRepresentable {
     func makeUIView(context: Context) -> CharacterSequenceUIView {
         CharacterSequenceUIView()

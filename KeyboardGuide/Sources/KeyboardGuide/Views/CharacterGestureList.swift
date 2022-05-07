@@ -22,6 +22,5 @@ struct CharacterGestureList: View {
             }
         }
         .listStyle(GroupedListStyle())
-        .modifier(SoftwareKeyboardSupportViewModifier())
     }
 }

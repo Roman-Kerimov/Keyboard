@@ -25,7 +25,7 @@ public class GuideUIViewController: UISplitViewController {
         
         delegate = self
         
-        preferredDisplayMode = .allVisible
+        preferredDisplayMode = .oneBesideSecondary
     }
     
     var selectedRowIndexPath: IndexPath {

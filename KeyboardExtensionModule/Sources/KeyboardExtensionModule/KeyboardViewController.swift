@@ -228,33 +228,26 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate, Observabl
     private var keyboardUIView: KeyboardUIView? = nil
     
     override func loadView() {
+        view = UIView()
         
-        if #available(iOS 14.0, *) {
-            view = UIView()
-            
-            let hostingController = UIHostingController(
-                rootView: KeyboardView()
-                    .environmentObject(self)
-                    .environmentObject(Keyboard.default)
-                    .environmentObject(Settings.current)
-            )
-             
-            hostingController.view.backgroundColor = .clear
-            
-            addChild(hostingController)
-            view.addSubview(hostingController.view)
-            
-            hostingController.view.translatesAutoresizingMaskIntoConstraints = false
-            
-            hostingController.view.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-            hostingController.view.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-            hostingController.view.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-            hostingController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        }
-        else {
-            keyboardUIView = KeyboardUIView()
-            view = keyboardUIView
-        }
+        let hostingController = UIHostingController(
+            rootView: KeyboardView()
+                .environmentObject(self)
+                .environmentObject(Keyboard.default)
+                .environmentObject(Settings.current)
+        )
+         
+        hostingController.view.backgroundColor = .clear
+        
+        addChild(hostingController)
+        view.addSubview(hostingController.view)
+        
+        hostingController.view.translatesAutoresizingMaskIntoConstraints = false
+        
+        hostingController.view.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        hostingController.view.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        hostingController.view.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        hostingController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     
     override func updateViewConstraints() {
@@ -360,16 +353,8 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate, Observabl
         guard Bundle.main.isExtension else {
             return false
         }
-    
-        if #available(iOS 11.0, *) {
-            return super.needsInputModeSwitchKey
-        }
-        else if let installedKeyboards = UserDefaults.standard.stringArray(forKey: "AppleKeyboards") {
-            return installedKeyboards.count > 1
-        }
-        else {
-            return true
-        }
+        
+        return super.needsInputModeSwitchKey
     }
     
     func delete() {

@@ -20,21 +20,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         UnicodeData.default.loadIfNeeded()
- 
         window = .init(frame: UIScreen.main.bounds)
         
         guard let window = self.window else {
             fatalError()
         }
         
-        if #available(iOS 14.0, *) {
-            window.rootViewController = UIHostingController.init(rootView: GuideNavigationView().localized())
-        } else {
-            window.rootViewController = GuideUIViewController.init()
-        }
-        
+        window.rootViewController = UIHostingController.init(rootView: GuideNavigationView().localized())
         window.makeKeyAndVisible()
-
+        
         return true
     }
 

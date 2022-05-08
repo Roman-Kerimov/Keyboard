@@ -3563,6 +3563,48 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     //1AC0          ; COMBINING LATIN SMALL LETTER TURNED W BELOW
     "ᫀ": [.w, .turned, .below],
     
+    //1AC1          ; COMBINING LEFT PARENTHESIS ABOVE LEFT
+    "᫁": [.leftParenthesis, .above],
+    
+    //1AC2          ; COMBINING RIGHT PARENTHESIS ABOVE RIGHT
+    "᫂": [.rightParenthesis, .above],
+    
+    //1AC3          ; COMBINING LEFT PARENTHESIS BELOW LEFT
+    "᫃": [.leftParenthesis, .below],
+    
+    //1AC4          ; COMBINING RIGHT PARENTHESIS BELOW RIGHT
+    "᫄": [.rightParenthesis, .below],
+    
+    //1AC5          ; COMBINING SQUARE BRACKETS ABOVE
+    "᫅": [.squareBrackets, .above],
+    
+    //1AC6          ; COMBINING NUMBER SIGN ABOVE
+    "᫆": [.numberSign, .above],
+    
+    //1AC7          ; COMBINING INVERTED DOUBLE ARCH ABOVE
+    "᫇": [.breve, .doubled, .above],
+    
+    //1AC8          ; COMBINING PLUS SIGN ABOVE
+    "᫈": [.plusSign, .above],
+    
+    //1AC9          ; COMBINING DOUBLE PLUS SIGN ABOVE
+    "᫉": [.plusSign, .doubled, .above],
+    
+    //1ACA          ; COMBINING DOUBLE PLUS SIGN BELOW
+    "᫊": [.plusSign, .doubled, .below],
+    
+    //1ACB          ; COMBINING TRIPLE ACUTE ACCENT
+    "᫋": [.acute, .tripled, .above],
+    
+    //1ACC          ; COMBINING LATIN SMALL LETTER INSULAR G
+    "ᫌ": [.g, .insular, .above],
+    
+    //1ACD          ; COMBINING LATIN SMALL LETTER INSULAR R
+    "ᫍ": [.r, .insular, .above],
+    
+    //1ACE          ; COMBINING LATIN SMALL LETTER INSULAR T
+    "ᫎ": [.t, .insular, .above],
+    
     
     // MARK: - 1D00..1D7F; Phonetic Extensions
     
@@ -4206,7 +4248,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "᷒": [.u, .s, .above],
 
     //1DD3          ; COMBINING LATIN SMALL LETTER FLATTENED OPEN A ABOVE
-    "ᷓ": [.breve, .doubled, .above],
+    "ᷓ": [.flattenedOpenA, .above],
 
     //1DD4          ; COMBINING LATIN SMALL LETTER AE
     "ᷔ": [.a, .e, .above],
@@ -4322,7 +4364,10 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
 
     //1DF9          ; COMBINING WIDE INVERTED BRIDGE BELOW
     "᷹": [], //Typicon
-
+    
+    //1DFA          ; COMBINING DOT BELOW LEFT
+    "᷺": [.dot, .belowLeft],
+    
     //1DFB          ; COMBINING DELETION MARK
     "᷻": [], //Newa
 
@@ -6226,7 +6271,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "∽": [.tilde, .reversed],
 
     //223E          ; INVERTED LAZY S
-    "∾": [],
+    "∾": [.lazyS],
 
     //223F          ; SINE WAVE
     "∿": [],
@@ -8498,7 +8543,13 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
 
     //A7BF          ; LATIN SMALL LETTER GLOTTAL U
     "ꞿ": [.egyptologialAlef, .u],
-
+    
+    //A7C0          ; LATIN CAPITAL LETTER OLD POLISH O
+    "Ꟁ": [.o, .capital, .oldPolish],
+    
+    //A7C1          ; LATIN SMALL LETTER OLD POLISH O
+    "ꟁ": [.o, .oldPolish],
+    
     //A7C2          ; LATIN CAPITAL LETTER ANGLICANA W
     "Ꟃ": [.w, .capital, .anglicana],
 
@@ -8525,6 +8576,39 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     
     //A7CA          ; LATIN SMALL LETTER S WITH SHORT STROKE OVERLAY
     "ꟊ": [.s, .shortStroke],
+    
+    //A7D0          ; LATIN CAPITAL LETTER CLOSED INSULAR G
+    "Ꟑ": [.g, .capital, .insular, .closed],
+    
+    //A7D1          ; LATIN SMALL LETTER CLOSED INSULAR G
+    "ꟑ": [.g, .insular, .closed],
+    
+    //A7D3          ; LATIN SMALL LETTER DOUBLE THORN
+    "ꟓ": [.t, .extraH, .extraH],
+    
+    //A7D5          ; LATIN SMALL LETTER DOUBLE WYNN
+    "ꟕ": [.w, .extraH, .extraH],
+    
+    //A7D6          ; LATIN CAPITAL LETTER MIDDLE SCOTS S
+    "Ꟗ": [.s, .capital, .middleScots],
+    
+    //A7D7          ; LATIN SMALL LETTER MIDDLE SCOTS S
+    "ꟗ": [.s, .middleScots],
+    
+    //A7D8          ; LATIN CAPITAL LETTER SIGMOID S
+    "Ꟙ": [.s, .capital, .sigmoid],
+    
+    //A7D9          ; LATIN SMALL LETTER SIGMOID S
+    "ꟙ": [.s, .sigmoid],
+    
+    //A7F2          ; MODIFIER LETTER CAPITAL C
+    "ꟲ": [.c, .capital, .superscript],
+    
+    //A7F3          ; MODIFIER LETTER CAPITAL F
+    "ꟳ": [.f, .capital, .superscript],
+    
+    //A7F4          ; MODIFIER LETTER CAPITAL Q
+    "ꟴ": [.q, .capital, .superscript],
     
     //A7F5          ; LATIN CAPITAL LETTER REVERSED HALF H
     "Ꟶ": [.h, .capital, .rightHalf],
@@ -8698,7 +8782,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ꭜ": [.h, .g, .superscript],
 
     //AB5D          ; MODIFIER LETTER SMALL L WITH INVERTED LAZY S
-    "ꭝ": [.l, .s, .superscript],
+    "ꭝ": [.l, .lazyS, .superscript],
 
     //AB5E          ; MODIFIER LETTER SMALL L WITH MIDDLE TILDE
     "ꭞ": [.l, .tilde, .superscript],
@@ -8725,7 +8809,7 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
     "ꭥ": [.o, .o, .greek, .smallCapital],
 
     //AB66          ; LATIN SMALL LETTER DZ DIGRAPH WITH RETROFLEX HOOK
-    "ꭦ": [.d, .z, .retroflexHook],
+    "ꭦ": [.d, .zDigraph, .retroflexHook],
 
     //AB67          ; LATIN SMALL LETTER TS DIGRAPH WITH RETROFLEX HOOK
     "ꭧ": [.t, .s, .retroflexHook],
@@ -8816,7 +8900,277 @@ let characterComponentsDictionary: [String: [CharacterComponent]] = [
 
     //FE2F          ; COMBINING CYRILLIC TITLO RIGHT HALF
     "︯": [],
-
+    
+    
+    // MARK: - 10780..107BF; Latin Extended-F
+    
+    //10780         ; MODIFIER LETTER SMALL CAPITAL AA
+    "𐞀": [.a, .a, .smallCapital],
+    
+    //10781         ; MODIFIER LETTER SUPERSCRIPT TRIANGULAR COLON
+    "𐞁": [.long, .superscript],
+    
+    //10782         ; MODIFIER LETTER SUPERSCRIPT HALF TRIANGULAR COLON
+    "𐞂": [.halfLong, .superscript],
+    
+    //10783         ; MODIFIER LETTER SMALL AE
+    "𐞃": [.a, .e, .superscript],
+    
+    //10784         ; MODIFIER LETTER SMALL CAPITAL B
+    "𐞄": [.b, .smallCapital, .superscript],
+    
+    //10785         ; MODIFIER LETTER SMALL B WITH HOOK
+    "𐞅": [.b, .hook, .superscript],
+    
+    //10787         ; MODIFIER LETTER SMALL DZ DIGRAPH
+    "𐞇": [.d, .zDigraph, .superscript],
+    
+    //10788         ; MODIFIER LETTER SMALL DZ DIGRAPH WITH RETROFLEX HOOK
+    "𐞈": [.d, .zDigraph, .retroflexHook, .superscript],
+    
+    //10789         ; MODIFIER LETTER SMALL DZ DIGRAPH WITH CURL
+    "𐞉": [.d, .zDigraph, .curl, .superscript],
+    
+    //1078A         ; MODIFIER LETTER SMALL DEZH DIGRAPH
+    "𐞊": [.d, .zDigraph, .extraH, .superscript],
+    
+    //1078B         ; MODIFIER LETTER SMALL D WITH TAIL
+    "𐞋": [.d, .tail, .superscript],
+    
+    //1078C         ; MODIFIER LETTER SMALL D WITH HOOK
+    "𐞌": [.d, .hook, .superscript],
+    
+    //1078D         ; MODIFIER LETTER SMALL D WITH HOOK AND TAIL
+    "𐞍": [.d, .hook, .tail, .superscript],
+    
+    //1078E         ; MODIFIER LETTER SMALL REVERSED E
+    "𐞎": [.e, .reversed, .superscript],
+    
+    //1078F         ; MODIFIER LETTER SMALL CLOSED REVERSED OPEN E
+    "𐞏": [.e, .extraH, .closed, .reversed, .superscript],
+    
+    //10790         ; MODIFIER LETTER SMALL FENG DIGRAPH
+    "𐞐": [.f, .g, .superscript],
+    
+    //10791         ; MODIFIER LETTER SMALL RAMS HORN
+    "𐞑": [.o, .extra0, .superscript],
+    
+    //10792         ; MODIFIER LETTER SMALL CAPITAL G
+    "𐞒": [.g, .smallCapital, .superscript],
+    
+    //10793         ; MODIFIER LETTER SMALL G WITH HOOK
+    "𐞓": [.g, .hook, .superscript],
+    
+    //10794         ; MODIFIER LETTER SMALL CAPITAL G WITH HOOK
+    "𐞔": [.g, .smallCapital, .hook, .superscript],
+    
+    //10795         ; MODIFIER LETTER SMALL H WITH STROKE
+    "𐞕": [.h, .stroke, .superscript],
+    
+    //10796         ; MODIFIER LETTER SMALL CAPITAL H
+    "𐞖": [.h, .smallCapital, .superscript],
+    
+    //10797         ; MODIFIER LETTER SMALL HENG WITH HOOK
+    "𐞗": [.h, .g, .hook, .superscript],
+    
+    //10798         ; MODIFIER LETTER SMALL DOTLESS J WITH STROKE AND HOOK
+    "𐞘": [.j, .dotless, .hook, .stroke, .superscript],
+    
+    //10799         ; MODIFIER LETTER SMALL LS DIGRAPH
+    "𐞙": [.l, .s, .superscript],
+    
+    //1079A         ; MODIFIER LETTER SMALL LZ DIGRAPH
+    "𐞚": [.l, .z, .superscript],
+    
+    //1079B         ; MODIFIER LETTER SMALL L WITH BELT
+    "𐞛": [.l, .belt, .superscript],
+    
+    //1079C         ; MODIFIER LETTER SMALL CAPITAL L WITH BELT
+    "𐞜": [.l, .smallCapital, .belt, .superscript],
+    
+    //1079D         ; MODIFIER LETTER SMALL L WITH RETROFLEX HOOK AND BELT
+    "𐞝": [.l, .retroflexHook, .belt, .superscript],
+    
+    //1079E         ; MODIFIER LETTER SMALL LEZH
+    "𐞞": [.l, .z, .extraH, .superscript],
+    
+    //1079F         ; MODIFIER LETTER SMALL LEZH WITH RETROFLEX HOOK
+    "𐞟": [.l, .z, .extraH, .retroflexHook, .superscript],
+    
+    //107A0         ; MODIFIER LETTER SMALL TURNED Y
+    "𐞠": [.y, .turned, .superscript],
+    
+    //107A1         ; MODIFIER LETTER SMALL TURNED Y WITH BELT
+    "𐞡": [.y, .turned, .belt, .superscript],
+    
+    //107A2         ; MODIFIER LETTER SMALL O WITH STROKE
+    "𐞢": [.o, .diagonalStroke, .superscript],
+    
+    //107A3         ; MODIFIER LETTER SMALL CAPITAL OE
+    "𐞣": [.o, .e, .smallCapital, .superscript],
+    
+    //107A4         ; MODIFIER LETTER SMALL CLOSED OMEGA
+    "𐞤": [.o, .o, .extraH, .closed, .superscript],
+    
+    //107A5         ; MODIFIER LETTER SMALL Q
+    "𐞥": [.q, .superscript],
+    
+    //107A6         ; MODIFIER LETTER SMALL TURNED R WITH LONG LEG
+    "𐞦": [.r, .turned, .longLeg, .superscript],
+    
+    //107A7         ; MODIFIER LETTER SMALL TURNED R WITH LONG LEG AND RETROFLEX HOOK
+    "𐞧": [.r, .turned, .longLeg, .retroflexHook, .superscript],
+    
+    //107A8         ; MODIFIER LETTER SMALL R WITH TAIL
+    "𐞨": [.r, .tail, .superscript],
+    
+    //107A9         ; MODIFIER LETTER SMALL R WITH FISHHOOK
+    "𐞩": [.r, .hook, .superscript],
+    
+    //107AA         ; MODIFIER LETTER SMALL CAPITAL R
+    "𐞪": [.r, .smallCapital, .superscript],
+    
+    //107AB         ; MODIFIER LETTER SMALL TC DIGRAPH WITH CURL
+    "𐞫": [.t, .s, .curl, .superscript],
+    
+    //107AC         ; MODIFIER LETTER SMALL TS DIGRAPH
+    "𐞬": [.t, .s, .superscript],
+    
+    //107AD         ; MODIFIER LETTER SMALL TS DIGRAPH WITH RETROFLEX HOOK
+    "𐞭": [.t, .s, .retroflexHook, .superscript],
+    
+    //107AE         ; MODIFIER LETTER SMALL TESH DIGRAPH
+    "𐞮": [.t, .s, .extraH, .superscript],
+    
+    //107AF         ; MODIFIER LETTER SMALL T WITH RETROFLEX HOOK
+    "𐞯":  [.t, .retroflexHook, .superscript],
+    
+    //107B0         ; MODIFIER LETTER SMALL V WITH RIGHT HOOK
+    "𐞰": [.v, .hook, .superscript],
+    
+    //107B2         ; MODIFIER LETTER SMALL CAPITAL Y
+    "𐞲": [.y, .smallCapital, .superscript],
+    
+    //107B3         ; MODIFIER LETTER GLOTTAL STOP WITH STROKE
+    "𐞳": [.glottalStop, .stroke, .superscript],
+    
+    //107B4         ; MODIFIER LETTER REVERSED GLOTTAL STOP WITH STROKE
+    "𐞴": [.glottalStop, .stroke, .reversed, .superscript],
+    
+    //107B5         ; MODIFIER LETTER BILABIAL CLICK
+    "𐞵": [.o, .click, .superscript],
+    
+    //107B6         ; MODIFIER LETTER DENTAL CLICK
+    "𐞶": [.d, .click, .superscript],
+    
+    //107B7         ; MODIFIER LETTER LATERAL CLICK
+    "𐞷": [.l, .click, .superscript],
+    
+    //107B8         ; MODIFIER LETTER ALVEOLAR CLICK
+    "𐞸": [.j, .click, .superscript],
+    
+    //107B9         ; MODIFIER LETTER RETROFLEX CLICK WITH RETROFLEX HOOK
+    "𐞹": [.t, .click, .retroflexHook, .superscript],
+    
+    //107BA         ; MODIFIER LETTER SMALL S WITH CURL
+    "𐞺": [.s, .curl, .extra0, .superscript],
+    
+    
+    // MARK: - 1DF00..1DFFF; Latin Extended-G
+    
+    //1DF00         ; LATIN SMALL LETTER FENG DIGRAPH WITH TRILL
+    "𝼀": [.f, .g, .trill],
+    
+    //1DF01         ; LATIN SMALL LETTER REVERSED SCRIPT G
+    "𝼁": [.g, .letterScript, .reversed],
+    
+    //1DF02         ; LATIN LETTER SMALL CAPITAL TURNED G
+    "𝼂": [.g, .smallCapital, .turned],
+    
+    //1DF03         ; LATIN SMALL LETTER REVERSED K
+    "𝼃": [.k, .reversed],
+    
+    //1DF04         ; LATIN LETTER SMALL CAPITAL L WITH BELT
+    "𝼄": [.l, .smallCapital, .belt],
+    
+    //1DF05         ; LATIN SMALL LETTER LEZH WITH RETROFLEX HOOK
+    "𝼅": [.l, .z, .retroflexHook],
+    
+    //1DF06         ; LATIN SMALL LETTER TURNED Y WITH BELT
+    "𝼆": [.y, .turned, .belt],
+    
+    //1DF07         ; LATIN SMALL LETTER REVERSED ENG
+    "𝼇": [.n, .g, .reversed],
+    
+    //1DF08         ; LATIN SMALL LETTER TURNED R WITH LONG LEG AND RETROFLEX HOOK
+    "𝼈": [.r, .turned, .longLeg, .retroflexHook],
+    
+    //1DF09         ; LATIN SMALL LETTER T WITH HOOK AND RETROFLEX HOOK
+    "𝼉": [.t, .hook, .retroflexHook],
+    
+    //1DF0A         ; LATIN LETTER RETROFLEX CLICK WITH RETROFLEX HOOK
+    "𝼊": [.t, .click, .retroflexHook],
+    
+    //1DF0B         ; LATIN SMALL LETTER ESH WITH DOUBLE BAR
+    "𝼋": [.s, .extraH, .stroke/*, .doubled*/],
+    
+    //1DF0C         ; LATIN SMALL LETTER ESH WITH DOUBLE BAR AND CURL
+    "𝼌": [.s, .extraH, .curl, .stroke/*, .doubled*/],
+    
+    //1DF0D         ; LATIN SMALL LETTER TURNED T WITH CURL
+    "𝼍": [.t, .turned, .curl],
+    
+    //1DF0E         ; LATIN LETTER INVERTED GLOTTAL STOP WITH CURL
+    "𝼎": [.glottalStop, .inverted, .curl],
+    
+    //1DF0F         ; LATIN LETTER STRETCHED C WITH CURL
+    "𝼏": [.c, .extraH, .curl],
+    
+    //1DF10         ; LATIN LETTER SMALL CAPITAL TURNED K
+    "𝼐": [.k, .smallCapital, .turned],
+    
+    //1DF11         ; LATIN SMALL LETTER L WITH FISHHOOK
+    "𝼑": [.l, .hook],
+    
+    //1DF12         ; LATIN SMALL LETTER DEZH DIGRAPH WITH PALATAL HOOK
+    "𝼒": [.d, .zDigraph, .extraH, .palatalHook],
+    
+    //1DF13         ; LATIN SMALL LETTER L WITH BELT AND PALATAL HOOK
+    "𝼓": [.l, .belt, .palatalHook],
+    
+    //1DF14         ; LATIN SMALL LETTER ENG WITH PALATAL HOOK
+    "𝼔": [.n, .g, .palatalHook],
+    
+    //1DF15         ; LATIN SMALL LETTER TURNED R WITH PALATAL HOOK
+    "𝼕": [.r, .turned, .palatalHook],
+    
+    //1DF16         ; LATIN SMALL LETTER R WITH FISHHOOK AND PALATAL HOOK
+    "𝼖": [.r, .hook, .palatalHook],
+    
+    //1DF17         ; LATIN SMALL LETTER TESH DIGRAPH WITH PALATAL HOOK
+    "𝼗": [.t, .s, .extraH, .palatalHook],
+    
+    //1DF18         ; LATIN SMALL LETTER EZH WITH PALATAL HOOK
+    "𝼘": [.z, .extraH, .palatalHook],
+    
+    //1DF19         ; LATIN SMALL LETTER DEZH DIGRAPH WITH RETROFLEX HOOK
+    "𝼙": [.d, .zDigraph, .extraH, .retroflexHook],
+    
+    //1DF1A         ; LATIN SMALL LETTER I WITH STROKE AND RETROFLEX HOOK
+    "𝼚": [.i, .stroke, .retroflexHook],
+    
+    //1DF1B         ; LATIN SMALL LETTER O WITH RETROFLEX HOOK
+    "𝼛": [.o, .retroflexHook],
+    
+    //1DF1C         ; LATIN SMALL LETTER TESH DIGRAPH WITH RETROFLEX HOOK
+    "𝼜": [.t, .s, .extraH, .retroflexHook],
+    
+    //1DF1D         ; LATIN SMALL LETTER C WITH RETROFLEX HOOK
+    "𝼝": [.c, .retroflexHook],
+    
+    //1DF1E         ; LATIN SMALL LETTER S WITH CURL
+    "𝼞": [.s, .curl, .extra0],
+    
     
     // MARK: - 1D400..1D7FF; Mathematical Alphanumeric Symbols
     

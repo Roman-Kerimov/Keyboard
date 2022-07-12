@@ -323,13 +323,6 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate, Observabl
         NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
     }
     
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        
-        UIKeyboardAppearance.current = UITraitCollection.current.userInterfaceStyle == .dark ? .dark : .light
-        NotificationCenter.default.post(name: .KeyboardAppearanceDidChange, object: nil)
-    }
-    
     override var needsInputModeSwitchKey: Bool {
         
         guard Bundle.main.isExtension else {
@@ -375,8 +368,4 @@ extension UITextDocumentProxy {
     var documentContext: DocumentContext {
         return .init(beforeInput: documentContextBeforeInput ?? .init(), afterInput: documentContextAfterInput ?? .init())
     }
-}
-
-extension NSNotification.Name {
-    static let KeyboardAppearanceDidChange: NSNotification.Name = .init("2KqZjiSSeYYkZs8K9DyZo32kPMYWRng")
 }

@@ -150,7 +150,6 @@ class KeyUIView: UIButton {
         NotificationCenter.default.addLocaleObserver(self)
         
         NotificationCenter.default.addObserver(self, selector: #selector(setNeedsLayout), name: .KeyboardStateDidChange, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(setNeedsLayout), name: .KeyboardAppearanceDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(setNeedsLayout), name: .DocumentContextDidChange, object: nil)
         
         Keyboard.default.objectWillChange

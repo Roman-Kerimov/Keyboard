@@ -8,7 +8,6 @@
 import SwiftUI
 import KeyboardModule
 
-@available(iOS 14.0, *)
 struct SetUpView: View {
     @EnvironmentObject var settings: Settings
     

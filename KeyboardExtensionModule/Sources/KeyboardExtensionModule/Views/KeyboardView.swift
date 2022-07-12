@@ -8,7 +8,6 @@
 import SwiftUI
 import KeyboardModule
 
-@available(iOS 14.0, *)
 struct KeyboardView: View {
     @EnvironmentObject var controller: KeyboardViewController
     @EnvironmentObject var keyboard: Keyboard

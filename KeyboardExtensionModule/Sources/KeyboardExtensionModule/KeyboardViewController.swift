@@ -225,8 +225,6 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate, Observabl
         }
     }
     
-    private var keyboardUIView: KeyboardUIView? = nil
-    
     override func loadView() {
         view = UIView()
         
@@ -267,23 +265,12 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate, Observabl
         view.frame = UIScreen.main.bounds
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateDocumentContext), name: .DocumentContextDidChange, object: nil)
-        
-        if Bundle.main.isExtension, keyboardUIView != nil {
-            // Hack for working of the keyboard height constraint
-            let hiddenView: UILabel = .init()
-            hiddenView.translatesAutoresizingMaskIntoConstraints = false
-            self.view.addSubview(hiddenView)
-            hiddenView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-            hiddenView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-            hiddenView.isHidden = true
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         state = .appearing
-        keyboardUIView?.setNeedsLayout()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -333,11 +320,6 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate, Observabl
     override func textDidChange(_ textInput: UITextInput?) {
         // The app has just changed the document's contents, the document context has been updated.
         
-        if keyboardUIView != nil, state != .appeared {
-            UIKeyboardAppearance.current = self.textDocumentProxy.keyboardAppearance ?? .default
-            NotificationCenter.default.post(name: .KeyboardAppearanceDidChange, object: nil)
-        }
-        
         NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
     }
     
@@ -366,7 +348,6 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate, Observabl
     }
     
     func settings() {
-        keyboardUIView?.showSettings()
         isSettingViewPresented = true
     }
     

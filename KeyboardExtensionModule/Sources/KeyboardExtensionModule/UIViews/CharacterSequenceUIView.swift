@@ -281,10 +281,10 @@ class CharacterSequenceUIView: UICollectionView, UICollectionViewDelegateFlowLay
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCollectionUIViewCell.reuseIdentifier, for: indexPath) as! CharacterCollectionUIViewCell
         
         cell.title.text = characters[indexPath.item].previewDescription
-        cell.title.textColor = .labelColor
+        cell.title.textColor = .label
             
         cell.title.font = characterFont
-        cell.backgroundColor = UIColor.labelColor.withAlphaComponent(CGFloat(Double.characterSequenceBackgroundOpacity))
+        cell.backgroundColor = UIColor.label.withAlphaComponent(CGFloat(Double.characterSequenceBackgroundOpacity))
         cell.cornerRadius = .characterSequenceCornerRadiusFontSizeFactor * fontSize
         
         return cell

@@ -83,15 +83,15 @@ class CharacterSearchUIView: UICollectionView, UICollectionViewDelegateFlowLayou
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCollectionUIViewCell.reuseIdentifier, for: indexPath) as! CharacterCollectionUIViewCell
         
         cell.title.text = unicodeItems[indexPath.item].codePoints.previewDescription
-        cell.title.textColor = .labelColor
+        cell.title.textColor = .label
         
         let characterFontSize = layout.itemSize.width * .characterSearchViewFontSizeFactor
         cell.title.font = .systemFont(ofSize: characterFontSize)
         
         cell.unicodeName.text = unicodeItems[indexPath.item].localizedName
         
-        cell.unicodeName.textColor = .unemphasizedSelectedTextColor
-        cell.unicodeName.backgroundColor = .unemphasizedSelectedTextBackgroundColor
+        cell.unicodeName.textColor = .label
+        cell.unicodeName.backgroundColor = .unemphasizedSelectedTextBackground
         cell.unicodeName.font = .boldSystemFont(ofSize: characterFontSize/2)
         
         cell.unicodeName.frame.size.width += cell.unicodeName.font.pointSize/2

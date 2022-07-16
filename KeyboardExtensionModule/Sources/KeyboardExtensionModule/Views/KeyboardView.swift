@@ -22,17 +22,6 @@ struct KeyboardView: View {
                 keyboardViewMaxWidth: Bundle.main.isExtension ? geometry.size.width : UIScreen.main.bounds.width
             )
             
-            switch colorScheme {
-            case .light:
-                UIKeyboardAppearance.current = .light
-                
-            case .dark:
-                UIKeyboardAppearance.current = .dark
-                
-            @unknown default:
-                UIKeyboardAppearance.current = .default
-            }
-            
             return AnyView(
                 ZStack(alignment: .trailing) {
                     keyboardView

@@ -23,7 +23,10 @@ let package = Package(
         .target(
             name: "KeyboardExtensionModule",
             dependencies: ["KeyboardModule"],
-            resources: [.copy("Images")]),
+            resources: [
+                .copy("Images"),
+                .process("AssetColor.xcassets"),
+            ]),
         .testTarget(
             name: "KeyboardExtensionModuleTests",
             dependencies: ["KeyboardExtensionModule"]),

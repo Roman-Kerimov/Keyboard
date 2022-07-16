@@ -179,16 +179,16 @@ class KeyUIView: UIButton {
         shiftRightLabelView.text = key.shiftRightLabel
         shiftLeftLabelView.text = key.shiftLeftLabel
         
-        shiftUpLabelView.textColor = .labelColor
-        shiftDownLabelView.textColor = .labelColor
-        shiftLeftLabelView.textColor = .labelColor
-        shiftRightLabelView.textColor = .labelColor
+        shiftUpLabelView.textColor = .label
+        shiftDownLabelView.textColor = .label
+        shiftLeftLabelView.textColor = .label
+        shiftRightLabelView.textColor = .label
         
         updateLocalizedStrings()
         
-        backgroundView.backgroundColor = !isEnabled ? .quaternaryLabelColor : isHighlighted != isServiceKey && isSpecialReturnType ? .controlAccentColor : isHighlighted == isServiceKey && !isSpecialReturnType ? .controlColor : .quaternaryLabelColor
+        backgroundView.backgroundColor = !isEnabled ? .quaternaryLabel : isHighlighted != isServiceKey && isSpecialReturnType ? tintColor : isHighlighted == isServiceKey && !isSpecialReturnType ? .control : .quaternaryLabel
         
-        mainLabelView.textColor = !isEnabled ? .disabledControlTextColor : isHighlighted != isServiceKey && isSpecialReturnType ? .alternateSelectedControlTextColor : .labelColor
+        mainLabelView.textColor = !isEnabled ? .disabledControlText : isHighlighted != isServiceKey && isSpecialReturnType ? .alternateSelectedControlText : .label
         
         imageLabelView.tintColor = mainLabelView.textColor
         

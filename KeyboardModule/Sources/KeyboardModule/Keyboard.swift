@@ -14,7 +14,7 @@ public final class Keyboard: ObservableObject {
     public static let `default`: Keyboard = .init()
     public var delegate: KeyboardDelegate?
     
-    private var shiftDirections: [ShiftDirection] = .init()
+    public var shiftDirections: [ShiftDirection] = .init()
     
     public var shiftFlag: Bool = false {
         didSet {
@@ -208,7 +208,7 @@ public final class Keyboard: ObservableObject {
     
     var previousLabel: String = .init()
     
-    public var currentLabel: String = .init() {
+    @Published public var currentLabel = "" {
         didSet {
             NotificationCenter.default.post(name: .KeyboardStateDidChange, object: nil)
         }

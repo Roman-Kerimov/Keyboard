@@ -208,7 +208,7 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate, Observabl
         keyLabelFontSize = min(spaceRowHeight * 0.5, 36)
         keyNameLabelFontSize = keyLabelFontSize / 1.8
         horizontalMainLabelIndent = keySpacing
-        verticalShiftLabelIndent = keySpacing * 2.2
+        verticalShiftLabelIndent = keySpacing * 0.1
         horizontalShiftLabelIndent = keySpacing * 1.0
         
         layoutHeight = keyboardSize.height - deleteRowHeight - spaceRowHeight

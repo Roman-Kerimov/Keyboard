@@ -103,6 +103,10 @@ public final class Key: Identifiable, ObservableObject {
         }
     }
     
+    public var mainLabel: String {
+        Keyboard.default.currentKey == self ? Keyboard.default.currentLabel : label
+    }
+    
     public var shiftDownLabel: String {
         
         let shiftDownCharacterComponent = KeyboardLayout.option.characterComponent(fromKeycode: keycode)

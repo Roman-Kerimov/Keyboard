@@ -96,7 +96,6 @@
 		969102BA23EBBC9600E9BE0D /* UnicodeData.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 969102B723EBBC9600E9BE0D /* UnicodeData.sqlite-wal */; };
 		969948A323322174002D282D /* CharacterSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969948A223322174002D282D /* CharacterSearchTests.swift */; };
 		969948A423322174002D282D /* CharacterSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969948A223322174002D282D /* CharacterSearchTests.swift */; };
-		96A41BD122C22986009057F5 /* CharacterSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A41BCF22C22986009057F5 /* CharacterSearchView.swift */; };
 		96AC6CA3203C23B200555164 /* CGEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AC6CA2203C23B200555164 /* CGEvent.swift */; };
 		96ACD588205261EE007CFDCF /* NSPasteboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96ACD587205261EE007CFDCF /* NSPasteboard.swift */; };
 		96AED32F203120DE00498A7E /* LayoutMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AED32E203120DE00498A7E /* LayoutMenuItem.swift */; };
@@ -338,7 +337,6 @@
 		968DEA8020CCDFA400750040 /* eventTapCallback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = eventTapCallback.swift; sourceTree = "<group>"; };
 		969102B723EBBC9600E9BE0D /* UnicodeData.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; name = "UnicodeData.sqlite-wal"; path = "../UnicodeData.sqlite-wal"; sourceTree = BUILT_PRODUCTS_DIR; };
 		969948A223322174002D282D /* CharacterSearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSearchTests.swift; sourceTree = "<group>"; };
-		96A41BCF22C22986009057F5 /* CharacterSearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterSearchView.swift; sourceTree = "<group>"; };
 		96AC6CA2203C23B200555164 /* CGEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGEvent.swift; sourceTree = "<group>"; };
 		96ACD587205261EE007CFDCF /* NSPasteboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSPasteboard.swift; sourceTree = "<group>"; };
 		96AED32E203120DE00498A7E /* LayoutMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutMenuItem.swift; sourceTree = "<group>"; };
@@ -577,7 +575,6 @@
 				966E4A9822D4CB4C00A44D87 /* KeyboardView.swift */,
 				96CB9A8322D8E2D7004CA972 /* KeyView.swift */,
 				962A3E2C22C9F8140024D0AF /* CharacterSequenceView.swift */,
-				96A41BCF22C22986009057F5 /* CharacterSearchView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1140,7 +1137,6 @@
 				96AFEBA7202FA9080099F70B /* QuitMenuItem.swift in Sources */,
 				966EB96D202FC0D3007718F2 /* LegalNoticesMenuItem.swift in Sources */,
 				966E4A9B22D4CC0F00A44D87 /* KeyboardWindow.swift in Sources */,
-				96A41BD122C22986009057F5 /* CharacterSearchView.swift in Sources */,
 				96BE9C7120A8340400C2C03F /* CharacterSearchWindow.swift in Sources */,
 				9673CAD8203282490030E2CA /* AXUIElement.swift in Sources */,
 				96CB9A8422D8E2D7004CA972 /* KeyView.swift in Sources */,

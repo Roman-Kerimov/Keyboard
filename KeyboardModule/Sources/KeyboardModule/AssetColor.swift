@@ -7,23 +7,25 @@
 
 import SwiftUI
 
-protocol AssetColor {
+public protocol AssetColor {
     static func assetColor(_ assetName: String) -> Self
 }
 
 extension Color: AssetColor {
-    static func assetColor(_ assetName: String) -> Self {
-        Self(uiColor: UIColor(named: assetName, in: Bundle.module, compatibleWith: nil)!)
+    public static func assetColor(_ assetName: String) -> Self {
+        Color(assetName, bundle: Bundle.module)
     }
 }
 
+#if canImport(UIKit)
 extension UIColor: AssetColor {
-    static func assetColor(_ assetName: String) -> Self {
+    public static func assetColor(_ assetName: String) -> Self {
         Self(named: assetName, in: Bundle.module, compatibleWith: nil)!
     }
 }
+#endif
 
-extension AssetColor {
+public extension AssetColor {
     
     // MARK: - Text Colors
     

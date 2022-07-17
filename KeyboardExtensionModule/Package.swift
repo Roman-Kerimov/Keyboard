@@ -25,7 +25,6 @@ let package = Package(
             dependencies: ["KeyboardModule"],
             resources: [
                 .copy("Images"),
-                .process("AssetColor.xcassets"),
             ]),
         .testTarget(
             name: "KeyboardExtensionModuleTests",

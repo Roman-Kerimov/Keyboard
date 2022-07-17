@@ -24,7 +24,10 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "KeyboardModule",
-            dependencies: ["UnicodeData", "LinguisticKit", "Calculator"]),
+            dependencies: ["UnicodeData", "LinguisticKit", "Calculator"],
+            resources: [
+                .process("AssetColor.xcassets"),
+            ]),
         .testTarget(
             name: "KeyboardModuleTests",
             dependencies: ["KeyboardModule"]),

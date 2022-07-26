@@ -87,7 +87,7 @@ struct KeyView: View {
                             .font(mainLabelFont)
                             .foregroundColor(mainLabelColor)
                             .lineLimit(2)
-                            .padding(.horizontal, keyboardController.horizontalMainLabelIndent)
+                            .frame(width: keyboardController.keySize.width - keyboardController.horizontalMainLabelIndent * 2)
                     }
                     
                     if key.isHighlighted == isServiceKey {
@@ -98,6 +98,8 @@ struct KeyView: View {
                             Spacer(minLength: 0)
                             
                             Text(key.shiftDownLabel)
+                                .minimumScaleFactor(0.5)
+                                .scaledToFit()
                                 .frame(maxWidth: .infinity, alignment: key == .space ? .bottom : .bottomTrailing)
                         }
                         .font(.custom(.characterFontName, size: keyboardController.keyNameLabelFontSize))

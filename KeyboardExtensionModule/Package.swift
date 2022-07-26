@@ -22,10 +22,7 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "KeyboardExtensionModule",
-            dependencies: ["KeyboardModule"],
-            resources: [
-                .copy("Images"),
-            ]),
+            dependencies: ["KeyboardModule"]),
         .testTarget(
             name: "KeyboardExtensionModuleTests",
             dependencies: ["KeyboardExtensionModule"]),

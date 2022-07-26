@@ -15,10 +15,6 @@ struct KeyView: View {
     
     @ObservedObject var key: Key
     
-    private var labelPath: String {
-        return "Images/Labels_\(key.label)"
-    }
-    
     private var returnKeyType: UIReturnKeyType? {
         return key != .enter ? nil : Keyboard.default.delegate?.returnKeyType ?? .default
     }
@@ -75,14 +71,17 @@ struct KeyView: View {
             .padding(keyboardController.keySpacing/2)
             .overlay {
                 ZStack {
-                    if let imageLabel = UIImage(
-                        fromPDF: labelPath,
-                        withExtension: .ai,
-                        withScale: keyboardController.keyLabelFontSize/24
-                    ) {
-                        Image(uiImage: imageLabel)
-                            .renderingMode(.template)
-                    } else {
+                    switch key {
+                    case .settings:
+                        Image(systemName: "slider.horizontal.3")
+                        
+                    case .nextKeyboard:
+                        Image(systemName: "globe")
+                        
+                    case .dismissKeyboard:
+                        Image(systemName: "keyboard.chevron.compact.down")
+                        
+                    default:
                         Text(returnKeyType?.localizedString ?? key.mainLabel)
                             .font(mainLabelFont)
                             .foregroundColor(mainLabelColor)

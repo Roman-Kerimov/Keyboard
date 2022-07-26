@@ -87,35 +87,36 @@ struct KeyView: View {
                             .font(mainLabelFont)
                             .foregroundColor(mainLabelColor)
                             .lineLimit(2)
-                            .frame(width: keyboardController.keySize.width - keyboardController.horizontalMainLabelIndent * 2)
                     }
                     
                     if key.isHighlighted == isServiceKey {
-                        VStack {
-                            Text(key.shiftUpLabel)
-                                .frame(maxWidth: .infinity, alignment: key == .space ? .top : .topLeading)
+                        Group {
+                            VStack {
+                                Text(key.shiftUpLabel)
+                                    .frame(maxWidth: .infinity, alignment: key == .space ? .top : .topLeading)
+                                
+                                Spacer(minLength: 0)
+                                
+                                Text(key.shiftDownLabel)
+                                    .minimumScaleFactor(0.5)
+                                    .scaledToFit()
+                                    .frame(maxWidth: .infinity, alignment: key == .space ? .bottom : .bottomTrailing)
+                            }
+                            .font(.custom(.characterFontName, size: keyboardController.keyNameLabelFontSize))
                             
-                            Spacer(minLength: 0)
-                            
-                            Text(key.shiftDownLabel)
-                                .minimumScaleFactor(0.5)
-                                .scaledToFit()
-                                .frame(maxWidth: .infinity, alignment: key == .space ? .bottom : .bottomTrailing)
+                            HStack(spacing: 0) {
+                                Text(key.shiftLeftLabel)
+                                
+                                Spacer(minLength: 0)
+                                
+                                Text(key.shiftRightLabel)
+                            }
+                            .font(nameLabelFont)
                         }
-                        .font(.custom(.characterFontName, size: keyboardController.keyNameLabelFontSize))
-                        
-                        HStack(spacing: 0) {
-                            Text(key.shiftLeftLabel)
-                            
-                            Spacer(minLength: 0)
-                            
-                            Text(key.shiftRightLabel)
-                        }
-                        .font(nameLabelFont)
+                        .padding(.vertical, keyboardController.verticalShiftLabelIndent)
+                        .padding(.horizontal, keyboardController.horizontalShiftLabelIndent)
                     }
                 }
-                .padding(.vertical, keyboardController.verticalShiftLabelIndent)
-                .padding(.horizontal, keyboardController.horizontalShiftLabelIndent)
             }
             .foregroundColor(.primary)
             .gesture(

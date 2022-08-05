@@ -20,7 +20,9 @@ class SearchUnicodeItems: Operation {
         super.init()
         
         self.completionBlock = {
-            characterSearch.isSearching = false
+            DispatchQueue.main.sync {
+                characterSearch.isSearching = false
+            }
         }
     }
     
@@ -39,13 +41,17 @@ class SearchUnicodeItems: Operation {
             return
         }
         
-        characterSearch.isSearching = true
+        DispatchQueue.main.sync {
+            characterSearch.isSearching = true
+        }
         
         let maxCount = 200
         
         var foundUnicodeItems: [UnicodeItem] = [] {
             didSet {
-                characterSearch.foundUnicodeItems = foundUnicodeItems
+                DispatchQueue.main.sync {
+                    characterSearch.foundUnicodeItems = foundUnicodeItems
+                }
                 
                 if foundUnicodeItems.count >= maxCount {
                     cancel()

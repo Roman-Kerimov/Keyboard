@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-@available(iOS 13.0, *)
 struct CharacterGestureRow: View {
     let character: String
     let languageCode: String

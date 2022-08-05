@@ -8,7 +8,7 @@
 import Foundation
 
 public enum CharacterComponent: String, CaseIterable {
-    private static let commutative: Set<CharacterComponent> = Set.init([.capital, .smallCapital, .superscript, .subscript, .above, .below] + extraComponents + letterToMixingComponentDictionary.values.filter {![.extraH, .tilde, .ring].contains($0)}).union(scripts)
+    private static let commutative: Set<CharacterComponent> = Set.init([.capital, .smallCapital, .superscript, .subscript, .above, .below] + extraComponents + letterToMixingComponentDictionary.values.filter {![.extraH, .zDigraph, .tilde, .ring].contains($0)}).union(scripts)
     
     public var isCommutative: Bool {
         return CharacterComponent.commutative.contains(self)
@@ -64,6 +64,7 @@ public enum CharacterComponent: String, CaseIterable {
     case closed
     case curl, belt
     case tail, notch, flourish
+    case trill
     case descender
     case um
     case sBottom
@@ -72,6 +73,7 @@ public enum CharacterComponent: String, CaseIterable {
     case zDigraph
     case ejective
     case middleStem
+    case flattenedOpenA
     
     static let baseComponents = mergeDictionaries(
         Dictionary.init(uniqueKeysWithValues: letterToMixingComponentDictionary.map {($1, $0)}),
@@ -147,7 +149,10 @@ public enum CharacterComponent: String, CaseIterable {
     case broken
     case archaic
     case vend
+    case oldPolish
     case anglicana
+    case middleScots
+    case sigmoid
     
     static let scripts: Set<CharacterComponent> = [.cyrillic, .greek, .latin]
     
@@ -193,6 +198,7 @@ public enum CharacterComponent: String, CaseIterable {
     case ringOverlay
     case verticalLineOverlay
     case parentheses
+    case squareBrackets
     
     internal static let letterToCombiningComponentDictionary: [CharacterComponent: CharacterComponent] = [
         // .horn

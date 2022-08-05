@@ -7,7 +7,6 @@
 
 import SwiftUI
  
-@available(iOS 13.0, *)
 struct CharacterGestureList: View {
     let characterSections: [[String]]
     let languageCode: String
@@ -23,6 +22,5 @@ struct CharacterGestureList: View {
             }
         }
         .listStyle(GroupedListStyle())
-        .modifier(SoftwareKeyboardSupportViewModifier())
     }
 }

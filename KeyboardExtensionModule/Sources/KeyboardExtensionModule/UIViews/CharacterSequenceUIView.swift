@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Combine
 import KeyboardModule
 
 class CharacterSequenceUIView: UICollectionView, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
@@ -22,6 +23,8 @@ class CharacterSequenceUIView: UICollectionView, UICollectionViewDelegateFlowLay
     private var longPressGestureRecognizer: UILongPressGestureRecognizer!
     
     private var fontSize: CGFloat {KeyboardViewController.shared.characterSequenceFontSize}
+    
+    private var anyCancellables: [AnyCancellable] = []
     
     init() {
         super.init(frame: .zero, collectionViewLayout: layout)
@@ -45,20 +48,16 @@ class CharacterSequenceUIView: UICollectionView, UICollectionViewDelegateFlowLay
         addGestureRecognizer(longPressGestureRecognizer)
         longPressGestureRecognizer.minimumPressDuration = 0
         
-        NotificationCenter.default.addObserver(self, selector: #selector(updateCharacters), publisher: CharacterSequence.self)
+        Keyboard.default.characterSequence.$characters
+            .assign(to: \.characters, on: self)
+            .store(in: &anyCancellables)
         
         register(CharacterCollectionUIViewCell.self, forCellWithReuseIdentifier: CharacterCollectionUIViewCell.reuseIdentifier)
         register(AutocompleteUIView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: AutocompleteUIView.reuseIdentifier)
-        
-        updateCharacters()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    @objc func updateCharacters() {
-        characters = Keyboard.default.characterSequence.characters
     }
     
     override func reloadData() {
@@ -282,10 +281,10 @@ class CharacterSequenceUIView: UICollectionView, UICollectionViewDelegateFlowLay
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCollectionUIViewCell.reuseIdentifier, for: indexPath) as! CharacterCollectionUIViewCell
         
         cell.title.text = characters[indexPath.item].previewDescription
-        cell.title.textColor = .labelColor
+        cell.title.textColor = .label
             
         cell.title.font = characterFont
-        cell.backgroundColor = UIColor.labelColor.withAlphaComponent(CGFloat(Double.characterSequenceBackgroundOpacity))
+        cell.backgroundColor = UIColor.label.withAlphaComponent(CGFloat(Double.characterSequenceBackgroundOpacity))
         cell.cornerRadius = .characterSequenceCornerRadiusFontSizeFactor * fontSize
         
         return cell

@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-@available(iOS 13.0, *)
 extension Text {
     static func markdown(_ markdown: String) -> Text {
         markdown.components(separatedBy: "**")

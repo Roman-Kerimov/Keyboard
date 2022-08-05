@@ -6,19 +6,27 @@
 //
 
 import Foundation
+import Combine
 import KeyboardModule
 
 class LayoutMenuItem: LocalizedMenuItem {
     
     let layout: KeyboardLayout
-
+    
+    private var anyCancellables: [AnyCancellable] = []
+    
     init(layout: KeyboardLayout) {
         self.layout = layout
         super.init()
         
         title = layout.name
         
-        NotificationCenter.default.addObserver(self, selector: #selector(updateState), publisher: Keyboard.self)
+        Keyboard.default.$layout
+            .map { [weak self] layout in
+                self?.layout == layout ? .on : .off
+            }
+            .assign(to: \.state, on: self)
+            .store(in: &anyCancellables)
     }
     
     required init(coder decoder: NSCoder) {
@@ -27,9 +35,5 @@ class LayoutMenuItem: LocalizedMenuItem {
     
     override func menuItemAction() {
         Keyboard.default.layout = layout
-    }
-    
-    @objc func updateState() {
-        self.state = self.layout.name == Keyboard.default.layout.name ? .on : .off
     }
 }

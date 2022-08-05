@@ -263,6 +263,9 @@ class BuildUnicodeData: Operation {
         }
         
         let dependencies = UnicodeDataItem.allCases.map {$0.rawValue} + [
+            "\(BuildUnicodeData.self)/Sources",
+            "\(BuildUnicodeData.self)/Package.swift",
+            "\(BuildUnicodeData.self)/Package.resolved",
             UnicodeData.default.name,
             sqLiteTargetURL.path,
             sqLiteTargetURL.path + wal,

@@ -38,11 +38,11 @@ class CharacterSearchTests: XCTestCase {
     
     func testSearchByAnnotations() {
         XCTAssert(search("bulka").contains("🍞"))
-        XCTAssert(search("toddler").contains("🧒🏽"))
+        XCTAssert(search("hooray").contains("🙌🏾"))
         XCTAssert(search("Russland").contains("🇷🇺"))
         XCTAssert(search("Krasnodarskij").contains("🏴󠁲󠁵󠁫󠁤󠁡󠁿"))
         XCTAssert(search("California").contains("🏴󠁵󠁳󠁣󠁡󠁿"))
-        XCTAssert(search("xhleb").contains("🍞"))
+        XCTAssert(search("khleb").contains("🍞"))
         XCTAssert(search("tajmer").contains("⏲️"))
     }
     

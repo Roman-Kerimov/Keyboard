@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import ApplicationServices
 
 enum AXAttribute {
     case allowedValues

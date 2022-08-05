@@ -130,7 +130,7 @@ func eventTapCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent,
     if event.flags.contains(.maskAlphaShift) {
         
         var ioConnect: io_connect_t = .init(0)
-        let ioService = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching(kIOHIDSystemClass))
+        let ioService = IOServiceGetMatchingService(kIOMainPortDefault, IOServiceMatching(kIOHIDSystemClass))
         IOServiceOpen(ioService, mach_task_self_, UInt32(kIOHIDParamConnectType), &ioConnect)
         IOHIDSetModifierLockState(ioConnect, Int32(kIOHIDCapsLockState), false)
         IOServiceClose(ioConnect)

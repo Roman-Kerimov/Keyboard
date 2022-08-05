@@ -7,10 +7,13 @@
 
 import AppKit
 import Carbon
+import Combine
 import KeyboardModule
 import UnicodeData
 
 class AppDelegate: NSObject {
+    
+    private var anyCancellables: [AnyCancellable] = []
     
     private let isProcessTrusted: Bool = AXIsProcessTrusted()
 
@@ -40,12 +43,6 @@ class AppDelegate: NSObject {
     
     static var synchronizeKeyboardLayoutNotificationCallback: CFNotificationCallback = { (center, observer, name, object, userInfo) in
         AppDelegate.synchronizeKeyboardLayout()
-    }
-    
-    @objc func synchronizeSystemInputSource() {
-        let inputSource = TISInputSource.inputSourceList[Keyboard.default.layout.inputSourceID]
-        TISEnableInputSource(inputSource)
-        TISSelectInputSource(inputSource)
     }
     
     private func tap(label: String, flags: CGEventFlags = .init()) {
@@ -186,7 +183,13 @@ extension AppDelegate: NSApplicationDelegate {
         
         CFNotificationCenterAddObserver(CFNotificationCenterGetDistributedCenter(), nil, AppDelegate.synchronizeKeyboardLayoutNotificationCallback, kTISNotifySelectedKeyboardInputSourceChanged, nil, .deliverImmediately)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(synchronizeSystemInputSource), publisher: Keyboard.self)
+        Keyboard.default.$layout
+            .sink { layout in
+                let inputSource = TISInputSource.inputSourceList[layout.inputSourceID]
+                TISEnableInputSource(inputSource)
+                TISSelectInputSource(inputSource)
+            }
+            .store(in: &anyCancellables)
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {

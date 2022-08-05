@@ -9,10 +9,6 @@ import UIKit
 
 extension UIView {
     
-    public var controller: UIViewController? {
-        return next as? UIViewController
-    }
-    
     var cornerRadius: CGFloat {
         get {
             return layer.cornerRadius
@@ -21,9 +17,5 @@ extension UIView {
         set {
             layer.cornerRadius = newValue
         }
-    }
-    
-    @objc open func willAppear(_ animated: Bool) {
-        
     }
 }

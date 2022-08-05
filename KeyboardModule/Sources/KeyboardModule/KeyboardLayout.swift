@@ -8,7 +8,25 @@
 
 import Foundation
 
-public struct KeyboardLayout: Equatable, Identifiable {
+public struct KeyboardLayout: Equatable, Identifiable, RawRepresentable {
+    public static func == (lhs: KeyboardLayout, rhs: KeyboardLayout) -> Bool {
+        lhs.rawValue == rhs.rawValue
+    }
+    
+    public var rawValue: String {
+        get {
+            name
+        }
+    }
+    
+    public init?(rawValue: String) {
+        if let layout = Self.allLayouts.first(where: {$0.rawValue == rawValue}) {
+            self = layout
+        } else {
+            return nil
+        }
+    }
+    
     public var id: String {
         return name
     }

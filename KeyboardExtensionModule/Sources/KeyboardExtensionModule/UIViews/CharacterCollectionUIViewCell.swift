@@ -12,16 +12,12 @@ class CharacterCollectionUIViewCell: UICollectionViewCell {
     
     let title: UILabel = .init()
     
-    let unicodeName: LabelUIView = .init()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         addSubview(title)
         title.adjustsFontSizeToFitWidth = true
         title.textAlignment = .center
-        
-        addSubview(unicodeName)
         
         backgroundColor = .touchableClear
     }
@@ -32,16 +28,5 @@ class CharacterCollectionUIViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         title.frame.size = frame.size
-        unicodeName.frame.origin = .init(x: frame.maxX, y: (frame.height - unicodeName.frame.height)/2)
-        
-        let unicodeNameMaxWidth = UIScreen.main.bounds.maxX - frame.maxX
-        
-        if unicodeName.intrinsicContentSize.width > unicodeNameMaxWidth {
-            unicodeName.frame.size.width = unicodeNameMaxWidth
-        }
-    }
-    
-    private var maxUnicodeNameViewWidth: CGFloat {
-        return UIScreen.main.bounds.width - frame.width
     }
 }

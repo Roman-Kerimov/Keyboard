@@ -8,7 +8,6 @@
 import SwiftUI
 import KeyboardModule
 
-@available(iOS 14.0, *)
 struct KeyboardView: View {
     @EnvironmentObject var controller: KeyboardViewController
     @EnvironmentObject var keyboard: Keyboard
@@ -22,17 +21,6 @@ struct KeyboardView: View {
             controller.updateSizes(
                 keyboardViewMaxWidth: Bundle.main.isExtension ? geometry.size.width : UIScreen.main.bounds.width
             )
-            
-            switch colorScheme {
-            case .light:
-                UIKeyboardAppearance.current = .light
-                
-            case .dark:
-                UIKeyboardAppearance.current = .dark
-                
-            @unknown default:
-                UIKeyboardAppearance.current = .default
-            }
             
             return AnyView(
                 ZStack(alignment: .trailing) {

@@ -18,6 +18,7 @@ enum UnihanFieldType: String {
     case HDZRadBreak = "kHDZRadBreak"
     case HKGlyph = "kHKGlyph"
     case phonetic = "kPhonetic"
+    case strange = "kStrange"
     case unihanCore2020 = "kUnihanCore2020"
     
     // Unihan_IRGSources.txt

@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import Combine
 import KeyboardModule
 import UnicodeData
 
@@ -29,19 +28,7 @@ extension UIApplication {
     }
 }
 
-@available(iOS 13.0, *)
-extension KeyboardViewController: ObservableObject {
-
-    public var objectWillChange: ObservableObjectPublisher {
-        if _objectWillChange == nil {
-            _objectWillChange = ObservableObjectPublisher.init()
-        }
-
-        return _objectWillChange as! ObservableObjectPublisher
-    }
-}
-
-class KeyboardViewController: UIInputViewController, KeyboardDelegate {
+class KeyboardViewController: UIInputViewController, KeyboardDelegate, ObservableObject {
     static var shared: KeyboardViewController = .init()
     
     enum State {
@@ -49,8 +36,6 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
     }
     
     var state: State = .disappeared
-    
-    var _objectWillChange: Any? = nil
     
     private var layoutMode: Keyboard.KeyboardLayoutMode {
         get {
@@ -223,7 +208,7 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
         keyLabelFontSize = min(spaceRowHeight * 0.5, 36)
         keyNameLabelFontSize = keyLabelFontSize / 1.8
         horizontalMainLabelIndent = keySpacing
-        verticalShiftLabelIndent = keySpacing * 2.2
+        verticalShiftLabelIndent = keySpacing * 0.1
         horizontalShiftLabelIndent = keySpacing * 1.0
         
         layoutHeight = keyboardSize.height - deleteRowHeight - spaceRowHeight
@@ -240,36 +225,27 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
         }
     }
     
-    private var keyboardUIView: KeyboardUIView? = nil
-    
     override func loadView() {
+        view = UIView()
         
-        if #available(iOS 14.0, *) {
-            view = UIView()
-            
-            let hostingController = UIHostingController(
-                rootView: KeyboardView()
-                    .environmentObject(self)
-                    .environmentObject(Keyboard.default)
-                    .environmentObject(Settings.current)
-            )
-             
-            hostingController.view.backgroundColor = .clear
-            
-            addChild(hostingController)
-            view.addSubview(hostingController.view)
-            
-            hostingController.view.translatesAutoresizingMaskIntoConstraints = false
-            
-            hostingController.view.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-            hostingController.view.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-            hostingController.view.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-            hostingController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        }
-        else {
-            keyboardUIView = KeyboardUIView()
-            view = keyboardUIView
-        }
+        let hostingController = UIHostingController(
+            rootView: KeyboardView()
+                .environmentObject(self)
+                .environmentObject(Keyboard.default)
+                .environmentObject(Settings.current)
+        )
+         
+        hostingController.view.backgroundColor = .clear
+        
+        addChild(hostingController)
+        view.addSubview(hostingController.view)
+        
+        hostingController.view.translatesAutoresizingMaskIntoConstraints = false
+        
+        hostingController.view.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        hostingController.view.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        hostingController.view.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        hostingController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     
     override func updateViewConstraints() {
@@ -289,23 +265,12 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
         view.frame = UIScreen.main.bounds
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateDocumentContext), name: .DocumentContextDidChange, object: nil)
-        
-        if Bundle.main.isExtension, keyboardUIView != nil {
-            // Hack for working of the keyboard height constraint
-            let hiddenView: UILabel = .init()
-            hiddenView.translatesAutoresizingMaskIntoConstraints = false
-            self.view.addSubview(hiddenView)
-            hiddenView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-            hiddenView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-            hiddenView.isHidden = true
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         state = .appearing
-        keyboardUIView?.setNeedsLayout()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -329,9 +294,7 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         
-        if #available(iOS 13.0, *) {
-            objectWillChange.send()
-        }
+        objectWillChange.send()
         
         if Bundle.main.isExtension {
             UIView.setAnimationsEnabled(false)
@@ -351,29 +314,13 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
         // The app is about to change the document's contents. Perform any preparation here.
         
         // For input mode switch key
-        if #available(iOS 13.0, *) {
-            objectWillChange.send()
-        }
+        objectWillChange.send()
     }
     
     override func textDidChange(_ textInput: UITextInput?) {
         // The app has just changed the document's contents, the document context has been updated.
         
-        if keyboardUIView != nil, state != .appeared {
-            UIKeyboardAppearance.current = self.textDocumentProxy.keyboardAppearance ?? .default
-            NotificationCenter.default.post(name: .KeyboardAppearanceDidChange, object: nil)
-        }
-        
         NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
-    }
-    
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        
-        if #available(iOS 13.0, *) {
-            UIKeyboardAppearance.current = UITraitCollection.current.userInterfaceStyle == .dark ? .dark : .light
-            NotificationCenter.default.post(name: .KeyboardAppearanceDidChange, object: nil)
-        }
     }
     
     override var needsInputModeSwitchKey: Bool {
@@ -381,16 +328,8 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
         guard Bundle.main.isExtension else {
             return false
         }
-    
-        if #available(iOS 11.0, *) {
-            return super.needsInputModeSwitchKey
-        }
-        else if let installedKeyboards = UserDefaults.standard.stringArray(forKey: "AppleKeyboards") {
-            return installedKeyboards.count > 1
-        }
-        else {
-            return true
-        }
+        
+        return super.needsInputModeSwitchKey
     }
     
     func delete() {
@@ -402,17 +341,10 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate {
     }
     
     func settings() {
-        keyboardUIView?.showSettings()
         isSettingViewPresented = true
     }
     
-    var isSettingViewPresented = false {
-        willSet {
-            if #available(iOS 13.0, *) {
-                objectWillChange.send()
-            }
-        }
-    }
+    @Published var isSettingViewPresented = false
     
     func insert(text: String) {
         textDocumentProxy.insertText(text)
@@ -436,8 +368,4 @@ extension UITextDocumentProxy {
     var documentContext: DocumentContext {
         return .init(beforeInput: documentContextBeforeInput ?? .init(), afterInput: documentContextAfterInput ?? .init())
     }
-}
-
-extension NSNotification.Name {
-    static let KeyboardAppearanceDidChange: NSNotification.Name = .init("2KqZjiSSeYYkZs8K9DyZo32kPMYWRng")
 }

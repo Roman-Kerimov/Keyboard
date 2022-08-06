@@ -457,7 +457,7 @@ public final class Keyboard: ObservableObject {
     @objc private func documentContextDidChange() {
         let documentContextBeforeInput: String = delegate?.documentContext.beforeInput ?? .init()
         
-        characterSequence.characters = .init()
+        var characters: [Character] = []
         
         var spaceCount = 0
         
@@ -466,10 +466,10 @@ public final class Keyboard: ObservableObject {
         cycle: for character in documentContextBeforeInput.reversed() {
             
             switch character {
-            case Character.space:
+            case .space:
                 spaceCount += 1
                 
-            case Character.return, Character.tab:
+            case .return, .tab:
                 break cycle
                 
             default:
@@ -481,7 +481,7 @@ public final class Keyboard: ObservableObject {
                 break
             }
             
-            characterSequence.characters = [character] + characterSequence.characters
+            characters = [character] + characters
             
             if spaceCount == 1 && isNonspaceSequence {
                 break
@@ -496,10 +496,10 @@ public final class Keyboard: ObservableObject {
             
             let labelLength = 10
             characterSequence.autocompleteLabel = (characterSequence.autocompleteText.count > labelLength ? "..." : "") + characterSequence.autocompleteText.suffix(labelLength)
-        }
-        else if let calculation = Calculator.default.evaluate(expressionFromString: documentContextBeforeInput) {
             
-            characterSequence.characters = calculation.expression.map {$0}
+        } else if let calculation = Calculator.default.evaluate(expressionFromString: documentContextBeforeInput) {
+            
+            characters = calculation.expression.map {$0}
             
             if calculation.expression.trimmingCharacters(in: .whitespaces) == calculation.result.trimmingCharacters(in: .whitespaces) {
                 characterSequence.autocompleteText = .init()
@@ -516,13 +516,13 @@ public final class Keyboard: ObservableObject {
                 characterSequence.autocompleteLabel =  " = " + calculation.result
                 characterSequence.autocompleteDeleteCount = calculation.expression.count
             }
-            
-        }
-        else {
+        } else {
             characterSequence.autocompleteText = .init()
             characterSequence.autocompleteLabel = .init()
             characterSequence.autocompleteDeleteCount = 0
         }
+        
+        characterSequence.set(characters: characters)
     }
     
     public let characterSearch: CharacterSearch = .init()

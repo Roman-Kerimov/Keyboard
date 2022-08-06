@@ -85,9 +85,11 @@ struct KeyboardView: View {
     
     var deleteRowView: some View {
         HStack(spacing: 0) {
-            CharacterSequenceView()
-                .id(UUID()) // Fix abnormal disappearance after first dismissing of keyboard extension on iPhone
-                .frame(width: controller.characterSequenceWidth)
+            CharacterSequenceView(
+                characterSequence: keyboard.characterSequence,
+                fontSize: controller.characterSequenceFontSize
+            )
+            .frame(width: controller.characterSequenceWidth)
             
             KeyView(key: .delete)
                 .frame(width: controller.deleteKeyWidth)

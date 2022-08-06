@@ -34,7 +34,6 @@
 		9622D3B0236880DF00ED3665 /* UnicodeData.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 9622D3AF23687FDD00ED3665 /* UnicodeData.sqlite */; };
 		9622D3B1236880E100ED3665 /* UnicodeData.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 9622D3AF23687FDD00ED3665 /* UnicodeData.sqlite */; };
 		9622D3B2236880E200ED3665 /* UnicodeData.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 9622D3AF23687FDD00ED3665 /* UnicodeData.sqlite */; };
-		962A3E2D22C9F8140024D0AF /* CharacterSequenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A3E2C22C9F8140024D0AF /* CharacterSequenceView.swift */; };
 		963212B4217B820500E8A6B2 /* FloatingWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963212B3217B820500E8A6B2 /* FloatingWindow.swift */; };
 		963212B6217C61BC00E8A6B2 /* CharacterSequenceWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963212B5217C61BB00E8A6B2 /* CharacterSequenceWindow.swift */; };
 		9633BB7D288FD04B002126BF /* KeyboardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9633BB7C288FD04B002126BF /* KeyboardApp.swift */; };
@@ -291,7 +290,6 @@
 		9619B6CA232D038200AA83C3 /* keyboards */ = {isa = PBXFileReference; lastKnownFileType = folder; path = keyboards; sourceTree = "<group>"; };
 		9619B6CB232D038200AA83C3 /* unicode-license.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "unicode-license.txt"; sourceTree = "<group>"; };
 		9622D3AF23687FDD00ED3665 /* UnicodeData.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = UnicodeData.sqlite; path = ../UnicodeData.sqlite; sourceTree = BUILT_PRODUCTS_DIR; };
-		962A3E2C22C9F8140024D0AF /* CharacterSequenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSequenceView.swift; sourceTree = "<group>"; };
 		963212B3217B820500E8A6B2 /* FloatingWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingWindow.swift; sourceTree = "<group>"; };
 		963212B5217C61BB00E8A6B2 /* CharacterSequenceWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSequenceWindow.swift; sourceTree = "<group>"; };
 		9633BB7C288FD04B002126BF /* KeyboardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardApp.swift; sourceTree = "<group>"; };
@@ -574,7 +572,6 @@
 			children = (
 				966E4A9822D4CB4C00A44D87 /* KeyboardView.swift */,
 				96CB9A8322D8E2D7004CA972 /* KeyView.swift */,
-				962A3E2C22C9F8140024D0AF /* CharacterSequenceView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1126,7 +1123,6 @@
 				96AED33320312BA500498A7E /* LanguageMenuItem.swift in Sources */,
 				963DE0B0202F00B60040A448 /* main.swift in Sources */,
 				963212B4217B820500E8A6B2 /* FloatingWindow.swift in Sources */,
-				962A3E2D22C9F8140024D0AF /* CharacterSequenceView.swift in Sources */,
 				966E4A9922D4CB4C00A44D87 /* KeyboardView.swift in Sources */,
 				965A8B3E20D2EDF800E0260E /* VisibilityMenuItem.swift in Sources */,
 				963DE0B2202F012B0040A448 /* StatusMenu.swift in Sources */,

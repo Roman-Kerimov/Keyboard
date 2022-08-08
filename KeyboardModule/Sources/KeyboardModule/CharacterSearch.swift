@@ -49,7 +49,7 @@ public class CharacterSearch: NSObject, ObservableObject {
     
     lazy var currentLastUsedCharacters = lastUsedCharacters
     
-    public func search(textBeforeInput: String) {
+    public func search(textBeforeInput: String, queue: DispatchQueue = .main) {
         
         var textForSearch: String = .init(
             textBeforeInput
@@ -64,7 +64,7 @@ public class CharacterSearch: NSObject, ObservableObject {
         
         text = textForSearch.replacingOccurrences(of: String.reverseSolidus, with: "")
         searchOperationQueue.cancelAllOperations()
-        searchOperationQueue.addOperation( SearchUnicodeItems.init(characterSearch: self, text: text) )
+        searchOperationQueue.addOperation(SearchUnicodeItems(characterSearch: self, text: text, queue: queue))
     }
     
     @Published public var isSearching: Bool = false

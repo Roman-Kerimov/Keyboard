@@ -12,15 +12,17 @@ class SearchUnicodeItems: Operation {
     
     let characterSearch: CharacterSearch
     let text: String
+    let queue: DispatchQueue
     
-    init(characterSearch: CharacterSearch, text: String) {
+    init(characterSearch: CharacterSearch, text: String, queue: DispatchQueue) {
         self.characterSearch = characterSearch
         self.text = text
+        self.queue = queue
         
         super.init()
         
         self.completionBlock = {
-            DispatchQueue.main.sync {
+            queue.sync {
                 characterSearch.isSearching = false
             }
         }
@@ -41,7 +43,7 @@ class SearchUnicodeItems: Operation {
             return
         }
         
-        DispatchQueue.main.sync {
+        queue.sync {
             characterSearch.isSearching = true
         }
         
@@ -49,7 +51,7 @@ class SearchUnicodeItems: Operation {
         
         var foundUnicodeItems: [UnicodeItem] = [] {
             didSet {
-                DispatchQueue.main.sync {
+                queue.sync {
                     characterSearch.foundUnicodeItems = foundUnicodeItems
                 }
                 

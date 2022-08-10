@@ -8,9 +8,9 @@
 import AppKit
 
 class LocalizedMenuItem: NSMenuItem {
-
+    
     init() {
-        super.init(title: .init(), action: nil, keyEquivalent: .init())
+        super.init(title: "", action: nil, keyEquivalent: "")
         
         NotificationCenter.default.addLocaleObserver(self)
         updateLocalizedStrings()

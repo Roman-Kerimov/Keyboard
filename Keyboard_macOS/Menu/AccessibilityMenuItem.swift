@@ -9,16 +9,16 @@ import AppKit
 import KeyboardModule
 
 class AccessibilityMenuItem: LocalizedMenuItem {
-
+    
     override func updateLocalizedStrings() {
         super.updateLocalizedStrings()
         
-        let title: NSMutableAttributedString = .init(string: ENABLE_KEYBOARD.string)
+        let title = NSMutableAttributedString(string: ENABLE_KEYBOARD.string)
         title.addAttribute(.font, value: NSFont.boldMenuFont)
         attributedTitle = title
     }
     
     override func menuItemAction() {
-        AXIsProcessTrustedWithOptions(NSDictionary.init(dictionary: [kAXTrustedCheckOptionPrompt.takeRetainedValue(): true]))
+        AXIsProcessTrustedWithOptions(NSDictionary(dictionary: [kAXTrustedCheckOptionPrompt.takeRetainedValue(): true]))
     }
 }

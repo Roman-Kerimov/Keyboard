@@ -71,7 +71,7 @@ public final class CharacterSequence: ObservableObject {
         }
         
         Keyboard.default.delegate?.insert(text: text)
-        NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
+        NotificationCenter.default.post(name: .documentContextDidChange, object: nil)
     }
     
     private func removeDoubleSpace() {
@@ -96,9 +96,9 @@ public final class CharacterSequence: ObservableObject {
         
         Keyboard.default.delegate?.insert(text: autocompleteText)
         
-        autocompleteText = .init()
-        autocompleteLabel = .init()
+        autocompleteText = ""
+        autocompleteLabel = ""
         
-        NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
+        NotificationCenter.default.post(name: .documentContextDidChange, object: nil)
     }
 }

@@ -10,7 +10,7 @@ import AppKit
 
 extension NSWorkspace {
     var frontmostApplicationName: String {
-        return frontmostApplication?.localizedName ?? .init()
+        frontmostApplication?.localizedName ?? ""
     }
 }
 #endif

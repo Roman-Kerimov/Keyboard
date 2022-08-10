@@ -10,7 +10,7 @@ import Foundation
 #if os(macOS)
 extension CGEventFlags: Hashable {
     public var hashValue: Int {
-        return .init(rawValue)
+        Int(rawValue)
     }
 }
 #endif

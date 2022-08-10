@@ -11,28 +11,28 @@ import Calculator
 
 public final class Keyboard: ObservableObject {
     
-    public static let `default`: Keyboard = .init()
+    public static let `default` = Keyboard()
     public var delegate: KeyboardDelegate?
     
-    public var shiftDirections: [ShiftDirection] = .init()
+    public var shiftDirections: [ShiftDirection] = []
     
-    public var shiftFlag: Bool = false {
+    public var shiftFlag = false {
         didSet {
             if shiftFlag == false {
                 currentKey = nil
-                shiftDirections = .init()
-                Array<CharacterComponent>.extraArrayExtension = .init()
+                shiftDirections = []
+                Array<CharacterComponent>.extraArrayExtension = []
             }
         }
     }
     
-    public var shiftUpFlag: Bool = false {
+    public var shiftUpFlag = false {
         didSet {
             setFlag(direction: .up, value: shiftUpFlag, oldValue: oldValue)
         }
     }
     
-    public var shiftDownFlag: Bool = false {
+    public var shiftDownFlag = false {
         didSet {
             setFlag(direction: .down, value: shiftDownFlag, oldValue: oldValue)
         }
@@ -47,8 +47,7 @@ public final class Keyboard: ObservableObject {
         
         if value {
             shiftFlagDirections.append(direction)
-        }
-        else if shiftUpFlag == shiftDownFlag {
+        } else if shiftUpFlag == shiftDownFlag {
             shiftFlagDirections = []
         }
     }
@@ -59,8 +58,7 @@ public final class Keyboard: ObservableObject {
             currentLabel = key.label
             currentKey = key
             input()
-        }
-        else {
+        } else {
             let direction: ShiftDirection
             
             switch key {
@@ -97,8 +95,7 @@ public final class Keyboard: ObservableObject {
             
             if shiftDirections.last == direction {
                 input()
-            }
-            else {
+            } else {
                 shift(direction: direction)
                 shiftDirections.append(direction)
             }
@@ -116,7 +113,7 @@ public final class Keyboard: ObservableObject {
         
         if !shiftFlag && currentKey == key {
             currentKey = nil
-            Array<CharacterComponent>.extraArrayExtension = .init()
+            Array<CharacterComponent>.extraArrayExtension = []
         }
         
         currentCombiningCharacter = nil
@@ -140,16 +137,16 @@ public final class Keyboard: ObservableObject {
         repeatTimer?.invalidate()
     }
     
-    private var shouldDeletePreviousCharacter: Bool = false
+    private var shouldDeletePreviousCharacter = false
     
-    private var previousDocumentContextBeforeInput: String = .init()
+    private var previousDocumentContextBeforeInput = ""
     
     private func input() {
         guard let currentKey = currentKey else {
             return
         }
         
-        previousDocumentContextBeforeInput = delegate?.documentContext.beforeInput ?? .init()
+        previousDocumentContextBeforeInput = delegate?.documentContext.beforeInput ?? ""
         
         for shiftFlagDirection in shiftFlagDirections {
             switch shiftFlagDirection {
@@ -189,14 +186,14 @@ public final class Keyboard: ObservableObject {
             delegate?.insert(text: currentLabel)
         }
         
-        NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
+        NotificationCenter.default.post(name: .documentContextDidChange, object: nil)
     }
     
     public var currentKey: Key? = nil
     
     private var characterComponents: [CharacterComponent] {
         get {
-            return currentLabel.characterComponents
+            currentLabel.characterComponents
         }
         
         set {
@@ -206,11 +203,11 @@ public final class Keyboard: ObservableObject {
         }
     }
     
-    var previousLabel: String = .init()
+    var previousLabel = ""
     
     @Published public var currentLabel = "" {
         didSet {
-            NotificationCenter.default.post(name: .KeyboardStateDidChange, object: nil)
+            NotificationCenter.default.post(name: .keyboardStateDidChange, object: nil)
         }
     }
     
@@ -219,8 +216,7 @@ public final class Keyboard: ObservableObject {
     private func shiftUp(key: Key) {
         if currentLabel == key.label && key.shiftUpLabel.isEmpty == false {
             currentLabel = key.shiftUpLabel
-        }
-        else {
+        } else {
             characterComponents += [.doubled]
             
             if !characterComponents.contains(.doubled) {
@@ -237,15 +233,21 @@ public final class Keyboard: ObservableObject {
     
     private func shiftDown(key: Key) {
         if currentLabel == key.label && key.shiftDownLabel.isEmpty == false {
-            currentLabel = key.shiftDownLabel.first?.description ?? .init()
-        }
-        else if characterComponents.extraArray.count > 1
+            currentLabel = key.shiftDownLabel.first?.description ?? ""
+        } else if characterComponents.extraArray.count > 1
             && characterComponents.normalized == characterComponents.extraArray[0].normalized {
             
             characterComponents = characterComponents.extraArray[1]
-        }
-        else {
-            characterComponents = .init(characterComponents.split(separator: .capital, maxSplits: 1, omittingEmptySubsequences: false).joined(separator: [.smallCapital]))
+        } else {
+            characterComponents = Array(
+                characterComponents
+                    .split(
+                        separator: .capital,
+                        maxSplits: 1,
+                        omittingEmptySubsequences: false
+                    )
+                    .joined(separator: [.smallCapital])
+            )
         }
         
         characterComponents += [.extraDown]
@@ -269,13 +271,11 @@ public final class Keyboard: ObservableObject {
         case .left:
             if currentLabel == key.label && key.shiftLeftLabel.isEmpty == false {
                 currentLabel = key.shiftLeftLabel
-            }
-            else if characterComponents.extraArray.count > 2
+            } else if characterComponents.extraArray.count > 2
                 && characterComponents == characterComponents.extraArray[1] {
                 
                 characterComponents = characterComponents.extraArray[2]
-            }
-            else if key.label.count == 1 {
+            } else if key.label.count == 1 {
                 fallthrough
             }
             
@@ -310,29 +310,40 @@ public final class Keyboard: ObservableObject {
             
             shouldDeletePreviousCharacter = true
             
-            let modifierCharacterComponents = characterComponents.removing(characterComponents: CharacterComponent.scripts)
+            let modifierCharacterComponents = characterComponents
+                .removing(characterComponents: CharacterComponent.scripts)
             
-            let mixingComponents = modifierCharacterComponents.map {CharacterComponent.letterToMixingComponentDictionary[$0] ?? $0}
-            let combiningComponents = modifierCharacterComponents.map {CharacterComponent.letterToCombiningComponentDictionary[$0] ?? $0}
+            let mixingComponents = modifierCharacterComponents
+                .map {CharacterComponent.letterToMixingComponentDictionary[$0] ?? $0}
             
-            let combiningSuffix: [CharacterComponent] = [direction == .left ? .combining : (direction == .upLeft ? .above : .below)]
+            let combiningComponents = modifierCharacterComponents
+                .map {CharacterComponent.letterToCombiningComponentDictionary[$0] ?? $0}
+            
+            let combiningSuffix: [CharacterComponent] = [
+                direction == .left
+                ? .combining
+                : (direction == .upLeft ? .above : .below)
+            ]
             
             var combiningCharacter: String = (modifierCharacterComponents + combiningSuffix).character
             combiningCharacter = (combiningComponents + combiningSuffix).character
             
             guard combiningCharacter.isEmpty else {
-                currentLabel = ((previousCharacterOrNil?.description ?? .init()) + combiningCharacter).precomposedStringWithCanonicalMapping
+                currentLabel = ((previousCharacterOrNil?.description ?? "") + combiningCharacter)
+                    .precomposedStringWithCanonicalMapping
                 
                 currentCombiningCharacter = combiningCharacter
                 break
             }
             
             guard let previousCharacter = previousCharacterOrNil else {
-                currentLabel = .init()
+                currentLabel = ""
                 break
             }
             
-            let previousCharacterUnicodeScalars = previousCharacter.description.decomposedStringWithCanonicalMapping.unicodeScalars
+            let previousCharacterUnicodeScalars = previousCharacter.description
+                .decomposedStringWithCanonicalMapping
+                .unicodeScalars
             
             for (index, unicodeScalar) in previousCharacterUnicodeScalars.enumerated().reversed() {
                 
@@ -340,8 +351,11 @@ public final class Keyboard: ObservableObject {
                     continue
                 }
                 
-                guard let newUnicodeScalar = (unicodeScalar.description.characterComponents + combiningComponents).character.unicodeScalars.first else {
-                    
+                let newUnicodeScalar = (unicodeScalar.description.characterComponents + combiningComponents).character
+                    .unicodeScalars
+                    .first
+                
+                guard let newUnicodeScalar = newUnicodeScalar else {
                     continue
                 }
                 
@@ -356,30 +370,31 @@ public final class Keyboard: ObservableObject {
             let ligatureCharacter = (previousCharacter.characterComponents + modifierCharacterComponents).character
             let mixiedCharacter = (previousCharacter.characterComponents + mixingComponents).character
             
-            if ligatureCharacter != mixiedCharacter && ligatureCharacter.isEmpty == false && mixiedCharacter.isEmpty == false {
+            if ligatureCharacter != mixiedCharacter, !ligatureCharacter.isEmpty, !mixiedCharacter.isEmpty {
                 Array<CharacterComponent>.extraArrayExtension = [ligatureCharacter.characterComponents]
             }
             
-            if previousCharacter.characterComponents.isEmpty || (mixiedCharacter.isEmpty && ligatureCharacter.isEmpty && combinedCharacter.isEmpty) {
-                currentLabel = .init()
+            if previousCharacter.characterComponents.isEmpty
+                || mixiedCharacter.isEmpty
+                && ligatureCharacter.isEmpty
+                && combinedCharacter.isEmpty {
+                
+                currentLabel = ""
                 shouldDeletePreviousCharacter = false
-            }
-            else {
+            } else {
                 characterComponents = combinedCharacter.characterComponents
                 characterComponents = ligatureCharacter.characterComponents
                 characterComponents = mixiedCharacter.characterComponents
             }
             
         case .right:
-            if currentLabel == key.label && key.shiftRightLabel.isEmpty == false {
+            if currentLabel == key.label, key.shiftRightLabel.isEmpty == false {
                 currentLabel = key.shiftRightLabel
-            }
-            else if characterComponents.extraArray.isEmpty == false
-                && characterComponents.extraArray.contains(where: {$0.normalized == characterComponents.normalized}) == false {
+            } else if !characterComponents.extraArray.isEmpty,
+                      !characterComponents.extraArray.contains(where: {$0.normalized == characterComponents.normalized}) {
                 
                 characterComponents = characterComponents.extraArray[0]
-            }
-            else if characterComponents.count == 1 {
+            } else if characterComponents.count == 1 {
                 if let extraRightComponent = KeyboardLayout.shiftRightDictionary[characterComponents.first!] {
                     characterComponents = [extraRightComponent]
                 }
@@ -391,8 +406,7 @@ public final class Keyboard: ObservableObject {
             if direction == .upRight {
                 characterComponents += [.superscript]
                 characterComponents += [.extraUpRight]
-            }
-            else {
+            } else {
                 characterComponents += [.subscript]
                 characterComponents += [.extraDownRight]
             }
@@ -404,11 +418,13 @@ public final class Keyboard: ObservableObject {
                 
                 let combiningCharacterIndex = unicodeScalars.lastIndex(of: combiningCharacter.unicodeScalars.first!)
                 
-                let modifierLetterComponents = combiningCharacter.characterComponents.removing(characterComponents: [direction == .upRight ? .above : .below]) + [direction == .upRight ? .superscript : .subscript]
+                let modifierLetterComponents = combiningCharacter.characterComponents
+                    .removing(characterComponents: [direction == .upRight ? .above : .below])
+                + [direction == .upRight ? .superscript : .subscript]
                 
                 unicodeScalars.remove(at: combiningCharacterIndex!)
                 
-                currentLabel = .init(unicodeScalars) + modifierLetterComponents.character
+                currentLabel = String(unicodeScalars) + modifierLetterComponents.character
                 
                 currentCombiningCharacter = nil
             }
@@ -437,25 +453,38 @@ public final class Keyboard: ObservableObject {
         case upLeft = "↖︎"
         case left = "←"
     }
-
+    
     public enum KeyboardLayoutMode: String {
         case horizontal
         case vertical
-
+        
         case `default`
     }
     
     private init() {
         previewLayout = layout
         
-        NotificationCenter.default.addObserver(self, selector: #selector(documentContextDidChange), name: .DocumentContextDidChange, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(search), name: .DocumentContextDidChange, object: nil)
+        NotificationCenter.default
+            .addObserver(
+                self,
+                selector: #selector(documentContextDidChange),
+                name: .documentContextDidChange,
+                object: nil
+            )
+        
+        NotificationCenter.default
+            .addObserver(
+                self,
+                selector: #selector(search),
+                name: .documentContextDidChange,
+                object: nil
+            )
     }
     
-    public let characterSequence: CharacterSequence = .init()
+    public let characterSequence = CharacterSequence()
     
     @objc private func documentContextDidChange() {
-        let documentContextBeforeInput: String = delegate?.documentContext.beforeInput ?? .init()
+        let documentContextBeforeInput = delegate?.documentContext.beforeInput ?? ""
         
         var characters: [Character] = []
         
@@ -495,42 +524,40 @@ public final class Keyboard: ObservableObject {
             characterSequence.autocompleteText = scriptTransformation.targetString
             
             let labelLength = 10
-            characterSequence.autocompleteLabel = (characterSequence.autocompleteText.count > labelLength ? "..." : "") + characterSequence.autocompleteText.suffix(labelLength)
+            characterSequence.autocompleteLabel = (characterSequence.autocompleteText.count > labelLength ? "..." : "")
+            + characterSequence.autocompleteText.suffix(labelLength)
             
         } else if let calculation = Calculator.default.evaluate(expressionFromString: documentContextBeforeInput) {
             
             characters = calculation.expression.map {$0}
             
             if calculation.expression.trimmingCharacters(in: .whitespaces) == calculation.result.trimmingCharacters(in: .whitespaces) {
-                characterSequence.autocompleteText = .init()
-                characterSequence.autocompleteLabel = .init()
+                characterSequence.autocompleteText = ""
+                characterSequence.autocompleteLabel = ""
                 characterSequence.autocompleteDeleteCount = 0
-            }
-            else if calculation.expression.contains("=") {
+            } else if calculation.expression.contains("=") {
                 characterSequence.autocompleteText = calculation.result
                 characterSequence.autocompleteLabel = calculation.result
                 characterSequence.autocompleteDeleteCount = 0
-            }
-            else {
+            } else {
                 characterSequence.autocompleteText = calculation.result
                 characterSequence.autocompleteLabel =  " = " + calculation.result
                 characterSequence.autocompleteDeleteCount = calculation.expression.count
             }
         } else {
-            characterSequence.autocompleteText = .init()
-            characterSequence.autocompleteLabel = .init()
+            characterSequence.autocompleteText = ""
+            characterSequence.autocompleteLabel = ""
             characterSequence.autocompleteDeleteCount = 0
         }
         
         characterSequence.set(characters: characters)
     }
     
-    public let characterSearch: CharacterSearch = .init()
+    public let characterSearch = CharacterSearch()
     
     @objc private func search() {
-        characterSearch.search(textBeforeInput: Keyboard.default.delegate?.documentContext.beforeInput ?? .init())
+        characterSearch.search(textBeforeInput: Keyboard.default.delegate?.documentContext.beforeInput ?? "")
     }
-    
     
     @Published public var previewLayout: KeyboardLayout = .system {
         willSet {
@@ -550,8 +577,6 @@ public final class Keyboard: ObservableObject {
 }
 
 public extension NSNotification.Name {
-    
-    static let KeyboardStateDidChange: NSNotification.Name = .init("gw93Wf66S7t3GARlTiRirWIBvd4QiSM")
-    
-    static let DocumentContextDidChange: NSNotification.Name = .init("oDap18soqXQONnkeMJsCZSGmkexar2g")
+    static let keyboardStateDidChange = Self("gw93Wf66S7t3GARlTiRirWIBvd4QiSM")
+    static let documentContextDidChange = Self("oDap18soqXQONnkeMJsCZSGmkexar2g")
 }

@@ -19,10 +19,16 @@ struct LanguageCharactersRow: View {
     }
     
     var body: some View {
-        NavigationLink(destination: CharacterGestureList(characterSections: characterCollection.characterSections, languageCode: characterCollection.locale.languageCode!).navigationBarTitle(characterCollection.localizedLanguage(locale: Locale(identifier: settings.language.rawValue)))) {
-            
+        NavigationLink {
+            CharacterGestureList(
+                characterSections: characterCollection.characterSections,
+                languageCode: characterCollection.locale.languageCode!
+            )
+            .navigationBarTitle(
+                characterCollection.localizedLanguage(locale: Locale(identifier: settings.language.rawValue))
+            )
+        } label: {
             HStack(alignment: .top) {
-                
                 VStack(alignment: .leading, spacing: 8) {
                     Text(characterCollection.locale.languageCode!.appending(" ").prefix(3))
                         .font(.system(.largeTitle, design: .monospaced))
@@ -43,7 +49,7 @@ struct LanguageCharactersRow: View {
                         .padding(.vertical, 12)
                     
                     ForEach(self.characterCollection.characterSections, id: \.self) { (characters) in
-                        CharactersView(characters: characters, languageCode: self.characterCollection.locale.languageCode!)
+                        CharactersView(characters: characters, languageCode: characterCollection.locale.languageCode!)
                     }
                     .padding(.bottom, 8)
                 }

@@ -16,7 +16,7 @@ struct SettingsNavigationView: View {
         NavigationView {
             List {
                 LayoutPickerSection()
-
+                
                 Section {
                     InterfaceLanguagePicker()
                 }

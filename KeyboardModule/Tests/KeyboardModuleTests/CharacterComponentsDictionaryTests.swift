@@ -25,12 +25,16 @@ class CharacterComponentsDictionaryTests: XCTestCase {
     }
     
     func testDictionaryDoesNotContainDuplicateValues() {
-        var dictionary: [String: Int] = .init()
+        var dictionary: [String: Int] = [:]
         for character in characterComponentsDictionary.keys {
             guard !character.characterComponents.isEmpty, character.characterComponents != [.combined] else {
                 continue
             }
-            XCTAssertNil(dictionary[character.characterComponents.key], "Dictionary literal contains duplicate value for \"\(character)\"")
+            
+            XCTAssertNil(
+                dictionary[character.characterComponents.key],
+                "Dictionary literal contains duplicate value for \"\(character)\""
+            )
             
             dictionary[character.characterComponents.key] = 1
         }
@@ -40,7 +44,10 @@ class CharacterComponentsDictionaryTests: XCTestCase {
         let maxExtraCount = 3
         
         for character in characterComponentsDictionary.keys {
-            XCTAssert(character.characterComponents.extraArray.count <= maxExtraCount, "Character \(character) has more than \(maxExtraCount) extra characters")
+            XCTAssert(
+                character.characterComponents.extraArray.count <= maxExtraCount,
+                "Character \(character) has more than \(maxExtraCount) extra characters"
+            )
         }
     }
     
@@ -51,12 +58,16 @@ class CharacterComponentsDictionaryTests: XCTestCase {
             }
             
             if character.decomposedStringWithCanonicalMapping.unicodeScalars.count > 1, character.decomposedStringWithCanonicalMapping.precomposedStringWithCanonicalMapping.unicodeScalars.count == 1 {
-                XCTAssert(characterComponents == [.combined], "\"\(character)\".characterComponents != [\([.combined].key)]")
-            }
-            else {
-                XCTAssert(characterComponents != [.combined], "\"\(character)\".characterComponents == [\([.combined].key)]")
+                XCTAssert(
+                    characterComponents == [.combined],
+                    "\"\(character)\".characterComponents != [\([.combined].key)]"
+                )
+            } else {
+                XCTAssert(
+                    characterComponents != [.combined],
+                    "\"\(character)\".characterComponents == [\([.combined].key)]"
+                )
             }
         }
     }
-
 }

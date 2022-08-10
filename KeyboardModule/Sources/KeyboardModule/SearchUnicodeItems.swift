@@ -21,7 +21,7 @@ class SearchUnicodeItems: Operation {
         
         super.init()
         
-        self.completionBlock = {
+        completionBlock = {
             queue.sync {
                 characterSearch.isSearching = false
             }
@@ -67,7 +67,7 @@ class SearchUnicodeItems: Operation {
             let regionCode = text.prefix(2).uppercased()
             
             for localeIdentifier in (Locale.availableIdentifiers.filter { $0.hasSuffix(regionCode) } + ["en_\(regionCode)"]) {
-                if let currencySymbol = Locale.init(identifier: localeIdentifier).currencySymbol {
+                if let currencySymbol = Locale(identifier: localeIdentifier).currencySymbol {
                     if currencySymbol.count == 1, let currencyItem = UnicodeData.default.item(codePoints: currencySymbol, language: Settings.current.language.rawValue) {
                         foundUnicodeItems.append(currencyItem)
                         break
@@ -84,7 +84,6 @@ class SearchUnicodeItems: Operation {
             let currentLanguage = Settings.current.language.rawValue
             
             for language in [currentLanguage] + Locale.preferredLanguages {
-                
                 for identifier in Locale(identifier: language).compatibleIdentifiers {
                     if languageSet.contains(identifier) {
                         languages.append(identifier)
@@ -103,13 +102,11 @@ class SearchUnicodeItems: Operation {
             foundUnicodeItems = characterSearch.currentLastUsedCharacters.compactMap {
                 if let item = characterSearch.lastUsedUnicodeItemsCache[$0] {
                     return item
-                }
-                else if let item = UnicodeData.default.item(codePoints: $0, language: Settings.current.language.rawValue) {
+                } else if let item = UnicodeData.default.item(codePoints: $0, language: Settings.current.language.rawValue) {
                     foundUnicodeItems.append(item)
                     characterSearch.lastUsedUnicodeItemsCache[$0] = item
                     return item
-                }
-                else {
+                } else {
                     return nil
                 }
             }
@@ -127,7 +124,6 @@ class SearchUnicodeItems: Operation {
             }
             
         default:
-            
             for language in languages(regularExpression: .containsWord(withPrefix: text)) {
                 
                 guard !isCancelled else {
@@ -147,6 +143,5 @@ class SearchUnicodeItems: Operation {
                 foundUnicodeItems += UnicodeData.default.items(language: language, regularExpression: .containsWord(withPrefix: text), exclude: foundUnicodeItems, fetchLimit: maxCount)
             }
         }
-        
     }
 }

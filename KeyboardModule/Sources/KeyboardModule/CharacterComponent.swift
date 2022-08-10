@@ -8,16 +8,31 @@
 import Foundation
 
 public enum CharacterComponent: String, CaseIterable {
-    private static let commutative: Set<CharacterComponent> = Set.init([.capital, .smallCapital, .superscript, .subscript, .above, .below] + extraComponents + letterToMixingComponentDictionary.values.filter {![.extraH, .zDigraph, .tilde, .ring].contains($0)}).union(scripts)
+    private static let commutative: Set<CharacterComponent> = Set(
+        [.capital, .smallCapital, .superscript, .subscript, .above, .below]
+        + extraComponents
+        + letterToMixingComponentDictionary.values.filter {![.extraH, .zDigraph, .tilde, .ring].contains($0)}
+    )
+    .union(scripts)
     
     public var isCommutative: Bool {
-        return CharacterComponent.commutative.contains(self)
+        CharacterComponent.commutative.contains(self)
     }
     
-    internal static let extraComponents: [CharacterComponent] = [.extra0, .dotless, .letterScript, .turned, .reversed, .inverted, .sideways, .extra1, .extra2]
+    internal static let extraComponents: [CharacterComponent] = [
+        .extra0,
+        .dotless,
+        .letterScript,
+        .turned,
+        .reversed,
+        .inverted,
+        .sideways,
+        .extra1,
+        .extra2,
+    ]
     
     internal var isExtraComponent: Bool {
-        return CharacterComponent.extraComponents.contains(self)
+        CharacterComponent.extraComponents.contains(self)
     }
     
     case fractionSlash
@@ -26,7 +41,34 @@ public enum CharacterComponent: String, CaseIterable {
     
     case zero, one, two, three, four, five, six, seven, eight, nine
     
-    case space, exclamationMark, quotationMark, numberSign, dollarSign, percentSign, ampersand, apostrophe, leftParenthesis, rightParenthesis, asterisk, plusSign, comma, fullStop, solidus, colon, semicolon, lessThanSign, equalsSign, greaterThanSign, questionMark, commercialAt, squareBracket, caret, lowLine, curlyBracket, verticalLine, tilde
+    case space
+    case exclamationMark
+    case quotationMark
+    case numberSign
+    case dollarSign
+    case percentSign
+    case ampersand
+    case apostrophe
+    case leftParenthesis
+    case rightParenthesis
+    case asterisk
+    case plusSign
+    case comma
+    case fullStop
+    case solidus
+    case colon
+    case semicolon
+    case lessThanSign
+    case equalsSign
+    case greaterThanSign
+    case questionMark
+    case commercialAt
+    case squareBracket
+    case caret
+    case lowLine
+    case curlyBracket
+    case verticalLine
+    case tilde
     
     case tildeOperator
     
@@ -76,11 +118,14 @@ public enum CharacterComponent: String, CaseIterable {
     case flattenedOpenA
     
     static let baseComponents = mergeDictionaries(
-        Dictionary.init(uniqueKeysWithValues: letterToMixingComponentDictionary.map {($1, $0)}),
-        Dictionary.init(uniqueKeysWithValues: letterToCombiningComponentDictionary.map {($1, $0)})
+        Dictionary(uniqueKeysWithValues: letterToMixingComponentDictionary.map {($1, $0)}),
+        Dictionary(uniqueKeysWithValues: letterToCombiningComponentDictionary.map {($1, $0)})
     )
     
-    static func mergeDictionaries(_ lhs: Dictionary<CharacterComponent, CharacterComponent>, _ rhs: Dictionary<CharacterComponent, CharacterComponent>) -> Dictionary<CharacterComponent, CharacterComponent> {
+    static func mergeDictionaries(
+        _ lhs: Dictionary<CharacterComponent, CharacterComponent>,
+        _ rhs: Dictionary<CharacterComponent, CharacterComponent>
+    ) -> Dictionary<CharacterComponent, CharacterComponent> {
         var result = lhs
         
         for (key, value) in rhs {
@@ -263,7 +308,7 @@ public enum CharacterComponent: String, CaseIterable {
     case leftHalf
     case rightHalf
     case bottomHalf
-
+    
     case extraHighTone
     case highTone
     case midTone
@@ -278,16 +323,18 @@ public enum CharacterComponent: String, CaseIterable {
     case none
 }
 
-private let ordinalNumbers: [CharacterComponent: Int] = .init(uniqueKeysWithValues: CharacterComponent.allCases.enumerated().map {($1, $0)} )
+private let ordinalNumbers: [CharacterComponent: Int] = Dictionary(
+    uniqueKeysWithValues: CharacterComponent.allCases.enumerated().map {($1, $0)}
+)
 
 extension CharacterComponent: Comparable {
     public static func < (lhs: CharacterComponent, rhs: CharacterComponent) -> Bool {
-        return ordinalNumbers[lhs]! < ordinalNumbers[rhs]!
+        ordinalNumbers[lhs]! < ordinalNumbers[rhs]!
     }
 }
 
 extension CharacterComponent: CustomStringConvertible {
     public var description: String {
-        return ".\(rawValue)"
+        ".\(rawValue)"
     }
 }

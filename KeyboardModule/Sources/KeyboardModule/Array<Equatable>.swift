@@ -10,23 +10,24 @@ import Foundation
 public extension Array where Element: Equatable {
     var permulations: [Array] {
         var currentPermulations: [Array] = [[]]
-
+        
         for element in self {
             let lastPermulations = currentPermulations
             
-            currentPermulations = (lastPermulations.first!.startIndex...lastPermulations.first!.endIndex).flatMap({ (insertIndex) -> [Array] in
-                return lastPermulations.compactMap {
-                    var permulation = $0
+            currentPermulations = (lastPermulations.first!.startIndex...lastPermulations.first!.endIndex)
+                .flatMap { insertIndex in
+                    return lastPermulations.compactMap {
+                        var permulation = $0
+                        
+                        guard permulation.prefix(upTo: insertIndex).contains(element) == false else {
+                            return nil
+                        }
+                        
+                        permulation.insert(element, at: insertIndex)
                     
-                    guard permulation.prefix(upTo: insertIndex).contains(element) == false else {
-                        return nil
+                        return permulation
                     }
-                    
-                    permulation.insert(element, at: insertIndex)
-                
-                    return permulation
                 }
-            })
         }
         
         return currentPermulations.reversed()

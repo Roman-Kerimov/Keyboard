@@ -88,7 +88,7 @@ public struct CharacterSearchView: View {
                 .offset(x: geometry.size.width)
                 #endif
             }
-            .onReceive(NotificationCenter.default.publisher(for: .KeyboardStateDidChange)) { notification in
+            .onReceive(NotificationCenter.default.publisher(for: .keyboardStateDidChange)) { notification in
                 isUnicodeNamesPresented = false
             }
             .simultaneousGesture(

@@ -9,6 +9,6 @@ import Foundation
 
 extension Array: Identifiable where Element == Key {
     public var id: String {
-        map {$0.id.description} .reduce("", +)
+        map(\.id.description).reduce("", +)
     }
 }

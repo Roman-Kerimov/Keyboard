@@ -36,7 +36,7 @@ struct SetUpView: View {
                     }
                     .scaleEffect(0.8)
                     .allowsHitTesting(false)
-
+                    
                     Text.markdown(TAP_KEYBOARDS.string)
                 }
                 
@@ -47,7 +47,7 @@ struct SetUpView: View {
                     .frame(width: iconWidth)
                     .scaleEffect(iconScaleEffect)
                     .allowsHitTesting(false)
-
+                    
                     Text.markdown(TURN_ON_PRODUCT_NAME.string)
                 }
             }

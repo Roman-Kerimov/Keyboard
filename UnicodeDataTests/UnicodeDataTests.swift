@@ -11,21 +11,40 @@ import XCTest
 import CoreData
 
 class UnicodeDataTests: XCTestCase {
-
+    
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
-
+    
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
+    
     func testAnnotations() {
-        XCTAssertEqual(UnicodeData.default.item(codePoints: "🗨️", language: "en_CA")?.annotation, "dialogue | left speech bubble | speech")
-        XCTAssertEqual(UnicodeData.default.item(codePoints: "🗨️", language: "en_CA")?.ttsAnnotation, "left speech bubble")
-        XCTAssertEqual(UnicodeData.default.item(codePoints: "🗨️", language: "en")?.ttsAnnotation, "left speech bubble")
-        XCTAssertEqual(UnicodeData.default.item(codePoints: "🤨", language: "en_001")?.ttsAnnotation, "face with raised eyebrow")
-        XCTAssertEqual(UnicodeData.default.item(codePoints: "🐊", language: "ru_Cyrl")?.ttsAnnotation, "крокодил")
+        XCTAssertEqual(
+            UnicodeData.default.item(codePoints: "🗨️", language: "en_CA")?.annotation,
+            "dialogue | left speech bubble | speech"
+        )
+        
+        XCTAssertEqual(
+            UnicodeData.default.item(codePoints: "🗨️", language: "en_CA")?.ttsAnnotation,
+            "left speech bubble"
+        )
+        
+        XCTAssertEqual(
+            UnicodeData.default.item(codePoints: "🗨️", language: "en")?.ttsAnnotation,
+            "left speech bubble"
+        )
+        
+        XCTAssertEqual(
+            UnicodeData.default.item(codePoints: "🤨", language: "en_001")?.ttsAnnotation,
+            "face with raised eyebrow"
+        )
+        
+        XCTAssertEqual(
+            UnicodeData.default.item(codePoints: "🐊", language: "ru_Cyrl")?.ttsAnnotation,
+            "крокодил"
+        )
     }
     
     func testMandarinReadings() {
@@ -34,18 +53,32 @@ class UnicodeDataTests: XCTestCase {
     }
     
     func testNameAliases() {
-        XCTAssertEqual(UnicodeData.default.item(name: "LATIN CAPITAL LETTER OI")?.localizedName, "LATIN CAPITAL LETTER GHA")
-        XCTAssertEqual(UnicodeData.default.item(name: "ZERO WIDTH NO-BREAK SPACE")?.localizedName, "BOM | BYTE ORDER MARK | ZWNBSP | ZERO WIDTH NO-BREAK SPACE")
-        XCTAssertEqual(UnicodeData.default.item(name: "VARIATION SELECTOR-17")?.localizedName, "VS17 | VARIATION SELECTOR-17")
+        XCTAssertEqual(
+            UnicodeData.default.item(name: "LATIN CAPITAL LETTER OI")?.localizedName,
+            "LATIN CAPITAL LETTER GHA"
+        )
+        
+        XCTAssertEqual(
+            UnicodeData.default.item(name: "ZERO WIDTH NO-BREAK SPACE")?.localizedName,
+            "BOM | BYTE ORDER MARK | ZWNBSP | ZERO WIDTH NO-BREAK SPACE"
+        )
+        
+        XCTAssertEqual(
+            UnicodeData.default.item(name: "VARIATION SELECTOR-17")?.localizedName,
+            "VS17 | VARIATION SELECTOR-17"
+        )
     }
     
     func testItemOrder() {
-        XCTAssertEqual(UnicodeData.default.item(codePoints: "🐊", language: "en"), UnicodeData.default.item(codePoints: "🐊", language: "ru_Cyrl"))
+        XCTAssertEqual(
+            UnicodeData.default.item(codePoints: "🐊", language: "en"),
+            UnicodeData.default.item(codePoints: "🐊", language: "ru_Cyrl")
+        )
     }
     
     func testWords() {
         let request: NSFetchRequest<ManagedWord> = ManagedWord.fetchRequest()
-        request.predicate = .init(format: "string MATCHES %@", "\\B.*\\B")
+        request.predicate = NSPredicate(format: "string MATCHES %@", "\\B.*\\B")
         XCTAssertEqual(try! UnicodeData.default.backgroundContext.fetch(request).map{$0.string!}.sorted(), ["్", "್"])
     }
     
@@ -57,6 +90,16 @@ class UnicodeDataTests: XCTestCase {
     
     func testYofication() {
         XCTAssertEqual(UnicodeData.default.words(language: "ru").filter {$0.contains("ё")}.count, 193)
-        XCTAssertEqual(UnicodeData.default.items(language: "ru_Latn", regularExpression: .contains(word: "vse"), exclude: [], fetchLimit: 0).map {$0.codePoints}, [])
+        
+        XCTAssertEqual(
+            UnicodeData.default.items(
+                language: "ru_Latn",
+                regularExpression: .contains(word: "vse"),
+                exclude: [],
+                fetchLimit: 0
+            )
+            .map(\.codePoints),
+            []
+        )
     }
 }

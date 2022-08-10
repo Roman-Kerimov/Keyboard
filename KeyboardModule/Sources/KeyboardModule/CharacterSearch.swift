@@ -29,7 +29,7 @@ public class CharacterSearch: NSObject, ObservableObject {
         search(textBeforeInput: query)
     }
     
-    let searchOperationQueue: OperationQueue = .init()
+    let searchOperationQueue = OperationQueue()
     
     var text: String = "" {
         didSet {
@@ -51,15 +51,15 @@ public class CharacterSearch: NSObject, ObservableObject {
     
     public func search(textBeforeInput: String, queue: DispatchQueue = .main) {
         
-        var textForSearch: String = .init(
+        var textForSearch = String(
             textBeforeInput
                 .split(whereSeparator: {$0.unicodeScalars.first!.properties.isIdeographic}).last?
                 .components(separatedBy: .whitespacesAndNewlines).last?
-                .split {$0.belongsTo(.symbols)} .last ?? .init()
+                .split {$0.belongsTo(.symbols)} .last ?? ""
         )
         
         if textForSearch.contains(.reverseSolidus) {
-            textForSearch = .reverseSolidus + ( textForSearch.components(separatedBy: String.reverseSolidus).last ?? .init() )
+            textForSearch = .reverseSolidus + (textForSearch.components(separatedBy: String.reverseSolidus).last ?? "")
         }
         
         text = textForSearch.replacingOccurrences(of: String.reverseSolidus, with: "")
@@ -107,11 +107,11 @@ public class CharacterSearch: NSObject, ObservableObject {
         UserDefaults.standard.set(lastUsedCharacters, forKey: lastUsedCharactersKey)
         UserDefaults.standard.synchronize()
         
-        NotificationCenter.default.post(.init(name: .DocumentContextDidChange))
+        NotificationCenter.default.post(name: .documentContextDidChange, object: nil)
     }
     
     private let lastUsedCharactersKey = "LBg6QhTolnUzmtHXeo960LT1ZNd3i07"
-    private lazy var lastUsedCharacters: [String] = UserDefaults.standard.stringArray(forKey: lastUsedCharactersKey) ?? []
+    private lazy var lastUsedCharacters = UserDefaults.standard.stringArray(forKey: lastUsedCharactersKey) ?? []
     
     private var lastUsedCharactersDidChange = true
     

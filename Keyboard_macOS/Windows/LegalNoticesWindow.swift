@@ -18,7 +18,7 @@ final class LegalNoticesWindow: GuideWindow {
         super.init()
         
         contentView = NSHostingView(rootView: LegalNoticesView().localized())
-        setContentSize(.init(width: 480, height: 500))
+        setContentSize(CGSize(width: 480, height: 500))
         backgroundColor = .textBackgroundColor
         center()
     }

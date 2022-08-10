@@ -27,6 +27,6 @@ class FloatingWindow: NSWindow {
     }
     
     override var canBecomeKey: Bool {
-        return false
+        false
     }
 }

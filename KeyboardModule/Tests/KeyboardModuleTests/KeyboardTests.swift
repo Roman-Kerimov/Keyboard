@@ -26,23 +26,23 @@ class KeyboardTests: XCTestCase, KeyboardDelegate {
     }
     
     var documentContext: DocumentContext {
-        return .init(beforeInput: document, afterInput: .init())
+        return DocumentContext(beforeInput: document, afterInput: "")
     }
     
     #if canImport(UIKit)
     var returnKeyType: UIReturnKeyType? {nil}
     #endif
     
-    var document: String = .init()
-
+    var document = ""
+    
     override func setUp() {
         Keyboard.default.delegate = self
     }
-
+    
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
+    
     func testExtraArrayExtension() {
         let t: Key = .by(labelCharacter: "t")!
         Keyboard.default.down(key: t)
@@ -96,7 +96,6 @@ class KeyboardTests: XCTestCase, KeyboardDelegate {
         XCTAssertEqual(document, "́")
         
         Keyboard.default.up(key: a)
-
     }
     
     func testCompoundCombiningCharacters() {
@@ -215,7 +214,7 @@ class KeyboardTests: XCTestCase, KeyboardDelegate {
                 continue
             }
             
-            document = .init()
+            document = ""
             
             func upKeyIfNeeded() {
                 if let key = Keyboard.default.currentKey {
@@ -224,7 +223,7 @@ class KeyboardTests: XCTestCase, KeyboardDelegate {
             }
             
             for gestureComponent in shiftGesture {
-                guard let shiftDirection = Keyboard.ShiftDirection.init(rawValue: gestureComponent) else {
+                guard let shiftDirection = Keyboard.ShiftDirection(rawValue: gestureComponent) else {
                     upKeyIfNeeded()
                     
                     guard gestureComponent.characterComponents != [.quotationMark] else {
@@ -237,12 +236,10 @@ class KeyboardTests: XCTestCase, KeyboardDelegate {
                     
                     if let key: Key = .by(labelCharacter: gestureComponent) {
                         Keyboard.default.down(key: key)
-                    }
-                    else if let key: Key = .by(shiftUpLabelCharacter: gestureComponent) {
+                    } else if let key: Key = .by(shiftUpLabelCharacter: gestureComponent) {
                         Keyboard.default.down(key: key)
                         Keyboard.default.shift(direction: .up)
-                    }
-                    else if let key: Key = .by(shiftDownLabelCharacter: gestureComponent) {
+                    } else if let key: Key = .by(shiftDownLabelCharacter: gestureComponent) {
                         Keyboard.default.down(key: key)
                         Keyboard.default.shift(direction: .down)
                     }

@@ -9,6 +9,6 @@ import Foundation
 
 public extension NSMutableAttributedString {
     func addAttribute(_ name: NSAttributedString.Key, value: Any) {
-        addAttribute(name, value: value, range: .init(location: 0, length: string.count))
+        addAttribute(name, value: value, range: NSRange(location: 0, length: string.count))
     }
 }

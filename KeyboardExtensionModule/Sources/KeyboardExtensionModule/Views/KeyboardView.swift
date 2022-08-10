@@ -59,8 +59,7 @@ struct KeyboardView: View {
                 
                 if controller.isHorizontalMode {
                     layoutView(keyRows: Key.layoutBoard)
-                }
-                else {
+                } else {
                     VStack(spacing: 0) {
                         HStack(spacing: 0) {
                             layoutView(keyRows: Key.leftLayoutBoard)

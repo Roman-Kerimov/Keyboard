@@ -18,7 +18,7 @@ public struct CharacterCollection: Identifiable, Equatable {
     
     private var language: String {managed.language!}
     
-    public var locale: Locale {.init(identifier: language)}
+    public var locale: Locale {Locale(identifier: language)}
     
     public func localizedLanguage(locale: Locale) -> String {
         locale.localizedString(forIdentifier: language) ?? language

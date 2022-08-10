@@ -30,7 +30,13 @@ class MainXMLParser: XMLParser {
 
 extension MainXMLParser: XMLParserDelegate {
     
-    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
+    func parser(
+        _ parser: XMLParser,
+        didStartElement elementName: String,
+        namespaceURI: String?,
+        qualifiedName qName: String?,
+        attributes attributeDict: [String : String] = [:]
+    ) {
         
         text = ""
         
@@ -67,7 +73,12 @@ extension MainXMLParser: XMLParserDelegate {
         text.append(string)
     }
     
-    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+    func parser(
+        _ parser: XMLParser,
+        didEndElement elementName: String,
+        namespaceURI: String?,
+        qualifiedName qName: String?
+    ) {
         
         switch elementName {
             
@@ -95,15 +106,15 @@ extension MainXMLParser: XMLParserDelegate {
             
             func removeCurlyBracket2(text: String) -> String {
                 var letter = text
-
+                
                 if letter.hasSuffix("}") {
                     letter.removeLast()
-
+                    
                     if let index = letter.lastIndex(of: "{") {
                         letter.remove(at: index)
                     }
                 }
-
+                
                 return letter
             }
             
@@ -111,7 +122,7 @@ extension MainXMLParser: XMLParserDelegate {
                 .components(separatedBy: .whitespaces)
                 .map(removeCurlyBracket1(text:))
                 .map(removeCurlyBracket2(text:))
-                .map {$0.applyingTransform(.init("Hex-Any"), reverse: false)!}
+                .map {$0.applyingTransform(StringTransform("Hex-Any"), reverse: false)!}
                 .map {$0.hasPrefix("\\") ? String($0.dropFirst()) : $0}
             
         case "characters":

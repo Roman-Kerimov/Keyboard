@@ -21,8 +21,7 @@ func eventTapCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent,
     if event.type == .keyDown {
         if event.flags.contains(.maskCommand) {
             AppDelegate.nonAccessibilityDocumentContext.reset()
-        }
-        else {
+        } else {
             switch key {
                 
             case .delete:
@@ -78,16 +77,15 @@ func eventTapCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent,
     }
     
     if key == .enter && event.type == .keyUp {
-        let preEnterContext: String = AppDelegate.preEnterDocumentContext?.beforeInput ?? .init()
-        let postEnterContext: String = AppDelegate.documentContext.beforeInput ?? .init()
+        let preEnterContext: String = AppDelegate.preEnterDocumentContext?.beforeInput ?? ""
+        let postEnterContext: String = AppDelegate.documentContext.beforeInput ?? ""
         
         if postEnterContext.hasPrefix(preEnterContext) {
             let enteredString = postEnterContext.dropFirst(preEnterContext.count)
             
             if enteredString.last == .return {
                 AppDelegate.tap(key: .delete)
-            }
-            else if enteredString.contains(.return) {
+            } else if enteredString.contains(.return) {
                 AppDelegate.tap(key: .z, flags: .maskCommand)
             }
         }
@@ -129,7 +127,7 @@ func eventTapCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent,
     
     if event.flags.contains(.maskAlphaShift) {
         
-        var ioConnect: io_connect_t = .init(0)
+        var ioConnect = io_connect_t(0)
         let ioService = IOServiceGetMatchingService(kIOMainPortDefault, IOServiceMatching(kIOHIDSystemClass))
         IOServiceOpen(ioService, mach_task_self_, UInt32(kIOHIDParamConnectType), &ioConnect)
         IOHIDSetModifierLockState(ioConnect, Int32(kIOHIDCapsLockState), false)
@@ -160,6 +158,7 @@ func eventTapCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent,
         if Keyboard.default.shiftFlag {
             return nil
         }
+        
         return Unmanaged.passRetained(event)
     }
     

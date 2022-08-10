@@ -104,7 +104,6 @@ public struct CharacterSequenceView: View {
                             }
                         
                         if let cell = cell, cell.index != targetIndex {
-                            
                             if sourceIndex == nil {
                                 
                                 sourceIndex = cell.index

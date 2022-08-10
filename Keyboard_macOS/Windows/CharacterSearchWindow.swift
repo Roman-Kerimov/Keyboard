@@ -14,6 +14,6 @@ final class CharacterSearchWindow: FloatingWindow {
         super.init()
         
         contentView = NSHostingView(rootView: CharacterSearchView())
-        setContentSize(.init(width: .characterSearchDefaultWidth, height: .characterSearchDefaultHeight))
+        setContentSize(CGSize(width: .characterSearchDefaultWidth, height: .characterSearchDefaultHeight))
     }
 }

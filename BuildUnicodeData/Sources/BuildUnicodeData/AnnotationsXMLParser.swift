@@ -19,13 +19,13 @@ class AnnotationsXMLParser: XMLParser {
     private static var baseLanguage: String = "" {
         didSet {
             if oldValue != baseLanguage {
-                annotationTable = .init()
+                annotationTable = [:]
             }
         }
     }
     
-    private static var annotationTable: [String: String] = .init()
-    private static var flagTemplates: [String: (annotation: String, ttsAnnotation: String, placeholder: String)] = .init()
+    private static var annotationTable: [String: String] = [:]
+    private static var flagTemplates: [String: (annotation: String, ttsAnnotation: String, placeholder: String)] = [:]
     
     private var language: String = ""
     
@@ -49,7 +49,9 @@ class AnnotationsXMLParser: XMLParser {
                     baseLanguageComponents.removeLast()
                     
                     while !baseLanguageComponents.isEmpty {
-                        if let annotation = AnnotationsXMLParser.annotationTable[annotationKey(languageComponents: baseLanguageComponents, isTTS: isTTS)] {
+                        let annotation = AnnotationsXMLParser
+                            .annotationTable[annotationKey(languageComponents: baseLanguageComponents, isTTS: isTTS)]
+                        if let annotation = annotation {
                             text = annotation
                             break
                         }
@@ -77,7 +79,16 @@ class AnnotationsXMLParser: XMLParser {
                     words[offset] = yoficatedWord
                     
                     func yotificate(text: inout String) {
-                        text = try! NSRegularExpression(pattern: "\\b\(NSRegularExpression.escapedPattern(for: word))\\b", options: []).stringByReplacingMatches(in: text, options: [], range: .init(location: 0, length: text.count), withTemplate: yoficatedWord)
+                        text = try! NSRegularExpression(
+                            pattern: "\\b\(NSRegularExpression.escapedPattern(for: word))\\b",
+                            options: []
+                        )
+                        .stringByReplacingMatches(
+                            in: text,
+                            options: [],
+                            range: NSRange(location: 0, length: text.count),
+                            withTemplate: yoficatedWord
+                        )
                     }
                     
                     yotificate(text: &annotation)
@@ -85,7 +96,13 @@ class AnnotationsXMLParser: XMLParser {
                 }
             }
             
-            UnicodeData.default.addItem(codePoints: codePoints, language: language, annotation: annotation, ttsAnnotation: ttsAnnotation, order: BuildUnicodeData.ordersByCodePoints[codePoints])
+            UnicodeData.default.addItem(
+                codePoints: codePoints,
+                language: language,
+                annotation: annotation,
+                ttsAnnotation: ttsAnnotation,
+                order: BuildUnicodeData.ordersByCodePoints[codePoints]
+            )
             
             AnnotationsXMLParser.annotationTable[annotationKey(languageComponents: languageComponents, isTTS: false)] = annotation
             AnnotationsXMLParser.annotationTable[annotationKey(languageComponents: languageComponents, isTTS: true)] = ttsAnnotation
@@ -99,7 +116,7 @@ class AnnotationsXMLParser: XMLParser {
             }
             
             wordSet.formUnion(words)
-
+            
             isTTS = false
             annotation = ""
             ttsAnnotation = ""
@@ -112,14 +129,20 @@ class AnnotationsXMLParser: XMLParser {
     private var annotation: String = ""
     private var ttsAnnotation: String = ""
     
-    private var wordSet: Set<String> = .init()
+    private var wordSet: Set<String> = []
     
-    static var toFullyQualifiedDictionary: [String: String] = .init()
+    static var toFullyQualifiedDictionary: [String: String] = [:]
 }
 
 extension AnnotationsXMLParser: XMLParserDelegate {
     
-    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
+    func parser(
+        _ parser: XMLParser,
+        didStartElement elementName: String,
+        namespaceURI: String?,
+        qualifiedName qName: String?,
+        attributes attributeDict: [String : String] = [:]
+    ) {
         
         switch elementName {
         case "annotation":
@@ -150,16 +173,28 @@ extension AnnotationsXMLParser: XMLParserDelegate {
         
         if isTTS {
             ttsAnnotation.append(string)
-        }
-        else {
+        } else {
             annotation.append(string)
         }
     }
     
-    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+    func parser(
+        _ parser: XMLParser,
+        didEndElement elementName: String,
+        namespaceURI: String?,
+        qualifiedName qName: String?
+    ) {
         switch elementName {
         case "subdivision":
-            guard let template = AnnotationsXMLParser.flagTemplates[language] ?? AnnotationsXMLParser.flagTemplates[language.components(separatedBy: Locale.componentSeparator).dropLast().joined(separator: Locale.componentSeparator)] else {
+            let template = AnnotationsXMLParser.flagTemplates[language]
+            ?? AnnotationsXMLParser.flagTemplates[
+                language
+                    .components(separatedBy: Locale.componentSeparator)
+                    .dropLast()
+                    .joined(separator: Locale.componentSeparator)
+            ]
+            
+            guard let template = template else {
                 return
             }
             

@@ -34,17 +34,30 @@ public struct KeyboardLayout: Equatable, Identifiable, RawRepresentable {
     public let name: String
     public let inputSourceID: String
     
-    private var characterComponents: [CharacterComponent] = .init(repeating: .none, count: Keycode.keycodeMaxCount)
+    private var characterComponents: [CharacterComponent] = Array(repeating: .none, count: Keycode.keycodeMaxCount)
     
     func characterComponent(fromKeycode keycode: Keycode) -> CharacterComponent {characterComponents[keycode]}
     
     public func contain(_ key: Key) -> Bool {characterComponents[key.keycode] != .none || key == .enter}
     
     var components: Set<CharacterComponent> {
-        .init(characterComponents + KeyboardLayout.option.characterComponents + KeyboardLayout.shiftUpDictionary.values + [.space])
+        Set(
+            characterComponents
+            + KeyboardLayout.option.characterComponents
+            + KeyboardLayout.shiftUpDictionary.values
+            + [.space]
+        )
     }
     
-    init(name: String = "", rows: [[CharacterComponent]] = .init(repeating: .init(repeating: .zero, count: Key.layoutBoardColumnCount), count: Key.layoutBoardRowCount), defaultInputSourceID: String = "") {
+    init(
+        name: String = "",
+        rows: [[CharacterComponent]] = Array(
+            repeating: Array(
+                repeating: .zero,
+                count: Key.layoutBoardColumnCount
+            ),
+            count: Key.layoutBoardRowCount), defaultInputSourceID: String = ""
+    ) {
         self.name = name
         
         for (characterComponentRow, keyRow) in zip(rows, Key.layoutBoard) {
@@ -64,9 +77,9 @@ public struct KeyboardLayout: Equatable, Identifiable, RawRepresentable {
     
     static let option = KeyboardLayout(
         rows: [
-            [ .asterisk,     .apostrophe,    .ampersand,       .verticalLine, .tilde,   .divisionSign,       .seven, .eight, .nine,  .minusSign,  ],
-            [ .commercialAt, .numberSign,    .dollarSign,      .percentSign,  .caret,   .multiplicationSign, .four,  .five,  .six,   .plusSign,   ],
-            [ .curlyBracket, .squareBracket, .leftParenthesis, .lessThanSign, .solidus, .zero,               .one,   .two,   .three, .equalsSign, ],
+            [.asterisk,     .apostrophe,    .ampersand,       .verticalLine, .tilde,   .divisionSign,       .seven, .eight, .nine,  .minusSign, ],
+            [.commercialAt, .numberSign,    .dollarSign,      .percentSign,  .caret,   .multiplicationSign, .four,  .five,  .six,   .plusSign,  ],
+            [.curlyBracket, .squareBracket, .leftParenthesis, .lessThanSign, .solidus, .zero,               .one,   .two,   .three, .equalsSign,],
         ]
     )
     
@@ -84,12 +97,11 @@ public struct KeyboardLayout: Equatable, Identifiable, RawRepresentable {
         .commercialAt: .degree,
     ]
     
-    static let reversedShiftRightDictionary = Dictionary.init(uniqueKeysWithValues: shiftRightDictionary.map {($1, $0)})
+    static let reversedShiftRightDictionary = Dictionary(uniqueKeysWithValues: shiftRightDictionary.map {($1, $0)})
 }
 
 public extension Array where Element == KeyboardLayout {
     func element(inputSourceID: String) -> Element {
-        
         guard let index = self.map( {$0.inputSourceID} ).firstIndex(of: inputSourceID) else {
             return .system
         }

@@ -22,18 +22,18 @@ public extension Character {
     static let z: Character = "z"
     
     func belongsTo(_ characterSet: CharacterSet) -> Bool {
-        return characterSet.contains(self.unicodeScalars.first!)
+        characterSet.contains(unicodeScalars.first!)
     }
     
     var characterComponents: [CharacterComponent] {
-        return description.characterComponents
+        description.characterComponents
     }
     
     func removing(characterComponents: Set<CharacterComponent>) -> String {
-        return description.removing(characterComponents: characterComponents)
+        description.removing(characterComponents: characterComponents)
     }
     
     var previewDescription: String {
-        return description.previewDescription
+        description.previewDescription
     }
 }

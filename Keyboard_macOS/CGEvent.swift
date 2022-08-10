@@ -11,7 +11,7 @@ import KeyboardModule
 extension CGEvent {
     var keycode: Keycode {
         get {
-            return .init(self.getIntegerValueField(.keyboardEventKeycode))
+            Keycode(getIntegerValueField(.keyboardEventKeycode))
         }
         
         set {
@@ -24,9 +24,9 @@ extension CGEvent {
             var actualStringLength: Int = 0
             var unicodeString: [UniChar] = []
             
-            self.keyboardGetUnicodeString(maxStringLength: 10, actualStringLength: &actualStringLength, unicodeString: &unicodeString)
+            keyboardGetUnicodeString(maxStringLength: 10, actualStringLength: &actualStringLength, unicodeString: &unicodeString)
             
-            return .init(utf16CodeUnits: unicodeString, count: actualStringLength)
+            return String(utf16CodeUnits: unicodeString, count: actualStringLength)
         }
     }
 }

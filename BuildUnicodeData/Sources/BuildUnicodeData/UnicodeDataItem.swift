@@ -32,18 +32,18 @@ enum UnicodeDataItem: String, CaseIterable {
     }
     
     private func fileURLs(url: URL) -> [URL] {
-        if let urls = try? FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: []) {
+        if let urls = try? FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil) {
             return urls.flatMap {fileURLs(url: $0)}
-        }
-        else {
+        } else {
             return [url]
         }
     }
     
     var strings: [String] {
-        return fileURLs.flatMap { (fileURL) -> [String] in
-            return (try! String.init(contentsOf: fileURL)).split(separator: .return).map {String.init($0)}
-        }
+        fileURLs
+            .flatMap { (fileURL) -> [String] in
+                (try! String(contentsOf: fileURL)).components(separatedBy: String.return)
+            }
     }
     
     static let totalFileCount = allCases.map {$0.fileURLs.count}.reduce(0, +)
@@ -73,11 +73,15 @@ enum UnicodeDataItem: String, CaseIterable {
 
 fileprivate var processedFileCount: Int = 0 {
     didSet {
-        let progress: Float = (.init(processedFileCount) / .init(UnicodeDataItem.totalFileCount) * 100).rounded(.down)
+        let progress: Float = (Float(processedFileCount) / Float(UnicodeDataItem.totalFileCount) * 100).rounded(.down)
         print("\(processedFileCount)/\(UnicodeDataItem.totalFileCount)\t\(Int(progress)) %")
     }
 }
 
 extension Character {
     static let `return`: Self = "\n"
+}
+
+extension String {
+    static let `return`: Self = Character.return.description
 }

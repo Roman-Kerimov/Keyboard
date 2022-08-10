@@ -23,18 +23,20 @@ public extension String {
     static let horizontalModeLabel = "▄▄"
     static let verticalModeLabel = "▝█▖"
     
-    static let space: String = Character.space.description
-    static let `return`: String = Character.return.description
-    static let tab: String = Character.tab.description
-    static let reverseSolidus: String = Character.reverseSolidus.description
-    static let comma: String = Character.comma.description
-    static let fullStop: String = Character.fullStop.description
-    static let lowLine: String = Character.lowLine.description
-    static let v: String = Character.v.description
-    static let z: String = Character.z.description
+    static let space = Character.space.description
+    static let `return` = Character.return.description
+    static let tab = Character.tab.description
+    static let reverseSolidus = Character.reverseSolidus.description
+    static let comma = Character.comma.description
+    static let fullStop = Character.fullStop.description
+    static let lowLine = Character.lowLine.description
+    static let v = Character.v.description
+    static let z = Character.z.description
     
     func typingDescription(languageCode: String) -> String? {
-        return applyingReverseTransform(transformationCode: languageCode)?.map {$0.description.defaultShiftGesture ?? $0.description} .joined() ?? defaultShiftGesture
+        applyingReverseTransform(transformationCode: languageCode)?
+            .map {$0.description.defaultShiftGesture ?? $0.description}
+            .joined() ?? defaultShiftGesture
     }
     
     var defaultShiftGesture: String? {
@@ -55,8 +57,7 @@ public extension String {
                     shiftGesture += elementDefaultShiftGesture
                     decomposedUnicodeScalars.removeFirst(element.count)
                     break
-                }
-                else {
+                } else {
                     element.removeLast()
                 }
             }
@@ -66,11 +67,11 @@ public extension String {
     }
     
     var characterComponents: [CharacterComponent] {
-        return characterComponentsDictionary[self]?.flatMap {CharacterComponent.replaces[$0] ?? [$0]} ?? .init()
+        characterComponentsDictionary[self]?.flatMap {CharacterComponent.replaces[$0] ?? [$0]} ?? []
     }
     
     func removing(characterComponents: Set<CharacterComponent>) -> String {
-        return self.characterComponents.removing(characterComponents: characterComponents).character
+        self.characterComponents.removing(characterComponents: characterComponents).character
     }
     
     func appending(characterComponent: CharacterComponent) -> String {
@@ -93,16 +94,15 @@ public extension String {
     }
     
     func size(fontName: String, fontSize: CGFloat) -> CGSize {
-        return (self as NSString).size(withAttributes: [.font: Font.init(name: fontName, size: fontSize)!])
+        (self as NSString).size(withAttributes: [.font: Font(name: fontName, size: fontSize)!])
     }
     
     func contains(_ regularExpression: NSRegularExpression) -> Bool {
-        return regularExpression.numberOfMatches(in: self, options: [], range: .init(location: 0, length: count)) != 0
+        regularExpression.numberOfMatches(in: self, options: [], range: NSRange(location: 0, length: count)) != 0
     }
     
     var previewDescription: String {
         if unicodeScalars.first?.properties.isGraphemeExtend == true {
-            
             return "◌" + self
         }
         

@@ -22,7 +22,13 @@ class KeyboardXMLParser: XMLParser {
 }
 
 extension KeyboardXMLParser: XMLParserDelegate {
-    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
+    func parser(
+        _ parser: XMLParser,
+        didStartElement elementName: String,
+        namespaceURI: String?,
+        qualifiedName qName: String?,
+        attributes attributeDict: [String : String] = [:]
+    ) {
         switch elementName {
         case "keyboard":
             locale = attributeDict["locale"]!.components(separatedBy: "-t-").first!
@@ -39,8 +45,10 @@ extension KeyboardXMLParser: XMLParserDelegate {
                 characters += longPress.components(separatedBy: .whitespaces)
             }
             
-            characters = characters.map {
-                $0.replacingOccurrences(of: "\\u{", with: "\\x{").applyingTransform(.init("Hex/Perl-Any"), reverse: false)!
+            characters = characters.map { character in
+                character
+                    .replacingOccurrences(of: "\\u{", with: "\\x{")
+                    .applyingTransform(StringTransform("Hex/Perl-Any"), reverse: false)!
             }
             
             keyboardSet.formUnion(characters)
@@ -57,8 +65,7 @@ extension KeyboardXMLParser: XMLParserDelegate {
         
         if Self.keyboardIntersectionSets[locale] == nil {
             Self.keyboardIntersectionSets[locale] = keyboardSet
-        }
-        else {
+        } else {
             Self.keyboardIntersectionSets[locale]!.formIntersection(keyboardSet)
         }
     }

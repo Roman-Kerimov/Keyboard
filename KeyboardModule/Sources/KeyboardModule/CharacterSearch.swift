@@ -51,12 +51,15 @@ public class CharacterSearch: NSObject, ObservableObject {
     
     public func search(textBeforeInput: String, queue: DispatchQueue = .main) {
         
-        var textForSearch = String(
-            textBeforeInput
-                .split(whereSeparator: {$0.unicodeScalars.first!.properties.isIdeographic}).last?
-                .components(separatedBy: .whitespacesAndNewlines).last?
-                .split {$0.belongsTo(.symbols)} .last ?? ""
-        )
+        var textForSearch = textBeforeInput
+            .split(whereSeparator: {$0.unicodeScalars.first!.properties.isIdeographic})
+            .last?
+            .components(separatedBy: .whitespacesAndNewlines)
+            .last?
+            .components(separatedBy: .symbols)
+            .last?
+            .precomposedStringWithCompatibilityMapping
+        ?? ""
         
         if textForSearch.contains(.reverseSolidus) {
             textForSearch = .reverseSolidus + (textForSearch.components(separatedBy: String.reverseSolidus).last ?? "")

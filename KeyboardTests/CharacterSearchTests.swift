@@ -30,6 +30,7 @@ class CharacterSearchTests: XCTestCase {
     func testSearch() {
         XCTAssert(search("deg").contains("°"))
         XCTAssert(search("o").contains("o"))
+        XCTAssert(search("𝔉𝔯𝔞𝔨𝔱𝔲𝔯").contains("𝔄"))
     }
     
     func testUnqualifiedSearch() {

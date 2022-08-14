@@ -8,8 +8,4 @@ final class BuildUnicodeDataTests: XCTestCase {
         // results.
         XCTAssertTrue(true)
     }
-
-    static var allTests = [
-        ("testExample", testExample),
-    ]
 }

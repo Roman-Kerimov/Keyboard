@@ -1,11 +1,11 @@
 xcodebuild -version
 
-Xcode 13.4.1
-Build version 13F100
+Xcode 14.1
+Build version 14B47b
 
 
 sw_vers
 
-ProductName:	macOS
-ProductVersion:	12.5
-BuildVersion:	21G72
+ProductName:		macOS
+ProductVersion:		13.0
+BuildVersion:		22A380

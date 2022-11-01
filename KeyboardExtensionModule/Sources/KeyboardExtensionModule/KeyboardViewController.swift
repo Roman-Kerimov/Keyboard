@@ -43,7 +43,9 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate, Observabl
         }
         
         set {
-            Keyboard.default.layoutMode = newValue
+            DispatchQueue.main.async {
+                Keyboard.default.layoutMode = newValue
+            }
         }
     }
     
@@ -80,7 +82,7 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate, Observabl
     var spaceRowHeight: CGFloat = .zero
     var spaceRowKeyDescriptions: [SpaceRowKeyDescription] {SpaceRowKeyDescription.allCases}
     
-    class SpaceRowKeyDescription: CaseIterable, Identifiable {
+    class SpaceRowKeyDescription: Identifiable {
         var id: Keycode {
             key.id
         }

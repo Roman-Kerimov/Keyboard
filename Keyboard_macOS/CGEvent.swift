@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreGraphics
 import KeyboardModule
 
 extension CGEvent {

@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import CoreGraphics
 
-#if os(macOS)
+#if canImport(Carbon)
 extension CGEventFlags: Hashable {
     public var hashValue: Int {
         Int(rawValue)

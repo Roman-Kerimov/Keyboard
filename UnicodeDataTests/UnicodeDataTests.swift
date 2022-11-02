@@ -23,7 +23,7 @@ class UnicodeDataTests: XCTestCase {
     func testAnnotations() {
         XCTAssertEqual(
             UnicodeData.default.item(codePoints: "🗨️", language: "en_CA")?.annotation,
-            "dialogue | left speech bubble | speech"
+            "balloon | bubble | dialog | dialogue | left speech bubble | speech"
         )
         
         XCTAssertEqual(
@@ -89,7 +89,7 @@ class UnicodeDataTests: XCTestCase {
     }
     
     func testYofication() {
-        XCTAssertEqual(UnicodeData.default.words(language: "ru").filter {$0.contains("ё")}.count, 193)
+        XCTAssertEqual(UnicodeData.default.words(language: "ru").filter {$0.contains("ё")}.count, 214)
         
         XCTAssertEqual(
             UnicodeData.default.items(

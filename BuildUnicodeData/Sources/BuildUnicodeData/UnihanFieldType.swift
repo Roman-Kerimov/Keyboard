@@ -8,9 +8,9 @@
 enum UnihanFieldType: String {
     
     // Unihan_DictionaryLikeData.txt
+    case alternateTotalStrokes = "kAlternateTotalStrokes"
     case cangjie = "kCangjie"
     case cheungBauer = "kCheungBauer"
-    case cihaiT = "kCihaiT"
     case fenn = "kFenn"
     case fourCornerCode = "kFourCornerCode"
     case frequency = "kFrequency"

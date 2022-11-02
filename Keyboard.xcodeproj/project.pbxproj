@@ -285,8 +285,6 @@
 		9613CD342506559700A2F2FD /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		9613E0212367CF5C0087CA57 /* BuildUnicodeDataDebug */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BuildUnicodeDataDebug; sourceTree = BUILT_PRODUCTS_DIR; };
 		9619B6C6232D038100AA83C3 /* readme.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = readme.html; sourceTree = "<group>"; };
-		9619B6C8232D038200AA83C3 /* apache-license.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "apache-license.txt"; sourceTree = "<group>"; };
-		9619B6C9232D038200AA83C3 /* ICU-LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ICU-LICENSE"; sourceTree = "<group>"; };
 		9619B6CA232D038200AA83C3 /* keyboards */ = {isa = PBXFileReference; lastKnownFileType = folder; path = keyboards; sourceTree = "<group>"; };
 		9619B6CB232D038200AA83C3 /* unicode-license.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "unicode-license.txt"; sourceTree = "<group>"; };
 		9622D3AF23687FDD00ED3665 /* UnicodeData.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = UnicodeData.sqlite; path = ../UnicodeData.sqlite; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -464,8 +462,6 @@
 				9687050D2368EA230045D1AF /* common */,
 				9619B6CA232D038200AA83C3 /* keyboards */,
 				9619B6CB232D038200AA83C3 /* unicode-license.txt */,
-				9619B6C9232D038200AA83C3 /* ICU-LICENSE */,
-				9619B6C8232D038200AA83C3 /* apache-license.txt */,
 			);
 			path = CLDR;
 			sourceTree = "<group>";

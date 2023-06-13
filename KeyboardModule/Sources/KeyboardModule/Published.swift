@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-private var cancellables = [String: AnyCancellable]()
+private var cancellables: [String: AnyCancellable] = [:]
 
 extension Published {
     init(

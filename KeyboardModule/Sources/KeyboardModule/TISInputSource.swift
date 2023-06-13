@@ -10,11 +10,11 @@ import Carbon
 
 public extension TISInputSource {
     static var currentKeyboardLayout: TISInputSource {
-        return TISCopyCurrentKeyboardLayoutInputSource().takeRetainedValue()
+        TISCopyCurrentKeyboardLayoutInputSource().takeRetainedValue()
     }
     
     static var inputSourceList: [TISInputSource] { 
-        return TISCreateInputSourceList(nil, true)?.takeRetainedValue() as! [TISInputSource]
+        TISCreateInputSourceList(nil, true)?.takeRetainedValue() as! [TISInputSource]
     }
     
     private func get(property: CFString) -> String {
@@ -33,21 +33,26 @@ public extension TISInputSource {
     }
     
     var id: String {
-        return get(property: kTISPropertyInputSourceID)
+        get {
+            get(property: kTISPropertyInputSourceID)
+        }
     }
     
     var isASCIICapable: Bool {
-        return get(property: kTISPropertyInputSourceIsASCIICapable)
+        get {
+            get(property: kTISPropertyInputSourceIsASCIICapable)
+        }
     }
     
     var unicodeKeyLayoutData: Data {
-        return get(property: kTISPropertyUnicodeKeyLayoutData)
+        get {
+            get(property: kTISPropertyUnicodeKeyLayoutData)
+        }
     }
 }
 
 public extension Array where Element == TISInputSource {
     subscript(id: String) -> Element {
-        
         guard let index = map({$0.id}).firstIndex(of: id) else {
             return TISInputSource.currentKeyboardLayout
         }

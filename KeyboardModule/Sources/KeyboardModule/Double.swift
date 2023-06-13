@@ -8,6 +8,5 @@
 import Foundation
 
 public extension Double {
-    
     static let characterSequenceBackgroundOpacity: Self = 0.05
 }

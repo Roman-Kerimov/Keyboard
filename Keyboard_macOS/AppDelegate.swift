@@ -16,17 +16,17 @@ class AppDelegate: NSObject {
     private var anyCancellables: [AnyCancellable] = []
     
     private let isProcessTrusted: Bool = AXIsProcessTrusted()
-
-    let statusMenu: StatusMenu = .init()
     
-    static var commandPressedKeycodes: [Keycode] = .init()
+    let statusMenu = StatusMenu()
     
-    private var previousDocumentContext: DocumentContext = .init()
+    static var commandPressedKeycodes: [Keycode] = []
+    
+    private var previousDocumentContext = DocumentContext()
     static var preEnterDocumentContext: DocumentContext?
     
-    static let keyboardWindow: KeyboardWindow = .init()
-    static let characterSearchWindow = CharacterSearchWindow.init()
-    static let characterSequenceWindow: CharacterSequenceWindow = .init()
+    static let keyboardWindow = KeyboardWindow()
+    static let characterSearchWindow = CharacterSearchWindow()
+    static let characterSequenceWindow = CharacterSequenceWindow()
     
     var eventTap: CFMachPort? = nil
     
@@ -45,7 +45,7 @@ class AppDelegate: NSObject {
         AppDelegate.synchronizeKeyboardLayout()
     }
     
-    private func tap(label: String, flags: CGEventFlags = .init()) {
+    private func tap(label: String, flags: CGEventFlags = []) {
         guard let keycode: Keycode = .from(label: label, flags: .maskCommand) else {
             return
         }
@@ -54,52 +54,55 @@ class AppDelegate: NSObject {
     }
     
     static var skipTapCount: Int = 0
-    private func tap(key: Key, flags: CGEventFlags = .init()) {
+    private func tap(key: Key, flags: CGEventFlags = []) {
         AppDelegate.tap(key: key, flags: flags)
     }
     
-    static func tap(key: Key, flags: CGEventFlags = .init()) {
+    static func tap(key: Key, flags: CGEventFlags = []) {
         AppDelegate.skipTapCount += 2
         
-        let source = CGEventSource.init(stateID: .hidSystemState)
-        let keyDown = CGEvent.init(keyboardEventSource: source, virtualKey: CGKeyCode(key.keycode), keyDown: true)
+        let source = CGEventSource(stateID: .hidSystemState)
+        let keyDown = CGEvent(keyboardEventSource: source, virtualKey: CGKeyCode(key.keycode), keyDown: true)
         keyDown?.flags = flags
         keyDown?.post(tap: .cghidEventTap)
         
-        let keyUp = CGEvent.init(keyboardEventSource: source, virtualKey: CGKeyCode(key.keycode), keyDown: false)
+        let keyUp = CGEvent(keyboardEventSource: source, virtualKey: CGKeyCode(key.keycode), keyDown: false)
         keyUp?.post(tap: .cghidEventTap)
     }
     
     static var archivedPasteboardItems: [NSPasteboardItem]? = nil
     
-    static var nonAccessibilityDocumentContext: NonAccessibilityDocumentContext = .init()
+    static var nonAccessibilityDocumentContext = NonAccessibilityDocumentContext()
     
     static var documentContext: DocumentContext {
         
         if isUserDefaultsVisibility && isUserDefaultsVisibleKeyboard {
-            return .init(beforeInput: nonAccessibilityDocumentContext.beforeInput, afterInput: nonAccessibilityDocumentContext.afterInput)
+            return DocumentContext(
+                beforeInput: nonAccessibilityDocumentContext.beforeInput,
+                afterInput: nonAccessibilityDocumentContext.afterInput
+            )
         }
         
         guard let text = AXUIElement.focused?.text else {
-            return .init()
+            return .empty
         }
         
         guard let selectedTextRange = AXUIElement.focused?.selectedTextRange else {
-            return .init()
+            return .empty
         }
         
         guard selectedTextRange.upperBound <= text.count else {
-            return .init(beforeInput: text, afterInput: .init())
+            return DocumentContext(beforeInput: text, afterInput: "")
         }
         
-        return .init(
-            beforeInput: .init(text.prefix(upTo: String.Index.init(utf16Offset: selectedTextRange.lowerBound, in: text))),
-            afterInput: .init(text.suffix(from: String.Index.init(utf16Offset: selectedTextRange.upperBound, in: text)))
+        return DocumentContext(
+            beforeInput: String(text.prefix(upTo: String.Index(utf16Offset: selectedTextRange.lowerBound, in: text))),
+            afterInput: String(text.suffix(from: String.Index(utf16Offset: selectedTextRange.upperBound, in: text)))
         )
     }
     
     static var isUserDefaultsVisibility: Bool {
-        return [kAXScrollAreaRole, kAXWindowRole].contains(AXUIElement.focused?.role ?? .init())
+        return [kAXScrollAreaRole, kAXWindowRole].contains(AXUIElement.focused?.role ?? "")
     }
     
     static let isUserDefaultsVisibleKeyboardKey = "BbqMJTrDcbJy3FJTI2fXo6TEHLoAU37"
@@ -118,7 +121,7 @@ class AppDelegate: NSObject {
                 return
             }
             
-            var bundleDictionary = UserDefaults.standard.dictionary(forKey: bundleID) ?? .init()
+            var bundleDictionary = UserDefaults.standard.dictionary(forKey: bundleID) ?? [:]
             bundleDictionary[isUserDefaultsVisibleKeyboardKey] = newValue as Any
             
             UserDefaults.standard.set(bundleDictionary, forKey: bundleID)
@@ -136,7 +139,7 @@ extension AppDelegate: NSApplicationDelegate {
         
         AppDelegate.synchronizeKeyboardLayout()
         
-        NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
+        NotificationCenter.default.post(name: .documentContextDidChange, object: nil)
         
         layoutWindows()
         
@@ -145,9 +148,9 @@ extension AppDelegate: NSApplicationDelegate {
         
         Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true) { (timer) in
             if self.isProcessTrusted != AXIsProcessTrusted() {
-                let keyboard: Process = .init()
-                keyboard.launchPath = Bundle.main.executablePath!
-                keyboard.launch()
+                let keyboardProcess = Process()
+                keyboardProcess.launchPath = Bundle.main.executablePath!
+                keyboardProcess.launch()
                 LaunchAgent.unload()
                 NSApp.terminate(self)
             }
@@ -155,10 +158,10 @@ extension AppDelegate: NSApplicationDelegate {
             if self.previousDocumentContext != self.documentContext {
                 self.previousDocumentContext = self.documentContext
                 
-                NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
+                NotificationCenter.default.post(name: .documentContextDidChange, object: nil)
                 
-                AppDelegate.characterSearchWindow.setIsVisible(self.previousDocumentContext != .init())
-                AppDelegate.characterSequenceWindow.setIsVisible(self.previousDocumentContext != .init())
+                AppDelegate.characterSearchWindow.setIsVisible(self.previousDocumentContext != .empty)
+                AppDelegate.characterSequenceWindow.setIsVisible(self.previousDocumentContext != .empty)
             }
             
             self.statusMenu.visibilityMenuItem.isHidden = !AppDelegate.isUserDefaultsVisibility
@@ -208,10 +211,9 @@ extension AppDelegate: KeyboardDelegate {
         
         if AXUIElement.focused?.hasSettable(attribute: .selectedText) == true && AXUIElement.focused?.hasSettable(attribute: .selectedTextRange) == true {
             let location: Int = AXUIElement.focused!.selectedTextRange!.location
-            AXUIElement.focused?.selectedTextRange = .init(location: location - 1, length: 1)
-            AXUIElement.focused?.selectedText = .init()
-        }
-        else {
+            AXUIElement.focused?.selectedTextRange = NSRange(location: location - 1, length: 1)
+            AXUIElement.focused?.selectedText = ""
+        } else {
             tap(key: .delete)
         }
     }
@@ -234,8 +236,7 @@ extension AppDelegate: KeyboardDelegate {
         
         if AXUIElement.focused?.hasSettable(attribute: .selectedText) == true {
             AXUIElement.focused?.selectedText = text
-        }
-        else {
+        } else {
             
             if AppDelegate.archivedPasteboardItems == nil {
                 AppDelegate.archivedPasteboardItems = NSPasteboard.general.archivedItems

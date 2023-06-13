@@ -12,8 +12,8 @@ final class KeyboardWindow: FloatingWindow {
     override init() {
         super.init()
         
-        contentView = NSHostingView.init(rootView: KeyboardView().environmentObject(Keyboard.default))
+        contentView = NSHostingView(rootView: KeyboardView(keyboard: .default))
         center()
-        setFrameOrigin(.init(x: frame.origin.x, y: NSScreen.main?.visibleFrame.origin.y ?? 0))
+        setFrameOrigin(CGPoint(x: frame.origin.x, y: NSScreen.main?.visibleFrame.origin.y ?? 0))
     }
 }

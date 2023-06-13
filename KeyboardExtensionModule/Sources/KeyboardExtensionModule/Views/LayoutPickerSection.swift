@@ -21,7 +21,7 @@ struct LayoutPickerSection: View {
                             .foregroundColor(.primary)
                         
                         Spacer()
-
+                        
                         if layout == self.keyboard.layout {
                             Image.checkmark.foregroundColor(.accentColor)
                         }

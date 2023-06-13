@@ -21,7 +21,7 @@ public struct UnicodeItem: Equatable {
     public var name: String? {managed.name}
     var annotation: String? {managed.annotation}
     var ttsAnnotation: String? {managed.ttsAnnotation}
-    private var order: Int {.init(managed.order)}
+    private var order: Int {Int(managed.order)}
     
     public static let nameSeparator = " | "
     
@@ -49,8 +49,7 @@ public struct UnicodeItem: Equatable {
             subdivisionCode.insert("‐", at: subdivisionCode.index(subdivisionCode.startIndex, offsetBy: 2))
             
             return subdivisionCode.uppercased()
-        }
-        else {
+        } else {
             return regionCode
         }
     }

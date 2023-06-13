@@ -28,9 +28,9 @@ public extension KeyboardDelegate {
     
     var needsReturn: Bool {
         #if canImport(UIKit)
-        return Keyboard.default.delegate?.returnKeyType == .default
+        Keyboard.default.delegate?.returnKeyType == .default
         #else
-        return true
+        true
         #endif
     }
     

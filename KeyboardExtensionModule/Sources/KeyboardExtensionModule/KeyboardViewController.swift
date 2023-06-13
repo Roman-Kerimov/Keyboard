@@ -12,24 +12,24 @@ import UnicodeData
 
 extension UIView {
     open override var inputViewController: UIInputViewController? {
-        return KeyboardViewController.shared
+        KeyboardViewController.shared
     }
 }
 
 extension UIViewController {
     open override var inputViewController: UIInputViewController? {
-        return KeyboardViewController.shared
+        KeyboardViewController.shared
     }
 }
 
 extension UIApplication {
     open override var inputViewController: UIInputViewController? {
-        return KeyboardViewController.shared
+        KeyboardViewController.shared
     }
 }
 
 class KeyboardViewController: UIInputViewController, KeyboardDelegate, ObservableObject {
-    static var shared: KeyboardViewController = .init()
+    static var shared = KeyboardViewController()
     
     enum State {
         case disappeared, disappearing, appearing, appeared
@@ -43,7 +43,9 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate, Observabl
         }
         
         set {
-            Keyboard.default.layoutMode = newValue
+            DispatchQueue.main.async {
+                Keyboard.default.layoutMode = newValue
+            }
         }
     }
     
@@ -80,7 +82,7 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate, Observabl
     var spaceRowHeight: CGFloat = .zero
     var spaceRowKeyDescriptions: [SpaceRowKeyDescription] {SpaceRowKeyDescription.allCases}
     
-    class SpaceRowKeyDescription: CaseIterable, Identifiable {
+    class SpaceRowKeyDescription: Identifiable {
         var id: Keycode {
             key.id
         }
@@ -108,17 +110,17 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate, Observabl
     let settingsAnimationDuration: Float64 = 0.3
     
     func updateSizes(keyboardViewMaxWidth: CGFloat) {
-        let scaleFactor: CGFloat = keyboardViewMaxWidth / UIScreen.main.bounds.width
+        let scaleFactor = keyboardViewMaxWidth / UIScreen.main.bounds.width
         
-        let minimalScreenSize: CGSize = CGSize.init(width: 320, height: 480).applying(.init(scale: scaleFactor))
+        let minimalScreenSize = CGSize(width: 320, height: 480).applying(CGAffineTransform(scale: scaleFactor))
         
-        let isPrefferedVerticalMode: Bool = keyboardViewMaxWidth < minimalScreenSize.height
+        let isPrefferedVerticalMode = keyboardViewMaxWidth < minimalScreenSize.height
         
         if layoutMode == .default {
             layoutMode = isPrefferedVerticalMode ? .vertical : .horizontal
         }
         
-        let screenSize: CGSize = UIScreen.main.bounds.size.applying(.init(scale: scaleFactor))
+        let screenSize = UIScreen.main.bounds.size.applying(CGAffineTransform(scale: scaleFactor))
         
         isHorizontalMode = layoutMode == .horizontal || screenSize.height < minimalScreenSize.height
         
@@ -129,22 +131,22 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate, Observabl
         let deleteRowHeightInKeys: CGFloat = 1 / coefficientOfIncreaseForMainButtons
         let spaceRowHeightInKeys: CGFloat = deleteRowHeightInKeys
         
-        let sizeInKeysForVerticalMode: CGSize = .init(
+        let sizeInKeysForVerticalMode = CGSize(
             width: CGFloat(Key.layoutBoardColumnCount / 2) + 0.2 + horizontalIndentInKeys*2,
             height: deleteRowHeightInKeys + CGFloat(Key.layoutBoardRowCount * 2) + spaceRowHeightInKeys
         )
         
-        let sizeInKeysForHorizontalMode: CGSize = .init(
+        let sizeInKeysForHorizontalMode = CGSize(
             width: CGFloat(Key.layoutBoardColumnCount) + horizontalIndentInKeys*2,
             height: deleteRowHeightInKeys + CGFloat(Key.layoutBoardRowCount) + spaceRowHeightInKeys
         )
         
         let keyboardSizeInKeys = isHorizontalMode ? sizeInKeysForHorizontalMode : sizeInKeysForVerticalMode
         
-        let maxKeyWidth: CGFloat = 1024/sizeInKeysForHorizontalMode.width * scaleFactor
+        let maxKeyWidth = 1024/sizeInKeysForHorizontalMode.width * scaleFactor
         
         func maxKeyHeight(fromWidth width: CGFloat) -> CGFloat {
-            return width * 0.94
+            width * 0.94
         }
         
         let keyWidth = min(maxKeyWidth, screenSize.width / keyboardSizeInKeys.width)
@@ -152,7 +154,7 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate, Observabl
         let maxKeyboardHeightRatio: CGFloat = 0.59
         let maxKeyboardHeight = (screenSize.height * maxKeyboardHeightRatio)
         
-        keySize = .init(
+        keySize = CGSize(
             width: keyWidth,
             height: min(
                 max(
@@ -167,7 +169,7 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate, Observabl
             )
         )
         
-        keyboardSize = .init(
+        keyboardSize = CGSize(
             width: keySize.width * keyboardSizeInKeys.width,
             height: keySize.height * keyboardSizeInKeys.height
         )
@@ -185,7 +187,7 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate, Observabl
         
         characterSequenceWidth = keyboardSize.width - deleteKeyWidth
         
-        characterSequenceItemSize = .init(
+        characterSequenceItemSize = CGSize(
             width: floor(max(keySize.width, minimalScreenSize.width/5.5)/4),
             height: deleteRowHeight
         )
@@ -219,8 +221,7 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate, Observabl
         
         if textDocumentProxy.enablesReturnKeyAutomatically == true {
             Key.enter.isEnabled = textDocumentProxy.hasText && textDocumentProxy.returnKeyType != .default
-        }
-        else {
+        } else {
             Key.enter.isEnabled = textDocumentProxy.returnKeyType != .default
         }
     }
@@ -264,7 +265,7 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate, Observabl
         
         view.frame = UIScreen.main.bounds
         
-        NotificationCenter.default.addObserver(self, selector: #selector(updateDocumentContext), name: .DocumentContextDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateDocumentContext), name: .documentContextDidChange, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -320,11 +321,10 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate, Observabl
     override func textDidChange(_ textInput: UITextInput?) {
         // The app has just changed the document's contents, the document context has been updated.
         
-        NotificationCenter.default.post(name: .DocumentContextDidChange, object: nil)
+        NotificationCenter.default.post(name: .documentContextDidChange, object: nil)
     }
     
     override var needsInputModeSwitchKey: Bool {
-        
         guard Bundle.main.isExtension else {
             return false
         }
@@ -350,22 +350,21 @@ class KeyboardViewController: UIInputViewController, KeyboardDelegate, Observabl
         textDocumentProxy.insertText(text)
         
         if [.asciiCapableNumberPad, .decimalPad, .numberPad, .numbersAndPunctuation, .phonePad].contains(textDocumentProxy.keyboardType) {
-            
             textDocumentProxy.adjustTextPosition(byCharacterOffset: 1)
         }
     }
     
     var documentContext: DocumentContext {
-        return textDocumentProxy.documentContext
+        textDocumentProxy.documentContext
     }
     
     var returnKeyType: UIReturnKeyType? {
-        return textDocumentProxy.returnKeyType
+        textDocumentProxy.returnKeyType
     }
 }
 
 extension UITextDocumentProxy {
     var documentContext: DocumentContext {
-        return .init(beforeInput: documentContextBeforeInput ?? .init(), afterInput: documentContextAfterInput ?? .init())
+        DocumentContext(beforeInput: documentContextBeforeInput ?? "", afterInput: documentContextAfterInput ?? "")
     }
 }

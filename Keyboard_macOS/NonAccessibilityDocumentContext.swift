@@ -6,8 +6,8 @@
 //
 
 struct NonAccessibilityDocumentContext: Equatable {
-    var beforeInput: String = .init()
-    var afterInput: String = .init()
+    var beforeInput = ""
+    var afterInput = ""
     
     mutating func deleteBackward() {
        
@@ -36,7 +36,7 @@ struct NonAccessibilityDocumentContext: Equatable {
             return
         }
         
-        self.afterInput.insert(self.beforeInput.removeLast(), at: afterInput.startIndex)
+        afterInput.insert(self.beforeInput.removeLast(), at: afterInput.startIndex)
     }
     
     mutating func moveForward() {
@@ -46,11 +46,11 @@ struct NonAccessibilityDocumentContext: Equatable {
             return
         }
         
-        self.beforeInput.insert(self.afterInput.removeFirst(), at: beforeInput.endIndex)
+        beforeInput.insert(self.afterInput.removeFirst(), at: beforeInput.endIndex)
     }
     
     mutating func reset() {
-        beforeInput = .init()
-        afterInput = .init()
+        beforeInput = ""
+        afterInput = ""
     }
 }

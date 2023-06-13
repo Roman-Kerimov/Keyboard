@@ -34,8 +34,7 @@ extension Locale {
             for (source, target) in dictionary {
                 if sourceIdentifier == source {
                     targetIdentifiers.append(target)
-                }
-                else {
+                } else {
                     let targetIdentifier = sourceIdentifier.replacingOccurrences(of: source + componentSeparator, with: target + componentSeparator)
                     if targetIdentifier != sourceIdentifier {
                         targetIdentifiers.append(targetIdentifier)

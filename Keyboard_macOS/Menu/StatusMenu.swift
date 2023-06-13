@@ -12,10 +12,10 @@ class StatusMenu: NSMenu {
     
     var statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
     
-    let visibilityMenuItem: VisibilityMenuItem = .init()
+    let visibilityMenuItem = VisibilityMenuItem()
     
     init() {
-        super.init(title: .init())
+        super.init(title: "")
         
         delegate = self
         let controlText = "Kd"
@@ -24,12 +24,12 @@ class StatusMenu: NSMenu {
         let disabledControlTextColor: NSColor = .disabledControlTextColor
         let disabledControlTextColorWithoutAlphaComponent: NSColor  = NSColor.windowBackgroundColor.blended(withFraction: disabledControlTextColor.alphaComponent, of: disabledControlTextColor)!
         
-        let title: NSMutableAttributedString = .init(string: controlText)
+        let title = NSMutableAttributedString(string: controlText)
         title.addAttribute(.font, value: controlTextFont)
         title.addAttribute(.foregroundColor, value: AXIsProcessTrusted() ? .controlTextColor : disabledControlTextColorWithoutAlphaComponent)
         statusItem.button?.attributedTitle = title
         
-        let alternateTitle: NSMutableAttributedString = .init(string: controlText)
+        let alternateTitle = NSMutableAttributedString(string: controlText)
         alternateTitle.addAttribute(.font, value: controlTextFont)
         alternateTitle.addAttribute(.foregroundColor, value: NSColor.selectedMenuItemTextColor)
         statusItem.button?.attributedAlternateTitle = alternateTitle
@@ -37,22 +37,23 @@ class StatusMenu: NSMenu {
         statusItem.menu = self
         
         if !AXIsProcessTrusted() {
-            addItem(AccessibilityMenuItem.init())
+            addItem(AccessibilityMenuItem())
             addItem(.separator())
         }
         
         for layout in KeyboardLayout.allLayouts {
-            addItem(LayoutMenuItem.init(layout: layout))
+            addItem(LayoutMenuItem(layout: layout))
         }
+        
         addItem(.separator())
-        addItem(InterfaceLanguageMenuItem.init())
+        addItem(InterfaceLanguageMenuItem())
         addItem(.separator())
         addItem(visibilityMenuItem)
         addItem(.separator())
-        addItem(LegalNoticesMenuItem.init())
-        addItem(VersionMenuItem.init())
+        addItem(LegalNoticesMenuItem())
+        addItem(VersionMenuItem())
         addItem(.separator())
-        addItem(QuitMenuItem.init())
+        addItem(QuitMenuItem())
     }
     
     required init(coder decoder: NSCoder) {
@@ -68,8 +69,7 @@ extension StatusMenu: NSMenuDelegate {
             if let layoutItem = item as? LayoutMenuItem {
                 AppDelegate.keyboardWindow.setIsVisible(true)
                 Keyboard.default.previewLayout = layoutItem.layout
-            }
-            else {
+            } else {
                 AppDelegate.keyboardWindow.setIsVisible(false)
                 Keyboard.default.previewLayout = Keyboard.default.layout
             }

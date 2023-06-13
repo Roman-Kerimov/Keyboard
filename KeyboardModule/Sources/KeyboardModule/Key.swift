@@ -19,11 +19,15 @@ public final class Key: Identifiable, ObservableObject {
     @Published public var isEnabled = true
     @Published public var isHighlighted = false
     
-    static let keys: [Key] = (0..<Keycode.keycodeMaxCount).map {Key.init(keycode: $0)}
+    static let keys: [Key] = (0..<Keycode.keycodeMaxCount).map {Key(keycode: $0)}
     
     public static func by(keycode: Keycode) -> Key {keys[keycode]}
     
-    static let keysByLabel: [String: Key] = .init(uniqueKeysWithValues: keys.filter {!$0.label.isEmpty && !Key.specialKeys.contains($0)} .map {($0.label, $0)})
+    static let keysByLabel: [String: Key] = Dictionary(
+        uniqueKeysWithValues: keys
+            .filter {!$0.label.isEmpty && !Key.specialKeys.contains($0)}
+            .map {($0.label, $0)}
+    )
     
     static func by(labelCharacter: Character) -> Key? {
         guard let key = keysByLabel[labelCharacter.description] else {
@@ -33,7 +37,11 @@ public final class Key: Identifiable, ObservableObject {
         return key
     }
     
-    static let keysByShiftUpLabel: [String: Key] = .init(uniqueKeysWithValues: keys.filter {!$0.shiftUpLabel.isEmpty} .map {($0.shiftUpLabel, $0)})
+    static let keysByShiftUpLabel: [String: Key] = Dictionary(
+        uniqueKeysWithValues: keys
+            .filter {!$0.shiftUpLabel.isEmpty}
+            .map {($0.shiftUpLabel, $0)}
+    )
     
     static func by(shiftUpLabelCharacter: Character) -> Key? {
         guard let key = keysByShiftUpLabel[shiftUpLabelCharacter.description] else {
@@ -43,7 +51,11 @@ public final class Key: Identifiable, ObservableObject {
         return key
     }
     
-    static let keysByShiftDownLabel: [String: Key] = .init(uniqueKeysWithValues: keys.filter {!$0.shiftDownLabel.isEmpty} .map {($0.shiftDownLabel.first!.description, $0)})
+    static let keysByShiftDownLabel: [String: Key] = Dictionary(
+        uniqueKeysWithValues: keys
+            .filter {!$0.shiftDownLabel.isEmpty}
+            .map {($0.shiftDownLabel.first!.description, $0)}
+    )
     
     static func by(shiftDownLabelCharacter: Character) -> Key? {
         guard let key = keysByShiftDownLabel[shiftDownLabelCharacter.description] else {
@@ -54,7 +66,7 @@ public final class Key: Identifiable, ObservableObject {
     }
     
     private var mainComponent: CharacterComponent {
-        return Keyboard.default.previewLayout.characterComponent(fromKeycode: keycode)
+        Keyboard.default.previewLayout.characterComponent(fromKeycode: keycode)
     }
     
     public var label: String {
@@ -110,26 +122,36 @@ public final class Key: Identifiable, ObservableObject {
     public var shiftDownLabel: String {
         
         let shiftDownCharacterComponent = KeyboardLayout.option.characterComponent(fromKeycode: keycode)
-        let extraRightCharacter = [KeyboardLayout.shiftRightDictionary[shiftDownCharacterComponent]].compactMap({$0}).character
         
-        return [shiftDownCharacterComponent].character + extraRightCharacter + [shiftDownCharacterComponent].extraArray.filter {$0.contains(.extra0) || $0.contains(.extra1) || $0.contains(.extra2) || $0.contains(.reversed)} .map {$0.character} .joined()
+        let extraRightCharacter = [KeyboardLayout.shiftRightDictionary[shiftDownCharacterComponent]]
+            .compactMap {$0}
+            .character
+        
+        return [shiftDownCharacterComponent].character + extraRightCharacter + [shiftDownCharacterComponent].extraArray
+            .filter {
+                $0.contains(.extra0)
+                || $0.contains(.extra1)
+                || $0.contains(.extra2)
+                || $0.contains(.reversed)
+            }
+            .map(\.character)
+            .joined()
     }
     
     public var shiftUpLabel: String {
         if let shiftUpComponent = KeyboardLayout.shiftUpDictionary[mainComponent] {
             return [shiftUpComponent].character
-        }
-        else {
-            return .init()
+        } else {
+            return ""
         }
     }
     
     public var shiftRightLabel: String {
-        return self == .space ? .tab : ""
+        self == .space ? .tab : ""
     }
     
     public var shiftLeftLabel: String {
-        return self == .space && Keyboard.default.delegate?.needsReturn != false ? .return : ""
+        self == .space && Keyboard.default.delegate?.needsReturn != false ? .return : ""
     }
 }
 
@@ -156,9 +178,9 @@ public extension Key {
     static let rightSpecialKeys: [Key] = [.delete, .enter, .rightShift, .rightControl, .rightOption, .rightCommand]
     static let specialKeys: [Key] = leftSpecialKeys + rightSpecialKeys + arrowKeys
     
-    static let layoutBoard: [[Key]] = board.dropFirst(1).prefix(3).map {.init($0.dropFirst(1).prefix(10))}
-    static let leftLayoutBoard: [[Key]] = layoutBoard.map {.init($0.prefix($0.count/2))}
-    static let rightLayoutBoard: [[Key]] = layoutBoard.map {.init($0.suffix($0.count/2))}
+    static let layoutBoard: [[Key]] = board[1...3].map {Array($0[1...10])}
+    static let leftLayoutBoard: [[Key]] = layoutBoard.map {Array($0.prefix($0.count/2))}
+    static let rightLayoutBoard: [[Key]] = layoutBoard.map {Array($0.suffix($0.count/2))}
     static let layoutBoardRowCount = layoutBoard.count
     static let layoutBoardColumnCount = layoutBoard.first!.count
     
@@ -293,4 +315,3 @@ public extension Key {
     static let nextKeyboard = keys[257]
     static let dismissKeyboard = keys[258]
 }
-

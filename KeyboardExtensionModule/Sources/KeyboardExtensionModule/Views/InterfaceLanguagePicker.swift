@@ -17,7 +17,9 @@ public struct InterfaceLanguagePicker: View {
         NavigationLink(destination: InterfaceLanguageList()) {
             HStack {
                 Text(LANGUAGE.string)
+                
                 Spacer()
+                
                 Text(settings.language.selfName)
                     .foregroundColor(.secondary)
             }

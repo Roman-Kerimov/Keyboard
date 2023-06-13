@@ -10,11 +10,11 @@ import Foundation
 public extension Bundle {
     
     var isExtension: Bool {
-        return bundlePath.hasSuffix(".appex")
+        bundlePath.hasSuffix(".appex")
     }
     
     var productName: String {
-        return infoDictionary?[kCFBundleNameKey as String] as? String ?? .init()
+        infoDictionary?[kCFBundleNameKey as String] as? String ?? ""
     }
     
     var version: String {

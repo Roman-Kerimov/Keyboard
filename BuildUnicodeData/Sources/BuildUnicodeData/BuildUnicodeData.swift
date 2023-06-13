@@ -17,7 +17,10 @@ class BuildUnicodeData: Operation {
     static var characterCollectionsByLocale: [String: ManagedCharacterCollection] = [:]
     
     private lazy var sqLiteSourceURL = UnicodeData.default.persistentStoreDescriptions.first!.url!
-    private lazy var sqLiteTargetURL = URL(fileURLWithPath: CommandLine.arguments[2]).appendingPathComponent(UnicodeData.default.name).appendingPathExtension(sqLiteSourceURL.pathExtension)
+    
+    private lazy var sqLiteTargetURL = URL(fileURLWithPath: CommandLine.arguments[2])
+        .appendingPathComponent(UnicodeData.default.name)
+        .appendingPathExtension(sqLiteSourceURL.pathExtension)
     
     override func main() {
         
@@ -31,8 +34,8 @@ class BuildUnicodeData: Operation {
             return
         }
         
-        var emojiCharacterSet: CharacterSet = .init()
-        var fullyQualifiedEmoji: String = ""
+        var emojiCharacterSet = CharacterSet()
+        var fullyQualifiedEmoji = ""
         var totalStrokes: [String: Int] = [:]
         var frequencies: [String: Int] = [:]
         
@@ -47,19 +50,30 @@ class BuildUnicodeData: Operation {
             case .emojiTest:
                 dataItem.parse { (string) in
                     
-                    let components = string.split(maxSplits: 2, omittingEmptySubsequences: false) { [columnSeparator, commentMarker].contains($0) } .map {$0.trimmingCharacters(in: .whitespaces)}
+                    let components = string
+                        .split(maxSplits: 2, omittingEmptySubsequences: false) {
+                            [columnSeparator, commentMarker].contains($0)
+                        }
+                        .map {$0.trimmingCharacters(in: .whitespaces)}
                     
-                    let unicodeScalars = components[0].components(separatedBy: .whitespaces).map {$0.hexToUnicodeScalar!}
+                    let unicodeScalars = components[0]
+                        .components(separatedBy: .whitespaces)
+                        .map {$0.hexToUnicodeScalar!}
                     
                     if unicodeScalars.count == 1 {
                         emojiCharacterSet.insert(unicodeScalars.first!)
                     }
                     
-                    let codePoints: String = unicodeScalars.map {$0.description} .reduce(.init(), +)
+                    let codePoints: String = unicodeScalars.map(\.description).reduce("", +)
                     
                     switch EmojiStatus(rawValue: components[1])! {
                     case .component, .fullyQualified:
-                        let name: String = components[2].components(separatedBy: String.space).dropFirst(2).joined(separator: .space).description.trimmingCharacters(in: .whitespaces)
+                        let name: String = components[2]
+                            .components(separatedBy: String.space)
+                            .dropFirst(2)
+                            .joined(separator: .space)
+                            .description
+                            .trimmingCharacters(in: .whitespaces)
                         
                         UnicodeData.default.addItem(codePoints: codePoints, name: name)
                         BuildUnicodeData.ordersByCodePoints[codePoints] = UnicodeData.default.itemCount
@@ -74,7 +88,9 @@ class BuildUnicodeData: Operation {
             case .derivedName:
                 dataItem.parse { (string) in
                     
-                    let components = string.split(separator: columnSeparator).map {$0.trimmingCharacters(in: .whitespaces)}
+                    let components = string
+                        .split(separator: columnSeparator)
+                        .map {$0.trimmingCharacters(in: .whitespaces)}
                     
                     guard components.count == 2 else {
                         return
@@ -107,8 +123,7 @@ class BuildUnicodeData: Operation {
                             aliases.sort {
                                 if $0.first == $1.first {
                                     return $0.count < $1.count
-                                }
-                                else {
+                                } else {
                                     return $0.first! < $1.first!
                                 }
                             }
@@ -156,7 +171,7 @@ class BuildUnicodeData: Operation {
             case .unihanDictionaryLikeData, .unihanIRGSources, .unihanReadings:
                 
                 var wordSets: [String: Set<String>] = [:]
-
+                
                 var language: String = "" {
                     didSet {
                         if wordSets[language] == nil {
@@ -164,36 +179,43 @@ class BuildUnicodeData: Operation {
                         }
                     }
                 }
-
+                
                 dataItem.parse { (string) in
                     let components = string.components(separatedBy: "\t")
-
+                    
                     let codePoint = components[0].components(separatedBy: "+").last!.hexToUnicodeScalar!.description
                     let fieldType = UnihanFieldType(rawValue: components[1])!
                     let value = components[2]
-
+                    
                     switch fieldType {
-                    
+                        
                     // DictionaryLikeData
-                    
+                        
                     case .frequency:
                         frequencies[codePoint] = Int(value)!
                         
                     case .totalStrokes:
                         totalStrokes[codePoint] = Int(value.words.first!)!
-
+                        
                     // Readings
-
+                        
                     case .mandarin:
                         language = "zh"
                         wordSets[language]!.formUnion(value.words)
-                        UnicodeData.default.addItem(codePoints: codePoint, language: language, annotation: value, totalStrokes: totalStrokes[codePoint]!, frequency: frequencies[codePoint])
-
+                        
+                        UnicodeData.default.addItem(
+                            codePoints: codePoint,
+                            language: language,
+                            annotation: value,
+                            totalStrokes: totalStrokes[codePoint]!,
+                            frequency: frequencies[codePoint]
+                        )
+                        
                     default:
                         return
                     }
                 }
-
+                
                 wordSets.forEach { (language, wordSet) in
                     wordSet.subtracting(UnicodeData.default.words(language: language)).forEach { (word) in
                         UnicodeData.default.addWord(word, language: language)
@@ -216,23 +238,24 @@ class BuildUnicodeData: Operation {
                         BuildUnicodeData.characterCollectionsByLocale[language] = UnicodeData.default.createCharacterCollection(language: language)
                     }
                     
-                    BuildUnicodeData.characterCollectionsByLocale[language]?.keyboardIntersection = keyboardIntersectionSet.sorted {
-                        switch $0.compare($1, options: [.caseInsensitive], range: nil, locale: locale) {
-                        case .orderedAscending:
-                            return true
-                            
-                        case .orderedDescending:
-                            return false
-                            
-                        case .orderedSame:
-                            return $0.first?.isUppercase == true
+                    BuildUnicodeData.characterCollectionsByLocale[language]?.keyboardIntersection = keyboardIntersectionSet
+                        .sorted {
+                            switch $0.compare($1, options: [.caseInsensitive], range: nil, locale: locale) {
+                            case .orderedAscending:
+                                return true
+                                
+                            case .orderedDescending:
+                                return false
+                                
+                            case .orderedSame:
+                                return $0.first?.isUppercase == true
+                            }
                         }
-                    }
                 }
             }
         }
         
-        AnnotationsXMLParser.toFullyQualifiedDictionary = .init()
+        AnnotationsXMLParser.toFullyQualifiedDictionary = [:]
         
         try! UnicodeData.default.backgroundContext.save()
         
@@ -250,13 +273,15 @@ class BuildUnicodeData: Operation {
     private var currentVersion: String {
         func hash(url: URL) -> String {
             autoreleasepool {
-                if let urls = try? FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: []) {
-                    return urls.sorted {$0.path < $1.path} .map {hash(url: $0)} .joined()
-                }
-                else if let data = try? Data(contentsOf: url) {
+                if let urls = try? FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil) {
+                    return urls
+                        .sorted {$0.path < $1.path}
+                        .map {hash(url: $0)}
+                        .joined()
+                    
+                } else if let data = try? Data(contentsOf: url) {
                     return SHA256.hash(data: data).description
-                }
-                else {
+                } else {
                     return ""
                 }
             }
@@ -271,13 +296,15 @@ class BuildUnicodeData: Operation {
             sqLiteTargetURL.path + wal,
         ]
         
-        return dependencies.map {hash(url: URL(fileURLWithPath: $0))} .joined()
+        return dependencies
+            .map {hash(url: URL(fileURLWithPath: $0))}
+            .joined()
     }
     
     private let loadedVersionKey = "rBNkEMNHcuYIU3bttg2lYblKGlClU7z"
     var loadedVersion: String {
         get {
-            return UserDefaults.standard.string(forKey: loadedVersionKey) ?? .init()
+            UserDefaults.standard.string(forKey: loadedVersionKey) ?? ""
         }
         
         set {
@@ -293,10 +320,9 @@ extension String {
     var hexToUInt32: UInt32? {
         var output: UInt64 = 0
         
-        if Scanner.init(string: self).scanHexInt64(&output) {
-            return .init(output)
-        }
-        else {
+        if Scanner(string: self).scanHexInt64(&output) {
+            return UInt32(output)
+        } else {
             return nil
         }
     }
@@ -307,6 +333,6 @@ extension String {
             return nil
         }
         
-        return Unicode.Scalar.init(codePoint)
+        return Unicode.Scalar(codePoint)
     }
 }

@@ -33,8 +33,15 @@ extension GuideWindow: NSWindowDelegate {
         
         updateLocalizedStrings()
         
-        var psn: ProcessSerialNumber = .init(highLongOfPSN: 0, lowLongOfPSN: .init(kCurrentProcess))
-        TransformProcessType(&psn, .init(NSApplication.shared.windows.contains(where: {$0 is GuideWindow && $0.isVisible}) ? kProcessTransformToForegroundApplication : kProcessTransformToUIElementApplication))
+        var psn = ProcessSerialNumber(highLongOfPSN: 0, lowLongOfPSN: UInt32(kCurrentProcess))
+        TransformProcessType(
+            &psn,
+            ProcessApplicationTransformState(
+                NSApplication.shared.windows.contains(where: {$0 is GuideWindow && $0.isVisible})
+                ? kProcessTransformToForegroundApplication
+                : kProcessTransformToUIElementApplication
+            )
+        )
     }
     
 }

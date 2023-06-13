@@ -12,11 +12,11 @@ struct CharacterGestureRow: View {
     let languageCode: String
     
     var textKey: String {
-        character.applyingTransform(.init("Any-Hex/Perl"), reverse: false)!
+        character.applyingTransform(StringTransform("Any-Hex/Perl"), reverse: false)!
     }
     
     var textBinding: Binding<String> {
-        .init(
+        Binding(
             get: {UserDefaults.characterFields.string(forKey: self.textKey) ?? ""},
             set: {UserDefaults.characterFields.set($0, forKey: self.textKey)}
         )
@@ -37,6 +37,13 @@ struct CharacterGestureRow: View {
     }
     
     var characterTypingDescriptionText: Text {
-        character.typingDescription(languageCode: languageCode)?.map {Text($0.description).foregroundColor($0.description.defaultShiftGesture == nil ? .red : .secondary)} .reduce(Text(""), +) ?? Text("")
+        character
+            .typingDescription(languageCode: languageCode)?
+            .map {
+                Text($0.description)
+                    .foregroundColor($0.description.defaultShiftGesture == nil ? .red : .secondary)
+            }
+            .reduce(Text(""), +)
+        ?? Text("")
     }
 }

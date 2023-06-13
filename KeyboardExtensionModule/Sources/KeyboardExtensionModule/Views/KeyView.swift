@@ -16,15 +16,15 @@ struct KeyView: View {
     @ObservedObject var key: Key
     
     private var returnKeyType: UIReturnKeyType? {
-        return key != .enter ? nil : Keyboard.default.delegate?.returnKeyType ?? .default
+        key != .enter ? nil : Keyboard.default.delegate?.returnKeyType ?? .default
     }
     
     private var isServiceKey: Bool {
-        return key.label.count > 1 && key != .space
+        key.label.count > 1 && key != .space
     }
     
     private var isSpecialReturnType: Bool {
-        return key == .enter
+        key == .enter
             && returnKeyType != .default
             && returnKeyType != .next
             && returnKeyType != .continue
@@ -148,7 +148,7 @@ struct KeyView: View {
                         let direction = (atan2(-offsetPoint.y, offsetPoint.x) / .pi * 4).rounded() / 4
                         
                         let currentTime = Date.timeIntervalSinceReferenceDate
-                        let speed = (distance - previousDistance) / .init(currentTime - previousTime)
+                        let speed = (distance - previousDistance) / (currentTime - previousTime)
                         previousTime = currentTime
                         previousDistance = distance
                         

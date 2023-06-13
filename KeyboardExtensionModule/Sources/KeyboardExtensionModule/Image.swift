@@ -8,5 +8,5 @@
 import SwiftUI
 
 extension Image {
-    static let checkmark: Self = .init(systemName: "checkmark")
+    static let checkmark = Image(systemName: "checkmark")
 }

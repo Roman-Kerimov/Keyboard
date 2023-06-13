@@ -9,6 +9,6 @@ import AppKit
 
 extension NSFont {
     static var boldMenuFont: NSFont {
-        return boldSystemFont(ofSize: systemFontSize * 1.3)
+        boldSystemFont(ofSize: systemFontSize * 1.3)
     }
 }

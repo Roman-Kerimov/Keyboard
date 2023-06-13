@@ -16,7 +16,7 @@ class LegalNoticesMenuItem: LocalizedMenuItem {
         title = LEGAL_NOTICES.string
     }
     
-    var legalNoticesWindow: LegalNoticesWindow = .init()
+    var legalNoticesWindow = LegalNoticesWindow()
     
     override func menuItemAction() {
         legalNoticesWindow.orderFrontRegardless()

@@ -11,9 +11,9 @@ public extension CGFloat {
     
     static var systemFontSize: Self {
         #if canImport(UIKit)
-        return UIFont.systemFontSize
+        UIFont.systemFontSize
         #elseif canImport(AppKit)
-        return NSFont.systemFontSize
+        NSFont.systemFontSize
         #endif
     }
     
@@ -31,6 +31,6 @@ public extension CGFloat {
     static let characterSequenceSpacingFontSizeFactor: Self = 0.05
     
     static func keyboardGrid(_ value: Self) -> Self {
-        return value * 50
+        value * 50
     }
 }

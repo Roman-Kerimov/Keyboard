@@ -66,8 +66,7 @@ public struct GuideNavigationView: View {
                                 isSetUpViewPresented = true
                             }
                         )
-                    }
-                    else {
+                    } else {
                         return AnyView(
                             Link(destination: URL(string: UIApplication.openSettingsURLString)!) {
                                 Image(systemName: "gear")

@@ -15,16 +15,16 @@ class InterfaceLanguageMenuItem: LocalizedMenuItem {
         
         title = LANGUAGE.string
         
-        let languageMenu: NSMenu = .init()
+        let languageMenu = NSMenu()
         
         for preferredLanguage in Language.preferredList {
-            languageMenu.addItem(LanguageMenuItem.init(language: preferredLanguage))
+            languageMenu.addItem(LanguageMenuItem(language: preferredLanguage))
         }
         
         languageMenu.addItem(.separator())
         
         for language in Language.allCases {
-            languageMenu.addItem(LanguageMenuItem.init(language: language))
+            languageMenu.addItem(LanguageMenuItem(language: language))
         }
         
         submenu = languageMenu

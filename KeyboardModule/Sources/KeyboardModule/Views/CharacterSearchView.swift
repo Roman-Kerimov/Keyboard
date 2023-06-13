@@ -53,12 +53,12 @@ public struct CharacterSearchView: View {
                 .background {
                     GeometryReader {
                         Color.clear.preference(
-                            key: ViewOffsetKey.self,
+                            key: ViewOffsetPreferenceKey.self,
                             value: -$0.frame(in: .named(scrollCoordinateSpaceName)).origin.y
                         )
                     }
                 }
-                .onPreferenceChange(ViewOffsetKey.self) { value in
+                .onPreferenceChange(ViewOffsetPreferenceKey.self) { value in
                     offset = value
                 }
             }
@@ -88,7 +88,7 @@ public struct CharacterSearchView: View {
                 .offset(x: geometry.size.width)
                 #endif
             }
-            .onReceive(NotificationCenter.default.publisher(for: .KeyboardStateDidChange)) { notification in
+            .onReceive(NotificationCenter.default.publisher(for: .keyboardStateDidChange)) { notification in
                 isUnicodeNamesPresented = false
             }
             .simultaneousGesture(

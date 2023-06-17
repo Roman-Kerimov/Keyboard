@@ -312,6 +312,7 @@
 		965BFAC61F7979FA00B8F682 /* KeyboardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyboardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		965BFAC81F7979FA00B8F682 /* Keyboard_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard_iOSTests.swift; sourceTree = "<group>"; };
 		965BFACA1F7979FA00B8F682 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		96633CD42A3A55C800D2F63B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		966E4A9822D4CB4C00A44D87 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		966E4A9A22D4CC0F00A44D87 /* KeyboardWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardWindow.swift; sourceTree = "<group>"; };
 		966EB96C202FC0D3007718F2 /* LegalNoticesMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalNoticesMenuItem.swift; sourceTree = "<group>"; };
@@ -470,6 +471,7 @@
 			isa = PBXGroup;
 			children = (
 				963E5CA222F04C4C00873C20 /* BuildEnvironment */,
+				96633CD42A3A55C800D2F63B /* README.md */,
 				968A72002506F1770059014B /* KeyboardModule */,
 				968A72012506F1CB0059014B /* KeyboardModuleTests */,
 				9641FF54250704AD00600D5D /* KeyboardExtensionModule */,

@@ -332,6 +332,7 @@
 		968A72092506F1CB0059014B /* CharacterComponentsDictionaryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterComponentsDictionaryTests.swift; sourceTree = "<group>"; };
 		968DEA8020CCDFA400750040 /* eventTapCallback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = eventTapCallback.swift; sourceTree = "<group>"; };
 		969102B723EBBC9600E9BE0D /* UnicodeData.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; name = "UnicodeData.sqlite-wal"; path = "../UnicodeData.sqlite-wal"; sourceTree = BUILT_PRODUCTS_DIR; };
+		96A6457A2A3D847B001B6994 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		96AC6CA2203C23B200555164 /* CGEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGEvent.swift; sourceTree = "<group>"; };
 		96ACD587205261EE007CFDCF /* NSPasteboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSPasteboard.swift; sourceTree = "<group>"; };
 		96AED32E203120DE00498A7E /* LayoutMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutMenuItem.swift; sourceTree = "<group>"; };
@@ -469,6 +470,7 @@
 		964AB9261D1B63C0004C827C = {
 			isa = PBXGroup;
 			children = (
+				96A6457A2A3D847B001B6994 /* README.md */,
 				963E5CA222F04C4C00873C20 /* BuildEnvironment */,
 				968A72002506F1770059014B /* KeyboardModule */,
 				968A72012506F1CB0059014B /* KeyboardModuleTests */,

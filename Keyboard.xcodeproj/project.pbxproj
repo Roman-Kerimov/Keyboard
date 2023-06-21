@@ -47,7 +47,7 @@
 		9648D960238C964500711D93 /* UnicodeItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9648D95E238C964500711D93 /* UnicodeItemTests.swift */; };
 		964AB93F1D1B6490004C827C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 964AB93E1D1B6490004C827C /* Assets.xcassets */; };
 		964AB9421D1B6490004C827C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 964AB9401D1B6490004C827C /* LaunchScreen.storyboard */; };
-		964AB96E1D1B6535004C827C /* KeyboardExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 964AB9671D1B6535004C827C /* KeyboardExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		964AB96E1D1B6535004C827C /* KeyboardExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 964AB9671D1B6535004C827C /* KeyboardExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		964EA726237EC5F700CA1D83 /* UnicodeDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964EA725237EC5F700CA1D83 /* UnicodeDataTests.swift */; };
 		964EA727237EC5F700CA1D83 /* UnicodeDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964EA725237EC5F700CA1D83 /* UnicodeDataTests.swift */; };
 		9651D95622F3603B00FD1EE9 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9651D95422F3602900FD1EE9 /* SwiftUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -195,15 +195,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
-		964AB9721D1B6535004C827C /* Embed App Extensions */ = {
+		964AB9721D1B6535004C827C /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				964AB96E1D1B6535004C827C /* KeyboardExtension.appex in Embed App Extensions */,
+				964AB96E1D1B6535004C827C /* KeyboardExtension.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		9661572A243AEF4900E1D32A /* Embed Frameworks */ = {
@@ -722,7 +722,7 @@
 				964AB92D1D1B6490004C827C /* Sources */,
 				964AB92E1D1B6490004C827C /* Frameworks */,
 				964AB92F1D1B6490004C827C /* Resources */,
-				964AB9721D1B6535004C827C /* Embed App Extensions */,
+				964AB9721D1B6535004C827C /* Embed Foundation Extensions */,
 				96A8EB0621AEC49000941FA0 /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -859,8 +859,9 @@
 		964AB9271D1B63C0004C827C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1200;
-				LastUpgradeCheck = 1340;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					9613E0202367CF5C0087CA57 = {
 						CreatedOnToolsVersion = 11.1;
@@ -1213,6 +1214,7 @@
 				CODE_SIGN_ENTITLEMENTS = BuildUnicodeDataDebug/BuildUnicodeDataDebug.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = W9KRA79GNJ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1234,6 +1236,7 @@
 				CODE_SIGN_ENTITLEMENTS = BuildUnicodeDataDebug/BuildUnicodeDataDebug.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = W9KRA79GNJ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1251,6 +1254,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = W9KRA79GNJ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -1261,6 +1265,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = W9KRA79GNJ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -1271,6 +1276,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_ENABLE_MODULES = YES;
@@ -1335,6 +1341,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_ENABLE_MODULES = YES;
@@ -1380,7 +1387,6 @@
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1482,6 +1488,7 @@
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = W9KRA79GNJ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1503,6 +1510,7 @@
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = W9KRA79GNJ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1522,6 +1530,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -1538,6 +1547,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -1553,6 +1563,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -1570,6 +1581,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",

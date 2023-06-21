@@ -49,24 +49,30 @@ public struct CharacterSequenceView: View {
     public var body: some View {
         GeometryReader { geometry in
             HStack(alignment: .center, spacing: floor(.characterSequenceSpacingFontSizeFactor * fontSize)) {
-                ForEach(characterSequence.items) { item in
-                    CharacterSequenceCell(item: item, fontSize: fontSize)
-                        .id(item)
-                        .opacity(sourceIndex == item.offset && gestureType == .reordering ? 0 : 1)
-                        .background(
-                            GeometryReader { geometry in
-                                Color.clear
-                                    .preference(
-                                        key: CellPreferenceKey.self,
-                                        value: [
-                                            Cell(
-                                                index: item.offset,
-                                                frame: geometry.frame(in: .named(contentViewCoordinateSpaceName))
-                                            )
-                                        ]
-                                    )
-                            }
-                        )
+                if #available(iOS 17.0, *) {
+                    // Reimplement CharacterSequenceView for iOS 17
+                    Text(characterSequence.items.map(\.character).joined())
+                        .font(.custom(.characterFontName, size: fontSize))
+                } else {
+                    ForEach(characterSequence.items) { item in
+                        CharacterSequenceCell(item: item, fontSize: fontSize)
+                            .id(item)
+                            .opacity(sourceIndex == item.offset && gestureType == .reordering ? 0 : 1)
+                            .background(
+                                GeometryReader { geometry in
+                                    Color.clear
+                                        .preference(
+                                            key: CellPreferenceKey.self,
+                                            value: [
+                                                Cell(
+                                                    index: item.offset,
+                                                    frame: geometry.frame(in: .named(contentViewCoordinateSpaceName))
+                                                )
+                                            ]
+                                        )
+                                }
+                            )
+                    }
                 }
                 
                 Text(characterSequence.autocompleteLabel)
